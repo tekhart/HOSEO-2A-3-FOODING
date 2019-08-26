@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Find ID/PW</title>
+<title>비밀번호 찾기</title>
 <style>
 																			body {}
 																			#topdiv
@@ -124,10 +124,10 @@
 		<br>
 		<br>
 		<form method="post" action="findPWPro.jsp">
-			<H2>Find Password</H2>
-			<P>Type your ID to find your Password</P>
-			<INPUT type="text" name="findID" maxlength="30" /> <input
-				type="submit" value="Find" />
+			<H2>비밀번호 찾기</H2>
+			<P>비밀번호를 찾을 계정의 아이디를 입력하세요</P>
+			<INPUT type="text" name="passwd" maxlength="30" /> <input
+				type="submit" value="찾기" />
 		</form>
 		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
 	</center>
@@ -141,24 +141,5 @@ Create by FOODING<br>
 고객문의 1544-XXXX<br>
 JSP Project 2019 2A03
 </div>
-
-	<center>
-		<form method="post" action="findIDPro.jsp">
-			<H2>Find ID</H2>
-			<P>Type your name to find your ID</P>
-			<INPUT type="text" name="findName" maxlength="30" /> <input
-				type="submit" value="Find" />
-		</form>
-		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
-		<br>
-		<br>
-		<form method="post" action="findPWPro.jsp">
-			<H2>Find Password</H2>
-			<P>Type your ID to find your Password</P>
-			<INPUT type="text" name="findID" maxlength="30" /> <input
-				type="submit" value="Find" />
-		</form>
-		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
-	</center>
 </body>
 </html>

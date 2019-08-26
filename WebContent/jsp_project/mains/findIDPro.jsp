@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ID</title>
+<title>아이디 찾기</title>
 
 <style>
 																			#body{}
@@ -127,27 +127,29 @@
 <div id="maindiv">
 
 	<%
-		String name = request.getParameter("findName");
+		String nkname = request.getParameter("nkname");
+		String name = request.getParameter("name");
 		//form 태그의 값을 저장
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String jdbcUrl = "jdbc:mysql://localhost:3306/basicjsp";
-			String dbId = "jspid";
-			String dbPass = "jsppass";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/fooding_db";
+			String dbId = "foodingid";
+			String dbPass = "foodingpw";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 			//DB연결
-			String sql = "select id from register where name=(select name from register where name = ?);";
+			String sql = "select id from user where nkname=? and name=?;";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
+			pstmt.setString(1, nkname);
+			pstmt.setString(2, name);
 			//form 태그 값을 저장한 name 변수를 ?에 넣어 ID를 추출함 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 			String id = rs.getString("id");
 	%>
-	<span>Your ID is </span><h4><%=id%></h4><!-- 추출한 ID를 보여줌 -->
+	<span>당신의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
 	<%
 		}} catch (Exception e) {e.printStackTrace();}
 		finally {

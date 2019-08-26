@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Find ID/PW</title>
+<title>아이디 찾기</title>
 <style>
 																			body {}
 																			#topdiv
@@ -124,10 +124,11 @@
 		<br>
 		<br>
 		<form method="post" action="findIDPro.jsp">
-			<H2>Find ID</H2>
-			<P>Type your name to find your ID</P>
-			<INPUT type="text" name="findName" maxlength="30" /> <input
-				type="submit" value="Find" />
+			<H2>아이디찾기</H2>
+			<P>찾으려는 아이디의 닉네임과 성함을 입력해 주세요.</P>
+			닉네임 : <INPUT type="text" name="nkname" maxlength="30" /> 
+			성함 : <INPUT type="text" name="name" maxlength="30" /> 
+			<input type="submit" value="찾기" />
 		</form>
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
 	</center>

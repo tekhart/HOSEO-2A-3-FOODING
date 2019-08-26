@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Password</title>
+<title>비밀번호 찾기</title>
 
 <style>
 																			#body{}
@@ -137,7 +137,7 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		//DB연결
-		String sql="select pw from register where id=(select id from register where id = ?);";
+		String sql="select pw from register where id=?;";
 		pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1,id);
 		//form 태그 값을 저장한 id 변수를 ?에 넣어 비밀번호를 추출함 
@@ -145,7 +145,7 @@
 		while(rs.next()){
 			String pw=rs.getString("pw");
 	%>
-	<span>Your PassWord is </span>	<h4><%=pw %></h4><!-- 추출한 비밀번호를 보여줌 -->
+	<span><%=id %>님의 비밀번호는 </span>	<h4><%=pw %></h4>입니다.<!-- 추출한 비밀번호를 보여줌 -->
 	<% 
 		}} catch (Exception e) {
 			e.printStackTrace();
