@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% 
+String zipcode="";
+try{
+	zipcode=(String)session.getAttribute("idlogin");
+}finally{}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,31 +143,31 @@ body {
 			<table>
 				<tr>
 					<td>닉네임</td>
-					<td><input type="text" name="nkName" maxlength="30"></td>
+					<td rowspan="2"><input type="text" name="nkName" maxlength="30"></td>
 				</tr>
 				
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" maxlength="30"></td>
+					<td rowspan="2"><input type="text" name="id" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="password" maxlength="30"></td>
+					<td rowspan="2"><input type="password" name="password" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type="text" name="email" maxlength="30"></td>
+					<td rowspan="2"><input type="text" name="email" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td><input type="text" name="AddrNum" maxlength="30"></td>
+					<td><input type="text" name="AddrNum" value="<%=zipcode %>" maxlength="30"></td><td><input type="button" value="우편번호 찾기" onclick="location.href='zipfinder/zipinputform.html'"></td>
 				</tr><tr>
 					<td>상세주소</td>
-					<td><input type="text" name="DetailAddr" maxlength="30"></td>
+					<td rowspan="2"><input type="text" name="DetailAddr" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>성별</td>
-					<td><input id="male" name="gender" type="radio" value="1" />Male
+					<td rowspan="2"><input id="male" name="gender" type="radio" value="1" />Male
 						<input id="female" name="gender" type="radio" value="2" />Female</td>
 				</tr>
 				
