@@ -49,11 +49,11 @@
 			//register 테이블에 signup.jsp 파일의 form태그에서 입력된 값을 입력함 
 			session.setAttribute("idlogin",id);
 			response.sendRedirect("../mains/main.jsp");
-			//회원가입이 제대로 됬으면 str의 값이 '회원가입 됬습니다.'로 저장됨
+			//회원가입이 제대로 됐으면 str의 값이 '회원가입 됐습니다.'로 저장됨
 		} catch (Exception e) {
 			e.printStackTrace();
 			str = "회원가입을 못했습니다.";
-			//회원가입이 제대로 안되면 str의 값이 '회원가입 됬습니다.'로 저장됨
+			//회원가입이 제대로 안되면 str의 값이 '회원가입 됐습니다.'로 저장됨
 		} finally {
 			if (pstmt != null)try {pstmt.close();} catch (SQLException sqle) {}
 			if (conn != null)try {conn.close();} catch (SQLException sqle) {}

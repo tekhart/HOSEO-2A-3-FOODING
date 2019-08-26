@@ -5,6 +5,10 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+	
+
+
 												#body{}
 												#topdiv
 													{background-color:#FFBB00;
@@ -76,6 +80,8 @@ span.idpasswd {
 }
 
 </style>
+<link rel="stylesheet" href="../css/common.css">
+
 <title>Sign in</title>
 </head>
 <body>
@@ -95,15 +101,68 @@ span.idpasswd {
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=100 nowrap>
-		<img src="C:\Users\sol\Desktop\jsp프로젝트\이미지\그림3.png" height="60px" width="100px"></td>
-		<td width=150 nowrap><font size="10px">FOODING</font></td><td>
-
-		<input type="button" class="button2" value="레시피">
-		<input type="button" class="button2" value="요리도우미">
-		<input type="button" class="button2" value="공지사항">
-    	<input type="button" class="button2" value="고객센터">
-        
-		</td></tr>
+				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
+			</td>
+			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp>FOODING</a></font></td>
+			<td>
+				<center>
+					<table id="menutable">
+						<tr>
+							<td><center>
+								<div class="dropdown">
+			
+	            					<button class="dropbtn">레시피</button>
+	            
+	            					<div class="dropdown-content">
+	            						<center>
+		        							<a href="#">전체 레시피</a>
+							        		<a href="#">인기 레시피</a>
+							        		<a href="#">맞춤 레시피</a>
+							       			<a href="#">레시피 작성</a>
+						       			</center>
+						       		</div>
+	       						</div>
+	       						</center>
+	        				</td>
+	        
+	       					<td><center>
+	        					<div class="dropdown">
+	            					<button class="dropbtn">요리도우미</button>
+	            					<div class="dropdown-content">
+	            						<center>
+		            						<a href="#">요리 강의</a>
+									        <a href="#">초보용 레시피</a>
+									        <a href="#">재료구매</a>
+	            						</center>
+						        	</div>
+						        </div></center>
+	        				</td>	
+	        				<td><center>
+						        <div class="dropdown">
+						            <button class="dropbtn">공지사항</button>
+						            <div class="dropdown-content">
+							            <center>
+							            	<a href="#">푸딩규칙</a>
+									        <a href="#">이벤트</a>
+							            </center>
+						        	</div>
+						        </div></center>
+					        </td>
+	        				<td><center>
+	        					<div class="dropdown">
+						            <button class="dropbtn">고객센터</button>
+						            <div class="dropdown-content">
+							            <center>
+							             	<a href="#">자주하는 질문</a>
+									        <a href="#">문의사항</a>
+							            </center>
+						        	</div>
+						        </div></center>
+	        				</td>
+	        			</tr>
+	        		</table>
+				</center>
+        	</td></tr>
  	</table>
 </div>
 
@@ -113,8 +172,8 @@ span.idpasswd {
 		<br><br><br><br><br><br><br>
 			<div class="container">
 				<input type="text" placeholder="아이디 " name="id"><br>
-				<input type="password" placeholder="비밀번호" name="passwd">
-				<button type="submit">로그인</button>
+				<input type="password" placeholder="비밀번호" name="passwd"><br>
+				<button class="button11" type="submit">로그인</button>
 			</div>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 			
@@ -122,7 +181,7 @@ span.idpasswd {
 		</form>
 	</center>
 </div>
-<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
