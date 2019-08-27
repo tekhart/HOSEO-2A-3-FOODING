@@ -41,6 +41,7 @@
 <!-- 회원 테이블을 보여주는 페이지를 포워딩해서 보여줌 -->
 <span>로그인 되셨습니다.</span>
 	<%
+					session.invalidate();
 					session.setAttribute("idlogin",id);
 					response.sendRedirect("../mains/main.jsp");
 				} else {%>

@@ -282,24 +282,26 @@ width:250px;}
 
 	<%
 	String id=request.getParameter("id");
+	String email=request.getParameter("email");
 	//form 태그의 값을 저장
 	Connection conn=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 		try{
-		String jdbcUrl="jdbc:mysql://localhost:3306/basicjsp";
-		String dbId="jspid";
-		String dbPass="jsppass";
+		String jdbcUrl="jdbc:mysql://localhost:3306/fooding_db";
+		String dbId="foodingid";
+		String dbPass="foodingpw";
 		Class.forName("com.mysql.jdbc.Driver");
 		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		//DB연결
-		String sql="select pw from user where id='?'';";
+		String sql="select passwd from user where id=? and email=?;";
 		pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1,id);
+		pstmt.setString(2,email);
 		//form 태그 값을 저장한 id 변수를 ?에 넣어 비밀번호를 추출함 
 		rs=pstmt.executeQuery();
 		while(rs.next()){
-			String pw=rs.getString("pw");
+			String pw=rs.getString("passwd");
 	%>
 	<br><br>
 	<center>
@@ -311,7 +313,7 @@ width:250px;}
 			e.printStackTrace();
 			%>
 				<script type="text/javascript">
-					alert("아이디가 올바르지 않습니다.");
+					alert("아이디 또는 이메일이 올바르지 않습니다.");
 					location.href="findPW.jsp";
 				</script>
 			<%

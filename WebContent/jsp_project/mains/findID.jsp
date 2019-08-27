@@ -322,7 +322,7 @@ function Findid(){
 			<table>
 				<tr>
 					<td>
-					닉네임
+						닉네임
 					</td>
 					<td>
 					 : <INPUT type="text" name="nkname" maxlength="30" /> 
@@ -330,7 +330,7 @@ function Findid(){
 				</tr>
 				<tr>
 					<td>
-					이름
+						이메일
 					</td>
 					<td>
 					 : <INPUT type="text" name="email" maxlength="30" /> 

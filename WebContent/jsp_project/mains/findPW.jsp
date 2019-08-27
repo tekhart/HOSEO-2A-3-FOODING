@@ -311,7 +311,25 @@ function Findpw(){
 		<form method="post" name="findpw" action="findPWPro.jsp">
 			<H2>비밀번호 찾기</H2>
 			<P>비밀번호를 찾을 계정의 아이디를 입력하세요</P>
-			<INPUT type="text" name="id" maxlength="30" />
+			<table>
+				<tr>
+					<td>
+						아이디
+					</td>
+					<td>
+					 : <INPUT type="text" name="id" maxlength="30" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						이메일
+					</td>
+					<td>
+					 : <INPUT type="text" name="email" maxlength="30" /> 
+					</td>
+				</tr>
+			</table>
+			
 			<input type="button" value="찾기" onclick="Findpw();"/>
 		</form>
 		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
