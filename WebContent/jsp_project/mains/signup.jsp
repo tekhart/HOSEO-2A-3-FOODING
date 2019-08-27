@@ -220,17 +220,20 @@ body {
 
 <script type="text/javascript">
 
-var register=document.register;
+
 
 function IdDupcheck(){
-
+	
+	var register=document.register;
+	
 	if(register.id.value==""){
 		alert("아이디를 입력해주세요");
 		register.id.focus();
 		return;
 	}
 	
-	document.register.select.value = id;
+
+	document.getElementById('select').value = 'id';
 	register.submit();
 }
 
@@ -330,7 +333,7 @@ function IdDupcheck(){
 <br>
 <br>
 <form method="post" name="register" action="signcross.jsp" >
-	<input type="hidden" value="" name="select">
+	<input type="hidden" value="" name="select" id="select">
 	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  --> 
 			<center>
 				<table>
@@ -375,7 +378,7 @@ function IdDupcheck(){
 					</tr>
 					
 				</table>
-				<input type="button" value="Register" onclick="ToRegister();">
+				<input type="button" value="Register" onclick="Register();">
 			</center>
 </form>
 
