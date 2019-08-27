@@ -22,6 +22,104 @@ try{
 body {
 	font-family: 'Oswald', sans-serif;
 }
+
+.bon4{
+width:100px;
+height:35px;
+font-size:13px;
+background-color:#ffbb00;
+margin-left:35px;       
+border-color:orange; 
+border-style:solid;
+color:white;    
+}
+
+.button3{
+				margin:5px;  
+				
+				width:80px;
+				height:40px;
+				font-size:15px;
+				background-color:white;
+				border-color:#ffbb00; 
+				border-style:solid;
+				 
+				
+				}
+				
+			.button3:hover{background-color:#FFE08C;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  display: inline-block;
+  border-color:#ffbb00;
+  background: white;
+   border-style:solid;
+    border-width: thin; 
+    border-radius: 3px;
+}
+
+
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+ margin:13px;
+ margin-left:5px; 
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color:#EAEAEA;
+  border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #ffbb00;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+
+
 </style>
 </head>
 
@@ -115,47 +213,62 @@ body {
 <br>
 <br>
 <br>
-<br>
+<br> 
 <form method="post" action="registerInsert.jsp">
 	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  --> 
 		<center>
-			<table>
+			<table>  
 				<tr>
 					<td>닉네임</td>
-					<td colspan="2"><input type="text" name="nkName" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="nkName" maxlength="30" minlength="6" size="40"  autofocus></td>
 				</tr>
 				
 				<tr>
 					<td>아이디</td>
-					<td colspan="2"><input type="text" name="id" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="id" maxlength="30" minlength="6" size="40" ></td>
 				</tr>
-				<tr>
+				<tr> 
 					<td>비밀번호</td>
-					<td colspan="2"><input type="password" name="password" maxlength="30"></td>
+					<td colspan="2"><input type="password" name="password" maxlength="30" minlength="6" size="40" ></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
-					<td colspan="2"><input type="password" name="repassword" maxlength="30"></td>
+					<td colspan="2"><input type="password" name="repassword" maxlength="30" minlength="6" size="40" ></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td colspan="2"><input type="text" name="email" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="email" maxlength="30" size="40" ></td>
 				</tr>
-				<tr>
+				<tr> 
 					<td>주소</td>
-					<td><input type="text" name="AddrNum" value="<%=zipcode %>" maxlength="30"></td><td><input type="button" value="우편번호 찾기" onclick="location.href='ZipFinder/ZipinputForm.html'"></td>
+					<td><input type="text" name="AddrNum" value="<%=zipcode %>" ></td>
+					<td><input type="button" value="우편번호 찾기"  onclick="location.href='ZipFinder/ZipinputForm.html'" class="bon4"  ></td>
 				</tr><tr>
-					<td>상세주소</td>
-					<td colspan="2"><input type="text" name="DetailAddr" maxlength="30"></td>
+					<td>상세주소</td> 
+					<td colspan="2"><input type="text" name="DetailAddr" maxlength="30" size="40" ></td>
 				</tr>
 				<tr>
 					<td>성별</td>
-					<td colspan="2"><input id="male" name="gender" type="radio" value="1" />Male
-						<input id="female" name="gender" type="radio" value="2" />Female</td>
+					
+					
+					<td>
+					<label class="container">남자
+					  <input type="radio"  id="male"  checked="checked" name="radio" value="1" >
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container">여자
+					  <input type="radio" name="radio"  id="female"  value="2" >
+					  <span class="checkmark"></span>
+					</label>
+					</td>
+
+
 				</tr>
 				
-			</table>
-			<input type="submit" value="Register">
+			</table> 
+			<br><br><br><br><br>
+			<input type="reset" value="취소" class="button3">
+			<input type="submit" value="확인" class="button3">
 		</center>
 	</form>
 </div>

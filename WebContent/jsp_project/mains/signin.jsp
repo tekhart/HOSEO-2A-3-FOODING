@@ -34,6 +34,7 @@ input[type=text], input[type=password] {
 	border: none;
 	cursor: pointer;
 	width: 50%;
+	border-radius:3px; 
 }
 
 span.idpasswd {
@@ -50,7 +51,16 @@ span.idpasswd {
 		width: 50%;
 	}
 }
-
+input[type=text], input[type=password] {
+  width: 500px;
+  padding: 15px;
+  display: inline-block;
+  border-color:#ffbb00;
+  background: white;
+   border-style:solid;
+    border-width: thin; 
+    border-radius: 3px;
+}
 
 </style>
 <link rel="stylesheet" href="../css/common.css">
@@ -147,7 +157,7 @@ span.idpasswd {
 				<input type="text" placeholder="아이디 " name="id"><br>
 				<input type="password" placeholder="비밀번호" name="passwd"><br>
 				<button class="button" type="submit">로그인</button>
-			</div>
+			</div><br><br>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 			
 			</div>
