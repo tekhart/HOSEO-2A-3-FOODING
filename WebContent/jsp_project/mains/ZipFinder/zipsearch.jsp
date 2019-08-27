@@ -54,12 +54,13 @@
 <td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
 <font size=2><a href="JavaScript:AutoInput('<%=zip%>','<%=address%>')">
 <%=address%></a></font></td></tr>
-<%session.setAttribute("idlogin",zipcode);
+<%session.setAttribute("zipcode",zipcode);
+
 }while(rs.next());
+
+response.sendRedirect("../signup.jsp");
 %>
 </table>
-
-<input type="button" value="돌아가기">
 
 <%
 }

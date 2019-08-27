@@ -3,7 +3,10 @@
 <% 
 String zipcode="";
 try{
-	zipcode=(String)session.getAttribute("idlogin");
+	zipcode=(String)session.getAttribute("zipcode");
+	if(zipcode==null){
+		zipcode="";
+	}
 }finally{}
 %>
 
@@ -13,31 +16,188 @@ try{
 <meta charset="UTF-8">
 <title>Sign Up</title>
 <style>
-																			#body{}
-																			#topdiv
-																				{background-color:#FFBB00;
-																		        height:40px;}
-																		 	#menudiv
-																		    	{background-color:white;
-																		        height:100%;}
-																			.button11{
-																						background-color:#FFBB00;
-																						border:none;
-																						margin-right:-4.5px;
-																						color:#813D00;
-																						}
-																			.button2{
-																						margin-right:-4.5px;
-																						width:250px;
-																						height:85px;
-																						font-size:20px;
-																						background-color:white;
-																						border:none;
-																						}
-																			.button2:hover{background-color:#FFE08C;}
-																		 	#maindiv
-																		    	{
-																		        height:600px;}
+																			#body{
+	font-family:"Bauhaus ITC";
+	}
+
+	#topdiv
+		{background-color:#FFBB00;
+        height:40px;}
+        
+ 	#menudiv
+    	{background-color:white;
+         height:100%;
+         border-collapse:collapse;
+         }
+		
+			.button11{
+				background-color:#FFBB00;
+				border:none;
+				margin-right:-4.5px;
+				color:#813D00;
+				}
+				
+				.button2{
+				margin-right:-9px;
+				width:250px;
+				height:85px;
+				font-size:20px;
+				background-color:white;
+				border:none;
+				
+				}
+				
+			.button2:hover{background-color:#FFE08C;}
+        
+ 			#maindiv
+    			{background-color:#EAEAEA;
+      			 height:0px;}
+        
+        #menutable{
+			margin:0;
+			padding:0px;
+			border:0;
+			height:85px;
+			width:250px;
+			border-collapse:collapse;
+		}
+	
+        
+	#bottable
+    	{background-color:#FFFFFF;
+    	border-style:solid;
+    	color:#FFBB00;
+        height:300px;
+        width:50%;
+        float:left;
+         border-collapse:collapse;
+        }
+        
+
+        
+        th, td{padding:10px;}
+        
+	#eventdiv
+    	{background-color:#A6A6A6;
+        height:300px;
+        width:50%;
+        display:inline-block;
+        line-height: 200px;
+        }
+        
+     #event{
+     position:relative;
+     }
+     
+     #eventimg{
+     position:relative;
+     }
+        
+        
+    .dotdot{margin-top:-25px;
+			margin-right:10px;
+			}
+			
+	.slide-text{
+	
+		position:relative;
+		background-color:#FFFFFF;
+		opacity:0.7;
+		width:600px;
+		height:600px;
+		text-align:left;
+		margin-top:-604px;
+		text-align:center;
+		
+		font-size:30px;
+		}
+		
+	.dot {
+  		position:relative;
+	
+  		cursor: pointer;
+  		height: 15px;
+  		width: 15px;
+  		margin: 0 2px;
+  		background-color: #bbb;
+  		border-radius: 50%;
+  		display: inline-block;
+  		transition: background-color 0.6s ease;
+       	}    
+
+	.active, .dot:hover {
+  		background-color: #717171;
+		}
+
+	.fade {
+  		-webkit-animation-name: fade;
+  		-webkit-animation-duration: 1.5s;
+  		animation-name: fade;
+  		animation-duration: 1.5s;
+		}
+
+	@-webkit-keyframes fade {
+  		from {opacity: .4} 
+  		to {opacity: 1}
+		}
+
+	@keyframes fade {
+  		from {opacity: .4} 
+  		to {opacity: 1}
+		}
+		
+		
+		
+		
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+            width:250px;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+		width:250px;
+        }
+
+.dropdown-content a {
+
+  
+  color: black;
+  padding: 12px 0px;
+  text-decoration: none;
+  display: block;
+width:250px;
+}
+
+.dropdown-content a:hover {background-color: #ddd;
+width:250px;}
+
+.dropdown:hover .dropdown-content {display: block;
+width:250px;}
+
+.dropdown:hover .dropbtn {background-color: #FFE08C;
+width:250px;}
+
+
+
+                .dropbtn{
+
+                width:200px;
+                height:85px;
+                font-size:20px;
+                background-color:white;
+                border:none;
+
+                }
+
+            .dropbtn:hover{background-color:#FFE08C;}
 
 
 body {
@@ -143,31 +303,35 @@ body {
 			<table>
 				<tr>
 					<td>닉네임</td>
-					<td rowspan="2"><input type="text" name="nkName" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="nkName" maxlength="30"></td>
 				</tr>
 				
 				<tr>
 					<td>아이디</td>
-					<td rowspan="2"><input type="text" name="id" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="id" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td rowspan="2"><input type="password" name="password" maxlength="30"></td>
+					<td colspan="2"><input type="password" name="password" maxlength="30"></td>
+				</tr>
+				<tr>
+					<td>비밀번호 확인</td>
+					<td colspan="2"><input type="password" name="repassword" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td rowspan="2"><input type="text" name="email" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="email" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td><input type="text" name="AddrNum" value="<%=zipcode %>" maxlength="30"></td><td><input type="button" value="우편번호 찾기" onclick="location.href='zipfinder/zipinputform.html'"></td>
+					<td><input type="text" name="AddrNum" value="<%=zipcode %>" maxlength="30"></td><td><input type="button" value="우편번호 찾기" onclick="location.href='ZipFinder/ZipinputForm.html'"></td>
 				</tr><tr>
 					<td>상세주소</td>
-					<td rowspan="2"><input type="text" name="DetailAddr" maxlength="30"></td>
+					<td colspan="2"><input type="text" name="DetailAddr" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td>성별</td>
-					<td rowspan="2"><input id="male" name="gender" type="radio" value="1" />Male
+					<td colspan="2"><input id="male" name="gender" type="radio" value="1" />Male
 						<input id="female" name="gender" type="radio" value="2" />Female</td>
 				</tr>
 				
@@ -176,7 +340,7 @@ body {
 		</center>
 	</form>
 </div>
-<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
