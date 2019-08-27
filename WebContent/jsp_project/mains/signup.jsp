@@ -8,6 +8,7 @@ try{
 		zipcode="";
 	}
 }finally{}
+
 String nkname = request.getParameter("nkname");
 String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
@@ -236,6 +237,15 @@ function IdDupcheck(){
 	document.getElementById('select').value = 'id';
 	register.submit();
 }
+function Zipcodeload(){
+	
+	var register=document.register;
+	
+	
+
+	document.getElementById('select').value = 'zip';
+	register.submit();
+}
 
 </script>
 
@@ -340,7 +350,7 @@ function IdDupcheck(){
 					<tr>
 						<td>닉네임</td>
 						<td colspan="2">
-					<input type="text" name="nkName" maxlength="30" value="<%= nkname%>"></td>
+					<input type="text" name="nkname" maxlength="30" value="<%= nkname%>"></td>
 					</tr>
 					
 					<tr>

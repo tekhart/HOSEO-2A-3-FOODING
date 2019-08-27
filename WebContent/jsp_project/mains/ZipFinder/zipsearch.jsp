@@ -1,5 +1,13 @@
 <%@page import="java.sql.*" contentType="text/html; charset=utf-8" %>
 <%@page import="DBBean.sbkimDB" %>
+		<%
+			String nkname = request.getParameter("nkname");
+			String id = request.getParameter("id");
+			String passwd = request.getParameter("passwd");
+			String repasswd = request.getParameter("repasswd");
+			String email = request.getParameter("email");
+			String detailaddr = request.getParameter("detailaddr");
+		%>
 
 <Script>
 	function AutoInput(zip,address){
@@ -69,7 +77,7 @@ else
 %>
 </table>
 <font size=2><center><br>찾고자하는 동이 존재하지 않습니다.<br><br><br>
-다시 검색하시려면 <a href=../ZipFinder/ZipinputForm.html>여기</a>를 누르세요</center></font>
+다시 검색하시려면 <a href=../ZipFinder/ZipinputForm.html onclick="Backtrack();">여기</a>를 누르세요</center></font>
 <%
 }
 %>
