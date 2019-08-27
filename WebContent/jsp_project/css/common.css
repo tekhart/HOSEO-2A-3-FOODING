@@ -5,6 +5,13 @@
 		color:black;
 	}
 
+#title{
+	text-decoration:none;
+	
+}
+
+#title:active{color:#ffbb00;}
+
 	#topdiv
 		{background-color:#FFBB00;
         height:40px;}
@@ -47,9 +54,17 @@ height:85px;
 width:250px;
 border-collapse:collapse;}
         
+        #bottable{
+        width:100%;
+        height:100%;
+        
+        }
+        
+        
+        
 	#bottomdiv
     	{background-color:white;
-    	border-style:solid;
+    	
     	color:#FFBB00;
         height:300px;
         width:50%;
@@ -179,8 +194,12 @@ width:250px;}
             .dropbtn:hover{background-color:#FFE08C;}
 		
 		
+		#footer{
+		margin-top:400px;
+		margin-left:90%;
+		marign-right:50px;
 		
-		
+		}
 		
 
 </style>
