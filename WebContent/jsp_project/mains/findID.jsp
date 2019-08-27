@@ -210,17 +210,16 @@ width:250px;}
     <tr><td width=200 nowrap>
 		</td><td width=200 nowrap>
 		</td><td width=30 nowrap>
-
-		<input type="button" class="button11" value="로그인">
-		<input type="button" class="button11" value="회원가입">
-
+			<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
+			<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
 		</td></tr>
   	</table>
 </div>
 
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
-    <tr><td width=100 nowrap>
+    	<tr>
+    		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
 			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp>FOODING</a></font></td>
@@ -282,8 +281,9 @@ width:250px;}
 	        			</tr>
 	        		</table>
 				</center>
-        	</td></tr>
- 	</table>
+        	</td>
+        </tr>
+    </table>
 </div>
 
 <div id="maindiv">
@@ -311,7 +311,7 @@ width:250px;}
 					이름
 					</td>
 					<td>
-					 : <INPUT type="text" name="name" maxlength="30" /> 
+					 : <INPUT type="text" name="email" maxlength="30" /> 
 					</td>
 				</tr>
 			</table>

@@ -241,6 +241,28 @@ span.idpasswd {
 <link rel="stylesheet" href="../css/common.css">
 
 <title>Sign in</title>
+
+<script type="text/javascript">
+function Login(){
+	
+	var login=document.login;
+	
+	if(login.id.value==""){
+		alert("아이디를 입력해주세요");
+		login.id.focus();
+		return;
+	}
+	
+	if(login.passwd.value==""){
+		alert("비밀번호를 입력해주세요");
+		login.passwd.focus();
+		return;
+	}
+	
+	login.submit();
+}
+</script>
+
 </head>
 <body>
 <div id="topdiv" style=text-align:center;>

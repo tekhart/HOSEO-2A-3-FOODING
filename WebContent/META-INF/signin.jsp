@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*"%>
-<%request.setCharacterEncoding("UTF-8"); %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>비밀번호 찾기</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-																			#body{
+	#body{
 	font-family:"Bauhaus ITC";
 	}
 
@@ -191,10 +187,79 @@ width:250px;}
                 }
 
             .dropbtn:hover{background-color:#FFE08C;}
+		
+	
+body {
+	font-family: 'Oswald', sans-serif;
+	
+}
 
+form {
+	width: 50%
+}
+
+input[type=text], input[type=password] {
+	width: 50%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+button {
+	background-color:#FFBB00;
+	color: black;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+}
+
+span.idpasswd {
+	float: right;
+	padding-top: 16px;
+}
+a{
+		text-decoration:none;
+		}
+		
+
+@media screen and (max-width: 300px) {
+	span.idpasswd {
+		display: block;
+		float: none;
+	}
+	.cancelbtn {
+		width: 50%;
+	}
+}
 
 </style>
+<script type="text/javascript">
+function Login(){
+	
+	var login=document.login;
+	
+	if(login.id.value==""){
+		alert("아이디를 입력해주세요");
+		login.id.focus();
+		return;
+	}
+	
+	if(login.passwd.value==""){
+		alert("비밀번호를 입력해주세요");
+		login.passwd.focus();
+		return;
+	}
+	
+	login.submit();
+}
+</script>
+<link rel="stylesheet" href="../css/common.css">
 
+<title>Sign in</title>
 </head>
 <body>
 <div id="topdiv" style=text-align:center;>
@@ -202,16 +267,17 @@ width:250px;}
     <tr><td width=200 nowrap>
 		</td><td width=200 nowrap>
 		</td><td width=30 nowrap>
-			<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
-			<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
+
+		<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
+		<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
+
 		</td></tr>
   	</table>
 </div>
 
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
-    	<tr>
-    		<td width=100 nowrap>
+    <tr><td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
 			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp>FOODING</a></font></td>
@@ -273,60 +339,26 @@ width:250px;}
 	        			</tr>
 	        		</table>
 				</center>
-        	</td>
-        </tr>
-    </table>
+        	</td></tr>
+ 	</table>
 </div>
 
 <div id="maindiv">
-
-	<%
-	String id=request.getParameter("findID");
-	//form 태그의 값을 저장
-	Connection conn=null;
-	PreparedStatement pstmt=null;
-	ResultSet rs=null;
-		try{
-		String jdbcUrl="jdbc:mysql://localhost:3306/basicjsp";
-		String dbId="jspid";
-		String dbPass="jsppass";
-		Class.forName("com.mysql.jdbc.Driver");
-		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
-		//DB연결
-		String sql="select pw from register where id=?;";
-		pstmt=conn.prepareStatement(sql);
-		pstmt.setString(1,id);
-		//form 태그 값을 저장한 id 변수를 ?에 넣어 비밀번호를 추출함 
-		rs=pstmt.executeQuery();
-		while(rs.next()){
-			String pw=rs.getString("pw");
-	%>
-	<br><br>
-	<center>
-		<span>당신의 아이디는 </span><h4><%=pw%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
+<center>
+		<form name="login" method="post" action="login.jsp">
+		<br><br><br><br><br><br><br>
+			<div class="container">
+				<input type="text" placeholder="아이디 " name="id"><br>
+				<input type="password" placeholder="비밀번호" name="passwd"><br>
+				<button class="button11" onclick="Login();" type="button">로그인</button>
+			</div>
+			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
+			
+			</div>
+		</form>
 	</center>
-	
-	<% 
-		}} catch (Exception e) {
-			e.printStackTrace();
-			%>
-				<script type="text/javascript">
-					alert("아이디가 올바르지 않습니다.");
-					location.href="findID.jsp";
-				</script>
-			<%
-		} finally {
-			if (rs != null)	try {rs.close();} catch (SQLException sqle) {}
-			if (pstmt != null)try {pstmt.close();} catch (SQLException sqle) {}
-			if (conn != null)try {conn.close();} catch (SQLException sqle) {}
-		}
-		%>
 </div>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
