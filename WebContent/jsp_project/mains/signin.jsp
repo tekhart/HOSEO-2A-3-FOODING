@@ -348,12 +348,12 @@ function Login(){
 
 <div id="maindiv">
 <center>
-		<form method="post" action="login.jsp">
+		<form method="post" name="login" action="login.jsp">
 		<br><br><br><br><br><br><br>
 			<div class="container">
 				<input type="text" placeholder="아이디 " name="id"><br>
 				<input type="password" placeholder="비밀번호" name="passwd"><br>
-				<button class="button" type="submit">로그인</button>
+				<button class="button" type="button" onclick="Login();">로그인</button>
 			</div>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 			

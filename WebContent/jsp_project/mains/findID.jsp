@@ -202,6 +202,28 @@ width:250px;}
             border:none;
             }
 </style>
+
+<script type="text/javascript">
+function Findid(){
+	
+	var findid=document.findid;
+	
+	if(findid.nkname.value==""){
+		alert("닉네임을 입력해주세요");
+		findid.nkname.focus();
+		return;
+	}
+	
+	if(findid.email.value==""){
+		alert("이메일을 입력해주세요");
+		findid.email.focus();
+		return;
+	}
+	
+	findid.submit();
+}
+</script>
+
 </head>
 <body>
 
@@ -294,7 +316,7 @@ width:250px;}
 	<input type="button" value="ID찾기" id="currentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
 	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">
 		
-		<form method="post" action="findIDPro.jsp">
+		<form method="post" name="findid" action="findIDPro.jsp">
 			<H2>아이디찾기</H2>
 			<P>찾으려는 아이디의 닉네임과 성함을 입력해 주세요.</P>
 			<table>
@@ -317,7 +339,7 @@ width:250px;}
 			</table>
 			
 			 
-			<input type="submit" value="찾기" />
+			<input type="button" value="찾기" onclick="Findid();"/>
 		</form>
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
 	</center>

@@ -281,7 +281,7 @@ width:250px;}
 <div id="maindiv">
 
 	<%
-	String id=request.getParameter("findID");
+	String id=request.getParameter("id");
 	//form 태그의 값을 저장
 	Connection conn=null;
 	PreparedStatement pstmt=null;
@@ -293,7 +293,7 @@ width:250px;}
 		Class.forName("com.mysql.jdbc.Driver");
 		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		//DB연결
-		String sql="select pw from register where id=?;";
+		String sql="select pw from user where id='?'';";
 		pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1,id);
 		//form 태그 값을 저장한 id 변수를 ?에 넣어 비밀번호를 추출함 
@@ -312,7 +312,7 @@ width:250px;}
 			%>
 				<script type="text/javascript">
 					alert("아이디가 올바르지 않습니다.");
-					location.href="findID.jsp";
+					location.href="findPW.jsp";
 				</script>
 			<%
 		} finally {
