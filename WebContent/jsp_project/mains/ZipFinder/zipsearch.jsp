@@ -74,4 +74,4 @@ else
 }
 %>
 <br><br><br>
-<center><a href="JavaScript:self.close()">닫기</a></center>
+<center><input type="button" value="돌아가기" onclick="location.href='../signup.jsp'"></center>
