@@ -306,6 +306,12 @@ width:250px;}
 	<% 
 		}} catch (Exception e) {
 			e.printStackTrace();
+			%>
+				<script type="text/javascript">
+					alert("아이디가 올바르지 않습니다.");
+					location.href="findID.jsp";
+				</script>
+			<%
 		} finally {
 			if (rs != null)	try {rs.close();} catch (SQLException sqle) {}
 			if (pstmt != null)try {pstmt.close();} catch (SQLException sqle) {}
@@ -313,6 +319,10 @@ width:250px;}
 		}
 		%>
 </div>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
 <br><br><br>
 
 

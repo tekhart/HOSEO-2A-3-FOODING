@@ -188,6 +188,19 @@ width:250px;}
                 }
 
             .dropbtn:hover{background-color:#FFE08C;}
+            
+            #currentbtn{
+            width:200px;
+            height:80px;
+            background-color:gray;
+            border:none;
+            }
+            #notcurrentbtn{
+            width:200px;
+            height:80px;
+            background-color:#FFBB00;
+            border:none;
+            }
 </style>
 </head>
 <body>
@@ -276,24 +289,44 @@ width:250px;}
 <div id="maindiv">
 
 	<center>
-	<insert type="button" value="ID찾기" id="toFindIDbutton"> <%-- 현 페이지 이므로 기능없음. --%>
-	<insert type="button" value="PW찾기" onClick="location.href='FINDPW.jsp'" id="toFindPWbutton">
 		<br>
 		<br>
+	<input type="button" value="ID찾기" id="currentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
+	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">
+		
 		<form method="post" action="findIDPro.jsp">
 			<H2>아이디찾기</H2>
 			<P>찾으려는 아이디의 닉네임과 성함을 입력해 주세요.</P>
-			닉네임 : <INPUT type="text" name="nkname" maxlength="30" /> 
-			성함 : <INPUT type="text" name="name" maxlength="30" /> 
+			<table>
+				<tr>
+					<td>
+					닉네임
+					</td>
+					<td>
+					 : <INPUT type="text" name="nkname" maxlength="30" /> 
+					</td>
+				</tr>
+				<tr>
+					<td>
+					이름
+					</td>
+					<td>
+					 : <INPUT type="text" name="name" maxlength="30" /> 
+					</td>
+				</tr>
+			</table>
+			
+			 
 			<input type="submit" value="찾기" />
 		</form>
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
 	</center>
 </div>
 <br><br><br>
-
-
-
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 Create by FOODING<br>
 고객문의 1544-XXXX<br>

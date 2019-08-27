@@ -188,6 +188,19 @@ width:250px;}
                 }
 
             .dropbtn:hover{background-color:#FFE08C;}
+            
+            #currentbtn{
+            width:200px;
+            height:80px;
+            background-color:gray;
+            border:none;
+            }
+            #notcurrentbtn{
+            width:200px;
+            height:80px;
+            background-color:#FFBB00;
+            border:none;
+            }
 </style>
 </head>
 <body>
@@ -274,12 +287,12 @@ width:250px;}
 </div>
 
 <div id="maindiv">
-
+		<br>
+		<br>
 	<center>
-	<insert type="button" value="ID찾기" onClick="location.href='FINDID.jsp'" id="toFindIDbutton">
-	<insert type="button" value="PW찾기" id="toFindPWbutton"> <%-- 현 페이지 이므로 기능없음. --%>
-		<br>
-		<br>
+	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
+	<input type="button" value="PW찾기" id="currentbtn">
+		
 		<form method="post" action="findPWPro.jsp">
 			<H2>비밀번호 찾기</H2>
 			<P>비밀번호를 찾을 계정의 아이디를 입력하세요</P>
@@ -289,6 +302,10 @@ width:250px;}
 		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
 	</center>
 </div>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
 <br><br><br>
 
 

@@ -3,6 +3,7 @@
     
 <% 
 	String idlogin="";
+	session.setAttribute("zipcode","");
 %>
 <!DOCTYPE html>
 <html>
@@ -381,6 +382,12 @@ width:250px;}
 </div>
 
 </div>
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 Create by FOODING<br>

@@ -211,7 +211,7 @@ input[type=text], input[type=password] {
 	box-sizing: border-box;
 }
 
-button {
+.button {
 	background-color:#FFBB00;
 	color: white;
 	padding: 14px 20px;
@@ -235,6 +235,7 @@ span.idpasswd {
 		width: 50%;
 	}
 }
+
 
 </style>
 <link rel="stylesheet" href="../css/common.css">
@@ -330,7 +331,7 @@ span.idpasswd {
 			<div class="container">
 				<input type="text" placeholder="아이디 " name="id"><br>
 				<input type="password" placeholder="비밀번호" name="passwd"><br>
-				<button class="button11" type="submit">로그인</button>
+				<button class="button" type="submit">로그인</button>
 			</div>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 			
@@ -338,8 +339,11 @@ span.idpasswd {
 		</form>
 	</center>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
 
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
