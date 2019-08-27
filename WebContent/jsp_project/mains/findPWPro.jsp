@@ -287,9 +287,9 @@ width:250px;}
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 		try{
-		String jdbcUrl="jdbc:mysql://localhost:3306/basicjsp";
-		String dbId="jspid";
-		String dbPass="jsppass";
+		String jdbcUrl="jdbc:mysql://localhost:3306/fooding_db";
+		String dbId="foodingid";
+		String dbPass="foodingpw";
 		Class.forName("com.mysql.jdbc.Driver");
 		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		//DB연결
