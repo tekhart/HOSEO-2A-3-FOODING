@@ -286,10 +286,8 @@ width:250px;}
 	Connection conn=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
-		try{
-		String jdbcUrl="jdbc:mysql://localhost:3306/fooding_db";
-		String dbId="foodingid";
-		String dbPass="foodingpw";
+	
+		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		//DB연결
