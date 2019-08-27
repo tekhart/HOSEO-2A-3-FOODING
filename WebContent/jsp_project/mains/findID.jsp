@@ -21,6 +21,28 @@
             border:none;
             }
 </style>
+
+<script type="text/javascript">
+function Findid(){
+	
+	var findid=document.findid;
+	
+	if(findid.nkname.value==""){
+		alert("닉네임을 입력해주세요");
+		findid.nkname.focus();
+		return;
+	}
+	
+	if(findid.email.value==""){
+		alert("이메일을 입력해주세요");
+		findid.email.focus();
+		return;
+	}
+	
+	findid.submit();
+}
+</script>
+
 </head>
 <body>
 
@@ -31,7 +53,7 @@
 		</td><td width=30 nowrap>
 
 			<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
-		<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
+			<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
 
 		</td></tr>
   	</table>
@@ -39,7 +61,8 @@
 
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
-    <tr><td width=100 nowrap>
+    	<tr>
+    		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
 			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title">FOODING</a></font></td>
@@ -101,8 +124,9 @@
 	        			</tr>
 	        		</table>
 				</center>
-        	</td></tr>
- 	</table>
+        	</td>
+        </tr>
+    </table>
 </div>
 
 <div id="maindiv">
@@ -113,13 +137,13 @@
 	<input type="button" value="ID찾기" id="currentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
 	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">
 		
-		<form method="post" action="findIDPro.jsp">
+		<form method="post" name="findid" action="findIDPro.jsp">
 			<H2>아이디찾기</H2>
 			<P>찾으려는 아이디의 닉네임과 성함을 입력해 주세요.</P>
 			<table>
 				<tr>
 					<td>
-					닉네임
+						닉네임
 					</td>
 					<td>
 					 : <INPUT type="text" name="nkname" maxlength="30" /> 
@@ -127,16 +151,16 @@
 				</tr>
 				<tr>
 					<td>
-					이름
+						이메일
 					</td>
 					<td>
-					 : <INPUT type="text" name="name" maxlength="30" /> 
+					 : <INPUT type="text" name="email" maxlength="30" /> 
 					</td>
 				</tr>
 			</table>
 			
 			 
-			<input type="submit" value="찾기" />
+			<input type="button" value="찾기" onclick="Findid();"/>
 		</form>
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
 	</center>

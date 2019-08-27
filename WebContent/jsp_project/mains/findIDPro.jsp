@@ -18,7 +18,6 @@
 
 </head>
 <body>
-
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>
@@ -34,7 +33,8 @@
 
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
-    <tr><td width=100 nowrap>
+    	<tr>
+    		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
 			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title">FOODING</a></font></td>
@@ -96,15 +96,16 @@
 	        			</tr>
 	        		</table>
 				</center>
-        	</td></tr>
- 	</table>
+        	</td>
+        </tr>
+    </table>
 </div>
 
 <div id="maindiv">
 
 	<%
 		String nkname = request.getParameter("nkname");
-		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		//form 태그의 값을 저장
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -116,16 +117,19 @@
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 			//DB연결
-			String sql = "select id from user where nkname=? and name=?;";
+			String sql = "select id from user where nkname=? and email=?;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, nkname);
-			pstmt.setString(2, name);
+			pstmt.setString(2, email);
 			//form 태그 값을 저장한 name 변수를 ?에 넣어 ID를 추출함 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 			String id = rs.getString("id");
 	%>
-	<span>당신의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
+	<br><br>
+	<center>
+		<span>당신의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
+	</center>
 	<%
 		}} catch (Exception e) {
 			e.printStackTrace();

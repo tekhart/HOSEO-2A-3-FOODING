@@ -16,23 +16,21 @@
 
 </head>
 <body>
-
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>
 		</td><td width=200 nowrap>
 		</td><td width=30 nowrap>
-
-		<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
-		<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
-
+			<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
+			<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
 		</td></tr>
   	</table>
 </div>
 
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
-    <tr><td width=100 nowrap>
+    	<tr>
+    		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
 			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title">FOODING</a></font></td>
@@ -94,41 +92,50 @@
 	        			</tr>
 	        		</table>
 				</center>
-        	</td></tr>
- 	</table>
+        	</td>
+        </tr>
+    </table>
 </div>
 
 <div id="maindiv">
 
 	<%
-	String id=request.getParameter("findID");
+	String id=request.getParameter("id");
+	String email=request.getParameter("email");
 	//form 태그의 값을 저장
 	Connection conn=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
-		try{
-		String jdbcUrl="jdbc:mysql://localhost:3306/basicjsp";
-		String dbId="jspid";
-		String dbPass="jsppass";
+		
+	try{
+		String jdbcUrl="jdbc:mysql://localhost:3306/fooding_db";
+		String dbId="foodingid";
+		String dbPass="foodingpw";
+		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		//DB연결
-		String sql="select pw from register where id=?;";
+		String sql="select passwd from user where id=? and email=?;";
 		pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1,id);
+		pstmt.setString(2,email);
 		//form 태그 값을 저장한 id 변수를 ?에 넣어 비밀번호를 추출함 
 		rs=pstmt.executeQuery();
 		while(rs.next()){
-			String pw=rs.getString("pw");
+			String pw=rs.getString("passwd");
 	%>
-	<span><%=id %>님의 비밀번호는 </span>	<h4><%=pw %></h4>입니다.<!-- 추출한 비밀번호를 보여줌 -->
+	<br><br>
+	<center>
+		<span>당신의 패스워드는 </span><h4><%=pw%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
+	</center>
+	
 	<% 
 		}} catch (Exception e) {
 			e.printStackTrace();
 			%>
 				<script type="text/javascript">
-					alert("아이디가 올바르지 않습니다.");
-					location.href="findID.jsp";
+					alert("아이디 또는 이메일이 올바르지 않습니다.");
+					location.href="findPW.jsp";
 				</script>
 			<%
 		} finally {

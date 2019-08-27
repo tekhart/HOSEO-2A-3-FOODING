@@ -21,25 +21,47 @@
             border:none;
             }
 </style>
+
+<script type="text/javascript">
+
+function Findpw(){
+	
+	var findpw=document.findpw;
+	
+	if(findpw.id.value==""){
+		alert("아이디를 입력해주세요");
+		findpw.id.focus();
+		return;
+	}
+	
+	if(findpw.email.value==""){
+		alert("이메일을 입력해주세요");
+		findpw.email.focus();
+		return;
+	}
+	
+	findpw.submit();
+}
+</script>
+
 </head>
 <body>
-
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>
 		</td><td width=200 nowrap>
 		</td><td width=30 nowrap>
 
-		<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
-		<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
-
+			<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
+			<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
 		</td></tr>
   	</table>
 </div>
 
 <div id="menudiv" style=text-align:center;>
 	<table width=100% height=100%>
-    <tr><td width=100 nowrap>
+    	<tr>
+    		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
 			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title">FOODING</a></font></td>
@@ -101,8 +123,9 @@
 	        			</tr>
 	        		</table>
 				</center>
-        	</td></tr>
- 	</table>
+        	</td>
+        </tr>
+    </table>
 </div>
 
 <div id="maindiv">
@@ -112,11 +135,29 @@
 	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
 	<input type="button" value="PW찾기" id="currentbtn">
 		
-		<form method="post" action="findPWPro.jsp">
+		<form method="post" name="findpw" action="findPWPro.jsp">
 			<H2>비밀번호 찾기</H2>
 			<P>비밀번호를 찾을 계정의 아이디를 입력하세요</P>
-			<INPUT type="text" name="passwd" maxlength="30" /> <input
-				type="submit" value="찾기" />
+			<table>
+				<tr>
+					<td>
+						아이디
+					</td>
+					<td>
+					 : <INPUT type="text" name="id" maxlength="30" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						이메일
+					</td>
+					<td>
+					 : <INPUT type="text" name="email" maxlength="30" /> 
+					</td>
+				</tr>
+			</table>
+			
+			<input type="button" value="찾기" onclick="Findpw();"/>
 		</form>
 		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
 	</center>

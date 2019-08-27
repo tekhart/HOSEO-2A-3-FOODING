@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,14 +23,27 @@
 	</table>
 	
 	<form method="post" action="zipsearch.jsp">
-	
+		
 		<table align=center border=0>
 			<tr><td>
 			<font size=2 color=#7b775f>
 			읍/면/동 이름<input type="text" placeholder="동이나 읍/면의 이름" name="dong">
 			<input type="submit" value="찾아보기"></font></td></tr>
 		</table>
-	
+		<%
+			String nkname = request.getParameter("nkname");
+			String id = request.getParameter("id");
+			String passwd = request.getParameter("passwd");
+			String repasswd = request.getParameter("repasswd");
+			String email = request.getParameter("email");
+			String detailaddr = request.getParameter("detailaddr");
+		%>
+		<input type="hidden" value="<%=nkname %>" name="nkname">
+		<input type="hidden" value="<%=id %>" name="id">
+		<input type="hidden" value="<%=passwd %>" name="passwd">
+		<input type="hidden" value="<%=repasswd %>" name="repasswd">
+		<input type="hidden" value="<%=email %>" name="email">
+		<input type="hidden" value="<%=detailaddr %>" name="detailaddr">
 	</form>
 	
 </body>
