@@ -219,57 +219,21 @@ body {
 </style>
 
 <script type="text/javascript">
+
+var register=document.register;
+
 function IdDupcheck(){
 
-	var iddup=document.iddup;
-	
-	if(iddup.id.value==""){
+	if(register.id.value==""){
 		alert("아이디를 입력해주세요");
-		iddup.id.focus();
+		register.id.focus();
 		return;
 	}
 	
-	
-	iddup.submit();
+	document.register.select.value = id;
+	register.submit();
 }
 
-function Zipcodeload(){
-	
-	var findid=document.findid;
-	
-	if(findid.nkname.value==""){
-		alert("닉네임을 입력해주세요");
-		findid.nkname.focus();
-		return;
-	}
-	
-	if(findid.email.value==""){
-		alert("이메일을 입력해주세요");
-		findid.email.focus();
-		return;
-	}
-	
-	findid.submit();
-}
-
-function ToRegister(){
-	
-	var findid=document.findid;
-	
-	if(findid.nkname.value==""){
-		alert("닉네임을 입력해주세요");
-		findid.nkname.focus();
-		return;
-	}
-	
-	if(findid.email.value==""){
-		alert("이메일을 입력해주세요");
-		findid.email.focus();
-		return;
-	}
-	
-	findid.submit();
-}
 </script>
 
 </head>
@@ -365,9 +329,8 @@ function ToRegister(){
 <br>
 <br>
 <br>
-<form method="post" name="register" action="registerInsert.jsp" >
-	<form method="post" name="iddupcheck" action="idduplicatecheck.jsp">
-		<form method="post" name="zipcodeload" action="zipcodeload.jsp">
+<form method="post" name="register" action="signcross.jsp" >
+	<input type="hidden" value="" name="select">
 	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  --> 
 			<center>
 				<table>
@@ -380,7 +343,7 @@ function ToRegister(){
 					<tr>
 						<td>아이디</td>
 						<td>
-					<input type="text" name="id" maxlength="30" value="<%= id%>"></td><td><input type="button" value="아이디 중복 확인" onclick="IdDuplicatecheck();"></td>
+					<input type="text" name="id" maxlength="30" value="<%= id%>"></td><td><input type="button" value="아이디 중복 확인" onclick="IdDupcheck();"></td>
 					</tr>
 					<tr>
 						<td>비밀번호</td>
@@ -414,8 +377,6 @@ function ToRegister(){
 				</table>
 				<input type="button" value="Register" onclick="ToRegister();">
 			</center>
-		</form>
-  	</form>
 </form>
 
 </div>
