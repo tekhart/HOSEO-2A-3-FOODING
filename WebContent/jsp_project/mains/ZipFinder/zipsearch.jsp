@@ -77,7 +77,7 @@ else
 %>
 </table>
 <font size=2><center><br>찾고자하는 동이 존재하지 않습니다.<br><br><br>
-다시 검색하시려면 <a href=../ZipFinder/ZipinputForm.html onclick="Backtrack();">여기</a>를 누르세요</center></font>
+다시 검색하시려면 <a href=../ZipFinder/ZipinputForm.jsp onclick="Backtrack();">여기</a>를 누르세요</center></font>
 <%
 }
 %>
