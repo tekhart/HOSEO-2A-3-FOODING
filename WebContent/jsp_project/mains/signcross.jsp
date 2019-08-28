@@ -18,25 +18,9 @@ String detailaddr = request.getParameter("detailaddr");
 String gender = request.getParameter("gender");
 
 String select = request.getParameter("select");
-%>
-				<form method="post" name="idreturn" action="signup.jsp">
-					<input type="hidden" value="<%=nkname %>" name="nkname">
-					<input type="hidden" value="<%=id %>" name="id">
-					<input type="hidden" value="<%=passwd %>" name="passwd">
-					<input type="hidden" value="<%=repasswd %>" name="repasswd">
-					<input type="hidden" value="<%=email %>" name="email">
-					<input type="hidden" value="<%=detailaddr %>" name="detailaddr">
-				</form>
-				<form method="post" name="zipload" action="ZipFinder/ZipinputForm.jsp">
-					<input type="hidden" value="<%=nkname %>" name="nkname">
-					<input type="hidden" value="<%=id %>" name="id">
-					<input type="hidden" value="<%=passwd %>" name="passwd">
-					<input type="hidden" value="<%=repasswd %>" name="repasswd">
-					<input type="hidden" value="<%=email %>" name="email">
-					<input type="hidden" value="<%=detailaddr %>" name="detailaddr">
-				</form>
-				<script type="text/javascript">
-<%
+
+
+
 if(nkname==null){nkname="";}
 if(id==null){id="";}
 if(passwd==null){passwd="";}

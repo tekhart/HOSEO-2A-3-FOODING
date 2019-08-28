@@ -3,10 +3,17 @@
 	#body{
 		font-family:"Bauhaus ITC";
 		color:black;
+		
 	}
+	
+
 
 #title{
 	text-decoration:none;
+	
+		font-family:"Bauhaus ITC";
+		
+		color:black;
 }
 
 #title:active{color:#ffbb00;}

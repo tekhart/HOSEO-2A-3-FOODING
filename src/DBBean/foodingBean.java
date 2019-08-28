@@ -71,4 +71,78 @@ public class foodingBean {
 			con.close();
 		}catch(Exception e) {}
 	}
+	
+	String nkname="";
+	String id="";
+	String passwd="";
+	String repasswd="";
+	String email="";
+	String addrnum="";
+	String detailaddr="";
+	String select="";
+
+	public String getNkname() {
+		return nkname;
 	}
+
+	public void setNkname(String nkname) {
+		this.nkname = nkname;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
+	public String getRepasswd() {
+		return repasswd;
+	}
+
+	public void setRepasswd(String repasswd) {
+		this.repasswd = repasswd;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddrnum() {
+		return addrnum;
+	}
+
+	public void setAddrnum(String addrnum) {
+		this.addrnum = addrnum;
+	}
+
+	public String getDetailaddr() {
+		return detailaddr;
+	}
+
+	public void setDetailaddr(String detailaddr) {
+		this.detailaddr = detailaddr;
+	}
+	
+	public String getSelect() {
+		return select;
+	}
+
+	public void setSelect(String select) {
+		this.select = select;
+	}
+
+}
