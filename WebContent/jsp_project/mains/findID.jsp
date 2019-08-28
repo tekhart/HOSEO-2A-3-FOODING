@@ -8,18 +8,6 @@
 <link rel="stylesheet" href="../css/common.css">
 <style>
 	
-            #currentbtn{
-            width:200px;
-            height:80px;
-            background-color:gray;
-            border:none;
-            }
-            #notcurrentbtn{
-            width:200px;
-            height:80px;
-            background-color:#FFBB00;
-            border:none;
-            }
 </style>
 
 <script type="text/javascript">
@@ -57,15 +45,15 @@ function Findid(){
 	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">
 		
 		<form method="post" name="findid" action="findIDPro.jsp">
-			<H2>아이디찾기</H2>
-			<P>찾으려는 아이디의 닉네임과 성함을 입력해 주세요.</P>
+			
+			<P>= 회원정보에 등록한 닉네임과 이메일을 입력해주세요 =</P>
 			<table>
 				<tr>
 					<td>
 						닉네임
 					</td>
 					<td>
-					 : <INPUT type="text" name="nkname" maxlength="30" /> 
+					<INPUT class="findinputs" type="text" name="nkname" maxlength="30" autofocus/> 
 					</td>
 				</tr>
 				<tr>
@@ -73,13 +61,13 @@ function Findid(){
 						이메일
 					</td>
 					<td>
-					 : <INPUT type="text" name="email" maxlength="30" /> 
+					  <INPUT class="findinputs" type="text" name="email" maxlength="30" /> 
 					</td>
 				</tr>
 			</table>
 			
 			 
-			<input type="button" value="찾기" onclick="Findid();"/>
+			<input class="findbutton" type="button" value="찾기" onclick="Findid();"/>
 		</form>
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
 	</center>

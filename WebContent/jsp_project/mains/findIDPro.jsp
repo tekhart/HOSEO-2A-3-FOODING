@@ -32,19 +32,26 @@
 		foodingbean.connect();
 		String sql = "select id from user where nkname="+nkname+" and email="+email+";";
 		ResultSet rs = foodingbean.resultQuery(sql);
+		try{
 			if(rs.next()) {
-				id = rs.getString("id");
-			
-				
-
-			
+				id = rs.getString("id");	
 	%>
 	<br><br>
 	<center>
-		<span>당신의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
+		<span>회원님의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
 	</center>
+	
 	<%
 			}
+		}catch(Exception e){
+			response.sendRedirect("../mains/findID.jsp");
+			%>
+				<script>
+					alert("입력하신 정보를 확인해주세요.");
+				</script>
+			<%
+			
+		}
 	%>
 
 </div>

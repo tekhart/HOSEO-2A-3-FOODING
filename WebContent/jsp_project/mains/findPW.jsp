@@ -8,18 +8,7 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <style>
-            #currentbtn{
-            width:200px;
-            height:80px;
-            background-color:gray;
-            border:none;
-            }
-            #notcurrentbtn{
-            width:200px;
-            height:80px;
-            background-color:#FFBB00;
-            border:none;
-            }
+           
 </style>
 
 <script type="text/javascript">
@@ -52,19 +41,19 @@ function Findpw(){
 		<br>
 		<br>
 	<center>
-	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
-	<input type="button" value="PW찾기" id="currentbtn">
+	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn2"> <%-- 현 페이지 이므로 기능없음. --%>
+	<input type="button" value="PW찾기" id="currentbtn2">
 		
 		<form method="post" name="findpw" action="findPWPro.jsp">
-			<H2>비밀번호 찾기</H2>
-			<P>비밀번호를 찾을 계정의 아이디를 입력하세요</P>
+			
+			<P>= 비밀번호를 찾고자 하는 이아디와 이메일을 입력해 주세요 =</P>
 			<table>
 				<tr>
 					<td>
 						아이디
 					</td>
 					<td>
-					 : <INPUT type="text" name="id" maxlength="30" />
+					 <INPUT class="findinputs" type="text" name="id" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
@@ -72,12 +61,12 @@ function Findpw(){
 						이메일
 					</td>
 					<td>
-					 : <INPUT type="text" name="email" maxlength="30" /> 
+					 <INPUT class="findinputs" type="text" name="email" maxlength="30" /> 
 					</td>
 				</tr>
 			</table>
 			
-			<input type="button" value="찾기" onclick="Findpw();"/>
+			<input class="findbutton" type="button" value="찾기" onclick="Findpw();"/>
 		</form>
 		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
 	</center>
