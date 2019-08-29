@@ -28,7 +28,7 @@ String select = request.getParameter("select");
 if(select.equals("id")){
 
 	foodingbean.connect();
-	String sql = "select id from user where id="+id+";";
+	String sql = "select id from user";
 	ResultSet rs = foodingbean.resultQuery(sql);
 		while (rs.next()) {
 			String dbid = rs.getString("id");

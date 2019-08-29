@@ -165,7 +165,12 @@ function Signupclear(){
 <br>
 <form method="post" name="register" action="signcross.jsp" >
 	<input type="hidden" value="" name="select" id="select">
-	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  --> 
+	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
+	<center>
+	<fieldset>
+	
+	<legend align="center" class="welcome">WELCOME<img src="../img/carrot2.png" width="50px" height="50px"></legend>
+	 
 		<center>
 			<table>  
 				<tr>
@@ -218,6 +223,9 @@ function Signupclear(){
 			<br><br><br><br><br>
 			<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
 			<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
+		</center>
+		
+		</fieldset>
 		</center>
 	</form>
 </div>

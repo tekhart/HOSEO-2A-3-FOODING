@@ -72,11 +72,7 @@ function Findid(){
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->
 	</center>
 </div>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 <pre>
 Create by FOODING

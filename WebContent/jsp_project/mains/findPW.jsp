@@ -53,7 +53,7 @@ function Findpw(){
 						아이디
 					</td>
 					<td>
-					 <INPUT class="findinputs" type="text" name="id" maxlength="30" />
+					 <INPUT class="findinputs" type="text" name="id" maxlength="30" autofocus/>
 					</td>
 				</tr>
 				<tr>
@@ -71,12 +71,6 @@ function Findpw(){
 		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
 	</center>
 </div>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-
 
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">

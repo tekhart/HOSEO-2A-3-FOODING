@@ -16,21 +16,20 @@
 		zipcode.submit();
 	}
 	</Script>
-	
+	<link rel="stylesheet" href="../../css/common.css">
 	<head><title>검색결과</title></head>
 	<form method="post" name="zipcode" action="../signup.jsp">
 		<input type="hidden" name="reqaddrnum">
-		<center><img src="image/post1.gif"></center><br>
+		
 		<table align=center border=0>
 			<tr>
-				<td bgcolor="#a3acd5" width=100>
+				<th bgcolor="#ffbb00" width=100 height=25>
 					<font size=2><center>우편번호</center></font>
-				</td>
-				<td bgcolor="#a3acd5" width=350>
+				</th>
+				<th bgcolor="#ffbb00" width=350 height=25>
 					<font size=2><center>주소</center></font>
-				</td>
+				</th>
 			</tr>
-			
 			<%
 			String zipcode="";
 			foodingBean usedb=new foodingBean();		//dbbean 클래스의 오브젝트화
@@ -59,7 +58,7 @@
 				<tr>
 					<td bgcolor="#eeeeee">
 						<center><font size=2>
-							<input type="button" value="<%=zip %>" onclick="Zipsubmit('<%=zip%>');">
+							<input class="zipbutton" type="button" value="<%=zip %>" onclick="Zipsubmit('<%=zip%>');">
 						</font></center>
 					</td>
 					<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
@@ -77,10 +76,10 @@ else
 {
 %>
 </table>
-<font size=2><center><br>찾고자하는 동이 존재하지 않습니다.<br><br><br>
+<font size=2><center><br>찾고자하는 곳이 존재하지 않습니다.<br><br><br>
 다시 검색하시려면 <a href=../ZipFinder/ZipinputForm.jsp onclick="Backtrack();">여기</a>를 누르세요</center></font>
 <%
 }
 %>
 <br><br><br>
-<center><input type="button" value="돌아가기" onclick="location.href='../signup.jsp'"></center>
+<center><input type="button" value="돌아가기" class="findbutton" onclick="location.href='../signup.jsp'"></center>

@@ -22,11 +22,11 @@
 <body id="body">
 <%@include file="../general_included/topbar.jsp"%>
 
-
+<center>
 <div id="slidediv">
 	
     
-	<div class="slideshow">
+    <div class="slideshow">
 
 		<div class="mySlides fade">
   			<img src="../img/cake-1914463_1920.jpg" style="width:1880px; height:600px;">
@@ -50,6 +50,8 @@
 		</div>
 
 	</div>
+    
+	
 	
 
 	<div class="dotdot"style="text-align:right">
@@ -84,9 +86,14 @@
           }
           slides[slideIndex-1].style.display = "block";  
           dots[slideIndex-1].className += " active";
+          slideIndex++;
+          if(slideIndex>=4){slideIndex-=3}
+          setTimeout(showSlides, 3000); 
         }
+
     </script>
 </div>
+</center>
 
 <div id="bottomdiv">
 	<table id="bottable" border="1" cellspacing=1 bordercolor="#ffbb00">

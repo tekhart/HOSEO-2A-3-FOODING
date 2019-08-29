@@ -12,6 +12,27 @@
 		color:black;
 	}
 
+	.welcome{
+	
+		padding:50px;
+		
+		font-family:"Bauhaus ITC";
+		font-size:40px;
+		color:#fab514;
+		 text-align:center; 
+		 border-width:10px;
+	 
+	}
+ 
+
+	fieldset{
+		background-color:white;
+		width:800px;
+		border-style:solid;
+		border-color:#ffbb00;
+	
+	}
+
 	#title:active{
 		color:#ffbb00;
 	}
@@ -320,11 +341,10 @@
 		margin-right:-10px;
 	}
 	
-			.zipsearch{
+	.zipsearch{
 		
-			width: 95%;
+		width: 95%;
 		padding: 15px; 
-		
 		
 		border-color:#ffbb00;
 		background:white;
@@ -336,8 +356,8 @@
 
 
 
-.zipfinder{
-	width:80px;
+	.zipfinder{
+		width:80px;
 		height:30px;
 		
 		background-color:#ffbb00;
@@ -347,7 +367,8 @@
 		border-color:orange; 
 		border-style:solid;
 		height:50px;
-		color:white; }  
+		color:white; 
+	}  
 				
 				.zipfinder:hover{background-color:orange;}
 	
