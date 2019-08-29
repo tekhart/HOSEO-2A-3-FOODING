@@ -25,13 +25,16 @@ String passwd = tempbean.getPasswd();
 String repasswd = tempbean.getRepasswd();
 String email = tempbean.getEmail();
 String addrnum = tempbean.getAddrnum();
+String reqaddrnum=request.getParameter("reqaddrnum");
+
+if(reqaddrnum==null){
+	reqaddrnum="";
+}else{
+	addrnum=reqaddrnum;
+}
 String detailaddr = tempbean.getDetailaddr();
 String select = tempbean.getSelect();
-%>
-<script type="text/javascript">
-	alert("<%= select%>");
-</script>
-<%
+
 if(nkname==null){nkname="";}
 if(id==null){id="";}
 if(passwd==null){passwd="";}
@@ -40,19 +43,6 @@ if(email==null){email="";}
 if(addrnum==null){addrnum="";}
 if(detailaddr==null){detailaddr="";}
 
-if(select.equals("inavaid")){
-	%>
-		<script type="text/javascript">
-			alert("중복된 아이디 입니다.");
-		</script>
-	<%
-}else if(select.equals("avaid")){
-	%>
-		<script type="text/javascript">
-			alert("사용 가능한 아이디 입니다.");
-		</script>
-	<%
-}
 %>
 <!DOCTYPE html>
 <html>
@@ -180,32 +170,31 @@ function Signupclear(){
 			<table>  
 				<tr>
 					<td>닉네임</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="nkname" maxlength="30" minlength="6" size="40"  autofocus  value="<%= nkname%>"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>"></td>
 				</tr>
 				
 				<tr>
 					<td>아이디</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="id" maxlength="30" minlength="6" size="40"  value="<%= id%>" onchange="Signupcross('id');"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onchange="Signupcross('id');"></td>
 				</tr>
 				<tr> 
 					<td>비밀번호</td>
-					<td colspan="2"><input class="signupinputs" type="password" name="passwd" maxlength="30" minlength="6" size="40"  value="<%= passwd%>"></td>
+					<td colspan="2"><input class="signupinputs" type="password" name="passwd"size="40"  value="<%= passwd%>"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
-					<td colspan="2"><input class="signupinputs" type="password" name="repasswd" maxlength="30" minlength="6" size="40"  value="<%= repasswd%>"></td>
+					<td colspan="2"><input class="signupinputs" type="password" name="repasswd"size="40"  value="<%= repasswd%>"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="email" maxlength="30" size="40"  value="<%= email%>"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>"></td>
 				</tr>
 				<tr> 
 					<td>우편번호</td>
-					<td><input class="signupinputs" type="text" name="addrnum" value="<%=zipcode %>" ></td>
-					<td><input type="button" value="우편번호 찾기"  onclick="Signupcross('zip');" class="signupbutton2"  ></td>
+					<td><input class="signupinputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="Signupcross('zip');"></td>
 				</tr><tr>
 					<td>주소</td> 
-					<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" maxlength="30" size="40"  value="<%= detailaddr%>"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" size="40"  value="<%= detailaddr%>"></td>
 				</tr>
 				<tr>
 					<td>성별</td>
@@ -245,6 +234,22 @@ Create by FOODING
 고객문의 1544-XXXX
 JSP Project 2019 2A03</pre>
 </div>
-
+	<%
+		if(select.equals("inavaid")){
+			%>
+				<script type="text/javascript">
+					alert("중복된 아이디 입니다.");
+					register.id.value="";
+					register.id.focus();
+				</script>
+			<%
+		}else if(select.equals("avaid")){
+			%>
+				<script type="text/javascript">
+					alert("사용 가능한 아이디 입니다.");
+				</script>
+			<%
+		}
+	%>
 </body>
 </html>

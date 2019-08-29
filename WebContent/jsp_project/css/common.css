@@ -320,6 +320,38 @@
 		margin-right:-10px;
 	}
 	
+			.zipsearch{
+		
+			width: 95%;
+		padding: 15px; 
+		
+		
+		border-color:#ffbb00;
+		background:white;
+		border-style:solid;
+		
+		border-radius:4px;
+		
+	}	
+
+
+
+.zipfinder{
+	width:80px;
+		height:30px;
+		
+		background-color:#ffbb00;
+		   
+		
+		border-radius:5px; 
+		border-color:orange; 
+		border-style:solid;
+		height:50px;
+		color:white; }  
+				
+				.zipfinder:hover{background-color:orange;}
+	
+	
 	.findinputs{
 		width: 350px;
 		padding: 15px;
@@ -369,7 +401,7 @@
 	}
 	
 	span.idpasswd {
-		padding-top:16px;
+		padding-top: 16px;
 		margin-left:550px;
 	}
 
