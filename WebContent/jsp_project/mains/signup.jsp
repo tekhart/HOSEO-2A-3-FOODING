@@ -122,11 +122,11 @@ function Zipcodeload(){
 					
 					
 					<td>
-					<label class="container">남자
+					<label class="loginradio">남자
 					  <input type="radio"  id="male"  checked="checked" name="radio" value="1" >
 					  <span class="checkmark"></span>
 					</label>
-					<label class="container">여자
+					<label class="loginradio">여자
 					  <input type="radio" name="radio"  id="female"  value="2" >
 					  <span class="checkmark"></span>
 					</label>

@@ -23,7 +23,7 @@
 <%@include file="../general_included/topbar.jsp"%>
 
 
-<div id="maindiv">
+<div id="slidediv">
 	
     
 	<div class="slideshow">
@@ -87,7 +87,6 @@
         }
     </script>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <div id="bottomdiv">
 	<table id="bottable" border="1" cellspacing=1 bordercolor="#ffbb00">

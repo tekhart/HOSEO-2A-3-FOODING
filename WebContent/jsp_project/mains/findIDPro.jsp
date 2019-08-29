@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
+
 <link rel="stylesheet" href="../css/common.css">
 
 <style>
@@ -36,6 +37,7 @@
 			if(rs.next()) {
 				id = rs.getString("id");	
 	%>
+	
 	<br><br>
 	<center>
 		<span>회원님의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 -->

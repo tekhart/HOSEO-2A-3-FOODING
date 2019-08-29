@@ -10,44 +10,9 @@
 
 
 
-.logininputs{
-	width: 50%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
-
-.loginbutton {
-	background-color:#FFBB00;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	width: 50%;
-	border-radius:3px; 
-}
-
-span.idpasswd {
-	float: right;
-	padding-top: 16px;
-}
-
-@media screen and (max-width: 300px) {
-	span.idpasswd {
-		display: block;
-		float: none;
-	}
-	.cancelbtn {
-		width: 50%;
-	}
-}
 
 
 </style>
-<link rel="stylesheet" href="../css/common.css">
 
 <title>Sign in</title>
 
@@ -80,7 +45,7 @@ function Login(){
 <center>
 		<form method="post" name="login" action="login.jsp">
 		<br><br><br><br><br><br><br>
-			<div class="container">
+			<div>
 				<input class="logininputs" type="text" placeholder="아이디 " name="id"><br>
 				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd"><br>
 			<button class="loginbutton" type="button" onclick="Login();">로그인</button>
