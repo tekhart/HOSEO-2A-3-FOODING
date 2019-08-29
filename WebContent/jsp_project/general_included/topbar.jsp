@@ -24,7 +24,9 @@
 				<%
 			}else{
 				%>
-				<%=idlogin %>님 <input type="button" class="button11" value="로그아웃" onClick="location.href='logout.jsp'">
+				<%=idlogin %>님
+				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'">
+				<input type="button" class="button11" value="로그아웃" onClick="location.href='logout.jsp'">
 				<%
 			}
 		}finally{}
@@ -36,7 +38,7 @@
 </div>
 
 <div id="menudiv" style=text-align:center;>
-	<table width=100% height=100px>
+	<table width=100% height=120px>
     	<tr>
     		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>

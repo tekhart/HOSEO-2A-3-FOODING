@@ -81,7 +81,7 @@ public class foodingBean {
 	String detailaddr="";
 	String select="";
 	
-	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String detailaddr) {
+	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String detailaddr,String select) {
 		this.nkname=nkname;
 		this.id=id;
 		this.passwd=passwd;
@@ -89,6 +89,7 @@ public class foodingBean {
 		this.email=email;
 		this.addrnum=addrnum;
 		this.detailaddr=detailaddr;
+		this.select=select;
 	}
 	public String getNkname() {
 		return nkname;

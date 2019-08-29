@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <%@ page import="java.sql.*"%>
 <%@page import="DBBean.foodingBean" %>
-<jsp:useBean id="tempbean" scope="request" class="DBBean.foodingBean"/>
+<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingBean"/>
 
 <%
 
@@ -26,7 +26,12 @@ String repasswd = tempbean.getRepasswd();
 String email = tempbean.getEmail();
 String addrnum = tempbean.getAddrnum();
 String detailaddr = tempbean.getDetailaddr();
-
+String select = tempbean.getSelect();
+%>
+<script type="text/javascript">
+	alert("<%= select%>");
+</script>
+<%
 if(nkname==null){nkname="";}
 if(id==null){id="";}
 if(passwd==null){passwd="";}
@@ -34,6 +39,20 @@ if(repasswd==null){repasswd="";}
 if(email==null){email="";}
 if(addrnum==null){addrnum="";}
 if(detailaddr==null){detailaddr="";}
+
+if(select.equals("inavaid")){
+	%>
+		<script type="text/javascript">
+			alert("중복된 아이디 입니다.");
+		</script>
+	<%
+}else if(select.equals("avaid")){
+	%>
+		<script type="text/javascript">
+			alert("사용 가능한 아이디 입니다.");
+		</script>
+	<%
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -166,8 +185,7 @@ function Signupclear(){
 				
 				<tr>
 					<td>아이디</td>
-					<td><input class="signupinputs" type="text" name="id" maxlength="30" minlength="6" size="40"  value="<%= id%>"></td>
-					<td><input type="button" value="중복 확인" onclick="Signupcross('id');" class="signupbutton2"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="id" maxlength="30" minlength="6" size="40"  value="<%= id%>" onchange="Signupcross('id');"></td>
 				</tr>
 				<tr> 
 					<td>비밀번호</td>

@@ -55,16 +55,16 @@
 			String address=sido+""+gugun+""+dong+""+ri+""+bunji;
 			%>
 					
-<tr>
-<td bgcolor="#eeeeee"><center><font size=2>
-<a href="JavaScript:AutoInput('<%=zip%>','<%=address%>','<%=zip%>')"></a>
-</font></center></td>
-<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
-<font size=2><a href="JavaScript:AutoInput('<%=zip%>','<%=address%>')">
-<%=address%></a></font></td></tr>
-<%session.setAttribute("zipcode",zipcode);
-
-}while(rs.next());
+		<tr>
+		<td bgcolor="#eeeeee"><center><font size=2>
+		<a href="JavaScript:AutoInput('<%=zip%>','<%=address%>','<%=zip%>')"></a>
+		</font></center></td>
+		<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
+		<font size=2><a href="JavaScript:AutoInput('<%=zip%>','<%=address%>')">
+		<%=address%></a></font></td></tr>
+			<%
+		session.setAttribute("zipcode",zipcode);
+		}while(rs.next());
 
 response.sendRedirect("../signup.jsp");
 %>
