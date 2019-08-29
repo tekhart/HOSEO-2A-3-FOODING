@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%
-	request.setCharacterEncoding("UTF-8");
-	%>
-<% 
+<meta charset="UTF-8">
+<%@ page import="java.sql.*"%>
+<%@page import="DBBean.foodingBean" %>
+<jsp:useBean id="tempbean" scope="request" class="DBBean.foodingBean"/>
+
+<%
+
+request.setCharacterEncoding("UTF-8");
+
 String zipcode="";
 try{
 	zipcode=(String)session.getAttribute("zipcode");
@@ -12,21 +17,24 @@ try{
 	}
 }finally{}
 
-String nkname = request.getParameter("nkname");
-String id = request.getParameter("id");
-String passwd = request.getParameter("passwd");
-String repasswd = request.getParameter("repasswd");
-String email = request.getParameter("email");
-String detailaddr = request.getParameter("detailaddr");
+foodingBean foodingbean=new foodingBean();
+
+String nkname = tempbean.getNkname();
+String id = tempbean.getId();
+String passwd = tempbean.getPasswd();
+String repasswd = tempbean.getRepasswd();
+String email = tempbean.getEmail();
+String addrnum = tempbean.getAddrnum();
+String detailaddr = tempbean.getDetailaddr();
 
 if(nkname==null){nkname="";}
 if(id==null){id="";}
 if(passwd==null){passwd="";}
 if(repasswd==null){repasswd="";}
 if(email==null){email="";}
+if(addrnum==null){addrnum="";}
 if(detailaddr==null){detailaddr="";}
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,31 +47,95 @@ if(detailaddr==null){detailaddr="";}
 </style>
 
 <script type="text/javascript">
-
-function IdDupcheck(){
 	
+	
+function Signupcross(select){	
+	document.getElementById('select').value = select;
 	var register=document.register;
 	
-	if(register.id.value==""){
-		alert("아이디를 입력해주세요");
-		register.id.focus();
-		return;
+	if(select=="id"){
+		
+		if(register.id.value==""){
+			alert("아이디를 입력해주세요");
+			register.id.focus();
+			return;
+		}
+		
+		register.submit();
+	}
+	else if(select=="zip"){
+		register.submit();
+	}
+	else{
+		
+		var exptext=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		
+		
+		
+		if(register.nkname.value==""){
+			alert("닉네임을 입력해주세요");
+			register.nkname.focus();
+			return;
+		}
+		if(register.id.value==""){
+			alert("아이디를 입력해주세요");
+			register.id.focus();
+			return;
+		}
+		if(register.passwd.value==""){
+			alert("비밀번호를 입력해주세요");
+			register.passwd.focus();
+			return;
+		}
+		if(register.repasswd.value==""){
+			alert("비밀번호확인을 입력해주세요");
+			register.repasswd.focus();
+			return;
+		}
+		if(register.passwd.value!=register.repasswd.value){
+			alert("비밀번호가 다릅니다.");
+			register.repasswd.focus();
+			return;
+		}
+		if(register.email.value==""){
+			alert("이메일을 입력해주세요.");
+			register.email.focus();
+			return;
+		}
+		else if(exptext.test(register.email.value)==false){
+			alert("이메일 형식이 올바르지 않습니다.");
+			register.email.focus();
+			return;
+		}
+		if(register.addrnum.value==""){
+			alert("우편번호를 입력해주세요");
+			register.addrnum.focus();
+			return;
+		}
+		if(register.detailaddr.value==""){
+			alert("상세주소를 입력해주세요");
+			register.detailaddr.focus();
+			return;
+		}
+
+		document.getElementById('select').value = 'zip';
+		register.submit();
 	}
 	
-	document.getElementById('select').value = 'id';
-	register.submit();
 }
 
-
-function Zipcodeload(){
-	
+function Signupclear(){
 	var register=document.register;
 	
-	
-
-	document.getElementById('select').value = 'zip';
-	register.submit();
+	register.nkname.value="";
+	register.id.value="";
+	register.passwd.value="";
+	register.repasswd.value="";
+	register.email.value="";
+	register.addrnum.value="";
+	register.detailaddr.value="";
 }
+
 
 </script>
 
@@ -73,8 +145,8 @@ function Zipcodeload(){
 
 
 <body id="body">
-
 <%@include file="../general_included/topbar.jsp"%>
+
 
 <div id="maindiv">
 <br>
@@ -95,7 +167,7 @@ function Zipcodeload(){
 				<tr>
 					<td>아이디</td>
 					<td><input class="signupinputs" type="text" name="id" maxlength="30" minlength="6" size="40"  value="<%= id%>"></td>
-					<td><input type="button" value="중복 확인" onclick="IdDupcheck();" class="signupbutton2"></td>
+					<td><input type="button" value="중복 확인" onclick="Signupcross('id');" class="signupbutton2"></td>
 				</tr>
 				<tr> 
 					<td>비밀번호</td>
@@ -112,7 +184,7 @@ function Zipcodeload(){
 				<tr> 
 					<td>우편번호</td>
 					<td><input class="signupinputs" type="text" name="addrnum" value="<%=zipcode %>" ></td>
-					<td><input type="button" value="우편번호 찾기"  onclick="Zipcodeload();" class="signupbutton2"  ></td>
+					<td><input type="button" value="우편번호 찾기"  onclick="Signupcross('zip');" class="signupbutton2"  ></td>
 				</tr><tr>
 					<td>주소</td> 
 					<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" maxlength="30" size="40"  value="<%= detailaddr%>"></td>
@@ -137,8 +209,8 @@ function Zipcodeload(){
 				
 			</table> 
 			<br><br><br><br><br>
-			<input type="reset" value="취소" class="findbutton">
-			<input type="submit" value="확인" class="findbutton">
+			<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
+			<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
 		</center>
 	</form>
 </div>

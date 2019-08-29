@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="DBBean.foodingBean" %>
 <% 
 	String idlogin="";
 	session.setAttribute("zipcode","");
 %>
-
+<script type="text/javascript">
+	
+</script>
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>
@@ -33,7 +36,7 @@
 </div>
 
 <div id="menudiv" style=text-align:center;>
-	<table width=100% height=100%>
+	<table width=100% height=100px>
     	<tr>
     		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>

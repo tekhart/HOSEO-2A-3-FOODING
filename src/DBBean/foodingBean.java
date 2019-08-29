@@ -80,7 +80,16 @@ public class foodingBean {
 	String addrnum="";
 	String detailaddr="";
 	String select="";
-
+	
+	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String detailaddr) {
+		this.nkname=nkname;
+		this.id=id;
+		this.passwd=passwd;
+		this.repasswd=repasswd;
+		this.email=email;
+		this.addrnum=addrnum;
+		this.detailaddr=detailaddr;
+	}
 	public String getNkname() {
 		return nkname;
 	}
