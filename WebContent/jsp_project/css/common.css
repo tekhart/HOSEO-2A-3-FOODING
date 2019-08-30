@@ -24,6 +24,20 @@
 	 
 	}
  
+ 	.mypagetable{
+ 	
+ 		font-size:20px; 
+ 	
+ 	}
+ 	
+ 	.line{
+ 	
+ 		border-bottom:1.5px solid #ffbb00;
+ 		
+ 		
+ 		
+ 	
+ 	} 
 
 	fieldset{
 		background-color:white;
@@ -401,6 +415,22 @@
 	}
 			
 	.findbutton:hover{
+		background-color:#ffe08c;
+	}
+	
+	.findbutton2 {
+		background-color:white; 
+		font-size:15px;
+		border-color:#ffbb00;
+		height:40px;
+		margin: 5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 100px;
+		border-radius:3px; 
+	}
+			
+	.findbutton2:hover{
 		background-color:#ffe08c;
 	}
 	

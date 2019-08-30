@@ -31,7 +31,7 @@
 		foodingBean foodingbean=new foodingBean();
 		
 		foodingbean.connect();
-		String sql = "select id from user where nkname="+nkname+" and email="+email+";";
+		String sql = "select id from user where nkname='"+nkname+"' and email='"+email+"';";
 		ResultSet rs = foodingbean.resultQuery(sql);
 		try{
 			if(rs.next()) {

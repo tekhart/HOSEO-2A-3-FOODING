@@ -28,7 +28,7 @@
 	<%@include file="../general_included/topbar.jsp"%>
 	<div id="maindiv">
 	<center>
-		<table>
+		<table cellspacing=5px class="mypagetable"> 
 	
 	
 			<%	
@@ -52,31 +52,42 @@
 					
 			%>
 				<tr>
-				<td width="100">닉네임</td><TD width="100"><%=nk %></TD>
+				<td  class="line" width="70px">닉네임</td><TD  class="line" width="240px"><%=nk %></TD>
+				<td rowspan="3"><img src="../img/carrot2.png" height="100" width="100"></td>
 				</tr>
 				<tr>
-				<td width="100" >ID</td><TD width="100"><%=id %></TD>
+				<td class="line" width="70px">ID</td><TD class="line"  width="240px"><%=id %></TD>
 				</tr>
 				<tr>
-				<td width="100">비밀번호</td><TD width="100"><%=pw %></TD>
+				<td class="line" width="70px">비밀번호</td><TD class="line" width="240px"><%=pw %></TD>
+				</tr>
+				<tr> 
+				<td class="line" width="70px">이메일</td><TD class="line" width="240px"><%=email %></TD>
+				<td class="line"><input type="button" value="사진 변경" class="findbutton2"></td>
 				</tr>
 				<tr>
-				<td width="150">이메일</td><TD width="150"><%=email %></TD>
+				<td class="line" width="70px">주소</td><TD class="line" width="240px"><%=addr%></TD>
+				<td class="line"><input type="button" value="개인정보 관리" class="findbutton2"></td>
 				</tr>
+				<tr height="70px">  
+				<td class="line" width="70px">상세주소</td><TD class="line" width="240px" colspan="2"><%=daddr%></TD>
+				<td></td> 
+				</tr>   
+				
 				<tr>
-				<td width="50">주소</td><TD width="150"><%=addr%></TD>
-				</tr>
+				<td class="line" width="70px">마일리지</td><TD class="line" width="240px"><%= mile %> p</TD>
+				<td class="line"><input type="button" value="포인트 관리" class="findbutton2"></td>
+				</TR>
+				
 				<tr>
-				<td width="200">상세주소</td><TD width="200"><%=daddr%></TD>
-				</tr>
-				<tr>
-				<td width="100">마일리지</td><TD width="100"><%= mile %></TD>
+				<td class="line" width="70px">내가 쓴 글</td><TD class="line" width="240px">n개</TD>  
+				<td class="line"><input type="button" value="글 관리" class="findbutton2"></td>
 				</TR>
 			<%} %>
 		</table> 
 	</center>
 	
-</div>
+</div> 
 <br><br><br>
 
 

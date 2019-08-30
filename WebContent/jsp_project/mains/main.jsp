@@ -93,15 +93,15 @@
 
     </script>
 </div>
-</center>
+</center>  
 
 <div id="bottomdiv">
-	<table id="bottable" border="1" cellspacing=1 bordercolor="#ffbb00">
-		<tr><th><font  color="black">오늘의 레시피 TOP 5</font></th><th><font  color="black">작성자</font></th></tr>
-    	<tr><td><font  color="black">맛있는 토마토 피자 만들기</font></td><td><font  color="black">domino</font></td></tr>
-        <tr><td><font  color="black">생일상에 빠질 수 없는 초코케이크!</font></td><td><font  color="black">bird2</font></td></tr>
-        <tr><td><font  color="black">집에서 즐기는 미국의 맛~</font></td><td><font  color="black">trump</font></td></tr>
-        <tr><td><font  color="black">연어덕후 소리질러~!</font></td><td><font  color="black">hihello</font></td></tr>
+	<table id="bottable" cellspacing=5px>
+		<tr><th class="line"><font  color="black">오늘의 레시피 TOP 5</font></th><th class="line"><font  color="black">작성자</font></th></tr>
+    	<tr><td class="line"><font  color="black">맛있는 토마토 피자 만들기</font></td><td class="line"><font  color="black">domino</font></td></tr>
+        <tr><td class="line"><font  color="black">생일상에 빠질 수 없는 초코케이크!</font></td><td class="line"><font  color="black">bird2</font></td></tr>
+        <tr><td class="line"><font  color="black">집에서 즐기는 미국의 맛~</font></td><td class="line"><font  color="black">trump</font></td></tr>
+        <tr><td class="line"><font  color="black">연어덕후 소리질러~!</font></td><td class="line"><font  color="black">hihello</font></td></tr>
     </table>
 </div>
 
