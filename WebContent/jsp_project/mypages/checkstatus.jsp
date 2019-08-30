@@ -36,7 +36,7 @@
 			
 				foodingbean.connect();
 				
-				String sql="select * from user where ID = "+idlogin+";";
+				String sql="select * from user where ID = '"+idlogin+"';";
 				
 				ResultSet rs = foodingbean.resultQuery(sql);
 		

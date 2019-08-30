@@ -19,14 +19,14 @@
 			
 			if(idlogin==null||idlogin.equals("")){
 				%>
-				<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
+				<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'"> &nbsp;
 				<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
 				<%
 			}else{
 				%>
-				<%=idlogin %>님
-				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'">
-				<input type="button" class="button11" value="로그아웃" onClick="location.href='logout.jsp'">
+				<%=idlogin %>님&nbsp;
+				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
+				<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 				<%
 			}
 		}finally{}

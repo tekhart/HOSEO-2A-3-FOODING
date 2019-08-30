@@ -9,6 +9,7 @@
 request.setCharacterEncoding("UTF-8");
 foodingBean foodingbean=new foodingBean();
 int selected=0;
+
 String nkname = request.getParameter("nkname");
 String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
@@ -17,15 +18,14 @@ String email = request.getParameter("email");
 String addrnum = request.getParameter("addrnum");
 String detailaddr = request.getParameter("detailaddr");
 String gender=request.getParameter("gender");
-
-String select = request.getParameter("select");
+String slct = request.getParameter("slct");
 
 %>
 <form method="post" name="register" action="signup.jsp" ></form>
 <form method="post" name="zipload" action="ZipFinder/ZipinputForm.jsp" ></form>
 <%
 
-if(select.equals("id")){
+if(slct.equals("id")){
 
 	foodingbean.connect();
 	String sql = "select id from user";
@@ -37,9 +37,9 @@ if(select.equals("id")){
 				
 			}
 		}
-		if(selected==1){select="inavaid";}
-		else{select="avaid";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,select);
+		if(selected==1){slct="inavaid";}
+		else{slct="avaid";}
+		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
 		%>
 		<script type="text/javascript">
 			location.href="signup.jsp";
@@ -47,8 +47,8 @@ if(select.equals("id")){
 		<%
 	
 }
-else if(select.equals("zip")){
-	tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,select);
+else if(slct.equals("zip")){
+	tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
 	%>
 		<script type="text/javascript">
 			var zipload=document.zipload;
@@ -60,11 +60,10 @@ else if(select.equals("zip")){
 else{
 	int mileage = 0;
 	
-	//signup.jsp 파일의 form태그에서 입력된 값을 저장할 변수 생성, 그리고 form 태그에 있는 값을 저장함 
 	
 	foodingbean.connect();
 	
-	String sql = "insert into user values("+nkname+","+id+","+passwd+","+email+","+addrnum+","+detailaddr+","+gender+","+mileage+")";
+	String sql = "insert into user values('"+nkname+"','"+id+"','"+passwd+"','"+email+"','"+addrnum+"','"+detailaddr+"','"+gender+"',"+mileage+")";
 	foodingbean.nonResultQuery(sql);
 	session.setAttribute("idlogin",id);
 	response.sendRedirect("../mains/main.jsp");

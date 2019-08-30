@@ -33,7 +33,7 @@ if(reqaddrnum==null){
 	addrnum=reqaddrnum;
 }
 String detailaddr = tempbean.getDetailaddr();
-String select = tempbean.getSelect();
+String slct = tempbean.getSlct();
 
 if(nkname==null){nkname="";}
 if(id==null){id="";}
@@ -58,11 +58,11 @@ if(detailaddr==null){detailaddr="";}
 <script type="text/javascript">
 	
 	
-function Signupcross(select){	
-	document.getElementById('select').value = select;
+function Signupcross(slct){	
+	document.getElementById('slct').value = slct;
 	var register=document.register;
 	
-	if(select=="id"){
+	if(slct=="id"){
 		
 		if(register.id.value==""){
 			alert("아이디를 입력해주세요");
@@ -72,7 +72,7 @@ function Signupcross(select){
 		
 		register.submit();
 	}
-	else if(select=="zip"){
+	else if(slct=="zip"){
 		register.submit();
 	}
 	else{
@@ -127,7 +127,6 @@ function Signupcross(select){
 			return;
 		}
 
-		document.getElementById('select').value = 'zip';
 		register.submit();
 	}
 	
@@ -164,7 +163,7 @@ function Signupclear(){
 <br> 
 <br>
 <form method="post" name="register" action="signcross.jsp" >
-	<input type="hidden" value="" name="select" id="select">
+	<input type="hidden" value="" name="slct" id="slct">
 	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
 	<center>
 	<fieldset>
@@ -207,11 +206,11 @@ function Signupclear(){
 					
 					<td>
 					<label class="loginradio">남자
-					  <input type="radio"  id="male"  checked="checked" name="radio" value="1" >
+					  <input type="radio"  id="male"  checked="checked" name="gender" value="1" >
 					  <span class="checkmark"></span>
 					</label>
 					<label class="loginradio">여자
-					  <input type="radio" name="radio"  id="female"  value="2" >
+					  <input type="radio" name="gender"  id="female"  value="2" >
 					  <span class="checkmark"></span>
 					</label>
 					</td>
@@ -243,7 +242,7 @@ Create by FOODING
 JSP Project 2019 2A03</pre>
 </div>
 	<%
-		if(select.equals("inavaid")){
+		if(slct.equals("inavaid")){
 			%>
 				<script type="text/javascript">
 					alert("중복된 아이디 입니다.");
@@ -251,7 +250,7 @@ JSP Project 2019 2A03</pre>
 					register.id.focus();
 				</script>
 			<%
-		}else if(select.equals("avaid")){
+		}else if(slct.equals("avaid")){
 			%>
 				<script type="text/javascript">
 					alert("사용 가능한 아이디 입니다.");

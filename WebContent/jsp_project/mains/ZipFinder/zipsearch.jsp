@@ -40,46 +40,56 @@
 			
 			String sql="select * from zipcode where dong like '%"+dong+"%'";	//질의생성
 			ResultSet rs=usedb.resultQuery(sql);		//빈 클래스를 이용한 질의 실행
-			
-			if(rs.next()){		//질의 결과 출력
-				do{
-					String zip=rs.getString("zipcode");
-					String sido=rs.getString("sido");
-					String gugun=rs.getString("gugun");			
-					String dong2=rs.getString("dong");
-					String ri=rs.getString("ri");
-					String bunji=rs.getString("bunji");
-					if(ri==null) ri="";
-					if(bunji==null)bunji="";
-					zipcode=zip;
-					String address=sido+""+gugun+""+dong+""+ri+""+bunji;
+			try{
+				if(rs.next()){		//질의 결과 출력
+					do{
+						String zip=rs.getString("zipcode");
+						String sido=rs.getString("sido");
+						String gugun=rs.getString("gugun");			
+						String dong2=rs.getString("dong");
+						String ri=rs.getString("ri");
+						String bunji=rs.getString("bunji");
+						if(ri==null) ri="";
+						if(bunji==null)bunji="";
+						zipcode=zip;
+						String address=sido+""+gugun+""+dong+""+ri+""+bunji;
+						%>
+								
+					<tr>
+						<td bgcolor="#eeeeee">
+							<center><font size=2>
+								<input class="zipbutton" type="button" value="<%=zip %>" onclick="Zipsubmit('<%=address %>(<%=zip %>)');">
+							</font></center>
+						</td>
+						<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
+							<font size=2><a><%=address%></a></font>
+						</td>
+					</tr>
+						<%
+					}while(rs.next());
 					%>
-							
-				<tr>
-					<td bgcolor="#eeeeee">
-						<center><font size=2>
-							<input class="zipbutton" type="button" value="<%=zip %>" onclick="Zipsubmit('<%=zip%>');">
-						</font></center>
-					</td>
-					<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
-						<font size=2><a><%=address%></a></font>
-					</td>
-				</tr>
-					<%
-				}while(rs.next());
-		%>
-	</table>
-</form>
-<%
-}
-else
-{
-%>
-</table>
-<font size=2><center><br>찾고자하는 곳이 존재하지 않습니다.<br><br><br>
-다시 검색하시려면 <a href=../ZipFinder/ZipinputForm.jsp onclick="Backtrack();">여기</a>를 누르세요</center></font>
-<%
-}
+				</table>
+			</form>
+			<%
+				}
+				else
+				{
+					%>
+					<script>
+						alert("존재하지 않는 주소입니다.");
+						location.href("ZipinputForm.jsp");
+					</script>
+					<%	
+				}
+			}catch (Exception e) {
+				%>
+				<script>
+					alert("존재하지 않는 주소입니다.");
+					location.href("ZipinputForm.jsp");
+				</script>
+				<%	
+		}finally{}
+				
 %>
 <br><br><br>
 <center><input type="button" value="돌아가기" class="findbutton" onclick="location.href='../signup.jsp'"></center>

@@ -1,5 +1,5 @@
-
-<style>
+	*{margin:0px;
+	padding:0px;}
 
 	#body{
 		font-family:"Bauhaus ITC";
@@ -121,6 +121,7 @@
 			
 	.slide-text{
 		position:relative;
+		float:left;
 		background-color:#FFFFFF;
 		opacity:0.7;
 		width:600px;
@@ -370,7 +371,10 @@
 		color:white; 
 	}  
 				
-				.zipfinder:hover{background-color:orange;}
+	.zipfinder:hover{background-color:orange;}
+	.zipbutton{
+	border:none;
+	}
 	
 	
 	.findinputs{
@@ -435,5 +439,3 @@
 			width: 50%;
 		}
 	}
-
-</style>

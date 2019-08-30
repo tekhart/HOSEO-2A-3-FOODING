@@ -9,7 +9,6 @@ public class foodingBean {
 	Statement stmt=null;
 	ResultSet rs=null;
 	
-	//데이터베이스 접속 기능
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -28,7 +27,6 @@ public class foodingBean {
 		}
 	}
 	
-	//결과를 가져와야할 질의 실행
 	public ResultSet resultQuery(String sql) {
 		try {
 			stmt=con.createStatement();
@@ -40,7 +38,6 @@ public class foodingBean {
 		return rs;
 	}
 	
-	//결과가 필요없는 질의 실행
 	public void nonResultQuery(String sql) {
 		try {
 			stmt=con.createStatement();
@@ -51,21 +48,18 @@ public class foodingBean {
 		}
 	}
 	
-	//stmt 닫기
 	public void stmtClosing() {
 		try {
 			rs.close();
 		}catch(Exception e) {}
 	}
 	
-	//rs 닫기
 	public void resultclosing() {
 		try {
 			rs.close();
 		}catch(Exception e) {}
 	}
 	
-	//db접속 끊기
 	public void DBClosing() {
 		try {
 			con.close();
@@ -79,9 +73,9 @@ public class foodingBean {
 	String email="";
 	String addrnum="";
 	String detailaddr="";
-	String select="";
+	String slct="";
 	
-	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String detailaddr,String select) {
+	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String detailaddr,String slct) {
 		this.nkname=nkname;
 		this.id=id;
 		this.passwd=passwd;
@@ -89,7 +83,7 @@ public class foodingBean {
 		this.email=email;
 		this.addrnum=addrnum;
 		this.detailaddr=detailaddr;
-		this.select=select;
+		this.slct=slct;
 	}
 	public String getNkname() {
 		return nkname;
@@ -147,12 +141,12 @@ public class foodingBean {
 		this.detailaddr = detailaddr;
 	}
 	
-	public String getSelect() {
-		return select;
+	public String getSlct() {
+		return slct;
 	}
 
-	public void setSelect(String select) {
-		this.select = select;
+	public void setSlct(String slct) {
+		this.slct = slct;
 	}
 
 }

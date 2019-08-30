@@ -19,30 +19,35 @@
 		foodingBean foodingbean=new foodingBean();
 		
 		foodingbean.connect();
-			String sql1 = "select ID,PASSWD from user where id="+id+";";
+			String sql1 = "select id,passwd from user where id='"+id+"';";
 			ResultSet rs = foodingbean.resultQuery(sql1);
-
-			if(rs.next()) {
-				String dbid = rs.getString("id");
-				String dbpw = rs.getString("passwd");
-				if (id.equals(dbid) && pw.equals(dbpw)) {
-				
+			
+			try{
+				if(rs.next()) {
+					String dbid = rs.getString("id");
+					String dbpw = rs.getString("passwd");
+					if (id.equals(dbid) && pw.equals(dbpw)) {
+						session.setAttribute("idlogin",id);
+						response.sendRedirect("../mains/main.jsp");
+					}
+					else {
 	%>
-<span>로그인 되셨습니다.</span>
-	<%
-					session.setAttribute("idlogin",id);
-					response.sendRedirect("../mains/main.jsp");
-				}
-				else {
-	%>
-		<span>로그인 안 되셨습니다.</span>
 		<script>
 			alert("로그아웃 되었습니다.");
 		</script>
 	<%	
-					response.sendRedirect("../mains/signin.jsp");
+						response.sendRedirect("../mains/signin.jsp");
+					}
 				}
-			}
+			}catch (Exception e) {
+				%>
+					<script>
+						alert("찾을 수 없었습니다.");
+						location.href("signin.jsp");
+					</script>
+				<%	
+			}finally{}
+				
 
 
 	%>
