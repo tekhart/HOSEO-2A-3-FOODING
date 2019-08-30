@@ -25,7 +25,29 @@ String slct = request.getParameter("slct");
 <form method="post" name="zipload" action="ZipFinder/ZipinputForm.jsp" ></form>
 <%
 
-if(slct.equals("id")){
+if(slct.equals("nkname")){
+
+	foodingbean.connect();
+	String sql = "select nkname from user";
+	ResultSet rs = foodingbean.resultQuery(sql);
+		while (rs.next()) {
+			String dbnkname = rs.getString("nkname");
+			if(dbnkname.equals(nkname)){
+				selected=1;
+				
+			}
+		}
+		if(selected==1){slct="inavankname";}
+		else{slct="avankname";}
+		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		%>
+		<script type="text/javascript">
+			location.href="signup.jsp";
+		</script>
+		<%
+	
+}
+else if(slct.equals("id")){
 
 	foodingbean.connect();
 	String sql = "select id from user";
@@ -55,6 +77,27 @@ else if(slct.equals("zip")){
 			zipload.submit();
 		</script>
 	<%
+}else if(slct.equals("email")){
+
+	foodingbean.connect();
+	String sql = "select email from user";
+	ResultSet rs = foodingbean.resultQuery(sql);
+		while (rs.next()) {
+			String dbemail = rs.getString("email");
+			if(dbemail.equals(email)){
+				selected=1;
+				
+			}
+		}
+		if(selected==1){slct="inavaemail";}
+		else{slct="avaemail";}
+		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		%>
+		<script type="text/javascript">
+			location.href="signup.jsp";
+		</script>
+		<%
+	
 }
 
 else{

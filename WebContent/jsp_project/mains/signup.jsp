@@ -62,7 +62,15 @@ function Signupcross(slct){
 	document.getElementById('slct').value = slct;
 	var register=document.register;
 	
-	if(slct=="id"){
+	if(slct=="nkname"){
+		
+		if(register.nkname.value==""){
+			alert("닉네임을 입력해주세요");
+			register.nkname.focus();
+			return;
+		}
+		register.submit();
+	}else if(slct=="id"){
 		
 		if(register.id.value==""){
 			alert("아이디를 입력해주세요");
@@ -71,7 +79,17 @@ function Signupcross(slct){
 		}
 		
 		register.submit();
+	}else if(slct=="email"){
+	
+		if(register.email.value==""){
+			alert("email을 입력해주세요");
+			register.email.focus();
+			return;
+		}
+	
+		register.submit();
 	}
+	
 	else if(slct=="zip"){
 		register.submit();
 	}
@@ -174,7 +192,7 @@ function Signupclear(){
 			<table>  
 				<tr>
 					<td>닉네임</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onchange="Signupcross('nkname');"></td>
 				</tr>
 				
 				<tr>
@@ -191,7 +209,7 @@ function Signupclear(){
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>"></td>
+					<td colspan="2"><input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onchange="Signupcross('email');"></td>
 				</tr>
 				<tr> 
 					<td>우편번호</td>
@@ -242,7 +260,22 @@ Create by FOODING
 JSP Project 2019 2A03</pre>
 </div>
 	<%
-		if(slct.equals("inavaid")){
+		if(slct.equals("inavankname")){
+			%>
+				<script type="text/javascript">
+					alert("중복된 닉네임 입니다.");
+					register.nkname.value="";
+					register.nkname.focus();
+				</script>
+			<%
+		}else if(slct.equals("avankname")){
+			%>
+				<script type="text/javascript">
+					alert("사용 가능한 닉네임 입니다.");
+					register.id.focus();
+				</script>
+			<%
+		}else if(slct.equals("inavaid")){
 			%>
 				<script type="text/javascript">
 					alert("중복된 아이디 입니다.");
@@ -254,6 +287,21 @@ JSP Project 2019 2A03</pre>
 			%>
 				<script type="text/javascript">
 					alert("사용 가능한 아이디 입니다.");
+					register.passwd.focus();
+				</script>
+			<%
+		}else if(slct.equals("inavaemail")){
+			%>
+			<script type="text/javascript">
+				alert("중복된 이메일 입니다.");
+				register.email.value="";
+				register.email.focus();
+			</script>
+		<%
+		}else if(slct.equals("avaemail")){
+			%>
+				<script type="text/javascript">
+					alert("사용 가능한 이메일 입니다.");
 				</script>
 			<%
 		}
