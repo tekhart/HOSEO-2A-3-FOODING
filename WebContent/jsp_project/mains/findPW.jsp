@@ -45,8 +45,9 @@ function Findpw(){
 	<input type="button" value="PW찾기" id="currentbtn2">
 		
 		<form method="post" name="findpw" action="findPWPro.jsp">
-			
+			<br><br>
 			<P>= 비밀번호를 찾고자 하는 이아디와 이메일을 입력해 주세요 =</P>
+			<br>
 			<table>
 				<tr>
 					<td>

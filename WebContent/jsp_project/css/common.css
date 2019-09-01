@@ -401,6 +401,19 @@
 		border-width:thin;
 		border-radius:3px;
 	}
+	
+	.thin3inputs{
+		width: 90%;
+		height:15px;
+		padding: 10px;
+		margin: 2px;
+		display: inline-block;
+		border-color:#ffbb00;
+		background:white;
+		border-style:solid;
+		border-width:thin;
+		border-radius:3px;
+	}
 
 	.findbutton {
 		background-color:white; 

@@ -45,8 +45,9 @@ function Findid(){
 	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">
 		
 		<form method="post" name="findid" action="findIDPro.jsp">
-			
+			<br><br>
 			<P>= 회원정보에 등록한 닉네임과 이메일을 입력해주세요 =</P>
+			<br>
 			<table>
 				<tr>
 					<td>

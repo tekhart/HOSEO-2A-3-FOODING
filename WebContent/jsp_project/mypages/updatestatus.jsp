@@ -27,7 +27,9 @@
 <body id="body">
 	<%@include file="../general_included/topbar.jsp"%>
 	<div id="maindiv">
+	
 	<center>
+	<form>
 		<table cellspacing=5px class="mypagetable"> 
 	
 	
@@ -53,7 +55,7 @@
 			%>
 				<tr>
 				<td  class="line" width="70px">닉네임</td><TD  class="line" width="240px"><%=nk %></TD>
-				
+				<td rowspan="2"><img src="../img/carrot2.png" height="100" width="100"></td>
 				</tr>
 				
 				
@@ -61,7 +63,9 @@
 				<td class="line" width="70px">비밀번호</td>
 				<TD class="line" width="240px">
 				
-				<%=pw%>
+					<input name="currentpw" class="thin3inputs" type="password" placeholder="현재 비밀번호"><br>
+					<input name="changepw" class="thin3inputs" type="password" placeholder="변경할 비밀번호"><br>
+					<input name="comfirmpw" class="thin3inputs" type="password" placeholder="비밀번호 확인">
 				
 				</TD>
 				</tr>
@@ -69,11 +73,11 @@
 				
 				<tr> 
 				<td class="line" width="70px">이메일</td><TD class="line" width="240px"><%=email %></TD>
-				
+				<td class="line"><input type="button" value="사진 변경" class="findbutton2"></td>
 				</tr>
 				<tr>
 				<td class="line" width="70px">주소</td><TD class="line" width="240px"><%=addr%></TD>
-				
+				<td class="line"><input type="button" value="개인정보 관리" class="findbutton2"></td>
 				</tr>
 				<tr height="70px">  
 				<td class="line" width="70px">상세주소</td><TD class="line" width="240px" colspan="2"><%=daddr%></TD>
@@ -82,17 +86,21 @@
 				
 				<tr>
 				<td class="line" width="70px">마일리지</td><TD class="line" width="240px"><%= mile %> p</TD>
-				
+				<td class="line"><input type="button" value="포인트 관리" class="findbutton2"></td>
 				</TR>
 				
 				<tr>
-				<td class="line" width="70px">내가 쓴 글</td><TD class="line" width="240px">11개</TD>  
-				
+				<td class="line" width="70px">내가 쓴 글</td><TD class="line" width="240px">n개</TD>  
+				<td class="line"><input type="button" value="글 관리" class="findbutton2"></td>
 				</TR>
 			<%} %>
 		</table> 
 		
-		<input type="button" value="변경" class="findbutton" onclick="location.href='updatestatus.jsp'">
+		<input type="reset" value="취소" class="findbutton">
+		<input type="submit" value="확인" class="findbutton">
+		
+		</form>
+	
 		
 	</center>
 	
