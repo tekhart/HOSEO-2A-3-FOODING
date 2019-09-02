@@ -4,6 +4,8 @@
 <% 
 	String idlogin="";
 	session.setAttribute("zipcode","");
+	foodingBean topbarbean=new foodingBean();
+	topbarbean.connect();
 %>
 <script type="text/javascript">
 	
@@ -23,8 +25,9 @@
 				<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
 				<%
 			}else{
+				String nknamelogin=topbarbean.findnkname(idlogin);
 				%>
-				<%=idlogin %>님&nbsp;
+				<%=nknamelogin %>&nbsp;님&nbsp;
 				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 				<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 				<%

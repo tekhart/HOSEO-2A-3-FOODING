@@ -31,6 +31,7 @@
 		foodingBean foodingbean=new foodingBean();
 		
 		foodingbean.connect();
+		
 		String sql = "select id from user where nkname='"+nkname+"' and email='"+email+"';";
 		ResultSet rs = foodingbean.resultQuery(sql);
 		try{
@@ -46,13 +47,12 @@
 	<%
 			}
 		}catch(Exception e){
-			response.sendRedirect("../mains/findID.jsp");
 			%>
 				<script>
 					alert("입력하신 정보를 확인해주세요.");
 				</script>
 			<%
-			
+			response.sendRedirect("../mains/findID.jsp");
 		}
 	%>
 

@@ -24,17 +24,17 @@
 	<%
 	String id=request.getParameter("id");
 	String email=request.getParameter("email");
-	//form 태그의 값을 저장
 	String pw="";
 		
 		foodingBean foodingbean=new foodingBean();
 		
 		foodingbean.connect();
-		String sql = "select id from user where id='"+id+"' and email='"+email+"';";
+		
+		String sql = "select passwd from user where id='"+id+"' and email='"+email+"';";
 		ResultSet rs = foodingbean.resultQuery(sql);
 		try{
 			if(rs.next()) {
-				pw = rs.getString("pw");	
+				pw = rs.getString("passwd");	
 	%>
 	<br><br>
 	<center>
@@ -44,12 +44,12 @@
 	<%
 			}
 		}catch(Exception e){
-			response.sendRedirect("../mains/findPW.jsp");
 			%>
 			<script>
 			alert("입력하신 정보를 확인해주세요.");
 			</script>
 			<%
+			response.sendRedirect("../mains/findPW.jsp");
 		}
 	%>
 		

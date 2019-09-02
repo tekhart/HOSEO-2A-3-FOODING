@@ -41,12 +41,12 @@ function Findpw(){
 		<br>
 		<br>
 	<center>
-	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn2"> <%-- 현 페이지 이므로 기능없음. --%>
+	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn2">
 	<input type="button" value="PW찾기" id="currentbtn2">
 		
 		<form method="post" name="findpw" action="findPWPro.jsp">
 			<br><br>
-			<P>= 비밀번호를 찾고자 하는 이아디와 이메일을 입력해 주세요 =</P>
+			<P>= 비밀번호를 찾고자 하는 아이디와 이메일을 입력해 주세요 =</P>
 			<br>
 			<table>
 				<tr>
@@ -69,7 +69,6 @@ function Findpw(){
 			
 			<input class="findbutton" type="button" value="찾기" onclick="Findpw();"/>
 		</form>
-		<!-- find 버튼을 누르면  findPWPro.jsp로 넘어감  -->
 	</center>
 </div>
 

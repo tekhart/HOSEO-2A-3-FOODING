@@ -92,7 +92,6 @@
 			<%} %>
 		</table> 
 		
-		<input type="button" value="변경" class="findbutton" onclick="location.href='updatestatus.jsp'">
 		
 	</center>
 	

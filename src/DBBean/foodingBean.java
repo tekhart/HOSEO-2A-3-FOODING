@@ -8,6 +8,7 @@ public class foodingBean {
 	Connection con=null;
 	Statement stmt=null;
 	ResultSet rs=null;
+	String str=null;
 	
 	public void connect() {
 		try {
@@ -46,6 +47,21 @@ public class foodingBean {
 		}catch(Exception e) {
 			System.out.println("notResultQuery Error 2");
 		}
+	}
+	
+	public String findnkname(String id) {
+		try {
+			stmt=con.createStatement();
+			rs=stmt.executeQuery("select nkname from user where id='"+id+"';");
+			if(rs.next()) {
+				str=rs.getString("nkname");
+			}
+		}catch(Exception e) {
+			System.out.println("Result Error");
+			rs=null;
+			str="";
+		}
+		return str;
 	}
 	
 	public void stmtClosing() {
