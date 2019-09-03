@@ -16,6 +16,7 @@ String passwd = request.getParameter("passwd");
 String repasswd = request.getParameter("repasswd");
 String email = request.getParameter("email");
 String addrnum = request.getParameter("addrnum");
+String address = request.getParameter("address");
 String detailaddr = request.getParameter("detailaddr");
 String gender=request.getParameter("gender");
 String slct = request.getParameter("slct");
@@ -39,7 +40,7 @@ if(slct.equals("nkname")){
 		}
 		if(selected==1){slct="inavankname";}
 		else{slct="avankname";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
 		foodingbean.DBclose();
 		%>
 		<script type="text/javascript">
@@ -62,7 +63,7 @@ else if(slct.equals("id")){
 		}
 		if(selected==1){slct="inavaid";}
 		else{slct="avaid";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
 		foodingbean.DBclose();
 		%>
 		<script type="text/javascript">
@@ -72,7 +73,7 @@ else if(slct.equals("id")){
 	
 }
 else if(slct.equals("zip")){
-	tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+	tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
 	%>
 		<script type="text/javascript">
 			var zipload=document.zipload;
@@ -93,7 +94,7 @@ else if(slct.equals("zip")){
 		}
 		if(selected==1){slct="inavaemail";}
 		else{slct="avaemail";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
 		foodingbean.DBclose();
 		%>
 		<script type="text/javascript">
@@ -109,7 +110,7 @@ else{
 	
 	foodingbean.connect();
 	
-	String sql = "insert into user values('"+nkname+"','"+id+"','"+passwd+"','"+email+"','"+addrnum+"','"+detailaddr+"','"+gender+"',"+mileage+")";
+	String sql = "insert into user values('"+nkname+"','"+id+"','"+passwd+"','"+email+"','"+addrnum+"','"+address+"','"+detailaddr+"','"+gender+"',"+mileage+")";
 	foodingbean.nonResultQuery(sql);
 	session.setAttribute("idlogin",id);
 	response.sendRedirect("../mains/main.jsp");

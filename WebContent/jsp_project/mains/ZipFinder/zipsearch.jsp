@@ -10,16 +10,18 @@
 		opener.nform.address1.value=address;
 		self.close();
 	}
-	function Zipsubmit(zip){
+	function Zipsubmit(zip,address){
 		var zipcode=document.zipcode;
 		zipcode.reqaddrnum.value=zip;
+		zipcode.reqaddress.value=address;
 		zipcode.submit();
 	}
 	</Script>
 	<link rel="stylesheet" href="../../css/common.css">
 	<head><title>검색결과</title></head>
-	<form method="post" name="zipcode" action="../signup.jsp">
+	<form method="post" name="zipcode" action="ZipsearchPro.jsp">
 		<input type="hidden" name="reqaddrnum">
+		<input type="hidden" name="reqaddress">
 		
 		<table align=center border=0>
 			<tr>
@@ -58,7 +60,7 @@
 					<tr>
 						<td bgcolor="#eeeeee">
 							<center><font size=2>
-								<input class="zipbutton" type="button" value="<%=zip %>" onclick="Zipsubmit('<%=address %>(<%=zip %>)');">
+								<input class="zipbutton" type="button" value="<%=zip %>" onclick="Zipsubmit('<%=zip %>','<%=address %>');">
 							</font></center>
 						</td>
 						<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;

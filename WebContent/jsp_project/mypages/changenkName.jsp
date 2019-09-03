@@ -8,31 +8,31 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-												#body{}
-												#topdiv
-													{background-color:#FFBB00;
-												       height:40px;}
-													#menudiv
-												   	{background-color:white;
-												       height:100%;}
-												.button11{
-															background-color:#FFBB00;
-															border:none;
-															margin-right:-4.5px;
-															color:#813D00;
-															}
-												.button2{
-															margin-right:-4.5px;
-															width:250px;
-															height:85px;
-															font-size:20px;
-															background-color:white;
-															border:none;
-															}
-												.button2:hover{background-color:#FFE08C;}
-													#maindiv
-												   	{
-												       height:600px;}
+		#body{}
+		#topdiv
+			{background-color:#FFBB00;
+		       height:40px;}
+			#menudiv
+		   	{background-color:white;
+		       height:100%;}
+		.button11{
+					background-color:#FFBB00;
+					border:none;
+					margin-right:-4.5px;
+					color:#813D00;
+					}
+		.button2{
+					margin-right:-4.5px;
+					width:250px;
+					height:85px;
+					font-size:20px;
+					background-color:white;
+					border:none;
+					}
+		.button2:hover{background-color:#FFE08C;}
+			#maindiv
+		   	{
+		       height:600px;}
 
 
 body {

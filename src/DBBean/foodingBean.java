@@ -92,16 +92,18 @@ public class foodingBean {
 	String repasswd="";
 	String email="";
 	String addrnum="";
+	String address="";
 	String detailaddr="";
 	String slct="";
 	
-	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String detailaddr,String slct) {
+	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String address,String detailaddr,String slct) {
 		this.nkname=nkname;
 		this.id=id;
 		this.passwd=passwd;
 		this.repasswd=repasswd;
 		this.email=email;
 		this.addrnum=addrnum;
+		this.address=address;
 		this.detailaddr=detailaddr;
 		this.slct=slct;
 	}
@@ -151,6 +153,14 @@ public class foodingBean {
 
 	public void setAddrnum(String addrnum) {
 		this.addrnum = addrnum;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getDetailaddr() {

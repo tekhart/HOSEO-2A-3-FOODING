@@ -25,13 +25,7 @@ String passwd = tempbean.getPasswd();
 String repasswd = tempbean.getRepasswd();
 String email = tempbean.getEmail();
 String addrnum = tempbean.getAddrnum();
-String reqaddrnum=request.getParameter("reqaddrnum");
-
-if(reqaddrnum==null){
-	reqaddrnum="";
-}else{
-	addrnum=reqaddrnum;
-}
+String address = tempbean.getAddress();
 String detailaddr = tempbean.getDetailaddr();
 String slct = tempbean.getSlct();
 
@@ -75,7 +69,9 @@ function Nknamecheck() {
 		alert("닉네임을 입력해주세요");
 	}
 };
-
+function ZipPopup() { 
+	window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+}
 	
 function Signupcross(slct){	
 	document.getElementById('slct').value = slct;
@@ -108,10 +104,6 @@ function Signupcross(slct){
 			return;
 		}
 	
-		register.submit();
-	}
-	
-	else if(slct=="zip"){
 		register.submit();
 	}
 	else{
@@ -237,7 +229,8 @@ function Signupclear(){
 				</tr>
 				<tr> 
 					<td>우편번호</td>
-					<td><input class="signupinputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="Signupcross('zip');"></td>
+					<td><input class="signupinputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>
+					<td><input class="signupinputs" type="text" name="address" value="<%=address%>" onclick="ZipPopup();"></td>
 				</tr><tr>
 					<td>주소</td> 
 					<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" size="40"  value="<%= detailaddr%>"></td>
