@@ -18,6 +18,7 @@ try{
 }finally{}
 
 foodingBean foodingbean=new foodingBean();
+foodingbean.connect();
 
 String nkname = tempbean.getNkname();
 String id = tempbean.getId();
@@ -50,25 +51,88 @@ if(detailaddr==null){detailaddr="";}
 </style>
 
 <script type="text/javascript">
+var DBnkArray=[];
+var DBidArray=[];
+var DBemailArray=[];
+var i=0;
+<% 
 
-function getTextLength(str) {
-    var len = 0;
-    for (var i = 0; i < str.length; i++) {
-        if (escape(str.charAt(i)).length == 6) {
-            len++;
-        }
-        len++;
-    }
-    return len;
-}
+	ResultSet rs=foodingbean.resultQuery("select nkname,id,email from user");
+	int i=0;
+	while(rs.next()){
+		String nknameArray = rs.getString("nkname");	
+		String idArray = rs.getString("id");	
+		String emailArray = rs.getString("email");	
+		%>
+		DBnkArray[<%=i%>]="<%=nknameArray%>";
+		DBidArray[<%=i%>]="<%=idArray%>";
+		DBemailArray[<%=i%>]="<%=emailArray%>";
+		<%
+		i++;
+	}
+	%>
+var arraylength=<%=i %>
+var exptext=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
+
 
 function Nknamecheck() {
-	var val=getTextLength(register.name.value);
-	
-	if(val>6&&val<12){
-		alert("닉네임을 입력해주세요");
+	var checked=0;
+	if(register.nkname.value.length<3){
+		document.getElementById('nknamecheck').innerHTML = "tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 3자이상";
+	}else{
+		i=0;
+		while(i<=arraylength){
+			if(DBnkArray[i]==register.nkname.value){
+				checked=1;
+				document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다."
+			}
+			i++
+		}
+		if(checked==0){
+			document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다.";
+		}
 	}
 };
+
+function Idcheck() {
+	var checked=0;
+	if(register.id.value.length<8||
+		idexp.test(register.id.value)==false){
+		document.getElementById('idcheck').innerHTML = "tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 8자이상";
+	}else{
+		i=0;
+		while(i<=arraylength){
+			if(DBidArray[i]==register.id.value){
+				checked=1;
+				document.getElementById('idcheck').innerHTML="중복된 아이디 입니다."
+			}
+			i++
+		}
+		if(checked==0){
+			document.getElementById('idcheck').innerHTML="사용 가능한 아이디 입니다.";
+		}
+	}
+};
+function Emailcheck() {
+	var checked=0;
+	if(exptext.test(register.email.value)==false){
+		document.getElementById('nknamecheck').innerHTML = "tip! 문자로 시작하고 공백과 특수문자 없이 3자이상";
+	}else{
+		i=0;
+		while(i<=arraylength){
+			if(DBnkArray[i]==register.nkname.value){
+				checked=1;
+				document.getElementById('emailcheck').innerHTML="중복된 닉네임 입니다."
+			}
+			i++
+		}
+		if(checked==0){
+			document.getElementById('emailcheck').innerHTML="사용 가능한 이메일 입니다.";
+		}
+	}
+};
+
 function ZipPopup() { 
 	window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
 }
@@ -81,8 +145,8 @@ function Signupcross(slct){
 	
 	if(slct=="nkname"){
 		
-		if(register.nkname.value==""){
-			alert("닉네임을 입력해주세요");
+		if(register.nkname.value==""||document.getElementById('nknamecheck').value!="사용 가능한 닉네임 입니다."){
+			alert("닉네임을 확인해주세요");
 			register.nkname.focus();
 			return;
 		}
@@ -107,11 +171,7 @@ function Signupcross(slct){
 		register.submit();
 	}
 	else{
-		
-		var exptext=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-		
-		
-		
+
 		if(register.nkname.value==""){
 			alert("닉네임을 입력해주세요");
 			register.nkname.focus();
@@ -206,14 +266,17 @@ function Signupclear(){
 				<tr>
 					<td>닉네임</td>
 					<td colspan="2">
-						<input class="signupinputs" type="text" id="nk" name="nkname"size="40" value="<%= nkname%>" onchange="Signupcross('nkname');"><br>
+						<input class="signupinputs" type="text" id="nk" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();"><br>
 						<span id="nknamecheck"> </span>
 					</td>
 				</tr>
 				
 				<tr>
 					<td>아이디</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onchange="Signupcross('id');"></td>
+					<td colspan="2">
+						<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();"><br>
+						<span id="idcheck"> </span>
+					</td>
 				</tr>
 				<tr> 
 					<td>비밀번호</td>
@@ -225,12 +288,15 @@ function Signupclear(){
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onchange="Signupcross('email');"></td>
+					<td colspan="2">
+						<input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onkeyup="Emailcheck();"><br>
+						<span id="emailcheck"> </span>
+					</td>
 				</tr>
 				<tr> 
 					<td>우편번호</td>
-					<td><input class="signupinputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>
-					<td><input class="signupinputs" type="text" name="address" value="<%=address%>" onclick="ZipPopup();"></td>
+					<td><input class="addrnuminputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>
+					<td><input class="addressinputs" type="text" name="address" value="<%=address%>" onclick="ZipPopup();"></td>
 				</tr><tr>
 					<td>주소</td> 
 					<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" size="40"  value="<%= detailaddr%>"></td>
@@ -254,9 +320,10 @@ function Signupclear(){
 				</tr>
 				
 			</table> 
-			<br><br><br><br><br>
+			<br><br>
 			<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
 			<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
+			<br><br><br>
 		</center>
 		
 		</fieldset>

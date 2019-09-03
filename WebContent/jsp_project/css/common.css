@@ -85,6 +85,7 @@
  	#slidediv{
  		background-color:#EAEAEA; 
         height:600px;
+        max-width:1880px;
         margin-bottom:50px;
     }
         
@@ -261,6 +262,29 @@
 		border-width: thin; 
 		border-radius: 3px;
 	}
+	.addrnuminputs{
+		width:80px;
+		padding: 15px;
+		padding-right:0px;
+		margin-right:0px;
+		display: inline-block;
+		border-color:#ffbb00;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px 0px 0px 3px;
+	}
+	.addressinputs{
+		width:225px;
+		padding: 15px;
+		margin-left:-25px;
+		display: inline-block;
+		border-color:#ffbb00;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 0px 3px 3px 0px;
+	}
 	.loginradio {
 		display: block;
 		position: relative;
@@ -320,7 +344,7 @@
 	
 	#currentbtn{
 		width:300px;
-		height:30px;
+		height:50px;
 		background-color:#ffbb00;
 		border-color:orange;
 		border-style:solid;
@@ -330,7 +354,7 @@
 	
 	#notcurrentbtn{
 		width:300px;
-		height:30px;
+		height:50px;
 		background-color:white;
 		border-color:orange;
 		border-style:solid;
@@ -339,7 +363,7 @@
 	
 	#currentbtn2{
 		width:300px;
-		height:30px;
+		height:50px;
 		background-color:#ffbb00;
 		border-color:orange;
 		border-style:solid;
@@ -349,7 +373,7 @@
 	
 	#notcurrentbtn2{
 		width:300px;
-		height:30px;
+		height:50px;
 		background-color:white;
 		border-color:orange;
 		border-style:solid;
