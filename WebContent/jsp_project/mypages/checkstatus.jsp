@@ -86,7 +86,7 @@
 				</TR>
 				
 				<tr>
-				<td class="line" width="70px">내가 쓴 글</td><TD class="line" width="240px">11개</TD>  
+				<td class="line" width="70px">내가 쓴 글</td><TD class="line" width="240px">0개</TD>  
 				
 				</TR>
 			<%} %>

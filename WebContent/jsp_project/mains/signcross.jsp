@@ -40,6 +40,7 @@ if(slct.equals("nkname")){
 		if(selected==1){slct="inavankname";}
 		else{slct="avankname";}
 		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		foodingbean.DBclose();
 		%>
 		<script type="text/javascript">
 			location.href="signup.jsp";
@@ -62,6 +63,7 @@ else if(slct.equals("id")){
 		if(selected==1){slct="inavaid";}
 		else{slct="avaid";}
 		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		foodingbean.DBclose();
 		%>
 		<script type="text/javascript">
 			location.href="signup.jsp";
@@ -92,6 +94,7 @@ else if(slct.equals("zip")){
 		if(selected==1){slct="inavaemail";}
 		else{slct="avaemail";}
 		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,detailaddr,slct);
+		foodingbean.DBclose();
 		%>
 		<script type="text/javascript">
 			location.href="signup.jsp";

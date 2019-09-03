@@ -31,6 +31,7 @@
 				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 				<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 				<%
+				topbarbean.DBclose();
 			}
 		}finally{}
 		

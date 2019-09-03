@@ -38,18 +38,28 @@
 	%>
 	<br><br>
 	<center>
-		<span>회원님의 비밀번호는 </span><h4><%=pw%></h4>입니다.<!-- 추출한 ID를 보여줌 -->
+		<span>회원님의 비밀번호는 </span><h4><%=pw%></h4>입니다.<!-- 추출한 ID를 보여줌 --><br><br>
+			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 	</center>
 	
 	<%
+			}else{
+				%>
+					<script type="text/javascript">
+						alert("입력하신 정보를 확인해주세요.");
+						location.href="findID.jsp";
+					</script>
+				<%
+				foodingbean.DBclose();
 			}
 		}catch(Exception e){
 			%>
-			<script>
-			alert("입력하신 정보를 확인해주세요.");
-			</script>
+				<script type="text/javascript">
+					alert("입력하신 정보를 확인해주세요.");
+				</script>
 			<%
 			response.sendRedirect("../mains/findPW.jsp");
+			foodingbean.DBclose();
 		}
 	%>
 		

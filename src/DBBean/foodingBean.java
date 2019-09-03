@@ -63,7 +63,11 @@ public class foodingBean {
 		}
 		return str;
 	}
-	
+	public void DBclose() {
+		stmtClosing();
+		resultclosing();
+		DBClosing();
+	}
 	public void stmtClosing() {
 		try {
 			rs.close();

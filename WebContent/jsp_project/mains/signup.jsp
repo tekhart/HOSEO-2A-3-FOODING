@@ -56,11 +56,32 @@ if(detailaddr==null){detailaddr="";}
 </style>
 
 <script type="text/javascript">
+
+function getTextLength(str) {
+    var len = 0;
+    for (var i = 0; i < str.length; i++) {
+        if (escape(str.charAt(i)).length == 6) {
+            len++;
+        }
+        len++;
+    }
+    return len;
+}
+
+function Nknamecheck() {
+	var val=getTextLength(register.name.value);
 	
+	if(val>6&&val<12){
+		alert("닉네임을 입력해주세요");
+	}
+};
+
 	
 function Signupcross(slct){	
 	document.getElementById('slct').value = slct;
+
 	var register=document.register;
+	
 	
 	if(slct=="nkname"){
 		
@@ -192,7 +213,10 @@ function Signupclear(){
 			<table>  
 				<tr>
 					<td>닉네임</td>
-					<td colspan="2"><input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onchange="Signupcross('nkname');"></td>
+					<td colspan="2">
+						<input class="signupinputs" type="text" id="nk" name="nkname"size="40" value="<%= nkname%>" onchange="Signupcross('nkname');"><br>
+						<span id="nknamecheck"> </span>
+					</td>
 				</tr>
 				
 				<tr>
