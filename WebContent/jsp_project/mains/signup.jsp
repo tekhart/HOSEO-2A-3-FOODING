@@ -97,8 +97,7 @@ function Nknamecheck() {
 
 function Idcheck() {
 	var checked=0;
-	if(register.id.value.length<8||
-		idexp.test(register.id.value)==false){
+	if(register.id.value.length<8){
 		document.getElementById('idcheck').innerHTML = "tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 8자이상";
 	}else{
 		i=0;
@@ -117,13 +116,13 @@ function Idcheck() {
 function Emailcheck() {
 	var checked=0;
 	if(exptext.test(register.email.value)==false){
-		document.getElementById('nknamecheck').innerHTML = "tip! 문자로 시작하고 공백과 특수문자 없이 3자이상";
+		document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다.";
 	}else{
 		i=0;
 		while(i<=arraylength){
-			if(DBnkArray[i]==register.nkname.value){
+			if(DBemailArray[i]==register.email.value){
 				checked=1;
-				document.getElementById('emailcheck').innerHTML="중복된 닉네임 입니다."
+				document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다."
 			}
 			i++
 		}
