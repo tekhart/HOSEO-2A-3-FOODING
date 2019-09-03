@@ -23,6 +23,9 @@
 <%@include file="../general_included/topbar.jsp"%>
 
 <center>
+
+
+
 <div id="slidediv">
 	
     
@@ -95,30 +98,62 @@
 </div>
 </center>  
 
+
 <div id="bottomdiv">
-	<table id="bottable" cellspacing=5px>
-		<tr><th class="line"><font  color="black">오늘의 레시피 TOP 5</font></th><th class="line"><font  color="black">작성자</font></th></tr>
-    	<tr><td class="line"><font  color="black">맛있는 토마토 피자 만들기</font></td><td class="line"><font  color="black">domino</font></td></tr>
-        <tr><td class="line"><font  color="black">생일상에 빠질 수 없는 초코케이크!</font></td><td class="line"><font  color="black">bird2</font></td></tr>
-        <tr><td class="line"><font  color="black">집에서 즐기는 미국의 맛~</font></td><td class="line"><font  color="black">trump</font></td></tr>
-        <tr><td class="line"><font  color="black">연어덕후 소리질러~!</font></td><td class="line"><font  color="black">hihello</font></td></tr>
+<center>
+	<table id="bottable" cellspacing=0px>
+		<tr><th class="line" colspan="5"><font size="40px"><center>오늘의 레시피<br><br></center></font></th></tr>
+    	<tr><td class="line" rowspan="2" width="300px" height="300px"><img src="../img/casserole-dish-2776735_420.jpg" class="adad"></td><td class="line" height="80px" height="80px">맛있는 토마토 피자 만들기</td>
+    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    	<td class="line" rowspan="2" width="300px" height="300px"><img src="../img/cereal-563796_420.jpg" class="adad"></td><td  class="line" height="80px">맛없는 토마토 피자 만들기</td></tr>
+    	<tr><td class="line"> domino </td><td></td><td class="line">sunsun</td></tr>
+    	
+        <tr><td class="line" rowspan="2"><img src="../img/pancake-1984716_420.jpg" class="adad"></td><td class="line" height="80px">팬케이크 만들기</td>
+    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    	<td class="line" rowspan="2"><img src="../img/pizza-3007395_420.jpg" class="adad"></td><td  class="line" height="80px">팬케이크 먹기</td></tr>
+    	<tr><td class="line"> heyjin </td><td></td><td class="line">sol</td></tr>
+    	 
+    	<tr><td class="line" rowspan="2"><img src="../img/salad-2756467_420.jpg" class="adad"></td><td class="line" height="80px">샐러드 만들기</td>
+    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    	<td class="line" rowspan="2"><img src="../img/top-view-1248955_420.jpg" class="adad"></td><td  class="line" height="80px">샐러드 먹기</td></tr>
+    	<tr><td class="line"> tokki </td><td></td><td class="line">height</td></tr>
+    	
+    	<tr><td class="line" rowspan="2"><img src="../img/casserole-dish-2776735_420.jpg" class="adad"></td><td class="line" height="80px">맛있는 토마토 피자 만들기</td>
+    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    	<td class="line" rowspan="2"><img src="../img/cereal-563796_420.jpg" class="adad"></td><td  class="line" height="80px">맛없는 토마토 피자 만들기</td></tr>
+    	<tr><td class="line"> asasasas </td><td></td><td class="line">14ssss</td></tr>
+    	
+        
+       
     </table>
+    </center>
 </div>
 
+
+
+<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div id="eventdiv" >
 
-	<img src="../img/cake-1971556_1920.jpg" width="940px" height="300px">
+	<img src="../img/cake-1971556_1920.jpg" width="850px" height="300px">
 	
 </div>
 
-</div>
 
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
+
+<div id="footer">
 <pre>
 Create by FOODING
 고객문의 1544-XXXX
 JSP Project 2019 2A03</pre>
 </div>
 
+
+
+</body>
 </html>
