@@ -6,105 +6,27 @@
 <jsp:useBean id="tempbean" scope="session" class="DBBean.foodingBean"/>
 
 <%
-request.setCharacterEncoding("UTF-8");
-foodingBean foodingbean=new foodingBean();
-int selected=0;
-
-String nkname = request.getParameter("nkname");
-String id = request.getParameter("id");
-String passwd = request.getParameter("passwd");
-String repasswd = request.getParameter("repasswd");
-String email = request.getParameter("email");
-String addrnum = request.getParameter("addrnum");
-String address = request.getParameter("address");
-String detailaddr = request.getParameter("detailaddr");
-String gender=request.getParameter("gender");
-String slct = request.getParameter("slct");
+	request.setCharacterEncoding("UTF-8");
+	foodingBean foodingbean=new foodingBean();
+	int selected=0;
+	
+	String nkname = request.getParameter("nkname");
+	String id = request.getParameter("id");
+	String passwd = request.getParameter("passwd");
+	String repasswd = request.getParameter("repasswd");
+	String email = request.getParameter("email");
+	String addrnum = request.getParameter("addrnum");
+	String address = request.getParameter("address");
+	String detailaddr = request.getParameter("detailaddr");
+	String gender=request.getParameter("gender");
+	tempbean.setAll(nkname, id, passwd, repasswd, email, addrnum, address, detailaddr);
 
 %>
-<form method="post" name="register" action="signup.jsp" ></form>
-<form method="post" name="zipload" action="ZipFinder/ZipinputForm.jsp" ></form>
+	<form method="post" name="register" action="signup.jsp" ></form>
+	<form method="post" name="zipload" action="ZipFinder/ZipinputForm.jsp" ></form>
 <%
 
-if(slct.equals("nkname")){
 
-	foodingbean.connect();
-	String sql = "select nkname from user";
-	ResultSet rs = foodingbean.resultQuery(sql);
-		while (rs.next()) {
-			String dbnkname = rs.getString("nkname");
-			if(dbnkname.equals(nkname)){
-				selected=1;
-				
-			}
-		}
-		if(selected==1){slct="inavankname";}
-		else{slct="avankname";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
-		foodingbean.DBclose();
-		%>
-		<script type="text/javascript">
-			location.href="signup.jsp";
-		</script>
-		<%
-	
-}
-else if(slct.equals("id")){
-
-	foodingbean.connect();
-	String sql = "select id from user";
-	ResultSet rs = foodingbean.resultQuery(sql);
-		while (rs.next()) {
-			String dbid = rs.getString("id");
-			if(dbid.equals(id)){
-				selected=1;
-				
-			}
-		}
-		if(selected==1){slct="inavaid";}
-		else{slct="avaid";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
-		foodingbean.DBclose();
-		%>
-		<script type="text/javascript">
-			location.href="signup.jsp";
-		</script>
-		<%
-	
-}
-else if(slct.equals("zip")){
-	tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
-	%>
-		<script type="text/javascript">
-			var zipload=document.zipload;
-			zipload.submit();
-		</script>
-	<%
-}else if(slct.equals("email")){
-
-	foodingbean.connect();
-	String sql = "select email from user";
-	ResultSet rs = foodingbean.resultQuery(sql);
-		while (rs.next()) {
-			String dbemail = rs.getString("email");
-			if(dbemail.equals(email)){
-				selected=1;
-				
-			}
-		}
-		if(selected==1){slct="inavaemail";}
-		else{slct="avaemail";}
-		tempbean.setAll(nkname,id,passwd,repasswd,email,addrnum,address,detailaddr,slct);
-		foodingbean.DBclose();
-		%>
-		<script type="text/javascript">
-			location.href="signup.jsp";
-		</script>
-		<%
-	
-}
-
-else{
 	int mileage = 0;
 	
 	
@@ -114,7 +36,7 @@ else{
 	foodingbean.nonResultQuery(sql);
 	session.setAttribute("idlogin",id);
 	response.sendRedirect("../mains/main.jsp");
-}
+
 %>
 
 

@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <%@ page import="java.sql.*"%>
+<%@ page import="javax.servlet.*"%>
+<%@ page import="javax.servlet.http.HttpSessionEvent"%>
+<%@ page import="javax.servlet.http.HttpSessionListener"%>
 <%@page import="DBBean.foodingBean" %>
 <jsp:useBean id="tempbean" scope="session" class="DBBean.foodingBean"/>
 
@@ -10,6 +13,8 @@
 request.setCharacterEncoding("UTF-8");
 
 String zipcode="";
+
+
 try{
 	zipcode=(String)session.getAttribute("zipcode");
 	if(zipcode==null){
@@ -28,7 +33,6 @@ String email = tempbean.getEmail();
 String addrnum = tempbean.getAddrnum();
 String address = tempbean.getAddress();
 String detailaddr = tempbean.getDetailaddr();
-String slct = tempbean.getSlct();
 
 if(nkname==null){nkname="";}
 if(id==null){id="";}
@@ -72,8 +76,11 @@ var i=0;
 	}
 	%>
 var arraylength=<%=i %>
-var exptext=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
+var idexp = /^[0-9a-z]+$/;   
+var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+
 
 
 function Nknamecheck() {
@@ -81,17 +88,22 @@ function Nknamecheck() {
 	if(register.nkname.value.length<3){
 		document.getElementById('nknamecheck').innerHTML = "tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 3자이상";
 	}else{
-		i=0;
-		while(i<=arraylength){
-			if(DBnkArray[i]==register.nkname.value){
-				checked=1;
-				document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다."
+		if(nknameexp.test(register.nkname.value)==true){
+			i=0;
+			while(i<=arraylength){
+				if(DBnkArray[i]==register.nkname.value){
+					checked=1;
+					document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다."
+				}
+				i++
 			}
-			i++
+			if(checked==0){
+				document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다.";
+			}
+		}else{
+			document.getElementById('nknamecheck').innerHTML="tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 3자이상";
 		}
-		if(checked==0){
-			document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다.";
-		}
+		
 	}
 };
 
@@ -115,7 +127,7 @@ function Idcheck() {
 };
 function Emailcheck() {
 	var checked=0;
-	if(exptext.test(register.email.value)==false){
+	if(emailexp.test(register.email.value)==false){
 		document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다.";
 	}else{
 		i=0;
@@ -136,48 +148,18 @@ function ZipPopup() {
 	window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
 }
 	
-function Signupcross(slct){	
-	document.getElementById('slct').value = slct;
-
+function Signupcross(){	
 	var register=document.register;
-	
-	
-	if(slct=="nkname"){
-		
-		if(register.nkname.value==""||document.getElementById('nknamecheck').value!="사용 가능한 닉네임 입니다."){
-			alert("닉네임을 확인해주세요");
-			register.nkname.focus();
-			return;
-		}
-		register.submit();
-	}else if(slct=="id"){
-		
-		if(register.id.value==""){
-			alert("아이디를 입력해주세요");
-			register.id.focus();
-			return;
-		}
-		
-		register.submit();
-	}else if(slct=="email"){
-	
-		if(register.email.value==""){
-			alert("email을 입력해주세요");
-			register.email.focus();
-			return;
-		}
-	
-		register.submit();
-	}
-	else{
 
-		if(register.nkname.value==""){
+	
+
+		if(register.nkname.value==""||document.getElementById('nknamecheck').value!="사용 가능한 닉네임 입니다."){
 			alert("닉네임을 입력해주세요");
 			register.nkname.focus();
 			return;
 		}
-		if(register.id.value==""){
-			alert("아이디를 입력해주세요");
+		if(register.id.value==""||document.getElementById('idcheck').value!="사용 가능한 아이디 입니다."){
+			alert("아이디를 확인해주세요");
 			register.id.focus();
 			return;
 		}
@@ -201,7 +183,7 @@ function Signupcross(slct){
 			register.email.focus();
 			return;
 		}
-		else if(exptext.test(register.email.value)==false){
+		else if(emailexp.test(register.email.value)==false){
 			alert("이메일 형식이 올바르지 않습니다.");
 			register.email.focus();
 			return;
@@ -218,7 +200,7 @@ function Signupcross(slct){
 		}
 
 		register.submit();
-	}
+	
 	
 }
 
@@ -253,7 +235,6 @@ function Signupclear(){
 <br> 
 <br>
 <form method="post" name="register" action="signcross.jsp" >
-	<input type="hidden" value="" name="slct" id="slct">
 	<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
 	<center>
 	<fieldset>
@@ -321,7 +302,7 @@ function Signupclear(){
 			</table> 
 			<br><br>
 			<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
-			<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
+			<input type="button" value="확인" class="findbutton" onclick="Signupcross();">
 			<br><br><br>
 		</center>
 		
@@ -337,57 +318,10 @@ function Signupclear(){
 
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
-	<%
-		if(slct.equals("inavankname")){
-			%>
-				<script type="text/javascript">
-					alert("중복된 닉네임 입니다.");
-					register.nkname.value="";
-					register.nkname.focus();
-				</script>
-			<%
-		}else if(slct.equals("avankname")){
-			%>
-				<script type="text/javascript">
-					alert("사용 가능한 닉네임 입니다.");
-					register.id.focus();
-				</script>
-			<%
-		}else if(slct.equals("inavaid")){
-			%>
-				<script type="text/javascript">
-					alert("중복된 아이디 입니다.");
-					register.id.value="";
-					register.id.focus();
-				</script>
-			<%
-		}else if(slct.equals("avaid")){
-			%>
-				<script type="text/javascript">
-					alert("사용 가능한 아이디 입니다.");
-					register.passwd.focus();
-				</script>
-			<%
-		}else if(slct.equals("inavaemail")){
-			%>
-			<script type="text/javascript">
-				alert("중복된 이메일 입니다.");
-				register.email.value="";
-				register.email.focus();
-			</script>
-		<%
-		}else if(slct.equals("avaemail")){
-			%>
-				<script type="text/javascript">
-					alert("사용 가능한 이메일 입니다.");
-				</script>
-			<%
-		}
-	%>
+		<pre>
+		Create by FOODING
+		고객문의 1544-XXXX
+		JSP Project 2019 2A03</pre>
+	</div>
 </body>
 </html>
