@@ -8,7 +8,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	foodingBean foodingbean=new foodingBean();
-	int selected=0;
 	
 	String nkname = request.getParameter("nkname");
 	String id = request.getParameter("id");
@@ -19,24 +18,34 @@
 	String address = request.getParameter("address");
 	String detailaddr = request.getParameter("detailaddr");
 	String gender=request.getParameter("gender");
-	tempbean.setAll(nkname, id, passwd, repasswd, email, addrnum, address, detailaddr);
+	
+	String nknamecheck=request.getParameter("nknamecheck");
+	String idcheck=request.getParameter("idcheck");
+	String passwdcheck=request.getParameter("passwdcheck");
+	String repasswdcheck=request.getParameter("repasswdcheck");
+	String emailcheck=request.getParameter("emailcheck");
+	
+	String selected=request.getParameter("selected");
+	tempbean.setAll(nkname, id, passwd, repasswd, email, addrnum, address, detailaddr,
+			nknamecheck, idcheck, passwdcheck, repasswdcheck, emailcheck);
 
 %>
 	<form method="post" name="register" action="signup.jsp" ></form>
-	<form method="post" name="zipload" action="ZipFinder/ZipinputForm.jsp" ></form>
 <%
 
 
 	int mileage = 0;
 	
-	
-	foodingbean.connect();
-	
-	String sql = "insert into user values('"+nkname+"','"+id+"','"+passwd+"','"+email+"','"+addrnum+"','"+address+"','"+detailaddr+"','"+gender+"',"+mileage+")";
-	foodingbean.nonResultQuery(sql);
-	session.setAttribute("idlogin",id);
-	response.sendRedirect("../mains/main.jsp");
-
+	if(selected.equals("zipload")){
+		response.sendRedirect("../mains/signup.jsp");
+	}else{
+		foodingbean.connect();
+		
+		String sql = "insert into user values('"+nkname+"','"+id+"','"+passwd+"','"+email+"','"+addrnum+"','"+address+"','"+detailaddr+"','"+gender+"',"+mileage+")";
+		foodingbean.nonResultQuery(sql);
+		session.setAttribute("idlogin",id);
+		response.sendRedirect("../mains/main.jsp");
+	}
 %>
 
 

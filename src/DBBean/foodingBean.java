@@ -95,7 +95,15 @@ public class foodingBean {
 	String address="";
 	String detailaddr="";
 	
-	public void setAll(String nkname,String id,String passwd,String repasswd,String email,String addrnum,String address,String detailaddr) {
+	String nknamecheck="";
+	String idcheck="";
+	String passwdcheck="";
+	String repasswdcheck="";
+	String emailcheck="";
+	
+	public void setAll(String nkname,String id,String passwd,String repasswd,String email,
+			String addrnum,String address,String detailaddr,String nknamecheck,String idcheck,
+			String passwdcheck,String repasswdcheck,String emailcheck) {
 		this.nkname=nkname;
 		this.id=id;
 		this.passwd=passwd;
@@ -104,6 +112,11 @@ public class foodingBean {
 		this.addrnum=addrnum;
 		this.address=address;
 		this.detailaddr=detailaddr;
+		this.nknamecheck=nknamecheck;
+		this.idcheck=idcheck;
+		this.passwdcheck=passwdcheck;
+		this.repasswdcheck=repasswdcheck;
+		this.emailcheck=emailcheck;
 	}
 	public String getNkname() {
 		return nkname;
@@ -168,5 +181,47 @@ public class foodingBean {
 	public void setDetailaddr(String detailaddr) {
 		this.detailaddr = detailaddr;
 	}
+
+	public String getNknamecheck() {
+		return nknamecheck;
+	}
+
+	public void setNknamecheck(String nknamecheck) {
+		this.nknamecheck = nknamecheck;
+	}
+
+	public String getIdcheck() {
+		return idcheck;
+	}
+
+	public void setIdcheck(String idcheck) {
+		this.idcheck = idcheck;
+	}
+
+	public String getPasswdcheck() {
+		return passwdcheck;
+	}
+
+	public void setPasswdcheck(String passwdcheck) {
+		this.passwdcheck = passwdcheck;
+	}
+
+	public String getRepasswdcheck() {
+		return repasswdcheck;
+	}
+
+	public void setRepasswdcheck(String repasswdcheck) {
+		this.repasswdcheck = repasswdcheck;
+	}
+
+	public String getEmailcheck() {
+		return emailcheck;
+	}
+
+	public void setEmailcheck(String emailcheck) {
+		this.emailcheck = emailcheck;
+	}
+	
+	
 
 }
