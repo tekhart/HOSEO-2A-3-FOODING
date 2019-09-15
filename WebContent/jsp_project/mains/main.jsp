@@ -131,12 +131,6 @@
 
 
 
-<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div id="eventdiv" >
 
 	<img src="../img/cake-1971556_1920.jpg" width="850px" height="300px">
