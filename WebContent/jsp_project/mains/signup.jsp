@@ -94,22 +94,22 @@
 			function Nknamecheck() {
 				var checked=0;
 				if(register.nkname.value.length<3){
-					document.getElementById('nknamecheck').innerHTML = "tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 3자이상";
+					document.getElementById('nknamecheck').innerHTML = "<img src='../img/tip.png' >문자로 시작하고 공백과 특수문자 없이 3자이상";
 				}else{
 					if(nknameexp.test(register.nkname.value)==true){
 						i=0;
 						while(i<=arraylength){
 							if(DBnkArray[i]==register.nkname.value){
 								checked=1;
-								document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다."
+								document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다"
 							}
 							i++
 						}
 						if(checked==0){
-							document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다.";
+							document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다";
 						}
 					}else{
-						document.getElementById('nknamecheck').innerHTML="tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 3자이상";
+						document.getElementById('nknamecheck').innerHTML="문자로 시작하고 공백과 특수문자 없이 3자이상";
 					}
 					
 				}
@@ -118,62 +118,62 @@
 			function Idcheck() {
 				var checked=0;
 				if(register.id.value.length<8){
-					document.getElementById('idcheck').innerHTML = "tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 8자이상";
+					document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
 				}else{
 					if(idexp.test(register.id.value)==true){
 						i=0;
 						while(i<=arraylength){
 							if(DBidArray[i]==register.id.value){
 								checked=1;
-								document.getElementById('idcheck').innerHTML="중복된 아이디 입니다."
+								document.getElementById('idcheck').innerHTML="중복된 아이디 입니다"
 							}
 							i++
 						}
 						if(checked==0){
-							document.getElementById('idcheck').innerHTML="사용 가능한 아이디 입니다.";
+							document.getElementById('idcheck').innerHTML="사용 가능한 아이디 입니다";
 						}
 					}else{
-						document.getElementById('idcheck').innerHTML="tip! 문자로 시작하고 중복하지않으며 공백과 특수문자 없이 8자이상";
+						document.getElementById('idcheck').innerHTML="문자로 시작하고 공백과 특수문자 없이 8자이상";
 					}
 				}
 			};
 			function Emailcheck() {
 				var checked=0;
 				if(emailexp.test(register.email.value)==false){
-					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다.";
+					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
 				}else{
 					i=0;
 					while(i<=arraylength){
 						if(DBemailArray[i]==register.email.value){
 							checked=1;
-							document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다."
+							document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다"
 						}
 						i++
 					}
 					if(checked==0){
-						document.getElementById('emailcheck').innerHTML="사용 가능한 이메일 입니다.";
+						document.getElementById('emailcheck').innerHTML="사용 가능한 이메일 입니다";
 					}
 				}
 			};
 			
 			function Passwdcheck() {
 				if(pwexp.test(register.passwd.value)==false){
-					document.getElementById('passwdcheck').innerHTML = "8자 이상 영문,특수문자,숫자가 적어도 1자는 들어가야 합니다.";
+					document.getElementById('passwdcheck').innerHTML = "8자 이상 영문,특수문자,숫자가 하나 이상";
 				}else{
-					document.getElementById('passwdcheck').innerHTML="사용 가능한 비밀번호 입니다.";
+					document.getElementById('passwdcheck').innerHTML="사용 가능한 비밀번호 입니다";
 				}
 				if(register.passwd.value==register.repasswd.value){
-					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다.";
+					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
 				}else{
-					document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다.";
+					document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
 				}
 			};
 			
 			function Repasswdcheck() {
 					if(register.passwd.value==register.repasswd.value){
-						document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다.";
+						document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
 					}else{
-						document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다.";
+						document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
 					}
 			};
 			
@@ -197,17 +197,17 @@
 			
 				
 			
-					if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다."){
+					if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
 						alert("닉네임을 확인해주세요");
 						register.nkname.focus();
 						return;
 					}
-					if(register.id.value==""||document.getElementById('idcheck').innerHTML!="사용 가능한 아이디 입니다."){
+					if(register.id.value==""||document.getElementById('idcheck').innerHTML!="사용 가능한 아이디 입니다"){
 						alert("아이디를 확인해주세요");
 						register.id.focus();
 						return;
 					}
-					if(register.passwd.value==""||document.getElementById('passwdcheck').innerHTML!="사용 가능한 비밀번호 입니다."){
+					if(register.passwd.value==""||document.getElementById('passwdcheck').innerHTML!="사용 가능한 비밀번호 입니다"){
 						alert("비밀번호를 입력해주세요");
 						register.passwd.focus();
 						return;
@@ -306,7 +306,7 @@
 							<td>닉네임</td>
 							<td colspan="2">
 								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();"><br>
-								<span id="nknamecheck"><%=nknamecheck%></span>
+								<span id="nknamecheck">&nbsp;<%=nknamecheck%></span>
 							</td>
 						</tr>
 						
@@ -314,28 +314,28 @@
 							<td>아이디</td>
 							<td colspan="2">
 								<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();"><br>
-								<span id="idcheck"><%=idcheck %></span>
+								<span id="idcheck">&nbsp;<%=idcheck %></span>
 							</td>
 						</tr>
 						<tr> 
 							<td>비밀번호</td>
 							<td colspan="2">
 								<input class="signupinputs" type="password" name="passwd"size="40"  value="<%= passwd%>" onkeyup="Passwdcheck();"><br>
-								<span id="passwdcheck"><%=passwdcheck%></span>
+								<span id="passwdcheck">&nbsp;<%=passwdcheck%></span>
 							</td>
 						</tr>
 						<tr>
 							<td>비밀번호 확인</td>
 							<td colspan="2">
 								<input class="signupinputs" type="password" name="repasswd"size="40"  value="<%= repasswd%>" onkeyup="Repasswdcheck();"><br>
-								<span id="repasswdcheck"><%=repasswdcheck%></span>
+								<span id="repasswdcheck">&nbsp;<%=repasswdcheck%></span>
 							</td>
 						</tr>
 						<tr>
 							<td>이메일</td>
 							<td colspan="2">
 								<input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onkeyup="Emailcheck();"><br>
-								<span id="emailcheck"><%=emailcheck %></span>
+								<span id="emailcheck">&nbsp;<%=emailcheck %></span>
 							</td>
 						</tr>
 						<tr> 
