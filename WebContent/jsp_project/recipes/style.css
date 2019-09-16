@@ -22,3 +22,53 @@ form {
 p{
 	font-weight: 700;
 }
+
+	
+	#maindiv{	font-family:"Bauhaus ITC";
+		font-size:22px;
+		color:black;
+		border-top:5px solid #ffbb00;
+		
+		}	
+	.writetitle {
+		margin-left:140px;
+		padding:30px;	
+		font-size:25px;
+		}
+	#writetable{
+		margin:auto;
+		padding:40px;
+		
+		}
+	#space{
+		width:800px;
+		height:1000px;
+		background-color:#F2F2F2;
+	}
+	#writespace{
+		padding:20px;
+	}
+	.signupinput{
+		width:750px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+	}
+	
+	#button123{
+		font-family:"Bauhaus ITC";
+		font-size:22px;
+		width:200px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+		margin-bottom:35px;
+	}

@@ -86,8 +86,11 @@
 
 <% if (count == 0) { %>
 
-
-
+<table align="right"><tr><td>
+  <a href="list.jsp">목록</a></td><td>
+  <a href="writeForm.jsp">글쓰기</a></td></tr></table>
+  <br><br><br>
+  
 <table align="center" class="nogul">
 <tr>
     <td align="center">
@@ -96,44 +99,70 @@
               <img src="../img/ding.png" height="335px" width="559px">
     </td>
 </table>
-
-
 <% } else {%>
 
-<table align="right"><tr><td>
-  <a href="list.jsp">목록</a></td><td>
-  <a href="writeForm.jsp">글쓰기</a></td></tr></table>
 
-<table border="1" class="listtable"> 
-    <tr height="30"> 
-	  <td align="center"  width="50" >번호</td>
-      <td align="center"  width="310" >제목</td> 
-      <td align="center"  width="150" >작성자</td>
-      <td align="center"  width="150" >등록일</td> 
-      <td align="center"  width="50" >조회</td> 
+
+
+
+<table class="listtop"><tr><td align="left">
+전체 레시피(<%=number %>)
+</td>
+<td>
+
+<table class="listtop"><tr><td></td>
+<td>
+<table class="search"><tr><td align="right">
+  <form method="post" action="list.jsp" class="search">
+	<input type="text" name="search" class="searchbar"></td><td align="left">
+	<input type="submit" value="" class="searchbt"></td>
+	</form></tr></table>
+
+</td>
+<td align="right">
+<input type="button" onclick="location.href='list.jsp'" value="목록">
+<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기">
+  
+  </td></tr></table>
+
+
+
+
+
+
+
+<table class="listtable"> 
+    <tr height="50"> 
+	  <td align="center"  width="50" class="listcolor">번호</td>
+      <td align="center"  width="310" class="listcolor">제목</td> 
+      <td align="center"  width="100" class="listcolor">작성자</td>
+      <td align="center"  width="150" class="listcolor">등록일</td> 
+      <td align="center"  width="50" class="listcolor">조회</td> 
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-   <tr>
-   <td align="center">
+   <tr class="mouse">
+   <td align="center" class="line">
    <%=article.getNum()%>
    </td>
-    <td align="left">       
+    <td align="left" class="line">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]&nbsp;<%=article.getTitle()%></a>  </td>
-    <td align="center"> 
+    <td align="center" class="line"> 
      	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">
        	<%=foodingbean.findnkname(writerid)%></a>
     </td>
-    <td align="center" width="150"><%= sdf.format(article.getReg_date())%></td>
-    <td align="center" width="50"><%=article.getReadcount()%></td>
+    <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
+    <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
   </tr>
 <%}%>
 </table>
 <%}%>
+
+<center>
 
 <%
     if (count > 0) {
@@ -164,11 +193,8 @@
     }
 %>
 
-  
-  <form method="post" action="list.jsp" >
-	<input type="text" name="search">
-	<input type="submit" value="검색">
-</form>
+  </center>
+
 
 </div>
 

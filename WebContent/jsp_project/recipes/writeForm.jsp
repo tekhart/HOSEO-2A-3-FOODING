@@ -9,57 +9,6 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <style>
-	
-
-	#maindiv{	font-family:"Bauhaus ITC";
-		font-size:22px;
-		color:black;
-		border-top:5px solid #ffbb00;
-		
-		}	
-	.writetitle {
-		margin-left:140px;
-		padding:30px;	
-		font-size:25px;
-		}
-	#writetable{
-		margin:auto;
-		padding:40px;
-
-		
-		}
-	#space{
-		width:100%;
-		height:100%;
-		background-color:#F2F2F2;
-	}
-	#writespace{
-		padding:20px;
-	}
-	.signupinput{
-		width:750px;
-		padding: 15px;
-		display: inline-block;
-		border-color:black;
-		background: white;
-		border-style:solid;
-		border-width: thin; 
-		border-radius: 3px;
-	}
-	
-	#button123{
-		font-family:"Bauhaus ITC";
-		font-size:22px;
-		width:10%;
-		padding: 15px;
-		display: inline-block;
-		border-color:black;
-		background: white;
-		border-style:solid;
-		border-width: thin; 
-		border-radius: 3px;
-		margin-bottom:35px;
-	}
 
 </style>
 

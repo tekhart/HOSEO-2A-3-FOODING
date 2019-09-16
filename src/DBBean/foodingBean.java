@@ -158,31 +158,8 @@ public class foodingBean {
         }
     }
     
-    //recipes테이블에 저장된 전체글의 수를 얻어냄(select문)<=list.jsp에서 사용
-    public int getArticleCount()
-            throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
-
-       int x=0;
-
-       try {
-           conn = getConnection();
-           
-           pstmt = conn.prepareStatement("select count(*) from recipes");
-           rs = pstmt.executeQuery();
-
-           if (rs.next()) {
-              x= rs.getInt(1);
-			}
-       } catch(Exception ex) {
-           ex.printStackTrace();
-       } finally {
-       	DBclose();
-       }
-		return x;
-   }
+    
+    
     public int getArticleCount(String search)
             throws Exception {
        Connection conn = null;
@@ -193,23 +170,22 @@ public class foodingBean {
 
        try {
            conn = getConnection();
-           
+
            pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
               x= rs.getInt(1);
-			}
+            }
        } catch(Exception ex) {
            ex.printStackTrace();
        } finally {
-       	DBclose();
+           DBclose();
        }
-		return x;
+        return x;
    }
-
-	//글의 목록(복수개의 글)을 가져옴(select문) <=list.jsp에서 사용
-	public List<BoardDataBean> getArticles(int start, int end,String search)
+    
+    public List<BoardDataBean> getArticles(int start, int end,String search)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -217,9 +193,9 @@ public class foodingBean {
        List<BoardDataBean> articleList=null;
        try {
            conn = getConnection();
-           
+
            pstmt = conn.prepareStatement(
-           	"select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,? ");
+               "select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -231,26 +207,55 @@ public class foodingBean {
                  article.setNum(rs.getInt("num"));
                  article.setContury(rs.getString("contury"));
                  article.setFoodtype(rs.getString("foodtype"));
-				  article.setTitle(rs.getString("title"));
-				  article.setWriterid(rs.getString("writerid"));
-                 
-                 
-			      article.setReg_date(rs.getTimestamp("reg_date"));
-				  article.setReadcount(rs.getInt("readcount"));
-                 
+                  article.setTitle(rs.getString("title"));
+                  article.setWriterid(rs.getString("writerid"));
+
+
+                  article.setReg_date(rs.getTimestamp("reg_date"));
+                  article.setReadcount(rs.getInt("readcount"));
+
                  article.setContent(rs.getString("content"));
-			       
-				  
+
+
                  articleList.add(article);
-			    }while(rs.next());
-			}
+                }while(rs.next());
+            }
        } catch(Exception ex) {
            ex.printStackTrace();
        } finally {
-    	   DBclose();
+           DBclose();
        }
-		return articleList;
+        return articleList;
    }
+    
+    
+    //recipes테이블에 저장된 전체글의 수를 얻어냄(select문)<=list.jsp에서 사용
+	public int getArticleCount()
+             throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        int x=0;
+
+        try {
+            conn = getConnection();
+            
+            pstmt = conn.prepareStatement("select count(*) from recipes");
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+               x= rs.getInt(1);
+			}
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	DBclose();
+        }
+		return x;
+    }
+
+	//글의 목록(복수개의 글)을 가져옴(select문) <=list.jsp에서 사용
 	public List<BoardDataBean> getArticles(int start, int end)
             throws Exception {
        Connection conn = null;
@@ -263,7 +268,7 @@ public class foodingBean {
            pstmt = conn.prepareStatement(
            	"select * from recipes order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
-           pstmt.setInt(2, end);
+			pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -378,21 +383,14 @@ public class foodingBean {
           PreparedStatement pstmt = null;
           ResultSet rs= null;
 
-          String dbpasswd="";
           String sql="";
   		int x=-1;
           try {
               conn = getConnection();
-              
-  			pstmt = conn.prepareStatement(
-              	"select passwd from recipes where num = ?");
-              pstmt.setInt(1, article.getNum());
-              rs = pstmt.executeQuery();
-              
-  			if(rs.next()){
+
   			 
                   sql="update recipes set title=?,contury=?,foodtype=?,ingredients=?";
-  			    sql+=",tools=? ,writerid=? ,content=? where num=?";
+  			    sql+=",tools=? ,content=? where num=?";
                   pstmt = conn.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
@@ -400,12 +398,10 @@ public class foodingBean {
                   pstmt.setString(3, article.getFoodtype());
                   pstmt.setString(4, article.getIngredients());
                   pstmt.setString(5, article.getTools());
-                  pstmt.setString(6, article.getWriterid());
-                  pstmt.setString(7, article.getContent());
-  			    pstmt.setInt(6, article.getNum());
+                  pstmt.setString(6, article.getContent());
+  			    pstmt.setInt(7, article.getNum());
                   pstmt.executeUpdate();
   				x= 1;
-  			}
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
