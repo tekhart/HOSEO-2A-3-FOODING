@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "DBBean.BoardDataBean" %>
+<%@ page import = "DBBean.foodingBean" %>
 <%@ page import = "java.sql.Timestamp" %>
 
 <%
@@ -12,7 +13,7 @@
   String pageNum = request.getParameter("pageNum");
   String passwd = request.getParameter("passwd");
 
-  BoardDataBean dbPro = BoardDataBean.getInstance(); 
+  BoardDataBean dbPro = BoardDataBean.getInstance();
   int check = dbPro.deleteArticle(num, passwd);
 
   if(check==1){

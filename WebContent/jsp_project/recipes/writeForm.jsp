@@ -33,6 +33,8 @@
 			num=Integer.parseInt(request.getParameter("num"));
 		}
 		if(session.getAttribute("idlogin")==null){
+			out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
+			response.sendRedirect("../mains/main.jsp");
 		}
 		idlogin=(String)session.getAttribute("idlogin");
 %>
@@ -60,23 +62,23 @@
 			<select name='contury'
 				style="ime-mode:inactive;">
 				<option value='' selected>-- 선택 --</option>
-    			<option value='korean'>한식</option>
-    			<option value='english'>양식</option>
-    			<option value='japanese'>일식</option>
-    			<option value='chinese'>중식</option>
-    			<option value='fusion'>퓨전</option>
-    			<option value='etc'>기타</option>
+    			<option value='한식'>한식</option>
+    			<option value='양식'>양식</option>
+    			<option value='일식'>일식</option>
+    			<option value='중식'>중식</option>
+    			<option value='퓨전'>퓨전</option>
+    			<option value='기타'>기타</option>
 			</select>
 			<select name='foodtype'
 				style="ime-mode:inactive;">
 				<option value='' selected>-- 선택 --</option>
-    			<option value='rice'>밥류</option>
-    			<option value='bread'>빵류</option>
-    			<option value='submenu'>반찬류</option>
-    			<option value='noodle'>면류</option>
-    			<option value='soup'>국류</option>
-    			<option value='dessert'>디저트</option>
-    			<option value='etc'>기타</option>
+    			<option value='밥류'>밥류</option>
+    			<option value='빵류'>빵류</option>
+    			<option value='반찬류'>반찬류</option>
+    			<option value='면류'>면류</option>
+    			<option value='국류'>국류</option>
+    			<option value='디저트'>디저트</option>
+    			<option value='기타'>기타</option>
 			</select>
 		</td>
 	</tr>

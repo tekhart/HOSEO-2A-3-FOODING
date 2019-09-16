@@ -20,7 +20,6 @@
 	}finally{}
 
 	foodingBean foodingbean=new foodingBean();
-	foodingbean.connect();
 	
 	String nkname = tempbean.getNkname();
 	String id = tempbean.getId();
@@ -82,6 +81,7 @@
 					<%
 					i++;
 				}
+				foodingbean.DBclose();
 			%>
 			var arraylength=<%=i %>
 			var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;

@@ -30,6 +30,7 @@ public class foodingBean {
 	
 	public ResultSet resultQuery(String sql) {
 		try {
+			con = getConnection();
 			stmt=con.createStatement();
 			rs=stmt.executeQuery(sql);
 		}catch(Exception e) {
@@ -41,16 +42,20 @@ public class foodingBean {
 	
 	public void nonResultQuery(String sql) {
 		try {
+			con = getConnection();
 			stmt=con.createStatement();
 			stmt.executeUpdate(sql);
 			stmt.close();
 		}catch(Exception e) {
 			System.out.println("notResultQuery Error 2");
-		}
+		}finally {
+			DBclose();
+        }
 	}
 	
 	public String findnkname(String id) {
 		try {
+			con = getConnection();
 			stmt=con.createStatement();
 			rs=stmt.executeQuery("select nkname from user where id='"+id+"';");
 			if(rs.next()) {
@@ -60,7 +65,9 @@ public class foodingBean {
 			System.out.println("Result Error");
 			rs=null;
 			str="";
-		}
+		}finally {
+			DBclose();
+        }
 		return str;
 	}
 	public void DBclose() {
@@ -147,9 +154,7 @@ public class foodingBean {
         } catch(Exception ex) {
             ex.printStackTrace();
         } finally {
-			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        	DBclose();
         }
     }
     
@@ -174,9 +179,7 @@ public class foodingBean {
         } catch(Exception ex) {
             ex.printStackTrace();
         } finally {
-            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        	DBclose();
         }
 		return x;
     }
@@ -192,7 +195,7 @@ public class foodingBean {
            conn = getConnection();
            
            pstmt = conn.prepareStatement(
-           	"select * from recipes order by num desc limit ? ");
+           	"select * from recipes order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -201,7 +204,8 @@ public class foodingBean {
                articleList = new ArrayList<BoardDataBean>(end);
                do{
                  BoardDataBean article= new BoardDataBean();
-				  article.setNum(rs.getInt("num"));
+                 article.setContury(rs.getString("contury"));
+                 article.setFoodtype(rs.getString("foodtype"));
 				  article.setTitle(rs.getString("title"));
 				  article.setWriterid(rs.getString("writerid"));
                  
@@ -218,9 +222,7 @@ public class foodingBean {
        } catch(Exception ex) {
            ex.printStackTrace();
        } finally {
-           if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-           if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-           if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+    	   DBclose();
        }
 		return articleList;
    }
@@ -261,9 +263,7 @@ public class foodingBean {
         } catch(Exception ex) {
             ex.printStackTrace();
         } finally {
-            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        	DBclose();
         }
 		return article;
     }
@@ -299,9 +299,7 @@ public class foodingBean {
 	        } catch(Exception ex) {
 	            ex.printStackTrace();
 	        } finally {
-	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        	DBclose();
 	        }
 			return article;
 	    }
@@ -344,9 +342,7 @@ public class foodingBean {
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
-  			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-              if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-              if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        	  DBclose();
           }
   		return x;
       }
@@ -377,9 +373,7 @@ public class foodingBean {
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
-              if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-              if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-              if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        	  DBclose();
           }
   		return x;
       }

@@ -5,7 +5,6 @@
 	String idlogin="";
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean=new foodingBean();
-	topbarbean.connect();
 %>
 <script type="text/javascript">
 	
@@ -22,7 +21,7 @@
 			if(idlogin==null||idlogin.equals("")){
 				%>
 				<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
-				<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
+				<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
 				<%
 			}else{
 				String nknamelogin=topbarbean.findnkname(idlogin);
@@ -31,7 +30,6 @@
 				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 				<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 				<%
-				topbarbean.DBclose();
 			}
 		}finally{}
 		

@@ -27,6 +27,7 @@
     List<BoardDataBean> articleList = null; 
     
     foodingBean dbPro = foodingBean.getInstance();
+    foodingBean foodingbean = new foodingBean();
     count = dbPro.getArticleCount();
     
     if (count > 0) {
@@ -84,24 +85,23 @@
 <% } else {%>
 <table> 
     <tr height="30"> 
-      <td align="center"  width="50"  >번 호</td> 
       <td align="center"  width="250" >제   목</td> 
       <td align="center"  width="100" >작성자</td>
       <td align="center"  width="150" >작성일</td> 
       <td align="center"  width="50" >조 회</td> 
-      <td align="center"  width="100" >IP</td>    
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
 	   BoardDataBean article = articleList.get(i);
+	   String writerid=article.getWriterid();
 %>
    <tr height="30">
-    <td  width="50" > <%=number--%></td>
     <td  width="250" align="left">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
-           <%=article.getTitle()%></a>  </td>
+          [<%=article.getContury()%>/<%=article.getFoodtype()%>]<%=article.getTitle()%></a>  </td>
     <td width="100" align="left"> 
-       <%=article.getWriterid()%></a>
+     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+       	<%=foodingbean.findnkname(writerid)%></a>
     </td>
     <td width="150"><%= sdf.format(article.getReg_date())%></td>
     <td width="50"><%=article.getReadcount()%></td>

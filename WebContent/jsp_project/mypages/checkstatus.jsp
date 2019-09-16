@@ -13,8 +13,6 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <style>
-	body{	font-family:"Bauhaus ITC";
-		color:black;}
 		
 #title{
 	text-decoration:none;

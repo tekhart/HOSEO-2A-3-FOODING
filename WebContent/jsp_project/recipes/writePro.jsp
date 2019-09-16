@@ -5,7 +5,7 @@
     
     <% request.setCharacterEncoding("utf-8"); %>
     
-<jsp:useBean id="article" scope="page" class="DBBean.foodingDataBean">
+<jsp:useBean id="article" scope="page" class="DBBean.BoardDataBean">
 	<jsp:setProperty name="article" property="*"/>
 </jsp:useBean>    
 
