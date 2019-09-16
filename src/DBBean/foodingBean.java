@@ -204,6 +204,7 @@ public class foodingBean {
                articleList = new ArrayList<BoardDataBean>(end);
                do{
                  BoardDataBean article= new BoardDataBean();
+                 article.setNum(rs.getInt("num"));
                  article.setContury(rs.getString("contury"));
                  article.setFoodtype(rs.getString("foodtype"));
 				  article.setTitle(rs.getString("title"));

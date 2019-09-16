@@ -70,17 +70,21 @@
 			
 				ResultSet rs=foodingbean.resultQuery("select nkname,id,email from user");
 				int i=0;
-				while(rs.next()){
-					String nknameArray = rs.getString("nkname");	
-					String idArray = rs.getString("id");	
-					String emailArray = rs.getString("email");	
-					%>
-					DBnkArray[<%=i%>]="<%=nknameArray%>";
-					DBidArray[<%=i%>]="<%=idArray%>";
-					DBemailArray[<%=i%>]="<%=emailArray%>";
-					<%
-					i++;
-				}
+				try{
+					while(rs.next()){
+						String nknameArray = rs.getString("nkname");	
+						String idArray = rs.getString("id");	
+						String emailArray = rs.getString("email");	
+						%>
+						DBnkArray[<%=i%>]="<%=nknameArray%>";
+						DBidArray[<%=i%>]="<%=idArray%>";
+						DBemailArray[<%=i%>]="<%=emailArray%>";
+						<%
+						i++;
+					}
+				}catch(Exception e){}
+				finally{}
+				
 				foodingbean.DBclose();
 			%>
 			var arraylength=<%=i %>
