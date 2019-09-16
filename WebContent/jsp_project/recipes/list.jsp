@@ -13,7 +13,9 @@
 %>
 
 <%
+	request.setCharacterEncoding("UTF-8");
     String pageNum = request.getParameter("pageNum");
+	String search=request.getParameter("search");
 
     if (pageNum == null) {
         pageNum = "1";
@@ -24,16 +26,29 @@
     int endRow = currentPage * pageSize;
     int count = 0;
     int number = 0;
+  
     List<BoardDataBean> articleList = null; 
     
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
-    count = dbPro.getArticleCount();
+    
+    if(search==null){
+    	count = dbPro.getArticleCount();
+	}else{
+		count = dbPro.getArticleCount(search);
+	}
+    
+    
     
     if (count > 0) {
-        articleList = dbPro.getArticles(startRow, pageSize);
+    	if(search==null){
+            articleList = dbPro.getArticles(startRow, pageSize);
+    	}else{
+            articleList = dbPro.getArticles(startRow, pageSize, search);
+    	}
     }
-
+	
+  
 	number = count-(currentPage-1)*pageSize;
 %>
 
@@ -41,8 +56,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="list.css">
 
 <style>
 
@@ -52,7 +69,7 @@
 
 </style>
 
-<title>Sign in</title>
+<title>전체 레시피, FOODING</title>
 
 <script type="text/javascript">
 
@@ -63,48 +80,56 @@
 <%@include file="../general_included/topbar.jsp"%>
 
 <div id="maindiv">
-<p>글목록(전체 글:<%=count%>)</p>
 
-<table>
-  <tr>
-    <td align="right">
-       <a href="writeForm.jsp">글쓰기</a>
-    </td>
-  </tr>
-</table>
+
+     
 
 <% if (count == 0) { %>
 
-<table>
+
+
+<table align="center" class="nogul">
 <tr>
     <td align="center">
-              게시판에 저장된 글이 없습니다.
+              게시판에 저장된 글이 없습니다<br>
+              첫 글을 남겨보세요! <br>
+              <img src="../img/ding.png" height="335px" width="559px">
     </td>
 </table>
 
+
 <% } else {%>
-<table> 
+
+<table align="right"><tr><td>
+  <a href="list.jsp">목록</a></td><td>
+  <a href="writeForm.jsp">글쓰기</a></td></tr></table>
+
+<table border="1" class="listtable"> 
     <tr height="30"> 
-      <td align="center"  width="250" >제   목</td> 
-      <td align="center"  width="100" >작성자</td>
-      <td align="center"  width="150" >작성일</td> 
-      <td align="center"  width="50" >조 회</td> 
+	  <td align="center"  width="50" >번호</td>
+      <td align="center"  width="310" >제목</td> 
+      <td align="center"  width="150" >작성자</td>
+      <td align="center"  width="150" >등록일</td> 
+      <td align="center"  width="50" >조회</td> 
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-   <tr height="30">
-    <td  width="250" align="left">       
-      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
-          [<%=article.getContury()%>/<%=article.getFoodtype()%>]<%=article.getTitle()%></a>  </td>
-    <td width="100" align="left"> 
-     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+   <tr>
+   <td align="center">
+   <%=article.getNum()%>
+   </td>
+    <td align="left">       
+      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
+          [<%=article.getContury()%>/<%=article.getFoodtype()%>]&nbsp;<%=article.getTitle()%></a>  </td>
+    <td align="center"> 
+     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">
        	<%=foodingbean.findnkname(writerid)%></a>
     </td>
-    <td width="150"><%= sdf.format(article.getReg_date())%></td>
-    <td width="50"><%=article.getReadcount()%></td>
+    <td align="center" width="150"><%= sdf.format(article.getReg_date())%></td>
+    <td align="center" width="50"><%=article.getReadcount()%></td>
   </tr>
 <%}%>
 </table>
@@ -138,9 +163,17 @@
         }
     }
 %>
+
+  
+  <form method="post" action="list.jsp" >
+	<input type="text" name="search">
+	<input type="submit" value="검색">
+</form>
+
 </div>
 
-
+<br>
+<br><br><br><br><br><br><br><br><br><br><br>
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 <pre>

@@ -159,32 +159,98 @@ public class foodingBean {
     }
     
     //recipes테이블에 저장된 전체글의 수를 얻어냄(select문)<=list.jsp에서 사용
-	public int getArticleCount()
-             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+    public int getArticleCount()
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
 
-        int x=0;
+       int x=0;
 
-        try {
-            conn = getConnection();
-            
-            pstmt = conn.prepareStatement("select count(*) from recipes");
-            rs = pstmt.executeQuery();
+       try {
+           conn = getConnection();
+           
+           pstmt = conn.prepareStatement("select count(*) from recipes");
+           rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-               x= rs.getInt(1);
+           if (rs.next()) {
+              x= rs.getInt(1);
 			}
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        } finally {
-        	DBclose();
-        }
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+       	DBclose();
+       }
 		return x;
-    }
+   }
+    public int getArticleCount(String search)
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+
+       int x=0;
+
+       try {
+           conn = getConnection();
+           
+           pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
+           rs = pstmt.executeQuery();
+
+           if (rs.next()) {
+              x= rs.getInt(1);
+			}
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+       	DBclose();
+       }
+		return x;
+   }
 
 	//글의 목록(복수개의 글)을 가져옴(select문) <=list.jsp에서 사용
+	public List<BoardDataBean> getArticles(int start, int end,String search)
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+       List<BoardDataBean> articleList=null;
+       try {
+           conn = getConnection();
+           
+           pstmt = conn.prepareStatement(
+           	"select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,? ");
+           pstmt.setInt(1, start-1);
+           pstmt.setInt(2, end);
+           rs = pstmt.executeQuery();
+
+           if (rs.next()) {
+               articleList = new ArrayList<BoardDataBean>(end);
+               do{
+                 BoardDataBean article= new BoardDataBean();
+                 article.setNum(rs.getInt("num"));
+                 article.setContury(rs.getString("contury"));
+                 article.setFoodtype(rs.getString("foodtype"));
+				  article.setTitle(rs.getString("title"));
+				  article.setWriterid(rs.getString("writerid"));
+                 
+                 
+			      article.setReg_date(rs.getTimestamp("reg_date"));
+				  article.setReadcount(rs.getInt("readcount"));
+                 
+                 article.setContent(rs.getString("content"));
+			       
+				  
+                 articleList.add(article);
+			    }while(rs.next());
+			}
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+    	   DBclose();
+       }
+		return articleList;
+   }
 	public List<BoardDataBean> getArticles(int start, int end)
             throws Exception {
        Connection conn = null;
@@ -197,13 +263,14 @@ public class foodingBean {
            pstmt = conn.prepareStatement(
            	"select * from recipes order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
-			pstmt.setInt(2, end);
+           pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
                articleList = new ArrayList<BoardDataBean>(end);
                do{
                  BoardDataBean article= new BoardDataBean();
+                 article.setNum(rs.getInt("num"));
                  article.setContury(rs.getString("contury"));
                  article.setFoodtype(rs.getString("foodtype"));
 				  article.setTitle(rs.getString("title"));
@@ -348,28 +415,20 @@ public class foodingBean {
       }
       
       //글삭제처리시 사용(delete문)<=deletePro.jsp페이지에서 사용
-      public int deleteArticle(int num, String passwd)
+      public int deleteArticle(int num)
           throws Exception {
           Connection conn = null;
           PreparedStatement pstmt = null;
           ResultSet rs= null;
-          String dbpasswd="";
           int x=-1;
           try {
   			conn = getConnection();
 
-              pstmt = conn.prepareStatement(
-              	"select passwd from recipes where num = ?");
-              pstmt.setInt(1, num);
-              rs = pstmt.executeQuery();
-              
-  			if(rs.next()){
   					pstmt = conn.prepareStatement(
               	      "delete from recipes where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
   					x= 1; //글삭제 성공
-  			}
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {

@@ -70,17 +70,21 @@
 			
 				ResultSet rs=foodingbean.resultQuery("select nkname,id,email from user");
 				int i=0;
-				while(rs.next()){
-					String nknameArray = rs.getString("nkname");	
-					String idArray = rs.getString("id");	
-					String emailArray = rs.getString("email");	
-					%>
-					DBnkArray[<%=i%>]="<%=nknameArray%>";
-					DBidArray[<%=i%>]="<%=idArray%>";
-					DBemailArray[<%=i%>]="<%=emailArray%>";
-					<%
-					i++;
-				}
+				try{
+					while(rs.next()){
+						String nknameArray = rs.getString("nkname");	
+						String idArray = rs.getString("id");	
+						String emailArray = rs.getString("email");	
+						%>
+						DBnkArray[<%=i%>]="<%=nknameArray%>";
+						DBidArray[<%=i%>]="<%=idArray%>";
+						DBemailArray[<%=i%>]="<%=emailArray%>";
+						<%
+						i++;
+					}
+				}catch(Exception e){}
+				finally{}
+				
 				foodingbean.DBclose();
 			%>
 			var arraylength=<%=i %>
@@ -90,90 +94,112 @@
 			var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
 			
 			
-			
 			function Nknamecheck() {
 				var checked=0;
-				if(register.nkname.value.length<3){
-					document.getElementById('nknamecheck').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>문자로 시작하고 공백과 특수문자 없이 3자이상";
+				if(register.nkname.value.length<3||register.nkname.value.length>16){
+					document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
+					document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 				}else{
 					if(nknameexp.test(register.nkname.value)==true){
 						i=0;
 						while(i<=arraylength){
 							if(DBnkArray[i]==register.nkname.value){
 								checked=1;
-								document.getElementById('nknamecheck').innerHTML=" <img src='../img/no2.png' height='30px' width='30px' align='middle'>중복된 닉네임 입니다"
+								document.getElementById('nknameimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
+								document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다"
 							}
 							i++
 						}
 						if(checked==0){
-							document.getElementById('nknamecheck').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 닉네임 입니다";
+							document.getElementById('nknameimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+							document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다";
 						}
 					}else{
-						document.getElementById('nknamecheck').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>문자로 시작하고 공백과 특수문자 없이 3자이상";
+						document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3자이상";
+						document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 					}
 					
 				}
+				if(register.nkname.value=='운영자바보'){
+					document.getElementById('nknamecheck').innerHTML = "그런건 안대!";
+					document.getElementById('nknameimg').innerHTML = "<img src='../img/angry.png' height='30px' width='30px' align='middle'>";
+				}
+				
+				
 			};
 			
 			function Idcheck() {
 				var checked=0;
 				if(register.id.value.length<8){
-					document.getElementById('idcheck').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>문자로 시작하고 공백과 특수문자 없이 8자이상";
+					document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
+					document.getElementById('idimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 				}else{
 					if(idexp.test(register.id.value)==true){
 						i=0;
 						while(i<=arraylength){
 							if(DBidArray[i]==register.id.value){
 								checked=1;
-								document.getElementById('idcheck').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>중복된 아이디 입니다"
+								document.getElementById('idcheck').innerHTML="중복된 아이디 입니다"
+									document.getElementById('idimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
 							}
 							i++
 						}
 						if(checked==0){
-							document.getElementById('idcheck').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 아이디 입니다";
+							document.getElementById('idcheck').innerHTML="사용 가능한 아이디 입니다";
+							document.getElementById('idimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 						}
 					}else{
-						document.getElementById('idcheck').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>문자로 시작하고 공백과 특수문자 없이 8자이상";
+						document.getElementById('idcheck').innerHTML="문자로 시작하고 공백과 특수문자 없이 8자이상";
+						document.getElementById('idimg').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 					}
 				}
 			};
 			function Emailcheck() {
 				var checked=0;
 				if(emailexp.test(register.email.value)==false){
-					document.getElementById('emailcheck').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>이메일 형식이 맞지 않습니다";
+					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
+					document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
 				}else{
 					i=0;
 					while(i<=arraylength){
 						if(DBemailArray[i]==register.email.value){
 							checked=1;
-							document.getElementById('emailcheck').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>중복된 이메일 입니다"
+							document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다"
+								document.getElementById('emailimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
 						}
 						i++
 					}
 					if(checked==0){
-						document.getElementById('emailcheck').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 이메일 입니다";
+						document.getElementById('emailcheck').innerHTML="사용 가능한 이메일 입니다";
+						document.getElementById('emailimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 					}
 				}
 			};
 			
 			function Passwdcheck() {
 				if(pwexp.test(register.passwd.value)==false){
-					document.getElementById('passwdcheck').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>8자 이상, 영문/특수문자/숫자가 하나 이상";
+					document.getElementById('passwdcheck').innerHTML = "8자 이상, 영문/특수문자/숫자가 하나 이상";
+					document.getElementById('passwdimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 				}else{
-					document.getElementById('passwdcheck').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 비밀번호 입니다";
+					document.getElementById('passwdcheck').innerHTML="사용 가능한 비밀번호 입니다";
+					document.getElementById('passwdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 				}
 				if(register.passwd.value==register.repasswd.value){
-					document.getElementById('repasswdcheck').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>비밀번호가 같습니다";
+					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
+					document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 				}else{
-					document.getElementById('repasswdcheck').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>비밀번호가 다릅니다";
+					document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
+					document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
 				}
 			};
 			
 			function Repasswdcheck() {
 					if(register.passwd.value==register.repasswd.value){
-						document.getElementById('repasswdcheck').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>비밀번호가 같습니다";
+						document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
+						document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 					}else{
-						document.getElementById('repasswdcheck').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>비밀번호가 다릅니다";
+						document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
+						document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
 					}
 			};
 			
@@ -310,7 +336,7 @@
 						</tr><tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="nknamecheck"><%=nknamecheck%></span>
+								<span id="nknameimg"></span><span id="nknamecheck"><%=nknamecheck%></span>
 							</td>
 						</tr>
 						
@@ -323,7 +349,7 @@
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="idcheck"><%=idcheck %></span>
+								<span id="idimg"></span><span id="idcheck"><%=idcheck %></span>
 							</td>
 						</tr>
 						<tr> 
@@ -336,7 +362,7 @@
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="passwdcheck"><%=passwdcheck%></span>
+								<span id="passwdimg"></span><span id="passwdcheck"><%=passwdcheck%></span>
 							</td>
 						</tr>
 						
@@ -350,7 +376,7 @@
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="repasswdcheck"><%=repasswdcheck%></span>
+								<span id="repasswdimg"></span><span id="repasswdcheck"><%=repasswdcheck%></span>
 							</td>
 						</tr>
 						
@@ -364,7 +390,7 @@
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="emailcheck"><%=emailcheck %></span>
+											<span id="emailimg"></span><span id="emailcheck"><%=emailcheck %></span>
 							</td>
 						</tr>
 						

@@ -1,0 +1,28 @@
+.listtable{
+	margin:auto;
+	width:750px;
+}
+
+.writerlong{
+	padding:3px;
+	margin:3px;
+	width:120px;
+	display:inline-block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+
+.titlelong{
+	margin:3px;
+	padding:3px;
+	width:300px;
+	display:inline-block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+
+.nogul{margin:auto;}
