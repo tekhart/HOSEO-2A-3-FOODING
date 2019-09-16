@@ -349,28 +349,20 @@ public class foodingBean {
       }
       
       //글삭제처리시 사용(delete문)<=deletePro.jsp페이지에서 사용
-      public int deleteArticle(int num, String passwd)
+      public int deleteArticle(int num)
           throws Exception {
           Connection conn = null;
           PreparedStatement pstmt = null;
           ResultSet rs= null;
-          String dbpasswd="";
           int x=-1;
           try {
   			conn = getConnection();
 
-              pstmt = conn.prepareStatement(
-              	"select passwd from recipes where num = ?");
-              pstmt.setInt(1, num);
-              rs = pstmt.executeQuery();
-              
-  			if(rs.next()){
   					pstmt = conn.prepareStatement(
               	      "delete from recipes where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
   					x= 1; //글삭제 성공
-  			}
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {

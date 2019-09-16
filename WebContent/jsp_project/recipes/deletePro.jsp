@@ -11,10 +11,9 @@
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
   String pageNum = request.getParameter("pageNum");
-  String passwd = request.getParameter("passwd");
 
   foodingBean dbPro = foodingBean.getInstance();
-  int check = dbPro.deleteArticle(num, passwd);
+  int check = dbPro.deleteArticle(num);
 
   if(check==1){
 %>

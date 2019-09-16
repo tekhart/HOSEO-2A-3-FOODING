@@ -309,7 +309,11 @@
 						<tr>
 							<td>닉네임</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();"><br>
+								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();">
+							</td>
+						</tr><tr>
+							<td></td>
+							<td colspan="2" height="30px">
 								<span id="nknamecheck"><%=nknamecheck%></span>
 							</td>
 						</tr>
@@ -317,7 +321,12 @@
 						<tr>
 							<td>아이디</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();"><br>
+								<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
 								<span id="idcheck"><%=idcheck %></span>
 							</td>
 						</tr>
@@ -325,23 +334,44 @@
 							<td>비밀번호</td>
 							<td colspan="2">
 								<input class="signupinputs" type="password" name="passwd"size="40"  value="<%= passwd%>" onkeyup="Passwdcheck();"><br>
+								
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
 								<span id="passwdcheck"><%=passwdcheck%></span>
 							</td>
 						</tr>
+						
 						<tr>
 							<td>비밀번호 확인</td>
 							<td colspan="2">
 								<input class="signupinputs" type="password" name="repasswd"size="40"  value="<%= repasswd%>" onkeyup="Repasswdcheck();"><br>
+								
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
 								<span id="repasswdcheck"><%=repasswdcheck%></span>
 							</td>
 						</tr>
+						
 						<tr>
 							<td>이메일</td>
 							<td colspan="2">
 								<input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onkeyup="Emailcheck();"><br>
+								
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
 								<span id="emailcheck"><%=emailcheck %></span>
 							</td>
 						</tr>
+						
 						<tr> 
 							<td>우편번호</td>
 							<td><input class="addrnuminputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>
