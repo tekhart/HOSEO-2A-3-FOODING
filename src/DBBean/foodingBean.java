@@ -312,21 +312,14 @@ public class foodingBean {
           PreparedStatement pstmt = null;
           ResultSet rs= null;
 
-          String dbpasswd="";
           String sql="";
   		int x=-1;
           try {
               conn = getConnection();
-              
-  			pstmt = conn.prepareStatement(
-              	"select passwd from recipes where num = ?");
-              pstmt.setInt(1, article.getNum());
-              rs = pstmt.executeQuery();
-              
-  			if(rs.next()){
+
   			 
                   sql="update recipes set title=?,contury=?,foodtype=?,ingredients=?";
-  			    sql+=",tools=? ,writerid=? ,content=? where num=?";
+  			    sql+=",tools=? ,content=? where num=?";
                   pstmt = conn.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
@@ -334,12 +327,10 @@ public class foodingBean {
                   pstmt.setString(3, article.getFoodtype());
                   pstmt.setString(4, article.getIngredients());
                   pstmt.setString(5, article.getTools());
-                  pstmt.setString(6, article.getWriterid());
-                  pstmt.setString(7, article.getContent());
-  			    pstmt.setInt(6, article.getNum());
+                  pstmt.setString(6, article.getContent());
+  			    pstmt.setInt(7, article.getNum());
                   pstmt.executeUpdate();
   				x= 1;
-  			}
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
