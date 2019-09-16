@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "DBBean.BoardDBBean" %>
+<%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "java.sql.Timestamp" %>
 
-<% request.setCharacterEncoding("utf-8");%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
 <%
-  int num = Integer.parseInt(request.getParameter("num"));
+	int num = Integer.parseInt(request.getParameter("num"));
   String pageNum = request.getParameter("pageNum");
   String passwd = request.getParameter("passwd");
 
-  BoardDBBean dbPro = BoardDBBean.getInstance(); 
+  BoardDataBean dbPro = BoardDataBean.getInstance(); 
   int check = dbPro.deleteArticle(num, passwd);
 
   if(check==1){

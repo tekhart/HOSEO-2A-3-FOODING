@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <%@ page import="java.sql.*"%>
 <%@page import="DBBean.foodingBean" %>
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingBean"/>
+<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
 
 <%
 
@@ -82,7 +82,7 @@
 					<%
 					i++;
 				}
-				%>
+			%>
 			var arraylength=<%=i %>
 			var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 			var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;

@@ -1,18 +1,21 @@
 package DBBean;
-import java.sql.Timestamp;
+
+import java.sql.*;
+import java.util.*;
+
 
 public class BoardDataBean {
-    private int num;
-	private String title;
-	private String contury;
-	private String foodtype;
-	private String ingredients;
-	private String tools;
-	private String writerid;
-	private Timestamp reg_date;
-	private int readcount;
-	private String content;
 	
+	int num;
+	String title;
+	String contury;
+	String foodtype;
+	String ingredients;
+	String tools;
+	String writerid;
+	Timestamp reg_date;
+	int readcount;
+	String content;
 	
 	public int getNum() {
 		return num;
@@ -76,5 +79,4 @@ public class BoardDataBean {
 	}
 
 	
-
 }

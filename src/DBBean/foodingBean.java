@@ -85,143 +85,305 @@ public class foodingBean {
 			con.close();
 		}catch(Exception e) {}
 	}
+    
+	private static foodingBean instance = new foodingBean();
+    //.jsp페이지에서 DB연동빈인 recipesDBBean클래스의 메소드에 접근시 필요
+    public static foodingBean getInstance() {
+        return instance;
+    }
 	
-	String nkname="";
-	String id="";
-	String passwd="";
-	String repasswd="";
-	String email="";
-	String addrnum="";
-	String address="";
-	String detailaddr="";
-	
-	String nknamecheck="";
-	String idcheck="";
-	String passwdcheck="";
-	String repasswdcheck="";
-	String emailcheck="";
-	
-	public void setAll(String nkname,String id,String passwd,String repasswd,String email,
-			String addrnum,String address,String detailaddr,String nknamecheck,String idcheck,
-			String passwdcheck,String repasswdcheck,String emailcheck) {
-		this.nkname=nkname;
-		this.id=id;
-		this.passwd=passwd;
-		this.repasswd=repasswd;
-		this.email=email;
-		this.addrnum=addrnum;
-		this.address=address;
-		this.detailaddr=detailaddr;
-		this.nknamecheck=nknamecheck;
-		this.idcheck=idcheck;
-		this.passwdcheck=passwdcheck;
-		this.repasswdcheck=repasswdcheck;
-		this.emailcheck=emailcheck;
-	}
-	public String getNkname() {
-		return nkname;
-	}
+    //커넥션풀로부터 Connection객체를 얻어냄
+    private Connection getConnection() throws Exception {
+    	try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch(Exception e) {
+			System.out.println("Driver Loading Error");
+		}
+    	String jdbcUrl="jdbc:mysql://localhost:3306/fooding_db";
+		String dbId="foodingid";
+		String dbPass="foodingpw";
+		
+        return DriverManager.getConnection(jdbcUrl,dbId,dbPass);
+    }
+ 
+    //recipes테이블에 글을 추가(inset문)<=writePro.jsp페이지에서 사용
+    public void insertArticle(BoardDataBean article) 
+            throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-	public void setNkname(String nkname) {
-		this.nkname = nkname;
-	}
+		int num=article.getNum();
+		int number=0;
+        String sql="";
 
-	public String getId() {
-		return id;
-	}
+        try {
+            conn = getConnection();
 
-	public void setId(String id) {
-		this.id = id;
-	}
+            pstmt = conn.prepareStatement("select max(num) from recipes");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next())
+		      number=rs.getInt(1)+1;
+		    else
+		      number=1; 
+		   
+		    
+            // 쿼리를 작성
+            sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
+		    sql+=") values(?,?,?,?,?,?,?,?)";
 
-	public String getPasswd() {
-		return passwd;
-	}
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, article.getTitle());
+            pstmt.setString(2, article.getContury());
+            pstmt.setString(3, article.getFoodtype());
+            pstmt.setString(4, article.getIngredients());
+            pstmt.setString(5, article.getTools());
+            pstmt.setString(6, article.getWriterid());
+			pstmt.setTimestamp(7, article.getReg_date());
+            pstmt.setString(8, article.getContent());
+			
+            pstmt.executeUpdate();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+    }
+    
+    //recipes테이블에 저장된 전체글의 수를 얻어냄(select문)<=list.jsp에서 사용
+	public int getArticleCount()
+             throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
+        int x=0;
 
-	public String getRepasswd() {
-		return repasswd;
-	}
+        try {
+            conn = getConnection();
+            
+            pstmt = conn.prepareStatement("select count(*) from recipes");
+            rs = pstmt.executeQuery();
 
-	public void setRepasswd(String repasswd) {
-		this.repasswd = repasswd;
-	}
+            if (rs.next()) {
+               x= rs.getInt(1);
+			}
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+		return x;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+	//글의 목록(복수개의 글)을 가져옴(select문) <=list.jsp에서 사용
+	public List<BoardDataBean> getArticles(int start, int end)
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+       List<BoardDataBean> articleList=null;
+       try {
+           conn = getConnection();
+           
+           pstmt = conn.prepareStatement(
+           	"select * from recipes order by num desc limit ? ");
+           pstmt.setInt(1, start-1);
+			pstmt.setInt(2, end);
+           rs = pstmt.executeQuery();
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+           if (rs.next()) {
+               articleList = new ArrayList<BoardDataBean>(end);
+               do{
+                 BoardDataBean article= new BoardDataBean();
+				  article.setNum(rs.getInt("num"));
+				  article.setTitle(rs.getString("title"));
+				  article.setWriterid(rs.getString("writerid"));
+                 
+                 
+			      article.setReg_date(rs.getTimestamp("reg_date"));
+				  article.setReadcount(rs.getInt("readcount"));
+                 
+                 article.setContent(rs.getString("content"));
+			       
+				  
+                 articleList.add(article);
+			    }while(rs.next());
+			}
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+           if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+           if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+           if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+       }
+		return articleList;
+   }
+ 
+	//글의 내용을 보기(1개의 글)(select문)<=content.jsp페이지에서 사용
+	public BoardDataBean getArticle(int num)
+            throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BoardDataBean article=null;
+        try {
+            conn = getConnection();
 
-	public String getAddrnum() {
-		return addrnum;
-	}
+            pstmt = conn.prepareStatement(
+            	"update recipes set readcount=readcount+1 where num = ?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
 
-	public void setAddrnum(String addrnum) {
-		this.addrnum = addrnum;
-	}
-	
-	public String getAddress() {
-		return address;
-	}
+            pstmt = conn.prepareStatement(
+            	"select * from recipes where num = ?");
+            pstmt.setInt(1, num);
+            rs = pstmt.executeQuery();
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+            if (rs.next()) {
+                article = new BoardDataBean();
+                article.setNum(rs.getInt("num"));
+				article.setTitle(rs.getString("title"));
+                article.setContury(rs.getString("contury"));
+                article.setFoodtype(rs.getString("foodtype"));
+                article.setIngredients(rs.getString("ingredients"));
+			    article.setTools(rs.getString("tools"));
+				article.setWriterid(rs.getString("writerid"));
+                article.setReg_date(rs.getTimestamp("reg_date"));
+			    article.setReadcount(rs.getInt("readcount"));     
+                article.setContent(rs.getString("content"));
+			}
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+		return article;
+    }
+    
+	//글 수정폼에서 사용할 글의 내용(1개의 글)(select문)<=updateForm.jsp에서 사용
+	public BoardDataBean updateGetArticle(int num)
+	          throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        BoardDataBean article=null;
+	        try {
+	            conn = getConnection();
 
-	public String getDetailaddr() {
-		return detailaddr;
-	}
+	            pstmt = conn.prepareStatement(
+	            	"select * from recipes where num = ?");
+	            pstmt.setInt(1, num);
+	            rs = pstmt.executeQuery();
 
-	public void setDetailaddr(String detailaddr) {
-		this.detailaddr = detailaddr;
-	}
+	            if (rs.next()) {
+	            	article = new BoardDataBean();
+	                article.setNum(rs.getInt("num"));
+					article.setTitle(rs.getString("title"));
+	                article.setContury(rs.getString("contury"));
+	                article.setFoodtype(rs.getString("foodtype"));
+	                article.setIngredients(rs.getString("ingredients"));
+				    article.setTools(rs.getString("tools"));
+					article.setWriterid(rs.getString("writerid"));
+	                article.setReg_date(rs.getTimestamp("reg_date"));
+				    article.setReadcount(rs.getInt("readcount"));     
+	                article.setContent(rs.getString("content"));     
+				}
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+			return article;
+	    }
 
-	public String getNknamecheck() {
-		return nknamecheck;
-	}
+    //글 수정처리에서 사용(update문)<=updatePro.jsp에서 사용
+    public int updateArticle(BoardDataBean article)
+            throws Exception {
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+          ResultSet rs= null;
 
-	public void setNknamecheck(String nknamecheck) {
-		this.nknamecheck = nknamecheck;
-	}
+          String dbpasswd="";
+          String sql="";
+  		int x=-1;
+          try {
+              conn = getConnection();
+              
+  			pstmt = conn.prepareStatement(
+              	"select passwd from recipes where num = ?");
+              pstmt.setInt(1, article.getNum());
+              rs = pstmt.executeQuery();
+              
+  			if(rs.next()){
+  			 
+                  sql="update recipes set title=?,contury=?,foodtype=?,ingredients=?";
+  			    sql+=",tools=? ,writerid=? ,content=? where num=?";
+                  pstmt = conn.prepareStatement(sql);
 
-	public String getIdcheck() {
-		return idcheck;
-	}
+                  pstmt.setString(1, article.getTitle());
+                  pstmt.setString(2, article.getContury());
+                  pstmt.setString(3, article.getFoodtype());
+                  pstmt.setString(4, article.getIngredients());
+                  pstmt.setString(5, article.getTools());
+                  pstmt.setString(6, article.getWriterid());
+                  pstmt.setString(7, article.getContent());
+  			    pstmt.setInt(6, article.getNum());
+                  pstmt.executeUpdate();
+  				x= 1;
+  			}
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          } finally {
+  			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+              if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+              if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+          }
+  		return x;
+      }
+      
+      //글삭제처리시 사용(delete문)<=deletePro.jsp페이지에서 사용
+      public int deleteArticle(int num, String passwd)
+          throws Exception {
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+          ResultSet rs= null;
+          String dbpasswd="";
+          int x=-1;
+          try {
+  			conn = getConnection();
 
-	public void setIdcheck(String idcheck) {
-		this.idcheck = idcheck;
-	}
+              pstmt = conn.prepareStatement(
+              	"select passwd from recipes where num = ?");
+              pstmt.setInt(1, num);
+              rs = pstmt.executeQuery();
+              
+  			if(rs.next()){
+  					pstmt = conn.prepareStatement(
+              	      "delete from recipes where num=?");
+                      pstmt.setInt(1, num);
+                      pstmt.executeUpdate();
+  					x= 1; //글삭제 성공
+  			}
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          } finally {
+              if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+              if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+              if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+          }
+  		return x;
+      }
 
-	public String getPasswdcheck() {
-		return passwdcheck;
-	}
-
-	public void setPasswdcheck(String passwdcheck) {
-		this.passwdcheck = passwdcheck;
-	}
-
-	public String getRepasswdcheck() {
-		return repasswdcheck;
-	}
-
-	public void setRepasswdcheck(String repasswdcheck) {
-		this.repasswdcheck = repasswdcheck;
-	}
-
-	public String getEmailcheck() {
-		return emailcheck;
-	}
-
-	public void setEmailcheck(String emailcheck) {
-		this.emailcheck = emailcheck;
-	}
-	
 	
 
 }

@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "DBBean.BoardDBBean" %>
+<%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "java.sql.Timestamp" %>
 
-<% request.setCharacterEncoding("utf-8");%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
 <jsp:useBean id="article" scope="page" class="DBBean.BoardDataBean">
    <jsp:setProperty name="article" property="*"/>
 </jsp:useBean>
 <%
- 
-    String pageNum = request.getParameter("pageNum");
+	String pageNum = request.getParameter("pageNum");
 
-	BoardDBBean dbPro = BoardDBBean.getInstance();
+	BoardDataBean dbPro = BoardDataBean.getInstance();
     int check = dbPro.updateArticle(article); 
 
     if(check==1){

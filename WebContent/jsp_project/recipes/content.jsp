@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "DBBean.BoardDBBean" %>
+<%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%@ include file="color.jsp"%>
@@ -12,16 +12,15 @@
 </head>
 <body bgcolor="<%=bodyback_c%>">
 <%
-   int num = Integer.parseInt(request.getParameter("num"));
+	int num = Integer.parseInt(request.getParameter("num"));
    String pageNum = request.getParameter("pageNum");
 
    SimpleDateFormat sdf = 
         new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
    try{
-      BoardDBBean dbPro = BoardDBBean.getInstance(); 
+      BoardDataBean dbPro = BoardDataBean.getInstance(); 
       BoardDataBean article =  dbPro.getArticle(num);
-  
 %>
 
 <p>글내용 보기</p>

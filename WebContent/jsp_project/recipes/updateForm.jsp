@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "ch13.board.BoardDBBean" %>
-<%@ page import = "ch13.board.BoardDataBean" %>
+    <%@ page import="DBBean.foodingBean" %>
+    <%@ page import="DBBean.foodingDataBean" %>
 <%@ include file="color.jsp"%>
 <html>
 <head>
@@ -14,8 +14,8 @@
   int num = Integer.parseInt(request.getParameter("num"));
   String pageNum = request.getParameter("pageNum");
   try{
-      BoardDBBean dbPro = BoardDBBean.getInstance(); 
-      BoardDataBean article =  dbPro.updateGetArticle(num);
+	  foodingBean dbPro = foodingBean.getInstance(); 
+	  foodingDataBean article =  dbPro.updateGetArticle(num);
 
 %>
 

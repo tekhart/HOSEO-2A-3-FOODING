@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "ch13.board.BoardDBBean" %>
-<%@ page import = "ch13.board.BoardDataBean" %>
+<%@ page import = "DBBean.foodingBean" %>
+<%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%@ include file="color.jsp"%>
@@ -26,7 +26,7 @@
     int number = 0;
     List<BoardDataBean> articleList = null; 
     
-    BoardDBBean dbPro = BoardDBBean.getInstance();
+    foodingBean dbPro = foodingBean.getInstance();
     count = dbPro.getArticleCount();
     
     if (count > 0) {
@@ -35,17 +35,38 @@
 
 	number = count-(currentPage-1)*pageSize;
 %>
+
+<!DOCTYPE html>
 <html>
 <head>
-<link href="style.css" rel="stylesheet" type="text/css">
-<title>게시판</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="../css/common.css">
+
+<style>
+
+
+
+
+
+</style>
+
+<title>Sign in</title>
+
+<script type="text/javascript">
+
+</script>
+
 </head>
-<body bgcolor="<%=bodyback_c%>">
+<body>
+<%@include file="../general_included/topbar.jsp"%>
+
+<div id="maindiv">
 <p>글목록(전체 글:<%=count%>)</p>
 
 <table>
   <tr>
-    <td align="right" bgcolor="<%=value_c%>">
+    <td align="right">
        <a href="writeForm.jsp">글쓰기</a>
     </td>
   </tr>
@@ -62,7 +83,7 @@
 
 <% } else {%>
 <table> 
-    <tr height="30" bgcolor="<%=value_c%>"> 
+    <tr height="30"> 
       <td align="center"  width="50"  >번 호</td> 
       <td align="center"  width="250" >제   목</td> 
       <td align="center"  width="100" >작성자</td>
@@ -71,33 +92,19 @@
       <td align="center"  width="100" >IP</td>    
     </tr>
 <%  
-   for (int i = 0 ; i < articleList.size() ; i++) {
-       BoardDataBean article = articleList.get(i);
+   for (int i = 0 ; i < articleList.size(); i++) {
+	   BoardDataBean article = articleList.get(i);
 %>
    <tr height="30">
     <td  width="50" > <%=number--%></td>
-    <td  width="250" align="left">
-<%
-	int wid=0; 
-	if(article.getRe_level()>0){
-	   wid=5*(article.getRe_level());
-%>
-	  <img src="images/level.png" width="<%=wid%>" height="16">
-	  <img src="images/re.png">
-<%  }else{%>
-	  <img src="images/level.png" width="<%=wid%>" height="16">
-<%  }%>
-           
+    <td  width="250" align="left">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
-           <%=article.getSubject()%></a> 
-<% if(article.getReadcount()>=20){%>
-         <img src="images/hot.gif" border="0"  height="16"><%}%> </td>
+           <%=article.getTitle()%></a>  </td>
     <td width="100" align="left"> 
-       <a href="mailto:<%=article.getEmail()%>"><%=article.getWriter()%></a>
+       <%=article.getWriterid()%></a>
     </td>
     <td width="150"><%= sdf.format(article.getReg_date())%></td>
     <td width="50"><%=article.getReadcount()%></td>
-    <td width="100" ><%=article.getIp()%></td>
   </tr>
 <%}%>
 </table>
@@ -131,6 +138,16 @@
         }
     }
 %>
+</div>
+
+
+
+<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
+<pre>
+Create by FOODING
+고객문의 1544-XXXX
+JSP Project 2019 2A03</pre>
+</div>
 
 </body>
 </html>

@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="DBBean.BoardDBBean" %>
+    <%@ page import="DBBean.foodingBean" %>
     <%@ page import="java.sql.Timestamp" %>
     
     <% request.setCharacterEncoding("utf-8"); %>
     
-<jsp:useBean id="article" scope="page" class="DBBean.BoardDataBean">
+<jsp:useBean id="article" scope="page" class="DBBean.foodingDataBean">
 	<jsp:setProperty name="article" property="*"/>
 </jsp:useBean>    
 
 <%
 	article.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
-	BoardDBBean dbPro = BoardDBBean.getInstance();
+	foodingBean dbPro = foodingBean.getInstance();
 	dbPro.insertArticle(article);
-	
-
 	response.sendRedirect("list.jsp");
 %>
