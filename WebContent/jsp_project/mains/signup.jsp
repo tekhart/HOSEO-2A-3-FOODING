@@ -197,17 +197,17 @@
 			
 				
 			
-					if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 닉네임 입니다"){
+					if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
 						alert("닉네임을 확인해주세요");
 						register.nkname.focus();
 						return;
 					}
-					if(register.id.value==""||document.getElementById('idcheck').innerHTML!="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 아이디 입니다"){
+					if(register.id.value==""||document.getElementById('idcheck').innerHTML!="사용 가능한 아이디 입니다"){
 						alert("아이디를 확인해주세요");
 						register.id.focus();
 						return;
 					}
-					if(register.passwd.value==""||document.getElementById('passwdcheck').innerHTML!="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>사용 가능한 비밀번호 입니다"){
+					if(register.passwd.value==""||document.getElementById('passwdcheck').innerHTML!="사용 가능한 비밀번호 입니다"){
 						alert("비밀번호를 입력해주세요");
 						register.passwd.focus();
 						return;
@@ -260,11 +260,11 @@
 				register.address.value="";
 				register.detailaddr.value="";
 				
-				document.getElementById('nknamecheck').innerHTML="&nbsp;";
-				document.getElementById('idcheck').innerHTML="&nbsp;";
-				document.getElementById('passwdcheck').innerHTML="&nbsp;";
-				document.getElementById('repasswdcheck').innerHTML="&nbsp;";
-				document.getElementById('emailcheck').innerHTML="&nbsp;";
+				document.getElementById('nknamecheck').innerHTML="";
+				document.getElementById('idcheck').innerHTML="";
+				document.getElementById('passwdcheck').innerHTML="";
+				document.getElementById('repasswdcheck').innerHTML="";
+				document.getElementById('emailcheck').innerHTML="";
 			}
 		
 		
@@ -305,41 +305,69 @@
 						<tr>
 							<td>닉네임</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();"><br>
+								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();">
 							</td>
-						</tr>
-						<tr>
-						<td></td><td><span id="nknamecheck"><%=nknamecheck%></span></td>
+						</tr><tr>
+							<td></td>
+							<td colspan="2" height="30px">
+								<span id="nknamecheck"><%=nknamecheck%></span>
+							</td>
 						</tr>
 						
 						<tr>
 							<td>아이디</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();"><br>
-								<span id="idcheck">&nbsp;<%=idcheck %></span>
+								<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
+								<span id="idcheck"><%=idcheck %></span>
 							</td>
 						</tr>
 						<tr> 
 							<td>비밀번호</td>
 							<td colspan="2">
 								<input class="signupinputs" type="password" name="passwd"size="40"  value="<%= passwd%>" onkeyup="Passwdcheck();"><br>
-								<span id="passwdcheck">&nbsp;<%=passwdcheck%></span>
+								
 							</td>
 						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
+								<span id="passwdcheck"><%=passwdcheck%></span>
+							</td>
+						</tr>
+						
 						<tr>
 							<td>비밀번호 확인</td>
 							<td colspan="2">
 								<input class="signupinputs" type="password" name="repasswd"size="40"  value="<%= repasswd%>" onkeyup="Repasswdcheck();"><br>
-								<span id="repasswdcheck">&nbsp;<%=repasswdcheck%></span>
+								
 							</td>
 						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
+								<span id="repasswdcheck"><%=repasswdcheck%></span>
+							</td>
+						</tr>
+						
 						<tr>
 							<td>이메일</td>
 							<td colspan="2">
 								<input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onkeyup="Emailcheck();"><br>
-								<span id="emailcheck">&nbsp;<%=emailcheck %></span>
+								
 							</td>
 						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
+								<span id="emailcheck"><%=emailcheck %></span>
+							</td>
+						</tr>
+						
 						<tr> 
 							<td>우편번호</td>
 							<td><input class="addrnuminputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>

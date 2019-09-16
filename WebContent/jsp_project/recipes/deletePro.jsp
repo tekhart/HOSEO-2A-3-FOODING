@@ -13,7 +13,7 @@
   String pageNum = request.getParameter("pageNum");
   String passwd = request.getParameter("passwd");
 
-  BoardDataBean dbPro = BoardDataBean.getInstance();
+  foodingBean dbPro = foodingBean.getInstance();
   int check = dbPro.deleteArticle(num, passwd);
 
   if(check==1){

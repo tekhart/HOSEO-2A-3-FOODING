@@ -6,7 +6,7 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingBean"/>
+<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
 <!DOCTYPE html>
 <html>
 <head>
