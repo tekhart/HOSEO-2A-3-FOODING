@@ -6,6 +6,11 @@
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean=new foodingBean();
 %>
+<head>
+
+<link rel="stylesheet" href="../css/common.css">
+
+
 <script type="text/javascript">
 	
 </script>
@@ -60,7 +65,7 @@
 		        							<a href="#">전체 레시피</a>
 							        		<a href="#">인기 레시피</a>
 							        		<a href="#">맞춤 레시피</a>
-							       			<a href="#">레시피 작성</a>
+							       			<a href="../recipes/writeForm.jsp">레시피 작성</a>
 						       			</center>
 						       		</div>
 	       						</div>
@@ -108,3 +113,4 @@
         </tr>
     </table>
 </div>
+</head>
