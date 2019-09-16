@@ -82,8 +82,14 @@
 						<%
 						i++;
 					}
+<<<<<<< HEAD
 				}catch(Exception e){}
 				finally{}
+=======
+				}catch(Exception e){
+					
+				}finally{}
+>>>>>>> refs/remotes/origin/master
 				
 				foodingbean.DBclose();
 			%>

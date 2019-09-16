@@ -6,22 +6,68 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 <link rel="stylesheet" href="../css/common.css">
 <style>
+	
 
+	#maindiv{	font-family:"Bauhaus ITC";
+		font-size:22px;
+		color:black;
+		border-top:5px solid #ffbb00;
+		
+		}	
+	.writetitle {
+		margin-left:140px;
+		padding:30px;	
+		font-size:25px;
+		}
+	#writetable{
+		margin:auto;
+		padding:40px;
 
-
-
+		
+		}
+	#space{
+		width:100%;
+		height:100%;
+		background-color:#F2F2F2;
+	}
+	#writespace{
+		padding:20px;
+	}
+	.signupinput{
+		width:750px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+	}
+	
+	#button123{
+		font-family:"Bauhaus ITC";
+		font-size:22px;
+		width:10%;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+		margin-bottom:35px;
+	}
 
 </style>
-
-<title>글 쓰기</title>
 
 
 <script type="text/javascript" src="script.js"></script>
 
 </head>
-<body>
+<body id="writebody">
 <%@include file="../general_included/topbar.jsp"%>
 
 <div id="maindiv">
@@ -38,26 +84,33 @@
 		}
 		idlogin=(String)session.getAttribute("idlogin");
 %>
-<p>글쓰기</p>
+<div class="writetitle">
+	레시피 작성
+</div>
+
+<div id="space">
+
+
+
 <form method="post" name="writeform" 
 	action="writePro.jsp" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="<%=num %>">
 <input type="hidden" name="writerid" value="<%=idlogin %>">
-
-<table>
+<center>
+<table id="writetable" align="center" border-spacing="10px">
 	<tr>
 		<td align="right" colspan="2">
-		<a href="list.jsp">글목록</a>
+		
 		</td>
 	</tr>
 	<tr>
-		<td width="100" align="center">제목</td>
+		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 		<td width="330" align="left">
-		<input type="text" size="40" maxlength="50" name="title"
+		<input type="text" size="40" maxlength="50" name="title" class="signupinput"
 		 style="ime-mode:active;"></td>
 	</tr>
 	<tr>
-		<td align="center">요리분류</td>
+		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 		<td align="left">
 			<select name='contury'
 				style="ime-mode:inactive;">
@@ -83,38 +136,42 @@
 		</td>
 	</tr>
 	<tr>
-		<td align="center">필요한 재료</td>
+		<td align="center" id="writespace">필요한 재료</td>
 		<td align="left">
-			<input type="text" size="40" maxlength="30" name="ingredients"
+			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinput"
 			style="ime-mode:inactive;"></td>
 	</tr>
 	<tr>
-		<td align="center">사용되는 도구</td>
+		<td align="center" id="writespace">사용되는 도구</td>
 		<td align="left">
-			<input type="text" size="40" maxlength="30" name="tools"
+			<input type="text" size="40" maxlength="30" name="tools" class="signupinput"
 			style="ime-mode:inactive;"></td>
 	</tr>
 	<tr>
-		<td align="center">내용</td>
+		<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 		<td align="left">
-			<textarea name="content" size="40" rows="13" cols="40"
+			<textarea name="content" size="40" rows="30" cols="40" class="signupinput"
 			style="ime-mode:inactive;"></textarea></td>
 	</tr>
 	
+</table>
+	
 	<tr>
-		<td colspan=2 align="center">
-			<input type="submit" value="글쓰기">
-			<input type="reset" value="다시 작성">
-			<input type="button" value="목록보기" OnClick="window.location='../recipes/list.jsp'">
+		<td colspan=2 align="center" >
+			<input type="submit" id="button123" value="확인">
+			<input type="reset" id="button123" value="다시 작성">
+			<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
 		</td>
 	</tr>
-</table>
+	
+
+</center>
 <%
 	}catch(Exception e){}
 %>
 </form>
 </div>
-
+</div>
 
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
