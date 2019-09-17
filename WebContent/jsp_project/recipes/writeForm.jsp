@@ -8,6 +8,7 @@
 
 
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="style.css">
 <style>
 
 </style>
@@ -103,15 +104,16 @@
 			style="ime-mode:inactive;"></textarea></td>
 	</tr>
 	
-</table>
-	
-	<tr>
-		<td colspan=2 align="center" >
+		<tr><td></td>
+		<td align="left" >
 			<input type="submit" id="button123" value="확인">
 			<input type="reset" id="button123" value="다시 작성">
 			<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
 		</td>
 	</tr>
+	
+	
+</table>
 	
 
 </center>
