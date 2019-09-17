@@ -67,13 +67,17 @@
 
 <div id="space">
 
-<br>
+
 <form method="post" name="writeform" 
 action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="<%= num%>">
 
-<table id="writetable">
-	
+<table id="writetable" align="center" border-spacing="10px">
+	<tr>
+		<td align="right" colspan="2" >
+		
+		</td>
+	</tr>
 	<tr>
 		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 		<td width="330" align="left">
@@ -170,12 +174,12 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
    </td>
  </tr>
  </table>
-</form>
+
 <%
 }catch(Exception e){}%>      
-      
+      </form>
 </div>
-
+</div>
 
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">

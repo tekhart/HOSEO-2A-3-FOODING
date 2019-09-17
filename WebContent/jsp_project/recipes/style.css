@@ -51,3 +51,30 @@
 		margin:10px 10px 10px 0px;
 		
 	}
+	
+	#contenttable{
+		margin:auto;
+		padding:40px;	
+		border-collapse:collapse;
+		border-spacing:0px;
+		}
+		
+	.contentline{
+		padding:30px;
+ 		border-top:5px solid #ffbb00;
+ 		border-bottom:2px solid #ffbb00;
+ 	
+ 	} 
+ 	.contentline2{
+		padding:30px;
+ 		border-top:2px solid #ffbb00;
+	}
+	
+	#extraline{
+		font-size:21px;
+		color:#A4A4A4;
+		border-bottom:2px solid #ffbb00;
+		border-collapse:collapse;
+		border-spacing:0px;
+	}
+	
