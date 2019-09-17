@@ -84,7 +84,8 @@
 
 <% } else {%>
 <table> 
-    <tr height="30"> 
+    <tr height="30">
+      <td align="center"  width="50" >번호</td> 
       <td align="center"  width="250" >제   목</td> 
       <td align="center"  width="100" >작성자</td>
       <td align="center"  width="150" >작성일</td> 
@@ -96,6 +97,7 @@
 	   String writerid=article.getWriterid();
 %>
    <tr height="30">
+    <td  width="50" align="left"><%=article.getNum()%></td>
     <td  width="250" align="left">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]<%=article.getTitle()%></a>  </td>
@@ -140,7 +142,7 @@
 %>
 </div>
 
-
+<br><br><br><br><br><br>
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 <pre>
