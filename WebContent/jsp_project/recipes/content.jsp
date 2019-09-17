@@ -40,7 +40,7 @@
       BoardDataBean article =  dbPro.getArticle(num);
 %>
 
-<p>글내용 보기</p>
+<p><%=article.getTitle()%></p>
 
 <form>
 <table>  
@@ -60,11 +60,7 @@
     <td align="center" width="125" align="center">
 	     <%= sdf.format(article.getReg_date())%></td>
   </tr>
-  <tr height="30">
-    <td align="center" width="125" >글제목</td>
-    <td align="center" width="375" align="center" colspan="3">
-	     <%=article.getTitle()%></td>
-  </tr>
+ 
   <tr>
     <td align="center" width="125" >글내용</td>
     <td align="left" width="375" colspan="3">

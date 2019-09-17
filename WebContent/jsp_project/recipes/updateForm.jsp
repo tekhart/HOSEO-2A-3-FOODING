@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="style.css">
+
 <style>
 </style>
 
@@ -59,27 +61,27 @@
 			conturyselected=7;
 		}
 %>
+<div class="writetitle">
+		글수정
+</div>
 
-<p>글수정</p>
+<div id="space">
+
 <br>
 <form method="post" name="writeform" 
 action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="<%= num%>">
 
-<table>
+<table id="writetable">
+	
 	<tr>
-		<td align="right" colspan="2">
-		<a href="list.jsp">글목록</a>
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="center">제목</td>
+		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 		<td width="330" align="left">
-		<input type="text" size="40" maxlength="50" name="title"
+		<input type="text" size="40" maxlength="50" name="title" class="signupinput"
 		 style="ime-mode:active;" value=" <%= article.getTitle()%>"></td>
 	</tr>
 	<tr>
-		<td align="center">요리분류</td>
+		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 		<td align="left">
 			<select name='contury'
 				style="ime-mode:inactive;">
@@ -142,28 +144,28 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 		</td>
 	</tr>
 	<tr>
-		<td align="center">필요한 재료</td>
+		<td align="center" id="writespace">필요한 재료</td>
 		<td align="left">
-			<input type="text" size="40" maxlength="30" name="ingredients"
+			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinput"
 			style="ime-mode:inactive;" value=" <%= article.getIngredients()%>"></td>
 	</tr>
 	<tr>
-		<td align="center">사용되는 도구</td>
+		<td align="center" id="writespace">사용되는 도구</td>
 		<td align="left">
-			<input type="text" size="40" maxlength="30" name="tools"
+			<input type="text" size="40" maxlength="30" name="tools" class="signupinput"
 			style="ime-mode:inactive;" value=" <%= article.getTools()%>"></td>
 	</tr>
 	<tr>
-		<td align="center">내용</td>
+		<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 		<td align="left">
-			<textarea name="content" size="40" rows="13" cols="40"
+			<textarea name="content" size="40" rows="30" cols="40" class="signupinput"
 			style="ime-mode:inactive;"><%= article.getContent()%></textarea></td>
 	</tr>
-	<tr>
-   <td colspan=2  align="center"> 
-     <input type="submit" value="글수정" >  
-     <input type="reset" value="다시작성">
-     <input type="button" value="목록보기" 
+	<tr><td></td>
+   <td align="left">  
+     <input type="submit" value="확인" id="button123">  
+     <input type="reset" value="다시작성" id="button123">
+     <input type="button" value="글목록" id="button123"
        onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
    </td>
  </tr>
