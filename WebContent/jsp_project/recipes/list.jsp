@@ -103,27 +103,29 @@
 
 
 
+<table class="listtop"><tr><td>
 
-
-<table class="listtop"><tr><td align="left">
 전체 레시피(<%=number %>)
-</td>
-<td>
 
-<table class="listtop"><tr><td></td>
-<td>
-<table class="search"><tr><td align="right">
-  <form method="post" action="list.jsp" class="search">
-	<input type="text" name="search" class="searchbar"></td><td align="left">
-	<input type="submit" value="" class="searchbt"></td>
-	</form></tr></table>
+</td><td>
+<table class="searchtable"><tr><td class="searchtd">
 
-</td>
-<td align="right">
-<input type="button" onclick="location.href='list.jsp'" value="목록">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기">
-  
-  </td></tr></table>
+
+  			<form method="post" action="list.jsp" class="searh">
+			<input type="text" name="search" class="searchbar">	
+</td><td class="searchbttd" width="50px">
+			<input type="submit" value="검색" class="searchbotton">
+			</form>
+	
+	
+	
+</td></tr></table>
+</td><td><table align="right"><tr><td>
+
+<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
+<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+  </td></tr></table></td></tr></table>
+
 
 
 
@@ -134,7 +136,7 @@
 <table class="listtable"> 
     <tr height="50"> 
 	  <td align="center"  width="50" class="listcolor">번호</td>
-      <td align="center"  width="310" class="listcolor">제목</td> 
+      <td align="center"  width="350" class="listcolor">제목</td> 
       <td align="center"  width="100" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
       <td align="center"  width="50" class="listcolor">조회</td> 
