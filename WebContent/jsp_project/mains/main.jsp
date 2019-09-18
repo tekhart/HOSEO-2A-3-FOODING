@@ -68,9 +68,14 @@
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
-
+        timeoutslide();
+        
         function plusSlides(n) {
           showSlides(slideIndex += n);
+        }
+		function timeoutslide(){
+	        showSlides(slideIndex);
+	       setTimeout(timeoutslide, 3000); 
         }
 
         function currentSlide(n) {
@@ -93,7 +98,6 @@
           dots[slideIndex-1].className += " active";
           slideIndex++;
           if(slideIndex>=4){slideIndex-=3}
-          setTimeout(showSlides, 3000); 
         }
 
     </script>

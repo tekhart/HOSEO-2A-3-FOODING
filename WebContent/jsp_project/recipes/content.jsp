@@ -91,10 +91,30 @@
     </td>
   </tr>
 </table>
-<%
+</form>      
+
+ <table>
+	<form method="post" name="commentform" 
+			action="commentspro.jsp" >
+	<input type="hidden" name="num" value="<%=num %>">
+	<input type="hidden" name="writerid" value="<%=idlogin %>">
+	  <tr>
+ 		<td>
+		 <textarea name="content" size="40" rows="5" cols="40" class="signupinput"
+					style="ime-mode:inactive;"></textarea>
+		</td>
+	  </tr>
+	  <tr>
+	  	<td>
+					<input type="submit"  value="댓글 쓰기">
+		</td>
+		</tr>
+		 </form>
+		 
+ </table>
+ <%
  }catch(Exception e){} 
  %>
-</form>      
 </div>
 
 

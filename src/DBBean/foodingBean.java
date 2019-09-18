@@ -432,6 +432,74 @@ public class foodingBean {
           }
   		return x;
       }
+      public List<commentDataBean> getCommentsArticles(int start, int end,int num)
+              throws Exception {
+         Connection conn = null;
+         PreparedStatement pstmt = null;
+         ResultSet rs = null;
+         List<commentDataBean> articleList=null;
+         try {
+             conn = getConnection();
+             
+             pstmt = conn.prepareStatement(
+             	"select * from recipe_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
+             pstmt.setInt(1, num);
+             pstmt.setInt(2, start-1);
+  			 pstmt.setInt(3, end);
+             rs = pstmt.executeQuery();
+
+             if (rs.next()) {
+                 articleList = new ArrayList<commentDataBean>(end);
+                 do{
+                	 commentDataBean article= new commentDataBean();
+                	 article.setNum(rs.getInt("num"));
+                	 article.setRootin(rs.getInt("rootin"));
+                	 article.setWriterid(rs.getString("writerid"));
+                	 article.setReg_date(rs.getTimestamp("reg_date"));
+                	 article.setReadcount(rs.getInt("readcount"));
+                	 article.setRef(rs.getInt("ref"));
+                	 article.setRe_step(rs.getInt("re_step"));
+                	 article.setRe_level(rs.getInt("re_level"));
+                	 article.setContent(rs.getString("content"));
+                   
+  			       
+  				  
+                   articleList.add(article);
+  			    }while(rs.next());
+  			}
+         } catch(Exception ex) {
+             ex.printStackTrace();
+         } finally {
+      	   DBclose();
+         }
+  		return articleList;
+     }
+      
+      public int getcommentArticleCount(int num)
+              throws Exception {
+         Connection conn = null;
+         PreparedStatement pstmt = null;
+         ResultSet rs = null;
+
+         int x=0;
+
+         try {
+             conn = getConnection();
+             
+             pstmt = conn.prepareStatement("select count(*) from recipe_comment where rootin=?");
+             pstmt.setInt(1, num);
+             rs = pstmt.executeQuery();
+
+             if (rs.next()) {
+                x= rs.getInt(1);
+ 			}
+         } catch(Exception ex) {
+             ex.printStackTrace();
+         } finally {
+         	DBclose();
+         }
+ 		return x;
+     }
 
 	
 
