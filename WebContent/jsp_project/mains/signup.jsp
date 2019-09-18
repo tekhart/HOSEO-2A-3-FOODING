@@ -330,7 +330,7 @@
 				<center>
 					<table>  
 						<tr>
-							<td>닉네임</td>
+							<td width="90px">닉네임</td>
 							<td colspan="2">
 								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();">
 							</td>
@@ -399,7 +399,9 @@
 							<td>우편번호</td>
 							<td><input class="addrnuminputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>
 							<td><input class="addressinputs" type="text" name="address" value="<%=address%>" onclick="ZipPopup();"></td>
-						</tr><tr>
+						</tr>
+						<tr><td></td><td>&nbsp;</td></tr>
+						<tr>
 							<td>주소</td> 
 							<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" size="40"  value="<%= detailaddr%>"></td>
 						</tr>
