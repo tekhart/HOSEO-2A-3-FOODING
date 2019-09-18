@@ -64,7 +64,7 @@
 		<td align="left">
 			<select name='contury'
 				style="ime-mode:inactive;">
-				<option value='' selected>-- 선택 --</option>
+				<option value='' selected disabled hidden >-- 선택 --</option>
     			<option value='한식'>한식</option>
     			<option value='양식'>양식</option>
     			<option value='일식'>일식</option>
@@ -74,7 +74,7 @@
 			</select>
 			<select name='foodtype'
 				style="ime-mode:inactive;">
-				<option value='' selected>-- 선택 --</option>
+				<option value='' selected disabled hidden>-- 선택 --</option>
     			<option value='밥류'>밥류</option>
     			<option value='빵류'>빵류</option>
     			<option value='반찬류'>반찬류</option>

@@ -45,14 +45,19 @@
 <p>글내용 보기</p>
 
 <form>
-<table>  
+<table> 
+<tr height="30">
+    <td align="center" width="125" >글제목</td>
+    <td align="center" width="375" align="center" colspan="3">
+	     <%=article.getTitle()%></td>
+  </tr>
   <tr height="30">
-    <td align="center" width="125" >조회수</td>
+    <td align="center" width="125" >분류</td>
     <td align="center" width="125" align="center">
-	     <%=article.getReadcount()%></td>
-	<td align="center" width="125" >조회수</td>
-    <td align="center" width="125" align="center">
-	     <%=article.getReadcount()%></td>
+	     <%=article.getContury()%></td>
+	<td align="center" width="125" align="center">
+	     <%=article.getFoodtype()%></td>
+	<td align="center" width="125" >조회수<%=article.getReadcount()%>회</td>
   </tr>
   <tr height="30">
     <td align="center" width="125" >작성자</td>
@@ -62,11 +67,7 @@
     <td align="center" width="125" align="center">
 	     <%= sdf.format(article.getReg_date())%></td>
   </tr>
-  <tr height="30">
-    <td align="center" width="125" >글제목</td>
-    <td align="center" width="375" align="center" colspan="3">
-	     <%=article.getTitle()%></td>
-  </tr>
+  
   <tr>
     <td align="center" width="125" >글내용</td>
     <td align="left" width="375" colspan="3">
