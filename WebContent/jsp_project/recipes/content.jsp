@@ -71,7 +71,7 @@
 <p>글내용 보기</p>
 
 <form>
-<table> 
+<table > 
 <tr height="30">
     <td align="center" width="125" >글제목</td>
     <td align="center" width="375" align="center" colspan="3">
@@ -122,62 +122,84 @@
 </table>
 </form>      
 
-<p>댓글 수:<%=count%></p>
- <table>
-	<form method="post" name="commentform" 
-			action="commentspro.jsp" >
-		<input type="hidden" name="num" value="<%=num %>">
-		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<input type="hidden" name="ref"  value="0">
-		<input type="hidden" name="re_step"  value="0">
-		<input type="hidden" name="re_level"  value="0">
-		<tr>
-			<td>
-				<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
-						style="ime-mode:inactive;"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-						<input type="submit"  value="댓글 쓰기">
-			</td>
-		</tr>
-		<% if (count == 0) { %>
 
+
+<p>댓글 수:<%=count%></p>
+
+
+	<%if(session.getAttribute("idlogin")==null){ %>
+		로그인을 하셔야 댓글을 쓸수 있습니다.
+	<%}else{ %>
+		 <table border="1">
+			<form method="post" name="commentform" 
+					action="commentspro.jsp" >
+				<input type="hidden" name="num" value="<%=num %>">
+				<input type="hidden" name="writerid" value="<%=idlogin %>">
+				<input type="hidden" name="ref"  value="0">
+				<input type="hidden" name="re_step"  value="0">
+				<input type="hidden" name="re_level"  value="0">
+				<tr>
+					<td colspan="3" width="0">
+						<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
+								style="ime-mode:inactive;"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" width="150">
+								<input type="submit"  value="댓글 쓰기">
+					</td>
+				</tr>
+			</form>
+		</table>
+	<%} %>
+
+	
+<% if (count == 0) { %>
+
+ <table border="1">
 		<tr>
 		    <td align="center">
 		              게시판에 저장된 글이 없습니다.
 		    </td>
 		</tr>
+</table>
 
 <% } else {%>
-<%  
-   for (int i = 0 ; i < commentList.size() ; i++) {
-		commentDataBean comments = commentList.get(i);
-%>
-   <tr height="30">
-    <td  width="250" align="left" rowspan="3">
-    <%=comments.getNum()%>
-	<%
-		int wid=0; 
-		if(comments.getRe_level()>0){
-		   wid=5*(comments.getRe_level());
-		}
-	%>
-		<div width="<%=wid%>" height="16">&nbsp;</div> 
-	<%if(wid==0){%>
-		ㄴ
-	<%} %>
-	
-	</td>
-    <td width="150"><%= sdf.format(article.getReg_date())%></td>
-  </tr>
 
-<%}}%>
-	</form>
+<%  
+	for (int i = 0 ; i < commentList.size() ; i++) {
+		commentDataBean comments = commentList.get(i);
+
+	int wid=0; 
+	if(comments.getRe_level()>0){
+	   wid=5*(comments.getRe_level());
+	}
+
+%>
+
+<table border="1" margin-left="<%=wid%>">
+	<tr height="30">
+		<td width="380"><%=foodingbean.findnkname(comments.getWriterid())%></td>
+	    <td width="400"><%= sdf.format(comments.getReg_date())%></td>
+	</tr>
+	<tr height="60">
+		<td colspan="2">
+			<%=comments.getContent()%>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" colspan="2">
+			<input type="button">
+			<input type="button">
+		</td>
+	</tr>
+
  </table>
- <%
- }catch(Exception e){} 
+<%
+				}
+
+			}
+		}catch(Exception e){} 
  %>
 </div>
 
