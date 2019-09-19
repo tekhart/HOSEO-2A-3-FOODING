@@ -109,6 +109,9 @@
     	   		&nbsp;&nbsp;&nbsp;&nbsp;
     	  <input type="button" value="글삭제" 
            		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+           		
+           		
+           		
         <%
         }
         %>
