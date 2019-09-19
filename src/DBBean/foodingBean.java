@@ -456,7 +456,6 @@ public class foodingBean {
                 	 article.setRootin(rs.getInt("rootin"));
                 	 article.setWriterid(rs.getString("writerid"));
                 	 article.setReg_date(rs.getTimestamp("reg_date"));
-                	 article.setReadcount(rs.getInt("readcount"));
                 	 article.setRef(rs.getInt("ref"));
                 	 article.setRe_step(rs.getInt("re_step"));
                 	 article.setRe_level(rs.getInt("re_level"));
@@ -475,7 +474,7 @@ public class foodingBean {
   		return articleList;
      }
       
-      public int getcommentArticleCount(int num)
+      public int getCommentArticleCount(int num)
               throws Exception {
          Connection conn = null;
          PreparedStatement pstmt = null;

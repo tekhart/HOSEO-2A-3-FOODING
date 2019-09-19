@@ -2,7 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "DBBean.foodingBean" %>
 <%@ page import = "DBBean.BoardDataBean" %>
+<%@ page import = "DBBean.commentDataBean" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
+<%@ page import = "java.util.List" %>
+<%!
+    int commentpageSize = 10;
+    SimpleDateFormat sdf = 
+        new SimpleDateFormat("yyyy-MM-dd HH:mm");
+%>
+<%		
+			
+		    
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,16 +42,30 @@
 
 <div id="maindiv">
 <%
-	int num = Integer.parseInt(request.getParameter("num"));
-   String pageNum = request.getParameter("pageNum");
-
-   SimpleDateFormat sdf = 
-        new SimpleDateFormat("yyyy-MM-dd HH:mm");
-   foodingBean foodingbean = new foodingBean();
-
    try{
-	   foodingBean dbPro = foodingBean.getInstance(); 
-      BoardDataBean article =  dbPro.getArticle(num);
+	   int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+	    foodingBean dbPro = foodingBean.getInstance();
+     	BoardDataBean article =  dbPro.getArticle(num);
+		
+		foodingBean foodingbean = new foodingBean();
+
+	 	String commnetpageNum = request.getParameter("commnetpageNum");
+
+	    if (commnetpageNum == null) {
+	    	commnetpageNum = "1";
+	    }
+	    int currentPage = Integer.parseInt(commnetpageNum);
+	    int startRow = (currentPage - 1) * commentpageSize + 1;
+	    int endRow = currentPage * commentpageSize;
+	    int count = 0;
+	    List<commentDataBean> commentList = null;
+	    count = dbPro.getCommentArticleCount(num);
+	    
+	    if (count > 0) {
+	        commentList = dbPro.getCommentsArticles(startRow, commentpageSize,num);
+	    }
+	    
 %>
 
 <p>글내용 보기</p>
@@ -96,24 +122,59 @@
 </table>
 </form>      
 
+<p>댓글 수:<%=count%></p>
  <table>
 	<form method="post" name="commentform" 
 			action="commentspro.jsp" >
-	<input type="hidden" name="num" value="<%=num %>">
-	<input type="hidden" name="writerid" value="<%=idlogin %>">
-	  <tr>
- 		<td>
-		 <textarea name="content" size="40" rows="5" cols="40" class="signupinput"
-					style="ime-mode:inactive;"></textarea>
-		</td>
-	  </tr>
-	  <tr>
-	  	<td>
-					<input type="submit"  value="댓글 쓰기">
-		</td>
+		<input type="hidden" name="num" value="<%=num %>">
+		<input type="hidden" name="writerid" value="<%=idlogin %>">
+		<input type="hidden" name="ref"  value="0">
+		<input type="hidden" name="re_step"  value="0">
+		<input type="hidden" name="re_level"  value="0">
+		<tr>
+			<td>
+				<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
+						style="ime-mode:inactive;"></textarea>
+			</td>
 		</tr>
-		 </form>
-		 
+		<tr>
+			<td>
+						<input type="submit"  value="댓글 쓰기">
+			</td>
+		</tr>
+		<% if (count == 0) { %>
+
+		<tr>
+		    <td align="center">
+		              게시판에 저장된 글이 없습니다.
+		    </td>
+		</tr>
+
+<% } else {%>
+<%  
+   for (int i = 0 ; i < commentList.size() ; i++) {
+		commentDataBean comments = commentList.get(i);
+%>
+   <tr height="30">
+    <td  width="250" align="left" rowspan="3">
+    <%=comments.getNum()%>
+	<%
+		int wid=0; 
+		if(comments.getRe_level()>0){
+		   wid=5*(comments.getRe_level());
+		}
+	%>
+		<div width="<%=wid%>" height="16">&nbsp;</div> 
+	<%if(wid==0){%>
+		ㄴ
+	<%} %>
+	
+	</td>
+    <td width="150"><%= sdf.format(article.getReg_date())%></td>
+  </tr>
+
+<%}}%>
+	</form>
  </table>
  <%
  }catch(Exception e){} 
