@@ -41,33 +41,30 @@ function Findid(){
 	<center>
 		<br>
 		<br>
+	
 	<input type="button" value="ID찾기" id="currentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
 	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">
 		
 		<form method="post" name="findid" action="findIDPro.jsp">
 			<br><br>
-			<P>= 회원정보에 등록한 닉네임과 이메일을 입력해주세요 =</P>
+			<P class="idpwp">회원정보에 등록한 닉네임과 이메일을 입력해주세요</P>
 			<br>
 			<table>
 				<tr>
+					
 					<td>
-						닉네임
-					</td>
-					<td>
-					<INPUT class="findinputs" type="text" name="nkname" maxlength="30" autofocus/> 
+					<INPUT class="findinputs" type="text" name="nkname" maxlength="30" placeholder="닉네임"/> 
 					</td>
 				</tr>
 				<tr>
+					
 					<td>
-						이메일
-					</td>
-					<td>
-					  <INPUT class="findinputs" type="text" name="email" maxlength="30" /> 
+					  <INPUT class="findinputs" type="text" name="email" maxlength="30" placeholder="이메일" /> 
 					</td>
 				</tr>
 			</table>
 			
-			 
+			 <br>
 			<input class="findbutton" type="button" value="찾기" onclick="Findid();"/>
 		</form>
 		<!-- find 버튼을 누르면  findIDPro.jsp로 넘어감  -->

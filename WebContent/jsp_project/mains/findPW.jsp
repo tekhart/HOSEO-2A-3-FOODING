@@ -46,27 +46,21 @@ function Findpw(){
 		
 		<form method="post" name="findpw" action="findPWPro.jsp">
 			<br><br>
-			<P>= 비밀번호를 찾고자 하는 아이디와 이메일을 입력해 주세요 =</P>
+			<P class="idpwp">비밀번호를 찾고자 하는 아이디와 이메일을 입력해 주세요</P>
 			<br>
 			<table>
 				<tr>
 					<td>
-						아이디
-					</td>
-					<td>
-					 <INPUT class="findinputs" type="text" name="id" maxlength="30" autofocus/>
+					 <INPUT class="findinputs" type="text" name="id" placeholder="아이디" maxlength="30"/>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						이메일
-					</td>
-					<td>
-					 <INPUT class="findinputs" type="text" name="email" maxlength="30" /> 
+					 <INPUT class="findinputs" type="text" name="email" placeholder="이메일" maxlength="30" /> 
 					</td>
 				</tr>
 			</table>
-			
+			<br>
 			<input class="findbutton" type="button" value="찾기" onclick="Findpw();"/>
 		</form>
 	</center>
