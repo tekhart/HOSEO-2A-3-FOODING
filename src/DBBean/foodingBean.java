@@ -171,7 +171,7 @@ public class foodingBean {
        try {
            conn = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
+           pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select writerid from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -195,7 +195,7 @@ public class foodingBean {
            conn = getConnection();
 
            pstmt = conn.prepareStatement(
-               "select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,? ");
+               "select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select writerid from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
