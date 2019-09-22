@@ -104,8 +104,13 @@
 
 
 <table class="listtop"><tr><td>
+<<<<<<< HEAD
 <font class="writetitle">
 전체 레시피(<%=count %>)</font>
+=======
+
+전체 레시피(<%=count %>)
+>>>>>>> refs/remotes/origin/LUXworks
 
 </td><td>
 <table class="searchtable"><tr><td class="searchtd">
