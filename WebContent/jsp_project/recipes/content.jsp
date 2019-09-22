@@ -48,7 +48,7 @@
 		 for (i = 0; i < commentchangeform.length; i++) {
 			 commentchangeform[i].innerHTML="";
          }
-		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput'style='ime-mode:inactive;'></textarea><br><td class='content1' align='right'><input type='submit'  value='답글쓰기' class='bt2'>';
+		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput'style='ime-mode:inactive;'></textarea><br><td class='content1' align='right'><input type='submit'  value='답글쓰기' class='bt2'>";
 	}
 </script>
 
@@ -163,6 +163,7 @@
 	
 		 <table>
 				<input type="hidden" name="num" value="<%=num %>">
+				<input type="hidden" name="pageNum" value="<%=pageNum %>">
 				<input type="hidden" name="writerid" value="<%=idlogin %>">
 				<input type="hidden" name="ref"  value="0">
 				<input type="hidden" name="re_step"  value="0">
@@ -180,7 +181,7 @@
 				</tr>
 			
 		</table>
-		</form>
+	</form>
 	<%} %>
 
 	
