@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "DBBean.foodingBean" %>
 <%@ page import = "DBBean.BoardDataBean" %>
+<%@ page import = "DBBean.commentDataBean" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%@ include file="color.jsp"%>
@@ -31,7 +32,6 @@
     
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
-    
     if(search==null){
     	count = dbPro.getArticleCount();
 	}else{
@@ -140,6 +140,7 @@
       <td align="center"  width="100" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
       <td align="center"  width="50" class="listcolor">조회</td> 
+      <td align="center"  width="50" class="listcolor">댓글수</td> 
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
@@ -162,6 +163,8 @@
     </td>
     <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
+    <td align="center" width="50" class="line"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
+	
   </tr>
 <%}%>
 </table>

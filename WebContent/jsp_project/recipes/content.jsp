@@ -33,7 +33,14 @@
 <title>게시판</title>
 
 <script type="text/javascript">
-
+	function Iregularcomment(num,content,ref,re_step,
+			re_level,counter,selected){
+		 var commentchangeform = document.getElementsByClassName("commentchangeform");
+		 
+		 for (i = 0; i < commentchangeform.length; i++) {
+			 commentchangeform[i].innerHTML="비밀번호가 같습니다";
+         }
+	}
 </script>
 
 </head>
@@ -70,7 +77,6 @@
 
 <p>글내용 보기</p>
 
-<form>
 <table > 
 <tr height="30">
     <td align="center" width="125" >글제목</td>
@@ -122,14 +128,11 @@
        onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
     </td>
   </tr>
-</table>
-</form>      
+</table>  
 
 
 
 <p>댓글 수:<%=count%></p>
-
-
 	<%if(session.getAttribute("idlogin")==null){ %>
 		로그인을 하셔야 댓글을 쓸수 있습니다.
 	<%}else{ %>
@@ -140,6 +143,7 @@
 				<input type="hidden" name="writerid" value="<%=idlogin %>">
 				<input type="hidden" name="ref"  value="0">
 				<input type="hidden" name="re_step"  value="0">
+				<input type="hidden" name="re_level"  value="0">
 				<input type="hidden" name="re_level"  value="0">
 				<tr>
 					<td colspan="3" width="0">
@@ -162,13 +166,20 @@
  <table border="1">
 		<tr>
 		    <td align="center">
-		              게시판에 저장된 글이 없습니다.
+		             댓글이 없습니다.
 		    </td>
 		</tr>
 </table>
 
 <% } else {%>
-
+<form method="post" name="commentform" 
+		action="commentspro.jsp" >
+	<input type="hidden" name="num" value="<%=num %>">
+		<input type="hidden" name="writerid" value="<%=idlogin %>">
+		<input type="hidden" name="ref"  value="0">
+		<input type="hidden" name="re_step"  value="0">
+		<input type="hidden" name="re_level"  value="0">
+		<input type="hidden" name="re_level"  value="0">
 <%  
 	for (int i = 0 ; i < commentList.size() ; i++) {
 		commentDataBean comments = commentList.get(i);
@@ -180,27 +191,41 @@
 
 %>
 
-<table border="1" margin-left="<%=wid%>">
-	<tr height="30">
-		<td width="380"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-	    <td width="400"><%= sdf.format(comments.getReg_date())%></td>
-	</tr>
-	<tr height="60">
-		<td colspan="2">
-			<%=comments.getContent()%>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" colspan="2">
-			<input type="button">
-			<input type="button">
-		</td>
-	</tr>
-
- </table>
+	<table border="1" style='margin-left:"<%=wid%>"'>
+		<tr height="30">
+			<td width="380"><%=foodingbean.findnkname(comments.getWriterid())%></td>
+		    <td width="400"><%= sdf.format(comments.getReg_date())%></td>
+		</tr>
+		<tr height="60">
+			<td colspan="2">
+				<%=comments.getContent()%>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" colspan="2">
+				<input type="button" value="답글" onclick=
+					"IregularComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+					'<%=comments.getRe_level()%>','<%= i %>','tagged')">
+				<%if(idlogin!=null){ %>
+					<input type="button" value="변경" onclick=
+						"IregularComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+						'<%=comments.getRe_level()%>','<%= i %>','changed')">
+					<input type="button" value="삭제" onclick=
+						"IregularComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+						'<%=comments.getRe_level()%>','<%= i %>','deleted')">
+				<%} %>
+				<div class="commentchangeform"></div>
+			</td>
+		</tr>
+	</table>
 <%
 				}
-
+%>
+	</form>
+<%
 			}
 		}catch(Exception e){} 
  %>
