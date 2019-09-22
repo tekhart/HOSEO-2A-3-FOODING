@@ -1,28 +1,5 @@
 @CHARSET "UTF-8";
 
-body {
-	font-size: 9pt; 
-	text-align: center;
-}
-
-table {
-	font-size: 9pt;
-	text-align: center;
-	border: 1pt solid black;
-}
-
-select {
-	font-size: 9pt; 
-}
-
-form {
-	font-size: 9pt; 
-}
-
-p{
-	font-weight: 700;
-}
-
 	
 	#maindiv{	font-family:"Bauhaus ITC";
 		font-size:22px;
@@ -41,8 +18,9 @@ p{
 		
 		}
 	#space{
-		width:800px;
-		height:1000px;
+		align:center;
+		width:2000px;
+		height:900px;
 		background-color:#F2F2F2;
 	}
 	#writespace{
@@ -70,5 +48,33 @@ p{
 		border-style:solid;
 		border-width: thin; 
 		border-radius: 3px;
-		margin-bottom:35px;
+		margin:10px 10px 10px 0px;
+		
 	}
+	
+	#contenttable{
+		margin:auto;
+		padding:40px;	
+		border-collapse:collapse;
+		border-spacing:0px;
+		}
+		
+	.contentline{
+		padding:30px;
+ 		border-top:5px solid #ffbb00;
+ 		border-bottom:2px solid #ffbb00;
+ 	
+ 	} 
+ 	.contentline2{
+		padding:30px;
+ 		border-top:2px solid #ffbb00;
+	}
+	
+	#extraline{
+		font-size:21px;
+		color:#A4A4A4;
+		border-bottom:2px solid #ffbb00;
+		border-collapse:collapse;
+		border-spacing:0px;
+	}
+	

@@ -152,6 +152,9 @@
    </td>
     <td align="left" class="line">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
+      <% if(article.getReadcount()>=20){%>
+      hot!
+	<%}%> 
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]&nbsp;<%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
      	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">
