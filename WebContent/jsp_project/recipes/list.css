@@ -119,3 +119,12 @@ a:active {
 	border-bottom:1.5px solid #ffbb00;
 	background-color:#ffd668;
 }
+
+.listspace{
+	align:center;
+	width:2000px;
+	height:900px;
+	background-color:#F2F2F2;
+}
+	
+}

@@ -105,7 +105,7 @@
 
 <table class="listtop"><tr><td>
 
-전체 레시피(<%=number %>)
+전체 레시피(<%=count %>)
 
 </td><td>
 <table class="searchtable"><tr><td class="searchtd">
