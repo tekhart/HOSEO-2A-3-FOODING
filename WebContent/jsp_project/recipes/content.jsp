@@ -48,7 +48,11 @@
 		 for (i = 0; i < commentchangeform.length; i++) {
 			 commentchangeform[i].innerHTML="";
          }
+<<<<<<< HEAD
 		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput'style='ime-mode:inactive;'></textarea><br><td class='content1' align='right'><input type='submit'  value='답글쓰기' class='bt2'>";
+=======
+		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput'style='ime-mode:inactive;'></textarea><br><td class='content1' align='right'><input type='submit'  value='답글쓰기' class='bt2'>';
+>>>>>>> refs/remotes/origin/ShrimFryworks
 	}
 </script>
 
