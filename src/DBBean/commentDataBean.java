@@ -4,7 +4,8 @@ import java.sql.Timestamp;
 
 public class commentDataBean {
 	private int num; 
-	private int rootin; 
+	private int rootin;
+	private int pageNum;
     private String writerid;
     private String content;
     private Timestamp reg_date;
@@ -23,6 +24,12 @@ public class commentDataBean {
 	}
 	public void setRootin(int rootin) {
 		this.rootin = rootin;
+	}
+	public int getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
 	}
 	public String getWriterid() {
 		return writerid;

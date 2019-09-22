@@ -154,13 +154,13 @@
 	<form method="post" name="commentform" 
 					action="commentspro.jsp" >
 	<br>
-<table>	
-	<tr><td>
-	댓글 수 : <%=count%></td>
-	<td class="content1" align="right"><input type="submit"  value="댓글쓰기" class="bt2">
-	</td>
-	</tr>
-</table>
+	<table>	
+		<tr><td>
+		댓글 수 : <%=count%></td>
+		<td class="content1" align="right"><input type="submit"  value="댓글쓰기" class="bt2">
+		</td>
+		</tr>
+	</table>
 	<%if(session.getAttribute("idlogin")==null){ %>
 		로그인을 하셔야 댓글을 쓸수 있습니다.
 	<%}else{ %>
