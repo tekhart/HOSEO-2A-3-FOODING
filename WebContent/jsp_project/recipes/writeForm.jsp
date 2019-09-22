@@ -57,7 +57,7 @@
 		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 		<td width="330" align="left">
 		<input type="text" size="40" maxlength="50" name="title" class="signupinput"
-		 style="ime-mode:active;"></td>
+		 style="ime-mode:normal;"></td>
 	</tr>
 	<tr>
 		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
@@ -89,19 +89,19 @@
 		<td align="center" id="writespace">필요한 재료</td>
 		<td align="left">
 			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinput"
-			style="ime-mode:inactive;"></td>
+			style="ime-mode:normal;"></td>
 	</tr>
 	<tr>
 		<td align="center" id="writespace">사용되는 도구</td>
 		<td align="left">
 			<input type="text" size="40" maxlength="30" name="tools" class="signupinput"
-			style="ime-mode:inactive;"></td>
+			style="ime-mode:normal;"></td>
 	</tr>
 	<tr>
 		<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 		<td align="left">
 			<textarea name="content" size="40" rows="30" cols="40" class="signupinput"
-			style="ime-mode:inactive;"></textarea></td>
+			style="ime-mode:normal;"></textarea></td>
 	</tr>
 	
 		<tr><td></td>

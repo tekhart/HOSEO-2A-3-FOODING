@@ -104,8 +104,8 @@
 
 
 <table class="listtop"><tr><td>
-
-전체 레시피(<%=number %>)
+<font class="writetitle">
+전체 레시피(<%=count %>)</font>
 
 </td><td>
 <table class="searchtable"><tr><td class="searchtd">
@@ -153,10 +153,12 @@
    </td>
     <td align="left" class="line">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
-      <% if(article.getReadcount()>=20){%>
-      hot!
-	<%}%> 
-          [<%=article.getContury()%>/<%=article.getFoodtype()%>]&nbsp;<%=article.getTitle()%></a>  </td>
+      
+          [<%=article.getContury()%>/<%=article.getFoodtype()%>]
+        	<% if(article.getReadcount()>=20){%>
+     		 <font color="red">HOT</font>
+			<%}%>
+	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
      	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">
        	<%=foodingbean.findnkname(writerid)%></a>

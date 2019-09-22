@@ -21,6 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="list.css">
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -75,7 +76,15 @@
 	    
 %>
 
-<p>글내용 보기</p>
+<form>
+<table class="contenttable" border="1"> 
+<tr><td width="800px">글제목</td><td>작성자</td></tr>
+<tr><td>날짜</td><td>조회수</td></tr>
+<tr><td colspan="2" height="600px">내용</td></tr>
+<tr><td>태그</td><td>수정/삭제</td></tr>
+<tr><td></td><td>목록</td></tr>
+
+				</table>
 
 <table > 
 <tr height="30">
