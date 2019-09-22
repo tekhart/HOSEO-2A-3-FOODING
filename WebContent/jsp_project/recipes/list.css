@@ -24,6 +24,11 @@
 	text-overflow:ellipsis;
 }
 
+	.writetitle {
+		
+		padding:30px;	
+		font-size:25px;
+		}
 
 .titlelong{
 	margin:3px;
@@ -33,6 +38,11 @@
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+}
+
+.contenttable{
+	width:1000px;
+	margin:auto;
 }
 
 .search{
