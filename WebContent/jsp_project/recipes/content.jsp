@@ -36,11 +36,19 @@
 <script type="text/javascript">
 	function Iregularcomment(num,content,ref,re_step,
 			re_level,counter,selected){
+		 var form=document.iregularcommentform;
 		 var commentchangeform = document.getElementsByClassName("commentchangeform");
 		 
+		 form.num.value=num;
+		 form.ref.value=ref;
+		 form.re_step.value=re_step;
+		 form.re_level.value=re_level;
+		 form.selected.value=selected;
+		 
 		 for (i = 0; i < commentchangeform.length; i++) {
-			 commentchangeform[i].innerHTML="비밀번호가 같습니다";
+			 commentchangeform[i].innerHTML="";
          }
+		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput'style='ime-mode:inactive;'></textarea><br><td class='content1' align='right'><input type='submit'  value='답글쓰기' class='bt2'>';
 	}
 </script>
 
@@ -154,12 +162,10 @@
 	<%}else{ %>
 	
 		 <table>
-			
 				<input type="hidden" name="num" value="<%=num %>">
 				<input type="hidden" name="writerid" value="<%=idlogin %>">
 				<input type="hidden" name="ref"  value="0">
 				<input type="hidden" name="re_step"  value="0">
-				<input type="hidden" name="re_level"  value="0">
 				<input type="hidden" name="re_level"  value="0">
 				<tr>
 					<td colspan="3" width="0">
@@ -189,14 +195,14 @@
 </table>
 
 <% } else {%>
-<form method="post" name="commentform" 
+<form method="post" name="iregularcommentform" 
 		action="commentspro.jsp" >
 	<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
 		<input type="hidden" name="ref"  value="0">
 		<input type="hidden" name="re_step"  value="0">
 		<input type="hidden" name="re_level"  value="0">
-		<input type="hidden" name="re_level"  value="0">
+		<input type="hidden" name="selected"  value="0">
 <%  
 	for (int i = 0 ; i < commentList.size() ; i++) {
 		commentDataBean comments = commentList.get(i);
@@ -224,16 +230,16 @@
 							<input type="button" value="답글" onclick=
 					"IregularComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-					'<%=comments.getRe_level()%>','<%= i %>','tagged')">
+					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
 				<%if(idlogin!=null){ %>
 					<input type="button" value="변경" onclick=
 						"IregularComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>','<%= i %>','changed')">
+						'<%=comments.getRe_level()%>',<%= i %>,'changed')">
 					<input type="button" value="삭제" onclick=
 						"IregularComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>','<%= i %>','deleted')">
+						'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
 				<%} %>
 				<div class="commentchangeform"></div>
 		</td>
