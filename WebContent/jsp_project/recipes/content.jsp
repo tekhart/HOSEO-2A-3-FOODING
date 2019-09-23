@@ -85,67 +85,30 @@
 %>
 
 <table class="contenttable" border="1"> 
-<tr><td width="800px">글제목</td><td>작성자</td></tr>
-<tr><td>날짜</td><td>조회수</td></tr>
-<tr><td colspan="2" height="600px">내용</td></tr>
-<tr><td>태그</td><td>수정/삭제</td></tr>
-<tr><td></td><td>목록</td></tr>
+<tr><td width="800px"><%=article.getTitle()%></td><td><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
+<tr><td><%= sdf.format(article.getReg_date())%></td><td><%=article.getReadcount()%>view</td></tr>
+<tr><td colspan="2">사용재료</td></tr>
+<tr><td colspan="2">사용도구</td></tr>
+<tr><td colspan="2" height="600px"><%=article.getContent()%></td></tr>
+<tr><td>#<%=article.getContury()%> #<%=article.getFoodtype()%></td><td>
 
-				</table>
-
-<table > 
-<tr height="30">
-    <td align="center" width="125" >글제목</td>
-    <td align="center" width="375" align="center" colspan="3">
-	     <%=article.getTitle()%></td>
-  </tr>
-  <tr height="30">
-    <td align="center" width="125" >분류</td>
-    <td align="center" width="125" align="center">
-	     <%=article.getContury()%></td>
-	<td align="center" width="125" align="center">
-	     <%=article.getFoodtype()%></td>
-	<td align="center" width="125" >조회수<%=article.getReadcount()%>회</td>
-  </tr>
-  <tr height="30">
-    <td align="center" width="125" >작성자</td>
-    <td align="center" width="125" align="center">
-	     <%=foodingbean.findnkname(article.getWriterid())%></td>
-    <td align="center" width="125"  >작성일</td>
-    <td align="center" width="125" align="center">
-	     <%= sdf.format(article.getReg_date())%></td>
-  </tr>
-  
-  <tr>
-    <td align="center" width="125" >글내용</td>
-    <td align="left" width="375" colspan="3">
-           <pre><%=article.getContent()%></pre></td>
-  </tr>
-  <tr height="30">      
-    <td colspan="4"  align="right" > 
-    <%
+ <%
     if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
         %>
         	<input type="button" value="글수정" 
            		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
     	   		&nbsp;&nbsp;&nbsp;&nbsp;
     	  <input type="button" value="글삭제" 
-           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-           		
-           		
-           		
+           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
         <%
         }
         %>
-	  
-	   &nbsp;&nbsp;&nbsp;&nbsp;
-	   &nbsp;&nbsp;&nbsp;&nbsp;
-       <input type="button" value="글목록" 
-       onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
-    </td>
-  </tr>
+        
+        </td></tr>
+<tr><td></td><td>목록</td></tr>
 
-</table>
+				</table>
+
 	<br>
 	<form method="post" name="commentform" 
 					action="commentspro.jsp" >
