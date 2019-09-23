@@ -11,14 +11,14 @@
 
 <%
 
-	int num = Integer.parseInt(request.getParameter("num"));
+	int rootin = Integer.parseInt(request.getParameter("rootin"));
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	comment.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
 	foodingBean dbPro = foodingBean.getInstance();
-	dbPro.insertCommentsArticle(comment,num);
+	dbPro.insertCommentsArticle(comment,rootin);
 %>
 <script>
-location.href="content.jsp?num=<%=num%>%>&pageNum=<%=pageNum%>";
+	location.href='content.jsp?num=<%=rootin%>&pageNum=<%=pageNum%>';
 </script>
 
