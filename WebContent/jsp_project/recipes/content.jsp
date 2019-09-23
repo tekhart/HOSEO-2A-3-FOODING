@@ -109,11 +109,11 @@
 
 				</table>
 
-	<br>
-	<form method="post" name="commentform" 
+	<br><br><br>
+	<form  style="margin:auto;" method="post" name="commentform" 
 					action="commentspro.jsp" >
 			
-		<table>	
+		<table style="margin:auto;">	
 			<tr><td>
 			댓글 수 : <%=count%></td>
 			<td class="content1" align="right">
@@ -125,7 +125,7 @@
 			로그인을 하셔야 댓글을 쓸수 있습니다.
 		<%}else{ %>
 		
-		 <table>
+		 <table width="1010px" style="margin:auto;">
 			<input type="hidden" name="num" value="0">
 			<input type="hidden" name="rootin" value="<%=num %>">
 			<input type="hidden" name="pageNum" value="<%=pageNum %>">
@@ -136,8 +136,8 @@
 			<input type="hidden" name="selected" value="0">
 			
 			<tr>
-				<td colspan="3" width="0">
-					<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
+				<td colspan="3" width="0" style="margin:auto;">
+					<textarea name="content" size="40" rows="5" cols="40" class="signupinput2"
 							style="ime-mode:inactive;"></textarea>
 				</td>
 			</tr>
@@ -185,7 +185,7 @@
 %>
 
 	
-<table style="margin-left:<%=wid%>px" class="commentbase">
+<table margin-left:<%=wid%>px" class="commentbase" style="margin:auto;">
 
 	<tr height="30">
 		<%if(comments.getRe_level()>0){%>
@@ -194,23 +194,23 @@
 		<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
 	    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
 	</tr>
-	<tr height="60">
+	<tr height="70">
 		<td colspan="2" width="600" >
-			<p style="width:650px; word-break:break-all"><%=comments.getContent()%></p>
+			<p style="width:900px; word-break:break-all"><%=comments.getContent()%></p>
 		</td>
 	</tr>
 	<tr>
 		<td align="right" colspan="2">
-							<input type="button" value="답글" onclick=
+							<input type="button" value="답글" class="bt2" onclick=
 					"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
 				<%if(idlogin!=null){ %>
-					<input type="button" value="변경" onclick=
+					<input type="button" value="변경" class="bt2" onclick=
 						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 						'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-					<input type="button" value="삭제" onclick=
+					<input type="button" value="삭제" class="bt2" onclick=
 						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 						'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
