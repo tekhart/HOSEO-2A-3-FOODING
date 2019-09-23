@@ -85,70 +85,41 @@
 %>
 
 <table border="1" style="margin:auto;" > 
-	<tr><td width="150px" colspan="2" style="text-align:center;">제목 </td>
-		<td width="500px"><%=article.getTitle()%></td>
-	<td width="150px" align="right" >작성자 <%=foodingbean.findnkname(article.getWriterid())%></td></tr>
-	<tr><td colspan="2" style="text-align:center;">작성일</td>
-	<td><%= sdf.format(article.getReg_date())%></td>
-	<td  align="right">조회수 <%=article.getReadcount()%>회</td></tr>
-	<tr><td height="600px" width="150px" style="text-align:center;">내용 </td>
-	<td colspan="2"><pre><%=article.getContent()%></pre></td></tr>
-	<tr><td  colspan="2">태그</td>
-	<td align="right"><input type="button" value="글수정"  class="bt2"
-           		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-    	   		&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="글삭제" class="bt2"
-           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-           		</td></tr>
+	<tr>
+		<td width="500px" style="text-align:center;"><%=article.getTitle()%></td>
+		<td width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
+	</tr>
+	<tr>
+		<td colspan="2" ><%=foodingbean.findnkname(article.getWriterid()) %></td>
+	</tr>
+	<tr>
+		<td  colspan="2">사용재료 : <%=article.getIngredients() %></td>
+    </tr>
+    <tr>
+		<td  colspan="2">사용도구 : <%=article.getTools() %></td>
+    </tr>
+	<tr>
+		<td colspan="2"><pre><%=article.getContent()%></pre></td>
+	</tr>
+    <tr>
+    	<td></td>
+		<td align="right">
+			<%
+			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+	        %>
+				<input type="button" value="글수정" 
+				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" value="글삭제" 
+				    		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
+		    <%
+		    	}
+		    %>
+       	</td>
+    </tr>
 	<tr><td></td><td colspan="2">목록</td></tr>
+</table>
 
-				</table>
-
-<!--  <table > 
-<tr height="30">
-    <td align="center" width="125" >제목</td>
-    <td align="center" width="375" align="center" colspan="3">
-	     <%=article.getTitle()%></td>
-  </tr>
-  <tr height="30">
-    <td align="center" width="125" >분류</td>
-    <td align="center" width="125" align="center">
-	     <%=article.getContury()%></td>
-	<td align="center" width="125" align="center">
-	     <%=article.getFoodtype()%></td>
-	<td align="center" width="125" >조회수<%=article.getReadcount()%>회</td>
-  </tr>
-  <tr height="30">
-    <td align="center" width="125" >작성자</td>
-    <td align="center" width="125" align="center">
-	     <%=foodingbean.findnkname(article.getWriterid())%></td>
-    <td align="center" width="125"  >작성일</td>
-    <td align="center" width="125" align="center">
-	     <%= sdf.format(article.getReg_date())%></td>
-  </tr>
-  
-  <tr>
-    <td align="center" width="125" >글내용</td>
-    <td align="left" width="375" colspan="3">
-           <pre><%=article.getContent()%></pre></td>
-  </tr>
-  <tr height="30">      
-    <td colspan="4"  align="right" > 
-    -->
-    <%
-    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
-        %>
-        	<input type="button" value="글수정" 
-           		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-    	   		&nbsp;&nbsp;&nbsp;&nbsp;
-    	  <input type="button" value="글삭제" 
-           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-           		
-           		
-           		
-        <%
-        }
-        %>
-	  
 	   &nbsp;&nbsp;&nbsp;&nbsp;
 	   &nbsp;&nbsp;&nbsp;&nbsp;
        <input type="button" value="글목록" 
@@ -162,8 +133,13 @@
 					action="commentspro.jsp" >
 			
 		<table>	
-			<tr><td>
-			댓글 수 : <%=count%></td>
+			<tr>
+				<td>
+					댓글 수 : <%=count%>
+				</td>
+				<td>
+					조회수 : <%=article.getReadcount()%>
+				</td>
 			<td class="content1" align="right">
 				<input type="submit"  value="댓글쓰기" class="bt2">
 			</td>
@@ -189,12 +165,6 @@
 							style="ime-mode:inactive;"></textarea>
 				</td>
 			</tr>
-			<tr>
-				<td colspan="3" width="150">
-							
-				</td>
-			</tr>
-			
 		</table>
 	<%} %>
 	</form>
