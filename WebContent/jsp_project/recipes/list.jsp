@@ -107,6 +107,8 @@
 
 <font class="writetitle">
 전체 레시피(<%=count %>)</font>
+
+
 </td><td>
 <table class="searchtable"><tr><td class="searchtd">
 

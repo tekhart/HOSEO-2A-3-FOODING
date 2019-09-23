@@ -62,7 +62,7 @@ public class BoardDBBean {
 		   
 		    if (num!=0) {  
 		      sql="update board set re_step=re_step+1 ";
-		      sql += "where ref= ? and re_step = ?";
+		      sql += "where ref= ? and re_step > ?";
               pstmt = conn.prepareStatement(sql);
               pstmt.setInt(1, ref);
 			  pstmt.setInt(2, re_step);

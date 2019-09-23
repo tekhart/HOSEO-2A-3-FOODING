@@ -171,7 +171,7 @@ public class foodingBean {
        try {
            conn = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select writerid from user where nkname like '%"+search+"%'))");
+           pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -195,7 +195,7 @@ public class foodingBean {
            conn = getConnection();
 
            pstmt = conn.prepareStatement(
-               "select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select writerid from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+               "select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -437,7 +437,7 @@ public class foodingBean {
               throws Exception {
           Connection conn = null;
           PreparedStatement pstmt = null;
-  		ResultSet rs = null;
+  		  ResultSet rs = null;
   		
   		int num=article.getNum();
 		int ref=article.getRef();
@@ -460,10 +460,11 @@ public class foodingBean {
   			
   			if (num!=0) {  
   		      sql="update recipe_comment set re_step=re_step+1 ";
-  		      sql += "where ref= ? and re_step = ?";
+  		      sql += "where ref=? and re_step >? and rootin=?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1, ref);
-  			  pstmt.setInt(2, re_step);
+                pstmt.setInt(2, re_step);
+                pstmt.setInt(3, rootin);
   			  pstmt.executeUpdate();
   			  re_step=re_step+1;
   			  re_level=re_level+1;
@@ -482,9 +483,9 @@ public class foodingBean {
               pstmt.setInt(1, rootin);
               pstmt.setString(2, article.getWriterid());
               pstmt.setTimestamp(3, article.getReg_date());
-              pstmt.setInt(4, article.getRef());
-              pstmt.setInt(5, article.getRe_step());
-  			  pstmt.setInt(6, article.getRe_level());
+              pstmt.setInt(4, ref);
+              pstmt.setInt(5, re_step);
+              pstmt.setInt(6, re_level);
               pstmt.setString(7, article.getContent());
   			
               pstmt.executeUpdate();
@@ -505,7 +506,7 @@ public class foodingBean {
              conn = getConnection();
              
              pstmt = conn.prepareStatement(
-             	"select * from recipe_comment where rootin=? order by ref desc, re_step asc,num desc limit ?,? ");
+             	"select * from recipe_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
   			 pstmt.setInt(3, end);
