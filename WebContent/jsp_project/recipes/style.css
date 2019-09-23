@@ -41,7 +41,17 @@
 		border-width: thin; 
 		border-radius: 3px;
 	}
-	
+	.signupinput2{
+		margin:auto;
+		width:968px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+	}
 	#button123{
 		font-family:"Bauhaus ITC";
 		font-size:22px;
@@ -83,19 +93,20 @@
 	}
 	
 	.content1{
-		width:685px;
+		width:920px;
 		
 	}
 	.bt2{
 		background-color:white; 
 		font-size:18px;
-		border-color:#ffbb00;
+		border-color:black;
+		width: 80px;
 		height:40px;
 		margin: 5px;
 		border-width:0.5px;
 		border-style:solid;
 		cursor: pointer;
-		width: 80px;
+		
 		border-radius:3px; 
 	}
 
