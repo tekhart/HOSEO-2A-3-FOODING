@@ -46,7 +46,12 @@ TrexConfig.addAttacher(
 		boxonly: _FALSE,
 		wysiwygonly: _TRUE,
 		objattr: {},
-		features: { left:250, top:65, width:797, height:644 },
+		features: { 
+			left:300, 
+			top:300,
+			width:397, 
+			height:200 
+		},
 		popPageUrl: "#host#path/pages/trex/image.html"
 	},
 	function(root){

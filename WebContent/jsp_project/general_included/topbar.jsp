@@ -14,6 +14,8 @@
 <script type="text/javascript">
 	
 </script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>
