@@ -29,7 +29,6 @@
 
 
 
-
 </style>
 <title>게시판</title>
 
@@ -51,6 +50,27 @@
 		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput' style='ime-mode:inactive;'></textarea><input type='submit'  value='답글쓰기' class='bt2'>";
 
 	}
+	
+
+	function myFunction() {
+	  var x = document.getElementById("myDIV");
+	  var y = document.getElementById("myDIV2");
+	  if (x.style.display === "none") {
+	    x.style.display = "block";
+	    y.style.display = "none";
+	  } 
+	}
+	
+	function myFunction2() {
+		  var x = document.getElementById("myDIV");
+		  var y = document.getElementById("myDIV2");
+		  if (y.style.display === "none") {
+		   y.style.display = "block";
+		   x.style.display = "none";
+		  } 
+		}
+
+	
 </script>
 </head>
 <body>
@@ -84,14 +104,14 @@
 	    
 %>
 
-<table class="contenttable" border="1"> 
-<tr><td width="800px"><%=article.getTitle()%></td><td><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
-<tr><td><%= sdf.format(article.getReg_date())%></td><td><%=article.getReadcount()%>view</td></tr>
-<tr><td colspan="2">사용재료</td></tr>
-<tr><td colspan="2">사용도구</td></tr>
-<tr><td colspan="2" height="600px"><%=article.getContent()%></td></tr>
-<tr><td>#<%=article.getContury()%> #<%=article.getFoodtype()%></td><td>
 
+
+<table class="contenttable" border="1"> 
+<tr><td rowspan="2"width="800px" align="center"><%=article.getTitle()%></td>
+<td align="right"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
+<tr><td align="right"><%=article.getReadcount()%> view</td></tr>
+<tr><td colspan="2" height="600px" style="vertical-align:text-top;"><%=article.getContent()%></td></tr>
+<tr><td>
  <%
     if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
         %>
@@ -104,8 +124,34 @@
         }
         %>
         
+        </td><td>일자</td></tr>
+        
+        <tr><td colspan="2" height="400px">
+        <img src="../img/carrotc.png" width="50px" height="50px" onclick="myFunction()" style="margin-left:30px; margin-right:10px;">
+        
+        <img src="../img/forkc.png" width="50px" height="50px" onclick="myFunction2()" >
+        <div id="myDIV">
+<%=article.getIngredients() %>
+</div>
+      <div id="myDIV2" style="display:none;">
+<%=article.getTools() %>
+</div>
+
+#<%=article.getContury()%> #<%=article.getFoodtype()%>
+      
+        <img src="../img/carrotg.png" width="50px" height="50px">
+        <img src="../img/forkg.png" width="50px" height="50px">
+        <img src="../img/carrotb.png" width="50px" height="50px">
+        <img src="../img/forkb.png" width="50px" height="50px">
+        
+        
+        
+        
+        
+        
+        
+        
         </td></tr>
-<tr><td></td><td>목록</td></tr>
 
 				</table>
 
@@ -179,18 +225,23 @@
 
 	int wid=0; 
 	if(comments.getRe_level()>0){
-	   wid=15*(comments.getRe_level());
+	   wid=30*(comments.getRe_level());
 	}
 
 %>
 
-	
-		<table class="commentbase" style="margin-left:<%=wid %>px;">
+	<table style="margin:auto;" class="commment">
+		<tr>
+		<td width=<%=wid %> align="right">
+				<%if(comments.getRe_level()>0){%>
+					ㄴ<br><br><br>
+				<%} %>
+		</td>
+		<td>
+		
+		<table border="1" class="commentbase">
 		
 			<tr height="30">
-				<%if(comments.getRe_level()>0){%>
-					<td width="20" rowspan="3">ㄴ</td>
-				<%} %>
 				<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
 			    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
 			</tr>
@@ -219,6 +270,9 @@
 				</td>
 			</tr>
 			 <hr width="790" size="8px" color="white">
+		 </table>
+		 </td>
+		 </tr>
 		 </table>
 	 
 

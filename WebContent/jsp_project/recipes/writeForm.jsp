@@ -62,9 +62,9 @@
 	<tr>
 		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 		<td align="left">
-			<select name='contury'
+			<select name='contury' class="dropdownbt"
 				style="ime-mode:inactive;">
-				<option value='' selected disabled hidden >-- 선택 --</option>
+				<option value='' selected disabled hidden >나라를 선택하세요</option>
     			<option value='한식'>한식</option>
     			<option value='양식'>양식</option>
     			<option value='일식'>일식</option>
@@ -72,9 +72,9 @@
     			<option value='퓨전'>퓨전</option>
     			<option value='기타'>기타</option>
 			</select>
-			<select name='foodtype'
+			<select name='foodtype' class="dropdownbt"
 				style="ime-mode:inactive;">
-				<option value='' selected disabled hidden>-- 선택 --</option>
+				<option value='' selected disabled hidden>종류를 선택하세요</option>
     			<option value='밥류'>밥류</option>
     			<option value='빵류'>빵류</option>
     			<option value='반찬류'>반찬류</option>
