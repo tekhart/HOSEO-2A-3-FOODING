@@ -151,7 +151,6 @@
 	<%} %>
 	</form>
 
-	
 <% if (count == 0) { %>
 
  <table>
@@ -163,6 +162,7 @@
 </table>
 
 <% } else {%>
+
 <form method="post" name="iregularcommentform" 
 		action="commentspro.jsp" >
 	<input type="hidden" name="num" value="0">
@@ -185,50 +185,54 @@
 %>
 
 	
-<table margin-left:<%=wid%>px" class="commentbase" style="margin:auto;">
-
-	<tr height="30">
-		<%if(comments.getRe_level()>0){%>
-			<td width="20" rowspan="3">ㄴ</td>
-		<%} %>
-		<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-	    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
-	</tr>
-	<tr height="70">
-		<td colspan="2" width="600" >
-			<p style="width:900px; word-break:break-all"><%=comments.getContent()%></p>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" colspan="2">
-							<input type="button" value="답글" class="bt2" onclick=
-					"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
-				<%if(idlogin!=null){ %>
-					<input type="button" value="변경" class="bt2" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-					<input type="button" value="삭제" class="bt2" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
+		<table class="commentbase" style="margin-left:<%=wid %>px;">
+		
+			<tr height="30">
+				<%if(comments.getRe_level()>0){%>
+					<td width="20" rowspan="3">ㄴ</td>
 				<%} %>
-				<div class="commentchangeform" id="testid"></div>
-		</td>
-	</tr>
-	 <hr width="790" size="8px" color="white">
- </table>
+				<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
+			    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
+			</tr>
+			<tr height="70">
+				<td colspan="2" width="600" >
+					<p style="width:900px; word-break:break-all"><%=comments.getContent()%></p>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" colspan="2">
+									<input type="button" value="답글" class="bt2" onclick=
+							"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+							'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+							'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
+						<%if(idlogin!=null){ %>
+							<input type="button" value="변경" class="bt2" onclick=
+								"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+								'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+								'<%=comments.getRe_level()%>',<%= i %>,'changed')">
+							<input type="button" value="삭제" class="bt2" onclick=
+								"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+								'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+								'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
+						<%} %>
+						<div class="commentchangeform" id="testid"></div>
+				</td>
+			</tr>
+			 <hr width="790" size="8px" color="white">
+		 </table>
+	 
 
 <%
 				}
 %>
 	</form>
+	
 <%
 			}
 		}catch(Exception e){} 
  %>
+
+ 
 </div>
 
 
