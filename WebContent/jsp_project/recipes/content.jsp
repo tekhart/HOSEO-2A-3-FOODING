@@ -84,62 +84,39 @@
 	    
 %>
 
-<table border="1" style="margin:auto;" > 
-	<tr>
-		<td width="500px" style="text-align:center;"><%=article.getTitle()%></td>
-		<td width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
-	</tr>
-	<tr>
-		<td colspan="2" ><%=foodingbean.findnkname(article.getWriterid()) %></td>
-	</tr>
-	<tr>
-		<td  colspan="2">사용재료 : <%=article.getIngredients() %></td>
-    </tr>
-    <tr>
-		<td  colspan="2">사용도구 : <%=article.getTools() %></td>
-    </tr>
-	<tr>
-		<td colspan="2"><pre><%=article.getContent()%></pre></td>
-	</tr>
-    <tr>
-    	<td></td>
-		<td align="right">
-			<%
-			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
-	        %>
-				<input type="button" value="글수정" 
-				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="글삭제" 
-				    		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
-		    <%
-		    	}
-		    %>
-       	</td>
-    </tr>
-	<tr><td></td><td colspan="2">목록</td></tr>
-</table>
 
-	   &nbsp;&nbsp;&nbsp;&nbsp;
-	   &nbsp;&nbsp;&nbsp;&nbsp;
-       <input type="button" value="글목록" 
-       onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
-    </td>
-  </tr>
+<table class="contenttable" border="1"> 
+<tr><td width="800px"><%=article.getTitle()%></td><td><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
+<tr><td><%= sdf.format(article.getReg_date())%></td><td><%=article.getReadcount()%>view</td></tr>
+<tr><td colspan="2">사용재료</td></tr>
+<tr><td colspan="2">사용도구</td></tr>
+<tr><td colspan="2" height="600px"><%=article.getContent()%></td></tr>
+<tr><td>#<%=article.getContury()%> #<%=article.getFoodtype()%></td><td>
 
-</table>
-	<br>
-	<form method="post" name="commentform" 
+ <%
+    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+        %>
+        	<input type="button" value="글수정" 
+           		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+    	   		&nbsp;&nbsp;&nbsp;&nbsp;
+    	  <input type="button" value="글삭제" 
+           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
+        <%
+        }
+        %>
+        
+        </td></tr>
+<tr><td></td><td>목록</td></tr>
+
+				</table>
+
+	<br><br><br>
+	<form  style="margin:auto;" method="post" name="commentform" 
 					action="commentspro.jsp" >
 			
-		<table>	
-			<tr>
-				<td>
-					댓글 수 : <%=count%>
-				</td>
-				<td>
-					조회수 : <%=article.getReadcount()%>
-				</td>
+		<table style="margin:auto;">	
+			<tr><td>
+			댓글 수 : <%=count%></td>
 			<td class="content1" align="right">
 				<input type="submit"  value="댓글쓰기" class="bt2">
 			</td>
@@ -149,7 +126,7 @@
 			로그인을 하셔야 댓글을 쓸수 있습니다.
 		<%}else{ %>
 		
-		 <table>
+		 <table width="1010px" style="margin:auto;">
 			<input type="hidden" name="num" value="0">
 			<input type="hidden" name="rootin" value="<%=num %>">
 			<input type="hidden" name="pageNum" value="<%=pageNum %>">
@@ -160,16 +137,21 @@
 			<input type="hidden" name="selected" value="0">
 			
 			<tr>
-				<td colspan="3" width="0">
-					<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
+				<td colspan="3" width="0" style="margin:auto;">
+					<textarea name="content" size="40" rows="5" cols="40" class="signupinput2"
 							style="ime-mode:inactive;"></textarea>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="3" width="150">
+							
+				</td>
+			</tr>
+			
 		</table>
 	<%} %>
 	</form>
 
-	
 <% if (count == 0) { %>
 
  <table>
@@ -181,6 +163,7 @@
 </table>
 
 <% } else {%>
+
 <form method="post" name="iregularcommentform" 
 		action="commentspro.jsp" >
 	<input type="hidden" name="num" value="0">
@@ -203,50 +186,54 @@
 %>
 
 	
-<table style="margin-left:<%=wid%>px" class="commentbase">
-
-	<tr height="30">
-		<%if(comments.getRe_level()>0){%>
-			<td width="20" rowspan="3">ㄴ</td>
-		<%} %>
-		<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-	    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
-	</tr>
-	<tr height="60">
-		<td colspan="2" width="600" >
-			<p style="width:650px; word-break:break-all"><%=comments.getContent()%></p>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" colspan="2">
-							<input type="button" value="답글" onclick=
-					"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
-				<%if(idlogin!=null){ %>
-					<input type="button" value="변경" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-					<input type="button" value="삭제" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
+		<table class="commentbase" style="margin-left:<%=wid %>px;">
+		
+			<tr height="30">
+				<%if(comments.getRe_level()>0){%>
+					<td width="20" rowspan="3">ㄴ</td>
 				<%} %>
-				<div class="commentchangeform" id="testid"></div>
-		</td>
-	</tr>
-	 <hr width="790" size="8px" color="white">
- </table>
+				<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
+			    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
+			</tr>
+			<tr height="70">
+				<td colspan="2" width="600" >
+					<p style="width:900px; word-break:break-all"><%=comments.getContent()%></p>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" colspan="2">
+									<input type="button" value="답글" class="bt2" onclick=
+							"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+							'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+							'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
+						<%if(idlogin!=null){ %>
+							<input type="button" value="변경" class="bt2" onclick=
+								"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+								'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+								'<%=comments.getRe_level()%>',<%= i %>,'changed')">
+							<input type="button" value="삭제" class="bt2" onclick=
+								"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+								'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+								'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
+						<%} %>
+						<div class="commentchangeform" id="testid"></div>
+				</td>
+			</tr>
+			 <hr width="790" size="8px" color="white">
+		 </table>
+	 
 
 <%
 				}
 %>
 	</form>
+	
 <%
 			}
 		}catch(Exception e){} 
  %>
+
+ 
 </div>
 
 
