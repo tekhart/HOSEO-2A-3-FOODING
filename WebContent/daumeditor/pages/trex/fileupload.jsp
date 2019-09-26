@@ -17,10 +17,10 @@
 
 		<%
 	String realFolder="";
-	String saveFolder="uploaded";
+	String saveFolder="jsp_project/img/uploaded";
 	String encType="utf-8";
 	int maxSize=5*1024*1024;
-	
+	String filename="";
 	ServletContext context=getServletContext();
 	
 	realFolder=context.getRealPath(saveFolder);
@@ -45,7 +45,7 @@
 		Enumeration files=multi.getFileNames();
 		while(files.hasMoreElements()){
 			String name=(String)files.nextElement();
-			String filename=multi.getFilesystemName(name);
+			filename=multi.getFilesystemName(name);
 			String original=multi.getOriginalFileName(name);
 			String type=multi.getContentType(name);
 			File file=multi.getFile(name);
@@ -66,13 +66,6 @@
 		System.out.println(ex);
 	}
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
 <%
 if (ServletFileUpload.isMultipartContent(request)){
@@ -89,7 +82,7 @@ if (ServletFileUpload.isMultipartContent(request)){
             if(item.getSize() > 0) {
                 String ext = item.getName().substring(item.getName().lastIndexOf(".")+1);
                 //파일 기본경로
-                String defaultPath = "uploaded/";
+                String defaultPath = "/uploaded/";
                 //파일 기본경로 _ 상세경로
                 String path = defaultPath + "upload" + File.separator;
                  
@@ -122,11 +115,9 @@ if (ServletFileUpload.isMultipartContent(request)){
     //json string 값으로 callback
     //json 값으로 넘기는 필요 값
     //imageurl, filename,filesize,imagealign
-    pw.print("{\"imageurl\" : \"/upload/"+realname+"\",\"filename\":\""+realname+"\",\"filesize\": 600,\"imagealign\":\"C\"}");
+    pw.print("{\"imageurl\" : \"../img/uploaded/"+filename+"\",\"filename\":\""+realname+"\",\"filesize\": 600,\"imagealign\":\"C\"}");
     pw.flush();
     pw.close();
 }
 
 %>
-</body>
-</html>
