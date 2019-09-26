@@ -7,13 +7,13 @@
 	foodingBean topbarbean=new foodingBean();
 %>
 <head>
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="../css/common.css">
 
 
 <script type="text/javascript">
 	
-</script>
+</script></head><body>
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>
@@ -113,4 +113,4 @@
         </tr>
     </table>
 </div>
-</head>
+</body>

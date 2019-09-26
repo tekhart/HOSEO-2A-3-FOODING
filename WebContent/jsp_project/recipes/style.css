@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+		#body{
+		font-family: 'Nanum Gothic', sans-serif;
+		color:black;
+	}
 	
 	#maindiv{	font-family:"Bauhaus ITC";
 		font-size:22px;
@@ -10,6 +14,11 @@
 	#maindiv2{	font-family:"Bauhaus ITC";
 		font-size:22px;
 		color:black;
+			
+			.precontent{
+			     word-break: keep-all;
+        word-wrap: normal;
+			}
 			
 		}	
 	.writetitle {
@@ -72,6 +81,8 @@
 	.contenttable{
 		margin:auto;
 		width:1200px;
+		 border-collapse:collapse;
+		 margin-top:40px;
 		}
 		
 .dropdownbt{
@@ -155,3 +166,60 @@
 	border-color:orange;
 	
 	}
+	
+	* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 250px; 
+  width:1100px;
+  margin:auto;
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #ff9826;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+
+.divdiv1{
+	background-color:#ececec;
+	width:1100px;
+	height:200px;
+	text-align:center;
+	margin:auto;	
+	border-top:double;
+  border-bottom:double;
+  border-color:#593a0d;
+  border-width:7px;
+}
+
+.divdiv2{
+	background-color:#c5c5c5;
+	width:1100px;
+	height:200px;
+	text-align:center;
+	margin:auto;	
+	border-top:double;
+  border-bottom:double;
+  border-color:#593a0d;
+  border-width:7px;
+}

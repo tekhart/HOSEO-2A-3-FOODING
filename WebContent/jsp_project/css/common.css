@@ -1,13 +1,15 @@
 
 
-	
-	
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
+	<style>
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean');
+</style>
 	
 	*{margin:0px;
 	padding:0px;}
 
 	#body{
-		font-family:"Bauhaus ITC";
+		font-family: 'Nanum Gothic', sans-serif;
 		color:black;
 	}
 
