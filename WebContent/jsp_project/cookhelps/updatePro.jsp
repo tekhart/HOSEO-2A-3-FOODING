@@ -13,7 +13,7 @@
 <%
 	String pageNum = request.getParameter("pageNum");
 	foodingBean dbPro = foodingBean.getInstance();
-    int check = dbPro.updateArticle(article); 
+    int check = dbPro.updatecookhelpArticle(article); 
     if(check==1){
 %>
 	  <meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>" >

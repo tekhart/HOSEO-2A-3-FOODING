@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-    public void insertexrecipeArticle(BoardDataBean article) 
+    public void insertcookhelpArticle(BoardDataBean article) 
             throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -19,7 +19,7 @@ import java.util.List;
         try {
             conn = getConnection();
 
-            pstmt = conn.prepareStatement("select max(num) from exrecipe");
+            pstmt = conn.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
 			
 			if (rs.next())
@@ -29,7 +29,7 @@ import java.util.List;
 		   
 		    
             // 쿼리를 작성
-            sql = "insert into exrecipe(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
+            sql = "insert into cookhelp(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 
             pstmt = conn.prepareStatement(sql);
@@ -49,7 +49,7 @@ import java.util.List;
         	DBclose();
         }
     }
-    public int getexrecipeArticleCount(String search)
+    public int getcookhelpArticleCount(String search)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -60,7 +60,7 @@ import java.util.List;
        try {
            conn = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from exrecipe  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           pstmt = conn.prepareStatement("select count(*) from cookhelp  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -73,7 +73,7 @@ import java.util.List;
        }
         return x;
    }
-    public List<BoardDataBean> getexrecipeArticles(int start, int end,String search)
+    public List<BoardDataBean> getcookhelpArticles(int start, int end,String search)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -83,7 +83,7 @@ import java.util.List;
            conn = getConnection();
 
            pstmt = conn.prepareStatement(
-               "select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+               "select * from cookhelp where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -115,7 +115,7 @@ import java.util.List;
        }
         return articleList;
    }
-    public int getexrecipeArticleCount()
+    public int getcookhelpArticleCount()
              throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -126,7 +126,7 @@ import java.util.List;
         try {
             conn = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from exrecipe");
+            pstmt = conn.prepareStatement("select count(*) from cookhelp");
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -139,7 +139,7 @@ import java.util.List;
         }
 		return x;
     }
-	public List<BoardDataBean> getexrecipeArticles(int start, int end)
+	public List<BoardDataBean> getcookhelpArticles(int start, int end)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -149,7 +149,7 @@ import java.util.List;
            conn = getConnection();
            
            pstmt = conn.prepareStatement(
-           	"select * from exrecipe order by num desc limit ?,? ");
+           	"select * from cookhelp order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -181,7 +181,7 @@ import java.util.List;
        }
 		return articleList;
    }
-	public BoardDataBean getexrecipeArticle(int num)
+	public BoardDataBean getcookhelpArticle(int num)
             throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -191,12 +191,12 @@ import java.util.List;
             conn = getConnection();
 
             pstmt = conn.prepareStatement(
-            	"update exrecipe set readcount=readcount+1 where num = ?");
+            	"update cookhelp set readcount=readcount+1 where num = ?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
             pstmt = conn.prepareStatement(
-            	"select * from exrecipe where num = ?");
+            	"select * from cookhelp where num = ?");
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
 
@@ -220,7 +220,7 @@ import java.util.List;
         }
 		return article;
     }
-	public BoardDataBean updateexrecipeGetArticle(int num)
+	public BoardDataBean updatecookhelpGetArticle(int num)
 	          throws Exception {
 	        Connection conn = null;
 	        PreparedStatement pstmt = null;
@@ -230,7 +230,7 @@ import java.util.List;
 	            conn = getConnection();
 
 	            pstmt = conn.prepareStatement(
-	            	"select * from exrecipe where num = ?");
+	            	"select * from cookhelp where num = ?");
 	            pstmt.setInt(1, num);
 	            rs = pstmt.executeQuery();
 
@@ -254,7 +254,7 @@ import java.util.List;
 	        }
 			return article;
 	    }
-    public int updateexrecipeArticle(BoardDataBean article)
+    public int updatecookhelpArticle(BoardDataBean article)
             throws Exception {
           Connection conn = null;
           PreparedStatement pstmt = null;
@@ -266,7 +266,7 @@ import java.util.List;
               conn = getConnection();
 
   			 
-                  sql="update exrecipe set title=?,contury=?,foodtype=?,ingredients=?";
+                  sql="update cookhelp set title=?,contury=?,foodtype=?,ingredients=?";
   			    sql+=",tools=? ,content=? where num=?";
                   pstmt = conn.prepareStatement(sql);
 
@@ -286,7 +286,7 @@ import java.util.List;
           }
   		return x;
       }
-    public int deleteexrecipeArticle(int num)
+    public int deletecookhelpArticle(int num)
           throws Exception {
           Connection conn = null;
           PreparedStatement pstmt = null;
@@ -296,7 +296,7 @@ import java.util.List;
   			conn = getConnection();
 
   					pstmt = conn.prepareStatement(
-              	      "delete from exrecipe where num=?");
+              	      "delete from cookhelp where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
   					x= 1; //글삭제 성공
@@ -307,7 +307,7 @@ import java.util.List;
           }
   		return x;
       }
-    public void insertexrecipeCommentsArticle(commentDataBean article,int rootin) 
+    public void insertcookhelpCommentsArticle(commentDataBean article,int rootin) 
               throws Exception {
           Connection conn = null;
           PreparedStatement pstmt = null;
@@ -324,7 +324,7 @@ import java.util.List;
           try {
               conn = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from exrecipe_comment");
+              pstmt = conn.prepareStatement("select max(num) from cookhelp_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -333,7 +333,7 @@ import java.util.List;
   		      number=1; 
   			
   			if (num!=0) {  
-  		      sql="update exrecipe_comment set re_step=re_step+1 ";
+  		      sql="update cookhelp_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >? and rootin=?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1, ref);
@@ -350,7 +350,7 @@ import java.util.List;
   		   
   		    
               // 쿼리를 작성
-              sql = "insert into exrecipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
+              sql = "insert into cookhelp_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
               pstmt = conn.prepareStatement(sql);
@@ -369,7 +369,7 @@ import java.util.List;
           	DBclose();
           }
       }
-    public List<commentDataBean> getexrecipeCommentsArticles(int start, int end,int num)
+    public List<commentDataBean> getcookhelpCommentsArticles(int start, int end,int num)
               throws Exception {
          Connection conn = null;
          PreparedStatement pstmt = null;
@@ -379,7 +379,7 @@ import java.util.List;
              conn = getConnection();
              
              pstmt = conn.prepareStatement(
-             	"select * from exrecipe_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
+             	"select * from cookhelp_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
   			 pstmt.setInt(3, end);
@@ -410,7 +410,7 @@ import java.util.List;
          }
   		return articleList;
      }
-    public int getexrecipeCommentArticleCount(int num)
+    public int getcookhelpCommentArticleCount(int num)
               throws Exception {
          Connection conn = null;
          PreparedStatement pstmt = null;
@@ -421,7 +421,7 @@ import java.util.List;
          try {
              conn = getConnection();
              
-             pstmt = conn.prepareStatement("select count(*) from exrecipe_comment where rootin=?");
+             pstmt = conn.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
              pstmt.setInt(1, num);
              rs = pstmt.executeQuery();
 

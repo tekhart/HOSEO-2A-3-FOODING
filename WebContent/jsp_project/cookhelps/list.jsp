@@ -33,18 +33,18 @@
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
     if(search==null){
-    	count = dbPro.getArticleCount();
+    	count = dbPro.getcookhelpArticleCount();
 	}else{
-		count = dbPro.getArticleCount(search);
+		count = dbPro.getcookhelpArticleCount(search);
 	}
     
     
     
     if (count > 0) {
     	if(search==null){
-            articleList = dbPro.getArticles(startRow, pageSize);
+            articleList = dbPro.getcookhelpArticles(startRow, pageSize);
     	}else{
-            articleList = dbPro.getArticles(startRow, pageSize, search);
+            articleList = dbPro.getcookhelpArticles(startRow, pageSize, search);
     	}
     }
 	

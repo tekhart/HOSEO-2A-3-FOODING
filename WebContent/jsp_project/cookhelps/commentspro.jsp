@@ -16,7 +16,7 @@
 	comment.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
 	foodingBean dbPro = foodingBean.getInstance();
-	dbPro.insertCommentsArticle(comment,rootin);
+	dbPro.insertcookhelpCommentsArticle(comment,rootin);
 %>
 <script>
 	location.href='content.jsp?num=<%=rootin%>&pageNum=<%=pageNum%>';

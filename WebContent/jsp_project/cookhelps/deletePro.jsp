@@ -14,7 +14,7 @@
 
   foodingBean dbPro = foodingBean.getInstance();
 
-  int check = dbPro.deleteArticle(num);
+  int check = dbPro.deletecookhelpArticle(num);
 
   if(check==1){
 %>

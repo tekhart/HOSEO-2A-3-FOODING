@@ -7,7 +7,7 @@
   int num = Integer.parseInt(request.getParameter("num"));
   String pageNum = request.getParameter("pageNum");
   foodingBean dbPro = foodingBean.getInstance(); 
-  BoardDataBean article =  dbPro.getArticle(num);
+  BoardDataBean article =  dbPro.getcookhelpArticle(num);
 
 %>
 <html>

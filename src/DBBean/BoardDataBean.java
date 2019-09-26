@@ -16,6 +16,7 @@ public class BoardDataBean {
 	Timestamp reg_date;
 	int readcount;
 	String content;
+	int difficulty;
 	
 	public int getNum() {
 		return num;
@@ -76,6 +77,12 @@ public class BoardDataBean {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getDifficulty() {
+		return difficulty;
+	}
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	

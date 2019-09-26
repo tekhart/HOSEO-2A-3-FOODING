@@ -131,16 +131,16 @@
         
         <tr><td colspan="2" height="400px">
         <img src="../img/carrotc.png" width="50px" height="50px" onclick="myFunction()" style="margin-left:30px; margin-right:10px;">
-        
+
         <img src="../img/forkc.png" width="50px" height="50px" onclick="myFunction2()" >
         <div id="myDIV">
-<%=article.getIngredients() %>
-</div>
-      <div id="myDIV2" style="display:none;">
-<%=article.getTools() %>
-</div>
+			<%=article.getIngredients() %>
+		</div>
+      	<div id="myDIV2" style="display:none;">
+			<%=article.getTools() %>
+		</div>
 
-#<%=article.getContury()%> #<%=article.getFoodtype()%>
+			#<%=article.getContury()%> #<%=article.getFoodtype()%>
       
         <img src="../img/carrotg.png" width="50px" height="50px">
         <img src="../img/forkg.png" width="50px" height="50px">

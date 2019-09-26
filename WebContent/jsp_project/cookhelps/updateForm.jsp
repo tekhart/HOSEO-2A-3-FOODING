@@ -30,7 +30,7 @@
   int foodtypeselected=0;
 	try{
 		foodingBean dbPro = foodingBean.getInstance(); 
-		BoardDataBean article =  dbPro.updateGetArticle(num);
+		BoardDataBean article =  dbPro.updatecookhelpGetArticle(num);
 		if(article.getContury().equals("한식")){
 			conturyselected=1;
 		}else if(article.getContury().equals("양식")){
