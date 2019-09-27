@@ -993,13 +993,14 @@ public class foodingBean {
 		   
 		    
             // 쿼리를 작성
-            sql = "insert into cookhelp(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
-		    sql+=") values(?,?,?,?,?,?,?,?)";
+            sql = "insert into cookhelp(title,contury,foodtype,difficulty,ingredients,tools,writerid,reg_date,content";
+		    sql+=") values(?,?,?,?,?,?,?,?,?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getContury());
             pstmt.setString(3, article.getFoodtype());
+            pstmt.setInt(3, article.getDifficulty());
             pstmt.setString(4, article.getIngredients());
             pstmt.setString(5, article.getTools());
             pstmt.setString(6, article.getWriterid());
@@ -1056,17 +1057,15 @@ public class foodingBean {
                articleList = new ArrayList<BoardDataBean>(end);
                do{
                  BoardDataBean article= new BoardDataBean();
-                 article.setNum(rs.getInt("num"));
-                 article.setContury(rs.getString("contury"));
-                 article.setFoodtype(rs.getString("foodtype"));
-                  article.setTitle(rs.getString("title"));
-                  article.setWriterid(rs.getString("writerid"));
-
-
-                  article.setReg_date(rs.getTimestamp("reg_date"));
-                  article.setReadcount(rs.getInt("readcount"));
-
-                 article.setContent(rs.getString("content"));
+                article.setNum(rs.getInt("num"));
+                article.setContury(rs.getString("contury"));
+                article.setFoodtype(rs.getString("foodtype"));
+                article.setDifficulty(rs.getInt("difficulty"));
+                article.setTitle(rs.getString("title"));
+				article.setWriterid(rs.getString("writerid"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
+				article.setReadcount(rs.getInt("readcount"));
+				article.setContent(rs.getString("content"));
 
 
                  articleList.add(article);
@@ -1121,18 +1120,16 @@ public class foodingBean {
            if (rs.next()) {
                articleList = new ArrayList<BoardDataBean>(end);
                do{
-                 BoardDataBean article= new BoardDataBean();
-                 article.setNum(rs.getInt("num"));
-                 article.setContury(rs.getString("contury"));
-                 article.setFoodtype(rs.getString("foodtype"));
-				  article.setTitle(rs.getString("title"));
-				  article.setWriterid(rs.getString("writerid"));
-                 
-                 
-			      article.setReg_date(rs.getTimestamp("reg_date"));
-				  article.setReadcount(rs.getInt("readcount"));
-                 
-                 article.setContent(rs.getString("content"));
+                BoardDataBean article= new BoardDataBean();
+                article.setNum(rs.getInt("num"));
+                article.setContury(rs.getString("contury"));
+                article.setFoodtype(rs.getString("foodtype"));
+                article.setDifficulty(rs.getInt("difficulty"));
+                article.setTitle(rs.getString("title"));
+ 				article.setWriterid(rs.getString("writerid"));
+ 				article.setReg_date(rs.getTimestamp("reg_date"));
+ 				article.setReadcount(rs.getInt("readcount"));
+ 				article.setContent(rs.getString("content"));
 			       
 				  
                  articleList.add(article);
@@ -1166,10 +1163,12 @@ public class foodingBean {
 
             if (rs.next()) {
                 article = new BoardDataBean();
+                
                 article.setNum(rs.getInt("num"));
 				article.setTitle(rs.getString("title"));
                 article.setContury(rs.getString("contury"));
                 article.setFoodtype(rs.getString("foodtype"));
+                article.setDifficulty(rs.getInt("difficulty"));
                 article.setIngredients(rs.getString("ingredients"));
 			    article.setTools(rs.getString("tools"));
 				article.setWriterid(rs.getString("writerid"));
@@ -1200,16 +1199,18 @@ public class foodingBean {
 
 	            if (rs.next()) {
 	            	article = new BoardDataBean();
+
 	                article.setNum(rs.getInt("num"));
 					article.setTitle(rs.getString("title"));
 	                article.setContury(rs.getString("contury"));
 	                article.setFoodtype(rs.getString("foodtype"));
+	                article.setDifficulty(rs.getInt("difficulty"));
 	                article.setIngredients(rs.getString("ingredients"));
 				    article.setTools(rs.getString("tools"));
 					article.setWriterid(rs.getString("writerid"));
 	                article.setReg_date(rs.getTimestamp("reg_date"));
 				    article.setReadcount(rs.getInt("readcount"));     
-	                article.setContent(rs.getString("content"));     
+	                article.setContent(rs.getString("content"));
 				}
 	        } catch(Exception ex) {
 	            ex.printStackTrace();
@@ -1230,19 +1231,21 @@ public class foodingBean {
               conn = getConnection();
 
   			 
-                  sql="update cookhelp set title=?,contury=?,foodtype=?,ingredients=?";
+                  sql="update cookhelp set title=?,contury=?,foodtype=?,difficulty=?,ingredients=?";
   			    sql+=",tools=? ,content=? where num=?";
                   pstmt = conn.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getContury());
                   pstmt.setString(3, article.getFoodtype());
-                  pstmt.setString(4, article.getIngredients());
-                  pstmt.setString(5, article.getTools());
-                  pstmt.setString(6, article.getContent());
-  			    pstmt.setInt(7, article.getNum());
+                  pstmt.setInt(4, article.getDifficulty());
+                  pstmt.setString(5, article.getIngredients());
+                  pstmt.setString(6, article.getTools());
+                  pstmt.setString(7, article.getContent());
+  			      pstmt.setInt(8, article.getNum());
                   pstmt.executeUpdate();
-  				x= 1;
+                  
+  				  x= 1;
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
@@ -1399,4 +1402,7 @@ public class foodingBean {
          }
  		return x;
      }
+
+    
+    
 }
