@@ -1,0 +1,112 @@
+@CHARSET "UTF-8";
+
+	
+	#maindiv{	font-family:"Bauhaus ITC";
+		font-size:22px;
+		color:black;
+		border-top:5px solid #ffbb00;
+		
+		}	
+	#maindiv2{	font-family:"Bauhaus ITC";
+		font-size:22px;
+		color:black;
+			
+		}	
+	.writetitle {
+		margin-left:140px;
+		padding:30px;	
+		font-size:25px;
+		}
+	#writetable{
+		margin:auto;
+		padding:40px;
+		
+		}
+	#space{
+		align:center;
+		width:2000px;
+		height:900px;
+		background-color:#F2F2F2;
+	}
+	#writespace{
+		padding:20px;
+	}
+	.signupinput{
+		width:758px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+	}
+	.signupinput2{
+		margin:auto;
+		width:968px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+	}
+	#button123{
+		font-family:"Bauhaus ITC";
+		font-size:22px;
+		width:200px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+		margin:10px 10px 10px 0px;
+		
+	}
+	
+		
+	.contentline{
+		padding:30px;
+ 		border-top:5px solid #ffbb00;
+ 		border-bottom:2px solid #ffbb00;
+ 	
+ 	} 
+ 	.contentline2{
+		padding:30px;
+ 		border-top:2px solid #ffbb00;
+	}
+	
+	#extraline{
+		font-size:21px;
+		color:#A4A4A4;
+		border-bottom:2px solid #ffbb00;
+		border-collapse:collapse;
+		border-spacing:0px;
+	}
+	
+	.content1{
+		width:920px;
+		
+	}
+	.bt2{
+		background-color:white; 
+		font-size:18px;
+		border-color:black;
+		width: 80px;
+		height:40px;
+		margin: 5px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		
+		border-radius:3px; 
+	}
+
+	.commentbase{
+		background-color:#F2F2F2;
+		padding:40px;
+	
+	}

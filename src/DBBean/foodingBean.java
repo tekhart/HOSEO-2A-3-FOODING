@@ -94,12 +94,12 @@ public class foodingBean {
 	}
     
 	private static foodingBean instance = new foodingBean();
-    //.jsp페이지에서 DB연동빈인 recipesDBBean클래스의 메소드에 접근시 필요
+    //.jsp�럹�씠吏��뿉�꽌 DB�뿰�룞鍮덉씤 recipesDBBean�겢�옒�뒪�쓽 硫붿냼�뱶�뿉 �젒洹쇱떆 �븘�슂
     public static foodingBean getInstance() {
         return instance;
     }
 	
-    //커넥션풀로부터 Connection객체를 얻어냄
+    //而ㅻ꽖�뀡��濡쒕��꽣 Connection媛앹껜瑜� �뼸�뼱�깂
     private Connection getConnection() throws Exception {
     	try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -113,7 +113,7 @@ public class foodingBean {
         return DriverManager.getConnection(jdbcUrl,dbId,dbPass);
     }
  
-    //recipes테이블에 글을 추가(inset문)<=writePro.jsp페이지에서 사용
+    //recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
     public void insertArticle(BoardDataBean article) 
             throws Exception {
         Connection conn = null;
@@ -136,7 +136,7 @@ public class foodingBean {
 		      number=1; 
 		   
 		    
-            // 쿼리를 작성
+            // 荑쇰━瑜� �옉�꽦
             sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 
@@ -407,7 +407,7 @@ public class foodingBean {
               	      "delete from recipes where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
-  					x= 1; //글삭제 성공
+  					x= 1; //湲��궘�젣 �꽦怨�
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
@@ -457,7 +457,7 @@ public class foodingBean {
   		     }	
   		   
   		    
-              // 쿼리를 작성
+              // 荑쇰━瑜� �옉�꽦
               sql = "insert into recipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
@@ -566,7 +566,7 @@ public class foodingBean {
 		      number=1; 
 		   
 		    
-            // 쿼리를 작성
+            // 荑쇰━瑜� �옉�꽦
             sql = "insert into exrecipe(title,contury,foodtype,ingredients,tools,writerid,reg_date,content,difficulty";
 		    sql+=") values(?,?,?,?,?,?,?,?,?)";
 
@@ -835,7 +835,7 @@ public class foodingBean {
               	      "delete from exrecipe where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
-  					x= 1; //글삭제 성공
+  					x= 1; //湲��궘�젣 �꽦怨�
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
@@ -885,7 +885,7 @@ public class foodingBean {
   		     }	
   		   
   		    
-              // 쿼리를 작성
+              // 荑쇰━瑜� �옉�꽦
               sql = "insert into exrecipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
@@ -992,7 +992,7 @@ public class foodingBean {
 		      number=1; 
 		   
 		    
-            // 쿼리를 작성
+            // 荑쇰━瑜� �옉�꽦
             sql = "insert into cookhelp(title,contury,foodtype,difficulty,ingredients,tools,writerid,reg_date,content";
 		    sql+=") values(?,?,?,?,?,?,?,?,?)";
 
@@ -1266,7 +1266,7 @@ public class foodingBean {
               	      "delete from cookhelp where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
-  					x= 1; //글삭제 성공
+  					x= 1; //湲��궘�젣 �꽦怨�
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
@@ -1316,7 +1316,7 @@ public class foodingBean {
   		     }	
   		   
   		    
-              // 쿼리를 작성
+              // 荑쇰━瑜� �옉�꽦
               sql = "insert into cookhelp_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
@@ -1403,6 +1403,435 @@ public class foodingBean {
  		return x;
      }
 
-    
+    public void insertquestionArticle(QuestionDataBean article) 
+            throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int num=article.getNum();
+		int number=0;
+        String sql="";
+
+        try {
+            conn = getConnection();
+
+            pstmt = conn.prepareStatement("select max(num) from question");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next())
+		      number=rs.getInt(1)+1;
+		    else
+		      number=1; 
+		   
+		    
+            // 荑쇰━瑜� �옉�꽦
+            sql = "insert into question(title,writerid,quesType,content,iscomplete,reg_date,ref,re_step,re_level";
+		    sql+=") values(?,?,?,?,?,?,?,?,?)";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, article.getTitle());
+            pstmt.setString(2, article.getWriterid());
+            pstmt.setString(3, article.getQuesType());
+            pstmt.setString(4, article.getContent());
+            pstmt.setInt(5, article.getIsComplete());
+			pstmt.setTimestamp(6, article.getReg_date());
+			pstmt.setInt(7, article.getRef());
+			pstmt.setInt(8, article.getRe_step());
+			pstmt.setInt(9, article.getRe_level());
+			
+            pstmt.executeUpdate();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	DBclose();
+        }
+    }
+    public int getquestionArticleCount(String search)
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+
+       int x=0;
+
+       try {
+           conn = getConnection();
+
+           pstmt = conn.prepareStatement("select count(*) from question  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           rs = pstmt.executeQuery();
+
+           if (rs.next()) {
+              x= rs.getInt(1);
+            }
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+           DBclose();
+       }
+        return x;
+   }
+    public List<QuestionDataBean> getquestionArticles(int start, int end,String search)
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+       List<QuestionDataBean> articleList=null;
+       try {
+           conn = getConnection();
+
+           pstmt = conn.prepareStatement(
+               "select * from question where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+           pstmt.setInt(1, start-1);
+           pstmt.setInt(2, end);
+           rs = pstmt.executeQuery();
+
+           if (rs.next()) {
+               articleList = new ArrayList<QuestionDataBean>(end);
+               do{
+                 QuestionDataBean article= new QuestionDataBean();
+                 article.setNum(rs.getInt("num"));
+                 article.setTitle(rs.getString("title"));
+                 article.setWriterid(rs.getString("writerid"));
+                 article.setQuesType(rs.getString("quesType"));
+                 article.setContent(rs.getString("content"));
+                 article.setIsComplete(rs.getInt("isComplete"));
+                 article.setReg_date(rs.getTimestamp("reg_date"));
+                 article.setRef(rs.getInt("ref"));
+                 article.setRe_step(rs.getInt("re_step"));
+                 article.setRe_level(rs.getInt("re_level"));
+
+                 articleList.add(article);
+                }while(rs.next());
+            }
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+           DBclose();
+       }
+        return articleList;
+   }
+    public int getquestionArticleCount()
+             throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        int x=0;
+
+        try {
+            conn = getConnection();
+            
+            pstmt = conn.prepareStatement("select count(*) from question");
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+               x= rs.getInt(1);
+			}
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	DBclose();
+        }
+		return x;
+    }
+	public List<QuestionDataBean> getquestionArticles(int start, int end)
+            throws Exception {
+       Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+       List<QuestionDataBean> articleList=null;
+       try {
+           conn = getConnection();
+           
+           pstmt = conn.prepareStatement(
+           	"select * from question order by num desc limit ?,? ");
+           pstmt.setInt(1, start-1);
+			pstmt.setInt(2, end);
+           rs = pstmt.executeQuery();
+
+           if (rs.next()) {
+               articleList = new ArrayList<QuestionDataBean>(end);
+               do{
+                 QuestionDataBean article= new QuestionDataBean();
+                 article.setNum(rs.getInt("num"));
+                 article.setTitle(rs.getString("title"));
+                 article.setWriterid(rs.getString("writerid"));
+                 article.setQuesType(rs.getString("quesType"));
+                 article.setContent(rs.getString("content"));
+                 article.setIsComplete(rs.getInt("isComplete"));
+                 article.setReg_date(rs.getTimestamp("reg_date"));
+                 article.setRef(rs.getInt("ref"));
+                 article.setRe_step(rs.getInt("re_step"));
+                 article.setRe_level(rs.getInt("re_level"));
+			       
+				  
+                 articleList.add(article);
+			    }while(rs.next());
+			}
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+    	   DBclose();
+       }
+		return articleList;
+   }
+	public QuestionDataBean getquestionArticle(int num)
+            throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        QuestionDataBean article=null;
+        try {
+            conn = getConnection();
+
+            pstmt = conn.prepareStatement(
+            	"update question set readcount=readcount+1 where num = ?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+
+            pstmt = conn.prepareStatement(
+            	"select * from question where num = ?");
+            pstmt.setInt(1, num);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                article = new QuestionDataBean();
+                article.setNum(rs.getInt("num"));
+                article.setTitle(rs.getString("title"));
+                article.setWriterid(rs.getString("writerid"));
+                article.setQuesType(rs.getString("quesType"));
+                article.setContent(rs.getString("content"));
+                article.setIsComplete(rs.getInt("isComplete"));
+                article.setReg_date(rs.getTimestamp("reg_date"));
+                article.setRef(rs.getInt("ref"));
+                article.setRe_step(rs.getInt("re_step"));
+                article.setRe_level(rs.getInt("re_level"));
+			}
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	DBclose();
+        }
+		return article;
+    }
+	public QuestionDataBean updatequestionGetArticle(int num)
+	          throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        QuestionDataBean article=null;
+	        try {
+	            conn = getConnection();
+
+	            pstmt = conn.prepareStatement(
+	            	"select * from question where num = ?");
+	            pstmt.setInt(1, num);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	 article = new QuestionDataBean();
+	            	 article.setNum(rs.getInt("num"));
+	                 article.setTitle(rs.getString("title"));
+	                 article.setWriterid(rs.getString("writerid"));
+	                 article.setQuesType(rs.getString("quesType"));
+	                 article.setContent(rs.getString("content"));
+	                 article.setIsComplete(rs.getInt("isComplete"));
+	                 article.setReg_date(rs.getTimestamp("reg_date"));
+	                 article.setRef(rs.getInt("ref"));
+	                 article.setRe_step(rs.getInt("re_step"));
+	                 article.setRe_level(rs.getInt("re_level"));
+				}
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	        	DBclose();
+	        }
+			return article;
+	    }
+    public int updatequestionArticle(QuestionDataBean article)
+            throws Exception {
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+          ResultSet rs= null;
+
+          String sql="";
+  		int x=-1;
+          try {
+              conn = getConnection();
+
+  			 
+                  sql="update question set title=?,contury=?,foodtype=?,ingredients=?";
+  			    sql+=",tools=? ,content=? where num=?";
+                  pstmt = conn.prepareStatement(sql);
+
+                  pstmt.setString(1, article.getTitle());
+                  pstmt.setString(2, article.getWriterid());
+                  pstmt.setString(3, article.getQuesType());
+                  pstmt.setString(4, article.getContent());
+                  pstmt.setInt(5, article.getIsComplete());
+      			pstmt.setTimestamp(6, article.getReg_date());
+      			pstmt.setInt(7, article.getRef());
+      			pstmt.setInt(8, article.getRe_step());
+      			pstmt.setInt(9, article.getRe_level());
+  			    pstmt.setInt(7, article.getNum());
+                  pstmt.executeUpdate();
+  				x= 1;
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          } finally {
+        	  DBclose();
+          }
+  		return x;
+      }
+    public int deletequestionArticle(int num)
+          throws Exception {
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+          ResultSet rs= null;
+          int x=-1;
+          try {
+  			conn = getConnection();
+
+  					pstmt = conn.prepareStatement(
+              	      "delete from question where num=?");
+                      pstmt.setInt(1, num);
+                      pstmt.executeUpdate();
+  					x= 1; //湲��궘�젣 �꽦怨�
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          } finally {
+        	  DBclose();
+          }
+  		return x;
+      }
+    public void insertquestionCommentsArticle(commentDataBean article,int rootin) 
+              throws Exception {
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+  		  ResultSet rs = null;
+  		
+  		int num=article.getNum();
+		int ref=article.getRef();
+		int re_step=article.getRe_step();
+		int re_level=article.getRe_level();
+		int number=0;
+
+          String sql="";
+
+          try {
+              conn = getConnection();
+
+              pstmt = conn.prepareStatement("select max(num) from question_comment");
+  			rs = pstmt.executeQuery();
+  			
+  			if (rs.next())
+  		      number=rs.getInt(1)+1;
+  		    else
+  		      number=1; 
+  			
+  			if (num!=0) {  
+  		      sql="update question_comment set re_step=re_step+1 ";
+  		      sql += "where ref=? and re_step >? and rootin=?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, ref);
+                pstmt.setInt(2, re_step);
+                pstmt.setInt(3, rootin);
+  			  pstmt.executeUpdate();
+  			  re_step=re_step+1;
+  			  re_level=re_level+1;
+  		     }else{
+  		  	  ref=number;
+  			  re_step=0;
+  			  re_level=0;
+  		     }	
+  		   
+  		    
+              // 荑쇰━瑜� �옉�꽦
+              sql = "insert into question_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
+  		    sql+=") values(?,?,?,?,?,?,?)";
+
+              pstmt = conn.prepareStatement(sql);
+              pstmt.setInt(1, rootin);
+              pstmt.setString(2, article.getWriterid());
+              pstmt.setTimestamp(3, article.getReg_date());
+              pstmt.setInt(4, ref);
+              pstmt.setInt(5, re_step);
+              pstmt.setInt(6, re_level);
+              pstmt.setString(7, article.getContent());
+  			
+              pstmt.executeUpdate();
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          } finally {
+          	DBclose();
+          }
+      }
+    public List<commentDataBean> getquestionCommentsArticles(int start, int end,int num)
+              throws Exception {
+         Connection conn = null;
+         PreparedStatement pstmt = null;
+         ResultSet rs = null;
+         List<commentDataBean> articleList=null;
+         try {
+             conn = getConnection();
+             
+             pstmt = conn.prepareStatement(
+             	"select * from question_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
+             pstmt.setInt(1, num);
+             pstmt.setInt(2, start-1);
+  			 pstmt.setInt(3, end);
+             rs = pstmt.executeQuery();
+
+             if (rs.next()) {
+                 articleList = new ArrayList<commentDataBean>(end);
+                 do{
+                	 commentDataBean article= new commentDataBean();
+                	 article.setNum(rs.getInt("num"));
+                	 article.setRootin(rs.getInt("rootin"));
+                	 article.setWriterid(rs.getString("writerid"));
+                	 article.setReg_date(rs.getTimestamp("reg_date"));
+                	 article.setRef(rs.getInt("ref"));
+                	 article.setRe_step(rs.getInt("re_step"));
+                	 article.setRe_level(rs.getInt("re_level"));
+                	 article.setContent(rs.getString("content"));
+                   
+  			       
+  				  
+                   articleList.add(article);
+  			    }while(rs.next());
+  			}
+         } catch(Exception ex) {
+             ex.printStackTrace();
+         } finally {
+      	   DBclose();
+         }
+  		return articleList;
+     }
+    public int getquestionCommentArticleCount(int num)
+              throws Exception {
+         Connection conn = null;
+         PreparedStatement pstmt = null;
+         ResultSet rs = null;
+
+         int x=0;
+
+         try {
+             conn = getConnection();
+             
+             pstmt = conn.prepareStatement("select count(*) from question_comment where rootin=?");
+             pstmt.setInt(1, num);
+             rs = pstmt.executeQuery();
+
+             if (rs.next()) {
+                x= rs.getInt(1);
+ 			}
+         } catch(Exception ex) {
+             ex.printStackTrace();
+         } finally {
+         	DBclose();
+         }
+ 		return x;
+     }
     
 }

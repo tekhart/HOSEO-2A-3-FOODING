@@ -64,7 +64,7 @@
 	            						<center>
 		        							<a href="#">전체 레시피</a>
 							        		<a href="#">인기 레시피</a>
-							        		<a href="../recipes/writeForm2.jsp">맞춤 레시피</a>
+							        		<a href="">맞춤 레시피</a>
 							       			<a href="../recipes/writeForm.jsp">레시피 작성</a>
 						       			</center>
 						       		</div>
@@ -77,9 +77,9 @@
 	            					<button class="dropbtn">요리도우미</button>
 	            					<div class="dropdown-content">
 	            						<center>
-		            						<a href="#">요리 강의</a>
-									        <a href="#">초보용 레시피</a>
-									        <a href="#">도와줘요!</a>
+		            						<a href="../help_cookhelp/list.jsp">요리 강의</a>
+									        <a href="../help_exrecipe/list.jsp">초보용 레시피</a>
+									        <a href="../help_question/list.jsp">도와줘요!</a>
 									        <a href="#">재료구매</a>
 	            						</center>
 						        	</div>
