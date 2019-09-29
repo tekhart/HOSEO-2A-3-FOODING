@@ -28,7 +28,6 @@ import java.util.List;
 		      number=1; 
 		   
 		    
-            // 荑쇰━瑜� �옉�꽦
             sql = "insert into question(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 

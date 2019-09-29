@@ -151,6 +151,7 @@
 %>
    <tr class="mouse">
    <td align="center" class="line">
+   
    <%=article.getNum()%>
    </td>
     <td align="left" class="line">       
@@ -159,6 +160,9 @@
         	<% if(article.getReadcount()>=20){%>
      		 <font color="red">HOT</font>
 			<%}%>
+			
+			<%if(article.getRe_level()>0){%>
+					[답글]	<%} %>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
      	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">

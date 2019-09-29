@@ -123,143 +123,28 @@
 		<tr>
 			<td>
 				<%if(session.getAttribute("idlogin")!=null){ %>
-					<input type="button" value="글수정"
+					<input type="button" value="답글쓰기"
 					onclick="document.location.href='writeForm.jsp?num=<%=article.getNum()%>&ref=<%=article.getRef()%>&re_step=<%=article.getRe_step()%>&re_level=<%=article.getRe_level()%>'">
 				<%} %>
 			</td>
-			<td colspan="2">목록</td>
+			<td colspan="2">   <input type="button" value="글목록" 
+       onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"></td>
 		</tr>
 	</table>
 
 	   &nbsp;&nbsp;&nbsp;&nbsp;
 	   &nbsp;&nbsp;&nbsp;&nbsp;
-       <input type="button" value="글목록" 
-       onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
+    
     </td>
   </tr>
 
 </table>
 	<br>
-	<form method="post" name="commentform" >
 	
-		
-			
-		<table>	
-			<tr>
-				<td>
-					댓글 수 : <%=count%>
-				</td>
-				<td>
-					조회수 : <%=article.getReadcount()%>
-				</td>
-			<td class="content1" align="right">
-				<input type="submit"  value="댓글쓰기" class="bt2">
-			</td>
-			</tr>
-		</table>
-		<%if(session.getAttribute("idlogin")==null){ %>
-			로그인을 하셔야 댓글을 쓸수 있습니다.
-		<%}else{ %>
-		
-		 <table width="1010px" style="margin:auto;">
-			<input type="hidden" name="num" value="0">
-			<input type="hidden" name="rootin" value="<%=num %>">
-			<input type="hidden" name="pageNum" value="<%=pageNum %>">
-			<input type="hidden" name="writerid" value="<%=idlogin %>">
-			<input type="hidden" name="ref"  value="1">
-			<input type="hidden" name="re_step"  value="0">
-			<input type="hidden" name="re_level"  value="0">
-			<input type="hidden" name="selected" value="0">
-			
-		
-			<tr>
-				<td colspan="3" width="0">
-					<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
-							style="ime-mode:inactive;"></textarea>
-				</td>
-			</tr>
-		</table>
-		
-	<%} %>
-	</form>
-
-	
-<% if (count == 0) { %>
-
- <table>
-		<tr>
-		    <td align="center">
-		             댓글이 없습니다.
-		    </td>
-		</tr>
-</table>
-
-<% } else {%>
-<form method="post" name="iregularcommentform" 
-		action="commentspro.jsp" >
-	<input type="hidden" name="num" value="0">
-	<input type="hidden" name="rootin" value="<%=num %>">
-	<input type="hidden" name="pageNum" value="<%=pageNum %>">
-	<input type="hidden" name="writerid" value="<%=idlogin %>">
-	<input type="hidden" name="ref" value="1">
-	<input type="hidden" name="re_step" value="0">
-	<input type="hidden" name="re_level" value="0">
-	<input type="hidden" name="selected" value="0">
-<%  
-	for (int i = 0 ; i < commentList.size() ; i++) {
-		commentDataBean comments = commentList.get(i);
-
-	int wid=0; 
-	if(comments.getRe_level()>0){
-	   wid=15*(comments.getRe_level());
-	}
-
-%>
-
-	
-<table style="margin-left:<%=wid%>px" class="commentbase">
-
-	<tr height="30">
-		<%if(comments.getRe_level()>0){%>
-			<td width="20" rowspan="3">ㄴ</td>
-		<%} %>
-		<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-	    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
-	</tr>
-	<tr height="60">
-		<td colspan="2" width="600" >
-			<p style="width:650px; word-break:break-all"><%=comments.getContent()%></p>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" colspan="2">
-							<input type="button" value="답글" onclick=
-					"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
-				<%if(idlogin.equals(comments.getWriterid())){ %>
-					<input type="button" value="변경" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-					<input type="button" value="삭제" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
-				<%} %>
-				<div class="commentchangeform" id="testid"></div>
-		</td>
-	</tr>
-	 <hr width="790" size="8px" color="white">
- </table>
-
 <%
-				}
-%>
-	</form>
-<%
-			}
-		}catch(Exception e){} 
+			
+		}catch(Exception e){}
+		
  %>
 </div>
 

@@ -50,6 +50,9 @@
 		<form method="post" name="writeform" 
 			action="writePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="<%=num %>">
+		<input type="hidden" name="ref" value="<%=ref %>">
+		<input type="hidden" name="re_step" value="<%=re_step %>">
+		<input type="hidden" name="re_level" value="<%=re_level %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
 		<center>
 		<table id="writetable" align="center" border-spacing="10px">

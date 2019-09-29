@@ -457,7 +457,6 @@ public class foodingBean {
   		     }	
   		   
   		    
-              // 荑쇰━瑜� �옉�꽦
               sql = "insert into recipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
@@ -1410,22 +1409,41 @@ public class foodingBean {
 		ResultSet rs = null;
 
 		int num=article.getNum();
+		int ref=article.getRef();
+		int re_step=article.getRe_step();
+		int re_level=article.getRe_level();
 		int number=0;
-        String sql="";
 
-        try {
-            conn = getConnection();
+          String sql="";
 
-            pstmt = conn.prepareStatement("select max(num) from question");
-			rs = pstmt.executeQuery();
-			
-			if (rs.next())
-		      number=rs.getInt(1)+1;
-		    else
-		      number=1; 
+          try {
+              conn = getConnection();
+
+              pstmt = conn.prepareStatement("select max(num) from recipe_comment");
+  			rs = pstmt.executeQuery();
+  			
+  			if (rs.next())
+  		      number=rs.getInt(1)+1;
+  		    else
+  		      number=1; 
+  			
+  			if (num!=0) {  
+  		      sql="update recipe_comment set re_step=re_step+1 ";
+  		      sql += "where ref=? and re_step >?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, ref);
+                pstmt.setInt(2, re_step);
+                
+  			  pstmt.executeUpdate();
+  			  re_step=re_step+1;
+  			  re_level=re_level+1;
+  		     }else{
+  		  	  ref=number;
+  			  re_step=0;
+  			  re_level=0;
+  		     }	
 		   
 		    
-            // 荑쇰━瑜� �옉�꽦
             sql = "insert into question(title,writerid,quesType,content,reg_date,ref,re_step,re_level";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 
@@ -1436,9 +1454,9 @@ public class foodingBean {
             pstmt.setString(4, article.getContent());
             
 			pstmt.setTimestamp(5, article.getReg_date());
-			pstmt.setInt(6, article.getRef());
-			pstmt.setInt(7, article.getRe_step());
-			pstmt.setInt(8, article.getRe_level());
+			pstmt.setInt(6, ref);
+			pstmt.setInt(7, re_step);
+			pstmt.setInt(8, re_level);
 			
             pstmt.executeUpdate();
         } catch(Exception ex) {
@@ -1481,7 +1499,7 @@ public class foodingBean {
            conn = getConnection();
 
            pstmt = conn.prepareStatement(
-               "select * from question where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+               "select * from question where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by ref desc, re_step asc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -1545,7 +1563,7 @@ public class foodingBean {
            conn = getConnection();
            
            pstmt = conn.prepareStatement(
-           	"select * from question order by num desc limit ?,? ");
+           	"select * from question order by ref desc, re_step asc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -1697,7 +1715,7 @@ public class foodingBean {
               	      "delete from question where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
-  					x= 1; //湲��궘�젣 �꽦怨�
+  					x= 1; 
           } catch(Exception ex) {
               ex.printStackTrace();
           } finally {
