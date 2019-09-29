@@ -83,12 +83,10 @@
 	    }
 	    
 %>
-<form  method="POST" name="" action="writerForm.jsp?pageNum=<%=pageNum%>">
 	<input type="hidden" name="num" value="<%=article.getNum() %>">
 	<input type="hidden" name="ref"  value="<%=article.getRef() %>">
 	<input type="hidden" name="re_step"  value="<%=article.getRe_step() %>">
 	<input type="hidden" name="re_level"  value="<%=article.getRe_level() %>">
-	
 	<table border="1" style="margin:auto;" > 
 		<tr>
 			<td width="500px" style="text-align:center;"><%=article.getTitle()%></td>
@@ -125,13 +123,17 @@
 		<tr>
 			<td>
 				<%if(session.getAttribute("idlogin")!=null){ %>
-					<input type="submit" value="답글쓰기">
+					<input type="button" value="글수정" 
+					  		onclick="document.location.href='writeForm.jsp
+					  		?num=<%=article.getNum()%>
+					  		&ref=<%=article.getRef()%>
+					  		&re_step=<%=article.getRe_step()%>
+					  		&re_level=<%=article.getRe_level()%>'">
 				<%}else{ %>
 			</td>
 			<td colspan="2">목록</td>
 		</tr>
 	</table>
-</form>
 
 	   &nbsp;&nbsp;&nbsp;&nbsp;
 	   &nbsp;&nbsp;&nbsp;&nbsp;
