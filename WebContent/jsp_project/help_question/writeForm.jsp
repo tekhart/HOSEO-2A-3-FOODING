@@ -13,10 +13,9 @@
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			
 		</script>
-		
-		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+		</script>
 		
 		
 	</head>
@@ -66,29 +65,17 @@
 				 style="ime-mode:normal;"></td>
 			</tr>
 			<tr>
-				<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
+				<td align="center" id="writespace">질문&nbsp;&nbsp;종류</td>
 				<td align="left">
-					<select name='contury'
+					<select name='quesType'
 						style="ime-mode:inactive;">
 						<option value='' selected disabled hidden >-- 선택 --</option>
-		    			<option value='한식'>한식</option>
-		    			<option value='양식'>양식</option>
+		    			
+		    			<option value='질문'>질문</option>
 		    			<option value='일식'>일식</option>
-		    			<option value='중식'>중식</option>
-		    			<option value='퓨전'>퓨전</option>
-		    			<option value='기타'>기타</option>
+		    			
 					</select>
-					<select name='foodtype'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden>-- 선택 --</option>
-		    			<option value='밥류'>밥류</option>
-		    			<option value='빵류'>빵류</option>
-		    			<option value='반찬류'>반찬류</option>
-		    			<option value='면류'>면류</option>
-		    			<option value='국류'>국류</option>
-		    			<option value='디저트'>디저트</option>
-		    			<option value='기타'>기타</option>
-					</select>
+					
 				</td>
 			</tr>
 			<tr>

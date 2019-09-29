@@ -5,7 +5,7 @@
     
     <% request.setCharacterEncoding("utf-8"); %>
     
-<jsp:useBean id="article" scope="page" class="DBBean.BoardDataBean">
+<jsp:useBean id="article" scope="page" class="DBBean.QuestionDataBean">
 	<jsp:setProperty name="article" property="*"/>
 </jsp:useBean>    
 
@@ -13,6 +13,6 @@
 	article.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
 	foodingBean dbPro = foodingBean.getInstance();
-	dbPro.insertexrecipeArticle(article);
+	dbPro.insertquestionArticle(article);
 	response.sendRedirect("list.jsp");
 %>

@@ -10,10 +10,12 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="../css/common.css">
 
-
-<script type="text/javascript">
-	
-</script></head><body>
+<script type="text/javascript">	
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+		
+		</head><body>
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
     <tr><td width=200 nowrap>

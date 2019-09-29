@@ -1426,19 +1426,19 @@ public class foodingBean {
 		   
 		    
             // 荑쇰━瑜� �옉�꽦
-            sql = "insert into question(title,writerid,quesType,content,iscomplete,reg_date,ref,re_step,re_level";
-		    sql+=") values(?,?,?,?,?,?,?,?,?)";
+            sql = "insert into question(title,writerid,quesType,content,reg_date,ref,re_step,re_level";
+		    sql+=") values(?,?,?,?,?,?,?,?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getWriterid());
             pstmt.setString(3, article.getQuesType());
             pstmt.setString(4, article.getContent());
-            pstmt.setInt(5, article.getIsComplete());
-			pstmt.setTimestamp(6, article.getReg_date());
-			pstmt.setInt(7, article.getRef());
-			pstmt.setInt(8, article.getRe_step());
-			pstmt.setInt(9, article.getRe_level());
+            
+			pstmt.setTimestamp(5, article.getReg_date());
+			pstmt.setInt(6, article.getRef());
+			pstmt.setInt(7, article.getRe_step());
+			pstmt.setInt(8, article.getRe_level());
 			
             pstmt.executeUpdate();
         } catch(Exception ex) {
@@ -1747,7 +1747,7 @@ public class foodingBean {
   		     }	
   		   
   		    
-              // 荑쇰━瑜� �옉�꽦
+           
               sql = "insert into question_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 

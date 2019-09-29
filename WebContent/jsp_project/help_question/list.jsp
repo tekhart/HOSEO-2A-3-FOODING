@@ -69,7 +69,7 @@
 
 </style>
 
-<title>전체 레시피, FOODING</title>
+<title>도와줘요!, FOODING</title>
 
 <script type="text/javascript">
 

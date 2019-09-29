@@ -123,13 +123,9 @@
 		<tr>
 			<td>
 				<%if(session.getAttribute("idlogin")!=null){ %>
-					<input type="button" value="글수정" 
-					  		onclick="document.location.href='writeForm.jsp
-					  		?num=<%=article.getNum()%>
-					  		&ref=<%=article.getRef()%>
-					  		&re_step=<%=article.getRe_step()%>
-					  		&re_level=<%=article.getRe_level()%>'">
-				<%}else{ %>
+					<input type="button" value="글수정"
+					onclick="document.location.href='writeForm.jsp?num=<%=article.getNum()%>&ref=<%=article.getRef()%>&re_step=<%=article.getRe_step()%>&re_level=<%=article.getRe_level()%>'">
+				<%} %>
 			</td>
 			<td colspan="2">목록</td>
 		</tr>
@@ -163,7 +159,7 @@
 		</table>
 		<%if(session.getAttribute("idlogin")==null){ %>
 			로그인을 하셔야 댓글을 쓸수 있습니다.
-		<%} %>
+		<%}else{ %>
 		
 		 <table width="1010px" style="margin:auto;">
 			<input type="hidden" name="num" value="0">
