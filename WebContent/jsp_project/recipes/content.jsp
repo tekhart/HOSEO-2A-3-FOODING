@@ -42,15 +42,16 @@ function initComparisons() {
     w = img.offsetWidth;
     h = img.offsetHeight;
     /*set the width of the img element to 50%:*/
-    img.style.width = (w / 2) + "px";
+    img.style.width = (w / 9-3) + "px";
     /*create slider:*/
     slider = document.createElement("DIV");
     slider.setAttribute("class", "img-comp-slider");
+    slider.innerHTML="재&nbsp;&nbsp;&nbsp;&nbsp;도<br>료&nbsp;&nbsp;&nbsp;&nbsp;구";
     /*insert slider*/
     img.parentElement.insertBefore(slider, img);
     /*position the slider in the middle:*/
     slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
-    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px"; 
+    slider.style.left = (w / 12) - (slider.offsetWidth / 12) + "px"; 
     /*execute a function when the mouse button is pressed:*/
     slider.addEventListener("mousedown", slideReady);
     /*and another function when the mouse button is released:*/
@@ -124,23 +125,6 @@ function initComparisons() {
 	}
 	
 
-	function myFunction() {
-	  var x = document.getElementById("myDIV");
-	  var y = document.getElementById("myDIV2");
-	  if (x.style.display === "none") {
-	    x.style.display = "block";
-	    y.style.display = "none";
-	  } 
-	}
-	
-	function myFunction2() {
-		  var x = document.getElementById("myDIV");
-		  var y = document.getElementById("myDIV2");
-		  if (y.style.display === "none") {
-		   y.style.display = "block";
-		   x.style.display = "none";
-		  } 
-		}
 
 	
 </script>
@@ -177,13 +161,13 @@ function initComparisons() {
 %>
 
 <table class="contenttable" > 
-<tr><td style="border-bottom:red;" rowspan="2"width="1000px" height="100px" align="center"><h2><%=article.getTitle()%></h2></td>
-<td align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
-<tr><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr>
-<tr><td colspan="2"  height="600px" >
+<tr><td  class="orangeline11" rowspan="2"width="1000px" height="100px" align="center" ><h2><%=article.getTitle()%></h2></td>
+<td class="orangeline111"  align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
+<tr class="orangeline1"><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr>
+<tr   class="orangeline"><td colspan="2"  height="600px" >
 <table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
 <tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
-<tr><td>
+<tr class="orangeline"><td>
  <%
     if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
         %>
@@ -198,9 +182,9 @@ function initComparisons() {
         
         </td><td>일자</td></tr>
         
-        <tr><td colspan="2" height="400px">
+        <tr  class="orangeline"><td colspan="2" height="400px">
 
-<div align="center" style="margin-bottom:15px;"><pre><< 도구     재료 >></pre></div>
+<div align="center" style="margin-bottom:15px;"></div>
 
 <div class="img-comp-container">
   <div class="img-comp-img">
@@ -304,7 +288,7 @@ function initComparisons() {
 		</td>
 		<td>
 		
-		<table border="1" class="commentbase">
+		<table class="commentbase">
 		
 			<tr height="30">
 				<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
