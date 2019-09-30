@@ -10,6 +10,9 @@
 <title>비밀번호 찾기</title>
 
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="style.css">
+
 <style>
 												
 
@@ -20,7 +23,8 @@
 <%@include file="../general_included/topbar.jsp"%>
 
 <div id="maindiv">
-
+<hr style="border: solid 2px #ffbb00; align:center;
+		width:2000px;">
 	<%
 	String id=request.getParameter("id");
 	String email=request.getParameter("email");
@@ -36,11 +40,24 @@
 			if(rs.next()) {
 				pw = rs.getString("passwd");	
 	%>
-	<br><br>
+	
 	<center>
-		<span>회원님의 비밀번호는 </span><h4><%=pw%></h4>입니다.<!-- 추출한 ID를 보여줌 --><br><br>
+		<br><br><br><br><br><br><br>
+	<div>
+				<input class="logininputs" type="password" placeholder="새 비밀번호 " name="passwd"><br><br>
+				<input class="logininputs" type="password" placeholder="새 비밀번호 확인" name="passwd"><br><br>
+			<button class="loginbutton" type="button" onclick="Login();">확인</button>
+			</div><br><br>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
-	</center>
+
+			</div>
+
+
+		<!--<span>회원님의 비밀번호는 </span><h4><%=pw%></h4>입니다.<br><br>
+			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>-->
+			<!-- 추출한 ID를 보여줌 -->
+
+		
 	
 	<%
 			}else{
@@ -65,6 +82,8 @@
 		
 			
 </div>
+<br><br><br>
+<br><br><br>
 
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 <pre>

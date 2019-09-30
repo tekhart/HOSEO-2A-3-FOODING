@@ -6,22 +6,22 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		
 		<link rel="stylesheet" href="../css/common.css">
 		<link rel="stylesheet" href="style.css">
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			
+		
 		</script>
 		
 		
 		
 		
 	</head>
-	<body id="writebody">
-		<%@include file="../general_included/topbar.jsp"%>
+
+<body id="body">
+<%@include file="../general_included/topbar.jsp"%>
 		
 		<div id="maindiv">
 		<%

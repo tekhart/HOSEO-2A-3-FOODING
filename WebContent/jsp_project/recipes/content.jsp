@@ -124,13 +124,15 @@ function initComparisons() {
 
 	}
 	
-
-
 	
 </script>
 </head>
-<body>
+
+<body id="body">
+
 <%@include file="../general_included/topbar.jsp"%>
+
+<div id="maindiv" style="width:100%;">
 
 <div id="maindiv2">
 <%
