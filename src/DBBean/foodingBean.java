@@ -2235,7 +2235,7 @@ public class foodingBean {
          }
   		return articleList;
      }
-    public int getannoueceCommentArticleCount(int num)
+    public int getannounceCommentArticleCount(int num)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;

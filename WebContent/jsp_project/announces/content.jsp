@@ -78,10 +78,10 @@
 	    int count = 0;
 	    int periode=Integer.parseInt(article.getPeriode());
 	    List<commentDataBean> commentList = null;
-	    count = dbPro.getcookhelpCommentArticleCount(num);
+	    count = dbPro.getannounceCommentArticleCount(num);
 	    
 	    if (count > 0) {
-	        commentList = dbPro.getcookhelpCommentsArticles(startRow, commentpageSize,num);
+	        commentList = dbPro.getannounceCommentsArticles(startRow, commentpageSize,num);
 	    }
 	    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    Calendar cal=Calendar.getInstance();

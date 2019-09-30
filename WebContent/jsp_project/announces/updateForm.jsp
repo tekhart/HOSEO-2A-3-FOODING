@@ -36,7 +36,8 @@
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    Calendar cal=Calendar.getInstance();
 	    cal.setTime(article.getReg_date());
-	    cal.add(Calendar.DATE,article.getPeriode());
+	    int periode=Integer.parseInt(article.getPeriode());
+	    cal.add(Calendar.DATE,periode);
 %>
 <div class="writetitle">
 		글수정
