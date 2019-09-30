@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class QuestionDataBean {
 	
-	private int num;
+	private int num; 
 	private String title;
 	private String writerid;
 	private String quesType;
