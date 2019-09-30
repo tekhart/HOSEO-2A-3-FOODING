@@ -288,7 +288,7 @@ function initComparisons() {
 		</td>
 		<td>
 		
-		<table border="1" class="commentbase">
+		<table class="commentbase">
 		
 			<tr height="30">
 				<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
