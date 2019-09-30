@@ -15,4 +15,7 @@
 	foodingBean dbPro = foodingBean.getInstance();
 	dbPro.insertannounceArticle(article);
 	response.sendRedirect("list.jsp");
+	
+	
+	
 %>

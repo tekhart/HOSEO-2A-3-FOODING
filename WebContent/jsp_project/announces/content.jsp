@@ -9,6 +9,7 @@
     int commentpageSize = 10;
     SimpleDateFormat sdf = 
         new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    
 %>
 <%		
 			
@@ -75,6 +76,7 @@
 	    int startRow = (currentPage - 1) * commentpageSize + 1;
 	    int endRow = currentPage * commentpageSize;
 	    int count = 0;
+	    int periode=Integer.parseInt(article.getPeriode());
 	    List<commentDataBean> commentList = null;
 	    count = dbPro.getcookhelpCommentArticleCount(num);
 	    
@@ -84,7 +86,7 @@
 	    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    Calendar cal=Calendar.getInstance();
 	    cal.setTime(article.getReg_date());
-	    cal.add(Calendar.DATE,article.getPeriode());
+	    cal.add(Calendar.DATE,periode);
 %>
 
 <table border="1" style="margin:auto;" > 

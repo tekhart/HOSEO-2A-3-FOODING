@@ -63,10 +63,20 @@
 				 style="ime-mode:normal;"></td>
 			</tr>
 			<tr>
-				<td width="180" align="center" id="writespace">효용&nbsp;&nbsp;&nbsp;&nbsp;시간</td>
-				<td width="330" align="left">
+				<td width="180" align="center" id="writespace">기간
+				</td><td width="330" align="left">
 				<input type="text" size="40" maxlength="50" name="periode" class="signupinput"
 				 style="ime-mode:normal;"></td>
+				</tr><tr><td>isevent</td><td>
+				<select name='isEvent'
+						style="ime-mode:inactive;">
+						<option value='' selected disabled hidden >-- 선택 --</option>
+		    			<option value='1'>공지사항</option>
+		    			<option value='0'>이벤트</option>
+		    			
+					</select>
+				</td></tr><tr>
+				
 			</tr>
 			<tr>
 				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>

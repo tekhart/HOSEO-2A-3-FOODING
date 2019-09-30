@@ -8,7 +8,7 @@ public class announceDataBean {
 	String writerid;
 	String isEvent;
 	Timestamp reg_date;
-	int periode;
+	String periode;
 	int readcount;
 	String content;
 	
@@ -42,10 +42,10 @@ public class announceDataBean {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-	public int getPeriode() {
+	public String getPeriode() {
 		return periode;
 	}
-	public void setPeriode(int periode) {
+	public void setPeriode(String periode) {
 		this.periode = periode;
 	}
 	public int getReadcount() {

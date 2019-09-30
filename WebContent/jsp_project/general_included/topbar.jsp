@@ -92,7 +92,7 @@
 						            <button class="dropbtn">공지사항</button>
 						            <div class="dropdown-content">
 							            <center>
-							            	<a href="#">푸딩규칙</a>
+							            	<a href="../announces/list.jsp">푸딩규칙</a>
 									        <a href="#">이벤트</a>
 							            </center>
 						        	</div>

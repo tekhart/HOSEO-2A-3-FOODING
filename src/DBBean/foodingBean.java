@@ -1855,6 +1855,7 @@ public class foodingBean {
 
 		int num=article.getNum();
 		int number=0;
+		int periode=Integer.parseInt(article.getPeriode());
         String sql="";
 
         try {
@@ -1869,9 +1870,8 @@ public class foodingBean {
 		      number=1; 
 		   
 		    
-            // 荑쇰━瑜� �옉�꽦
-            sql = "insert into announce(title,writerid,isEvent,reg_date,content";
-		    sql+=") values(?,?,?,?,?)";
+            sql = "insert into announce(title,writerid,isEvent,reg_date,content,periode";
+		    sql+=") values(?,?,?,?,?,?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
@@ -1879,6 +1879,7 @@ public class foodingBean {
             pstmt.setString(3, article.getIsEvent());
 			pstmt.setTimestamp(4, article.getReg_date());
             pstmt.setString(5, article.getContent());
+            pstmt.setString(6, article.getPeriode());
 			
             pstmt.executeUpdate();
         } catch(Exception ex) {
@@ -2097,7 +2098,7 @@ public class foodingBean {
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getIsEvent());
-                  pstmt.setInt(3, article.getPeriode());
+                  pstmt.setString(3, article.getPeriode());
                   pstmt.setString(4, article.getContent());
   			      pstmt.setInt(5, article.getNum());
                   pstmt.executeUpdate();
