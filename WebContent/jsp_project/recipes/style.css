@@ -248,3 +248,10 @@
 .orangeline1{border-bottom:4px solid orange;}
 .orangeline111{border-top:4px solid orange;}
 .orangeline{border-bottom:3px solid orange;}
+
+.selectcss{
+			padding: .8em .5em;
+			border-radius: 3px;
+			border-color:black;
+			
+		}

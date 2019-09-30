@@ -22,7 +22,7 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="list.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?after">
 
 
 <title>게시판</title>
@@ -135,6 +135,7 @@ function initComparisons() {
 <div id="maindiv" style="width:100%;">
 
 <div id="maindiv2">
+<br><br>
 <%
    try{
 	   int num = Integer.parseInt(request.getParameter("num"));
@@ -173,10 +174,10 @@ function initComparisons() {
  <%
     if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
         %>
-        	<input type="button" value="글수정" 
+        	<input type="button" value="글수정" class="bt2"
            		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
     	   		&nbsp;&nbsp;&nbsp;&nbsp;
-    	  <input type="button" value="글삭제" 
+    	  <input type="button" value="글삭제" class="bt2"
            		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
         <%
         }
@@ -214,7 +215,7 @@ function initComparisons() {
 			<tr><td>
 			댓글 수 : <%=count%></td>
 			<td class="content1" align="right">
-				<input type="submit"  value="댓글쓰기" class="bt2">
+				<input type="submit"  value="댓글쓰기" class="bt2" style="font-family:Bauhaus ITC; font-size:17pt;">
 			</td>
 			</tr>
 		</table>

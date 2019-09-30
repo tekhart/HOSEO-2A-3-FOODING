@@ -64,7 +64,7 @@
 	            
 	            					<div class="dropdown-content">
 	            						<center>
-		        							<a href="#">전체 레시피</a>
+		        							<a href="../recipes/list.jsp">전체 레시피</a>
 							        		<a href="#">인기 레시피</a>
 							        		<a href="">맞춤 레시피</a>
 							       			<a href="../recipes/writeForm.jsp">레시피 작성</a>

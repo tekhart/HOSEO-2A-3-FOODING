@@ -88,7 +88,8 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 		<td align="left">
 			<select name='contury'
-				style="ime-mode:inactive;">
+				style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
+						font-family:Bauhaus ITC;">
     			<option value='한식'
     			<%if(conturyselected==1){
     				%>selected<%}%>
@@ -115,7 +116,8 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
     				>기타</option>
 			</select>
 			<select name='foodtype'
-				style="ime-mode:inactive;">
+				style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
+						font-family:Bauhaus ITC;">
     			<option value='밥류'
     			<%if(foodtypeselected==1){
     				%>selected<%}%>
