@@ -58,13 +58,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-<link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="../css/common.css?after">
+<link rel="stylesheet" href="list.css?after">
+<link rel="stylesheet" href="style.css?after">
 
 <style>
-
-
-
 
 
 </style>
@@ -76,13 +74,12 @@
 </script>
 
 </head>
-<body>
+<body id="body">
 <%@include file="../general_included/topbar.jsp"%>
+
 
 <div id="maindiv">
 
-
-     
 
 <% if (count == 0) { %>
 
@@ -101,59 +98,49 @@
 </table>
 <% } else {%>
 
+<div class="writetitle">
+공지사항(<%=count %>)</div>
 
-
-<table class="listtop"><tr><td>
-
-<font class="writetitle">
-공지사항(<%=count %>)</font>
-
-
-</td><td>
-<table class="searchtable"><tr><td class="searchtd">
+<table class="listtop" ><tr><td>
+<table class="searchtable"><tr style="padding-top:-5px"><td class="searchtd" border="1">
 
 
   			<form method="post" action="list.jsp" class="searh">
 			<input type="text" name="search" class="searchbar">	
-</td><td class="searchbttd" width="50px">
+				</td><br><td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
+			<td>
+			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
+			<td>
+			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
 			</form>
-	
-	
-	
 </td></tr></table>
-</td><td><table align="right"><tr><td>
+</td><td><tr><td>
 
-<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
   </td></tr></table></td></tr></table>
-
-
-
-
-
-
+<br><br>
 
 
 <table class="listtable"> 
     <tr height="50"> 
-	  <td align="center"  width="50" class="listcolor">번호</td>
-      <td align="center"  width="350" class="listcolor">제목</td> 
-      <td align="center"  width="100" class="listcolor">작성자</td>
+	  <td align="center"  width="50" class="listcolor" style="padding-left:20px;">번호</td>
+      <td align="center"  width="200" class="listcolor">제목</td> 
+      <td align="center"  width="150" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
-      <td align="center"  width="50" class="listcolor">조회</td> 
-      <td align="center"  width="50" class="listcolor">댓글수</td> 
+      <td align="center"  width="80" class="listcolor">조회</td> 
+      <td align="center"  width="60" class="listcolor" style="padding-right:20px;">댓글수</td> 
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
 	   announceDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-   <tr class="mouse">
-   <td align="center" class="line">
+  
+   <tr height="20px" class="mouse">
+   <td align="center" class="line" style="padding-left:20px;">
    <%=article.getNum()%>
    </td>
-    <td align="left" class="line">       
+    <td align="left" class="line" style="padding-left:40px;">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
         	<% if(article.getReadcount()>=20){%>
@@ -166,7 +153,7 @@
     </td>
     <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
+    <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
 	
   </tr>
 <%}%>

@@ -165,7 +165,7 @@ function initComparisons() {
 	    
 %>
 
-<table border="1" class="contenttable" > 
+<table class="contenttable" > 
 <tr><td  class="orangeline11" rowspan="2"width="1000px" height="100px" align="center" ><h2><%=article.getTitle()%></h2></td>
 <td class="orangeline111"  align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
 <tr class="orangeline1"><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr>

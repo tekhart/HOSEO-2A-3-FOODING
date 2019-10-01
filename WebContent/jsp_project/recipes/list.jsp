@@ -108,7 +108,7 @@
 전체 레시피(<%=count %>)</div>
 
 <table class="listtop" ><tr><td>
-<table class="searchtable"><tr><td class="searchtd" border="1">
+<table class="searchtable"><tr style="padding-top:-5px"><td class="searchtd" border="1">
 
 
   			<form method="post" action="list.jsp" class="searh">
@@ -147,7 +147,7 @@
 
 
    <tr height="20px" class="mouse">
-   <td align="center" class="line">
+   <td align="center" class="line" style="padding-left:20px;">
    <%=article.getNum()%>
    </td>
     <td align="left" class="line" style="padding-left:40px;">       
