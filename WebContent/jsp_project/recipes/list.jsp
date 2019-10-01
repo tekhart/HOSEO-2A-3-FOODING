@@ -157,6 +157,7 @@
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
+          <%-- 조회수가 20이상일때 HOT이라는 문구가 뜸 --%>
         	<% if(article.getReadcount()>=20){%>
      		 <font color="red">HOT</font>
 			<%}%>
