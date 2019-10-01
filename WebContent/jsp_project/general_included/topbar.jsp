@@ -103,7 +103,7 @@
 						            <button class="dropbtn">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
-							             	<a href="#">자주하는 질문</a>
+							             	<a href="../notices/faq.jsp">자주하는 질문</a>
 									        <a href="#">문의사항</a>
 							            </center>
 						        	</div>
