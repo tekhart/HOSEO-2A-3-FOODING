@@ -5,11 +5,12 @@
 
 .listtop{
 	width:800px;
+	margin:auto;
 }
 
 .listtable{
 	margin:auto;
-	width:800px;
+	width:1200px;
 	border-collapse: collapse;
 	border-spacing:0px;
 }
@@ -68,23 +69,23 @@
 .searchbttd{margin-left:0px;}
 
 .searchbar{
-		width:230px;
-		height:30px;
+		width:320px;
+		height:38px;
 		display: inline-block;
 		border-color:#ffbb00;
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		 border-radius: 5px 0px 0px 5px;
+		border-radius: 5px 0px 0px 5px;
 	}
 
 .searchbotton{
-	width:40px;
-	height:32px;
+	width:60px;
+	height:38px;
 	border-width: thin; 
 	border-color:#ffbb00;
 	background-color:white;
-	
+	font-size:15px;
 	border-left:0px;
 	border-style:solid;
 	border-radius: 0px 5px 5px 0px;
@@ -95,13 +96,13 @@
 		background-color:white; 
 		font-size:15px;
 		border-color:#ffbb00;
-		height:30px;
+		height:38px;
 		margin: 5px;
 		border-width:0.5px;
 		border-style:solid;
 		cursor: pointer;
 		width: 60px;
-		border-radius:3px; 
+		border-radius:5px; 
 }
 
 a:link {

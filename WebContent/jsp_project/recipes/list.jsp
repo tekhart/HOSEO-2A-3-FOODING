@@ -58,9 +58,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-<link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
-
+<link rel="stylesheet" href="../css/common.css?after">
+<link rel="stylesheet" href="list.css?after">
+<link rel="stylesheet" href="style.css?after">
 <style>
 
 
@@ -104,48 +104,39 @@
 </table>
 <% } else {%>
 
-
-
-<table class="listtop"><tr><td>
-
-<font class="writetitle">
+<div class="writetitle">
 전체 레시피(<%=count %>)</font>
 
-
-</td><td>
-<table class="searchtable"><tr><td class="searchtd">
+<table class="listtop" ><tr><td>
+<table class="searchtable"><tr><td class="searchtd" border="1">
 
 
   			<form method="post" action="list.jsp" class="searh">
 			<input type="text" name="search" class="searchbar">	
-</td><td class="searchbttd" width="50px">
+				</td><br><td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
+			<td>
+			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
+			<td>
+			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
 			</form>
 	
 	
-	
 </td></tr></table>
-</td><td><table align="right"><tr><td>
+</td><td><tr><td>
 
-<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
   </td></tr></table></td></tr></table>
-
-
-
-
-
-
+<br>
 
 
 <table class="listtable"> 
     <tr height="50"> 
-	  <td align="center"  width="50" class="listcolor">번호</td>
-      <td align="center"  width="350" class="listcolor">제목</td> 
-      <td align="center"  width="100" class="listcolor">작성자</td>
+	  <td align="center"  width="50" class="listcolor" >번호</td>
+      <td align="center"  width="200" class="listcolor">제목</td> 
+      <td align="center"  width="150" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
-      <td align="center"  width="50" class="listcolor">조회</td> 
-      <td align="center"  width="50" class="listcolor">댓글수</td> 
+      <td align="center"  width="80" class="listcolor">조회</td> 
+      <td align="center"  width="60" class="listcolor">댓글수</td> 
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
