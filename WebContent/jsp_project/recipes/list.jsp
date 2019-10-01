@@ -158,7 +158,7 @@
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
         	<% if(article.getReadcount()>=20){%>
-     		 <font color="red">HOT</font>
+     		 <img src="../img/fire.png" width="25px" height="25px" align="middle">
 			<%}%>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
@@ -175,6 +175,9 @@
 <%}%>
 
 <center>
+
+
+
 
 <%
     if (count > 0) {
@@ -204,6 +207,24 @@
         }
     }
 %>
+
+<img src="../img/F.png" width="20px" height="25px" align="middle">
+<img src="../img/redo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/yelo.png" width="25px" height="25px" align="middle">
+<img src="../img/d.png" width="25px" height="25px" align="middle">
+<img src="../img/i.png" width="25px" height="25px" align="middle">
+<img src="../img/n.png" width="25px" height="25px" align="middle">
+<img src="../img/g.png" width="25px" height="25px" align="middle">
+
+
 
   </center>
 
