@@ -1,6 +1,6 @@
 #maindiv{
 	margin:auto;
-	width:700px;
+	width:100%;
 }
 
 .listtop{
@@ -144,4 +144,16 @@ a:active {
 	background-color:#F2F2F2;
 }
 	
+	.bt2{
+		background-color:white; 
+		font-size:18px;
+		border-color:#ffbb00;
+		height:40px;
+		margin: 5px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 80px;
+		border-radius:3px; 
+	}
 }

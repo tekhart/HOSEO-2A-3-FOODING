@@ -12,6 +12,8 @@
 <title>아이디 찾기</title>
 
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="style.css">
 
 <style>
 	
@@ -23,6 +25,9 @@
 <%@include file="../general_included/topbar.jsp"%>
 <div id="maindiv">
 
+	<hr style="border: solid 2px #ffbb00; align:center;
+		width:2000px;">
+		
 	<%
 		String nkname = request.getParameter("nkname");
 		String email = request.getParameter("email");
@@ -41,7 +46,17 @@
 	
 	<br><br>
 	<center>
-		<span>회원님의 아이디는 </span><h4><%=id%></h4>입니다.<!-- 추출한 ID를 보여줌 --><br><br>
+	<br><br>
+		<div style="font-size:18pt; background-color: " >가입된 ID는 다음과 같습니다.</div>
+		<table width="500px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
+		border-style:solid; font-family:Bauhaus ITC";" >
+		<tr><td>
+		<span>회원님의 아이디는 </span></td></tr>
+		<tr><td>
+		<h4><%=id%></h4></td></tr>
+			<tr><td>입니다<!-- 추출한 ID를 보여줌 --></td></tr><br><br><br><br> </table>
+			
+			<br><br><br><br>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 	</center>
 	
@@ -61,7 +76,7 @@
 	%>
 
 </div>
-
+<br><br><br>
 <div id="footer" align="right" style="color:#cccccc; font-size:12px;">
 <pre>
 Create by FOODING

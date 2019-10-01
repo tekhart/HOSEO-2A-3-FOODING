@@ -10,19 +10,15 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <style>
-	body{	font-family:"Bauhaus ITC";
-		color:black;}
-		
-#title{
-	text-decoration:none;
-	
-}
+
 </style>
 
 </head>
 
 <body id="body">
+
 <%@include file="../general_included/topbar.jsp"%>
+
 
 <center>
 

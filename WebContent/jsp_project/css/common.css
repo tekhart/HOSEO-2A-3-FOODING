@@ -122,8 +122,10 @@
     	
     	}
 
-.maindiv{
-width:100%;}
+	.maindiv{
+	width:100%;
+	font-family:"Bauhaus ITC";
+	}
     	
         height:300px;
         width:40%;
@@ -529,11 +531,12 @@ width:100%;}
 		margin-left:550px;
 	}
 
-	@media screen and (max-width: 300px) {
+	<!-- @media screen and (max-width: 300px) {
 		span.idpasswd {
 			display: block;
 			float: none;
-		}
+		}-->
+		
 		.cancelbtn {
 			width: 50%;
 		}
