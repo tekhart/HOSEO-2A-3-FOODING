@@ -131,7 +131,7 @@
 
 <table class="listtable"> 
     <tr height="50"> 
-	  <td align="center"  width="50" class="listcolor" >번호</td>
+	  <td align="center" style="padding-left:20px;" width="50" class="listcolor" >번호</td>
       <td align="center"  width="200" class="listcolor">제목</td> 
       <td align="center"  width="150" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
@@ -144,10 +144,10 @@
 	   String writerid=article.getWriterid();
 %>
    <tr class="mouse">
-   <td align="center" class="line">
+   <td align="center" class="line" style="padding-left:20px;">
    <%=article.getNum()%>
    </td>
-    <td align="left" class="line">       
+    <td align="left" class="line" style="padding-left:40px;">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]

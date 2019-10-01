@@ -133,6 +133,7 @@ a:active {
 .nogul{margin:auto;}
 
 .listcolor{
+	float:center;
 	border-top:3px solid #ffbb00;
 	border-bottom:1.5px solid #ffbb00;
 	background-color:#ffd668;
