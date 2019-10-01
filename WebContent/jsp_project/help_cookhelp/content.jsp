@@ -62,7 +62,7 @@
 	   int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 	    foodingBean dbPro = foodingBean.getInstance();
-     	BoardDataBean article =  dbPro.getexrecipeArticle(num);
+     	BoardDataBean article =  dbPro.getcookhelpArticle(num);
 		
 		foodingBean foodingbean = new foodingBean();
 
@@ -76,10 +76,10 @@
 	    int endRow = currentPage * commentpageSize;
 	    int count = 0;
 	    List<commentDataBean> commentList = null;
-	    count = dbPro.getexrecipeCommentArticleCount(num);
+	    count = dbPro.getcookhelpCommentArticleCount(num);
 	    
 	    if (count > 0) {
-	        commentList = dbPro.getexrecipeCommentsArticles(startRow, commentpageSize,num);
+	        commentList = dbPro.getcookhelpCommentsArticles(startRow, commentpageSize,num);
 	    }
 	    
 %>
@@ -129,7 +129,7 @@
 
 </table>
 	<br>
-	<form method="post" name="commentform" >
+	<form method="post" name="commentform" action="commentspro.jsp">
 	
 		
 			

@@ -578,7 +578,7 @@ public class foodingBean {
             pstmt.setString(6, article.getWriterid());
 			pstmt.setTimestamp(7, article.getReg_date());
             pstmt.setString(8, article.getContent());
-            pstmt.setInt(9, article.getDifficulty());
+            pstmt.setString(9, article.getDifficulty());
 			
             pstmt.executeUpdate();
         } catch(Exception ex) {
@@ -638,7 +638,7 @@ public class foodingBean {
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));
 					article.setContent(rs.getString("content"));
-					article.setDifficulty(rs.getInt("difficulty"));
+					article.setDifficulty(rs.getString("difficulty"));
                  articleList.add(article);
                 }while(rs.next());
             }
@@ -700,7 +700,7 @@ public class foodingBean {
 			     article.setReg_date(rs.getTimestamp("reg_date"));
 				 article.setReadcount(rs.getInt("readcount"));
                  article.setContent(rs.getString("content"));
-                 article.setDifficulty(rs.getInt("difficulty"));
+                 article.setDifficulty(rs.getString("difficulty"));
                  
                  articleList.add(article);
 			    }while(rs.next());
@@ -743,7 +743,7 @@ public class foodingBean {
                 article.setReg_date(rs.getTimestamp("reg_date"));
 			    article.setReadcount(rs.getInt("readcount"));     
                 article.setContent(rs.getString("content"));
-                article.setDifficulty(rs.getInt("difficulty"));
+                article.setDifficulty(rs.getString("difficulty"));
 			}
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -778,7 +778,7 @@ public class foodingBean {
 	                article.setReg_date(rs.getTimestamp("reg_date"));
 				    article.setReadcount(rs.getInt("readcount"));     
 	                article.setContent(rs.getString("content"));     
-	                article.setDifficulty(rs.getInt("difficulty"));
+	                article.setDifficulty(rs.getString("difficulty"));
 				}
 	        } catch(Exception ex) {
 	            ex.printStackTrace();
@@ -809,7 +809,7 @@ public class foodingBean {
                   pstmt.setString(4, article.getIngredients());
                   pstmt.setString(5, article.getTools());
                   pstmt.setString(6, article.getContent());
-                  pstmt.setInt(7, article.getDifficulty());
+                  pstmt.setString(7, article.getDifficulty());
   			      pstmt.setInt(8, article.getNum());
 
                   pstmt.executeUpdate();
@@ -992,14 +992,13 @@ public class foodingBean {
 		   
 		    
             // 荑쇰━瑜� �옉�꽦
-            sql = "insert into cookhelp(title,contury,foodtype,difficulty,ingredients,tools,writerid,reg_date,content";
-		    sql+=") values(?,?,?,?,?,?,?,?,?)";
+            sql = "insert into cookhelp(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
+		    sql+=") values(?,?,?,?,?,?,?,?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getContury());
             pstmt.setString(3, article.getFoodtype());
-            pstmt.setInt(3, article.getDifficulty());
             pstmt.setString(4, article.getIngredients());
             pstmt.setString(5, article.getTools());
             pstmt.setString(6, article.getWriterid());
@@ -1059,7 +1058,6 @@ public class foodingBean {
                 article.setNum(rs.getInt("num"));
                 article.setContury(rs.getString("contury"));
                 article.setFoodtype(rs.getString("foodtype"));
-                article.setDifficulty(rs.getInt("difficulty"));
                 article.setTitle(rs.getString("title"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
@@ -1123,7 +1121,6 @@ public class foodingBean {
                 article.setNum(rs.getInt("num"));
                 article.setContury(rs.getString("contury"));
                 article.setFoodtype(rs.getString("foodtype"));
-                article.setDifficulty(rs.getInt("difficulty"));
                 article.setTitle(rs.getString("title"));
  				article.setWriterid(rs.getString("writerid"));
  				article.setReg_date(rs.getTimestamp("reg_date"));
@@ -1167,7 +1164,6 @@ public class foodingBean {
 				article.setTitle(rs.getString("title"));
                 article.setContury(rs.getString("contury"));
                 article.setFoodtype(rs.getString("foodtype"));
-                article.setDifficulty(rs.getInt("difficulty"));
                 article.setIngredients(rs.getString("ingredients"));
 			    article.setTools(rs.getString("tools"));
 				article.setWriterid(rs.getString("writerid"));
@@ -1203,7 +1199,6 @@ public class foodingBean {
 					article.setTitle(rs.getString("title"));
 	                article.setContury(rs.getString("contury"));
 	                article.setFoodtype(rs.getString("foodtype"));
-	                article.setDifficulty(rs.getInt("difficulty"));
 	                article.setIngredients(rs.getString("ingredients"));
 				    article.setTools(rs.getString("tools"));
 					article.setWriterid(rs.getString("writerid"));
@@ -1237,7 +1232,7 @@ public class foodingBean {
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getContury());
                   pstmt.setString(3, article.getFoodtype());
-                  pstmt.setInt(4, article.getDifficulty());
+                  pstmt.setString(3, article.getDifficulty());
                   pstmt.setString(5, article.getIngredients());
                   pstmt.setString(6, article.getTools());
                   pstmt.setString(7, article.getContent());

@@ -86,6 +86,13 @@
 		    			<option value='디저트'>디저트</option>
 		    			<option value='기타'>기타</option>
 					</select>
+					<select name='difficulty'
+						style="ime-mode:inactive;">
+						<option value='' selected disabled hidden>-- 선택 --</option>
+		    			<option value='초급'>초급</option>
+		    			<option value='중급'>중급</option>
+		    			<option value='상급'>상급</option>
+					</select>
 				</td>
 			</tr>
 			<tr>

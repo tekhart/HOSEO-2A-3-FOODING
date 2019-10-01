@@ -4,7 +4,7 @@
 <%@ page import = "DBBean.QuestionDataBean" %>
 <%@ page import = "DBBean.commentDataBean" %>
 <%@ page import = "java.util.List" %>
-<%@ page import = "java.text.SimpleDateFormat" %>
+<%@ page import = "java.text.SimpleDateFormat" %> 
 <%@ include file="color.jsp"%>
 
 <%!
@@ -162,7 +162,7 @@
 			<%}%>
 			
 			<%if(article.getRe_level()>0){%>
-					[답글]	<%} %>
+					ㄴ [답글]	<%} %>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
      	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">

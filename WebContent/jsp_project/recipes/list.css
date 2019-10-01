@@ -50,6 +50,12 @@
 	width:200px;	
 }
 
+.commentbase{
+	background-color:#fdddc4;
+	padding:15px;
+	
+}
+
 .searchtable{
 	border-collapse:collapse;
 	border-spacing:0px;
