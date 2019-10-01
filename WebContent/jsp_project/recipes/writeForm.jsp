@@ -32,8 +32,7 @@
 					num=Integer.parseInt(request.getParameter("num"));
 				}
 				if(session.getAttribute("idlogin")==null){
-					out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
-					response.sendRedirect("../mains/main.jsp");
+					response.sendRedirect("../general_included/pls_login_first.jsp");
 				}
 				idlogin=(String)session.getAttribute("idlogin");
 		%>

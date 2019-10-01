@@ -19,6 +19,10 @@
   if(check==1){
 %>
 	<meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>">
+	<script type="text/javascript">
+		opener.location.href="list.jsp";
+		self.close();
+	</script>
 <%}else{%>
     <script type="text/javascript">      
        <!--      

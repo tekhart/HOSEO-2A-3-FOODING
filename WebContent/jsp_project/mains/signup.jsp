@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<meta charset="UTF-8">
+
 <%@ page import="java.sql.*"%>
 <%@page import="DBBean.foodingBean" %>
 <jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
-
+<meta charset="UTF-8">
 <%
 
 	request.setCharacterEncoding("UTF-8");

@@ -171,14 +171,14 @@ function initComparisons() {
 <table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
 <tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
 <tr class="orangeline"><td>
- <%
-    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))||session.getAttribute("idlogin").equals("fooding1")){
+ 		<%
+    		if(article.getWriterid().equals(idlogin)){
         %>
         	<input type="button" value="글수정" class="bt2"
            		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
     	   		&nbsp;&nbsp;&nbsp;&nbsp;
     	  <input type="button" value="글삭제" class="bt2"
-           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
+           		onclick='window.open("deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>", "a", "width=400, height=300, left=100, top=50")'>	
         <%
         }
         %>
@@ -249,38 +249,38 @@ function initComparisons() {
 	<%} %>
 	</form>
 
-<% if (count == 0) { %>
-
- <table>
-		<tr>
-		    <td align="center">
-		             댓글이 없습니다.
-		    </td>
-		</tr>
-</table>
-
-<% } else {%>
-
-<form method="post" name="iregularcommentform" 
-		action="commentspro.jsp" >
-	<input type="hidden" name="num" value="0">
-	<input type="hidden" name="rootin" value="<%=num %>">
-	<input type="hidden" name="pageNum" value="<%=pageNum %>">
-	<input type="hidden" name="writerid" value="<%=idlogin %>">
-	<input type="hidden" name="ref" value="1">
-	<input type="hidden" name="re_step" value="0">
-	<input type="hidden" name="re_level" value="0">
-	<input type="hidden" name="selected" value="0">
-<%  
-	for (int i = 0 ; i < commentList.size() ; i++) {
-		commentDataBean comments = commentList.get(i);
-
-	int wid=0; 
-	if(comments.getRe_level()>0){
-	   wid=30*(comments.getRe_level());
-	}
-
-%>
+	<% if (count == 0) { %>
+	
+	 <table>
+			<tr>
+			    <td align="center">
+			             댓글이 없습니다.
+			    </td>
+			</tr>
+	</table>
+	
+	<% } else {%>
+	
+	<form method="post" name="iregularcommentform" 
+			action="commentspro.jsp" >
+		<input type="hidden" name="num" value="0">
+		<input type="hidden" name="rootin" value="<%=num %>">
+		<input type="hidden" name="pageNum" value="<%=pageNum %>">
+		<input type="hidden" name="writerid" value="<%=idlogin %>">
+		<input type="hidden" name="ref" value="1">
+		<input type="hidden" name="re_step" value="0">
+		<input type="hidden" name="re_level" value="0">
+		<input type="hidden" name="selected" value="0">
+	<%  
+		for (int i = 0 ; i < commentList.size() ; i++) {
+			commentDataBean comments = commentList.get(i);
+	
+		int wid=0; 
+		if(comments.getRe_level()>0){
+		   wid=30*(comments.getRe_level());
+		}
+	
+	%>
 
 	<table style="margin:auto;" class="commment">
 		<tr>

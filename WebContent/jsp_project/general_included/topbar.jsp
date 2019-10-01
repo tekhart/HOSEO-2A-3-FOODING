@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="DBBean.foodingBean" %>
 <% 
-	String idlogin="";
+	String idlogin="none";
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean=new foodingBean();
 %>
@@ -25,7 +25,7 @@
 		try{
 			idlogin=(String)session.getAttribute("idlogin");
 			
-			if(idlogin==null||idlogin.equals("")){
+			if(idlogin==null){
 				%>
 				<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
 				<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
