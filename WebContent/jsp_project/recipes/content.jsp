@@ -161,28 +161,15 @@ function initComparisons() {
 %>
 
 <table class="contenttable" > 
-<<<<<<< HEAD
-<tr><td style="border-bottom:red;" rowspan="2"width="1000px" height="100px" align="center"><h2><%=article.getTitle()%></h2></td><!-- 제목 나오는 부분 -->
-<td align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr><!-- 닉네임 나오는 부분 -->
-<tr><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr><!-- 조회수 나오는 부분 -->
-<tr><td colspan="2"  height="600px" >
-=======
 <tr><td  class="orangeline11" rowspan="2"width="1000px" height="100px" align="center" ><h2><%=article.getTitle()%></h2></td>
 <td class="orangeline111"  align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
 <tr class="orangeline1"><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr>
 <tr   class="orangeline"><td colspan="2"  height="600px" >
->>>>>>> refs/remotes/origin/master
 <table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
-<<<<<<< HEAD
-<tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr><!-- 내용 나오는 부분 -->
-<tr><td>
- <%-- 로그인이 되면 글수정 글삭제 버튼이 나옴 --%>
- 	<%
-=======
 <tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
 <tr class="orangeline"><td>
- <%
->>>>>>> refs/remotes/origin/master
+ <%-- 로그인이 되면 글수정 글삭제 버튼이 나옴 --%>
+ 	<%
     if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
         %>
         	<input type="button" value="글수정" 
@@ -302,7 +289,7 @@ function initComparisons() {
 		</td>
 		<td>
 		
-		<table class="commentbase">
+		<table border="1" class="commentbase">
 		
 			<tr height="30">
 				<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
