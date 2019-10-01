@@ -137,4 +137,36 @@ a:active {
 	background-color:#F2F2F2;
 }
 	
+	
+.collapsible {
+  background-color: #ffbc0d;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+
+
+.collapsible:visited {
+	background-color: #d88912;
+} 
+
+.collapsible:hover {
+  background-color: #d88912;
+}
+
+.active1 {
+	background-color: #d88912;
+} 
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #fafafa;
 }
