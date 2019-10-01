@@ -143,13 +143,11 @@
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-<<<<<<< HEAD
-   <tr class="mouse">
-   <td align="center" class="line" style="padding-left:20px;">
-=======
+
+
+
    <tr height="20px" class="mouse">
    <td align="center" class="line">
->>>>>>> refs/remotes/origin/t
    <%=article.getNum()%>
    </td>
     <td align="left" class="line" style="padding-left:40px;">       
