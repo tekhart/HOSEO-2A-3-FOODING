@@ -62,12 +62,8 @@
 				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
 				 style="ime-mode:normal;"></td>
 			</tr>
-			<tr>
-				<td width="180" align="center" id="writespace">기간
-				</td><td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="periode" class="signupinput"
-				 style="ime-mode:normal;"></td>
-				</tr><tr><td>isevent</td><td>
+			
+			<tr><td align="center">분류</td><td>
 				<select name='isEvent'
 						style="ime-mode:inactive;">
 						<option value='' selected disabled hidden >-- 선택 --</option>

@@ -76,38 +76,24 @@
 	    int startRow = (currentPage - 1) * commentpageSize + 1;
 	    int endRow = currentPage * commentpageSize;
 	    int count = 0;
-	    int periode=Integer.parseInt(article.getPeriode());
 	    List<commentDataBean> commentList = null;
 	    count = dbPro.getannounceCommentArticleCount(num);
 	    
 	    if (count > 0) {
 	        commentList = dbPro.getannounceCommentsArticles(startRow, commentpageSize,num);
 	    }
-	    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	    Calendar cal=Calendar.getInstance();
-	    cal.setTime(article.getReg_date());
-	    cal.add(Calendar.DATE,periode);
+	    
 %>
-
-<table border="1" style="margin:auto;" > 
-	<tr>
-		<td width="500px" style="text-align:center;"><%=article.getTitle()%></td>
-		<td width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
-	</tr>
-	<tr>
-		<td colspan="2" ><%=foodingbean.findnkname(article.getWriterid()) %></td>
-	</tr>
-	<tr>
-		<td colspan="2" ><%=sdf.format(cal.getTime())%> </td>
-	</tr>
-	<tr>
-		<td colspan="2"><pre><%=article.getContent()%></pre></td>
-	</tr>
-    <tr>
-    	<td></td>
-		<td align="right">
+<table class="contenttable" > 
+<tr><td  class="orangeline11" rowspan="2"width="1000px" height="100px" align="center" ><h2><%=article.getTitle()%></h2></td>
+<td class="orangeline111"  align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
+<tr class="orangeline1"><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr>
+<tr   class="orangeline"><td colspan="2"  height="600px" >
+<table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
+<tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
+<tr class="orangeline"><td>
 			<%
-			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))||session.getAttribute("idlogin").equals("fooding1")){
 	        %>
 				<input type="button" value="글수정" 
 				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
@@ -117,10 +103,22 @@
 		    <%
 		    	}
 		    %>
-       	</td>
-    </tr>
-	<tr><td></td><td colspan="2">목록</td></tr>
-</table>
+       	</td><td>일자 : <%=article.getReg_date() %></td></tr>
+        
+        <tr  class="orangeline"><td colspan="2" height="400px">
+
+<div align="center" style="margin-bottom:15px;"></div>
+
+<div class="img-comp-container">
+</div>
+
+      
+
+        
+        
+        </td></tr>
+
+				</table>
 
 	   &nbsp;&nbsp;&nbsp;&nbsp;
 	   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -130,126 +128,10 @@
   </tr>
 
 </table>
-	<br>
-	<form method="post" name="commentform" action="commentspro.jsp">
-	
-		
-			
-		<table>	
-			<tr>
-				<td>
-					댓글 수 : <%=count%>
-				</td>
-				<td>
-					조회수 : <%=article.getReadcount()%>
-				</td>
-			<td class="content1" align="right">
-				<input type="submit"  value="댓글쓰기" class="bt2">
-			</td>
-			</tr>
-		</table>
-		<%if(session.getAttribute("idlogin")==null){ %>
-			로그인을 하셔야 댓글을 쓸수 있습니다.
-		<%}else{ %>
-		
-		 <table width="1010px" style="margin:auto;">
-			<input type="hidden" name="num" value="0">
-			<input type="hidden" name="rootin" value="<%=num %>">
-			<input type="hidden" name="pageNum" value="<%=pageNum %>">
-			<input type="hidden" name="writerid" value="<%=idlogin %>">
-			<input type="hidden" name="ref"  value="1">
-			<input type="hidden" name="re_step"  value="0">
-			<input type="hidden" name="re_level"  value="0">
-			<input type="hidden" name="selected" value="0">
-			
-		
-			<tr>
-				<td colspan="3" width="0">
-					<textarea name="content" size="40" rows="5" cols="40" class="signupinput"
-							style="ime-mode:inactive;"></textarea>
-				</td>
-			</tr>
-		</table>
-		
-	<%} %>
-	</form>
 
-	
-<% if (count == 0) { %>
-
- <table>
-		<tr>
-		    <td align="center">
-		             댓글이 없습니다.
-		    </td>
-		</tr>
-</table>
-
-<% } else {%>
-<form method="post" name="iregularcommentform" 
-		action="commentspro.jsp" >
-	<input type="hidden" name="num" value="0">
-	<input type="hidden" name="rootin" value="<%=num %>">
-	<input type="hidden" name="pageNum" value="<%=pageNum %>">
-	<input type="hidden" name="writerid" value="<%=idlogin %>">
-	<input type="hidden" name="ref" value="1">
-	<input type="hidden" name="re_step" value="0">
-	<input type="hidden" name="re_level" value="0">
-	<input type="hidden" name="selected" value="0">
-<%  
-	for (int i = 0 ; i < commentList.size() ; i++) {
-		commentDataBean comments = commentList.get(i);
-
-	int wid=0; 
-	if(comments.getRe_level()>0){
-	   wid=15*(comments.getRe_level());
-	}
-
-%>
-
-	
-<table style="margin-left:<%=wid%>px" class="commentbase">
-
-	<tr height="30">
-		<%if(comments.getRe_level()>0){%>
-			<td width="20" rowspan="3">ㄴ</td>
-		<%} %>
-		<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-	    <td width="353"><%= sdf.format(comments.getReg_date())%></td>
-	</tr>
-	<tr height="60">
-		<td colspan="2" width="600" >
-			<p style="width:650px; word-break:break-all"><%=comments.getContent()%></p>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" colspan="2">
-							<input type="button" value="답글" onclick=
-					"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
-				<%if(idlogin.equals(comments.getWriterid())){ %>
-					<input type="button" value="변경" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-					<input type="button" value="삭제" onclick=
-						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-						'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
-				<%} %>
-				<div class="commentchangeform" id="testid"></div>
-		</td>
-	</tr>
-	 <hr width="790" size="8px" color="white">
- </table>
 
 <%
-				}
-%>
-	</form>
-<%
-			}
+			
 		}catch(Exception e){} 
  %>
 </div>

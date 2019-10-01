@@ -16,6 +16,9 @@ public class foodingDataBean {
 	String addrnum="";
 	String address="";
 	String detailaddr="";
+	int mileage=0;
+	int access=0;
+	
 	
 	String nknamecheck="";
 	String idcheck="";

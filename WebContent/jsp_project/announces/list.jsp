@@ -21,6 +21,7 @@
     if (pageNum == null) {
         pageNum = "1";
     }
+    
 
     int currentPage = Integer.parseInt(pageNum);
     int startRow = (currentPage - 1) * pageSize + 1;
@@ -69,7 +70,7 @@
 
 </style>
 
-<title>전체 레시피, FOODING</title>
+<title>공지사항, FOODING</title>
 
 <script type="text/javascript">
 
@@ -78,17 +79,30 @@
 </head>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
-
+<%if(idlogin==null){
+	idlogin="";
+} %>
 <div id="maindiv">
 
 
      
 
 <% if (count == 0) { %>
-
-<table align="right"><tr><td>
-  <a href="list.jsp">목록</a></td><td>
-  <a href="writeForm.jsp">글쓰기</a></td></tr></table>
+	
+ 	<% if(idlogin.equals("fooding1")){%>
+ 	<table align="right">
+ 		<tr>
+ 			<td>
+  				<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
+  			</td>
+  			<td>
+  				<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+  			</td>
+  		</tr>
+  	</table>
+			
+			
+	<%} %>
   <br><br><br>
   
 <table align="center" class="nogul">
@@ -98,6 +112,7 @@
               첫 글을 남겨보세요! <br>
               <img src="../img/ding.png" height="335px" width="559px">
     </td>
+	   
 </table>
 <% } else {%>
 
@@ -106,7 +121,7 @@
 <table class="listtop"><tr><td>
 
 <font class="writetitle">
-전체 레시피(<%=count %>)</font>
+공지사항(<%=count %>)</font>
 
 
 </td><td>
@@ -123,9 +138,10 @@
 	
 </td></tr></table>
 </td><td><table align="right"><tr><td>
-
+<% if(idlogin.equals("fooding1")){%>
 <input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
 <input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+<%} %>
   </td></tr></table></td></tr></table>
 
 
@@ -159,6 +175,11 @@
         	<% if(article.getReadcount()>=20){%>
      		 <font color="red">HOT</font>
 			<%}%>
+		<% if(article.getIsEvent().equals("1")){ %>
+			[공지사항]
+		<%}else{ %>
+			[이벤트]
+		<%} %>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
      	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">
@@ -166,7 +187,7 @@
     </td>
     <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
+    <td align="center" width="50" class="line"><%=dbPro.getannounceCommentArticleCount(article.getNum())%></td>
 	
   </tr>
 <%}%>

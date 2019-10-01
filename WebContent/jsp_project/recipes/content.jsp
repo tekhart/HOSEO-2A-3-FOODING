@@ -169,7 +169,7 @@ function initComparisons() {
 <tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
 <tr class="orangeline"><td>
  <%
-    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))||session.getAttribute("idlogin").equals("fooding1")){
         %>
         	<input type="button" value="글수정" 
            		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
