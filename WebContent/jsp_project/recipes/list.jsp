@@ -149,7 +149,7 @@
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-   <tr height="20px" class="mouse">
+   <tr style="height:40px;" class="mouse">
    <td align="center" class="line">
    <%=article.getNum()%>
    </td>

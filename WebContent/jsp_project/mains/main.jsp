@@ -75,7 +75,7 @@
         }
 		function timeoutslide(){
 	        showSlides(slideIndex);
-	       setTimeout(timeoutslide, 3000); 
+	       setTimeout(timeoutslide, 5000); 
         }
 
         function currentSlide(n) {

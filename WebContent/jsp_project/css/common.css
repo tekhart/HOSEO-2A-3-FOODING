@@ -72,6 +72,14 @@
 		margin-right:-4.5px;
 		color:#813D00;
 	}
+	#titleimage{
+	background-image:url("../img/tititle.png");
+	width:288px;
+	height:76px;
+	}	
+	#titleimage:active{
+	background-image:url("../img/tititle1.png");
+	}	
 				
 	.button2{
 		margin:-9px;

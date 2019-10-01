@@ -51,7 +51,8 @@
     		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
-			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title"><img src="../img/tititle.png"></a></font></td>
+			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title"><div id="titleimage" width="288px" height="76px">
+			</div></a></font></td>
 			<td>
 				<center>
 					<table id="menutable">
