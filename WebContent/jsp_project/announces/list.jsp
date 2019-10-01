@@ -69,7 +69,7 @@
 
 </style>
 
-<title>전체 레시피, FOODING</title>
+<title>공지사항, FOODING</title>
 
 <script type="text/javascript">
 
@@ -106,7 +106,7 @@
 <table class="listtop"><tr><td>
 
 <font class="writetitle">
-전체 레시피(<%=count %>)</font>
+공지사항(<%=count %>)</font>
 
 
 </td><td>
