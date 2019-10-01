@@ -28,7 +28,7 @@
 	.writetitle {
 		
 		padding:30px;	
-		font-size:25px;
+		font-size:20px;
 		}
 
 .titlelong{
@@ -69,8 +69,8 @@
 .searchbttd{margin-left:0px;}
 
 .searchbar{
-		width:320px;
-		height:38px;
+		width:400px;
+		height:50px;
 		display: inline-block;
 		border-color:#ffbb00;
 		background: white;
@@ -80,12 +80,12 @@
 	}
 
 .searchbotton{
-	width:60px;
-	height:38px;
+	width:70px;
+	height:50px;
 	border-width: thin; 
 	border-color:#ffbb00;
 	background-color:white;
-	font-size:15px;
+	font-size:18px;
 	border-left:0px;
 	border-style:solid;
 	border-radius: 0px 5px 5px 0px;
@@ -94,9 +94,9 @@
 
 .bt{
 		background-color:white; 
-		font-size:15px;
+		font-size:17px;
 		border-color:#ffbb00;
-		height:38px;
+		height:50px;
 		margin: 5px;
 		border-width:0.5px;
 		border-style:solid;

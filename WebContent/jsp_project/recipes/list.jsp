@@ -105,9 +105,9 @@
 <% } else {%>
 
 <div class="writetitle">
-전체 레시피(<%=count %>)</font>
+전체 레시피(<%=count %>)</div>
 
-<table class="listtop" ><tr><td><br>
+<table class="listtop" ><tr><td>
 <table class="searchtable"><tr><td class="searchtd" border="1">
 
 
@@ -126,7 +126,7 @@
 </td><td><tr><td>
 
   </td></tr></table></td></tr></table>
-<br>
+<br><br>
 
 
 <table class="listtable"> 
