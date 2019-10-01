@@ -168,14 +168,15 @@
 	}
 	
 	* {box-sizing: border-box;}
-
+	
+//재료,도구 보여주는 부분
 .img-comp-container {
   position: relative;
   height: 250px; 
   width:1100px;
   margin:auto;
 }
-
+//가림막
 .img-comp-img {
   position: absolute;
   width: auto;
@@ -188,6 +189,7 @@
   vertical-align:middle;
 }
 
+//버튼
 .img-comp-slider {
   position: absolute;
   z-index:9;
@@ -199,7 +201,7 @@
   opacity: 0.7;
   border-radius: 50%;
 }
-
+//도구
 .divdiv1{
 	background-color:#ececec;
 	width:1100px;
@@ -211,7 +213,7 @@
   border-color:#593a0d;
   border-width:7px;
 }
-
+//재료
 .divdiv2{
 	background-color:#c5c5c5;
 	width:1100px;
