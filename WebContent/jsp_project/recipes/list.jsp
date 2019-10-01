@@ -143,8 +143,13 @@
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
+<<<<<<< HEAD
    <tr class="mouse">
    <td align="center" class="line" style="padding-left:20px;">
+=======
+   <tr height="20px" class="mouse">
+   <td align="center" class="line">
+>>>>>>> refs/remotes/origin/t
    <%=article.getNum()%>
    </td>
     <td align="left" class="line" style="padding-left:40px;">       
@@ -152,7 +157,7 @@
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
         	<% if(article.getReadcount()>=20){%>
-     		 <img src="../img/fire.png" width="25px" height="25px" align="middle">
+     		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
@@ -187,37 +192,36 @@
         int endPage = startPage + pageBlock - 1;
         if (endPage > pageCount) endPage = pageCount;
         
-        if (startPage > 10) { %>
-          <a href="list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
-<%      }
+        %>
+          	<a href="list.jsp?pageNum=<%= startPage - 10 %>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
+		<%
         
-        for (int i = startPage ; i <= endPage ; i++) {  %>
-           <a href="list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
-<%      }
+        for (int i = startPage ; i <= endPage ; i++) {
+        	if(currentPage==i){
+        		%>
+        			<a href="list.jsp?pageNum=<%= i %>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
+        		<%
+        	}else{
+        		%>
+           			<a href="list.jsp?pageNum=<%= i %>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
+				<%
+			}
+       }
+		
+        %>
+        	<a href="list.jsp?pageNum=<%= startPage + 10 %>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
+        	<img src="../img/ii.png" width="20px" height="24px" align="middle">
+        	<img src="../img/nn.png" width="23px" height="24px" align="middle">
+        	<img src="../img/gg.png" width="23px" height="24px" align="middle"></a>
+		<%
+
         
-        if (endPage < pageCount) {  %>
-        <a href="list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-<%
-        }
-    }
+        
+        
+        
+        
+ }
 %>
-
-<img src="../img/F.png" width="20px" height="25px" align="middle">
-<img src="../img/redo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/yelo.png" width="25px" height="25px" align="middle">
-<img src="../img/d.png" width="25px" height="25px" align="middle">
-<img src="../img/i.png" width="25px" height="25px" align="middle">
-<img src="../img/n.png" width="25px" height="25px" align="middle">
-<img src="../img/g.png" width="25px" height="25px" align="middle">
-
 
 
   </center>
