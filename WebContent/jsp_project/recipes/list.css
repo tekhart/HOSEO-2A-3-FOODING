@@ -385,3 +385,35 @@ a:active {
 .orangeline1{border-bottom:4px solid orange;}
 .orangeline111{border-top:4px solid orange;}
 .orangeline{border-bottom:3px solid orange;}
+
+
+
+
+
+
+
+
+
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+.autocomplete{
+	word-break: keep-all;
+        word-wrap: normal;
+}
