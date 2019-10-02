@@ -137,7 +137,9 @@ a:active {
 	background-color:#F2F2F2;
 }
 	
+
 	
+//자주하는 질문 	
 .collapsible {
   background-color: #ffbc0d;
   color: white;
@@ -151,19 +153,19 @@ a:active {
 }
 
 
-
+//클릭했을시
 .collapsible:visited {
 	background-color: #d88912;
 } 
-
+//마우스오버시
 .collapsible:hover {
   background-color: #d88912;
 }
-
+//클릭했을시
 .active1 {
 	background-color: #d88912;
 } 
-
+//내용
 .content {
   padding: 0 18px;
   display: none;

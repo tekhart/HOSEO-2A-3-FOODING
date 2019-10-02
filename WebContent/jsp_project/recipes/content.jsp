@@ -171,6 +171,7 @@ function initComparisons() {
 <table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
 <tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
 <tr class="orangeline"><td>
+ 		 <%-- 로그인이 되면 글수정 글삭제 버튼이 나옴 --%>
  		<%
     		if(article.getWriterid().equals(idlogin)){
         %>
