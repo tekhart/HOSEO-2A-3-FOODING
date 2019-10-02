@@ -142,12 +142,6 @@
 <% } else {%>
 
 
-
-
-
-
-
-
 <table class="listtable"> 
     <tr height="50"> 
 	  <td align="center"  width="50" class="listcolor">번호</td>

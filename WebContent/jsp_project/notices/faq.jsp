@@ -9,7 +9,6 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <%@include file="../general_included/topbar.jsp"%>
-<<<<<<< HEAD
 <style>
 
 </style>
@@ -37,8 +36,8 @@
 <div class="panel">
   <p>고객님 활동(상품구입, 구매후기,이벤트참여등)으로 적립받으신 포크는 사이트에서 진행하는 이벤트 참여 및 쿠폰으로 포인트를 교환하여 사용하실 수 있습니다.</p>
 </div>
-<button type="button" class="collapsible">포크가 적립되는 시점은 언제인가요?</button>
-<div class="content">
+<button class="accordion">포크가 적립되는 시점은 언제인가요?</button>
+<div class="panel">
   <p>포크는 제품 구매 시 상품 별로 정해진 적립 비율에 따라 적립되며 마이페이지에서 수취확인을 클릭하거나(당일), 배송 완료 후 7일이 경과한 후에(8일째) 적립됩니다.</p>
 </div>
 

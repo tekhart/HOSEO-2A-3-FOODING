@@ -136,7 +136,6 @@ a:active {
 	height:900px;
 	background-color:#F2F2F2;
 }
-//자주하는 질문 	
 .accordion {
   background-color: #ffbc0d;
   color: #ffffff;
@@ -156,7 +155,6 @@ a:active {
   background-color: #efa927;
 }
 
-//클릭했을시
 .accordion:after {
   content: '\002B';
   color:white;
@@ -169,7 +167,6 @@ a:active {
   content: "\2212";
   color:white;
 }
-//마우스오버시
 .panel {
   padding: 0 18px;
   background-color: white;
@@ -180,11 +177,9 @@ a:active {
   word-break:keep-all;
   width:1300px;
 }
-//클릭했을시
 .active1{
 	background-color: #d88912;
 } 
-//내용
 
 .active1:visited {
 	background-color: #d88912;
