@@ -8,7 +8,7 @@
 		
 		
 		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="list.css">
+		<link rel="stylesheet" href="../css/list.css">
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -36,7 +36,7 @@
 				}
 				idlogin=(String)session.getAttribute("idlogin");
 		%>
-		<div class="writetitle">
+		<div class="writetitle1">
 			레시피 작성
 		</div>
 		
@@ -58,15 +58,16 @@
 			<tr>
 				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 				<td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
+				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
 				 style="ime-mode:normal;"></td>
 			</tr>
 			<tr>
 				<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 				<td align="left">
 					<select name='contury'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden >-- 선택 --</option>
+						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
+						font-family:Bauhaus ITC;">
+						<option value='' selected disabled hidden >나라</option>
 		    			<option value='한식'>한식</option>
 		    			<option value='양식'>양식</option>
 		    			<option value='일식'>일식</option>
@@ -75,8 +76,9 @@
 		    			<option value='기타'>기타</option>
 					</select>
 					<select name='foodtype'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden>-- 선택 --</option>
+						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
+						font-family:Bauhaus ITC;">
+						<option value='' selected disabled hidden>종류</option>
 		    			<option value='밥류'>밥류</option>
 		    			<option value='빵류'>빵류</option>
 		    			<option value='반찬류'>반찬류</option>
@@ -90,13 +92,13 @@
 			<tr>
 				<td align="center" id="writespace">필요한 재료</td>
 				<td align="left">
-					<input type="text" size="150" maxlength="150" name="ingredients" class="signupinput"
+					<input type="text" size="150" maxlength="150" name="ingredients" class="signupinputblack"
 					style="ime-mode:normal;"></td>
 			</tr>
 			<tr>
 				<td align="center" id="writespace">사용되는 도구</td>
 				<td align="left">
-					<input type="text" size="150" maxlength="150" name="tools" class="signupinput"
+					<input type="text" size="150" maxlength="150" name="tools" class="signupinputblack"
 					style="ime-mode:normal;"></td>
 			</tr>
 			<tr>

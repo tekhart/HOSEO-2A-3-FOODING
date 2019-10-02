@@ -91,7 +91,7 @@ function check(){
 	%>
 	
 	<center>
-		<br><br><br><br><br><br>새 비밀번호<br>
+		<br><br><br><br><br><br><br>
 		
 		<form action=findPWProPro.jsp method="post" name="register">
 			<div>

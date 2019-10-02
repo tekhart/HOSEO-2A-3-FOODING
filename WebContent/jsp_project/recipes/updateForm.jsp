@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="list.css">
+		<link rel="stylesheet" href="../css/list.css">
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -61,7 +61,7 @@
 			conturyselected=7;
 		}
 %>
-<div class="writetitle">
+<div class="writetitle1">
 		글수정
 </div>
 
@@ -81,7 +81,7 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 	<tr>
 		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 		<td width="330" align="left">
-		<input type="text" size="40" maxlength="50" name="title" class="signupinput"
+		<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
 		 style="ime-mode:active;" value=" <%= article.getTitle()%>"></td>
 	</tr>
 	<tr>
@@ -152,13 +152,13 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 	<tr>
 		<td align="center" id="writespace">필요한 재료</td>
 		<td align="left">
-			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinput"
+			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinputblack"
 			style="ime-mode:inactive;" value=" <%= article.getIngredients()%>"></td>
 	</tr>
 	<tr>
 		<td align="center" id="writespace">사용되는 도구</td>
 		<td align="left">
-			<input type="text" size="40" maxlength="30" name="tools" class="signupinput"
+			<input type="text" size="40" maxlength="30" name="tools" class="signupinputblack"
 			style="ime-mode:inactive;" value=" <%= article.getTools()%>"></td>
 	</tr>
 	<tr>

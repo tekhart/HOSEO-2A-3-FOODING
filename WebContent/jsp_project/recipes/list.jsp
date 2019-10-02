@@ -78,29 +78,28 @@
 </script>
 
 </head>
-<body>
+<body id="body">
 <%@include file="../general_included/topbar.jsp"%>
-
-
-<div id="maindiv1">
-
-
      
 
 <div id="maindiv">
+<div class="writetitle1">
+전체 레시피(<%=count %>)</div>
 	<center>
 		<table class="listtop">
 			<tr>
 				<td>
-					<font class="writetitle">
-					전체 레시피(<%=count %>)</font>
+					
+
 				</td>
 				<td>
 					<table class="searchtable">
 						<form method="post" action="list.jsp" class="searh">
 							<tr>
 								<td>
-									<select name='searchtype'>
+									<select name='searchtype' style="ime-mode:inactive; padding: .7em .5em; 
+									border-radius: 0px 5px 5px 0px; border-color:#ffbb00; font-size:14pt;
+									font-family:Bauhaus ITC;">
 						    			<option value='제목' selected>제목</option>
 						    			<option value='글쓴이'>글쓴이</option>
 						    			<option value='재료'>재료</option>
@@ -141,15 +140,15 @@
 </table>
 <% } else {%>
 
-
+<br>
 <table class="listtable"> 
     <tr height="50"> 
-	  <td align="center"  width="50" class="listcolor">번호</td>
-      <td align="center"  width="350" class="listcolor">제목</td> 
-      <td align="center"  width="100" class="listcolor">작성자</td>
+	  <td align="center"  width="50" class="listcolor" style="padding-left:20px;">번호</td>
+      <td align="center"  width="200" class="listcolor">제목</td> 
+      <td align="center"  width="150" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
-      <td align="center"  width="50" class="listcolor">조회</td> 
-      <td align="center"  width="50" class="listcolor">댓글수</td> 
+      <td align="center"  width="80" class="listcolor">조회</td> 
+      <td align="center"  width="60" class="listcolor" style="padding-right:20px;">댓글수</td> 
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
@@ -157,10 +156,10 @@
 	   String writerid=article.getWriterid();
 %>
    <tr style="height:40px;" class="mouse">
-   <td align="center" class="line">
+   <td align="center" class="line" style="padding-left:20px;">
    <%=article.getNum()%>
    </td>
-    <td align="left" class="line">       
+    <td align="left" class="line" style="padding-left:40px;">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
@@ -168,13 +167,13 @@
      		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
 	 <%=article.getTitle()%></a>  </td>
-    <td align="center" class="line"> 
-     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong">
+    <td align="center" class="line" > 
+     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong" >
        	<%=foodingbean.findnkname(writerid)%></a>
     </td>
-    <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
+    <td align="center" width="150" class="line" ><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
+    <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
 	
   </tr>
 <%}%>

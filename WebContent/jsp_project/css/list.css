@@ -9,7 +9,7 @@
 
 .listtable{
 	margin:auto;
-	width:800px;
+	width:1200px;
 	border-collapse: collapse;
 	border-spacing:0px;
 }
@@ -25,7 +25,7 @@
 }
 
 	.writetitle1 {
-		
+		margin-left:140px;
 		padding:30px;	
 		font-size:25px;
 		}
@@ -68,23 +68,23 @@
 .searchbttd{margin-left:0px;}
 
 .searchbar{
-		width:230px;
-		height:30px;
+		width:400px;
+		height:50px;
 		display: inline-block;
 		border-color:#ffbb00;
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		 border-radius: 5px 0px 0px 5px;
+		border-radius: 5px 0px 0px 5px;
 	}
 
 .searchbotton{
-	width:40px;
-	height:32px;
+	width:70px;
+	height:50px;
 	border-width: thin; 
 	border-color:#ffbb00;
 	background-color:white;
-	
+	font-size:18px;
 	border-left:0px;
 	border-style:solid;
 	border-radius: 0px 5px 5px 0px;
@@ -93,15 +93,15 @@
 
 .bt{
 		background-color:white; 
-		font-size:15px;
+		font-size:17px;
 		border-color:#ffbb00;
-		height:30px;
+		height:50px;
 		margin: 5px;
 		border-width:0.5px;
 		border-style:solid;
 		cursor: pointer;
-		width: 60px;
-		border-radius:3px; 
+		width: 70px;
+		border-radius:5px; 
 }
 
 a:link {
@@ -173,8 +173,10 @@ a:active {
 			
 		}	
 	.writetitle {
-		padding:30px;	
+		padding-left:195px; 
+		padding-top:30px;
 		font-size:25px;
+		
 		}
 	#writetable{
 		margin:auto;
@@ -384,3 +386,37 @@ a:active {
 .orangeline1{border-bottom:4px solid orange;}
 .orangeline111{border-top:4px solid orange;}
 .orangeline{border-bottom:3px solid orange;}
+
+.dropbtblack{
+	ime-mode:inactive; 
+	padding: .8em .5em; 
+	border-radius: 3px; 
+	border-color:black; 
+	font-size:12pt;
+	font-family:Bauhaus ITC;"
+
+} /* 드롭다운버튼으로 만들었으나 안먹음 */
+
+.signupinputblack{
+		width:758px;
+		padding: 15px;
+		display: inline-block;
+		border-color:black;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 3px;
+	}
+	
+.smallbt{
+		background-color:white; 
+		font-size:15px;
+		border-color:#ffbb00;
+		height:30px;
+		margin: 5px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 70px;
+		border-radius:5px; 
+}
