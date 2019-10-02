@@ -17,6 +17,8 @@
 	request.setCharacterEncoding("UTF-8");
     String pageNum = request.getParameter("pageNum");
 	String search=request.getParameter("search");
+	String searchtype=request.getParameter("searchtype");
+	
 
     if (pageNum == null) {
         pageNum = "1";
@@ -35,7 +37,7 @@
     if(search==null){
     	count = dbPro.getArticleCount();
 	}else{
-		count = dbPro.getArticleCount(search);
+		count = dbPro.getArticleCount(searchtype,search);
 	}
     
     
@@ -44,7 +46,7 @@
     	if(search==null){
             articleList = dbPro.getArticles(startRow, pageSize);
     	}else{
-            articleList = dbPro.getArticles(startRow, pageSize, search);
+            articleList = dbPro.getArticles(startRow, pageSize, searchtype,search);
     	}
     }
 	
@@ -83,59 +85,58 @@
 
 
 <div id="maindiv">
-
-
-     
-
-<% if (count == 0) { %>
-
-<table align="right"><tr><td>
-  <a href="list.jsp">목록</a></td><td>
-  <a href="writeForm.jsp">글쓰기</a></td></tr></table>
-  <br><br><br>
-  
+	<center>
+		<table class="listtop">
+			<tr>
+				<td>
+					<font class="writetitle">
+					전체 레시피(<%=count %>)</font>
+				</td>
+				<td>
+					<table class="searchtable">
+						<form method="post" action="list.jsp" class="searh">
+							<tr>
+								<td>
+									<select name='searchtype'>
+						    			<option value='제목' selected>제목</option>
+						    			<option value='글쓴이'>글쓴이</option>
+						    			<option value='재료'>재료</option>
+						    			<option value='도구'>도구</option>
+									</select>
+								</td>
+								<td class="searchtd">
+									<input type="text" name="search" class="searchbar">	
+								</td>
+								<td class="searchbttd" width="50px">
+										<input type="submit" value="검색" class="searchbotton">
+								</td>
+							</tr>
+						</form>
+					</table>
+				</td>
+				<td>
+					<table align="right">
+						<tr>
+							<td>
+								<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
+								<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</center>
+<% if (count == 0) { %>  
 <table align="center" class="nogul">
 <tr>
     <td align="center">
-              게시판에 저장된 글이 없습니다<br>
-              첫 글을 남겨보세요! <br>
+        검색결과가 없습니다.<br>
+         다른 걸 검색해 보세요! <br>
               <img src="../img/ding.png" height="335px" width="559px">
     </td>
 </table>
 <% } else {%>
-
-
-
-<table class="listtop"><tr><td>
-
-<font class="writetitle">
-전체 레시피(<%=count %>)</font>
-
-
-</td><td>
-<table class="searchtable"><tr><td class="searchtd">
-
-
-  			<form method="post" action="list.jsp" class="searh">
-			<input type="text" name="search" class="searchbar">	
-</td><td class="searchbttd" width="50px">
-			<input type="submit" value="검색" class="searchbotton">
-			</form>
-	
-	
-	
-</td></tr></table>
-</td><td><table align="right"><tr><td>
-
-<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
-  </td></tr></table></td></tr></table>
-
-
-
-
-
-
 
 
 <table class="listtable"> 

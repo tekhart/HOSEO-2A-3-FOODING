@@ -157,7 +157,7 @@ public class foodingBean {
         	DBclose();
         }
     }
-    public int getArticleCount(String search)
+    public int getArticleCount(String type,String search)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -167,10 +167,17 @@ public class foodingBean {
 
        try {
            conn = getConnection();
-
-           pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           
+           if(type.equals("제목")) {
+        	   pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
+           }else if(type.equals("글쓴이")) {
+        	   pstmt = conn.prepareStatement("select count(*) from recipes  where writerid in(select id from user where nkname like '%"+search+"%')");
+           }else if(type.equals("재료")) {
+        	   pstmt = conn.prepareStatement("select count(*) from recipes  where ingredients like '%"+search+"%'");
+           }else if(type.equals("도구")) {
+        	   pstmt = conn.prepareStatement("select count(*) from recipes  where tools like '%"+search+"%'");
+           }
            rs = pstmt.executeQuery();
-
            if (rs.next()) {
               x= rs.getInt(1);
             }
@@ -181,7 +188,7 @@ public class foodingBean {
        }
         return x;
    }
-    public List<BoardDataBean> getArticles(int start, int end,String search)
+    public List<BoardDataBean> getArticles(int start, int end,String type,String search)
             throws Exception {
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -189,9 +196,16 @@ public class foodingBean {
        List<BoardDataBean> articleList=null;
        try {
            conn = getConnection();
-
-           pstmt = conn.prepareStatement(
-               "select * from recipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+           
+           if(type.equals("제목")) {
+        	   pstmt = conn.prepareStatement("select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,?");
+           }else if(type.equals("글쓴이")) {
+        	   pstmt = conn.prepareStatement("select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') order by num desc limit ?,?");
+           }else if(type.equals("재료")) {
+        	   pstmt = conn.prepareStatement("select * from recipes  where ingredients like '%"+search+"%' order by num desc limit ?,?");
+           }else if(type.equals("도구")) {
+        	   pstmt = conn.prepareStatement("select * from recipes  where tools like '%"+search+"%' order by num desc limit ?,?");
+           }
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -205,8 +219,6 @@ public class foodingBean {
                  article.setFoodtype(rs.getString("foodtype"));
                   article.setTitle(rs.getString("title"));
                   article.setWriterid(rs.getString("writerid"));
-
-
                   article.setReg_date(rs.getTimestamp("reg_date"));
                   article.setReadcount(rs.getInt("readcount"));
 
