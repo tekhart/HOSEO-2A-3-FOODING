@@ -60,9 +60,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-<link rel="stylesheet" href="../css/common.css?after">
-<link rel="stylesheet" href="list.css?after">
-<link rel="stylesheet" href="style.css?after">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
+
 <style>
 
 
@@ -78,11 +78,14 @@
 </script>
 
 </head>
-
-
-<body id="body">
+<body>
 <%@include file="../general_included/topbar.jsp"%>
 
+
+<div id="maindiv1">
+
+
+     
 
 <div id="maindiv">
 	<center>
@@ -153,13 +156,11 @@
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-
    <tr style="height:40px;" class="mouse">
    <td align="center" class="line">
-
    <%=article.getNum()%>
    </td>
-    <td align="left" class="line" style="padding-left:40px;">       
+    <td align="left" class="line">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
@@ -174,7 +175,7 @@
     </td>
     <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
+    <td align="center" width="50" class="line"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
 	
   </tr>
 <%}%>
@@ -183,7 +184,7 @@
 
 <center>
 
-<br><br>
+
 
 <br>
 <%

@@ -6,22 +6,22 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
+		
 		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="style.css?after">
+		<link rel="stylesheet" href="list.css">
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-		
+			
 		</script>
 		
 		
 		
 		
 	</head>
-
-<body id="body">
-<%@include file="../general_included/topbar.jsp"%>
+	<body id="writebody">
+		<%@include file="../general_included/topbar.jsp"%>
 		
 		<div id="maindiv">
 		<%
@@ -65,9 +65,8 @@
 				<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 				<td align="left">
 					<select name='contury'
-						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
-						font-family:Bauhaus ITC;">
-						<option value='' selected disabled hidden >나라</option>
+						style="ime-mode:inactive;">
+						<option value='' selected disabled hidden >-- 선택 --</option>
 		    			<option value='한식'>한식</option>
 		    			<option value='양식'>양식</option>
 		    			<option value='일식'>일식</option>
@@ -76,9 +75,8 @@
 		    			<option value='기타'>기타</option>
 					</select>
 					<select name='foodtype'
-				style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
-				font-family:Bauhaus ITC;">
-						<option value='' selected disabled hidden>종류</option>
+						style="ime-mode:inactive;">
+						<option value='' selected disabled hidden>-- 선택 --</option>
 		    			<option value='밥류'>밥류</option>
 		    			<option value='빵류'>빵류</option>
 		    			<option value='반찬류'>반찬류</option>
