@@ -59,7 +59,7 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="../css/list.css">
 
 <style>
 
@@ -79,7 +79,7 @@
 <body>
 <%@include file="../general_included/topbar.jsp"%>
 
-<div id="maindiv">
+<div id="maindiv1">
 
 
      
@@ -105,7 +105,7 @@
 
 <table class="listtop"><tr><td>
 
-<font class="writetitle">
+<font class="writetitle1">
 전체 레시피(<%=count %>)</font>
 
 

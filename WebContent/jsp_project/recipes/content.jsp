@@ -22,7 +22,7 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="list.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="list.css">
 
 
 <title>게시판</title>
