@@ -135,7 +135,9 @@ function initComparisons() {
 <div id="maindiv" style="width:100%;">
 
 <div id="maindiv2">
+
 <br><br>
+
 <%
    try{
 	   int num = Integer.parseInt(request.getParameter("num"));
@@ -171,9 +173,15 @@ function initComparisons() {
 <table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
 <tr><td style="vertical-align:text-top;"><pre><%=article.getContent()%></pre></td></tr></table></td></tr>
 <tr class="orangeline"><td>
+<<<<<<< HEAD
  		 <%-- 로그인이 되면 글수정 글삭제 버튼이 나옴 --%>
  		<%
     		if(article.getWriterid().equals(idlogin)){
+=======
+
+ <%
+    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+>>>>>>> refs/remotes/origin/imsy
         %>
         	<input type="button" value="글수정" class="bt2"
            		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">

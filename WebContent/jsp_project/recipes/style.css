@@ -22,9 +22,10 @@
 			
 		}	
 	.writetitle {
-		margin-left:140px;
+		margin-left:150px;
 		padding:30px;	
 		font-size:25px;
+		
 		}
 	#writetable{
 		margin:auto;
@@ -83,7 +84,7 @@
 		width:1200px;
 		 border-collapse:collapse;
 		 border-width:0px;
-		 margin-top:40px;
+		 margin-top:-49px;
 		}
 		
 		#contenttable{
@@ -244,11 +245,11 @@
   border-width:7px;
 }
 
-.orangeline11{border-bottom:4px solid orange;
-						border-top:4px solid orange;}
-.orangeline1{border-bottom:4px solid orange;}
-.orangeline111{border-top:4px solid orange;}
-.orangeline{border-bottom:3px solid orange;}
+.orangeline11{border-bottom:4px solid #ffbb00;
+						border-top:4px solid #ffbb00;}
+.orangeline1{border-bottom:4px solid #ffbb00;}
+.orangeline111{border-top:4px solid #ffbb00;}
+.orangeline{border-bottom:3px solid #ffbb00;}
 
 .selectcss{
 			padding: .8em .5em;

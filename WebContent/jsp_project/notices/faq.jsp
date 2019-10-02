@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-
+<br><br><br><br><br><br>
 <button type="button" class="collapsible">대량 구매 관련 문의를 하고 싶습니다.</button>
 <div class="content">
   <p>보다 자세한 답변을 위해 물량, 배송처, 배송 기간 등의 확인이 필요하오니 메일(fooding2019_2a03@naver.com)이나 02-1212-2323 로 문의해주시면 감사하겠습니다.</p>

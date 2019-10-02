@@ -145,7 +145,10 @@ a:active {
   color: white;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 1700px;
+  
+  margin-left:100px;
+  margin-bottom:1px;
   border: none;
   text-align: left;
   outline: none;
@@ -171,4 +174,5 @@ a:active {
   display: none;
   overflow: hidden;
   background-color: #fafafa;
+  margin-left:100px;
 }

@@ -7,7 +7,6 @@
 	foodingBean topbarbean=new foodingBean();
 %>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="../css/common.css">
 
 <script type="text/javascript">	
@@ -52,7 +51,7 @@
     		<td width=100 nowrap>
 				<a href=../mains/main.jsp><img src="../img/fooding.png" height="60px" width="100px"></a>
 			</td>
-			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title">FOODING</a></font></td>
+			<td width=150 nowrap><font size="10px"><a href=../mains/main.jsp id="title"><img src="../img/tititle.png"></a></font></td>
 			<td>
 				<center>
 					<table id="menutable">

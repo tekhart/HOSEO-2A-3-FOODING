@@ -60,9 +60,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-<link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
-
+<link rel="stylesheet" href="../css/common.css?after">
+<link rel="stylesheet" href="list.css?after">
+<link rel="stylesheet" href="style.css?after">
 <style>
 
 
@@ -153,17 +153,20 @@
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-   <tr class="mouse">
-   <td align="center" class="line">
+
+
+
+   <tr height="20px" class="mouse">
+   <td align="center" class="line" style="padding-left:20px;">
    <%=article.getNum()%>
    </td>
-    <td align="left" class="line">       
+    <td align="left" class="line" style="padding-left:40px;">       
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
           <%-- 조회수가 20이상일때 HOT이라는 문구가 뜸 --%>
         	<% if(article.getReadcount()>=20){%>
-     		 <font color="red">HOT</font>
+     		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line"> 
@@ -172,7 +175,7 @@
     </td>
     <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
+    <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
 	
   </tr>
 <%}%>
@@ -180,6 +183,9 @@
 <%}%>
 
 <center>
+
+<br><br>
+
 
 <%
     if (count > 0) {
@@ -195,20 +201,37 @@
         int endPage = startPage + pageBlock - 1;
         if (endPage > pageCount) endPage = pageCount;
         
-        if (startPage > 10) { %>
-          <a href="list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
-<%      }
+        %>
+          	<a href="list.jsp?pageNum=<%= startPage - 10 %>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
+		<%
         
-        for (int i = startPage ; i <= endPage ; i++) {  %>
-           <a href="list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
-<%      }
+        for (int i = startPage ; i <= endPage ; i++) {
+        	if(currentPage==i){
+        		%>
+        			<a href="list.jsp?pageNum=<%= i %>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
+        		<%
+        	}else{
+        		%>
+           			<a href="list.jsp?pageNum=<%= i %>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
+				<%
+			}
+       }
+		
+        %>
+        	<a href="list.jsp?pageNum=<%= startPage + 10 %>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
+        	<img src="../img/ii.png" width="20px" height="24px" align="middle">
+        	<img src="../img/nn.png" width="23px" height="24px" align="middle">
+        	<img src="../img/gg.png" width="23px" height="24px" align="middle"></a>
+		<%
+
         
-        if (endPage < pageCount) {  %>
-        <a href="list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-<%
-        }
-    }
+        
+        
+        
+        
+ }
 %>
+
 
   </center>
 

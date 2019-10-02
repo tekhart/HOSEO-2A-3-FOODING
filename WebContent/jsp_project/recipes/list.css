@@ -5,11 +5,12 @@
 
 .listtop{
 	width:800px;
+	margin:auto;
 }
 
 .listtable{
 	margin:auto;
-	width:800px;
+	width:1200px;
 	border-collapse: collapse;
 	border-spacing:0px;
 }
@@ -25,9 +26,9 @@
 }
 
 	.writetitle {
-		
+		width:100%;
 		padding:30px;	
-		font-size:25px;
+		font-size:20px;
 		}
 
 .titlelong{
@@ -38,6 +39,7 @@
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+	
 }
 //댓글
 .contenttable{
@@ -67,23 +69,23 @@
 .searchbttd{margin-left:0px;}
 
 .searchbar{
-		width:230px;
-		height:30px;
+		width:400px;
+		height:50px;
 		display: inline-block;
 		border-color:#ffbb00;
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		 border-radius: 5px 0px 0px 5px;
+		border-radius: 5px 0px 0px 5px;
 	}
 
 .searchbotton{
-	width:40px;
-	height:32px;
+	width:70px;
+	height:50px;
 	border-width: thin; 
 	border-color:#ffbb00;
 	background-color:white;
-	
+	font-size:18px;
 	border-left:0px;
 	border-style:solid;
 	border-radius: 0px 5px 5px 0px;
@@ -92,15 +94,15 @@
 
 .bt{
 		background-color:white; 
-		font-size:15px;
+		font-size:17px;
 		border-color:#ffbb00;
-		height:30px;
+		height:50px;
 		margin: 5px;
 		border-width:0.5px;
 		border-style:solid;
 		cursor: pointer;
-		width: 60px;
-		border-radius:3px; 
+		width: 70px;
+		border-radius:5px; 
 }
 
 a:link {
@@ -131,6 +133,7 @@ a:active {
 .nogul{margin:auto;}
 
 .listcolor{
+	float:center;
 	border-top:3px solid #ffbb00;
 	border-bottom:1.5px solid #ffbb00;
 	background-color:#ffd668;
