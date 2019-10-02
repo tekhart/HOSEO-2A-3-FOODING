@@ -121,7 +121,6 @@ function initComparisons() {
 			 commentchangeform[i].innerHTML="";
          }
 		 commentchangeform[counter].innerHTML="<textarea name='content' size='40' rows='5' cols='40' class='signupinput' style='ime-mode:inactive;'></textarea><input type='submit'  value='답글쓰기' class='bt2'>";
-
 	}
 	
 	
@@ -177,11 +176,6 @@ function initComparisons() {
  		 <%-- 로그인이 되면 글수정 글삭제 버튼이 나옴 --%>
  		<%
     		if(article.getWriterid().equals(idlogin)){
-=======
-
- <%
-    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
->>>>>>> refs/remotes/origin/imsy
         %>
         	<input type="button" value="글수정" class="bt2"
            		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">

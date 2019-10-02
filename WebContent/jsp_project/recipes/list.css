@@ -1,16 +1,15 @@
 #maindiv{
 	margin:auto;
-	width:100%;
+	width:700px;
 }
 
 .listtop{
 	width:800px;
-	margin:auto;
 }
 
 .listtable{
 	margin:auto;
-	width:1200px;
+	width:800px;
 	border-collapse: collapse;
 	border-spacing:0px;
 }
@@ -26,9 +25,9 @@
 }
 
 	.writetitle {
-		width:100%;
+		
 		padding:30px;	
-		font-size:20px;
+		font-size:25px;
 		}
 
 .titlelong{
@@ -69,23 +68,23 @@
 .searchbttd{margin-left:0px;}
 
 .searchbar{
-		width:400px;
-		height:50px;
+		width:230px;
+		height:30px;
 		display: inline-block;
 		border-color:#ffbb00;
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		border-radius: 5px 0px 0px 5px;
+		 border-radius: 5px 0px 0px 5px;
 	}
 
 .searchbotton{
-	width:70px;
-	height:50px;
+	width:40px;
+	height:32px;
 	border-width: thin; 
 	border-color:#ffbb00;
 	background-color:white;
-	font-size:18px;
+	
 	border-left:0px;
 	border-style:solid;
 	border-radius: 0px 5px 5px 0px;
@@ -94,15 +93,15 @@
 
 .bt{
 		background-color:white; 
-		font-size:17px;
+		font-size:15px;
 		border-color:#ffbb00;
-		height:50px;
+		height:30px;
 		margin: 5px;
 		border-width:0.5px;
 		border-style:solid;
 		cursor: pointer;
-		width: 70px;
-		border-radius:5px; 
+		width: 60px;
+		border-radius:3px; 
 }
 
 a:link {
@@ -133,7 +132,6 @@ a:active {
 .nogul{margin:auto;}
 
 .listcolor{
-	float:center;
 	border-top:3px solid #ffbb00;
 	border-bottom:1.5px solid #ffbb00;
 	background-color:#ffd668;
@@ -146,16 +144,7 @@ a:active {
 	background-color:#F2F2F2;
 }
 	
-	.bt2{
-		background-color:white; 
-		font-size:18px;
-		border-color:#ffbb00;
-		height:40px;
-		margin: 5px;
-		border-width:0.5px;
-		border-style:solid;
-		cursor: pointer;
-		width: 80px;
-		border-radius:3px; 
-	}
+.customtb{
+	width:1000px;
+	margin:auto;}
 }
