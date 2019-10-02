@@ -24,7 +24,7 @@ public class foodingBean {
 			
 			con=DriverManager.getConnection(jdbcUrl,dbId,dbPass);
 		}catch (Exception e) {
-			System.out.println("Connection Error");
+            e.printStackTrace();
 		}
 	}
 	
@@ -34,7 +34,7 @@ public class foodingBean {
 			stmt=con.createStatement();
 			rs=stmt.executeQuery(sql);
 		}catch(Exception e) {
-			System.out.println("Result Error");
+            e.printStackTrace();
 			rs=null;
 		}
 		return rs;
@@ -47,7 +47,7 @@ public class foodingBean {
 			stmt.executeUpdate(sql);
 			stmt.close();
 		}catch(Exception e) {
-			System.out.println("notResultQuery Error 2");
+            e.printStackTrace();
 		}finally {
 			DBclose();
         }
@@ -62,7 +62,7 @@ public class foodingBean {
 				str=rs.getString("nkname");
 			}
 		}catch(Exception e) {
-			System.out.println("Result Error");
+            e.printStackTrace();
 			rs=null;
 			str="";
 		}finally {

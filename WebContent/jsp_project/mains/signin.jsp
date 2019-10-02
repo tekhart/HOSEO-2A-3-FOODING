@@ -35,6 +35,13 @@ function Login(){
 	
 	login.submit();
 }
+function enterkey() {
+    if (window.event.keyCode == 13) {
+
+         // 엔터키가 눌렸을 때 실행할 내용
+         Login();
+    }
+}
 </script>
 
 </head>
@@ -46,8 +53,8 @@ function Login(){
 		<form method="post" name="login" action="login.jsp">
 		<br><br><br><br><br><br><br>
 			<div>
-				<input class="logininputs" type="text" placeholder="아이디 " name="id"><br><br>
-				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd"><br><br>
+				<input class="logininputs" type="text" placeholder="아이디 " name="id" onkeyup="enterkey();"><br><br>
+				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd" onkeyup="enterkey();"><br><br>
 			<button class="loginbutton" type="button" onclick="Login();">로그인</button>
 			</div><br><br>
 			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>

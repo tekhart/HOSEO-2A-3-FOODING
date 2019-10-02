@@ -97,6 +97,9 @@
 			
 			function Nknamecheck() {
 				var checked=0;
+				if (window.event.keyCode == 13) {
+					Signupcross(selected);
+			    }
 				if(register.nkname.value.length<3||register.nkname.value.length>16){
 					document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
 					document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
@@ -131,6 +134,9 @@
 			
 			function Idcheck() {
 				var checked=0;
+				if (window.event.keyCode == 13) {
+					Signupcross(selected);
+			    }
 				if(register.id.value.length<8){
 					document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
 					document.getElementById('idimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
@@ -157,6 +163,9 @@
 			};
 			function Emailcheck() {
 				var checked=0;
+				if (window.event.keyCode == 13) {
+					Signupcross(selected);
+			    }
 				if(emailexp.test(register.email.value)==false){
 					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
 					document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
@@ -178,6 +187,9 @@
 			};
 			
 			function Passwdcheck() {
+				if (window.event.keyCode == 13) {
+					Signupcross(selected);
+			    }
 				if(pwexp.test(register.passwd.value)==false){
 					document.getElementById('passwdcheck').innerHTML = "8자 이상, 영문/특수문자/숫자가 하나 이상";
 					document.getElementById('passwdimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
@@ -195,13 +207,16 @@
 			};
 			
 			function Repasswdcheck() {
-					if(register.passwd.value==register.repasswd.value){
-						document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
-						document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-					}else{
-						document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
-						document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
-					}
+				if (window.event.keyCode == 13) {
+					Signupcross(selected);
+			    }
+				if(register.passwd.value==register.repasswd.value){
+					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
+					document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+				}else{
+					document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
+					document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
+				}
 			};
 			
 			function ZipPopup() { 
