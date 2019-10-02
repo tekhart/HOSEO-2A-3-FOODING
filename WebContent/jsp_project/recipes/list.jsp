@@ -142,6 +142,12 @@
 <% } else {%>
 
 
+
+
+
+
+
+
 <table class="listtable"> 
     <tr height="50"> 
 	  <td align="center"  width="50" class="listcolor">번호</td>
@@ -164,7 +170,6 @@
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
-          <%-- 조회수가 20이상일때 HOT이라는 문구가 뜸 --%>
         	<% if(article.getReadcount()>=20){%>
      		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
