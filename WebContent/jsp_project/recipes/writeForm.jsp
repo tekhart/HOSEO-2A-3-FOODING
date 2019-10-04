@@ -27,6 +27,7 @@
 		<%
 			int num = 0;
 			String strV="";
+			
 			try{
 				if(request.getParameter("num")!=null){
 					num=Integer.parseInt(request.getParameter("num"));
@@ -41,9 +42,7 @@
 		</div>
 		
 		<div id="space">
-		
-		
-		
+
 		<form method="post" name="writeform" 
 			action="writePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="<%=num %>">
@@ -51,23 +50,21 @@
 		<center>
 		<table id="writetable" align="center" border-spacing="10px">
 			<tr>
-				<td align="right" colspan="2">
-				
-				</td>
-			</tr>
-			<tr>
-				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-				<td width="330" align="left">
+			<td rowspan="4" width="300px">
+			
+			<div style="background-color:hotpink; height:200px; width:300px;" onclick="thumbnailupload()">썸네일</div>
+			
+			</td>
+			<td width="700px" align="left">
 				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
-				 style="ime-mode:normal;"></td>
+				 style="ime-mode:normal;" placeholder="제목을 입력하세요"></td>
 			</tr>
 			<tr>
-				<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
-				<td align="left">
+			<td align="left">
 					<select name='contury'
 						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
 						font-family:Bauhaus ITC;">
-						<option value='' selected disabled hidden >나라</option>
+						<option value='' selected disabled hidden >나라를 고르세요</option>
 		    			<option value='한식'>한식</option>
 		    			<option value='양식'>양식</option>
 		    			<option value='일식'>일식</option>
@@ -78,7 +75,7 @@
 					<select name='foodtype'
 						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
 						font-family:Bauhaus ITC;">
-						<option value='' selected disabled hidden>종류</option>
+						<option value='' selected disabled hidden>종류를 고르세요</option>
 		    			<option value='밥류'>밥류</option>
 		    			<option value='빵류'>빵류</option>
 		    			<option value='반찬류'>반찬류</option>
@@ -90,24 +87,20 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="center" id="writespace">필요한 재료</td>
-				<td align="left">
+			<td align="left">
 					<input type="text" size="150" maxlength="150" name="ingredients" class="signupinputblack"
-					style="ime-mode:normal;"></td>
+					style="ime-mode:normal;" placeholder="사용된 재료를 알려주세요"></td>
 			</tr>
 			<tr>
-				<td align="center" id="writespace">사용되는 도구</td>
-				<td align="left">
+			<td align="left">
 					<input type="text" size="150" maxlength="150" name="tools" class="signupinputblack"
-					style="ime-mode:normal;"></td>
+					style="ime-mode:normal;" placeholder="사용된 도구를 알려주세요"></td>
 			</tr>
-			<tr>
-				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-				<td align="left">
+			<tr><td style="width:1000px;" colspan="2" align="left">
 					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-			</tr>
+			</td></tr>
 			
-				<tr><td></td>
+				<tr>
 				<td align="left" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
