@@ -176,7 +176,9 @@
     <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
 	
   </tr>
-<%}%>
+	<%
+
+   }%>
 </table>
 <%}%>
 
@@ -186,7 +188,7 @@
 
 <br>
 <%
-    if (count > 0) {
+    if (count > pageSize) {
         int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 		int startPage =1;
 		

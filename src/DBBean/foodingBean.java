@@ -7,10 +7,11 @@ public class foodingBean {
 
 	Connection con=null;
 	Statement stmt=null;
+	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String str=null;
 	
-	public void connect() {
+	public void Connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch(Exception e) {
@@ -29,6 +30,7 @@ public class foodingBean {
 	}
 	
 	public ResultSet resultQuery(String sql) {
+		DBclose();
 		try {
 			con = getConnection();
 			stmt=con.createStatement();
@@ -41,6 +43,7 @@ public class foodingBean {
 	}
 	
 	public void nonResultQuery(String sql) {
+		DBclose();
 		try {
 			con = getConnection();
 			stmt=con.createStatement();
@@ -54,6 +57,7 @@ public class foodingBean {
 	}
 	
 	public String findnkname(String id) {
+		DBclose();
 		try {
 			con = getConnection();
 			stmt=con.createStatement();
@@ -72,25 +76,38 @@ public class foodingBean {
 	}
 	public void DBclose() {
 		stmtClosing();
+		pstmtClosing();
 		resultclosing();
 		DBClosing();
 	}
 	public void stmtClosing() {
-		try {
-			rs.close();
-		}catch(Exception e) {}
+		if(stmt!=null) {
+			try {
+				stmt.close();
+			}catch(Exception e) {}
+		}
 	}
-	
+	public void pstmtClosing() {
+		if(pstmt!=null) {
+			try {
+				pstmt.close();
+			}catch(Exception e) {}
+		}
+	}
 	public void resultclosing() {
-		try {
-			rs.close();
-		}catch(Exception e) {}
+		if(rs!=null) {
+			try {
+				rs.close();
+			}catch(Exception e) {}
+		}
 	}
 	
 	public void DBClosing() {
-		try {
-			con.close();
-		}catch(Exception e) {}
+		if(con!=null) {
+			try {
+				con.close();
+			}catch(Exception e) {}
+		}
 	}
     
 	private static foodingBean instance = new foodingBean();
@@ -101,6 +118,7 @@ public class foodingBean {
 	
     //而ㅻ꽖�뀡��濡쒕��꽣 Connection媛앹껜瑜� �뼸�뼱�깂
     private Connection getConnection() throws Exception {
+		DBclose();
     	try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch(Exception e) {
@@ -116,18 +134,19 @@ public class foodingBean {
     //recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
     public void insertArticle(BoardDataBean article) 
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		DBclose();
+        con = null;
+        pstmt = null;
+		rs = null;
 
 		int num=article.getNum();
 		int number=0;
         String sql="";
 
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement("select max(num) from recipes");
+            pstmt = con.prepareStatement("select max(num) from recipes");
 			rs = pstmt.executeQuery();
 			
 			if (rs.next())
@@ -140,7 +159,7 @@ public class foodingBean {
             sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 
-            pstmt = conn.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getContury());
             pstmt.setString(3, article.getFoodtype());
@@ -159,23 +178,24 @@ public class foodingBean {
     }
     public int getArticleCount(String type,String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
 
        int x=0;
 
        try {
-           conn = getConnection();
+           con = getConnection();
            
            if(type.equals("제목")) {
-        	   pstmt = conn.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
+        	   pstmt = con.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
            }else if(type.equals("글쓴이")) {
-        	   pstmt = conn.prepareStatement("select count(*) from recipes  where writerid in(select id from user where nkname like '%"+search+"%')");
+        	   pstmt = con.prepareStatement("select count(*) from recipes  where writerid in(select id from user where nkname like '%"+search+"%')");
            }else if(type.equals("재료")) {
-        	   pstmt = conn.prepareStatement("select count(*) from recipes  where ingredients like '%"+search+"%'");
+        	   pstmt = con.prepareStatement("select count(*) from recipes  where ingredients like '%"+search+"%'");
            }else if(type.equals("도구")) {
-        	   pstmt = conn.prepareStatement("select count(*) from recipes  where tools like '%"+search+"%'");
+        	   pstmt = con.prepareStatement("select count(*) from recipes  where tools like '%"+search+"%'");
            }
            rs = pstmt.executeQuery();
            if (rs.next()) {
@@ -190,21 +210,22 @@ public class foodingBean {
    }
     public List<BoardDataBean> getArticles(int start, int end,String type,String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
        List<BoardDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
            
            if(type.equals("제목")) {
-        	   pstmt = conn.prepareStatement("select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,?");
+        	   pstmt = con.prepareStatement("select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,?");
            }else if(type.equals("글쓴이")) {
-        	   pstmt = conn.prepareStatement("select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') order by num desc limit ?,?");
+        	   pstmt = con.prepareStatement("select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') order by num desc limit ?,?");
            }else if(type.equals("재료")) {
-        	   pstmt = conn.prepareStatement("select * from recipes  where ingredients like '%"+search+"%' order by num desc limit ?,?");
+        	   pstmt = con.prepareStatement("select * from recipes  where ingredients like '%"+search+"%' order by num desc limit ?,?");
            }else if(type.equals("도구")) {
-        	   pstmt = conn.prepareStatement("select * from recipes  where tools like '%"+search+"%' order by num desc limit ?,?");
+        	   pstmt = con.prepareStatement("select * from recipes  where tools like '%"+search+"%' order by num desc limit ?,?");
            }
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
@@ -237,16 +258,17 @@ public class foodingBean {
    }
     public int getArticleCount()
              throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+		DBclose();
+        con = null;
+        pstmt = null;
+        rs = null;
 
         int x=0;
 
         try {
-            conn = getConnection();
+            con = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from recipes");
+            pstmt = con.prepareStatement("select count(*) from recipes");
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -261,14 +283,15 @@ public class foodingBean {
     }
 	public List<BoardDataBean> getArticles(int start, int end)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
        List<BoardDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
            
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
            	"select * from recipes order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
@@ -303,19 +326,20 @@ public class foodingBean {
    }
 	public BoardDataBean getArticle(int num)
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+		DBclose();
+        con = null;
+        pstmt = null;
+        rs = null;
         BoardDataBean article=null;
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"update recipes set readcount=readcount+1 where num = ?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"select * from recipes where num = ?");
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
@@ -342,14 +366,15 @@ public class foodingBean {
     }
 	public BoardDataBean updateGetArticle(int num)
 	          throws Exception {
-	        Connection conn = null;
-	        PreparedStatement pstmt = null;
-	        ResultSet rs = null;
+		DBclose();
+	        con = null;
+	        pstmt = null;
+	        rs = null;
 	        BoardDataBean article=null;
 	        try {
-	            conn = getConnection();
+	            con = getConnection();
 
-	            pstmt = conn.prepareStatement(
+	            pstmt = con.prepareStatement(
 	            	"select * from recipes where num = ?");
 	            pstmt.setInt(1, num);
 	            rs = pstmt.executeQuery();
@@ -376,19 +401,20 @@ public class foodingBean {
 	    }
     public int updateArticle(BoardDataBean article)
             throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+		DBclose();
+          con = null;
+          pstmt = null;
+          rs= null;
 
           String sql="";
   		int x=-1;
           try {
-              conn = getConnection();
+              con = getConnection();
 
   			 
                   sql="update recipes set title=?,contury=?,foodtype=?,ingredients=?";
   			    sql+=",tools=? ,content=? where num=?";
-                  pstmt = conn.prepareStatement(sql);
+                  pstmt = con.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getContury());
@@ -408,14 +434,15 @@ public class foodingBean {
       }
     public int deleteArticle(int num)
           throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+		DBclose();
+          con = null;
+          pstmt = null;
+          rs= null;
           int x=-1;
           try {
-  			conn = getConnection();
+  			con = getConnection();
 
-  					pstmt = conn.prepareStatement(
+  					pstmt = con.prepareStatement(
               	      "delete from recipes where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
@@ -429,9 +456,10 @@ public class foodingBean {
       }
     public void insertCommentsArticle(commentDataBean article,int rootin) 
               throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-  		  ResultSet rs = null;
+		DBclose();
+          con = null;
+          pstmt = null;
+  		  rs = null;
   		
   		int num=article.getNum();
 		int ref=article.getRef();
@@ -442,9 +470,9 @@ public class foodingBean {
           String sql="";
 
           try {
-              conn = getConnection();
+              con = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from recipe_comment");
+              pstmt = con.prepareStatement("select max(num) from recipe_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -455,7 +483,7 @@ public class foodingBean {
   			if (num!=0) {  
   		      sql="update recipe_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >? and rootin=?";
-                pstmt = conn.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, ref);
                 pstmt.setInt(2, re_step);
                 pstmt.setInt(3, rootin);
@@ -472,7 +500,7 @@ public class foodingBean {
               sql = "insert into recipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
-              pstmt = conn.prepareStatement(sql);
+              pstmt = con.prepareStatement(sql);
               pstmt.setInt(1, rootin);
               pstmt.setString(2, article.getWriterid());
               pstmt.setTimestamp(3, article.getReg_date());
@@ -490,14 +518,15 @@ public class foodingBean {
       }
     public List<commentDataBean> getCommentsArticles(int start, int end,int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+		DBclose();
+         con = null;
+         pstmt = null;
+         rs = null;
          List<commentDataBean> articleList=null;
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement(
+             pstmt = con.prepareStatement(
              	"select * from recipe_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
@@ -531,16 +560,17 @@ public class foodingBean {
      }
     public int getCommentArticleCount(int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+		DBclose();
+         con = null;
+         pstmt = null;
+         rs = null;
 
          int x=0;
 
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement("select count(*) from recipe_comment where rootin=?");
+             pstmt = con.prepareStatement("select count(*) from recipe_comment where rootin=?");
              pstmt.setInt(1, num);
              rs = pstmt.executeQuery();
 
@@ -557,18 +587,19 @@ public class foodingBean {
 
     public void insertexrecipeArticle(BoardDataBean article) 
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		DBclose();
+        con = null;
+        pstmt = null;
+		rs = null;
 
 		int num=article.getNum();
 		int number=0;
         String sql="";
 
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement("select max(num) from exrecipe");
+            pstmt = con.prepareStatement("select max(num) from exrecipe");
 			rs = pstmt.executeQuery();
 			
 			if (rs.next())
@@ -581,7 +612,7 @@ public class foodingBean {
             sql = "insert into exrecipe(title,contury,foodtype,ingredients,tools,writerid,reg_date,content,difficulty";
 		    sql+=") values(?,?,?,?,?,?,?,?,?)";
 
-            pstmt = conn.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getContury());
             pstmt.setString(3, article.getFoodtype());
@@ -601,16 +632,17 @@ public class foodingBean {
     }
     public int getexrecipeArticleCount(String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
 
        int x=0;
 
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from exrecipe  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           pstmt = con.prepareStatement("select count(*) from exrecipe  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -625,14 +657,15 @@ public class foodingBean {
    }
     public List<BoardDataBean> getexrecipeArticles(int start, int end,String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
        List<BoardDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
                "select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
@@ -663,16 +696,17 @@ public class foodingBean {
    }
     public int getexrecipeArticleCount()
              throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+		DBclose();
+        con = null;
+        pstmt = null;
+        rs = null;
 
         int x=0;
 
         try {
-            conn = getConnection();
+            con = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from exrecipe");
+            pstmt = con.prepareStatement("select count(*) from exrecipe");
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -687,14 +721,15 @@ public class foodingBean {
     }
 	public List<BoardDataBean> getexrecipeArticles(int start, int end)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
        List<BoardDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
            
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
            	"select * from exrecipe order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
@@ -726,19 +761,20 @@ public class foodingBean {
    }
 	public BoardDataBean getexrecipeArticle(int num)
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+		DBclose();
+        con = null;
+        pstmt = null;
+        rs = null;
         BoardDataBean article=null;
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"update exrecipe set readcount=readcount+1 where num = ?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"select * from exrecipe where num = ?");
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
@@ -766,14 +802,14 @@ public class foodingBean {
     }
 	public BoardDataBean updateexrecipeGetArticle(int num)
 	          throws Exception {
-	        Connection conn = null;
-	        PreparedStatement pstmt = null;
-	        ResultSet rs = null;
+	        con = null;
+	        pstmt = null;
+	        rs = null;
 	        BoardDataBean article=null;
 	        try {
-	            conn = getConnection();
+	            con = getConnection();
 
-	            pstmt = conn.prepareStatement(
+	            pstmt = con.prepareStatement(
 	            	"select * from exrecipe where num = ?");
 	            pstmt.setInt(1, num);
 	            rs = pstmt.executeQuery();
@@ -801,19 +837,19 @@ public class foodingBean {
 	    }
     public int updateexrecipeArticle(BoardDataBean article)
             throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
 
           String sql="";
   		int x=-1;
           try {
-              conn = getConnection();
+              con = getConnection();
 
   			 
                   sql="update exrecipe set title=?,contury=?,foodtype=?,ingredients=?";
   			    sql+=",tools=? ,content=?,difficulty=? where num=?";
-                  pstmt = conn.prepareStatement(sql);
+                  pstmt = con.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getContury());
@@ -835,14 +871,14 @@ public class foodingBean {
       }
     public int deleteexrecipeArticle(int num)
           throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
           int x=-1;
           try {
-  			conn = getConnection();
+  			con = getConnection();
 
-  					pstmt = conn.prepareStatement(
+  					pstmt = con.prepareStatement(
               	      "delete from exrecipe where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
@@ -856,9 +892,9 @@ public class foodingBean {
       }
     public void insertexrecipeCommentsArticle(commentDataBean article,int rootin) 
               throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-  		  ResultSet rs = null;
+          con = null;
+          pstmt = null;
+  		  rs = null;
   		
   		int num=article.getNum();
 		int ref=article.getRef();
@@ -869,9 +905,9 @@ public class foodingBean {
           String sql="";
 
           try {
-              conn = getConnection();
+              con = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from exrecipe_comment");
+              pstmt = con.prepareStatement("select max(num) from exrecipe_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -882,7 +918,7 @@ public class foodingBean {
   			if (num!=0) {  
   		      sql="update exrecipe_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >? and rootin=?";
-                pstmt = conn.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, ref);
                 pstmt.setInt(2, re_step);
                 pstmt.setInt(3, rootin);
@@ -900,7 +936,7 @@ public class foodingBean {
               sql = "insert into exrecipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
-              pstmt = conn.prepareStatement(sql);
+              pstmt = con.prepareStatement(sql);
               pstmt.setInt(1, rootin);
               pstmt.setString(2, article.getWriterid());
               pstmt.setTimestamp(3, article.getReg_date());
@@ -918,14 +954,14 @@ public class foodingBean {
       }
     public List<commentDataBean> getexrecipeCommentsArticles(int start, int end,int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
          List<commentDataBean> articleList=null;
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement(
+             pstmt = con.prepareStatement(
              	"select * from exrecipe_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
@@ -957,16 +993,16 @@ public class foodingBean {
      }
     public int getexrecipeCommentArticleCount(int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
 
          int x=0;
 
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement("select count(*) from exrecipe_comment where rootin=?");
+             pstmt = con.prepareStatement("select count(*) from exrecipe_comment where rootin=?");
              pstmt.setInt(1, num);
              rs = pstmt.executeQuery();
 
@@ -983,18 +1019,18 @@ public class foodingBean {
     
     public void insertcookhelpArticle(BoardDataBean article) 
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-		ResultSet rs = null;
+        con = null;
+        pstmt = null;
+		rs = null;
 
 		int num=article.getNum();
 		int number=0;
         String sql="";
 
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement("select max(num) from cookhelp");
+            pstmt = con.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
 			
 			if (rs.next())
@@ -1007,7 +1043,7 @@ public class foodingBean {
             sql = "insert into cookhelp(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 
-            pstmt = conn.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getContury());
             pstmt.setString(3, article.getFoodtype());
@@ -1026,16 +1062,16 @@ public class foodingBean {
     }
     public int getcookhelpArticleCount(String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
 
        int x=0;
 
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from cookhelp  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           pstmt = con.prepareStatement("select count(*) from cookhelp  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -1050,14 +1086,14 @@ public class foodingBean {
    }
     public List<BoardDataBean> getcookhelpArticles(int start, int end,String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
        List<BoardDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
                "select * from cookhelp where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
@@ -1089,16 +1125,16 @@ public class foodingBean {
    }
     public int getcookhelpArticleCount()
              throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        con = null;
+        pstmt = null;
+        rs = null;
 
         int x=0;
 
         try {
-            conn = getConnection();
+            con = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from cookhelp");
+            pstmt = con.prepareStatement("select count(*) from cookhelp");
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -1113,14 +1149,14 @@ public class foodingBean {
     }
 	public List<BoardDataBean> getcookhelpArticles(int start, int end)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
        List<BoardDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
            
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
            	"select * from cookhelp order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
@@ -1152,19 +1188,19 @@ public class foodingBean {
    }
 	public BoardDataBean getcookhelpArticle(int num)
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        con = null;
+        pstmt = null;
+        rs = null;
         BoardDataBean article=null;
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"update cookhelp set readcount=readcount+1 where num = ?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"select * from cookhelp where num = ?");
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
@@ -1192,14 +1228,14 @@ public class foodingBean {
     }
 	public BoardDataBean updatecookhelpGetArticle(int num)
 	          throws Exception {
-	        Connection conn = null;
-	        PreparedStatement pstmt = null;
-	        ResultSet rs = null;
+	        con = null;
+	        pstmt = null;
+	        rs = null;
 	        BoardDataBean article=null;
 	        try {
-	            conn = getConnection();
+	            con = getConnection();
 
-	            pstmt = conn.prepareStatement(
+	            pstmt = con.prepareStatement(
 	            	"select * from cookhelp where num = ?");
 	            pstmt.setInt(1, num);
 	            rs = pstmt.executeQuery();
@@ -1227,19 +1263,19 @@ public class foodingBean {
 	    }
     public int updatecookhelpArticle(BoardDataBean article)
             throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
 
           String sql="";
   		int x=-1;
           try {
-              conn = getConnection();
+              con = getConnection();
 
   			 
                   sql="update cookhelp set title=?,contury=?,foodtype=?,difficulty=?,ingredients=?";
   			    sql+=",tools=? ,content=? where num=?";
-                  pstmt = conn.prepareStatement(sql);
+                  pstmt = con.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getContury());
@@ -1261,14 +1297,14 @@ public class foodingBean {
       }
     public int deletecookhelpArticle(int num)
           throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
           int x=-1;
           try {
-  			conn = getConnection();
+  			con = getConnection();
 
-  					pstmt = conn.prepareStatement(
+  					pstmt = con.prepareStatement(
               	      "delete from cookhelp where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
@@ -1282,9 +1318,9 @@ public class foodingBean {
       }
     public void insertcookhelpCommentsArticle(commentDataBean article,int rootin) 
               throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-  		  ResultSet rs = null;
+          con = null;
+          pstmt = null;
+  		  rs = null;
   		
   		int num=article.getNum();
 		int ref=article.getRef();
@@ -1295,9 +1331,9 @@ public class foodingBean {
           String sql="";
 
           try {
-              conn = getConnection();
+              con = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from cookhelp_comment");
+              pstmt = con.prepareStatement("select max(num) from cookhelp_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -1308,7 +1344,7 @@ public class foodingBean {
   			if (num!=0) {  
   		      sql="update cookhelp_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >? and rootin=?";
-                pstmt = conn.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, ref);
                 pstmt.setInt(2, re_step);
                 pstmt.setInt(3, rootin);
@@ -1326,7 +1362,7 @@ public class foodingBean {
               sql = "insert into cookhelp_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
-              pstmt = conn.prepareStatement(sql);
+              pstmt = con.prepareStatement(sql);
               pstmt.setInt(1, rootin);
               pstmt.setString(2, article.getWriterid());
               pstmt.setTimestamp(3, article.getReg_date());
@@ -1344,14 +1380,14 @@ public class foodingBean {
       }
     public List<commentDataBean> getcookhelpCommentsArticles(int start, int end,int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
          List<commentDataBean> articleList=null;
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement(
+             pstmt = con.prepareStatement(
              	"select * from cookhelp_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
@@ -1385,16 +1421,16 @@ public class foodingBean {
      }
     public int getcookhelpCommentArticleCount(int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
 
          int x=0;
 
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
+             pstmt = con.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
              pstmt.setInt(1, num);
              rs = pstmt.executeQuery();
 
@@ -1411,9 +1447,9 @@ public class foodingBean {
 
     public void insertquestionArticle(QuestionDataBean article) 
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-		ResultSet rs = null;
+        con = null;
+        pstmt = null;
+		rs = null;
 
 		int num=article.getNum();
 		int ref=article.getRef();
@@ -1424,9 +1460,9 @@ public class foodingBean {
           String sql="";
 
           try {
-              conn = getConnection();
+              con = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from recipe_comment");
+              pstmt = con.prepareStatement("select max(num) from recipe_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -1437,7 +1473,7 @@ public class foodingBean {
   			if (num!=0) {  
   		      sql="update recipe_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >?";
-                pstmt = conn.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, ref);
                 pstmt.setInt(2, re_step);
                 
@@ -1454,7 +1490,7 @@ public class foodingBean {
             sql = "insert into question(title,writerid,quesType,content,reg_date,ref,re_step,re_level";
 		    sql+=") values(?,?,?,?,?,?,?,?)";
 
-            pstmt = conn.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getWriterid());
             pstmt.setString(3, article.getQuesType());
@@ -1474,16 +1510,16 @@ public class foodingBean {
     }
     public int getquestionArticleCount(String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
 
        int x=0;
 
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from question  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           pstmt = con.prepareStatement("select count(*) from question  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -1498,14 +1534,14 @@ public class foodingBean {
    }
     public List<QuestionDataBean> getquestionArticles(int start, int end,String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
        List<QuestionDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
                "select * from question where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by ref desc, re_step asc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
@@ -1538,16 +1574,16 @@ public class foodingBean {
    }
     public int getquestionArticleCount()
              throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        con = null;
+        pstmt = null;
+        rs = null;
 
         int x=0;
 
         try {
-            conn = getConnection();
+            con = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from question");
+            pstmt = con.prepareStatement("select count(*) from question");
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -1562,14 +1598,14 @@ public class foodingBean {
     }
 	public List<QuestionDataBean> getquestionArticles(int start, int end)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
        List<QuestionDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
            
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
            	"select * from question order by ref desc, re_step asc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
@@ -1603,19 +1639,19 @@ public class foodingBean {
    }
 	public QuestionDataBean getquestionArticle(int num)
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        con = null;
+        pstmt = null;
+        rs = null;
         QuestionDataBean article=null;
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"update question set readcount=readcount+1 where num = ?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"select * from question where num = ?");
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
@@ -1642,14 +1678,14 @@ public class foodingBean {
     }
 	public QuestionDataBean updatequestionGetArticle(int num)
 	          throws Exception {
-	        Connection conn = null;
-	        PreparedStatement pstmt = null;
-	        ResultSet rs = null;
+	        con = null;
+	        pstmt = null;
+	        rs = null;
 	        QuestionDataBean article=null;
 	        try {
-	            conn = getConnection();
+	            con = getConnection();
 
-	            pstmt = conn.prepareStatement(
+	            pstmt = con.prepareStatement(
 	            	"select * from question where num = ?");
 	            pstmt.setInt(1, num);
 	            rs = pstmt.executeQuery();
@@ -1676,19 +1712,19 @@ public class foodingBean {
 	    }
     public int updatequestionArticle(QuestionDataBean article)
             throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
 
           String sql="";
   		int x=-1;
           try {
-              conn = getConnection();
+              con = getConnection();
 
   			 
                   sql="update question set title=?,contury=?,foodtype=?,ingredients=?";
   			    sql+=",tools=? ,content=? where num=?";
-                  pstmt = conn.prepareStatement(sql);
+                  pstmt = con.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getWriterid());
@@ -1711,14 +1747,14 @@ public class foodingBean {
       }
     public int deletequestionArticle(int num)
           throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
           int x=-1;
           try {
-  			conn = getConnection();
+  			con = getConnection();
 
-  					pstmt = conn.prepareStatement(
+  					pstmt = con.prepareStatement(
               	      "delete from question where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
@@ -1732,9 +1768,9 @@ public class foodingBean {
       }
     public void insertquestionCommentsArticle(commentDataBean article,int rootin) 
               throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-  		  ResultSet rs = null;
+          con = null;
+          pstmt = null;
+  		  rs = null;
   		
   		int num=article.getNum();
 		int ref=article.getRef();
@@ -1745,9 +1781,9 @@ public class foodingBean {
           String sql="";
 
           try {
-              conn = getConnection();
+              con = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from question_comment");
+              pstmt = con.prepareStatement("select max(num) from question_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -1758,7 +1794,7 @@ public class foodingBean {
   			if (num!=0) {  
   		      sql="update question_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >? and rootin=?";
-                pstmt = conn.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, ref);
                 pstmt.setInt(2, re_step);
                 pstmt.setInt(3, rootin);
@@ -1776,7 +1812,7 @@ public class foodingBean {
               sql = "insert into question_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
-              pstmt = conn.prepareStatement(sql);
+              pstmt = con.prepareStatement(sql);
               pstmt.setInt(1, rootin);
               pstmt.setString(2, article.getWriterid());
               pstmt.setTimestamp(3, article.getReg_date());
@@ -1794,14 +1830,14 @@ public class foodingBean {
       }
     public List<commentDataBean> getquestionCommentsArticles(int start, int end,int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
          List<commentDataBean> articleList=null;
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement(
+             pstmt = con.prepareStatement(
              	"select * from question_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
@@ -1835,16 +1871,16 @@ public class foodingBean {
      }
     public int getquestionCommentArticleCount(int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
 
          int x=0;
 
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement("select count(*) from question_comment where rootin=?");
+             pstmt = con.prepareStatement("select count(*) from question_comment where rootin=?");
              pstmt.setInt(1, num);
              rs = pstmt.executeQuery();
 
@@ -1861,9 +1897,9 @@ public class foodingBean {
     
     public void insertannounceArticle(announceDataBean article) 
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-		ResultSet rs = null;
+        con = null;
+        pstmt = null;
+		rs = null;
 
 		int num=article.getNum();
 		int number=0;
@@ -1871,9 +1907,9 @@ public class foodingBean {
         String sql="";
 
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement("select max(num) from announce");
+            pstmt = con.prepareStatement("select max(num) from announce");
 			rs = pstmt.executeQuery();
 			
 			if (rs.next())
@@ -1885,7 +1921,7 @@ public class foodingBean {
             sql = "insert into announce(title,writerid,isEvent,reg_date,content,periode";
 		    sql+=") values(?,?,?,?,?,?)";
 
-            pstmt = conn.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
             pstmt.setString(2, article.getWriterid());
             pstmt.setString(3, article.getIsEvent());
@@ -1902,16 +1938,16 @@ public class foodingBean {
     }
     public int getannounceArticleCount(String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
 
        int x=0;
 
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement("select count(*) from announce  where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+           pstmt = con.prepareStatement("select count(*) from announce  where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -1926,14 +1962,14 @@ public class foodingBean {
    }
     public List<announceDataBean> getannounceArticles(int start, int end,String search)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
        List<announceDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
 
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
                "select * from announce where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
@@ -1964,16 +2000,16 @@ public class foodingBean {
    }
     public int getannounceArticleCount()
              throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        con = null;
+        pstmt = null;
+        rs = null;
 
         int x=0;
 
         try {
-            conn = getConnection();
+            con = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from announce");
+            pstmt = con.prepareStatement("select count(*) from announce");
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -1988,14 +2024,14 @@ public class foodingBean {
     }
 	public List<announceDataBean> getannounceArticles(int start, int end)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
        List<announceDataBean> articleList=null;
        try {
-           conn = getConnection();
+           con = getConnection();
            
-           pstmt = conn.prepareStatement(
+           pstmt = con.prepareStatement(
            	"select * from announce order by num desc limit ?,? ");
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
@@ -2026,19 +2062,19 @@ public class foodingBean {
    }
 	public announceDataBean getannounceArticle(int num)
             throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        con = null;
+        pstmt = null;
+        rs = null;
         announceDataBean article=null;
         try {
-            conn = getConnection();
+            con = getConnection();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"update announce set readcount=readcount+1 where num = ?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
+            pstmt = con.prepareStatement(
             	"select * from announce where num = ?");
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
@@ -2063,14 +2099,14 @@ public class foodingBean {
     }
 	public announceDataBean updateannounceGetArticle(int num)
 	          throws Exception {
-	        Connection conn = null;
-	        PreparedStatement pstmt = null;
-	        ResultSet rs = null;
+	        con = null;
+	        pstmt = null;
+	        rs = null;
 	        announceDataBean article=null;
 	        try {
-	            conn = getConnection();
+	            con = getConnection();
 
-	            pstmt = conn.prepareStatement(
+	            pstmt = con.prepareStatement(
 	            	"select * from announce where num = ?");
 	            pstmt.setInt(1, num);
 	            rs = pstmt.executeQuery();
@@ -2095,18 +2131,18 @@ public class foodingBean {
 	    }
     public int updateannounceArticle(announceDataBean article)
             throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
 
           String sql="";
   		int x=-1;
           try {
-              conn = getConnection();
+              con = getConnection();
 
   			 
                   sql="update announce set title=?,isEvent=?,periode=?,content=? where num=?";
-                  pstmt = conn.prepareStatement(sql);
+                  pstmt = con.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
                   pstmt.setString(2, article.getIsEvent());
@@ -2125,14 +2161,14 @@ public class foodingBean {
       }
     public int deleteannounceArticle(int num)
           throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs= null;
+          con = null;
+          pstmt = null;
+          rs= null;
           int x=-1;
           try {
-  			conn = getConnection();
+  			con = getConnection();
 
-  					pstmt = conn.prepareStatement(
+  					pstmt = con.prepareStatement(
               	      "delete from announce where num=?");
                       pstmt.setInt(1, num);
                       pstmt.executeUpdate();
@@ -2146,9 +2182,9 @@ public class foodingBean {
       }
     public void insertannounceCommentsArticle(commentDataBean article,int rootin) 
               throws Exception {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-  		  ResultSet rs = null;
+          con = null;
+          pstmt = null;
+  		  rs = null;
   		
   		int num=article.getNum();
 		int ref=article.getRef();
@@ -2159,9 +2195,9 @@ public class foodingBean {
           String sql="";
 
           try {
-              conn = getConnection();
+              con = getConnection();
 
-              pstmt = conn.prepareStatement("select max(num) from announce_comment");
+              pstmt = con.prepareStatement("select max(num) from announce_comment");
   			rs = pstmt.executeQuery();
   			
   			if (rs.next())
@@ -2172,7 +2208,7 @@ public class foodingBean {
   			if (num!=0) {  
   		      sql="update announce_comment set re_step=re_step+1 ";
   		      sql += "where ref=? and re_step >? and rootin=?";
-                pstmt = conn.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, ref);
                 pstmt.setInt(2, re_step);
                 pstmt.setInt(3, rootin);
@@ -2190,7 +2226,7 @@ public class foodingBean {
               sql = "insert into announce_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
   		    sql+=") values(?,?,?,?,?,?,?)";
 
-              pstmt = conn.prepareStatement(sql);
+              pstmt = con.prepareStatement(sql);
               pstmt.setInt(1, rootin);
               pstmt.setString(2, article.getWriterid());
               pstmt.setTimestamp(3, article.getReg_date());
@@ -2208,14 +2244,14 @@ public class foodingBean {
       }
     public List<commentDataBean> getannounceCommentsArticles(int start, int end,int num)
               throws Exception {
-         Connection conn = null;
-         PreparedStatement pstmt = null;
-         ResultSet rs = null;
+         con = null;
+         pstmt = null;
+         rs = null;
          List<commentDataBean> articleList=null;
          try {
-             conn = getConnection();
+             con = getConnection();
              
-             pstmt = conn.prepareStatement(
+             pstmt = con.prepareStatement(
              	"select * from announce_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
              pstmt.setInt(1, num);
              pstmt.setInt(2, start-1);
@@ -2249,16 +2285,16 @@ public class foodingBean {
      }
     public int getannounceCommentArticleCount(int num)
             throws Exception {
-       Connection conn = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+       con = null;
+       pstmt = null;
+       rs = null;
 
        int x=0;
 
        try {
-           conn = getConnection();
+           con = getConnection();
            
-           pstmt = conn.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
+           pstmt = con.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
            pstmt.setInt(1, num);
            rs = pstmt.executeQuery();
 
