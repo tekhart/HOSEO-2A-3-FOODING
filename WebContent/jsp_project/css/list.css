@@ -462,7 +462,6 @@ a:active {
   cursor: pointer;
   padding: 18px;
   width: 1300px; 
-  margin-left:300px;
   border: none;
   text-align: left;
   outline: none;
@@ -491,7 +490,6 @@ a:active {
   padding: 0 18px;
   background-color: white;
   max-height: 0;
-  margin-left:300px;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   word-break:keep-all;

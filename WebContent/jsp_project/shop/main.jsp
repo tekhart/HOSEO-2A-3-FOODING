@@ -10,6 +10,7 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <%@include file="../general_included/topbar.jsp"%>
+<%@include file="move.jsp"%>
 </head>
 <body>
 <hr style="border:solid 4px #ffbb00;">

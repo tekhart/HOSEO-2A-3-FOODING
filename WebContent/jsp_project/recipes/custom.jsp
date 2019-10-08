@@ -92,7 +92,7 @@
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="cusearchbar">
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput">
 	</td>
 								
 		<td class="addBtn">

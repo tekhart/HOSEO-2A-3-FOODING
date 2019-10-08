@@ -79,13 +79,18 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 		</td>
 	</tr>
 	<tr>
-		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+		<td rowspan="4" width="300px">
+			
+			<div style="background-color:hotpink; height:200px; width:300px;" onclick="thumbnailupload()">썸네일</div>
+			
+			</td>
+			
 		<td width="330" align="left">
 		<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
-		 style="ime-mode:active;" value=" <%= article.getTitle()%>"></td>
+		 style="ime-mode:active;" placeholder="제목을 입력하세요" value=" <%= article.getTitle()%>"></td>
 	</tr>
 	<tr>
-		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
+		
 		<td align="left">
 			<select name='contury'
 				style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
@@ -150,20 +155,20 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 		</td>
 	</tr>
 	<tr>
-		<td align="center" id="writespace">필요한 재료</td>
+		
 		<td align="left">
 			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinputblack"
-			style="ime-mode:inactive;" value=" <%= article.getIngredients()%>"></td>
+			style="ime-mode:inactive;"  placeholder="사용된 재료를 알려주세요" value=" <%= article.getIngredients()%>"></td>
 	</tr>
 	<tr>
-		<td align="center" id="writespace">사용되는 도구</td>
+		
 		<td align="left">
 			<input type="text" size="40" maxlength="30" name="tools" class="signupinputblack"
-			style="ime-mode:inactive;" value=" <%= article.getTools()%>"></td>
+			style="ime-mode:inactive;"  placeholder="사용된 도구를 알려주세요" value=" <%= article.getTools()%>"></td>
 	</tr>
 	<tr>
-				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-				<td align="left">
+				
+				<td align="left"  colspan="2">
 					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
 				<script type="text/javascript">
 					Editor.modify({'content':'<%=article.getContent()%>'});
