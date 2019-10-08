@@ -319,10 +319,10 @@
 	
 	<body id="body">
 		<%@include file="../general_included/topbar.jsp"%>
-		
+		<hr style="border: solid 2px #ffbb00; align:center;
+		width:1900px;">
 		
 		<div id="maindiv">
-		<br>
 		<br>
 		<br>
 		<br> 

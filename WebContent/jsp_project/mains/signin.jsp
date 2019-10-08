@@ -45,13 +45,13 @@ function enterkey() {
 </script>
 
 </head>
-<body>
+<body id="body">
 <%@include file="../general_included/topbar.jsp"%>
-
-<div id="maindiv">
+<hr style="border: solid 2px #ffbb00; align:center;
+		width:1900px;">
 <center>
 		<form method="post" name="login" action="login.jsp">
-		<br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br>
 			<div>
 				<input class="logininputs" type="text" placeholder="아이디 " name="id" onkeyup="enterkey();"><br><br>
 				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd" onkeyup="enterkey();"><br><br>
