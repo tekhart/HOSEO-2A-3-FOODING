@@ -38,8 +38,6 @@
 				<%
 			}
 		}finally{}
-		
-		
 		%>
 		</td></tr>
   	</table>
