@@ -20,16 +20,16 @@
 	<div class="writetitle1">맞춤 레시피</div>
 
 <br>
-<br><br><br>
-<center>
+<br><br>
+
 
 	<table border="1" class="customtb" >
-	<tr><td class="listcolor">상황별 요리</td>
-	<td class="listcolor">나라별 요리</td>
-	<td class="listcolor">재료별 요리</td>
-	<td class="listcolor">조리법별 요리</td>
-	<td class="listcolor">도구별 요리</td></tr>
-	<tr><td>
+	<tr><td class="customfirst">상황별 요리</td>
+	<td class="customfirst">나라별 요리</td>
+	<td class="customfirst">재료별 요리</td>
+	<td class="customfirst">조리법별 요리</td>
+	<td class="customfirst">도구별 요리</td></tr>
+	<tr><td class="customsecond">
 		<input type="checkbox" value="간식">간식<br>
 		<input type="checkbox" value="야식">야식<br>
 		<input type="checkbox" value="안주">안주<br>
@@ -39,7 +39,7 @@
 		<input type="checkbox" value="파티">파티<br>
 		<input type="checkbox" value="명절">명절<br>
 		<input type="checkbox" value="실생활">실생활
-</td><td>
+</td><td class="customsecond">
 		<input type="checkbox" value="한식">한식<br>
 		<input type="checkbox" value="중식">중식<br>
 		<input type="checkbox" value="일식">일식<br>
@@ -48,7 +48,7 @@
 		<input type="checkbox" value="양식">양식<br>
 		<input type="checkbox" value="퓨전">퓨전<br>
 		<input type="checkbox" value="이국적인">이국적인
-</td><td>
+</td><td class="customsecond">
 		<input type="checkbox" value="육류">육류<br>
 		<input type="checkbox" value="채소류">채소류<br>
 		<input type="checkbox" value="해산물">해산물<br>
@@ -59,7 +59,7 @@
 		<input type="checkbox" value="밀가루">밀가루<br>
 		<input type="checkbox" value="김치">김치<br>
 		<input type="checkbox" value="가공식품">가공식품
-</td><td>
+</td><td class="customsecond">
 		<input type="checkbox" value="밥">밥<br>
 		<input type="checkbox" value="면">면<br>
 		<input type="checkbox" value="국물">국물<br>
@@ -70,7 +70,7 @@
 		<input type="checkbox" value="베이킹/디저트">베이킹/디저트<br>
 		<input type="checkbox" value="양념/소스/잼">양념/소스/잼<br>
 		<input type="checkbox" value="음료/차/커피">음료/차/커피
-</td><td>
+</td><td class="customsecond">
 		<input type="checkbox" value="칼">칼<br>
 		<input type="checkbox" value="믹서기">믹서기<br>
 		<input type="checkbox" value="가스레인지">가스레인지<br>
@@ -82,7 +82,7 @@
 </td></tr>
 
 
-<tr><td colspan="4">
+<tr><td colspan="4" >
 <ul id="myUL">
   
 </ul></td><td><input type="submit" value="검색"></td></tr>
@@ -90,22 +90,24 @@
 
 <tr><td colspan="5">
 
-<table border="1" style="width:200px; margin:auto;"><tr><td>  <input id="myInput" type="text" name="myCountry" placeholder="검색..."></td>
-<td height="50px"><div class="header">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div></td></tr>
-<tr><td>
+<table style="width:465px; margin:auto;"><tr>
+	<td>  
+		<input type="text" name="myCountry" placeholder="검색..." class="cusearchbar">
+	</td>
+								
+		<td class="addBtn">
+			<div > 
+  				<span onclick="newElement()">추가</span>
+			</div>
+		</td></tr>
 
-
-
-  </td></tr>
 </table>
 
  
 
 </td></tr>
 </table>
-	</center>
+
 <script>
 
 //Create a "close" button and append it to each list item
