@@ -11,7 +11,7 @@ public class foodingBean {
 	ResultSet rs=null;
 	String str=null;
 	
-	public void Connect() {
+	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch(Exception e) {
@@ -118,7 +118,6 @@ public class foodingBean {
 	
     //而ㅻ꽖�뀡��濡쒕��꽣 Connection媛앹껜瑜� �뼸�뼱�깂
     private Connection getConnection() throws Exception {
-		DBclose();
     	try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch(Exception e) {
@@ -132,7 +131,7 @@ public class foodingBean {
     }
  
     //recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
-    public void insertArticle(BoardDataBean article) 
+    public void insertArticle(BoardDataBean article,int fame) 
             throws Exception {
 		DBclose();
         con = null;
@@ -176,12 +175,13 @@ public class foodingBean {
         	DBclose();
         }
     }
-    public int getArticleCount(String type,String search)
+    public int getArticleCount(String type,String search,int fame)
             throws Exception {
 		DBclose();
        con = null;
        pstmt = null;
        rs = null;
+       String sql="";
 
        int x=0;
 
@@ -189,14 +189,18 @@ public class foodingBean {
            con = getConnection();
            
            if(type.equals("제목")) {
-        	   pstmt = con.prepareStatement("select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%')");
+        	   sql="select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
            }else if(type.equals("글쓴이")) {
-        	   pstmt = con.prepareStatement("select count(*) from recipes  where writerid in(select id from user where nkname like '%"+search+"%')");
+        	   sql="select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') ";
            }else if(type.equals("재료")) {
-        	   pstmt = con.prepareStatement("select count(*) from recipes  where ingredients like '%"+search+"%'");
+        	   sql="select * from recipes  where ingredients like '%"+search+"%'";
            }else if(type.equals("도구")) {
-        	   pstmt = con.prepareStatement("select count(*) from recipes  where tools like '%"+search+"%'");
+        	   sql="select * from recipes  where tools like '%"+search+"%'";
            }
+           if(fame==1) {
+        	   sql+=" and reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual)";
+           }
+           pstmt = con.prepareStatement(sql);
            rs = pstmt.executeQuery();
            if (rs.next()) {
               x= rs.getInt(1);
@@ -208,25 +212,32 @@ public class foodingBean {
        }
         return x;
    }
-    public List<BoardDataBean> getArticles(int start, int end,String type,String search)
+    public List<BoardDataBean> getArticles(int start, int end,String type,String search,int fame)
             throws Exception {
 		DBclose();
        con = null;
        pstmt = null;
        rs = null;
+       String sql="";
        List<BoardDataBean> articleList=null;
        try {
            con = getConnection();
            
            if(type.equals("제목")) {
-        	   pstmt = con.prepareStatement("select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') order by num desc limit ?,?");
+        	   sql="select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
            }else if(type.equals("글쓴이")) {
-        	   pstmt = con.prepareStatement("select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') order by num desc limit ?,?");
+        	   sql="select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') ";
            }else if(type.equals("재료")) {
-        	   pstmt = con.prepareStatement("select * from recipes  where ingredients like '%"+search+"%' order by num desc limit ?,?");
+        	   sql="select * from recipes  where ingredients like '%"+search+"%'";
            }else if(type.equals("도구")) {
-        	   pstmt = con.prepareStatement("select * from recipes  where tools like '%"+search+"%' order by num desc limit ?,?");
+        	   sql="select * from recipes  where tools like '%"+search+"%'";
            }
+           if(fame==1) {
+        	   sql+="and reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual) order by readcount desc limit ?,?";
+           }else {
+        	   sql+="order by num desc limit ?,?";
+           }
+           pstmt = con.prepareStatement(sql);
            pstmt.setInt(1, start-1);
            pstmt.setInt(2, end);
            rs = pstmt.executeQuery();
@@ -256,19 +267,25 @@ public class foodingBean {
        }
         return articleList;
    }
-    public int getArticleCount()
+    public int getArticleCount(int fame)
              throws Exception {
 		DBclose();
         con = null;
         pstmt = null;
         rs = null;
+        String sql="";
 
         int x=0;
 
         try {
             con = getConnection();
             
-            pstmt = con.prepareStatement("select count(*) from recipes");
+            sql="select count(*) from recipes";
+            if(fame==1) {
+         	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual)";
+            }else {}
+
+            pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -281,18 +298,23 @@ public class foodingBean {
         }
 		return x;
     }
-	public List<BoardDataBean> getArticles(int start, int end)
+	public List<BoardDataBean> getArticles(int start, int end,int fame)
             throws Exception {
 		DBclose();
        con = null;
        pstmt = null;
        rs = null;
+       String sql="";
        List<BoardDataBean> articleList=null;
        try {
            con = getConnection();
            
-           pstmt = con.prepareStatement(
-           	"select * from recipes order by num desc limit ?,? ");
+           sql="select * from recipes";
+           if(fame==1) {
+        	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual) order by readcount desc limit ?,?";
+           }else {}
+           
+           pstmt = con.prepareStatement(sql);
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
            rs = pstmt.executeQuery();

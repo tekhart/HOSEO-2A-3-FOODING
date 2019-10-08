@@ -18,7 +18,12 @@
     String pageNum = request.getParameter("pageNum");
 	String search=request.getParameter("search");
 	String searchtype=request.getParameter("searchtype");
-	
+	int fame=0;
+	if(request.getParameter("fame")!=null){
+		fame=Integer.parseInt(request.getParameter("fame"));
+	}else{
+		fame=0;
+	}
 
     if (pageNum == null) {
         pageNum = "1";
@@ -35,18 +40,18 @@
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
     if(search==null){
-    	count = dbPro.getArticleCount();
+    	count = dbPro.getArticleCount(fame);
 	}else{
-		count = dbPro.getArticleCount(searchtype,search);
+		count = dbPro.getArticleCount(searchtype,search,fame);
 	}
     
     
     
     if (count > 0) {
     	if(search==null){
-            articleList = dbPro.getArticles(startRow, pageSize);
+            articleList = dbPro.getArticles(startRow, pageSize,fame);
     	}else{
-            articleList = dbPro.getArticles(startRow, pageSize, searchtype,search);
+            articleList = dbPro.getArticles(startRow, pageSize, searchtype,search,fame);
     	}
     }
 	
@@ -202,7 +207,7 @@
         if (endPage > pageCount) endPage = pageCount;
         
         %>
-          	<a href="list.jsp?pageNum=<%= startPage - 10 %>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
+          	<a href="list.jsp?pageNum=<%= startPage - 1 %>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
 		<%
         
         for (int i = startPage ; i <= endPage ; i++) {
@@ -218,17 +223,12 @@
        }
 		
         %>
-        	<a href="list.jsp?pageNum=<%= startPage + 10 %>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
+        	<a href="list.jsp?pageNum=<%= startPage + 1 %>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
         	<img src="../img/ii.png" width="20px" height="24px" align="middle">
         	<img src="../img/nn.png" width="23px" height="24px" align="middle">
         	<img src="../img/gg.png" width="23px" height="24px" align="middle"></a>
 		<%
 
-        
-        
-        
-        
-        
  }
 %>
 
