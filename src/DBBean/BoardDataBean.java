@@ -16,6 +16,7 @@ public class BoardDataBean {
 	Timestamp reg_date;
 	int readcount;
 	String content;
+	String thumbnail;
 	String difficulty;
 	
 	public int getNum() {
@@ -78,12 +79,17 @@ public class BoardDataBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 	public String getDifficulty() {
 		return difficulty;
 	}
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
-
 	
 }

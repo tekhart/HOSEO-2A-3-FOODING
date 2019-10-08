@@ -176,7 +176,7 @@
       <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
-        	<% if(article.getReadcount()>=20){%>
+        	<% if(article.getReadcount()>=50){%>
      		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
 	 <%=article.getTitle()%></a>  </td>
