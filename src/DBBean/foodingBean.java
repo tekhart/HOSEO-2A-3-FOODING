@@ -281,7 +281,7 @@ public class foodingBean {
             con = getConnection();
             
             sql="select count(*) from recipes";
-            if(fame==1) {
+            if(fame==1){
          	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual)";
             }else {}
 
@@ -309,11 +309,12 @@ public class foodingBean {
        try {
            con = getConnection();
            
-           sql="select * from recipes";
+           sql="select * from recipes ";
            if(fame==1) {
         	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual) order by readcount desc limit ?,?";
-           }else {}
-           
+           }else {
+        	   sql+="order by num desc limit ?,?";
+           }
            pstmt = con.prepareStatement(sql);
            pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
