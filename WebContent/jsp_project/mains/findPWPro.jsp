@@ -73,7 +73,7 @@ function check(){
 
 <div id="maindiv">
 <hr style="border: solid 2px #ffbb00; align:center;
-		width:2000px;">
+		width:1900px;">
 	<%
 	String id=request.getParameter("id");
 	String email=request.getParameter("email");

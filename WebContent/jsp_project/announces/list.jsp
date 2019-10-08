@@ -110,30 +110,29 @@
 </table>
 <% } else {%>
 
-<div class="writetitle">
+<div class="writetitle1">
 공지사항(<%=count %>)</div>
 
-<table class="listtop" ><tr><td>
-<table class="searchtable"><tr style="padding-top:-5px"><td class="searchtd" border="1">
+<table class="listtop"><tr>
+<table class="searchtable">
+	<tr style="padding-top:-5px">
+		<td class="searchtd" border="1" style="padding-left:350px;">
 
-
-  			<form method="post" action="list.jsp" class="searh">
+			<form method="post" action="list.jsp" class="searh">
 			<input type="text" name="search" class="searchbar">	
-				</td><br><td class="searchbttd" width="50px">
+			
+		</td>
+			<br><td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
-			<td>
+				<td style="padding-left:225px;">
 			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
 			<td>
 			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
 			</form>
 </td></tr></table>
-</td><td><tr><td>
-<% if(idlogin.equals("fooding1")){%>
-<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
-<%} %>
-  </td></tr></table></td></tr></table>
-<br><br>
+<td><tr><td>
+<br>
+<br>
 
 
 <table class="listtable"> 

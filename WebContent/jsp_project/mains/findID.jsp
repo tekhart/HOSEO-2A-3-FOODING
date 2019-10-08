@@ -35,12 +35,15 @@ function Findid(){
 <body>
 
 <%@include file="../general_included/topbar.jsp"%>
-
+<hr style="border: solid 2px #ffbb00; align:center;
+		width:1900px;">
 <div id="maindiv">
 
 	<center>
 		<br>
-		<br>
+		<br><br><br><br>
+		
+		
 	
 	<input type="button" value="ID찾기" id="currentbtn"> <%-- 현 페이지 이므로 기능없음. --%>
 	<input type="button" value="PW찾기" onClick="location.href='findPW.jsp'" id="notcurrentbtn">

@@ -8,14 +8,20 @@
 <link rel="stylesheet" href="../css/list.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-<%@include file="../general_included/topbar.jsp"%>
+
 <style>
 
 </style>
 </head>
-<body>
+<body id="body">
+<%@include file="../general_included/topbar.jsp"%>
+     
 
-<br><br><br><br><br><br>
+<div id="maindiv">
+<div class="writetitle1">
+자주하는 질문</div>
+
+<br><br><br>
 
 <button class="accordion">대량 구매 관련 문의를 하고 싶습니다.</button>
 <div class="panel">

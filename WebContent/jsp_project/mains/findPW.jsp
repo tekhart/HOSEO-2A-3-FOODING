@@ -36,10 +36,11 @@ function Findpw(){
 </head>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
-
+<hr style="border: solid 2px #ffbb00; align:center;
+		width:1900px;">
 <div id="maindiv">
 		<br>
-		<br>
+		<br><br><br><br>
 	<center>
 	<input type="button" value="ID찾기"  onClick="location.href='findID.jsp'" id="notcurrentbtn2">
 	<input type="button" value="PW찾기" id="currentbtn2">

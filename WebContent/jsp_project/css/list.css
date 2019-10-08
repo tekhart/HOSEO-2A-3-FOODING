@@ -145,6 +145,8 @@ a:active {
 }
 	
 .customtb{
+	border-collapse:collapse;
+	border-spacing:0px;
 	width:1000px;
 	margin:auto;}
 }
@@ -355,7 +357,7 @@ a:active {
    background: linear-gradient(90deg, #fddedd 50%, #e6f2ff 50%);
 }
 
-
+/* 재료,도구 슬라이드 */
 .divdiv1{
 	background-color: #fddedd;
 	width:1100px;
@@ -368,7 +370,6 @@ a:active {
   border-width:7px;
 }
 
-
 .divdiv2{
 	background-color:#e6f2ff;
 	width:1100px;
@@ -380,12 +381,16 @@ a:active {
   border-color:#593a0d;
   border-width:7px;
 }
+/* 재료,도구 슬라이드 끝 */
 
+/* 테이블 td에 줄 */
 .orangeline11{border-bottom:4px solid orange;
 						border-top:4px solid orange;}
 .orangeline1{border-bottom:4px solid orange;}
 .orangeline111{border-top:4px solid orange;}
 .orangeline{border-bottom:3px solid orange;}
+/* 테이블 td에 줄 끝 */
+
 
 .dropbtblack{
 	ime-mode:inactive; 
@@ -421,12 +426,13 @@ a:active {
 		border-radius:5px; 
 }
 
+/* 상점 */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
-   display: inline-block;
   text-align: center;
   font-family: arial;
+  margin-top:15px;
   
 }
 
@@ -451,9 +457,11 @@ a:active {
 .card button:hover {
   opacity: 0.7;
 }
+/* 상점 끝*/
 
 
 
+/* 자주하는 질문 */
 .accordion {
   background-color: #ffbc0d;
   color: #ffffff;
@@ -464,7 +472,7 @@ a:active {
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 17px;
   transition: 0.4s;
   margin-bottom:1px;
 }
@@ -502,3 +510,5 @@ a:active {
 .active1:visited {
 	background-color: #d88912;
 } 
+
+/* 자주하는 질문 끝 */

@@ -76,10 +76,9 @@
 </script>
 
 </head>
-<body>
+<body id="body">
 <%@include file="../general_included/topbar.jsp"%>
 
-<div id="maindiv">
 
 
      
@@ -100,40 +99,31 @@
     </td>
 </table>
 <% } else {%>
+<div id="maindiv">
 
+<div class="writetitle1">
+전체 질문 게시글(<%=count %>)</div>
 
+<table class="listtop"><tr>
+<table class="searchtable">
+	<tr style="padding-top:-5px">
+		<td class="searchtd" border="1" style="padding-left:350px;">
 
-<table class="listtop"><tr><td>
-
-<font class="writetitle">
-전체 질문 게시글(<%=count %>)</font>
-
-
-</td><td>
-<table class="searchtable"><tr><td class="searchtd">
-
-
-  			<form method="post" action="list.jsp" class="searh">
+			<form method="post" action="list.jsp" class="searh">
 			<input type="text" name="search" class="searchbar">	
-</td><td class="searchbttd" width="50px">
+			
+		</td>
+			<br><td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
+				<td style="padding-left:225px;">
+			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
+			<td>
+			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
 			</form>
-	
-	
-	
 </td></tr></table>
-</td><td><table align="right"><tr><td>
-
-<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
-  </td></tr></table></td></tr></table>
-
-
-
-
-
-
-
+<td><tr><td>
+<br>
+<br>
 
 <table class="listtable"> 
     <tr height="50"> 
