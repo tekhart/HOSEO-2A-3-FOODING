@@ -11,8 +11,12 @@
         new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
 <%		
-			
-		    
+	int fame=0;
+	if(request.getParameter("fame")!=null){
+		fame=Integer.parseInt(request.getParameter("fame"));
+	}else{
+		fame=0;
+	}    
 %>
 
 <!DOCTYPE html>
@@ -171,10 +175,10 @@ function initComparisons() {
     if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
         %>
         	<input type="button" value="글수정" class="smallbt"
-           		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+           		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
     	   		&nbsp;&nbsp;&nbsp;&nbsp;
     	  <input type="button" value="글삭제" class="smallbt"
-           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
+           		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">	
         <%
         }
         %>
@@ -300,10 +304,10 @@ function initComparisons() {
 			</tr>
 			<tr>
 				<td align="right" colspan="2">
-									<input type="button" value="답글" class="bt2" onclick=
-							"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-							'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-							'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
+					<input type="button" value="답글" class="bt2" onclick=
+						"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+						'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+						'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
 						<%if(idlogin!=null){ %>
 							<input type="button" value="변경" class="bt2" onclick=
 								"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
@@ -314,7 +318,7 @@ function initComparisons() {
 								'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 								'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
 						<%} %>
-						<div class="commentchangeform" id="testid"></div>
+					<div class="commentchangeform" id="testid"></div>
 				</td>
 			</tr>
 			 <hr width="790" size="8px" color="white">

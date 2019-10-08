@@ -193,12 +193,12 @@ public class foodingBean {
            }else if(type.equals("글쓴이")) {
         	   sql="select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') ";
            }else if(type.equals("재료")) {
-        	   sql="select * from recipes  where ingredients like '%"+search+"%'";
+        	   sql="select * from recipes  where ingredients like '%"+search+"%' ";
            }else if(type.equals("도구")) {
-        	   sql="select * from recipes  where tools like '%"+search+"%'";
+        	   sql="select * from recipes  where tools like '%"+search+"%' ";
            }
            if(fame==1) {
-        	   sql+=" and reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual)";
+        	   sql+=" and reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual)";
            }
            pstmt = con.prepareStatement(sql);
            rs = pstmt.executeQuery();
@@ -228,12 +228,12 @@ public class foodingBean {
            }else if(type.equals("글쓴이")) {
         	   sql="select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') ";
            }else if(type.equals("재료")) {
-        	   sql="select * from recipes  where ingredients like '%"+search+"%'";
+        	   sql="select * from recipes  where ingredients like '%"+search+"%' ";
            }else if(type.equals("도구")) {
-        	   sql="select * from recipes  where tools like '%"+search+"%'";
+        	   sql="select * from recipes  where tools like '%"+search+"%' ";
            }
            if(fame==1) {
-        	   sql+="and reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual) order by readcount desc limit ?,?";
+        	   sql+="and reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual) order by readcount desc limit ?,?";
            }else {
         	   sql+="order by num desc limit ?,?";
            }
@@ -280,9 +280,9 @@ public class foodingBean {
         try {
             con = getConnection();
             
-            sql="select count(*) from recipes";
+            sql="select count(*) from recipes ";
             if(fame==1){
-         	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual)";
+         	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual)";
             }else {}
 
             pstmt = con.prepareStatement(sql);
@@ -311,7 +311,7 @@ public class foodingBean {
            
            sql="select * from recipes ";
            if(fame==1) {
-        	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 DAY) from dual) order by readcount desc limit ?,?";
+        	   sql+="where reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual) order by readcount desc limit ?,?";
            }else {
         	   sql+="order by num desc limit ?,?";
            }
