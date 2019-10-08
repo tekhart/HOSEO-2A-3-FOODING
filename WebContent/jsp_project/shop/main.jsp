@@ -18,12 +18,30 @@
 <td>정육</td><td>|</td><td>수산</td><td>|</td><td>과일/채소</td><td>|</td>
 <td>유제품</td><td>|</td><td>빵/과자</td><td>|</td><td>조리도구</td></tr></table>
 
+<div style="width:1700px; margin:auto;">
+
 <div class="card">
-  <img src="/w3images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
+  <img src="../img/angry.png"  alt="angry" style="width:100%">
+  <h1>ANGRY</h1>
   <p class="price">$19.99</p>
   <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
+  <p><button>Add to Cart</button></p></div>
+  
+  <div class="card">
+  <img src="../img/carrotc.png" alt="dang" style="width:100%">
+  <h1>당-근</h1>
+  <p class="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button>Add to Cart</button></p></div>
+  
+  <div class="card">
+  <img src="../img/ding1.png" alt="ding" style="width:100%">
+  <h1>DING!</h1>
+  <p class="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button>Add to Cart</button></p></div>
+  
+  </div>
+  
 </body>
 </html>

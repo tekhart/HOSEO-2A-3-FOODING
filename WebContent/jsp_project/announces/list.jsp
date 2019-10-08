@@ -58,9 +58,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-<link rel="stylesheet" href="../css/common.css?after">
-<link rel="stylesheet" href="list.css?after">
-<link rel="stylesheet" href="style.css?after">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
 
 <style>
 

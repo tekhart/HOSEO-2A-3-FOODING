@@ -59,7 +59,7 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="../css/list.css">
 
 <style>
 

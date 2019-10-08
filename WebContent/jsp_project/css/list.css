@@ -424,9 +424,10 @@ a:active {
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
-  margin: auto;
+   display: inline-block;
   text-align: center;
   font-family: arial;
+  
 }
 
 .price {
@@ -444,8 +445,60 @@ a:active {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+  margin-right:10px;
 }
 
 .card button:hover {
   opacity: 0.7;
 }
+
+
+
+.accordion {
+  background-color: #ffbc0d;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 1300px; 
+  margin-left:300px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin-bottom:1px;
+}
+
+.active1, .accordion:hover {
+  background-color: #efa927;
+}
+
+.accordion:after {
+  content: '\002B';
+  color:white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active1:after {
+  content: "\2212";
+  color:white;
+}
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  margin-left:300px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  word-break:keep-all;
+  width:1300px;
+}
+.active1{
+	background-color: #d88912;
+} 
+
+.active1:visited {
+	background-color: #d88912;
+} 
