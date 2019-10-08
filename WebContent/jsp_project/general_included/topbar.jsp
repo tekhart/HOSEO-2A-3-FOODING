@@ -87,7 +87,7 @@
 	        				</td>	
 	        				<td><center>
 						        <div class="dropdown">
-						            <button class="dropbtn">공지사항</button>
+						            <button class="dropbtn" OnClick="window.location='../announces/list.jsp'">공지사항</button>
 						            <div class="dropdown-content">
 							            <center>
 							            	<a href="../announces/list.jsp">푸딩규칙</a>
@@ -98,7 +98,7 @@
 					        </td>
 	        				<td><center>
 	        					<div class="dropdown">
-						            <button class="dropbtn">고객센터</button>
+						            <button class="dropbtn" OnClick="window.location='../notices/faq.jsp'">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
 							             	<a href="../notices/faq.jsp">자주하는 질문</a>
