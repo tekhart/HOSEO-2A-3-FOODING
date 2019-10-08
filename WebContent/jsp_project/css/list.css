@@ -75,7 +75,7 @@
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		border-radius: 5px 0px 0px 5px;
+		border-radius: 5px 5px 5px 5px;
 	}
 
 .searchbotton{
@@ -144,12 +144,6 @@ a:active {
 	background-color:#F2F2F2;
 }
 	
-.customtb{
-	border-collapse:collapse;
-	border-spacing:0px;
-	width:1000px;
-	margin:auto;}
-}
 
 @CHARSET "UTF-8";
 
@@ -512,3 +506,55 @@ a:active {
 } 
 
 /* 자주하는 질문 끝 */
+
+/* custom */
+.customtb{
+	border-collapse:collapse;
+	border-spacing:0px;
+	width:1000px;
+	height:500px;
+	margin:auto;
+}
+
+.customfirst{
+	text-align:center;
+	height:70px;
+	border-top:3px solid #ffbb00;
+	border-left:3px solid #ffbb00;
+	border-right:3px solid #ffbb00;
+	border-bottom:3px solid #ffbb00;
+	background-color:#ffd668;
+}
+
+.customsecond{
+	text-align:top
+	padding-left:12px;
+	border-left:3px solid #ffbb00;
+	border-right:3px solid #ffbb00;
+	border-bottom:2.5px solid #ffbb00;
+	
+}
+
+.cusearchbar{
+		width:400px;
+		height:50px;
+		display: inline-block;
+		border-color:#ffbb00;
+		background: white;
+		border-style:solid;
+		border-width: thin; 
+		border-radius: 5px 5px 5px 5px;
+		padding-left:10px;
+		font-size:13pt;
+	}
+
+.addBtn{
+	width:80px;
+	font-size:14pt;
+	text-align:center;
+	border-radius: 5px 5px 5px 5px;
+	border-top:1px solid #ffbb00;
+	border-left:1px solid #ffbb00;
+	border-right:1px solid #ffbb00;
+	border-bottom:1px solid #ffbb00;
+}

@@ -101,10 +101,10 @@
 					<table class="searchtable">
 						<form method="post" action="list.jsp" class="searh">
 							<tr>
-								<td>
+								<td style="padding-left:280px;">
 									<select name='searchtype' style="ime-mode:inactive; padding: .7em .5em; 
-									border-radius: 0px 5px 5px 0px; border-color:#ffbb00; font-size:14pt;
-									font-family:Bauhaus ITC;">
+									border-radius: 5px 5px 5px 5px; border-color:#ffbb00; font-size:14pt;
+									font-family:Bauhaus ITC; height:50px;" >
 						    			<option value='제목' selected>제목</option>
 						    			<option value='글쓴이'>글쓴이</option>
 						    			<option value='재료'>재료</option>
@@ -121,11 +121,13 @@
 						</form>
 					</table>
 				</td>
-				<td>
+				<td style="padding-left:190px;">
 					<table align="right">
 						<tr>
 							<td>
 								<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
+							</td>
+							<td>
 								<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
 							</td>
 						</tr>

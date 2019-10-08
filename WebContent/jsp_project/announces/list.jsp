@@ -112,7 +112,7 @@
 
 <div class="writetitle1">
 공지사항(<%=count %>)</div>
-
+<center>
 <table class="listtop"><tr>
 <table class="searchtable">
 	<tr style="padding-top:-5px">
@@ -129,10 +129,11 @@
 			<td>
 			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
 			</form>
-</td></tr></table>
+			</tr>
+</td></tr></table></table></center>
 <td><tr><td>
 <br>
-<br>
+
 
 
 <table class="listtable"> 
