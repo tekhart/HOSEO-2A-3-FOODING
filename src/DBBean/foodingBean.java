@@ -131,7 +131,7 @@ public class foodingBean {
     }
  
     //recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
-    public void insertArticle(BoardDataBean article,int fame) 
+    public void insertArticle(BoardDataBean article) 
             throws Exception {
 		DBclose();
         con = null;
