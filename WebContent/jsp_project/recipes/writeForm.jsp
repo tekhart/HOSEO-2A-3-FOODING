@@ -13,7 +13,15 @@
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			
+			function sendingthumb(thumbname){
+                $("#thumbnail").css("background-image","url('../img/uploaded/"+thumbname+"')");
+                $("#thumbnail").css("background-position","center center");
+                $("#thumbnail").css("background-size","300px 200px");
+                $("#thumbnail").innerhtml="";
+			}
+			function thumbnailupload(){
+				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+			}
 		</script>
 		
 		
@@ -52,7 +60,7 @@
 			<tr>
 			<td rowspan="4" width="300px">
 			
-			<div style="background-color:hotpink; height:200px; width:300px;" onclick="thumbnailupload()">썸네일</div>
+			<div id="thumbnail" style="background-color:hotpink; height:200px; width:300px;" onclick="thumbnailupload()">썸네일</div>
 			
 			</td>
 			<td width="700px" align="left">

@@ -3,7 +3,6 @@
 
 <%@ page import="java.sql.*"%>
 <%@page import="DBBean.foodingBean" %>
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
 <meta charset="UTF-8">
 <%
 
@@ -13,42 +12,12 @@
 	
 	
 	try{
-		zipcode=(String)session.getAttribute("zipcode");
 		if(zipcode==null){
 			zipcode="";
 		}
 	}finally{}
 
 	foodingBean foodingbean=new foodingBean();
-	
-	String nkname = tempbean.getNkname();
-	String id = tempbean.getId();
-	String passwd = tempbean.getPasswd();
-	String repasswd = tempbean.getRepasswd();
-	String email = tempbean.getEmail();
-	String addrnum = tempbean.getAddrnum();
-	String address = tempbean.getAddress();
-	String detailaddr = tempbean.getDetailaddr();
-	
-	String nknamecheck=tempbean.getNknamecheck();
-	String idcheck=tempbean.getIdcheck();
-	String passwdcheck=tempbean.getPasswdcheck();
-	String repasswdcheck=tempbean.getRepasswdcheck();
-	String emailcheck=tempbean.getEmailcheck();
-	
-	if(nkname==null){nkname="";}
-	if(id==null){id="";}
-	if(passwd==null){passwd="";}
-	if(repasswd==null){repasswd="";}
-	if(email==null){email="";}
-	if(addrnum==null){addrnum="";}
-	if(detailaddr==null){detailaddr="";}
-	if(nknamecheck==null){nknamecheck="";}
-	if(idcheck==null){idcheck="";}
-	if(passwdcheck==null){passwdcheck="";}
-	if(repasswdcheck==null){repasswdcheck="";}
-	if(emailcheck==null){emailcheck="";}
-
 %>
 <!DOCTYPE html>
 <html>
@@ -94,11 +63,15 @@
 			var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;  
 			var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
 			
+			function sendingaddr(addrnum,address){
+				register.addrnum.value=addrnum;
+				register.address.value=address;
+			}
 			
 			function Nknamecheck() {
 				var checked=0;
 				if (window.event.keyCode == 13) {
-					Signupcross(selected);
+					Signupcross();
 			    }
 				if(register.nkname.value.length<3||register.nkname.value.length>16){
 					document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
@@ -135,7 +108,7 @@
 			function Idcheck() {
 				var checked=0;
 				if (window.event.keyCode == 13) {
-					Signupcross(selected);
+					Signupcross();
 			    }
 				if(register.id.value.length<8){
 					document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
@@ -164,7 +137,7 @@
 			function Emailcheck() {
 				var checked=0;
 				if (window.event.keyCode == 13) {
-					Signupcross(selected);
+					Signupcross();
 			    }
 				if(emailexp.test(register.email.value)==false){
 					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
@@ -188,7 +161,7 @@
 			
 			function Passwdcheck() {
 				if (window.event.keyCode == 13) {
-					Signupcross(selected);
+					Signupcross();
 			    }
 				if(pwexp.test(register.passwd.value)==false){
 					document.getElementById('passwdcheck').innerHTML = "8자 이상, 영문/특수문자/숫자가 하나 이상";
@@ -208,7 +181,7 @@
 			
 			function Repasswdcheck() {
 				if (window.event.keyCode == 13) {
-					Signupcross(selected);
+					Signupcross();
 			    }
 				if(register.passwd.value==register.repasswd.value){
 					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
@@ -220,25 +193,12 @@
 			};
 			
 			function ZipPopup() { 
-				var register=document.register;
-				
-				register.nknamecheck.value=document.getElementById('nknamecheck').innerHTML;
-				register.passwdcheck.value=document.getElementById('passwdcheck').innerHTML;
-				register.repasswdcheck.value=document.getElementById('repasswdcheck').innerHTML;
-				register.idcheck.value=document.getElementById('idcheck').innerHTML;
-				register.emailcheck.value=document.getElementById('emailcheck').innerHTML;
-				
-				register.selected.value="zipload";
 				window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
-				register.submit();
 			}
 				
-			function Signupcross(selected){	
+			function Signupcross(){	
 				var register=document.register;
-				register.selected.value=selected;
-			
-				
-			
+
 					if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
 						alert("닉네임을 확인해주세요");
 						register.nkname.focus();
@@ -301,12 +261,6 @@
 				register.addrnum.value="";
 				register.address.value="";
 				register.detailaddr.value="";
-				
-				document.getElementById('nknamecheck').innerHTML="";
-				document.getElementById('idcheck').innerHTML="";
-				document.getElementById('passwdcheck').innerHTML="";
-				document.getElementById('repasswdcheck').innerHTML="";
-				document.getElementById('emailcheck').innerHTML="";
 			}
 		
 		
@@ -328,14 +282,6 @@
 		<br> 
 		<br>
 		<form method="post" name="register" action="signcross.jsp" >
-		
-			<input type="hidden" name="nknamecheck">
-			<input type="hidden" name="idcheck">
-			<input type="hidden" name="passwdcheck">
-			<input type="hidden" name="repasswdcheck">
-			<input type="hidden" name="emailcheck">
-			
-			<input type="hidden" name="selected">
 			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
 			<center>
 			<fieldset>
@@ -347,78 +293,78 @@
 						<tr>
 							<td width="90px">닉네임</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="nkname"size="40" value="<%= nkname%>" onkeyup="Nknamecheck();">
+								<input class="signupinputs" type="text" name="nkname"size="40" onkeyup="Nknamecheck();">
 							</td>
 						</tr><tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="nknameimg"></span><span id="nknamecheck"><%=nknamecheck%></span>
+								<span id="nknameimg"></span><span id="nknamecheck"></span>
 							</td>
 						</tr>
 						
 						<tr>
 							<td>아이디</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="id"size="40"  value="<%= id%>" onkeyup="Idcheck();">
+								<input class="signupinputs" type="text" name="id"size="40" onkeyup="Idcheck();">
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="idimg"></span><span id="idcheck"><%=idcheck %></span>
+								<span id="idimg"></span><span id="idcheck"></span>
 							</td>
 						</tr>
 						<tr> 
 							<td>비밀번호</td>
 							<td colspan="2">
-								<input class="signupinputs" type="password" name="passwd"size="40"  value="<%= passwd%>" onkeyup="Passwdcheck();"><br>
+								<input class="signupinputs" type="password" name="passwd"size="40" onkeyup="Passwdcheck();"><br>
 								
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="passwdimg"></span><span id="passwdcheck"><%=passwdcheck%></span>
+								<span id="passwdimg"></span><span id="passwdcheck"></span>
 							</td>
 						</tr>
 						
 						<tr>
 							<td>비밀번호 확인</td>
 							<td colspan="2">
-								<input class="signupinputs" type="password" name="repasswd"size="40"  value="<%= repasswd%>" onkeyup="Repasswdcheck();"><br>
+								<input class="signupinputs" type="password" name="repasswd"size="40" onkeyup="Repasswdcheck();"><br>
 								
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-								<span id="repasswdimg"></span><span id="repasswdcheck"><%=repasswdcheck%></span>
+								<span id="repasswdimg"></span><span id="repasswdcheck"></span>
 							</td>
 						</tr>
 						
 						<tr>
 							<td>이메일</td>
 							<td colspan="2">
-								<input class="signupinputs" type="text" name="email"size="40"  value="<%= email%>" onkeyup="Emailcheck();"><br>
+								<input class="signupinputs" type="text" name="email"size="40" onkeyup="Emailcheck();"><br>
 								
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-											<span id="emailimg"></span><span id="emailcheck"><%=emailcheck %></span>
+											<span id="emailimg"></span><span id="emailcheck"></span>
 							</td>
 						</tr>
 						
 						<tr> 
 							<td>우편번호</td>
-							<td><input class="addrnuminputs" type="text" name="addrnum" value="<%=addrnum%>" onclick="ZipPopup();"></td>
-							<td><input class="addressinputs" type="text" name="address" value="<%=address%>" onclick="ZipPopup();"></td>
+							<td><input class="addrnuminputs" type="text" name="addrnum" onclick="ZipPopup();" readonly></td>
+							<td><input class="addressinputs" type="text" name="address" onclick="ZipPopup();" readonly></td>
 						</tr>
 						<tr><td></td><td>&nbsp;</td></tr>
 						<tr>
 							<td>주소</td> 
-							<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" size="40"  value="<%= detailaddr%>"></td>
+							<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" size="40"></td>
 						</tr>
 						<tr>
 							<td>성별</td>
@@ -441,7 +387,7 @@
 					</table> 
 					<br><br>
 					<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
-					<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
+					<input type="button" value="확인" class="findbutton" onclick="Signupcross();">
 					<br><br><br>
 				</center>
 				
