@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "DBBean.foodingBean" %>
@@ -9,8 +11,8 @@
 
 <%!
     int pageSize = 10;
-    SimpleDateFormat sdf = 
-        new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    SimpleDateFormat sdf = 	
+        new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 <%
@@ -69,8 +71,6 @@
 <link rel="stylesheet" href="../css/list.css">
 
 <style>
-
-
 
 
 
@@ -156,52 +156,48 @@
 <% } else {%>
 
 <br>
-<table class="listtable"> 
-    <tr height="50"> 
-	  <td align="center"  width="50" class="listcolor" style="padding-left:20px;">번호</td>
-      <td align="center"  width="200" class="listcolor">제목</td> 
-      <td align="center"  width="150" class="listcolor">작성자</td>
-      <td align="center"  width="150" class="listcolor">등록일</td> 
-      <td align="center"  width="80" class="listcolor">조회</td> 
-      <td align="center"  width="60" class="listcolor" style="padding-right:20px;">댓글수</td> 
-    </tr>
+
+
+
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();
 %>
-   <tr style="height:40px;" class="mouse">
-   <td align="center" class="line" style="padding-left:20px;">
-   <%=article.getNum()%>
-   </td>
-    <td align="left" class="line" style="padding-left:40px;">       
-      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>" class="titlelong">
-      
-          [<%=article.getContury()%>/<%=article.getFoodtype()%>]
+
+<div class="card1" style=" cursor: pointer;" onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>';">
+<table width="100%"><tr><td  style="text-align:left;">
+<%= sdf.format(article.getReg_date())%></td><td style="text-align:right;">#<%=article.getContury()%> #<%=article.getFoodtype()%></td></tr></table>
+<br>
+<img src="../img/cereal-563796_420.jpg" style="width:100%"> 
+<br><br>
+<table><tr><td  class="titlelong">
+          
         	<% if(article.getReadcount()>=50){%>
      		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
-	 <%=article.getTitle()%></a>  </td>
-    <td align="center" class="line" > 
-     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>" class="writerlong" >
-       	<%=foodingbean.findnkname(writerid)%></a>
-    </td>
-    <td align="center" width="150" class="line" ><%= sdf.format(article.getReg_date())%></td>
-    <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getCommentArticleCount(article.getNum())%></td>
-	
-  </tr>
+	 <%=article.getTitle()%></td></tr></table>
+	<br><br>
+<table width="100%"><tr><td class="writerlong" style="text-align:left;">
+       	<%=foodingbean.findnkname(writerid)%></td><td style="align:right;"><%=article.getReadcount()%>view</tr></table></table></p>
+<p></p>
+<p></p>
+</div>
+
+
+
 	<%
 
    }%>
-</table>
+
 <%}%>
 
+
+
+</div> 
 <center>
 
 
-
-<br>
 <%
     if (count > pageSize) {
         int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -243,20 +239,7 @@
 %>
 
 
-  </center>
-
-
-</div>
-
-<br>
-<br><br><br><br><br><br><br><br><br><br><br>
-
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
+</center>
 
 </body>
 </html>
