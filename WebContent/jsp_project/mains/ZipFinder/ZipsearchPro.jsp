@@ -6,7 +6,6 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +14,13 @@
 </head>
 <body>
 	<%
-		String reqaddrnum = request.getParameter("reqaddrnum");
-		String reqaddress = request.getParameter("reqaddress");
-		tempbean.setAddrnum(reqaddrnum);
-		tempbean.setAddress(reqaddress);
-
+		String addrnum = request.getParameter("reqaddrnum");
+		String address = request.getParameter("reqaddress");
 	%>
 	
 	<script type="text/javascript">
-		opener.location.href="../signup.jsp";
-		self.close();
+        window.opener.sendingaddr("<%=addrnum%>","<%=address%>")
+        window.close();
 	</script>
 </body>
 </html>
