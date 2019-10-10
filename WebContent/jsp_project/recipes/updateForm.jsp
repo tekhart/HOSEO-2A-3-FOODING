@@ -12,7 +12,17 @@
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript"></script>
+		<script type="text/javascript">
+			function sendingthumb(thumbname){
+	            $("#thumbnail").css("background-image","url("+thumbname+")");
+	            $("#thumbnail").innerhtml="";
+	            $("#inputthumbnail").val(thumbname);
+	
+			}
+			function thumbnailupload(){
+				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+			}
+		</script>
 
 <title>Sign in</title>
 
@@ -71,6 +81,7 @@
 <form method="post" name="writeform" 
 action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="<%= num%>">
+<input type="hidden" id="inputthumbnail" name="thumbnail" value="<%= article.getThumbnail()%>">
 
 <table id="writetable" align="center" border-spacing="10px">
 	<tr>
@@ -81,7 +92,7 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 	<tr>
 		<td rowspan="4" width="300px">
 			
-			<div style="background-color:hotpink; height:200px; width:300px;" onclick="thumbnailupload()">썸네일</div>
+			<div id="thumbnail" style="background-image:url('<%=article.getThumbnail()%>');" onclick="thumbnailupload()">썸네일</div>
 			
 			</td>
 			

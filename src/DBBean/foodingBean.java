@@ -155,8 +155,8 @@ public class foodingBean {
 		   
 		    
             // 荑쇰━瑜� �옉�꽦
-            sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
-		    sql+=") values(?,?,?,?,?,?,?,?)";
+            sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content,thumbnail";
+		    sql+=") values(?,?,?,?,?,?,?,?,?)";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, article.getTitle());
@@ -167,6 +167,7 @@ public class foodingBean {
             pstmt.setString(6, article.getWriterid());
 			pstmt.setTimestamp(7, article.getReg_date());
             pstmt.setString(8, article.getContent());
+            pstmt.setString(9, article.getThumbnail());
 			
             pstmt.executeUpdate();
         } catch(Exception ex) {
@@ -253,8 +254,8 @@ public class foodingBean {
                   article.setWriterid(rs.getString("writerid"));
                   article.setReg_date(rs.getTimestamp("reg_date"));
                   article.setReadcount(rs.getInt("readcount"));
-
-                 article.setContent(rs.getString("content"));
+                  article.setContent(rs.getString("content"));
+                  article.setThumbnail(rs.getString("thumbnail"));
 
 
                  articleList.add(article);
@@ -329,12 +330,10 @@ public class foodingBean {
                  article.setFoodtype(rs.getString("foodtype"));
 				  article.setTitle(rs.getString("title"));
 				  article.setWriterid(rs.getString("writerid"));
-                 
-                 
 			      article.setReg_date(rs.getTimestamp("reg_date"));
 				  article.setReadcount(rs.getInt("readcount"));
-                 
                  article.setContent(rs.getString("content"));
+                 article.setThumbnail(rs.getString("thumbnail"));
 			       
 				  
                  articleList.add(article);
@@ -378,7 +377,8 @@ public class foodingBean {
 				article.setWriterid(rs.getString("writerid"));
                 article.setReg_date(rs.getTimestamp("reg_date"));
 			    article.setReadcount(rs.getInt("readcount"));     
-                article.setContent(rs.getString("content"));
+                article.setContent(rs.getString("content")); 
+                article.setThumbnail(rs.getString("thumbnail"));
 			}
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -413,7 +413,8 @@ public class foodingBean {
 					article.setWriterid(rs.getString("writerid"));
 	                article.setReg_date(rs.getTimestamp("reg_date"));
 				    article.setReadcount(rs.getInt("readcount"));     
-	                article.setContent(rs.getString("content"));     
+	                article.setContent(rs.getString("content"));
+	                article.setThumbnail(rs.getString("thumbnail"));     
 				}
 	        } catch(Exception ex) {
 	            ex.printStackTrace();
@@ -436,7 +437,7 @@ public class foodingBean {
 
   			 
                   sql="update recipes set title=?,contury=?,foodtype=?,ingredients=?";
-  			    sql+=",tools=? ,content=? where num=?";
+  			    sql+=",tools=? ,content=?, thumbnail=? where num=?";
                   pstmt = con.prepareStatement(sql);
 
                   pstmt.setString(1, article.getTitle());
@@ -445,7 +446,8 @@ public class foodingBean {
                   pstmt.setString(4, article.getIngredients());
                   pstmt.setString(5, article.getTools());
                   pstmt.setString(6, article.getContent());
-  			    pstmt.setInt(7, article.getNum());
+                  pstmt.setString(7, article.getThumbnail());
+  			    pstmt.setInt(8, article.getNum());
                   pstmt.executeUpdate();
   				x= 1;
           } catch(Exception ex) {

@@ -87,7 +87,7 @@
 				%>
 				<script>
 					alert("존재하지 않는 주소입니다.");
-					self.close();
+					location.href="ZipinputForm.jsp";
 				</script>
 				<%	
 		}finally{}

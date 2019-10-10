@@ -169,7 +169,7 @@
 <table width="100%"><tr><td  style="text-align:left;">
 <%= sdf.format(article.getReg_date())%></td><td style="text-align:right;">#<%=article.getContury()%> #<%=article.getFoodtype()%></td></tr></table>
 <br>
-<img src="../img/cereal-563796_420.jpg" style="width:100%"> 
+<img src="<%=article.getThumbnail() %>" style="width:100%"> 
 <br><br>
 <table><tr><td  class="titlelong">
           
