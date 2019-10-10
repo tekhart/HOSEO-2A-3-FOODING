@@ -586,3 +586,10 @@ a:active {
 }
 
 /* 글목록 끝 */
+#thumbnail{
+	background-image:url('../img/upload/defaultthumb.png');
+	background-position:center center;
+	background-size:300px 200px;
+	height:200px; 
+	width:300px;
+}

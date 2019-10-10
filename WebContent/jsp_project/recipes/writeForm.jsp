@@ -14,10 +14,10 @@
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
 			function sendingthumb(thumbname){
-                $("#thumbnail").css("background-image","url('../img/uploaded/"+thumbname+"')");
-                $("#thumbnail").css("background-position","center center");
-                $("#thumbnail").css("background-size","300px 200px");
+                $("#thumbnail").css("background-image","url("+thumbname+")");
                 $("#thumbnail").innerhtml="";
+                $("#inputthumbnail").val(thumbname);
+
 			}
 			function thumbnailupload(){
 				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
@@ -55,12 +55,14 @@
 			action="writePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
+		<input type="hidden" name="thumbnail" id="inputthumbnail">
+		
 		<center>
 		<table id="writetable" align="center" border-spacing="10px">
 			<tr>
 			<td rowspan="4" width="300px">
 			
-			<div id="thumbnail" style="background-color:hotpink; height:200px; width:300px;" onclick="thumbnailupload()">썸네일</div>
+			<div id="thumbnail" onclick="thumbnailupload()">썸네일</div>
 			
 			</td>
 			<td width="700px" align="left">
