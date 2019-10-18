@@ -75,11 +75,9 @@
 
 
 </style>
-<%if (fame==1){ %>
-<title>인기 레시피, FOODING</title>
-<%}else{ %>
+
 <title>전체 레시피, FOODING</title>
-<%}%>
+
 <script type="text/javascript">
 
 </script>
@@ -91,13 +89,7 @@
 
 <div id="maindiv">
 <div class="writetitle1">
-	<%if (fame==1){ %>
-		인기 레시피
-	<%}else{ %>
-		전체 레시피
-	<%}%>
-	(<%=count %>)
-</div>
+전체 레시피(<%=count %>)</div>
 	<center>
 		<table class="listtop">
 			<tr>
@@ -112,7 +104,7 @@
 								<td style="padding-left:280px;">
 									<select name='searchtype' style="ime-mode:inactive; padding: .7em .5em; 
 									border-radius: 5px 5px 5px 5px; border-color:#ffbb00; font-size:14pt;
-									font-family:Bauhaus ITC; height:50px;" >
+									font-family:Bauhaus ITC;">
 						    			<option value='제목' selected>제목</option>
 						    			<option value='글쓴이'>글쓴이</option>
 						    			<option value='재료'>재료</option>
@@ -175,15 +167,15 @@
    <%=article.getNum()%>
    </td>
     <td align="left" class="line" style="padding-left:40px;">       
-      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>" class="titlelong">
+      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
-        	<% if(article.getReadcount()>=50){%>
+        	<% if(article.getReadcount()>=20){%>
      		 <img src="../img/fire1.png" width="20px" height="25px" align="middle">
 			<%}%>
 	 <%=article.getTitle()%></a>  </td>
     <td align="center" class="line" > 
-     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>" class="writerlong" >
+     	<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="writerlong" >
        	<%=foodingbean.findnkname(writerid)%></a>
     </td>
     <td align="center" width="150" class="line" ><%= sdf.format(article.getReg_date())%></td>
@@ -217,23 +209,23 @@
         if (endPage > pageCount) endPage = pageCount;
         
         %>
-          	<a href="list.jsp?pageNum=<%= startPage - 1 %>&fame=<%=fame%>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
+          	<a href="list.jsp?pageNum=<%= startPage - 1 %>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
 		<%
         
         for (int i = startPage ; i <= endPage ; i++) {
         	if(currentPage==i){
         		%>
-        			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
+        			<a href="list.jsp?pageNum=<%= i %>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
         		<%
         	}else{
         		%>
-           			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
+           			<a href="list.jsp?pageNum=<%= i %>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
 				<%
 			}
        }
 		
         %>
-        	<a href="list.jsp?pageNum=<%= startPage + 1 %>&fame=<%=fame%>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
+        	<a href="list.jsp?pageNum=<%= startPage + 1 %>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
         	<img src="../img/ii.png" width="20px" height="24px" align="middle">
         	<img src="../img/nn.png" width="23px" height="24px" align="middle">
         	<img src="../img/gg.png" width="23px" height="24px" align="middle"></a>

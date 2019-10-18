@@ -66,7 +66,6 @@
 
 
 
-
 </style>
 
 <title>도와줘요!, FOODING</title>
@@ -113,7 +112,7 @@
 			<input type="text" name="search" class="searchbar">	
 			
 		</td>
-			<br><td class="searchbttd" width="50px">
+			<td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
 				<td style="padding-left:225px;">
 			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
@@ -123,7 +122,7 @@
 </td></tr></table>
 <td><tr><td>
 <br>
-<br>
+
 
 <table class="listtable"> 
     <tr height="50"> 
