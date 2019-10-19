@@ -535,7 +535,7 @@ a:active {
 }
 
 .customsecond{
-	text-align:top
+	text-align:top;
 	padding-left:12px;
 	border-left:3px solid #ffbb00;
 	border-right:3px solid #ffbb00;
@@ -593,3 +593,12 @@ a:active {
 	height:200px; 
 	width:300px;
 }
+
+
+/*상품목록*/
+/* Clear floats after rows */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
