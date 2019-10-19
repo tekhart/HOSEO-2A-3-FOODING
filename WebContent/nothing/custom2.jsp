@@ -15,7 +15,7 @@
 <style>
 
 /* The container */
-.container2 {
+.custom_checkbx {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -29,7 +29,7 @@
 }
 
 /* Hide the browser's default checkbox */
-.container2 input {
+.custom_checkbx input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -52,7 +52,7 @@
 }
 
 /* 호버시 뒷배경 회색 */
-.container2:hover input ~ .checkmark2 {
+.custom_checkbx:hover input ~ .checkmark2 {
   width: 5px;
   height: 10px;
   border: solid #cccccc;
@@ -68,12 +68,12 @@
 }
 
 /* 체크하면 체크표시 */
-.container2 input:checked ~ .checkmark2:after {
+.custom_checkbx input:checked ~ .checkmark2:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container2 .checkmark2:after {
+.custom_checkbx .checkmark2:after {
   width: 5px;
   height: 10px;
   border: solid green;
@@ -101,7 +101,7 @@
 	<td class="customfirst">조리법별 요리</td>
 	<td class="customfirst">도구별 요리</td></tr>
 	<tr><td class="customsecond">
-		<label class="container2"><input type="checkbox" value="간식">간식<span class="checkmark2"></span></label><br>
+		<label class="custom_checkbx"><input type="checkbox" value="간식">간식<span class="checkmark2"></span></label><br>
 		<input type="checkbox" value="야식">야식<br>
 		<input type="checkbox" value="안주">안주<br>
 		<input type="checkbox" value="해장">해장<br>
