@@ -18,6 +18,7 @@
     String pageNum = request.getParameter("pageNum");
 	String search=request.getParameter("search");
 	String searchtype=request.getParameter("searchtype");
+
 	int fame=0;
 	if(request.getParameter("fame")!=null){
 		fame=Integer.parseInt(request.getParameter("fame"));
@@ -39,7 +40,7 @@
     
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
-    if(search==null){
+    if(search==null||search.equals(null)){
     	count = dbPro.getArticleCount(fame);
 	}else{
 		count = dbPro.getArticleCount(searchtype,search,fame);
@@ -48,15 +49,13 @@
     
     
     if (count > 0) {
-    	if(search==null){
+    	if(search==null||search.equals(null)){
             articleList = dbPro.getArticles(startRow, pageSize,fame);
     	}else{
             articleList = dbPro.getArticles(startRow, pageSize, searchtype,search,fame);
     	}
     }
 	
-  
-	number = count-(currentPage-1)*pageSize;
 %>
 
 <!DOCTYPE html>
@@ -140,96 +139,94 @@
 			</table>
 		</center>
 		<div style="width:100%;max-width:1000px;margin:auto;">
-			<center>
-				<% if (count == 0) { %>  
-					<table align="center" class="nogul">
-						<tr>
-						    <td align="center">
-						        검색결과가 없습니다.<br>
-						         다른 걸 검색해 보세요! <br>
-						              <img src="../img/ding.png" height="335px" width="559px">
-						    </td>
-					    </tr>
-					</table>
-				<% } else {%>
-					<br>
-					<%  
-					   for (int i = 0 ; i < articleList.size(); i++) {
-						   BoardDataBean article = articleList.get(i);
-						   String writerid=article.getWriterid();
-					%>
-						<div class="card1" style=" cursor: pointer;" onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>';">
-							<table width="100%">
-								<tr>
-									<td  style="text-align:left;">
-										<%= sdf.format(article.getReg_date())%></td><td style="text-align:right;">#<%=article.getContury()%> #<%=article.getFoodtype()%>
-									</td>
-								</tr>
-							</table>
-							<br>
-							<div style="background-image:url('<%=article.getThumbnail() %>');background-size:290px;width:290px;height:163px;"></div>
-							<br><br>
-							<table>
-								<tr><td  class="titlelong">
-							   		<% if(article.getReadcount()>=50){%>
-										<img src="../img/fire1.png" width="20px" height="25px" align="middle">
-									<%}%>
-									<%=article.getTitle()%>
-								</td></tr>
-							</table>
-							<br><br>
-							<table width="100%">
-								<tr>
-									<td class="writerlong" style="text-align:left;">
-										<%=foodingbean.findnkname(writerid)%></td>
-									<td style="align:right;"><%=article.getReadcount()%>view></td>
-								</tr>
-							</table>
-							<p></p>
-							<p></p>
-						</div>
-					<%}%>
+			<% if (count == 0) { %>  
+				<table align="center" class="nogul">
+					<tr>
+					    <td align="center">
+					        검색결과가 없습니다.<br>
+					         다른 걸 검색해 보세요! <br>
+					              <img src="../img/ding.png" height="335px" width="559px">
+					    </td>
+				    </tr>
+				</table>
+			<%}else {%>
+				<br>
+				<%  
+				   for (int i = 0 ; i < articleList.size(); i++) {
+					   BoardDataBean article = articleList.get(i);
+					   String writerid=article.getWriterid();
+				%>
+					<div class="card1" style=" cursor: pointer;" onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>';">
+						<table width="100%">
+							<tr>
+								<td  style="text-align:left;">
+									<%= sdf.format(article.getReg_date())%></td><td style="text-align:right;">#<%=article.getContury()%> #<%=article.getFoodtype()%>
+								</td>
+							</tr>
+						</table>
+						<br>
+						<div style="background-image:url('<%=article.getThumbnail() %>');background-size:290px;width:290px;height:163px;"></div>
+						<br><br>
+						<table>
+							<tr><td  class="titlelong">
+						   		<% if(article.getReadcount()>=50){%>
+									<img src="../img/fire1.png" width="20px" height="25px" align="middle">
+								<%}%>
+								<%=article.getTitle()%>
+							</td></tr>
+						</table>
+						<br><br>
+						<table width="100%">
+							<tr>
+								<td class="writerlong" style="text-align:left;">
+									<%=foodingbean.findnkname(writerid)%></td>
+								<td style="align:right;"><%=article.getReadcount()%>view></td>
+							</tr>
+						</table>
+						<p></p>
+						<p></p>
+					</div>
 				<%}%>
-				<center>
-					<%
-					    if (count > pageSize) {
-					        int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-							int startPage = 1;
-							
-							if(currentPage % 6 != 0)
-					           startPage = (int)(currentPage/6)*6 + 1;
-							else
-					           startPage = ((int)(currentPage/6)-1)*6 + 1;
-					
-							int pageBlock = 6;
-					        int endPage = startPage + pageBlock - 1;
-					        if (endPage > pageCount) endPage = pageCount;
-					        
-					        %>
-					          	<a href="list.jsp?pageNum=<%= currentPage-1 %>&fame=<%=fame%>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
-							<%
-					        
-					        for (int i = startPage ; i <= endPage ; i++) {
-					        	if(currentPage==i){
-					        		%>
-					        			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
-					        		<%
-					        	}else{
-					        		%>
-					           			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
-									<%
-								}
-					       }
-							
-					        %>
-					        	<a href="list.jsp?pageNum=<%= currentPage+1 %>&fame=<%=fame%>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
-					        	<img src="../img/ii.png" width="20px" height="24px" align="middle">
-					        	<img src="../img/nn.png" width="23px" height="24px" align="middle">
-					        	<img src="../img/gg.png" width="23px" height="24px" align="middle"></a>
-							<%
-					 }
-					%>
-				</center>
+			<%}%>
+			<center>
+				<%
+				    if (count > pageSize) {
+				        int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+						int startPage = 1;
+						
+						if(currentPage % 10 != 0)
+				           startPage = (int)(currentPage/10)*10 + 1;
+						else
+				           startPage = ((int)(currentPage/10)-1)*10 + 1;
+				
+						int pageBlock = 10;
+				        int endPage = startPage + pageBlock - 1;
+				        if (endPage > pageCount) endPage = pageCount;
+				        
+				        %>
+				          	<a href="list.jsp?pageNum=<%= currentPage-1 %>&fame=<%=fame%>&search=<%=search%>&searchtype=<%=searchtype%>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
+						<%
+				        
+				        for (int i = startPage ; i <= endPage ; i++) {
+				        	if(currentPage==i){
+				        		%>
+				        			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>&search=<%=search%>&searchtype=<%=searchtype%>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
+				        		<%
+				        	}else{
+				        		%>
+				           			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>&search=<%=search%>&searchtype=<%=searchtype%>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
+								<%
+							}
+				       }
+						
+				        %>
+				        	<a href="list.jsp?pageNum=<%= currentPage+1 %>&fame=<%=fame%>&search=<%=search%>&searchtype=<%=searchtype%>"><img src="../img/dd.png" width="23px" height="24px" align="middle">
+				        	<img src="../img/ii.png" width="20px" height="24px" align="middle">
+				        	<img src="../img/nn.png" width="23px" height="24px" align="middle">
+				        	<img src="../img/gg.png" width="23px" height="24px" align="middle"></a>
+						<%
+				 }
+				%>
 			</center>
 		</div>
 	</div> 

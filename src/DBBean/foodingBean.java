@@ -190,13 +190,13 @@ public class foodingBean {
            con = getConnection();
            
            if(type.equals("제목")) {
-        	   sql="select * from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+        	   sql="select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
            }else if(type.equals("글쓴이")) {
-        	   sql="select * from recipes  where writerid in(select id from user where nkname like '%"+search+"%') ";
+        	   sql="select count(*) from recipes  where writerid in(select id from user where nkname like '%"+search+"%') ";
            }else if(type.equals("재료")) {
-        	   sql="select * from recipes  where ingredients like '%"+search+"%' ";
+        	   sql="select count(*) from recipes  where ingredients like '%"+search+"%' ";
            }else if(type.equals("도구")) {
-        	   sql="select * from recipes  where tools like '%"+search+"%' ";
+        	   sql="select count(*) from recipes  where tools like '%"+search+"%' ";
            }
            if(fame==1) {
         	   sql+=" and reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual) and readcount>=50 ";
@@ -204,7 +204,7 @@ public class foodingBean {
            pstmt = con.prepareStatement(sql);
            rs = pstmt.executeQuery();
            if (rs.next()) {
-              x= rs.getInt(1);
+              x= rs.getInt("count(*)");
             }
        } catch(Exception ex) {
            ex.printStackTrace();
@@ -290,7 +290,7 @@ public class foodingBean {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-               x= rs.getInt(1);
+               x= rs.getInt("count(*)");
 			}
         } catch(Exception ex) {
             ex.printStackTrace();
