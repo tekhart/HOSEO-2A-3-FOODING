@@ -180,7 +180,7 @@
 							<tr>
 								<td class="writerlong" style="text-align:left;">
 									<%=foodingbean.findnkname(writerid)%></td>
-								<td style="align:right;"><%=article.getReadcount()%>view></td>
+								<td style="align:right;"><%=article.getReadcount()%>view</td>
 							</tr>
 						</table>
 						<p></p>
@@ -188,60 +188,9 @@
 					</div>
 				<%}%>
 			<%}%>
-<<<<<<< HEAD
-	 <%=article.getTitle()%></td></tr></table>
-	<br><br>
-<table width="100%"><tr><td class="writerlong" style="text-align:left;">
-       	<%=foodingbean.findnkname(writerid)%></td><td style="align:right;"><%=article.getReadcount()%>view</tr></table></table></p>
-<p></p>
-<p></p>
-</div>
-
-
-
-
-	<%
-
-   }%>
-
-<%}%>
-
-
-
-</div> 
 <center>
-
-
-<%
-    if (count > pageSize) {
-        int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-		int startPage =1;
-		
-		if(currentPage % 10 != 0)
-           startPage = (int)(currentPage/10)*10 + 1;
-		else
-           startPage = ((int)(currentPage/10)-1)*10 + 1;
-
-		int pageBlock = 10;
-        int endPage = startPage + pageBlock - 1;
-        if (endPage > pageCount) endPage = pageCount;
-        
-        %>
-          	<a href="list.jsp?pageNum=<%= startPage - 1 %>&fame=<%=fame%>"><img src="../img/ff.png" width="23px" height="24px" align="middle"></a>
-		<%
-        
-        for (int i = startPage ; i <= endPage ; i++) {
-        	if(currentPage==i){
-        		%>
-        			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>"><img src="../img/redoo.png" width="23px" height="24px" align="middle"></a>
-        		<%
-        	}else{
-        		%>
-           			<a href="list.jsp?pageNum=<%= i %>&fame=<%=fame%>"><img src="../img/yeloo.png" width="23px" height="24px" align="middle"></a>
-=======
-			<center>
->>>>>>> refs/remotes/origin/master
 				<%
+				
 				    if (count > pageSize) {
 				        int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 						int startPage = 1;

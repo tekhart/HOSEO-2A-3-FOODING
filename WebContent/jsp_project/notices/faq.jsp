@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="../css/list.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
-
+<title>
+자주하는 질문
+</title>
 <style>
 
 </style>
