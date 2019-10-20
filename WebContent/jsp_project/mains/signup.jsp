@@ -402,7 +402,7 @@
 		
 		
 		<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<%@include file="../general_included/footer.jsp"%>
+ <%@include file="../general_included/footer.jsp"%>
 
 			</div>
 	</body>
