@@ -110,7 +110,7 @@
 					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
 			</td></tr>
 			
-				<tr>
+				<tr><td></td>
 				<td align="left" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
