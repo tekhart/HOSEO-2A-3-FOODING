@@ -343,17 +343,7 @@ function initComparisons() {
 
 
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
-
-<script>
-/*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
-initComparisons();
-</script>
+<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>

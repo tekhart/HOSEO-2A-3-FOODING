@@ -4,6 +4,8 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
 
+<meta charset="UTF-8">
+
 <!DOCTYPE html>
 <html>
 <head>

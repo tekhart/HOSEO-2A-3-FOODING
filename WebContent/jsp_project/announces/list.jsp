@@ -74,12 +74,14 @@
 
 </head>
 <body id="body">
+
 <%@include file="../general_included/topbar.jsp"%>
+<div id="maindiv">
+
 <%if(idlogin==null){
 	idlogin="";
 } %>
 
-<div id="maindiv">
 
 
 <% if (count == 0) { %>
@@ -110,19 +112,22 @@
 </table>
 <% } else {%>
 
-<div class="writetitle1">
-공지사항(<%=count %>)</div>
+	<div class="writetitle1">
+	공지사항(<%=count %>)</div>
 <center>
-<table class="listtop"><tr>
-<table class="searchtable">
-	<tr style="padding-top:-5px">
-		<td class="searchtd" border="1" style="padding-left:350px;">
+	<table class="listtop"><tr>
+				
+				<td>
+					<table class="searchtable">
+					<form method="post" action="list.jsp" class="searh">
+						<tr>
+						<td class="searchtd" border="1" style="padding-left:350px;">
 
-			<form method="post" action="list.jsp" class="searh">
-			<input type="text" name="search" class="searchbar">	
+				
+					<input type="text" name="search" class="searchbar">	
 			
 		</td>
-			<br><td class="searchbttd" width="50px">
+			<td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
 				<td style="padding-left:225px;">
 			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
@@ -217,14 +222,9 @@
 </div>
 
 <br>
-<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
+		<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>

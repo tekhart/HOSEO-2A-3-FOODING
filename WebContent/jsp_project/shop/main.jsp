@@ -122,6 +122,7 @@
   <p><button>Add to Cart</button></p></div>
   
   </td></tr></table>
+    		<%@include file="../general_included/footer.jsp"%>
     
 </body>
 </html>

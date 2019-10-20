@@ -66,7 +66,6 @@
 
 
 
-
 </style>
 
 <title>도와줘요!, FOODING</title>
@@ -113,7 +112,7 @@
 			<input type="text" name="search" class="searchbar">	
 			
 		</td>
-			<br><td class="searchbttd" width="50px">
+			<td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
 				<td style="padding-left:225px;">
 			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
@@ -123,7 +122,7 @@
 </td></tr></table>
 <td><tr><td>
 <br>
-<br>
+
 
 <table class="listtable"> 
     <tr height="50"> 
@@ -204,14 +203,9 @@
 </div>
 
 <br>
-<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
+		<%@include file="../general_included/footer.jsp"%>
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
 
 </body>
 </html>

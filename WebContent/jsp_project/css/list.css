@@ -83,9 +83,7 @@ text-overflow:ellipsis;
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		border-radius: 5px 0px 0px 5px;
-		padding:10px;
-		font-size:15px;
+		border-radius: 5px 5px 5px 5px;
 	}
 
 .searchbotton{
@@ -602,3 +600,49 @@ a:active {
   display: table;
   clear: both;
 } */
+
+ .mypagetable{
+ 	
+ 		font-size:20px; 
+ 	
+ 	}
+ 	
+.welcome2{
+	
+		padding:50px;
+		font-family:"Bauhaus ITC";
+		font-size:20pt;
+		text-align:center; 
+		border-width:10px;
+	 
+	}
+ 	
+ 	
+.sidebar {
+  height: 600px;
+  width: 400px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 100px;
+  padding-left:50px;
+}
+
+.sidebar a {
+  padding: 6px 8px 20px 16px;
+  text-decoration: none;
+  font-size: 20pt;
+  color: black;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: orange;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}

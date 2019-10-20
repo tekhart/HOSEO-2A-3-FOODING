@@ -6,6 +6,7 @@
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean=new foodingBean();
 %>
+<html>
 <head>
 <link rel="stylesheet" href="../css/common.css">
 
@@ -16,8 +17,8 @@
 		
 		</head><body>
 <div id="topdiv" style=text-align:center;>
-	<table width=100% height=100%>
-	    <tr><td width=0 nowrap></td>
+	<table width="100%" height="100%">
+     	<tr><td width=0 nowrap></td>
 	    	<td width=0 nowrap></td>
 	    	<td nowrap align="right">
 				<div>
@@ -34,7 +35,7 @@
 								String nknamelogin=topbarbean.findnkname(idlogin);
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
-								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
+								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/updatepage.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								<%
 							}
@@ -119,3 +120,4 @@
     </table>
 </div>
 </body>
+</html>
