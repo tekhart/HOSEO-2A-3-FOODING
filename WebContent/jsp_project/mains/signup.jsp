@@ -247,7 +247,6 @@
 			
 					register.submit();
 				
-				
 			}
 			
 			function Signupclear(){
@@ -403,10 +402,8 @@
 		
 		
 		<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-				<pre>
-				Create by FOODING
-				고객문의 1544-XXXX
-				JSP Project 2019 2A03</pre>
+<%@include file="../general_included/footer.jsp"%>
+
 			</div>
 	</body>
 </html>
