@@ -8,18 +8,32 @@
 <title>주소검색</title>
 
 <link rel="stylesheet" href="../../css/common.css">
-
+<script>
+	function enterkey() {
+	    if (window.event.keyCode == 13) {
+	    	searchingaddr();
+	    }
+	}
+	function searchingaddr(){
+		if (document.zip.dong.value==""||document.zip.dong.value==" "){
+			alert("입력해 주세요!")
+			document.zip.dong.focus();
+		}else{
+			document.zip.submit();
+		}
+	}
+</script>
 </head>
 <body>
 
 
-	<form method="post" action="zipsearch.jsp">
+	<form method="post" action="zipsearch.jsp" name="zip">
 		<div width=300>
 		
 			<table cellspacing="0" width="100%"><tr><td>
-			<input type="text" class="zipsearch" placeholder="동/읍/면" name="dong"></td>
+			<input type="text" class="zipsearch" placeholder="동/읍/면" name="dong" onclick="enterkey()"></td>
 			<td width="60px">
-			<input type="submit" value="찾기" class="zipfinder"></td></tr></table>
+			<input type="button" value="찾기" class="zipfinder" onclick="searchingaddr()"></td></tr></table>
 
 			<table align=center cellpadding=15 cellspacing=0 width=450 border=0>
 			<tr><td height=10></td></tr> 

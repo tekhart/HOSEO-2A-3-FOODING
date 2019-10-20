@@ -10,7 +10,7 @@ body{
  font-family :'Bauhaus ITC';
 }
 #footer {
-position: absolute;
+
 left: 0;
 right: 0;
     bottom:0px;
@@ -79,6 +79,8 @@ margin-top:2%;
 </style>
 </head>
 <body>
+
+<footer>
 <div id="footer">
 <div id="footnav">
 <ul class="horizontal-menu">
@@ -96,5 +98,6 @@ margin-top:2%;
 		<p>Email : fooding2019_2a03@naver.com</p>
 	</div>
 </div>
+</footer>
 </body>
 </html>

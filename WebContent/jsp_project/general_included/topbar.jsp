@@ -17,29 +17,33 @@
 		</head><body>
 <div id="topdiv" style=text-align:center;>
 	<table width=100% height=100%>
-    <tr><td width=200 nowrap>
-		</td><td width=200 nowrap>
-		</td><td width=30 nowrap>
-		<%
-		try{
-			idlogin=(String)session.getAttribute("idlogin");
-			
-			if(idlogin==null){
-				%>
-				<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
-				<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
-				<%
-			}else{
-				String nknamelogin=topbarbean.findnkname(idlogin);
-				%>
-				<%=nknamelogin %>&nbsp;님&nbsp;
-				<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/updatepage.jsp'"> &nbsp;
-				<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
-				<%
-			}
-		}finally{}
-		%>
-		</td></tr>
+     	<tr><td width=0 nowrap></td>
+	    	<td width=0 nowrap></td>
+	    	<td nowrap align="right">
+				<div>
+					<%
+						try{
+							idlogin=(String)session.getAttribute("idlogin");
+							
+							if(idlogin==null){
+								%>
+								<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
+								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
+								<%
+							}else{
+								String nknamelogin=topbarbean.findnkname(idlogin);
+								%>
+								<%=nknamelogin %>&nbsp;님&nbsp;
+								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
+								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
+								<%
+							}
+						}finally{}
+					%>
+					&nbsp;
+				</div>
+			</td>
+		</tr>
   	</table>
 </div>
 

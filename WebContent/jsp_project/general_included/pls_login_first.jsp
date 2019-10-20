@@ -3,6 +3,6 @@
 <% session.invalidate(); %>
 
 <script>
-alert("먼저 로그인 하여주십시오!.");
+alert("먼저 로그인 해주세요!");
 location.href="../mains/signin.jsp";
 </script>

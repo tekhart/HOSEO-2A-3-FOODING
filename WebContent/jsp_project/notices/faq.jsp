@@ -16,13 +16,15 @@
 <body id="body">
 <%@include file="../general_included/topbar.jsp"%>
      
-
 <div id="maindiv">
+
 <div class="writetitle1">
 자주하는 질문</div>
 
-<br><br><br>
 
+
+<br><br><br>
+<table style="width:1400px; margin:auto;"><tr><td>
 <button class="accordion">대량 구매 관련 문의를 하고 싶습니다.</button>
 <div class="panel">
   <p>보다 자세한 답변을 위해 물량, 배송처, 배송 기간 등의 확인이 필요하오니 메일(fooding2019_2a03@naver.com)이나 02-1212-2323 로 문의해주시면 감사하겠습니다.</p>
@@ -50,6 +52,10 @@
 <button class="accordion">포크가 없어졌습니다.</button>
 <div class="panel">
   <p>포크가 소멸되는 경우는 기한이 만료되었거나 사용 완료되었을 가능성이 높습니다.</p>
+</div>
+
+</td></tr></table>
+
 </div>
 
 <script>

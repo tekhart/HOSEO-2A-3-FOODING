@@ -17,7 +17,7 @@
 .writerlong{
 	padding:3px;
 	margin:3px;
-	width:100px;
+	width:200px;
 	display:inline-block;
 	white-space:nowrap;
 	overflow:hidden;
@@ -33,11 +33,19 @@
 .titlelong{
 	margin:3px;
 	padding:3px;
-	width:340px;
+	width:280px;
 	display:inline-block;
-	white-space:nowrap;
-	overflow:hidden;
-	text-overflow:ellipsis;
+	height:100px;
+
+display: -webkit-box;
+overflow:hidden;
+word-break:break-all;
+-webkit-box-orient:vertical;
+-webkit-line-clamp:3;
+text-overflow:ellipsis;
+
+
+ 
 	
 }
 
@@ -85,7 +93,7 @@
 	border-color:#ffbb00;
 	background-color:white;
 	font-size:18px;
-	border-left:0px;
+	
 	border-style:solid;
 	border-radius: 0px 5px 5px 0px;
 }
@@ -462,7 +470,6 @@ a:active {
   cursor: pointer;
   padding: 18px;
   width: 1300px; 
-  margin-left:300px;
   border: none;
   text-align: left;
   outline: none;
@@ -491,7 +498,6 @@ a:active {
   padding: 0 18px;
   background-color: white;
   max-height: 0;
-  margin-left:300px;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   word-break:keep-all;
@@ -527,7 +533,7 @@ a:active {
 }
 
 .customsecond{
-	text-align:top
+	text-align:top;
 	padding-left:12px;
 	border-left:3px solid #ffbb00;
 	border-right:3px solid #ffbb00;
@@ -558,6 +564,42 @@ a:active {
 	border-right:1px solid #ffbb00;
 	border-bottom:1px solid #ffbb00;
 }
+
+/* 글목록 */
+.card1 {
+    -webkit-transition: 0.3s;
+  transition: 0.3s;
+  max-width: 300px;
+  margin: 16px;
+   max-height:610px;
+   
+     font-family: arial;
+  text-align: center;
+  display: inline-block;
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.2)
+}
+
+.card1:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+/* 글목록 끝 */
+#thumbnail{
+	background-image:url('../img/upload/defaultthumb.png');
+	background-position:center center;
+	background-size:300px 200px;
+	height:200px; 
+	width:300px;
+}
+
+
+/*상품목록*/
+/* Clear floats after rows */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
 
  .mypagetable{
  	
