@@ -344,8 +344,6 @@ function initComparisons() {
 
 
 <%@include file="../general_included/footer.jsp"%>
-<script>
-</script>
 
 </body>
 </html>
