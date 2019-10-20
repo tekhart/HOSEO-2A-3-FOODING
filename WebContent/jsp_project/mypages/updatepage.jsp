@@ -33,7 +33,17 @@
 <div id="maindiv">
 <div class="writetitle1">
 마이페이지</div>
+
+	<div class="sidebar">
+  <a href="#"> 개인정보 관리</a>
+  <a href="#">포인트 관리</a>
+  <a href="#">게시글 관리</a>
+  <a href="#"> 주문조회</a>
+  <a href="#"> 장바구니</a>
+</div>
+
 	<center>
+
 	
 	
 	
@@ -124,6 +134,8 @@
 				<td width="70px" style="font-size:16pt">내가 쓴 글</td><TD class="line" width="240px" style="font-size:16pt">n개</TD>  
 				<td ><input type="button" value="글 관리" class="findbutton2"></td>
 				</TR>
+				<td height="50px;">
+				</td>
 			<%} %>
 		</table> 
 		</fieldset>
