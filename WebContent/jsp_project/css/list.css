@@ -568,15 +568,15 @@ a:active {
 /* 글목록 */
 .card1 {
     -webkit-transition: 0.3s;
-  transition: 0.3s;
-  max-width: 300px;
-  margin: 16px;
-   max-height:610px;
+ 	 transition: 0.3s;
+ 	 max-width: 300px;
+ 	 margin: 28px;
+  	 max-height:610px;
    
      font-family: arial;
-  text-align: center;
-  display: inline-block;
-  box-shadow:0 2px 2px 0 rgba(0,0,0,0.2)
+ 	 text-align: center;
+ 	 display: inline-block;
+ 	 box-shadow:0 2px 2px 0 rgba(0,0,0,0.2)
 }
 
 .card1:hover {

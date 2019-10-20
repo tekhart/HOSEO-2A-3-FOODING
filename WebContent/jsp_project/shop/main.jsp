@@ -13,7 +13,9 @@
 <%@include file="move.jsp"%>
 </head>
 <body>
-<hr style="border:solid 4px #ffbb00;">
+<div id="maindiv">
+<div class="writetitle1">
+재료구매</div>
 <br><br><br>
 <table style="width:1300px; margin:auto; text-align:center;"><tr><td><img src="../img/fork.png" width="30px" height="30px"></td>
 <td>정육</td><td>|</td><td>수산</td><td>|</td><td>과일/채소</td><td>|</td>

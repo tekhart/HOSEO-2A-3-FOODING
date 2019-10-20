@@ -138,7 +138,7 @@
 				</tr>
 			</table>
 		</center>
-		<div style="width:100%;max-width:1000px;margin:auto;">
+		<div style="width:100%; max-width:1100px; margin:auto;">
 			<% if (count == 0) { %>  
 				<table align="center" class="nogul">
 					<tr>
@@ -188,6 +188,7 @@
 				<%}%>
 			<%}%>
 			<center>
+			<br><br>
 				<%
 				    if (count > pageSize) {
 				        int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);

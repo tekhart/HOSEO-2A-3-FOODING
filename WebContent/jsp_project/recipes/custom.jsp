@@ -82,13 +82,13 @@
 </td></tr>
 
 
-<tr><td colspan="4" >
+<tr><td colspan="4" class="customsecond">
 <ul id="myUL">
   
-</ul></td><td><input type="submit" value="검색"></td></tr>
+</ul></td><td class="customsecond"><input type="submit" value="검색" class="bt"></td></tr>
 
 
-<tr><td colspan="5">
+<tr><td colspan="5" class="customsecond">
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
