@@ -40,7 +40,7 @@
     
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
-    if(search==null||search.equals(null)){
+    if(search==null||search.equals("null")){
     	count = dbPro.getArticleCount(fame);
 	}else{
 		count = dbPro.getArticleCount(searchtype,search,fame);
@@ -49,7 +49,7 @@
     
     
     if (count > 0) {
-    	if(search==null||search.equals(null)){
+    	if(search==null||search.equals("null")){
             articleList = dbPro.getArticles(startRow, pageSize,fame);
     	}else{
             articleList = dbPro.getArticles(startRow, pageSize, searchtype,search,fame);
