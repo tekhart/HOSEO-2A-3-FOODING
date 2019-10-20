@@ -35,7 +35,7 @@
 마이페이지</div>
 
 	<div class="sidebar">
-		<div class="sideleft"></div><a href="#" > 개인정보 관리</a>
+		<div class="sideleft"></div><a href="../mypages/updatepage.jsp" > 개인정보 관리</a>
 		<div class="sideleft"></div><a href="#" >포인트 관리</a>
 		<div class="sideleft"></div><a href="#" >게시글 관리</a>
 		<div class="sideleft"></div><a href="#" > 주문조회</a>

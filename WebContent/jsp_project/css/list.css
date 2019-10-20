@@ -645,6 +645,8 @@ a:active {
   color: orange;
 }
 
+
+
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
@@ -659,4 +661,55 @@ a:active {
   left: 0;
   background-color: #ffbb00;
   padding-left:10px;
+}
+
+.longbt1{
+		background-color:#ffbb00; 
+		font-size:17px;
+		color:white;
+		border-color:#ffbb00;
+		height:50px;
+		margin: 5px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 150px;
+		border-radius:5px; 
+}
+
+.longbt2{
+		background-color:white; 
+		font-size:17px;
+		border-color:#ffbb00;
+		height:50px;
+		margin: 5px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 150px;
+		border-radius:5px; 
+}
+
+.list-table {
+	margin-top: 40px;
+	position: relative;
+	
+}
+.list-tableth{
+	height:40px;
+	border-bottom:1px solid #CCC;
+	border-top:2px solid #ffbb00;
+	border-collapse:0px;
+	font-size: 17pt;
+}
+.list-table tbody td{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid	 #CCC; height:20px;
+	font-size: 14pt; 
+}
+.bak_item {
+	
+	height: 170px;
+	margin-top: 20px;
 }

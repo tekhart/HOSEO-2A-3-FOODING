@@ -40,42 +40,28 @@
 		<div class="sideleft"></div><a href="#" >게시글 관리</a>
 		<div class="sideleft"></div><a href="#" > 주문조회</a>
 		<div class="sideleft"></div><a href="../mypages/shopbasket.jsp" > 장바구니</a>
-</div>
+	</div>
 
 	<center>
 
+	<table width="500px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
+		border-style:solid; font-family:Bauhaus ITC";" >
+		<tr><td>
+		<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
+		<tr><td>
+		<h4>장바구니가 비어 있습니다.</h4></td></tr>
+			<tr><td></td></tr><br><br><br><br> </table>
+	
+	
 			<br>
-		<table class="list-table">
-				          <tr class="list-tableth">
-				              <td width="350">상품정보</td>
-				              <td width="120">판매가</td>
-				              <td width="150">수량</td>
-				              <td width="100">등록일</td>
-				           </tr>
-				        
-				      
-				        <tbody>
-				        <tr>
-				          <td width="300">
-				          	<div class="bak_item">
-							<div class="pro_img"><img src="../img/pizza-3007395_420.jpg" width="210px" height="150px"></div>
-							<div class="pro_nt"></div>
-						</div>
-				          </td>
-				          <td width="150"></td>
-				          <td width="150">1</td>
-				          <td width="100"></td>
-				        </tr>
-				      </tbody>
-				    </table>
-
-
 		
+		</table> 
+		</fieldset>
 		
 		<br><br><br>
 		
-		<input type="reset" value="수정" class="findbutton">
-		<input type="submit" value="확인" class="findbutton">
+		<input type="reset" value="전체상품주문" class="longbt1">
+		<input type="submit" value="선택상품주문" class="longbt2">
 		
 		
 		</form>
