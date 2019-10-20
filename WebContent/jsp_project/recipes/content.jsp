@@ -343,10 +343,8 @@ function initComparisons() {
 
 
 
-<<%@include file="../general_included/footer.jsp"%>
+<%@include file="../general_included/footer.jsp"%>
 <script>
-/*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
-initComparisons();
 </script>
 
 </body>
