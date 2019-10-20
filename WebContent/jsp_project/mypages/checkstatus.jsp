@@ -4,7 +4,6 @@
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
 
 <%
 
@@ -182,7 +181,7 @@
 						<tr><td></td><td>&nbsp;</td></tr>
 						<tr>
 							<td>주소</td> 
-							<td colspan="2"><input class="signupinputs" type="text" size="40"><%=addr%></td>
+							<td colspan="2"><input class="signupinputs" type="text" size="40"><%=detailaddr%></td>
 						</tr>
 						<tr>
 							<td>성별</td>

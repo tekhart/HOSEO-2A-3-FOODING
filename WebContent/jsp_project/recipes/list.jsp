@@ -231,5 +231,7 @@
 		</div>
 	</div> 
 	
-
+<%@include file="../general_included/footer.jsp"%>
+<br><br>
 </body>
+</html>

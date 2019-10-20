@@ -74,5 +74,6 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>
