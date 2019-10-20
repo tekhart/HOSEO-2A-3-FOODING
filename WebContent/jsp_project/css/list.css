@@ -612,7 +612,6 @@ a:active {
 		padding:50px;
 		font-family:"Bauhaus ITC";
 		font-size:20pt;
-		text-align:center; 
 		border-width:10px;
 	 
 	}
@@ -620,22 +619,26 @@ a:active {
  	
 .sidebar {
   height: 600px;
-  width: 400px;
+  width: 310px;
   position: absolute;
   z-index: 1;
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  padding-top: 100px;
-  padding-left:50px;
+  padding-top: 80px;
+  padding-left:120px;
+  
 }
 
 .sidebar a {
-  padding: 6px 8px 20px 16px;
+  height:80px;
+  padding: 15px 16px 15px 16px;
   text-decoration: none;
-  font-size: 20pt;
+  font-size: 18pt;
   color: black;
   display: block;
+  border: 2px solid orange;
+  
 }
 
 .sidebar a:hover {
@@ -645,4 +648,15 @@ a:active {
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
+}
+
+
+.sideleft {
+  width:120px;
+  height:55px; 
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  background-color: #ffbb00;
+  padding-left:10px;
 }
