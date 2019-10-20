@@ -56,19 +56,19 @@
 		}
 		
 		if(article.getFoodtype().equals("밥류")){
-			conturyselected=1;
+			foodtypeselected=1;
 		}else if(article.getFoodtype().equals("빵류")){
-			conturyselected=2;
+			foodtypeselected=2;
 		}else if(article.getFoodtype().equals("반찬류")){
-			conturyselected=3;
+			foodtypeselected=3;
 		}else if(article.getFoodtype().equals("면류")){
-			conturyselected=4;
+			foodtypeselected=4;
 		}else if(article.getFoodtype().equals("국류")){
-			conturyselected=5;
+			foodtypeselected=5;
 		}else if(article.getFoodtype().equals("디저트")){
-			conturyselected=6;
+			foodtypeselected=6;
 		}else if(article.getFoodtype().equals("기타")){
-			conturyselected=7;
+			foodtypeselected=7;
 		}
 %>
 <div class="writetitle1">
@@ -201,13 +201,6 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 </div>
 </div>
 
-
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
 	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
@@ -282,5 +275,6 @@ JSP Project 2019 2A03</pre>
 			}
 
 		</script>
+		<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

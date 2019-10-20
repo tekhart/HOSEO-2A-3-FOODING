@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-body{
+#footer{
  font-family :'Bauhaus ITC';
 }
 #footer {
@@ -17,7 +17,7 @@ right: 0;
     width:100%;
 }
 
-body, ul {
+body,ul {
 
 margin: 0;
 
@@ -30,7 +30,9 @@ list-style-type: none;
 a {
 text-decoration: none;
 }
-body {
+#footer {
+margin: 0;
+padding: 0;
 text-align: center;
 }
 
@@ -55,7 +57,7 @@ padding: 0 35px;
 #footnav{
 position:relative;
 width:100%;
-font-size:26px;
+font-size:22px;
 }
 #leftside
 {
@@ -79,7 +81,7 @@ margin-top:2%;
 </style>
 </head>
 <body>
-
+<br>
 <footer>
 <div id="footer">
 <div id="footnav">

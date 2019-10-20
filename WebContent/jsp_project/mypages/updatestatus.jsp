@@ -3,7 +3,7 @@
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
+
 <meta charset="UTF-8">
 
 <!DOCTYPE html>

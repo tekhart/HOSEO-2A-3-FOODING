@@ -155,11 +155,7 @@
 
 
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-Create by FOODING<br>
-고객문의 1544-XXXX<br>
-JSP Project 2019 2A03
-</div>
+<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>

@@ -110,7 +110,7 @@
 					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
 			</td></tr>
 			
-				<tr>
+				<tr><td></td>
 				<td align="left" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
@@ -131,12 +131,7 @@
 		</div>
 		
 		
-		<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-		<pre>
-		Create by FOODING
-		고객문의 1544-XXXX
-		JSP Project 2019 2A03</pre>
-		</div>
+		<%@include file="../general_included/footer.jsp"%>
 		
 		
 		<script type="text/javascript">

@@ -6,6 +6,7 @@
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean=new foodingBean();
 %>
+<html>
 <head>
 <link rel="stylesheet" href="../css/common.css">
 
@@ -16,7 +17,7 @@
 		
 		</head><body>
 <div id="topdiv" style=text-align:center;>
-	<table width=100% height=100%>
+	<table width="100%" height="100%">
      	<tr><td width=0 nowrap></td>
 	    	<td width=0 nowrap></td>
 	    	<td nowrap align="right">
@@ -119,3 +120,4 @@
     </table>
 </div>
 </body>
+</html>

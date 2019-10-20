@@ -4,7 +4,6 @@
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
-<jsp:useBean id="tempbean" scope="session" class="DBBean.foodingDataBean"/>
 
 <%
 
@@ -21,35 +20,6 @@
 	}finally{}
 
 	foodingBean foodingbean=new foodingBean();
-	
-	String nkname = tempbean.getNkname();
-	String id = tempbean.getId();
-	String passwd = tempbean.getPasswd();
-	String repasswd = tempbean.getRepasswd();
-	String email = tempbean.getEmail();
-	String addrnum = tempbean.getAddrnum();
-	String address = tempbean.getAddress();
-	String detailaddr = tempbean.getDetailaddr();
-	
-	String nknamecheck=tempbean.getNknamecheck();
-	String idcheck=tempbean.getIdcheck();
-	String passwdcheck=tempbean.getPasswdcheck();
-	String repasswdcheck=tempbean.getRepasswdcheck();
-	String emailcheck=tempbean.getEmailcheck();
-	
-	if(nkname==null){nkname="";}
-	if(id==null){id="";}
-	if(passwd==null){passwd="";}
-	if(repasswd==null){repasswd="";}
-	if(email==null){email="";}
-	if(addrnum==null){addrnum="";}
-	if(detailaddr==null){detailaddr="";}
-	if(nknamecheck==null){nknamecheck="";}
-	if(idcheck==null){idcheck="";}
-	if(passwdcheck==null){passwdcheck="";}
-	if(repasswdcheck==null){repasswdcheck="";}
-	if(emailcheck==null){emailcheck="";}
-
 %>
 <!DOCTYPE html>
 <html>
@@ -92,9 +62,6 @@
 				<center>
 					<table>  
 						<%	
-								foodingBean foodingbean=new foodingBean();
-							
-								foodingbean.connect();
 								
 								String sql="select * from user where ID = '"+idlogin+"';";
 								
@@ -182,7 +149,7 @@
 						<tr><td></td><td>&nbsp;</td></tr>
 						<tr>
 							<td>주소</td> 
-							<td colspan="2"><input class="signupinputs" type="text" size="40"><%=addr%></td>
+							<td colspan="2"><input class="signupinputs" type="text" size="40"><%=detailaddr%></td>
 						</tr>
 						<tr>
 							<td>성별</td>
@@ -201,6 +168,7 @@
 		
 		
 						</tr>
+						<%} %>
 						
 					</table> 
 					<br><br>

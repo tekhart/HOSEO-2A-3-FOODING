@@ -175,12 +175,11 @@
 								<%=article.getTitle()%>
 							</td></tr>
 						</table>
-						<br><br>
 						<table width="100%">
 							<tr>
 								<td class="writerlong" style="text-align:left;">
 									<%=foodingbean.findnkname(writerid)%></td>
-								<td style="align:right;"><%=article.getReadcount()%>view</td>
+								<td style="align:right;"><%=article.getReadcount()%> view</td>
 							</tr>
 						</table>
 						<p></p>
@@ -231,5 +230,7 @@
 		</div>
 	</div> 
 	
-
+<%@include file="../general_included/footer.jsp"%>
+<br><br>
 </body>
+</html>
