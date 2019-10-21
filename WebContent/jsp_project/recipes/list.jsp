@@ -58,6 +58,7 @@
 	
 %>
 <%
+
 	String rc=request.getContextPath();
 	Cookie [] rec=request.getCookies();
 %>

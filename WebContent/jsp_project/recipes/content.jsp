@@ -165,6 +165,7 @@ function initComparisons() {
 	    
 %>
 <%
+
 String rc=request.getContextPath();
 
 String recipe="recipe";
