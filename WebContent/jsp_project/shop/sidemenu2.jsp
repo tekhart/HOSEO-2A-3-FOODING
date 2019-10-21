@@ -5,6 +5,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/list.css">
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -12,13 +13,14 @@ body {
 
 /* Fixed sidenav, full height */
 .sidenav {
-  height: 100%;
+float:left;
+  height: 1250px;
   width: 200px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: white;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -28,7 +30,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  
   display: block;
   border: none;
   background: none;
@@ -40,7 +42,7 @@ body {
 
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
+  color: gray;
 }
 
 /* Main content */
@@ -59,9 +61,11 @@ body {
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
-  background-color: #262626;
-  padding-left: 8px;
 }
+
+
+
+
 
 /* Optional: Style the caret down icon */
 .fa-caret-down {
@@ -77,23 +81,22 @@ body {
 </style>
 </head>
 <body>
-
 <div class="sidenav">
   
-  <button class="dropdown-btn">메뉴
+  <button class="dropdown-btn" id="apsb">메뉴
     <i class="fa fa-caret-down"></i>
   </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
+  <div id="apsb2">
+    <a href="#">상점 메인</a>
     <a href="#">내 포인트</a>
     <a href="#">장바구니</a>
   </div>
   
   
-  <button class="dropdown-btn">재료 
+  <button class="dropdown-btn" id="wofy">재료 
     <i class="fa fa-caret-down"></i>
   </button>
-  <div class="dropdown-container">
+  <div id="wofy2">
 <a href="">과일</a> 
 <a href="">채소 </a>
 <a href="">축산/계란</a> 
@@ -107,10 +110,10 @@ body {
  
   </div>
   
-  <button class="dropdown-btn">도구 
+  <button class="dropdown-btn" id="ehrn">도구 
     <i class="fa fa-caret-down"></i>
   </button>
-  <div class="dropdown-container">
+  <div id="ehrn2">
 <a href="">주방가전</a> 
 <a href="">냄비/프라이팬</a> 
 <a href="">칼/도마</a> 
@@ -121,15 +124,9 @@ body {
 <a href="">주방잡화</a> 
 <a href="">일회용품</a>
   </div>
-
+   
 </div>
 
-<div class="main">
-  <h2>Sidebar Dropdown</h2>
-  <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>
-  <p>This sidebar is of full height (100%) and always shown.</p>
-  <p>Some random text..</p>
-</div>
 
 <script>
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
@@ -147,6 +144,8 @@ for (i = 0; i < dropdown.length; i++) {
   }
   });
 }
+
+
 </script>
 
 </body>

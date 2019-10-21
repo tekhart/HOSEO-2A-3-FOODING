@@ -191,7 +191,7 @@ border-bottom:1px solid orange;
 <img src="../img/casserole-dish-2776735_420.jpg" width="400px" height="400px" ></td><td>
 [제목]<br>요리 재료 모음</td><tr><td>[가격]<br><del>12000</del><br>
 8900</td></tr><tr><td>[설명]<br>기본적인 요리 재료 모음입니다<br>구성품 : 토마토, 버섯, 고추, 피망, 양파, 마늘</td>
-</tr><tr><td colspan="2" style="border-bottom:4px solid white;"><input type="button" class="button134" value="+ 장바구니에 추가"></td></tr></table>
+</tr><tr><td colspan="2" style="border-bottom:4px solid white;"><input type="button" class="button134" value="+ 장바구니에 추가" onclick="location.href='addform.jsp'"></td></tr></table>
   </div>
 
 </div>

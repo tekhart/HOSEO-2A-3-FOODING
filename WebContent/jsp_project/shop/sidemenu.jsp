@@ -22,7 +22,7 @@
   left: 0;
 }
 
-#about{
+#about{ 
   top: 20px;
   background-color: gray;
 }
