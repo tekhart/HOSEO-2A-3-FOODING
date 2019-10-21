@@ -357,7 +357,7 @@ response.addCookie(rec);
 </div>
 
 
-
+<script></script>
 <%@include file="../general_included/footer.jsp"%>
 
 </body>
