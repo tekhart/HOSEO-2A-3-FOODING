@@ -201,7 +201,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td id="myModal_title">
+						<td id="myModal_price">
 							[가격]<br><del>12000</del><br>8900
 						</td>
 					</tr>
