@@ -57,7 +57,10 @@
     }
 	
 %>
-
+<%
+	String rc=request.getContextPath();
+	Cookie [] rec=request.getCookies();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,7 +141,7 @@
 				</tr>
 			</table>
 		</center>
-		<div style="width:100%;max-width:1000px;margin:auto;">
+		<div style="width:100%; max-width:1100px; margin:auto;">
 			<% if (count == 0) { %>  
 				<table align="center" class="nogul">
 					<tr>
@@ -175,7 +178,6 @@
 								<%=article.getTitle()%>
 							</td></tr>
 						</table>
-						<br><br>
 						<table width="100%">
 							<tr>
 								<td class="writerlong" style="text-align:left;">
@@ -188,9 +190,9 @@
 					</div>
 				<%}%>
 			<%}%>
-<center>
+			<center>
+			<br><br>
 				<%
-				
 				    if (count > pageSize) {
 				        int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 						int startPage = 1;
@@ -231,7 +233,20 @@
 			</center>
 		</div>
 	</div> 
+	<div id="recent">
+	<%
+	if(rc != null){
+		for(Cookie rcc : rec){
+			if(rcc.getName().indexOf("recipe")!=-1){
+				
+				out.println(java.net.URLDecoder.decode(rcc.getValue(),"UTF-8")+"<br>");
+			}
+		}
+	}
 	
+	%>
+	
+	</div>
 <%@include file="../general_included/footer.jsp"%>
 <br><br>
 </body>

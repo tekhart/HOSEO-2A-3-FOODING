@@ -161,7 +161,7 @@
    <%=article.getNum()%>
    </td>
     <td align="left" class="line" style="padding-left:40px;">       
-      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
+      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong" style="vertical-align:middle; display:table-cell;">
       
         	<% if(article.getReadcount()>=20){%>
      		 <font color="red">HOT</font>
@@ -186,7 +186,7 @@
 <%}%>
 
 <center>
-
+<br>
 <%
     if (count > 0) {
         int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);

@@ -68,7 +68,7 @@
 	
 	
 	
-	<body id="body">
+	<body id="body" onload="AllcheckNotice()">
 		<%@include file="../general_included/topbar.jsp"%>
 		<hr style="border: solid 2px #ffbb00; align:center;
 		width:1900px;">
@@ -155,8 +155,8 @@
 						
 						<tr> 
 							<td>우편번호</td>
-							<td><input class="addrnuminputs" type="text" name="addrnum" onclick="ZipPopup();" readonly></td>
-							<td><input class="addressinputs" type="text" name="address" onclick="ZipPopup();" readonly></td>
+							<td><input class="addrnuminputs" type="text" name="addrnum" onclick="ZipPopup();" onfocus="ZipPopup()" readonly></td>
+							<td><input class="addressinputs" type="text" name="address" onclick="ZipPopup();" onfocus="ZipPopup()" readonly></td>
 						</tr>
 						<tr><td></td><td>&nbsp;</td></tr>
 						<tr>

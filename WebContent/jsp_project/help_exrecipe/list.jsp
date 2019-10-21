@@ -59,7 +59,7 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="../css/list.css">
 
 <style>
 
@@ -76,7 +76,7 @@
 </script>
 
 </head>
-<body>
+<body id="body">
 <%@include file="../general_included/topbar.jsp"%>
 
 <div id="maindiv">
@@ -103,35 +103,35 @@
 
 
 
-<table class="listtop"><tr><td>
-
-<font class="writetitle">
-전체 레시피(<%=count %>)</font>
 
 
-</td><td>
-<table class="searchtable"><tr><td class="searchtd">
+<div class="writetitle1">
+초보용 레시피(<%=count %>)</div>
 
+<center>
+	<table class="listtop"><tr>
+				
+				<td>
+					<table class="searchtable">
+					<form method="post" action="list.jsp" class="searh">
+						<tr>
+						<td class="searchtd" border="1" style="padding-left:350px;">
 
-  			<form method="post" action="list.jsp" class="searh">
-			<input type="text" name="search" class="searchbar">	
-</td><td class="searchbttd" width="50px">
+				
+					<input type="text" name="search" class="searchbar">	
+			
+		</td>
+			<td class="searchbttd" width="50px">
 			<input type="submit" value="검색" class="searchbotton">
+				<td style="padding-left:225px;">
+			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
+			<td>
+			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
 			</form>
-	
-	
-	
-</td></tr></table>
-</td><td><table align="right"><tr><td>
-
-<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
-<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
-  </td></tr></table></td></tr></table>
-
-
-
-
-
+			</tr>
+</td></tr></table></table></center>
+<td><tr><td>
+<br>
 
 
 
@@ -153,8 +153,8 @@
    <td align="center" class="line">
    <%=article.getNum()%>
    </td>
-    <td align="left" class="line">       
-      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong">
+    <td align="left" class="line" style="padding-left:40px;">   
+      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong" style="vertical-align:middle; display:table-cell;">
       
           [<%=article.getContury()%>/<%=article.getFoodtype()%>]
         	<% if(article.getReadcount()>=20){%>
@@ -175,7 +175,7 @@
 <%}%>
 
 <center>
-
+<br>
 <%
     if (count > 0) {
         int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);

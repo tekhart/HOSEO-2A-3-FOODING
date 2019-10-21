@@ -82,22 +82,22 @@
 </td></tr>
 
 
-<tr><td colspan="4" >
+<tr><td colspan="4" class="customsecond">
 <ul id="myUL">
   
-</ul></td><td><input type="submit" value="검색"></td></tr>
+</ul></td><td class="customsecond"><input type="submit" value="검색" class="bt"></td></tr>
 
 
-<tr><td colspan="5">
+<tr><td colspan="5" class="customsecond">
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput">
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()">
 	</td>
 								
 		<td class="addBtn">
 			<div > 
-  				<span onclick="newElement()">추가</span>
+  				<span >추가</span>
 			</div>
 		</td></tr>
 
@@ -138,7 +138,7 @@ var inputValue = document.getElementById("myInput").value;
 var t = document.createTextNode(inputValue);
 li.appendChild(t);
 if (inputValue === '') {
-  alert("You must write something!");
+  alert("재료나 도구를 검색하세요");
 } else {
   document.getElementById("myUL").appendChild(li);
 }

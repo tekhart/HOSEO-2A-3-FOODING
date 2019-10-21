@@ -32,7 +32,7 @@ text-decoration: none;
 }
 #footer {
 margin: 0;
-padding: 0;
+padding:150px 0px 0px 0px;
 text-align: center;
 }
 
