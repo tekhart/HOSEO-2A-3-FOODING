@@ -92,9 +92,8 @@
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" >
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()">
 	</td>
-	<td id="myInput" onclick="newElement()"></td>
 								
 		<td class="addBtn">
 			<div > 
