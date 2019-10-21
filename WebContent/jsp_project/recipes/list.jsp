@@ -58,8 +58,7 @@
 	
 %>
 <%
-	String rc=request.getContextPath();
-	Cookie [] rec=request.getCookies();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -235,15 +234,25 @@
 	</div> 
 	<div id="recent">
 	<%
+	String rc=request.getContextPath();
+	Cookie [] recs=request.getCookies();
+	String [] show = new String [4];
+	String result;
 	if(rc != null){
-		for(Cookie rcc : rec){
-			if(rcc.getName().indexOf("recipe")!=-1){
-				
-				out.println(java.net.URLDecoder.decode(rcc.getValue(),"UTF-8")+"<br>");
+		
+		for(int i=0;i<recs.length;i++){	
+			if(i>4){
+				recs[i-5].setMaxAge(0);
+				response.addCookie(recs[i-5]);
 			}
+			//recs[i].setMaxAge(0);
+			//response.addCookie(recs[i]);
+			result = java.net.URLDecoder.decode(recs[i].getValue(),"UTF-8")+"<br>";
+			out.println(result);
 		}
+		
+		
 	}
-	
 	%>
 	
 	</div>

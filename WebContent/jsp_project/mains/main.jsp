@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import = "DBBean.foodingBean" %>
+<%@ page import = "DBBean.BoardDataBean" %>    
+<%@ page import = "java.util.List" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,10 +21,7 @@
 
 <%@include file="../general_included/topbar.jsp"%>
 
-
-
 <center>
-
 
 
 <div id="slidediv">
