@@ -702,11 +702,11 @@ a:active {
 	border-collapse:0px;
 	font-size: 17pt;
 }
-.list-table tbody td{
+.list-tabletd{
 	text-align:center;
 	padding:10px 0;
 	border-bottom:1px solid	 #CCC; height:20px;
-	font-size: 14pt; 
+	font-size: 18pt; 
 }
 .bak_item {
 	
