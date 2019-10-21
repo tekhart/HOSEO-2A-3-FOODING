@@ -691,25 +691,69 @@ a:active {
 }
 
 .list-table {
-	margin-top: 40px;
+	margin-top: 80px;
+	margin-left:280px;
 	position: relative;
 	
 }
 .list-tableth{
-	height:40px;
-	border-bottom:1px solid #CCC;
-	border-top:2px solid #ffbb00;
+	height:50px;
 	border-collapse:0px;
 	font-size: 17pt;
+	text-align:center;
 }
-.list-table tbody td{
+.list-tabletd{
 	text-align:center;
 	padding:10px 0;
 	border-bottom:1px solid	 #CCC; height:20px;
-	font-size: 14pt; 
+	font-size: 18pt; 
 }
 .bak_item {
 	
 	height: 170px;
 	margin-top: 20px;
+}
+
+.proquantity{
+		width: 80px;
+		height:30px;
+		padding: 15px;
+		display: inline-block;
+		border-color:#A4A4A4;
+		background:white;
+		border-style:solid;
+		border-width:thin;
+		border-radius:3px;
+		font-size:13pt;
+	
+}
+
+.img-button{
+		background: url( "../img/close.png") no-repeat;
+		background-size:20px;
+		border: none;
+	    width: 20px;
+	    height: 20px;
+	    cursor: pointer;
+
+}
+
+.img-button2{
+		background: url( "../img/plus.png") no-repeat;
+		background-size:20px;
+		border: none;
+	    width: 20px;
+	    height: 20px;
+	    cursor: pointer;
+
+}
+
+.img-button3{
+		background: url( "../img/minus.png") no-repeat;
+		background-size:20px;
+		border: none;
+	    width: 20px;
+	    height: 20px;
+	    cursor: pointer;
+
 }
