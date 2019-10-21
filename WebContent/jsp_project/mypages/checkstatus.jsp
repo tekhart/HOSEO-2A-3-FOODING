@@ -4,23 +4,6 @@
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
-
-<%
-
-	request.setCharacterEncoding("UTF-8");
-	
-	String zipcode="";
-	
-	
-	try{
-		zipcode=(String)session.getAttribute("zipcode");
-		if(zipcode==null){
-			zipcode="";
-		}
-	}finally{}
-
-	foodingBean foodingbean=new foodingBean();
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,126 +40,84 @@
 			<input type="hidden" name="selected">
 			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
 			<center>
-			
-			 
-				<center>
-					<table>  
-						<%	
-								
-								String sql="select * from user where ID = '"+idlogin+"';";
-								
-								ResultSet rs = foodingbean.resultQuery(sql);
+				<table>  
+					<%	
+						request.setCharacterEncoding("UTF-8");
 						
-								if(rs.next()){
-									String nk=rs.getString("nkname");
-									String id=rs.getString("id");
-									String pw=rs.getString("passwd");
-									String email=rs.getString("email");
-									String addr=rs.getString("addrnum");
-									String daddr=rs.getString("detailaddr");
-									String mile=rs.getString("mileage");
+						String zipcode="";
+						
+						
+						try{
+							zipcode=(String)session.getAttribute("zipcode");
+							if(zipcode==null){
+								zipcode="";
+							}
+						}finally{}
+
+						foodingBean foodingbean=new foodingBean();
 					
-						%>	
-						<tr>
-							<td width="90px">닉네임</td>
-							<td colspan="2">
-								<input class="signupinputs" type="text" size="40"><%=nk %>
-							</td>
-						</tr><tr>
-							<td></td>
-							<td colspan="2" height="30px">
-								<span id="nknameimg"></span><span id="nknamecheck"><%=nknamecheck%></span>
-							</td>
-						</tr>
+						String findId=request.getParameter("findId");
+						if(findId==null){
+							findId=idlogin;
+						}
 						
-						<tr>
-							<td>아이디</td>
-							<td colspan="2">
-								<input class="signupinputs" type="text" size="40"  value="<%= id%>" onkeyup="Idcheck();">
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="2" height="30px">
-								<span id="idimg"></span><span id="idcheck"><%=idcheck %></span>
-							</td>
-						</tr>
-						<tr> 
-							<td>비밀번호</td>
-							<td colspan="2">
-								<input class="signupinputs" type="password" size="40"  value="<%= passwd%>" onkeyup="Passwdcheck();"><br>
+						String sql="select * from user where ID = '"+findId+"';";
+						
+						ResultSet rs = foodingbean.resultQuery(sql);
+				
+						if(rs.next()){
+							String nk=rs.getString("nkname");
+							String email=rs.getString("email");
+							String addrnum=rs.getString("addrnum");
+							String address=rs.getString("addrnum");
+							String detailaddr=rs.getString("detailaddr");
+							String mile=rs.getString("mileage");
+								%>	
+								<tr>
+									<td width="90px">닉네임</td>
+									<td colspan="2">
+										<%=nk %>
+									</td>
+								</tr>
 								
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="2" height="30px">
-								<span id="passwdimg"></span><span id="passwdcheck"><%=passwdcheck%></span>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>비밀번호 확인</td>
-							<td colspan="2">
-								<input class="signupinputs" type="password" size="40"  value="<%= repasswd%>" onkeyup="Repasswdcheck();"><br>
+								<tr>
+									<td>이메일</td>
+									<td colspan="2">
+										<input class="signupinputs" type="text" size="40"><br>
+							
+									</td>
+								</tr>
 								
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="2" height="30px">
-								<span id="repasswdimg"></span><span id="repasswdcheck"><%=repasswdcheck%></span>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>이메일</td>
-							<td colspan="2">
-								<input class="signupinputs" type="text" size="40"><%=email %><br>
-					
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							
-						</tr>
-						
-						<tr> 
-							<td>우편번호</td>
-							<td><input class="addrnuminputs" type="text" value="<%=addrnum%>" onclick="ZipPopup();"></td>
-							<td><input class="addressinputs" type="text" value="<%=address%>" onclick="ZipPopup();"></td>
-						</tr>
-						<tr><td></td><td>&nbsp;</td></tr>
-						<tr>
-							<td>주소</td> 
-							<td colspan="2"><input class="signupinputs" type="text" size="40"><%=detailaddr%></td>
-						</tr>
-						<tr>
-							<td>성별</td>
-							
-							
-							<td>
-							<label class="loginradio"><ruby>남자<rt>&nbsp</rt></ruby>
-							  <input type="radio"  id="male"  checked="checked" value="1" >
-							  <span class="checkmark"></span>
-							</label>
-							<label class="loginradio"><ruby>여자<rt>&nbsp</rt></ruby>
-							  <input type="radio" id="female"  value="2" >
-							  <span class="checkmark"></span>
-							</label>
-							</td>
-		
-		
-						</tr>
-						<%} %>
-						
-					</table> 
+								<tr> 
+									<td>우편번호</td>
+									<td><%=addrnum%></td>
+								</tr>
+								<tr><td></td><td>&nbsp;</td></tr>
+								<tr>
+									<td>주소</td> 
+									<td colspan="2"><input class="signupinputs" type="text" size="40"><%=detailaddr%></td>
+								</tr>
+								<tr>
+									<td>성별</td>
+									
+									
+									<td>
+									<label class="loginradio"><ruby>남자<rt>&nbsp</rt></ruby>
+									  <input type="radio"  id="male"  checked="checked" value="1" >
+									  <span class="checkmark"></span>
+									</label>
+									<label class="loginradio"><ruby>여자<rt>&nbsp</rt></ruby>
+									  <input type="radio" id="female"  value="2" >
+									  <span class="checkmark"></span>
+									</label>
+									</td>
+								</tr>
+							<%} %>
+						</table> 
 					<br><br>
 					<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
 					<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
 					<br><br><br>
-				</center>
-				
 				</center>
 			</form>
 		</div>

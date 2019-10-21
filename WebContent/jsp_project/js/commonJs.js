@@ -6,6 +6,14 @@ var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8
 function sendingaddr(addrnum,address){
 	register.addrnum.value=addrnum;
 	register.address.value=address;
+	document.register.detailaddr.focus();
+}
+function AllcheckNotice(){
+	Nknamecheck();
+	Idcheck();
+	Emailcheck();
+	Passwdcheck();
+	document.register.nkname.focus();
 }
 
 function Nknamecheck() {
@@ -79,7 +87,10 @@ function Emailcheck() {
 	if (window.event.keyCode == 13) {
 		Signupcross();
     }
-	if(emailexp.test(register.email.value)==false){
+	if(emailexp.test(register.email.value)==""){
+		document.getElementById('emailcheck').innerHTML = "이메일 형식으로 작성해 주십시오.";
+		document.getElementById('emailimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+	}else if(emailexp.test(register.email.value)==false){
 		document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
 		document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
 	}else{
@@ -110,30 +121,29 @@ function Passwdcheck() {
 		document.getElementById('passwdcheck').innerHTML="사용 가능한 비밀번호 입니다";
 		document.getElementById('passwdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 	}
-	if(register.passwd.value==register.repasswd.value){
-		document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
-		document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-	}else{
-		document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
-		document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
-	}
+	Repasswdcheck();
 };
 
 function Repasswdcheck() {
 	if (window.event.keyCode == 13) {
 		Signupcross();
     }
-	if(register.passwd.value==register.repasswd.value){
+	if(register.repasswd.value==""){
+		document.getElementById('repasswdcheck').innerHTML="비밀번호와 같아야 합니다";
+		document.getElementById('repasswdimg').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+	}else if(register.passwd.value==register.repasswd.value){
 		document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
 		document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 	}else{
 		document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
 		document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
+		
 	}
 };
 
 function ZipPopup() { 
 	window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+	document.register.detailaddr.focus();
 }
 	
 function Signupcross(){	

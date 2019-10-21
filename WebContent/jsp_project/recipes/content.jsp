@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.net.URLEncoder" %>
 <%@ page import = "DBBean.foodingBean" %>
 <%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "DBBean.commentDataBean" %>
@@ -162,6 +163,18 @@ function initComparisons() {
 	        commentList = dbPro.getCommentsArticles(startRow, commentpageSize,num);
 	    }
 	    
+%>
+<%
+String rc=request.getContextPath();
+
+String recipe="recipe";
+int rcnum = article.getNum();
+String code=String.valueOf(rcnum);
+String rccode = recipe.concat(code);
+String rcname=article.getTitle();
+Cookie rec = new Cookie(rccode,URLEncoder.encode(rcname,"utf-8"));
+rec.setMaxAge(60*60*24);
+response.addCookie(rec);
 %>
 
 <table class="contenttable" > 
@@ -343,7 +356,7 @@ function initComparisons() {
 </div>
 
 
-
+<script></script>
 <%@include file="../general_included/footer.jsp"%>
 
 </body>
