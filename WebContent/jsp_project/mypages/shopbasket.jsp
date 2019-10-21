@@ -44,7 +44,7 @@
 
 	<center>
 
-			<br>
+			<br> 
 		
 		<table class="list-table" style="border-spacing:0px;">
 						<td align="left" style="text-align:left; font-size:18pt; padding:10px;">일반상품(1)</td>
@@ -110,13 +110,7 @@
 </div> 
 <br><br><br>
 
-
-
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-Create by FOODING<br>
-고객문의 1544-XXXX<br>
-JSP Project 2019 2A03
-</div>
+<%@include file="../general_included/footer.jsp"%> 
 
 </body>
 </html>

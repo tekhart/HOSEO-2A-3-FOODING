@@ -57,7 +57,10 @@
     }
 	
 %>
-
+<%
+	String rc=request.getContextPath();
+	Cookie [] rec=request.getCookies();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -230,7 +233,20 @@
 			</center>
 		</div>
 	</div> 
+	<div id="recent">
+	<%
+	if(rc != null){
+		for(Cookie rcc : rec){
+			if(rcc.getName().indexOf("recipe")!=-1){
+				
+				out.println(java.net.URLDecoder.decode(rcc.getValue(),"UTF-8")+"<br>");
+			}
+		}
+	}
 	
+	%>
+	
+	</div>
 <%@include file="../general_included/footer.jsp"%>
 <br><br>
 </body>
