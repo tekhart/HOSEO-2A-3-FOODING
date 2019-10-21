@@ -40,7 +40,7 @@
   <pre>상품2</pre>
   <pre>상품3</pre>
   
-  <pre id="TopButton" class="triangle-up">  맨 위로</pre>
+  <pre id="TopButton" class="triangle-up" style="cursor:pointer;">  맨 위로</pre>
 </div>
 
 <script>
