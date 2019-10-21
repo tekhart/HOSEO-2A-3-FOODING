@@ -9,7 +9,7 @@
 <style>
 
 	.button {
-  border: none;
+  border: none; 
   outline: 0;
   padding: 12px;
   color: white;
