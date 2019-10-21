@@ -106,7 +106,7 @@
 						            <button class="dropbtn" OnClick="window.location='../notices/faq.jsp'">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
-							             	<a href="../notices/faq.jsp">자주하는 질문</a>
+							             	<a href="../mains/faq.jsp">자주하는 질문</a>
 									        <a href="#">문의사항</a>
 							            </center>
 						        	</div>
