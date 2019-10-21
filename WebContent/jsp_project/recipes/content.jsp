@@ -64,6 +64,7 @@ function initComparisons() {
     slider.addEventListener("touchstart", slideReady);
     /*and released (for touch screens:*/
     window.addEventListener("touchstop", slideFinish);
+  
     function slideReady(e) {
       /*prevent any other actions that may occur when moving over the image:*/
       e.preventDefault();

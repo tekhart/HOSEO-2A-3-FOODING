@@ -45,26 +45,26 @@
 	<center>
 
 			<br>
-		<table class="list-table">
-				          <tr class="list-tableth">
-				              <td width="350">상품정보</td>
-				              <td width="120">판매가</td>
-				              <td width="150">수량</td>
-				              <td width="100">등록일</td>
-				           </tr>
+		<table class="list-table" style="border-spacing:0px;">
+				          <tr class="list-tableth" >
+				              <td width="350" style="border-top:4px solid orange; border-bottom:2px solid orange;">상품정보</td>
+				              <td width="120" style="border-top:4px solid orange; border-bottom:2px solid orange;">판매가</td>
+				              <td width="150" style="border-top:4px solid orange; border-bottom:2px solid orange;">수량</td>
+				              <td width="100" style="border-top:4px solid orange; border-bottom:2px solid orange;">등록일</td>
+				           </tr> 
 				        
 				      
 				        <tbody>
 				        <tr>
-				          <td width="300">
+				          <td width="300"  style="border-bottom:4px solid orange;">
 				          	<div class="bak_item">
 							<div class="pro_img"><img src="../img/pizza-3007395_420.jpg" width="210px" height="150px"></div>
 							<div class="pro_nt"></div>
 						</div>
-				          </td>
-				          <td width="150"></td>
-				          <td width="150">1</td>
-				          <td width="100"></td>
+				          </td> 
+				          <td width="150" style="border-bottom:4px solid orange;"></td>
+				          <td width="150" style="border-bottom:4px solid orange;">1</td>
+				          <td width="100" style="border-bottom:4px solid orange;"></td>
 				        </tr>
 				      </tbody>
 				    </table>
@@ -85,13 +85,7 @@
 </div> 
 <br><br><br>
 
-
-
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-Create by FOODING<br>
-고객문의 1544-XXXX<br>
-JSP Project 2019 2A03
-</div>
+<%@include file="../general_included/footer.jsp"%> 
 
 </body>
 </html>
