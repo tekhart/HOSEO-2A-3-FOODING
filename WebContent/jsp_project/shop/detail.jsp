@@ -33,6 +33,6 @@ border-left:1px solid orange;}
 <tr><td rowspan="3">
 <img src="../img/casserole-dish-2776735_420.jpg" width="400px" height="400px" ></td><td>
 요리 재료 모음</td><tr><td>700P</td></tr><tr><td>기본적인 요리 재료 모음입니다<br>구성품 : 토마토, 버섯, 고추, 피망, 양파, 마늘</td>
-</tr><tr><td colspan="2"><input type="button" class="button134" value="+ 장바구니에 추가"</td></tr></table>
+</tr><tr><td colspan="2"><input type="button" class="button134" value="+ 장바구니에 추가"></td></tr></table>
 </body>
 </html>

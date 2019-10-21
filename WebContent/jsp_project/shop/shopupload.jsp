@@ -27,8 +27,8 @@
 
 도구/재료
 <select name="isTool">
-	<option value='0'>도구0</option>
-	<option value='1'>재료1</option>
+	<option value='1'>도구1</option>
+	<option value='2'>재료2</option>
 </select><br>
 
 타입
