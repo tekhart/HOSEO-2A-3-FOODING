@@ -27,8 +27,7 @@ public class foodingBean {
 		}catch (Exception e) {
             e.printStackTrace();
 		}
-	}
-	
+	}	
 	public ResultSet resultQuery(String sql) {
 		DBclose();
 		try {
@@ -40,8 +39,7 @@ public class foodingBean {
 			rs=null;
 		}
 		return rs;
-	}
-	
+	}	
 	public void nonResultQuery(String sql) {
 		DBclose();
 		try {
@@ -55,7 +53,6 @@ public class foodingBean {
 			DBclose();
         }
 	}
-	
 	public String findnkname(String id) {
 		DBclose();
 		try {
@@ -2332,5 +2329,78 @@ public class foodingBean {
        	DBclose();
        }
 		return x;
+   }
+
+    public void insertproductArticle(productDataBean article)
+    		throws Exception {
+    	con = null;
+        pstmt = null;
+		rs = null;
+		
+		int num=article.getProductId();
+		int number=0;
+        String sql="";
+
+        try {
+            con = getConnection();
+
+            pstmt = con.prepareStatement("select max(num) from product");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next())
+		      number=rs.getInt(1)+1;
+		    else
+		      number=1;
+			
+			sql = "insert into product(productId,productName,isTool,productType,price,discountRate,productThumb";
+		    sql+=") values(?,?,?,?,?,?,?)";
+		    
+		    pstmt = con.prepareStatement(sql);
+
+            pstmt.setInt(1, number);
+            pstmt.setString(2, article.getProductName());
+            pstmt.setInt(3, article.getIsTool());
+            pstmt.setInt(4, article.getProductType());
+            pstmt.setInt(5, article.getPrice());
+            pstmt.setInt(6, article.getDiscountRate());
+            pstmt.setString(7, article.getProductThumb());
+			
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	DBclose();
+        }
+		
+    }
+    public int getproductArticleCount(int isTool,int type,String search)
+            throws Exception {
+		DBclose();
+       con = null;
+       pstmt = null;
+       rs = null;
+       String sql="";
+
+       int x=0;
+
+       try {
+           con = getConnection();
+           
+           if(type.equals("제목")) {
+        	   sql="select count(*) from recipes  where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+           }else{
+        	   
+           }
+           
+           pstmt = con.prepareStatement(sql);
+           rs = pstmt.executeQuery();
+           if (rs.next()) {
+              x= rs.getInt("count(*)");
+            }
+       } catch(Exception ex) {
+           ex.printStackTrace();
+       } finally {
+           DBclose();
+       }
+        return x;
    }
 }
