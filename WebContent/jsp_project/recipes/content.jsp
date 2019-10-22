@@ -356,7 +356,9 @@ response.addCookie(rec);
 </div>
 
 
-<script></script>
+<script>
+initComparisons();
+</script>
 <%@include file="../general_included/footer.jsp"%>
 
 </body>
