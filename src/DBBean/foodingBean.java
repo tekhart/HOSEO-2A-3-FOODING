@@ -2306,7 +2306,6 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 		
-		int maxNumber=0;
 		String sql="";
 
 		try {
@@ -2323,6 +2322,8 @@ public class foodingBean {
 			pstmt.setInt(4, Integer.parseInt(article.getPrice()));
 			pstmt.setInt(5, Integer.parseInt(article.getDiscountRate()));
 			pstmt.setString(6, article.getProductThumb());
+			
+			pstmt.executeUpdate();
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();
