@@ -1,18 +1,18 @@
 package DBBean;
 
 public class productDataBean {
-	int productId;
+	String productId;
 	String productName;
-	int isTool;
-	int productType;
-	int price;
-	int discountRate;
+	String isTool;
+	String productType;
+	String price;
+	String discountRate;
 	String productThumb;
 	
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	public String getProductName() {
@@ -21,28 +21,28 @@ public class productDataBean {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getIsTool() {
+	public String getIsTool() {
 		return isTool;
 	}
-	public void setIsTool(int isTool) {
+	public void setIsTool(String isTool) {
 		this.isTool = isTool;
 	}
-	public int getProductType() {
+	public String getProductType() {
 		return productType;
 	}
-	public void setProductType(int productType) {
+	public void setProductType(String productType) {
 		this.productType = productType;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
-	public int getDiscountRate() {
+	public String getDiscountRate() {
 		return discountRate;
 	}
-	public void setDiscountRate(int discountRate) {
+	public void setDiscountRate(String discountRate) {
 		this.discountRate = discountRate;
 	}
 	public String getProductThumb() {

@@ -2306,32 +2306,24 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 		
-		int maxNumber=0;
 		String sql="";
 
 		try {
 			con = getConnection();
-
-			pstmt = con.prepareStatement("select max(num) from product");
-			rs = pstmt.executeQuery();
 			
-			if (rs.next())
-				maxNumber=rs.getInt(1)+1;
-			else
-				maxNumber=1;
-			
-			sql = "insert into product(productId,productName,isTool,productType,price,discountRate,productThumb";
-			sql+=") values(?,?,?,?,?,?,?)";
+			sql = "insert into product(productName,isTool,productType,price,discountRate,productThumb";
+			sql+=") values(?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, maxNumber);
-			pstmt.setString(2, article.getProductName());
-			pstmt.setInt(3, article.getIsTool());
-			pstmt.setInt(4, article.getProductType());
-			pstmt.setInt(5, article.getPrice());
-			pstmt.setInt(6, article.getDiscountRate());
-			pstmt.setString(7, article.getProductThumb());
+			pstmt.setString(1, article.getProductName());
+			pstmt.setInt(2, Integer.parseInt(article.getIsTool()));
+			pstmt.setInt(3, Integer.parseInt(article.getProductType()));
+			pstmt.setInt(4, Integer.parseInt(article.getPrice()));
+			pstmt.setInt(5, Integer.parseInt(article.getDiscountRate()));
+			pstmt.setString(6, article.getProductThumb());
+			
+			pstmt.executeUpdate();
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -2410,12 +2402,12 @@ public class foodingBean {
 				articleList = new ArrayList<productDataBean>(end);
 				do{
 					productDataBean article= new productDataBean();
-					article.setProductId(rs.getInt("productId"));
+					article.setProductId(String.valueOf(rs.getInt("productId")));
 					article.setProductName(rs.getString("productName"));
-					article.setIsTool(rs.getInt("isTool"));
-					article.setProductType(rs.getInt("productType"));
-					article.setPrice(rs.getInt("price"));
-					article.setDiscountRate(rs.getInt("discountRate"));
+					article.setIsTool(String.valueOf(rs.getInt("isTool")));
+					article.setProductType(String.valueOf(rs.getInt("productType")));
+					article.setPrice(String.valueOf(rs.getInt("price")));
+					article.setDiscountRate(String.valueOf(rs.getInt("discountRate")));
 					article.setProductThumb(rs.getString("productThumb"));
 					
 				 articleList.add(article);
@@ -2444,12 +2436,12 @@ public class foodingBean {
 
 			if (rs.next()) {
 				article = new productDataBean();
-				article.setProductId(rs.getInt("productId"));
+				article.setProductId(String.valueOf(rs.getInt("productId")));
 				article.setProductName(rs.getString("productName"));
-				article.setIsTool(rs.getInt("isTool"));
-				article.setProductType(rs.getInt("productType"));
-				article.setPrice(rs.getInt("price"));
-				article.setDiscountRate(rs.getInt("discountRate"));
+				article.setIsTool(String.valueOf(rs.getInt("isTool")));
+				article.setProductType(String.valueOf(rs.getInt("productType")));
+				article.setPrice(String.valueOf(rs.getInt("price")));
+				article.setDiscountRate(String.valueOf(rs.getInt("discountRate")));
 				article.setProductThumb(rs.getString("productThumb"));
 			}
 		} catch(Exception ex) {
@@ -2472,16 +2464,16 @@ public class foodingBean {
 			con = getConnection();
 
 			 
-				sql="update announce set productName=?,isTool=?,productType=?,price=?,discountRate=?,productThumb=? where productId=?";
+				sql="update product set productName=?,isTool=?,productType=?,price=?,discountRate=?,productThumb=? where productId=?";
 				pstmt = con.prepareStatement(sql);
 
 				pstmt.setString(1, article.getProductName());
-				pstmt.setInt(2, article.getIsTool());
-				pstmt.setInt(3, article.getProductType());
-				pstmt.setInt(4, article.getPrice());
-				pstmt.setInt(5, article.getDiscountRate());
+				pstmt.setInt(2, Integer.parseInt(article.getIsTool()));
+				pstmt.setInt(3, Integer.parseInt(article.getProductType()));
+				pstmt.setInt(4, Integer.parseInt(article.getPrice()));
+				pstmt.setInt(5, Integer.parseInt(article.getDiscountRate()));
 				pstmt.setString(5, article.getProductThumb());
-				pstmt.setInt(7, article.getProductId());
+				pstmt.setInt(7, Integer.parseInt(article.getProductId()));
 				pstmt.executeUpdate();
 				
 					x= 1;

@@ -60,100 +60,106 @@
 	<%@include file="move.jsp"%>
 	<style>
 		.button134 {
-		border: none; 
-		outline: 0;
-		padding: 12px;
-		color: white;
-		background-color: #000;
-		text-align: center;
-		cursor: pointer;
-		width: 100%;
-		font-size: 18px;
-		margin-right:10px;
-	}
-	
-	.detail td{padding:5px;
-	border-bottom:1px solid orange;
-	}
-	
-	.modal {
-		display: none; /* Hidden by default */
-		position: fixed; /* Stay in place */
-		z-index: 1; /* Sit on top */
-		padding-top: 100px; /* Location of the box */
-		left: 0;
-		top: 0;
-		width: 100%; /* Full width */
-		height: 100%; /* Full height */
-		overflow: auto; /* Enable scroll if needed */
-		background-color: rgb(0,0,0); /* Fallback color */
-		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	}
-	
-	.modal-content {
-		background-color: #fefefe;
-		margin: auto;
-		padding: 20px;
-		border: 1px solid #888;
-		width: 750px;
+			border: none; 
+			outline: 0;
+			padding: 12px;
+			color: white;
+			background-color: #000;
+			text-align: center;
+			cursor: pointer;
+			width: 100%;
+			font-size: 18px;
+			margin-right:10px;
+		}
+		.detail td{padding:5px;
+			border-bottom:1px solid orange;
+		}
 		
-	}
-	
-	/* The Close Button */
-	.close {
-		color: #aaaaaa;
-		float: right;
-		font-size: 28px;
-		font-weight: bold;
-	}
-	
-	.close:hover,
-	.close:focus {
-		color: #000;
-		text-decoration: none;
-		cursor: pointer;
-	}
-	
-	.card {
-		-webkit-transition: 0.3s;
-	 	 transition: 0.3s;
-	 	 max-width: 300px;
-	 	 margin: 28px;
-			 max-height:690px;
-		float:left;
-		 font-family: arial;
-	 	 text-align: center;
-	 	 display: inline-block;
-	 	 box-shadow:0 2px 2px 0 rgba(0,0,0,0.2)
-	}
-	
-	.card:hover {
-		box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
-	}
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			padding-top: 100px; /* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+		.modal-content {
+			background-color: #fefefe;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 750px;
+		}
+		
+		/* The Close Button */
+		.close {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		
+		.card {
+			-webkit-transition: 0.3s;
+			transition: 0.3s;
+			width: 200px;
+			margin: 10px;
+			height:313px;
+			float:left;
+			font-family: arial;
+			text-align: center;
+			display: inline-block;
+			box-shadow:0 2px 2px 0 rgba(0,0,0,0.2)
+		}
+		.card:hover {
+			box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+		}
 	</style>
+	<script>
+		function ShowDetail(pdtid,pdtname,price,dscountrt,pdtthumb) {
+			document.getElementById("myModal_Title").innerHTML="[제품명]<br>"+pdtname;
+			if(dscountrt==0){
+				document.getElementById("myModal_Price").innerHTML="[가격]<br>"+price+"원";
+			}else{
+				document.getElementById("myModal_Price").innerHTML="[가격]<br><del>"+price+"원</del> "+price*(100-dscountrt)/100+"원";
+			}
+			$("#myModal_Thumb").css("background-image","url("+pdtthumb+")");
+			
+			document.getElementById("myModal").style.display = "block";
+		}
+		// When the user clicks on <span> (x), close the modal
+		function CloseDetail() {
+			document.getElementById("myModal").style.display = "none";
+		}
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == document.getElementById("myModal")) {
+				document.getElementById("myModal").style.display = "none";
+			}
+		}
+	</script>
+	
 </head>
 <body>
 	<div id="maindiv">
 		<div class="writetitle1">
-			재료구매
+			재료구매&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="main.jsp?isTool=2">재료</a>|<a href="main.jsp?isTool=1">도구</a>
 		</div>
-		<br><br><br>
-		<table style="width:1300px; margin:auto; text-align:center;">
-			<tr>
-				<td><img src="../img/fork.png" width="30px" height="30px"></td>
-				<td>과일</td>
-				<td>|</td>
-				<td>채소</td>
-				<td>|</td>
-				<td>정육/계란</td>
-				<td>|</td>
-				<td>수산물/건어물</td>
-				<td>|</td>
-				<td>주방가전</td>
-				<td>|</td>
-				<td>냄비/프라이팬</td>
-			</tr>
-		</table>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+		<%@include file="sidemenu2.jsp"%>
 		
 		<br><br><br><br><br> 
 		
@@ -170,43 +176,49 @@
 				</table>
 			<%}else {%>
 				<br>
+				<div style="margin-left:200px;maxwidth:950px">
+				
 				<%	
 					for (int i = 0 ; i < articleList.size(); i++) {
 						productDataBean article = articleList.get(i);
+						int productId=Integer.parseInt(article.getProductId());
+						int price=Integer.parseInt(article.getPrice());
+						int discountrate=Integer.parseInt(article.getDiscountRate());
+						int realprice=price*(100-discountrate)/100;
 				%>
 				<div class="card">
-					<div style="background-image:url('<%=article.getProductThumb() %>');background-size:300px;width:300px;height:168px;"></div>
-					<h1><%=article.getProductName() %></h1>
-					<%if(article.getDiscountRate()==0){ %>
-						<p class="price"><%=article.getPrice()%></p>
+					<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:112px;"></div>
+					<p><%=article.getProductName() %></p>
+					<%if(discountrate==0){ %>
+						<div class="product_price_html"><%=price%>원</div>
 					<%}else{ %>
-						<p class="price"><%=article.getPrice()%>(-<%=article.getDiscountRate()%>) => <%=article.getPrice()*article.getDiscountRate()/100 %></p>
+						<div class="product_price_html"><del><%=price%>원</del>(-<%=discountrate%>%)<br>
+							ㄴ><%=realprice%>원</div>
 					<%}%>
-					<p><button id="myBtn" onclick="ShowDetail()">자세히 보기</button></p>
+					<p><button id="myBtn" 
+						onclick="ShowDetail(<%=productId%>,'<%=article.getProductName()%>',<%=price%>,<%=discountrate%>,'<%=article.getProductThumb()%>')">자세히 보기</button></p>
 				</div>
 		 	<%}%>
+		 	</div>
 		<%}%>
 		<%@include file="../general_included/footer.jsp"%>
 				
-		<div id="myModal" class="modal">
-			<div class="modal-content">
-				<span class="close">&times;</span>
+		<div id="myModal" class="modal" style="display: none">
+			<div class="modal-content" style="background-color:#eeeeee">
+				<span class="close" onclick="CloseDetail()">&times;</span>
 				<table class="detail" style="border-spacing:0px;">
 					<tr>
 						<td rowspan="3">
-							<img src="../img/casserole-dish-2776735_420.jpg" width="400px" height="400px" >
+							<div id="myModal_Thumb" style="background-size:cover;width:400px;height:400px;background-position:center;"></div>
 						</td>
-						<td id="myModal_title">
-							[제목]<br>요리 재료 모음
-						</td>
-					</tr>
-					<tr>
-						<td id="myModal_price">
-							[가격]<br><del>12000</del><br>8900
+						<td>
+							<div id="myModal_Title"></div>
 						</td>
 					</tr>
 					<tr>
-						<td>[설명]<br>기본적인 요리 재료 모음입니다<br>구성품 : 토마토, 버섯, 고추, 피망, 양파, 마늘</td>
+						<td>
+							<div id="myModal_Price"></div>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2" style="border-bottom:4px solid white;"><input type="button" class="button134" value="+ 장바구니에 추가"></td>
@@ -215,37 +227,6 @@
 			</div>
 		</div>
 	</div>
-			
-			
-				
-	<script>
-	// Get the modal
-	var modal = document.getElementById("myModal");
 	
-	// Get the button that opens the modal
-	var btn = document.getElementById("myBtn");
-	
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-	
-	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-		modal.style.display = "block";
-	}
-	
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
-	
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-		if (event.target == modal) {
-		modal.style.display = "none";
-		}
-	}
-	</script>
-				
-		
 </body>
 </html>

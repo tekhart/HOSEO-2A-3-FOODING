@@ -179,7 +179,7 @@ response.addCookie(rec);
 
 <table class="contenttable" > 
 <tr><td  class="orangeline11" rowspan="2"width="1000px" height="100px" align="center" ><h2><%=article.getTitle()%></h2></td>
-<td class="orangeline111"  align="right" style="color:#e0e0e0; font-size:30px;"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
+<td class="orangeline111"  align="right" style="color:#e0e0e0; font-size:30px;" onclick="location.href='../mypages/checkstatus.jsp?findId=<%=article.getWriterid()%>'"><%=foodingbean.findnkname(article.getWriterid())%></td></tr>
 <tr class="orangeline1"><td align="right" style="color:#e0e0e0; font-size:30px;"><%=article.getReadcount()%> view</td></tr>
 <tr   class="orangeline"><td colspan="2"  height="600px" >
 <table width="1150px" style="margin:auto; margin-top:15px; margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
@@ -356,7 +356,9 @@ response.addCookie(rec);
 </div>
 
 
-<script></script>
+<script>
+initComparisons();
+</script>
 <%@include file="../general_included/footer.jsp"%>
 
 </body>

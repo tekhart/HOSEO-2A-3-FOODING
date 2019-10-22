@@ -76,7 +76,7 @@
 				          <td width="150" style="border-bottom:4px solid orange;">19,900원</td>
 				          <td width="150" style="border-bottom:4px solid orange;">	
 				          		<div>
-				          			<input type="number" value="1" name="ea" size="2" min="0" max="100" class="proquantity"  
+				          			<input type="number" value="1" name="ea" size="2" min="1" max="100" class="proquantity"  
 				          			>
 				          		<!-- <span>
 				          			<input type="button" class="img-button2" >
