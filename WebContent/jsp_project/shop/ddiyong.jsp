@@ -5,20 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<style>
-
-
-</style>
-
+<link rel="stylesheet" href="ddiyong.css">
 </head>
 <body>
 
-
-
-
-
-
+<div class="nemo">
+<%@include file="sidemenu2.jsp"%>
+</div>
 
 </body>
 </html>

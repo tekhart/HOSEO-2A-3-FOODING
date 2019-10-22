@@ -27,15 +27,15 @@
 
 도구/재료
 <select name="isTool">
-	<option value='0'>도구0</option>
-	<option value='1'>재료1</option>
+	<option value='1'>도구1</option>
+	<option value='2'>재료2</option>
 </select><br>
 
 타입
 <select name="productType">
 	<option value='1'>과일</option>
 	<option value='2'>채소</option>
-	<option value='3'>축산/계란</option>
+	<option value='3'>정육/계란</option>
 	<option value='4'>수산물/건어물</option>
 	<option value='5'>과자/초콜릿/시리얼</option>
 	<option value='6'>면/통조림/가공식품</option>
