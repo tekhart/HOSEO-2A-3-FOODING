@@ -75,8 +75,8 @@ function openCity(evt, cityName) {
 				<td colspan="2" align="right" width="580px" style="padding-bottom:50px; padding-left:280px;">
 					<div class="container">
 	          		  <h3 align="center">주문자 정보</h3>
-		          		  	 <label for="fname" class="labelpay"><i class="fa fa-user"></i> 주문하시는분</label><br><br>
-		           			 <input type="text" id="fname2" name="firstname2" class="inputtext" placeholder="이름"><br><br>
+		          		  	 <label for="fname1" class="labelpay"><i class="fa fa-user"></i> 주문하시는분</label><br><br>
+		           			 <input type="text" id="fname1" name="firstname2" class="inputtext" placeholder="이름"><br><br>
 							 <label for="email" class="labelpay"><i class="fa fa-envelope"></i> Email</label>
 		           			 <input type="text" id="email" name="email" class="inputtext" placeholder="john@example.com">
 		            		 <label for="state"  class="labelpay">비밀번호 확인</label>
@@ -123,12 +123,14 @@ function openCity(evt, cityName) {
 						<div class="container3">
 		          		  <h3>결제 수단</h3> 	
 		          		  		<div style="padding-top:20px;"></div>
-		          		  			<span style="float:left;">
-			          		  			<input type="radio" name="chk_info" value="신용카드" class="tablinks" onclick="openCity(event, 'creditcard')">신용카드
-			          		  		</span>
-			          		  		<span style="float:left; margin-left:50px;">
-										<input type="radio" name="chk_info" value="무통장입금" class="tablinks" onclick="openCity(event, 'Bank Deposit')">무통장입금
-									</span>	
+		          		  			<div style="padding-bottom:30px; border-bottom:1px solid black;">
+			          		  			<span style="float:left;">
+				          		  			<input type="radio" name="chk_info" value="신용카드" class="tablinks" onclick="openCity(event, 'creditcard')">신용카드
+				          		  		</span>
+				          		  		<span style="float:left; margin-left:50px;">
+											<input type="radio" name="chk_info" value="무통장입금" class="tablinks" onclick="openCity(event, 'Bank Deposit')">무통장입금
+										</span>	
+									</div>
 									
 									<div id="creditcard" class="tabcontent">
 										 <h3>신용카드</h3>
@@ -136,8 +138,17 @@ function openCity(evt, cityName) {
 									</div>
 											
 									<div id="Bank Deposit" class="tabcontent">
-										<h3>무통장입금</h3>
-										<p>주문후 72시간 이내에 무통장입금확인 되지 않으면 자동으로 주문최소됩니다.</p> 
+										<table>
+												<tr>
+													<td class="tdpayment">입금자명</td>
+													<td style="padding-top:12px;"><input type="text" maxlength="20" class="tdpayinput" style=" width:200px; height:29px";></td>
+												</tr>
+												
+												<tr>
+													<td class="tdpayment">입금은행</td>
+													<td style="padding-top:12px;"><input type="select" maxlength="20" class="tdpayinput" style=" width:200px; height:29px";></td>
+												</tr>
+										</table>	
 									</div>
 						</div>
 					</td>

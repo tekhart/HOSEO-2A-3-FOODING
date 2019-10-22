@@ -876,6 +876,24 @@ a:active {
   display: none;
   padding: 6px 12px;
   border-top: none;
+  float:left;
+}
+
+.tdpayment{
+	width:130px;
+	padding:18 0 0 0px;
+	font-size:17pt;
+	font-align:left;
+	font-weight:none;
+	
+}
+
+.tdpayinput{
+	  font-size:13pt;
+	  background-color:white;
+	  border: 1px solid #ffbb00;"
+	  border-radius: 3px;
+	  float:left;
 }
 =======
 
