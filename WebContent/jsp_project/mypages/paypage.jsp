@@ -44,7 +44,7 @@
 		<div class="sideleft"></div><a href="../mypages/shopbasket.jsp" > 장바구니</a>
 </div>
  
-	<center>
+	<center>  
 
 		<br>
 		<table class="row">
