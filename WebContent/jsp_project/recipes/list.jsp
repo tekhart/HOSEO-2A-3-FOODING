@@ -184,8 +184,6 @@
 								<td style="align:right;"><%=article.getReadcount()%> view</td>
 							</tr>
 						</table>
-						<p></p>
-						<p></p>
 					</div>
 				<%}%>
 			<%}%>
