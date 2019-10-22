@@ -757,3 +757,89 @@ a:active {
 	    cursor: pointer;
 
 }
+
+----------------------
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+  float:center;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  width:700px;
+  height:480px;
+  float:center;
+  background-color: #FAE4AD;
+  padding: 5px 20px 15px 20px;
+  border: 2px solid #ffbb00;
+  border-radius: 3px;
+  font-size:16pt;
+}
+
+.container2 {
+  width:700px;
+  height:550px;
+  float:center;
+  background-color: #FAE4AD;
+  padding: 5px 20px 15px 20px;
+  border: 2px solid #ffbb00;
+  border-radius: 3px;
+  font-size:16pt;
+}
+
+.container3 {
+  width:1000px;
+  height:300px;
+  float:left;
+  background-color: #FAE4AD;
+  padding: 5px 20px 15px 20px;
+  border: 2px solid #ffbb00;
+  border-radius: 3px;
+  font-size:16pt;
+}
+
+  .row {
+    flex-direction: column-reverse;
+  }
+ 
+.inputtext{
+  width: 100%;
+  font-size:12pt;
+  padding: 15px;
+  background-color:white;
+  border: 1px solid #ffbb00;"
+  border-radius: 3px;
+  float:left;
+}
+
+.labelpay {
+  padding-top:20px;
+  margin-bottom: 10px;
+  float:left;
+  display: block;
+}
+
+.paymoney{
+	float:left;
+	font-size:16pt;
+	
+	
+}
