@@ -96,7 +96,7 @@ for (int i = 0 ; i < articleList.size(); i++) {
           slides[slideIndex-1].style.display = "block";  
           dots[slideIndex-1].className += " active";
           slideIndex++;
-          if(slideIndex>=4){slideIndex-=3}
+          if(slideIndex>=4){slideIndex-=3} 
         }
 
     </script>
