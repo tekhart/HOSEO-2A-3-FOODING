@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page import = "DBBean.BoardDataBean" %>
+<%@ page import = "java.util.List" %>
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
@@ -38,14 +39,14 @@
 			<input type="hidden" name="repasswdcheck">
 			<input type="hidden" name="emailcheck">		
 			<input type="hidden" name="selected">
-			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
+			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
 			<center>
-				<table>  
+				<table border="1">
 					<%	
 						request.setCharacterEncoding("UTF-8");
 						
 						String zipcode="";
-						
+						String nk="";
 						
 						try{
 							zipcode=(String)session.getAttribute("zipcode");
@@ -55,6 +56,7 @@
 						}finally{}
 
 						foodingBean foodingbean=new foodingBean();
+					    foodingBean dbPro = foodingBean.getInstance();
 					
 						String findId=request.getParameter("findId");
 						if(findId==null){
@@ -66,58 +68,65 @@
 						ResultSet rs = foodingbean.resultQuery(sql);
 				
 						if(rs.next()){
-							String nk=rs.getString("nkname");
+							nk=rs.getString("nkname");
 							String email=rs.getString("email");
 							String addrnum=rs.getString("addrnum");
-							String address=rs.getString("addrnum");
+							String address=rs.getString("address");
 							String detailaddr=rs.getString("detailaddr");
 							String mile=rs.getString("mileage");
-								%>	
+							%>	
 								<tr>
-									<td width="90px">닉네임</td>
-									<td colspan="2">
-										<%=nk %>
+									<td colspan="3" width="500px">
+										<h1><%=nk %></h1>
+									</td>
+									<td width="300px">
+								</tr>
+								<tr>
+									<td width="100px"></td>
+									<td  colspan="3">
+										<%=email %>
 									</td>
 								</tr>
 								
-								<tr>
-									<td>이메일</td>
-									<td colspan="2">
-										<input class="signupinputs" type="text" size="40"><br>
-							
-									</td>
-								</tr>
 								
-								<tr> 
-									<td>우편번호</td>
-									<td><%=addrnum%></td>
-								</tr>
-								<tr><td></td><td>&nbsp;</td></tr>
-								<tr>
-									<td>주소</td> 
-									<td colspan="2"><input class="signupinputs" type="text" size="40"><%=detailaddr%></td>
-								</tr>
-								<tr>
-									<td>성별</td>
-									
-									
-									<td>
-									<label class="loginradio"><ruby>남자<rt>&nbsp</rt></ruby>
-									  <input type="radio"  id="male"  checked="checked" value="1" >
-									  <span class="checkmark"></span>
-									</label>
-									<label class="loginradio"><ruby>여자<rt>&nbsp</rt></ruby>
-									  <input type="radio" id="female"  value="2" >
-									  <span class="checkmark"></span>
-									</label>
-									</td>
-								</tr>
-							<%} %>
-						</table> 
-					<br><br>
-					<input type="button" value="취소" class="findbutton" onclick="Signupclear();">
-					<input type="button" value="확인" class="findbutton" onclick="Signupcross('register');">
-					<br><br><br>
+						<%}%>
+						
+						<td colspan="3">
+							<%
+								try{
+									int count = dbPro.getArticleCount("글쓴이",nk,0);
+									List<BoardDataBean> articleList=null;
+									if (count > 0) {
+										articleList = dbPro.getArticles(1, 5,"글쓴이",nk,0);
+								    }
+									for (int i = 0 ; i < articleList.size(); i++) {
+										BoardDataBean article = articleList.get(i);
+										String writerid=article.getWriterid();
+										%>
+											<div>
+												<table>
+													<tr>
+														<td rowspan="2">
+															<div style="background-image:url('<%=article.getThumbnail() %>');
+																background-size:cover;background-position:center;width:250px;height:100px;">
+															</div>
+														</td>
+														<td width="250px"><%=article.getTitle() %></td>
+													</tr>
+													<tr>
+														<td></td>
+													</tr>
+												</table>
+											</div>
+										<%
+									}
+								}catch(Exception e){
+									e.printStackTrace();
+								}
+							%>
+						</td>
+						<td></td>
+					</table>
 				</center>
 			</form>
 		</div>

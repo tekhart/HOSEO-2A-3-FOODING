@@ -20,35 +20,43 @@
 <body id="body">
 
 <%@include file="../general_included/topbar.jsp"%>
-
 <center>
 
 
 <div id="slidediv">
-	
-    
+<%
+int pageSize = 3;
+String pageNum="1";
+int currentPage = 1;
+int fame=1;
+int startRow = (currentPage - 1) * pageSize + 1;
+int endRow = currentPage * pageSize;
+int count = 0;
+int number = 0;
+List<BoardDataBean> articleList = null;
+foodingBean dbPro = foodingBean.getInstance();
+foodingBean foodingbean = new foodingBean();
+
+        articleList = dbPro.getArticles(startRow, pageSize,fame);
+
+for (int i = 0 ; i < articleList.size(); i++) {
+	   BoardDataBean article = articleList.get(i);
+	   String writerid=article.getWriterid();%>
+
+
     <div class="slideshow">
-
-		<div class="mySlides fade">
-  			<img src="../img/cake-1914463_1920.jpg" style="width:1880px; height:600px;">
+<a href="../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>">
+		<div class="mySlides fade"style=" cursor: pointer;" >
+  			<img src="<%=article.getThumbnail() %>" style="width:1880px; height:600px;">
   			<div class="slide-text"><br><br>
-  			겨울느낌의 초코 파이
-    	  	</div>
-		</div>
-
-		<div class="mySlides fade">
-  			<img src="../img/egg-sandwich-2761894_1920.jpg"" style="width:1880px; height:600px;">
-  			<div class="slide-text"><br><br>
-  			계란과 토마토마토 토스트스트
+  			<%= article.getTitle()%>
        		</div>
 		</div>
-
-		<div class="mySlides fade">
-  			<img src="../img/cupcakes-1850628_1920.jpg" style="width:1880px; height:600px;">
-  			<div class="slide-text"><br><br>
-  			예쁜 컵케잌과 말랑말랑 마쉬멜롱
-        	</div>
-		</div>
+		</a>
+<%
+}
+%>
+		
 
 	</div>
     
@@ -62,7 +70,7 @@
 	</div>
 
     <script>
-        var slideIndex = 1;
+        var slideIndex = 0;
         showSlides(slideIndex);
         timeoutslide();
         
@@ -71,7 +79,7 @@
         }
 		function timeoutslide(){
 	        showSlides(slideIndex);
-	       setTimeout(timeoutslide, 5000); 
+	       setTimeout(timeoutslide, 4000); 
         }
 
         function currentSlide(n) {

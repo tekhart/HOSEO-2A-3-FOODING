@@ -5,6 +5,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.io.*"%>
 
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <%
 String realFolder = "";//웹 어플리케이션상의 절대 경로
 
@@ -68,6 +69,6 @@ try{
 %>
 
 <script type="text/javascript">
-       window.opener.sendingthumb('../img/uploaded/<%=filename%>');
+       window.opener.sendingthumb('../img/product/<%=filename%>');
        window.close();
 </script>
