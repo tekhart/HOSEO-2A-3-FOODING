@@ -137,23 +137,8 @@
 		<div class="writetitle1">
 			재료구매
 		</div>
-		<br><br><br>
-		<table style="width:1300px; margin:auto; text-align:center;">
-			<tr>
-				<td><img src="../img/fork.png" width="30px" height="30px"></td>
-				<td>과일</td>
-				<td>|</td>
-				<td>채소</td>
-				<td>|</td>
-				<td>정육/계란</td>
-				<td>|</td>
-				<td>수산물/건어물</td>
-				<td>|</td>
-				<td>주방가전</td>
-				<td>|</td>
-				<td>냄비/프라이팬</td>
-			</tr>
-		</table>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+		<%@include file="sidemenu2.jsp"%>
 		
 		<br><br><br><br><br> 
 		

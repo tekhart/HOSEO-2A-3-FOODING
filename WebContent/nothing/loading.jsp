@@ -214,7 +214,7 @@ body{
 </style>
 
 </head>
-<body>
+<body onload="javascript:window_onload()">
 <div class="container">
   <div class="circle"></div>
   <div class="square"></div>
@@ -222,5 +222,17 @@ body{
   <div class="logo">FOODING</div>
 <div class="shadow"></div>
 </div>
+
+<script>
+function window_onload(){
+
+    setTimeout('go_url()',7000)
+
+}
+    function go_url(){
+
+    location.href="jumunok.jsp"
+    }
+</script>
 </body>
 </html>

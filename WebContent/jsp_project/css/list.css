@@ -762,34 +762,16 @@ a:active {
 
 
 /*샵 메뉴*/
-#apsb{
-background-color:#9e9e9e;
-color: white;
+#apsb, #wofy, #ehrn{
+background-color:#ffa042;
+color: #ffffff;
 padding:15px;
 }
-#wofy{
-background-color:#9e9e9e;
-color: white;
-padding:15px;
-}
-#ehrn{
-background-color:#9e9e9e;
-color: white;
-padding:15px;
-}
-#apsb2{
-background-color:#e6e6e6;
-color: #616161;
+
+#apsb2, #wofy2, #ehrn2{
+background-color:#f7f7f7;
+color: #bdbdbd;
 padding:5px;
 }
-#wofy2{
-background-color:#e6e6e6;
-color: #616161;
-padding:5px;
-}
-#ehrn2{
-background-color:#e6e6e6;
-color: #616161;
-padding:5px;
-}
+
 /* 샵 메뉴 끝 */

@@ -16,9 +16,9 @@ body {
 float:left;
   height: 1250px;
   width: 200px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
-  top: 0;
+  top: 150px;
   left: 0;
   background-color: white;
   overflow-x: hidden;
@@ -87,26 +87,26 @@ float:left;
     <i class="fa fa-caret-down"></i>
   </button>
   <div id="apsb2">
-    <a href="#">상점 메인</a>
+    <a href="main.jsp">상점 메인</a>
     <a href="#">내 포인트</a>
     <a href="#">장바구니</a>
   </div>
   
   
-  <button class="dropdown-btn" id="wofy">재료 
+ <button class="dropdown-btn" id="wofy" >재료 
     <i class="fa fa-caret-down"></i>
   </button>
   <div id="wofy2">
-<a href="">과일</a> 
-<a href="">채소 </a>
-<a href="">축산/계란</a> 
-<a href="">수산물/건어물</a> 
-<a href="">과자/초콜릿/시리얼</a> 
-<a href="">면/통조림/가공식품</a> 
-<a href="">가루/조미료/오일</a> 
-<a href="">장/소스/드레싱/식초</a> 
-<a href="">유제품/아이스크림</a> 
-<a href="">냉장/냉동/간편식</a>
+<a href="main.jsp?productType=1">과일</a> 
+<a href="main.jsp?productType=2">채소 </a>
+<a href="main.jsp?productType=3">축산/계란</a> 
+<a href="main.jsp?productType=4">수산물/건어물</a> 
+<a href="main.jsp?productType=5">과자/초콜릿/시리얼</a> 
+<a href="main.jsp?productType=6">면/통조림/가공식품</a> 
+<a href="main.jsp?productType=7">가루/조미료/오일</a> 
+<a href="main.jsp?productType=8">장/소스/드레싱/식초</a> 
+<a href="main.jsp?productType=9">유제품/아이스크림</a> 
+<a href="main.jsp?productType=10">냉장/냉동/간편식</a>
  
   </div>
   
@@ -114,15 +114,15 @@ float:left;
     <i class="fa fa-caret-down"></i>
   </button>
   <div id="ehrn2">
-<a href="">주방가전</a> 
-<a href="">냄비/프라이팬</a> 
-<a href="">칼/도마</a> 
-<a href="">테이블웨어</a> 
-<a href="">밀폐용기</a> 
-<a href="">주방수납/정리</a> 
-<a href="">주방조리도구</a> 
-<a href="">주방잡화</a> 
-<a href="">일회용품</a>
+<a href="main.jsp?productType=11">주방가전</a> 
+<a href="main.jsp?productType=12">냄비/프라이팬</a> 
+<a href="main.jsp?productType=13">칼/도마</a> 
+<a href="main.jsp?productType=14">테이블웨어</a> 
+<a href="main.jsp?productType=15">밀폐용기</a> 
+<a href="main.jsp?productType=16">주방수납/정리</a> 
+<a href="main.jsp?productType=17">주방조리도구</a> 
+<a href="main.jsp?productType=18">주방잡화</a> 
+<a href="main.jsp?productType=19">일회용품</a>
   </div>
    
 </div>
