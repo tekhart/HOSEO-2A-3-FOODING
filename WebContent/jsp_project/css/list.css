@@ -438,9 +438,10 @@ a:active {
   
 }
 
-.price {
+.product_price_html {
   color: grey;
   font-size: 22px;
+  height:58px;
 }
 
 .card button {
