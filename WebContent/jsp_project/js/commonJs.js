@@ -1,7 +1,7 @@
 var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
 var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;  
-var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{1,50}).{8,50}$/;
 
 function sendingaddr(addrnum,address){
 	register.addrnum.value=addrnum;
