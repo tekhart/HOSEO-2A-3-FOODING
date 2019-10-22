@@ -43,7 +43,7 @@
 		<div class="sideleft"></div><a href="#" > 주문조회</a>
 		<div class="sideleft"></div><a href="../mypages/shopbasket.jsp" > 장바구니</a>
 </div>
-
+ 
 	<center>
 
 		<br>
