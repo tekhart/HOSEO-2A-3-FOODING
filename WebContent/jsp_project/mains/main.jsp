@@ -105,27 +105,11 @@ for (int i = 0 ; i < articleList.size(); i++) {
 
 
 <div id="bottomdiv">
-
 <center>
-최신 레시피<br>
-    	<!-- 
-    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-    	<td class="line" rowspan="2"><img src="../img/pizza-3007395_420.jpg" class="adad"></td><td  class="line" height="80px">팬케이크 먹기</td></tr>
-    	<tr><td class="line"> heyjin </td><td></td><td class="line">sol</td></tr>
-    	 
-    	<tr><td class="line" rowspan="2"><img src="../img/salad-2756467_420.jpg" class="adad"></td><td class="line" height="80px">샐러드 만들기</td>
-    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-    	<td class="line" rowspan="2"><img src="../img/top-view-1248955_420.jpg" class="adad"></td><td  class="line" height="80px">샐러드 먹기</td></tr>
-    	<tr><td class="line"> tokki </td><td></td><td class="line">height</td></tr>
+
     	
-    	<tr><td class="line" rowspan="2"><img src="../img/casserole-dish-2776735_420.jpg" class="adad"></td><td class="line" height="80px">맛있는 토마토 피자 만들기</td>
-    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-    	<td class="line" rowspan="2"><img src="../img/cereal-563796_420.jpg" class="adad"></td><td  class="line" height="80px">맛없는 토마토 피자 만들기</td></tr>
-    	<tr><td class="line"> asasasas </td><td></td><td class="line">14ssss</td></tr> -->
-    	
-        
-       
-    
+    	<table id="bottable" cellspacing="0px">
+    	<tr><th class="line" colspan="5"><font size="40px"><center>오늘의 레시피<br><br></center></font></th></tr>
 				<%
 		int pageSize = 8;
 		String pageNum="1";
@@ -140,13 +124,57 @@ for (int i = 0 ; i < articleList.size(); i++) {
 		
 		        recArticleList = recDbPro.getArticles(startRow, pageSize,fame);
 		
-		for (int i = 0 ; i < recArticleList.size(); i++) {
-			BoardDataBean recarticle = recArticleList.get(i);
-			   String writerid=recarticle.getWriterid();
+		for (int i = 0 ; i < recArticleList.size(); i=i+2) {
+			BoardDataBean recarticle1 = recArticleList.get(i);
+			BoardDataBean recarticle2 = recArticleList.get(i+1);
+			  
 		%>
-			<div class="card1">
+			<tr>
+			
+				<td class='line' rowspan='2' width='300px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+					<img src="<%=recarticle1.getThumbnail() %>" width='300px' class='adad' >
+				</td>
+				<td class='line' height='80px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+					<p class='pline'><%=recarticle1.getTitle() %></p>
+				</td>
+				
+	    		<td>
+	    			&nbsp&nbsp&nbsp
+	    		</td>
+	    		<td class='line' rowspan='2' width='300px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+   					<img src="<%=recarticle2.getThumbnail() %>" width='300px' class='adad'>
+   				</td>
+   				<td class='line' height='80px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+   					<p class='pline'><%=recarticle2.getTitle() %></p>
+   				</td>
+			</tr>
+    		<tr>
+    			<td class='line' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+    				<%=recarticle1.getWriterid() %>
+    			</td>
+   				<td>
+    			</td>
+   				<td class='line' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+    				<%=recarticle2.getWriterid() %>
+    			</td>
+   			</tr>
+			<%} %>
+			</table>
+			<%-- BoardDataBean recarticle = recArticleList.get(i);
+			thumbnail[i]=recarticle.getThumbnail();	   
+			title[i]=recarticle.getTitle();
+			wrid[i]=recarticle.getWriterid();
+		
+			   --%>
+			   
+    	<%--
+    		out.println("<tr><td class='line' rowspan='2' width='300px' height='300px'><img src="+thumbnail[0]+" width='300px' class='adad' ></td><td class='line' height='80px' height='80px'>"+title[0]+"</td>");
+	    	out.println("<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>");
+    		out.println("<tr><td class='line' rowspan='2'></td><img src="+thumbnail[1]+" width='300px' class='adad'><td class='line' height='80px'>"+title[1]+"</td>");
+    		out.println("<tr><td class='line'>"+wrid[0]+"</td><td></td><td class='line'>"+wrid[1]+"</td></tr>");
+    	--%>
+	<%--<div class="card1">
 			<a href="../recipes/content.jsp?num=<%=recarticle.getNum()%>&pageNum=<%=currentPage%>&fame=<%=0%>">
-			<br>
 			<div style="background-image:url('<%=recarticle.getThumbnail() %>');background-size:290px;width:290px;height:163px;"></div>
 			<br><br>
 			<table>
@@ -165,24 +193,10 @@ for (int i = 0 ; i < articleList.size(); i++) {
 				</tr>
 			</table>
 			</a>
-		</div><%} %>
-			<%-- BoardDataBean recarticle = recArticleList.get(i);
-			thumbnail[i]=recarticle.getThumbnail();	   
-			title[i]=recarticle.getTitle();
-			wrid[i]=recarticle.getWriterid();
-		
-			   --%>
-			   
-    	<%--
-    		out.println("<tr><td class='line' rowspan='2' width='300px' height='300px'><img src="+thumbnail[0]+" width='300px' class='adad' ></td><td class='line' height='80px' height='80px'>"+title[0]+"</td>");
-	    	out.println("<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>");
-    		out.println("<tr><td class='line' rowspan='2'></td><img src="+thumbnail[1]+" width='300px' class='adad'><td class='line' height='80px'>"+title[1]+"</td>");
-    		out.println("<tr><td class='line'>"+wrid[0]+"</td><td></td><td class='line'>"+wrid[1]+"</td></tr>");
-    	--%>
-
+		</div> --%>
     </center>
-
 </div>
+
 
 
 

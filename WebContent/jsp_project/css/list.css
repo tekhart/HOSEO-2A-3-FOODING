@@ -136,7 +136,13 @@ a:active {
 .line{
  	border-bottom:1px solid #ffbb00;
  	}
-
+.pline{
+	text-overflow:ellipsis;
+ 	white-space: nowrap;
+ 	word-wrap:normal;
+ 	overflow:hidden;
+ 	width:300px;
+}
 .nogul{margin:auto;}
 
 .listcolor{
