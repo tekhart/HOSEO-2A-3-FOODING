@@ -78,8 +78,9 @@
 		<title>전체 레시피, FOODING</title>
 	<%}%>
 	<script type="text/javascript">
-		function GoProfileOther(id){
-			
+		function GoOtherProfile(id){
+			document.WannaGoOthersProfile.findId.value=id;
+			document.WannaGoOthersProfile.submit();
 		}
 	</script>
 </head>
@@ -183,12 +184,12 @@
 						</div>
 						<table width="100%">
 							<tr>
-								<td class="writerlong" style="text-align:left;">
+								<td class="writerlong" 
+										style="text-align:left;"
+										onclick="GoOtherProfile('<%=article.getWriterid()%>')">
 									<%=foodingbean.findnkname(writerid)%></td>
 								<td style="align:right;" 
-										onclick="location.href='content.jsp?num=<%=article.getNum()%>
-										&pageNum=<%=currentPage%>
-										&fame=<%=fame%>';">
+										onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>';">
 									<%=article.getReadcount()%> view
 								</td>
 							</tr>
@@ -264,7 +265,10 @@
 	%>
 	
 	</div>
-<%@include file="../general_included/footer.jsp"%>
-<br><br>
+	<form action="../mypages/checkstatus.jsp" method="POST" name="WannaGoOthersProfile">
+		<input type="hidden" name="findId">
+	</form> 
+	<%@include file="../general_included/footer.jsp"%>
+	<br><br>
 </body>
 </html>
