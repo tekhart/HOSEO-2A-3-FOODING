@@ -33,14 +33,9 @@
 <div id="maindiv">
 <div class="writetitle1">
 장바구니</div>
+	<%@include file="sidemenu.jsp"%> 
+	
 
-	<div class="sidebar">
-		<div class="sideleft"></div><a href="../mypages/updatepage.jsp" > 개인정보 관리</a>
-		<div class="sideleft"></div><a href="#" >포인트 관리</a>
-		<div class="sideleft"></div><a href="#" >게시글 관리</a>
-		<div class="sideleft"></div><a href="#" > 주문조회</a>
-		<div class="sideleft"></div><a href="../mypages/shopbasket.jsp" > 장바구니</a>
-	</div>
 
 	<center>
  
@@ -63,6 +58,34 @@
 				        
 				      
 				        <tbody class="list-tabletd">
+				        <tr>
+				          <td width="10"  style="border-bottom:4px solid orange;">
+				          		<label><input type="checkbox" value="prodelete1"></label></td> 
+				          <td width="150" style="border-bottom:4px solid orange;">
+					          	<div class="bak_item">
+									<div class="pro_img"></div>
+									<div class="pro_nt"></div>
+					          		<img src="../img/pizza-3007395_420.jpg" width="200" height="150">
+				          		</div></td>
+				          <td width="150" style="border-bottom:4px solid orange;">피자</td>
+				          <td width="150" style="border-bottom:4px solid orange;">19,900원</td>
+				          <td width="150" style="border-bottom:4px solid orange;">	
+				          		<div>
+				          			<input type="number" value="1" name="ea" size="2" min="1" max="100" class="proquantity"  
+				          			>
+				          		<!-- <span>
+				          			<input type="button" class="img-button2" >
+				          			<input type="button" class="img-button3" >
+				          		</span> -->
+				          		</div>
+				          </td>
+				          <td width="100" style="border-bottom:4px solid orange;" img src="../img/fork.jpg">20</td>
+				          <td width="150" style="border-bottom:4px solid orange;">2500원</td>
+				          <td width="150" style="border-bottom:4px solid orange;">22,400원</td>
+					          <td width="50" style="border-bottom:4px solid orange;">
+					           		<input type="button" class="img-button" >
+							  </td>
+				        </tr>
 				        <tr>
 				          <td width="10"  style="border-bottom:4px solid orange;">
 				          		<label><input type="checkbox" value="prodelete1"></label></td> 

@@ -18,7 +18,7 @@ float:left;
   width: 200px;
   position: absolute;
   z-index: 1;
-  top: 150px;
+  top: 300px;
   left: 0;
   background-color: white;
   overflow-x: hidden;
