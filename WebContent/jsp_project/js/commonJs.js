@@ -2,18 +2,19 @@ var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
 var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;  
 var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{1,50}).{8,50}$/;
+var register=register;
 
 function sendingaddr(addrnum,address){
 	register.addrnum.value=addrnum;
 	register.address.value=address;
-	document.register.detailaddr.focus();
+	register.detailaddr.focus();
 }
 function AllcheckNotice(){
 	Nknamecheck();
 	Idcheck();
 	Emailcheck();
 	Passwdcheck();
-	document.register.nkname.focus();
+	register.nkname.focus();
 }
 
 function Nknamecheck() {
@@ -143,11 +144,10 @@ function Repasswdcheck() {
 
 function ZipPopup() { 
 	window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
-	document.register.detailaddr.focus();
+	register.detailaddr.focus();
 }
 	
 function Signupcross(){	
-	var register=document.register;
 
 		if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
 			alert("닉네임을 확인해주세요");
@@ -201,7 +201,6 @@ function Signupcross(){
 }
 
 function Signupclear(){
-	var register=document.register;
 	
 	register.nkname.value="";
 	register.id.value="";

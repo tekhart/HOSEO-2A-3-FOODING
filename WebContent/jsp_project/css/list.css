@@ -815,7 +815,7 @@ padding:5px;
 
 .container3 {
   width:1140px;
-  height:300px;
+  height:400px;
   float:center;
   background-color: #FAE4AD;
   padding: 5px 20px 15px 20px;
@@ -891,7 +891,6 @@ padding:5px;
   display: none;
   padding: 6px 12px;
   border-top: none;
-  float:left;
 }
 
 .tdpayment{
@@ -916,4 +915,9 @@ padding:5px;
   padding: 6px 12px;
   border-top: none;
   float:right;
+}
+
+.tablinks{
+	float:left;
+	
 }
