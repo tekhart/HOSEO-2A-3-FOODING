@@ -78,7 +78,9 @@
 		<title>전체 레시피, FOODING</title>
 	<%}%>
 	<script type="text/javascript">
-	
+		function GoProfileOther(id){
+			
+		}
 	</script>
 </head>
 <body id="body">
@@ -158,30 +160,37 @@
 						BoardDataBean article = articleList.get(i);
 						String writerid=article.getWriterid();
 				%>
-					<div class="card1" style=" cursor: pointer;" onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>';">
-						<table width="100%">
-							<tr>
-								<td	style="text-align:left;">
-									<%= sdf.format(article.getReg_date())%></td><td style="text-align:right;">#<%=article.getContury()%> #<%=article.getFoodtype()%>
-								</td>
-							</tr>
-						</table>
-						<br>
-						<div style="background-image:url('<%=article.getThumbnail() %>');background-size:cover;background-position:center;width:290px;height:163px;"></div>
-						<br><br>
-						<table>
-							<tr><td	class="titlelong">
-									<% if(article.getReadcount()>=50){%>
-									<img src="../img/fire1.png" width="20px" height="25px" align="middle">
-								<%}%>
-								<%=article.getTitle()%>
-							</td></tr>
-						</table>
+					<div class="card1" style=" cursor: pointer;">
+						<div onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>';">
+							<table width="100%">
+								<tr>
+									<td	style="text-align:left;">
+										<%= sdf.format(article.getReg_date())%></td><td style="text-align:right;">#<%=article.getContury()%> #<%=article.getFoodtype()%>
+									</td>
+								</tr>
+							</table>
+							<br>
+							<div style="background-image:url('<%=article.getThumbnail() %>');background-size:cover;background-position:center;width:290px;height:163px;"></div>
+							<br><br>
+							<table>
+								<tr><td	class="titlelong">
+										<% if(article.getReadcount()>=50){%>
+										<img src="../img/fire1.png" width="20px" height="25px" align="middle">
+									<%}%>
+									<%=article.getTitle()%>
+								</td></tr>
+							</table>
+						</div>
 						<table width="100%">
 							<tr>
 								<td class="writerlong" style="text-align:left;">
 									<%=foodingbean.findnkname(writerid)%></td>
-								<td style="align:right;"><%=article.getReadcount()%> view</td>
+								<td style="align:right;" 
+										onclick="location.href='content.jsp?num=<%=article.getNum()%>
+										&pageNum=<%=currentPage%>
+										&fame=<%=fame%>';">
+									<%=article.getReadcount()%> view
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -229,7 +238,8 @@
 				%>
 			</center>
 		</div>
-	</div> 
+	</div>
+	
 	<div id="recent">
 	<%
 	String rc=request.getContextPath();
