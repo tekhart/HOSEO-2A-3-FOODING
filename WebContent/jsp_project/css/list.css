@@ -814,9 +814,9 @@ padding:5px;
 }
 
 .container3 {
-  width:1140px;
+  width:570px;
   height:400px;
-  float:center;
+  float:left;
   background-color: #FAE4AD;
   padding: 5px 20px 15px 20px;
   border: 2px solid #ffbb00;
@@ -888,6 +888,7 @@ padding:5px;
 
 /* Style the tab content */
 .tabcontent {
+  width:500px;
   display: none;
   padding: 6px 12px;
   border-top: none;
@@ -895,7 +896,7 @@ padding:5px;
 
 .tdpayment{
 	width:130px;
-	padding:18 0 0 0px;
+	padding:15 0 0 0px;
 	font-size:17pt;
 	font-align:left;
 	font-weight:none;
@@ -911,13 +912,71 @@ padding:5px;
 }
 
 .tabcontent2 {
-  display: none;
+  width:400px;
   padding: 6px 12px;
   border-top: none;
-  float:right;
+
 }
 
 .tablinks{
 	float:left;
+	font-size:16pt;
 	
+}
+
+.cont3table{
+	width:1000px;
+	float:left;
+	
+}
+
+.headh3{
+	width:500px;
+	font-size:18pt;
+	 padding: 15 0 0 10px;
+}
+
+.headh4{
+	width:500px;
+	font-size:18pt;
+	 padding: 15 0 0 10px;
+}
+
+.tabcontent3 {
+  width:1000px;
+  padding: 6px 400px;
+  border-top: none;
+  float:left;
+
+}
+
+.spacetb1{
+	width:500px; 
+	float:left;
+	
+	
+}
+.spacetb2{
+	width:400px;
+	height:400px;
+	float:right;
+	margin-left:550px;
+	
+}
+
+.btpay{
+		width: 120px;
+		height:50px;
+		font-size:18px;
+		font-weight:400;
+		color:white;
+		background-color:#ffbb00;
+		border-color:#ffbb00;
+		border-width:0.5px;
+		border-style:solid;
+		border-radius:5px;
+		margin-top:25px;
+		margin-left:200px; 
+		cursor: pointer;
+		
 }
