@@ -121,9 +121,11 @@ function openCity(evt, cityName) {
 				<tr>
 					<td colspan="2" align="center" style="padding-left:275px;">
 						<div class="container3">
-		          		  <h3 align="left">결제 수단</h3> 	
+						
+						<table><tr><td>
+		          		  <h3 align="left">결제 수단</h3></td></tr><tr><td> 	
 		          		  		<div style="padding-top:20px;"></div>
-		          		  			<div style="padding-bottom:30px; border-bottom:1px solid black;">
+		          		  			<div style="padding-bottom:10px; width:500px; float:left; border-bottom:1px solid black;">
 			          		  			<span style="float:left;">
 				          		  			<input type="radio" name="chk_info" value="신용카드" class="tablinks" onclick="openCity(event, 'creditcard')">신용카드
 				          		  		</span>
@@ -136,7 +138,9 @@ function openCity(evt, cityName) {
 										 <h3>신용카드</h3>
 										 <p>주문후 72시간 이내에 무통장입금확인 되지 않으면 자동으로 주문최소됩니다.</p>
 									</div>
-											
+									
+									</td></tr><tr><td>
+								<tr><td>		
 									<div id="Bank Deposit" class="tabcontent">
 										<table>
 												<tr>
@@ -227,7 +231,8 @@ function openCity(evt, cityName) {
 															<option value='30'>30일</option>
 															<option value='31'>31일</option>
 														</select>
-													</tr>
+													</td></tr>
+												
 										</table>	
 											
 											<div id="finamount" class="tabcontent2">
@@ -236,11 +241,10 @@ function openCity(evt, cityName) {
 														<h3>최종금액</h3></td></tr>
 													<tr><td><p>55,000원</p></td></tr>
 												</table>
-											</div>
-										
-											
-											
-												
+											</div></div></td></tr></table>
+									</div>
+								</tr>
+							</div>		
 			</table>
 		</div>	
 
