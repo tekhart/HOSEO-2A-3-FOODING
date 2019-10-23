@@ -86,6 +86,34 @@
 					           		<input type="button" class="img-button" >
 							  </td>
 				        </tr>
+				        <tr>
+				          <td width="10"  style="border-bottom:4px solid orange;">
+				          		<label><input type="checkbox" value="prodelete1"></label></td> 
+				          <td width="150" style="border-bottom:4px solid orange;">
+					          	<div class="bak_item">
+									<div class="pro_img"></div>
+									<div class="pro_nt"></div>
+					          		<img src="../img/pizza-3007395_420.jpg" width="200" height="150">
+				          		</div></td>
+				          <td width="150" style="border-bottom:4px solid orange;">피자</td>
+				          <td width="150" style="border-bottom:4px solid orange;">19,900원</td>
+				          <td width="150" style="border-bottom:4px solid orange;">	
+				          		<div>
+				          			<input type="number" value="1" name="ea" size="2" min="1" max="100" class="proquantity"  
+				          			>
+				          		<!-- <span>
+				          			<input type="button" class="img-button2" >
+				          			<input type="button" class="img-button3" >
+				          		</span> -->
+				          		</div>
+				          </td>
+				          <td width="100" style="border-bottom:4px solid orange;" img src="../img/fork.jpg">20</td>
+				          <td width="150" style="border-bottom:4px solid orange;">2500원</td>
+				          <td width="150" style="border-bottom:4px solid orange;">22,400원</td>
+					          <td width="50" style="border-bottom:4px solid orange;">
+					           		<input type="button" class="img-button" >
+							  </td>
+				        </tr>
 				      </tbody>
 				    </table>
 

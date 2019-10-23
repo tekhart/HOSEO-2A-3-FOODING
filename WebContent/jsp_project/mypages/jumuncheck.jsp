@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%request.setCharacterEncoding("UTF-8"); %>
+<%@page import="DBBean.foodingBean" %>
+
+<meta charset="UTF-8">
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,11 +76,10 @@ padding:100px;
 	border-bottom:1px solid #eaeaea;
 }
 
-.ok[value=""] { color: red; }
 
 </style>
 </head>
-<body>
+<body  id="body">
 <%@include file="../general_included/topbar.jsp"%>
 
 <div id="maindiv">
@@ -96,6 +100,6 @@ padding:100px;
 </table>
 
 
-
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>
