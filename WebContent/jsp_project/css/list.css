@@ -136,7 +136,13 @@ a:active {
 .line{
  	border-bottom:1px solid #ffbb00;
  	}
-
+.pline{
+	text-overflow:ellipsis;
+ 	white-space: nowrap;
+ 	word-wrap:normal;
+ 	overflow:hidden;
+ 	width:300px;
+}
 .nogul{margin:auto;}
 
 .listcolor{
@@ -151,7 +157,13 @@ a:active {
 	height:900px;
 	background-color:#F2F2F2;
 }
-	
+	body,ul {
+
+margin: 0;
+
+padding: 0;
+
+}
 
 @CHARSET "UTF-8";
 
@@ -619,7 +631,7 @@ a:active {
  	
  	
 .sidebar {
-  height: 600px;
+  height: 500px;
   width: 310px;
   position: absolute;
   z-index: 1;
