@@ -43,14 +43,15 @@ for (int i = 0 ; i < articleList.size(); i++) {
 
 
     <div class="slideshow">
-	<a href="../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=<%=slideCurrentPage%>&fame=<%=slideFame%>">
+	<gg href="javascript:;"
+	onClick="javascript:location.href='../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=<%=slideCurrentPage%>&fame=<%=slideFame%>'">
 		<div class="mySlides fade"style=" cursor: pointer;" >
   			<img src="<%=article.getThumbnail() %>" style="width:1880px; height:600px;">
   			<div class="slide-text"><br><br>
   			<%= article.getTitle()%>
        		</div>
 		</div>
-		</a>
+		</gg>
 	</div>
     <%
 }
