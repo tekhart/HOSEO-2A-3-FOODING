@@ -15,10 +15,12 @@
 <%
 request.setCharacterEncoding("UTF-8");
 int addproductid=0;
+int addproductcount=0;
 foodingBean dbPro = foodingBean.getInstance();
 try{
 	addproductid=Integer.parseInt(request.getParameter("addproductid"));
-	dbPro.insertcartArticle(addproductid,idlogin);
+	addproductcount=Integer.parseInt(request.getParameter("addproductcount"));
+	dbPro.insertcartArticle(addproductid,addproductcount,idlogin);
 }catch(Exception e){
 	e.printStackTrace();
 }

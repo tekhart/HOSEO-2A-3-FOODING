@@ -136,7 +136,7 @@
 				document.getElementById("myModal_Price").innerHTML="[가격]<br><del>"+price+"원</del> "+price*(100-dscountrt)/100+"원";
 			}
 			$("#myModal_Thumb").css("background-image","url("+pdtthumb+")");
-			$("#myModal_toBasketBtn").attr("href","../mypages/shopDBassisting_jsp/addcart_before_showcart.jsp?addproductid="+pdtid+"");
+			inputproductcountNumber.this_is_just_for_save.value=pdtid;
 			
 			document.getElementById("myModal").style.display = "block";
 		}
@@ -150,6 +150,12 @@
 			if (event.target == document.getElementById("myModal")) {
 				document.getElementById("myModal").style.display = "none";
 			}
+		}
+		
+		function toAddCart(){
+			var pdtid=inputproductcountNumber.this_is_just_for_save.value;
+			var pdtcnt=inputproductcountNumber.inputproductCount.value;
+			location.href="../mypages/shopDBassisting_jsp/addcart_before_showcart.jsp?addproductid="+pdtid+"&addproductcount="+pdtcnt;
 		}
 	</script>
 	
@@ -202,10 +208,10 @@
 				<span class="close" onclick="CloseDetail()">&times;</span>
 				<table class="detail" style="border-spacing:0px;">
 					<tr>
-						<td rowspan="2">
+						<td rowspan="3">
 							<div id="myModal_Thumb" style="background-size:cover;width:400px;height:400px;background-position:center;"></div>
 						</td>
-						<td>
+						<td width="100%" height="150px">
 							<div id="myModal_Title"></div>
 						</td>
 					</tr>
@@ -215,15 +221,19 @@
 						</td>
 					</tr>
 					<tr>
+						<td>
+							<form name="inputproductcountNumber">
+								<input type="hidden" name="this_is_just_for_save">
+								<input type="number" value="1" name="inputproductCount" size="2" min="1" max="100" class="proquantity">
+							</form>
+						</td>
+					</tr>
+					<tr>
 						<td colspan="2" height="60px">
 							<%if(idlogin!=null){ %>
-								<a id="myModal_toBasketBtn">
-									<input type="button" class="button134" value="+ 장바구니에 추가">
-								</a>
+								<input type="button" onclick="toAddCart()" class="button134" value="+ 장바구니에 추가">
 							<%}else{ %>
-								<a href="../mains/signin.jsp">
-									<input type="button" class="button134" value="로그인을 하셔야 합니다.">
-								</a>
+								<input type="button" class="button134" value="로그인을 하셔야 합니다.">
 							<%} %>
 						</td>
 					</tr>
