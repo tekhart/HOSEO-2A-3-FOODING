@@ -6,12 +6,13 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "DBBean.productDataBean" %>
 <meta charset="UTF-8">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인정보</title>
+<title>장바구니</title>
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
@@ -24,12 +25,26 @@
 	
 }
 </style>
-
+<script>
+	<!-- 체크박스 전체선택/해제 시작-->
+	 
+	$(document).ready(function(){
+	    $("#checkall").click(function(){
+	        if($("#checkall").prop("checked")){
+	            $("input[name=chk]").prop("checked",true);
+	        }else{
+	            $("input[name=chk]").prop("checked",false);
+	        }
+	    })
+	})
+	
+<!-- 체크박스 전체선택/해제 끝-->
+</script>
 </head>
 
 <body id="body">
 <%@include file="../general_included/topbar.jsp"%>
-	 <%
+     <%
 		request.setCharacterEncoding("UTF-8");
 		List<productDataBean> articleList = null;
 		foodingBean dbPro = foodingBean.getInstance();
