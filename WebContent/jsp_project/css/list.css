@@ -1037,19 +1037,57 @@ padding:5px;
 }
 
 #forkimage{
-		width:80px;
-		height:60px;
+		width:100px;
+		height:70px;
 		float:left;
 		
 		
 }
 
-.forkspace{
-		width:80px;
-		height:60px;
-		floar:left;
-		margin-top:100px;
-		vertical-align:top;
+
+.pointsearch{
+		background-color:#ffecbb;
+		width:800px;
+		height:80px;
+		font-size:17pt;
+		margin-top:50px;
 	
+}
+
+.pointbutton{
+	background-color:white;
+	width:70px;
+	height:30px;
+	font-size:13pt;
+	border-width:0.5px;
+	border:0.5px solid #A4A4A4; 
+}
+
+
+.calendar{
+	width:150px;
+	height:30px;
+	font-size:12pt;
+	border:0.5px solid #A4A4A4; 
+}
+
+.pointtable{
+		margin-top:20px;
+		background-color:#ffecbb;
+		width:800px;
+		height:400px;
+}
+
+.pointtd{
+		display:text-cell;
+		vertical-align:middle;
+		font-size:16pt;
+}
+
+.pointtdd{
+		height:50px;
+		display:text-cell;
+		vertical-align:middle;
+		font-size:14pt;
 }
 /* 포인트관리 페이지 끝 */
