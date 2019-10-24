@@ -826,9 +826,9 @@ padding:5px;
 }
 
 .container3 {
-  width:1140px;
+  width:570px;
   height:400px;
-  float:center;
+  float:left;
   background-color: #FAE4AD;
   padding: 5px 20px 15px 20px;
   border: 2px solid #ffbb00;
@@ -900,6 +900,7 @@ padding:5px;
 
 /* Style the tab content */
 .tabcontent {
+  width:500px;
   display: none;
   padding: 6px 12px;
   border-top: none;
@@ -907,7 +908,7 @@ padding:5px;
 
 .tdpayment{
 	width:130px;
-	padding:18 0 0 0px;
+	padding:15 0 0 0px;
 	font-size:17pt;
 	font-align:left;
 	font-weight:none;
@@ -923,13 +924,169 @@ padding:5px;
 }
 
 .tabcontent2 {
-  display: none;
+  width:400px;
   padding: 6px 12px;
   border-top: none;
-  float:right;
+
 }
 
 .tablinks{
 	float:left;
+	font-size:16pt;
 	
 }
+
+.cont3table{
+	width:1000px;
+	float:left;
+	
+}
+
+.headh3{
+	width:500px;
+	font-size:18pt;
+	 padding: 15 0 0 10px;
+}
+
+.headh4{
+	width:500px;
+	font-size:18pt;
+	 padding: 15 0 0 10px;
+}
+
+.tabcontent3 {
+  width:1000px;
+  padding: 6px 400px;
+  border-top: none;
+  float:left;
+
+}
+
+.spacetb1{
+	width:500px; 
+	float:left;
+	
+	
+}
+.spacetb2{
+	width:400px;
+	height:400px;
+	float:right;
+	margin-left:550px;
+	
+}
+
+.btpay{
+		width: 120px;
+		height:50px;
+		font-size:18px;
+		font-weight:400;
+		color:white;
+		background-color:#ffbb00;
+		border-color:#ffbb00;
+		border-width:0.5px;
+		border-style:solid;
+		border-radius:5px;
+		margin-top:25px;
+		margin-left:200px; 
+		cursor: pointer;
+		
+}
+
+/* 난이도별 레시피 */
+.3div{
+	width:1200px;
+	margin:auto;
+}
+
+.rlch, .chqh, .tlaghk{
+	width:350px;
+	height:350px;
+	float:left;
+	margin-left:200px;
+	margin-top:150px;
+	font-size:40px;
+	text-align:center;
+}
+
+.ppp{
+	text-size:35px;
+}
+
+
+.rlch{
+	background-color:#f3d97e;
+}
+
+.chqh{
+	background-color:#f5ad7c;
+}
+
+.tlaghk{
+	background-color:#ff7373;
+}
+
+.rich
+
+}
+/* 결제페이지 끝 */
+
+
+
+/* 포인트관리 페이지 시작 */
+
+.row2 {
+  	width:1300px;
+  	margin:auto;
+    padding-top:80px;
+  }
+
+.forkpoint{
+		width: 800px;
+		height:300px;
+		float:center;
+		background-color:#ffbb00;
+		vertical-align:middle;
+		display:table-cell;
+		margin-top:1000px;
+	
+}
+
+.forkpoint2{
+		width: 220px;
+		height:50px;
+		font-size:20pt;
+		float:center;
+		font-weight: normal;
+		letter-spacing:3px;
+
+}
+
+.forkpoint3{
+		font-size:25pt;
+		width: 300px;
+		height:100px;
+		float:center;
+		background-color:white;
+		vertical-align:middle;
+		display:table-cell;
+	
+}
+
+#forkimage{
+		width:80px;
+		height:60px;
+		float:left;
+		
+		
+}
+
+.forkspace{
+		width:80px;
+		height:60px;
+		floar:left;
+		margin-top:100px;
+		vertical-align:top;
+	
+}
+/* 포인트관리 페이지 끝 */

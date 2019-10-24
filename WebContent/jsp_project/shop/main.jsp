@@ -136,6 +136,7 @@
 				document.getElementById("myModal_Price").innerHTML="[가격]<br><del>"+price+"원</del> "+price*(100-dscountrt)/100+"원";
 			}
 			$("#myModal_Thumb").css("background-image","url("+pdtthumb+")");
+			inputproductcountNumber.this_is_just_for_save.value=pdtid;
 			
 			document.getElementById("myModal").style.display = "block";
 		}
@@ -150,6 +151,12 @@
 				document.getElementById("myModal").style.display = "none";
 			}
 		}
+		
+		function toAddCart(){
+			var pdtid=inputproductcountNumber.this_is_just_for_save.value;
+			var pdtcnt=inputproductcountNumber.inputproductCount.value;
+			location.href="../mypages/shopDBassisting_jsp/addcart_before_showcart.jsp?addproductid="+pdtid+"&addproductcount="+pdtcnt;
+		}
 	</script>
 	
 </head>
@@ -158,11 +165,7 @@
 		<div class="writetitle1">
 			재료구매&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="main.jsp?isTool=2">재료</a>|<a href="main.jsp?isTool=1">도구</a>
 		</div>
-		<br><br><br><br><br><br><br><br><br><br><br><br>
 		<%@include file="sidemenu2.jsp"%>
-		
-		<br><br><br><br><br> 
-		
 		
 		<% if (count == 0) { %>	
 				<table align="center" class="nogul">
@@ -181,22 +184,19 @@
 				<%	
 					for (int i = 0 ; i < articleList.size(); i++) {
 						productDataBean article = articleList.get(i);
-						int productId=Integer.parseInt(article.getProductId());
-						int price=Integer.parseInt(article.getPrice());
-						int discountrate=Integer.parseInt(article.getDiscountRate());
-						int realprice=price*(100-discountrate)/100;
+						int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
 				%>
 				<div class="card">
 					<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:112px;"></div>
 					<p><%=article.getProductName() %></p>
-					<%if(discountrate==0){ %>
-						<div class="product_price_html"><%=price%>원</div>
+					<%if(article.getDiscountRate()==0){ %>
+						<div class="product_price_html"><%=article.getPrice()%>원</div>
 					<%}else{ %>
-						<div class="product_price_html"><del><%=price%>원</del>(-<%=discountrate%>%)<br>
+						<div class="product_price_html"><del><%=article.getPrice()%>원</del>(-<%=article.getDiscountRate()%>%)<br>
 							ㄴ><%=realprice%>원</div>
 					<%}%>
 					<p><button id="myBtn" 
-						onclick="ShowDetail(<%=productId%>,'<%=article.getProductName()%>',<%=price%>,<%=discountrate%>,'<%=article.getProductThumb()%>')">자세히 보기</button></p>
+						onclick="ShowDetail(<%=article.getProductId()%>,'<%=article.getProductName()%>',<%=article.getPrice()%>,<%=article.getDiscountRate()%>,'<%=article.getProductThumb()%>')">자세히 보기</button></p>
 				</div>
 		 	<%}%>
 		 	</div>
@@ -211,7 +211,7 @@
 						<td rowspan="3">
 							<div id="myModal_Thumb" style="background-size:cover;width:400px;height:400px;background-position:center;"></div>
 						</td>
-						<td>
+						<td width="100%" height="150px">
 							<div id="myModal_Title"></div>
 						</td>
 					</tr>
@@ -221,7 +221,21 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" style="border-bottom:4px solid white;"><input type="button" class="button134" value="+ 장바구니에 추가"></td>
+						<td>
+							<form name="inputproductcountNumber">
+								<input type="hidden" name="this_is_just_for_save">
+								<input type="number" value="1" name="inputproductCount" size="2" min="1" max="100" class="proquantity">
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" height="60px">
+							<%if(idlogin!=null){ %>
+								<input type="button" onclick="toAddCart()" class="button134" value="+ 장바구니에 추가">
+							<%}else{ %>
+								<input type="button" class="button134" value="로그인을 하셔야 합니다.">
+							<%} %>
+						</td>
 					</tr>
 				</table>
 			</div>

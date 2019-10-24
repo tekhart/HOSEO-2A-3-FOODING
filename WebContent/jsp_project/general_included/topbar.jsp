@@ -13,6 +13,7 @@
 <script type="text/javascript">	
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+	
 </script>
 		
 		</head><body>
@@ -48,7 +49,7 @@
   	</table>
 </div>
 
-<div id="menudiv" style=text-align:center;>
+<div id="menudiv" style="text-align:center;height:120px;">
 	<table width=100% height=120px>
     	<tr>
     		<td width=100 nowrap>
