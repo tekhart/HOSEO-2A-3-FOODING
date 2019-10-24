@@ -109,6 +109,13 @@
 				slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
 			}
 			}
+			function setCookie(cookie_name,cookie_value,days){
+				var exdate= new Date();
+				exdate.setDate(exdate.getDate()+days);
+				
+				var cookie_value = escape(value) + ((days == null) ? '' : ';    expires=' + exdate.toUTCString());
+				document.cookie=cookie_name+'='+cookie.value;
+			}
 		}
 	</script>
 	<script type="text/javascript">
@@ -133,14 +140,9 @@
 			document.WannaGoOthersProfile.findId.value=id;
 			document.WannaGoOthersProfile.submit();
 		}
-		
 	</script>
 </head>
-
-<body id="body">
-	<%@include file="../general_included/topbar.jsp"%>
-	<div id="maindiv2">
-		<%
+<%
 			try{
 				int num = Integer.parseInt(request.getParameter("num"));
 				String pageNum = request.getParameter("pageNum");
@@ -166,18 +168,18 @@
 				}
 				
 		%>
+<body id="body" onload="setCookie(<%=article.getNum() %>,<%=article.getTitle() %> ,3*60*60)"><%--세션 3시간임 --%>
+	<%@include file="../general_included/topbar.jsp"%>
+	<div id="maindiv2">
+		
 			<%
 				String rc=request.getContextPath();
-				
 				String recipe="recipe";
 				int rcnum = article.getNum();
 				String code=String.valueOf(rcnum);
 				String rccode = recipe.concat(code);
 				String rcname=article.getTitle();
-				Cookie rec = new Cookie(rccode,URLEncoder.encode(rcname,"utf-8"));
-				rec.setMaxAge(60*60*24);
-				response.addCookie(rec);
-			%>
+				%>
 		
 				<table class="contenttable" > 
 					<tr><td	class="orangeline11"

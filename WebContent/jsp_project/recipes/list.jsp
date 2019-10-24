@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import = "DBBean.foodingBean" %>
@@ -82,6 +83,7 @@
 			document.WannaGoOthersProfile.findId.value=id;
 			document.WannaGoOthersProfile.submit();
 		}
+		
 	</script>
 </head>
 <body id="body">
@@ -244,8 +246,8 @@
 	<div id="recent">
 	<%
 	String rc=request.getContextPath();
-	Cookie [] recs=request.getCookies();
-	String [] show = new String [4];
+	Cookie recs [] =request.getCookies();
+	//String [] show = new String [4];
 	String result;
 	if(rc != null){
 		
@@ -256,14 +258,24 @@
 			}
 			//recs[i].setMaxAge(0);
 			//response.addCookie(recs[i]);
-			result = java.net.URLDecoder.decode(recs[i].getValue(),"UTF-8")+"<br>";
-			out.println(result);
+			if(recs[i].getName().indexOf("recipe") != -1){
+				result = URLDecoder.decode(recs[i].getValue(),"UTF-8")+"<br>";
+			%>
+				<%=result %>
+			<%
+			}
+			
 		}
-		
 		
 	}
 	%>
-	
+	<button onclick="resetCookie()">기록 초기화</button>
+	<script>
+		function resetCookie(){
+			document.cookie = 'rec=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+			location.reload(true);
+		}
+	</script>
 	</div>
 	<form action="../mypages/checkstatus.jsp" method="POST" name="WannaGoOthersProfile">
 		<input type="hidden" name="findId">
