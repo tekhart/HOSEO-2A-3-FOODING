@@ -91,13 +91,13 @@
 		포인트 관리</div>
 			<%@include file="sidemenu.jsp"%>   
 			
-			<center> 
-				<div class="row2"> 
-						<div class="forkpoint">  
+			<center>  
+				<div class="row2"  style="padding-top:80px;"> 
+						<div class="forkpoint">   
 							<table> 
 								<tr><td style="width:800px; height:50px; vertical-align:top;">
-										<img id="forkimage" src="../img/fork.png" ></td></tr>
-								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트</h3></div></td></tr>
+										<img id="forkimage" src="../img/fork.png" ></td></tr> 
+								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트a</h3></div></td></tr>
 									<tr><td align="center" style="width:800px; height:180px; vertical-align:top;"><div  class="forkpoint3">0 P</div></td></tr>
 						   </table>
 						</div>
@@ -117,19 +117,41 @@
 								</tr>					
 							</table>  
 						  
-							<table class="pointtable" style="text-align:center; height:50px; border-bottom:1px solid #A4A4A4; border-spacing:0px;">   
-								<tr>
-									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #A4A4A4;">거래일</td>
-									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #A4A4A4;">내역</td> 
-									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #A4A4A4;">포인트</td>  
+							<table class="pointtable" style="text-align:center; height:50px; border-bottom:1px solid #525252; border-spacing:0px;">   
+								<tr>  
+									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #525252;">거래일</td>
+									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #525252;">내역</td> 
+									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #525252;">포인트</td>  
+								</tr> 
+								
+								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
 								</tr>
+								
+								
+								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
+								</tr>
+								
+								
+								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
+								</tr>
+								
+								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
+									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
+								</tr>
+								
 								
 								<tr><td class="pointtdd">거래일이라네요</td>
 									<td class="pointtdd">내역이라네요</td>
 									<td class="pointtdd">포인트라네요</td>
-								
-								
 								</tr>
+								
 							</table>
 			
 			
