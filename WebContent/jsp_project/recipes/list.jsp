@@ -245,7 +245,7 @@
 	<%
 	String rc=request.getContextPath();
 	Cookie [] recs=request.getCookies();
-	String [] show = new String [4];
+	String [] show = new String [6];
 	String result;
 	if(rc != null){
 		
@@ -257,7 +257,7 @@
 			//recs[i].setMaxAge(0);
 			//response.addCookie(recs[i]);
 			result = java.net.URLDecoder.decode(recs[i].getValue(),"UTF-8")+"<br>";
-			out.println(result);
+			out.println(i+result);
 		}
 		
 		

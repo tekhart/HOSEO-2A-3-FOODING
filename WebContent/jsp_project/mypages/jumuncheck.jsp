@@ -4,11 +4,11 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
 
-<meta charset="UTF-8">
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+
 <title>주문 조회</title>
 <link rel="stylesheet" href="../jsp_project/css/common.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,6 +20,8 @@ border-collapse:collapse;
 width:1000px;
 margin:auto;
 padding:100px;
+top:100px;
+position:relative;
 }
 
 .jumuntb td {
