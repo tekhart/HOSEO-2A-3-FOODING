@@ -107,7 +107,7 @@
 						            <div class="dropdown-content">
 							            <center>
 							             	<a href="../mains/faq.jsp">자주하는 질문</a>
-									        <a href="#">문의사항</a>
+									        <a href="../mains/ask.jsp">문의사항</a>
 							            </center>
 						        	</div>
 						        </div></center>

@@ -12,14 +12,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
+
 <title>개인정보</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-=======
+
 <title>결제 페이지</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> refs/remotes/origin/master
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
 <style>
@@ -133,11 +132,51 @@ body {
 								<input type="radio" name="chk_info" value="무통장입금"
 								class="tablinks" onclick="openCity(event, 'Bank Deposit')">무통장입금
 							</span>
-						</div>
+						</div> 
 
 						<div id="creditcard" class="tabcontent" style="margin-top: 10px;">
-							주문후 72시간 이내에 무통장입금확인 되지 않으면 자동으로 주문최소됩니다.</div>
-
+							<p class="tdpayment" style="padding-top: 5px;">사용하는 은행</p> 
+							<select name='bank' class="tdpayinput"
+								style="width: 160px; height: 29px; margin-top: -10px;"><br>
+								<option value='' selected>---은행선택---</option>
+								<option value='농협'>농협</option>
+								<option value='국민은행'>국민은행</option>
+								<option value='우리은행'>우리은행</option>
+								<option value='하나은행'>하나은행</option>
+								<option value='신한은행'>신한은행</option>
+								<option value='외환은행'>외환은행</option>
+								<option value='씨티은행'>씨티은행</option>
+								<option value='기업은행'>기업은행</option>
+								<option value='우체국'>우체국</option> 
+								<option value='부산은행'>부산은행</option>
+								<option value='SC은행'>SC은행</option>
+							</select>
+							<p class="tdpayment" style="margin-top:40px;">카드번호</p>
+								<div style="margin-top:-10px;">
+									<span><input type="text" class="tdpayinput2" placeholder="4자리"></span>
+									<span><input type="text" class="tdpayinput2" placeholder="4자리"></span>
+									<span><input type="text" class="tdpayinput2" placeholder="4자리"></span>
+									<span><input type="text" class="tdpayinput2" placeholder="4자리"></span>
+								</div>
+								
+							<p class="tdpayment" style="margin-top:50px;">유효기간</p>
+								<div style="margin-top:-10px;">
+									<span><input type="text" class="tdpayinput2" placeholder="MM"></span>
+									<span><input type="text" class="tdpayinput2" placeholder="YY"></span>
+								</div>
+								 
+							<p class="tdpayment" style="margin-top:50px; width:380px;">CVC ( 카드뒷면의 7자리 숫자중 뒷 3자리입니다 )</p>
+								<div style="margin-top:-10px;">
+									<span><input type="text" class="tdpayinput2" placeholder="3자리"></span>
+								</div>
+							<p class="tdpayment" style="margin-top:50px; width:380px;">카드 비밀번호</p>
+								<div style="margin-top:-10px;">
+									<span><input type="text" class="tdpayinput2" placeholder="4자리"></span>
+								</div>
+							<input type="submit" value="카드등록" class="btpay1" onclick="">
+						</div>
+						
+						
 						<div id="Bank Deposit" class="tabcontent">
 							<p class="tdpayment">입금자명</p>
 							<input type="text" maxlength="20" class="tdpayinput"
@@ -159,13 +198,16 @@ body {
 								<option value='부산은행'>부산은행</option>
 								<option value='SC은행'>SC은행</option>
 							</select>
+							
 							<p class="tdpayment" style="padding-top: 35px;">입금예정일</p>
 							<select name='day1' class="tdpayinput"
 								style="width: 100px; height: 29px; margin-right: 10px; margin-top: -10px;">
 								<option value='' selected>---년도---</option>
 								<option value='2019년'>2019년</option>
 								<option value='2020년'>2020년</option>
-							</select> <select name='day2' class="tdpayinput"
+							</select> 
+							
+							<select name='day2' class="tdpayinput"
 								style="width: 80px; height: 29px; margin-right: 10px; margin-top: -10px;">
 								<option value='' selected>---월---</option>
 								<option value='1월'>1월</option>
@@ -215,10 +257,10 @@ body {
 								<option value='30'>30일</option>
 								<option value='31'>31일</option>
 							</select>
-<<<<<<< HEAD
+
 						</div>
 					</td>
-=======
+
 								</div>
 						</td>
 			
@@ -230,7 +272,7 @@ body {
 		          		  			<div class="inputtd2">연동해야함</div><br><br>
 		          		  		<label for="fname" class="labelpay"> 포인트</label><br><br>
 		          		  			<div class="inputtd2">연동해야함</div><br><br>
-		          		  		<input type="submit" value="결제하기" class="btpay" onclick="location.href='loading.jsp'">
+		          		  		<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'">
 						</td>
 					</tr>
 			</table> 
@@ -240,32 +282,6 @@ body {
 </div></table>
 </center>
 <br><br><br>
->>>>>>> refs/remotes/origin/master
-
-
-
-					<td class="container3" style="margin-left: 1px; float: right;">
-						<h3>결제 예정 금액</h3> <label for="fname" class="labelpay"> ₩ 총
-							주문금액</label><br>
-					<br>
-						<div class="inputtd2">연동해야함</div>
-						<br>
-					<br> <label for="fname" class="labelpay"> 포인트/보유포크 몇개/(포크 현금환산금액)</label><br>
-					<br>
-						<div class="inputtd2">연동해야함</div>
-						<br>
-					<br> <input type="submit" value="결제하기" class="btpay">
-					</td>
-				</tr>
-			</table>
-
-			<!-- checked="checked" -->
-	</div>
-	</table>
-	</center>
-	<br>
-	<br>
-	<br>
 
 
 

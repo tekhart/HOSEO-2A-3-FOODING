@@ -478,6 +478,26 @@ public class foodingBean {
 			}
 			return x;
 		}
+	public void deleteUser(String id, String checkpw) 
+			throws Exception {
+		DBclose();
+		con = null;
+		pstmt = null;
+		rs= null;
+		try {
+			con = getConnection();
+			pstmt=con.prepareStatement(
+					"delete from user where id = ? and passwd = ?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, checkpw);
+			pstmt.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			DBclose();
+		}
+
+	}
 	public void insertCommentsArticle(commentDataBean article,int rootin) 
 				throws Exception {
 		DBclose();
