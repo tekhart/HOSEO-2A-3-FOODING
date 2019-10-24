@@ -1,18 +1,46 @@
 package DBBean;
 
 public class productDataBean {
-	String productId;
+	
+	int buyId;
+	int cartId;
+	
+	String owner;
+	
+	int productId;
 	String productName;
-	String isTool;
-	String productType;
-	String price;
-	String discountRate;
+	int isTool;
+	int productType;
+	int price;
+	int discountRate;
 	String productThumb;
 	
-	public String getProductId() {
+	int productCount;
+	
+	public int getBuyId() {
+		return buyId;
+	}
+	public void setBuyId(int buyId) {
+		this.buyId = buyId;
+	}
+	public int getCartId() {
+		return cartId;
+	}
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+	
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
+	public int getProductId() {
 		return productId;
 	}
-	public void setProductId(String productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 	public String getProductName() {
@@ -21,28 +49,28 @@ public class productDataBean {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getIsTool() {
+	public int getIsTool() {
 		return isTool;
 	}
-	public void setIsTool(String isTool) {
+	public void setIsTool(int isTool) {
 		this.isTool = isTool;
 	}
-	public String getProductType() {
+	public int getProductType() {
 		return productType;
 	}
-	public void setProductType(String productType) {
+	public void setProductType(int productType) {
 		this.productType = productType;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getDiscountRate() {
+	public int getDiscountRate() {
 		return discountRate;
 	}
-	public void setDiscountRate(String discountRate) {
+	public void setDiscountRate(int discountRate) {
 		this.discountRate = discountRate;
 	}
 	public String getProductThumb() {
@@ -50,5 +78,12 @@ public class productDataBean {
 	}
 	public void setProductThumb(String productThumb) {
 		this.productThumb = productThumb;
+	}
+	
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
 	}
 }

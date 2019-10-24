@@ -3,7 +3,8 @@
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
-
+<%@ page import = "java.util.List" %>
+<%@ page import = "DBBean.productDataBean" %>
 <meta charset="UTF-8">
 
 <!DOCTYPE html>
@@ -28,8 +29,19 @@
 
 <body id="body">
 <%@include file="../general_included/topbar.jsp"%>
-     
+     <%
+		request.setCharacterEncoding("UTF-8");
+		List<productDataBean> articleList = null;
+		foodingBean dbPro = foodingBean.getInstance();
+		foodingBean foodingbean = new foodingBean();
 
+		try{
+			articleList = dbPro.getcartArticles(idlogin);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	%>
+	
 <div id="maindiv">
 <div class="writetitle1">
 장바구니</div>
@@ -46,8 +58,8 @@
 				          <tr class="list-tableth" >
 				         	  <td width="10px;" style="border-top:4px solid orange; border-bottom:2px solid orange;">
 				         	   <label><input type="checkbox" value="alldelete"></label></td>
-				              <td width="200" style="border-top:4px solid orange; border-bottom:2px solid orange;">이미지</td>
-				              <td width="300" style="border-top:4px solid orange; border-bottom:2px solid orange;">상품정보</td>	
+				              <td width="200" style="border-top:4px solid orange; border-bottom:2px solid orange;">상품이미지</td>
+				              <td width="300" style="border-top:4px solid orange; border-bottom:2px solid orange;">상품이름</td>	
 				              <td width="120" style="border-top:4px solid orange; border-bottom:2px solid orange;">판매가</td>
 				              <td width="180" style="border-top:4px solid orange; border-bottom:2px solid orange;">수량</td>
 				              <td width="100" style="border-top:4px solid orange; border-bottom:2px solid orange;">포인트</td>
@@ -58,62 +70,58 @@
 				        
 				      
 				        <tbody class="list-tabletd">
-				        <tr>
-				          <td width="10"  style="border-bottom:4px solid orange;">
-				          		<label><input type="checkbox" value="prodelete1"></label></td> 
-				          <td width="150" style="border-bottom:4px solid orange;">
-					          	<div class="bak_item">
-									<div class="pro_img"></div>
-									<div class="pro_nt"></div>
-					          		<img src="../img/pizza-3007395_420.jpg" width="200" height="150">
-				          		</div></td>
-				          <td width="150" style="border-bottom:4px solid orange;">피자</td>
-				          <td width="150" style="border-bottom:4px solid orange;">19,900원</td>
-				          <td width="150" style="border-bottom:4px solid orange;">	
-				          		<div>
-				          			<input type="number" value="1" name="ea" size="2" min="1" max="100" class="proquantity"  
-				          			>
-				          		<!-- <span>
-				          			<input type="button" class="img-button2" >
-				          			<input type="button" class="img-button3" >
-				          		</span> -->
-				          		</div>
-				          </td>
-				          <td width="100" style="border-bottom:4px solid orange;" img src="../img/fork.jpg">20</td>
-				          <td width="150" style="border-bottom:4px solid orange;">2500원</td>
-				          <td width="150" style="border-bottom:4px solid orange;">22,400원</td>
-					          <td width="50" style="border-bottom:4px solid orange;">
-					           		<input type="button" class="img-button" >
-							  </td>
-				        </tr>
-				        <tr>
-				          <td width="10"  style="border-bottom:4px solid orange;">
-				          		<label><input type="checkbox" value="prodelete1"></label></td> 
-				          <td width="150" style="border-bottom:4px solid orange;">
-					          	<div class="bak_item">
-									<div class="pro_img"></div>
-									<div class="pro_nt"></div>
-					          		<img src="../img/pizza-3007395_420.jpg" width="200" height="150">
-				          		</div></td>
-				          <td width="150" style="border-bottom:4px solid orange;">피자</td>
-				          <td width="150" style="border-bottom:4px solid orange;">19,900원</td>
-				          <td width="150" style="border-bottom:4px solid orange;">	
-				          		<div>
-				          			<input type="number" value="1" name="ea" size="2" min="1" max="100" class="proquantity"  
-				          			>
-				          		<!-- <span>
-				          			<input type="button" class="img-button2" >
-				          			<input type="button" class="img-button3" >
-				          		</span> -->
-				          		</div>
-				          </td>
-				          <td width="100" style="border-bottom:4px solid orange;" img src="../img/fork.jpg">20</td>
-				          <td width="150" style="border-bottom:4px solid orange;">2500원</td>
-				          <td width="150" style="border-bottom:4px solid orange;">22,400원</td>
-					          <td width="50" style="border-bottom:4px solid orange;">
-					           		<input type="button" class="img-button" >
-							  </td>
-				        </tr>
+				        	<% 
+				        		if(articleList==null){
+				        	%>
+				        		<tr>
+				        			<td colspan="9" style="border-bottom:4px solid orange;">
+				        				<br>
+				        				장바구니가 비었어요! ^~^
+				        				<br>
+				        			</td>
+				        		</tr>
+				        	<% 
+				        		}else{
+				        			for (int i = 0 ; i < articleList.size(); i++) {
+										productDataBean article = articleList.get(i);
+										int bae_song_bee=2500;
+										int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
+				        		%>
+						        <tr>
+						          <td width="10"  style="border-bottom:4px solid orange;">
+						          		<label><input type="checkbox" value="prodelete1"></label></td> 
+						          <td width="150" style="border-bottom:4px solid orange;">
+							          	<div class="bak_item">
+											<div class="pro_img"></div>
+											<div class="pro_nt"></div>
+											<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:150px;"></div>
+						          		</div>
+						          </td>
+						          <td width="150" style="border-bottom:4px solid orange;"><%=article.getProductName() %></td>
+						          <td width="150" style="border-bottom:4px solid orange;">
+						          	<%if(article.getDiscountRate()==0){%>
+						          		<%=article.getPrice()%>원
+						          	<%}else{ %>
+						          		<del><%=article.getPrice()%>원</del><%=article.getDiscountRate()%>% off<br>
+						          		ㄴ><%=realprice%>원
+						          	<%} %>
+						          </td>
+						          <td width="150" style="border-bottom:4px solid orange;">	
+						          		<div>
+						          			<input type="number" value="1" name="ea" size="2" min="1" max="100" class="proquantity">
+						          		</div>
+						          </td>
+						          <td width="100" style="border-bottom:4px solid orange;"><img src="../img/fork.png" width="15px" height="15px">20</td>
+						          <td width="150" style="border-bottom:4px solid orange;"><%=bae_song_bee%>원</td>
+						          <td width="150" style="border-bottom:4px solid orange;"><%=realprice+ bae_song_bee%>원</td>
+							          <td width="50" style="border-bottom:4px solid orange;">
+							           		<input type="button" class="img-button" onclick="location.href='shopDBassisting_jsp/deletecart_after_clickX.jsp?deletecartid=<%=article.getCartId()%>'">
+									  </td>
+						        </tr>
+				        	<%
+				        			}
+				        		}
+				        	%>
 				      </tbody>
 				    </table>
 
