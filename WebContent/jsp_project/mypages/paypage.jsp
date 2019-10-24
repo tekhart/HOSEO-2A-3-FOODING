@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인정보</title>
+<title>결제 페이지</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
@@ -205,7 +205,7 @@ function openCity(evt, cityName) {
 		          		  			<div class="inputtd2">연동해야함</div><br><br>
 		          		  		<label for="fname" class="labelpay"> 포인트</label><br><br>
 		          		  			<div class="inputtd2">연동해야함</div><br><br>
-		          		  		<input type="submit" value="결제하기" class="btpay">
+		          		  		<input type="submit" value="결제하기" class="btpay" onclick="location.href='loading.jsp'">
 						</td>
 					</tr>
 			</table> 
