@@ -2317,10 +2317,10 @@ public class foodingBean {
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, article.getProductName());
-			pstmt.setInt(2, Integer.parseInt(article.getIsTool()));
-			pstmt.setInt(3, Integer.parseInt(article.getProductType()));
-			pstmt.setInt(4, Integer.parseInt(article.getPrice()));
-			pstmt.setInt(5, Integer.parseInt(article.getDiscountRate()));
+			pstmt.setInt(2,article.getIsTool());
+			pstmt.setInt(3,article.getProductType());
+			pstmt.setInt(4,article.getPrice());
+			pstmt.setInt(5,article.getDiscountRate());
 			pstmt.setString(6, article.getProductThumb());
 			
 			pstmt.executeUpdate();
@@ -2402,12 +2402,12 @@ public class foodingBean {
 				articleList = new ArrayList<productDataBean>(end);
 				do{
 					productDataBean article= new productDataBean();
-					article.setProductId(String.valueOf(rs.getInt("productId")));
+					article.setProductId(rs.getInt("productId"));
 					article.setProductName(rs.getString("productName"));
-					article.setIsTool(String.valueOf(rs.getInt("isTool")));
-					article.setProductType(String.valueOf(rs.getInt("productType")));
-					article.setPrice(String.valueOf(rs.getInt("price")));
-					article.setDiscountRate(String.valueOf(rs.getInt("discountRate")));
+					article.setIsTool(rs.getInt("isTool"));
+					article.setProductType(rs.getInt("productType"));
+					article.setPrice(rs.getInt("price"));
+					article.setDiscountRate(rs.getInt("discountRate"));
 					article.setProductThumb(rs.getString("productThumb"));
 					
 				 articleList.add(article);
@@ -2436,12 +2436,12 @@ public class foodingBean {
 
 			if (rs.next()) {
 				article = new productDataBean();
-				article.setProductId(String.valueOf(rs.getInt("productId")));
+				article.setProductId(rs.getInt("productId"));
 				article.setProductName(rs.getString("productName"));
-				article.setIsTool(String.valueOf(rs.getInt("isTool")));
-				article.setProductType(String.valueOf(rs.getInt("productType")));
-				article.setPrice(String.valueOf(rs.getInt("price")));
-				article.setDiscountRate(String.valueOf(rs.getInt("discountRate")));
+				article.setIsTool(rs.getInt("isTool"));
+				article.setProductType(rs.getInt("productType"));
+				article.setPrice(rs.getInt("price"));
+				article.setDiscountRate(rs.getInt("discountRate"));
 				article.setProductThumb(rs.getString("productThumb"));
 			}
 		} catch(Exception ex) {
@@ -2468,12 +2468,12 @@ public class foodingBean {
 				pstmt = con.prepareStatement(sql);
 
 				pstmt.setString(1, article.getProductName());
-				pstmt.setInt(2, Integer.parseInt(article.getIsTool()));
-				pstmt.setInt(3, Integer.parseInt(article.getProductType()));
-				pstmt.setInt(4, Integer.parseInt(article.getPrice()));
-				pstmt.setInt(5, Integer.parseInt(article.getDiscountRate()));
+				pstmt.setInt(2,article.getIsTool());
+				pstmt.setInt(3,article.getProductType());
+				pstmt.setInt(4,article.getPrice());
+				pstmt.setInt(5,article.getDiscountRate());
 				pstmt.setString(5, article.getProductThumb());
-				pstmt.setInt(7, Integer.parseInt(article.getProductId()));
+				pstmt.setInt(7,article.getProductId());
 				pstmt.executeUpdate();
 				
 					x= 1;
@@ -2493,16 +2493,115 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-					pstmt = con.prepareStatement(
-						"delete from product where productId=?");
-					pstmt.setInt(1, productId);
-					pstmt.executeUpdate();
-					x= 1; //湲��궘�젣 �꽦怨�
+			pstmt = con.prepareStatement(
+				"delete from product where productId=?");
+			pstmt.setInt(1, productId);
+			pstmt.executeUpdate();
+			x= 1; //湲��궘�젣 �꽦怨�
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
 		return x;
+	}
+	
+	public void insertcartArticle(int productId,String ownerid)
+			throws Exception {
+		con = null;
+		pstmt = null;
+		rs= null;
+		int x=-1;
+		try {
+			con = getConnection();
+			
+			pstmt = con.prepareStatement(
+					"select * from product where productId = ?");
+			pstmt.setInt(1, productId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String sql = "insert into cart(owner,productCount,productId,";
+				sql+="productName,isTool,productType,price,discountRate,productThumb";
+				sql+=") values(?,?,?,?,?,?,?,?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1,ownerid);
+				pstmt.setInt(2,0);
+				pstmt.setInt(3,productId);
+				pstmt.setString(4,rs.getString("productName"));
+				pstmt.setInt(5,rs.getInt("isTool"));
+				pstmt.setInt(6,rs.getInt("productType"));
+				pstmt.setInt(7,rs.getInt("price"));
+				pstmt.setInt(8,rs.getInt("discountRate"));
+				pstmt.setString(9,rs.getString("productThumb"));
+				
+				pstmt.executeUpdate();
+			}
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
+	public List<productDataBean> getcartArticles(String ownerid) {
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		List<productDataBean> articleList=null;
+		try {
+			con = getConnection();
+			sql = "select * from cart where owner=?";
+			
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1,ownerid);
+			
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				articleList = new ArrayList<productDataBean>();
+				do{
+					productDataBean article= new productDataBean();
+					article.setCartId(rs.getInt("cartId"));
+					article.setOwner(rs.getString("owner"));
+					article.setProductCount(rs.getInt("productCount"));
+					article.setProductId(rs.getInt("productId"));
+					article.setProductName(rs.getString("productName"));
+					article.setIsTool(rs.getInt("isTool"));
+					article.setProductType(rs.getInt("productType"));
+					article.setPrice(rs.getInt("price"));
+					article.setDiscountRate(rs.getInt("DiscountRate"));
+					article.setProductThumb(rs.getString("productThumb"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return articleList;
+	}
+	public void deletecartArticle(int cartid) {
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		List<productDataBean> articleList=null;
+		try {
+			con = getConnection();
+			sql = "delete from cart where cartId=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,cartid);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
 	}
 }
