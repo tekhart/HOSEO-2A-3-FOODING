@@ -6,6 +6,7 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "DBBean.productDataBean" %>
 <meta charset="UTF-8">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -36,9 +37,9 @@
 	        }
 	    })
 	})
-
+	
 <!-- 체크박스 전체선택/해제 끝-->
-
+</script>
 </head>
 
 <body id="body">
@@ -71,7 +72,7 @@
 						<td align="left" style="text-align:left; font-size:18pt; padding:10px;">일반상품(1)</td>
 				          <tr class="list-tableth" >
 				         	  <td width="10px;" style="border-top:4px solid orange; border-bottom:2px solid orange;">
-				         	   <label><input type="checkbox" value="alldelete"></label></td>
+				         	   <label><input type="checkbox" id="checkall"></label></td>
 				              <td width="200" style="border-top:4px solid orange; border-bottom:2px solid orange;">상품이미지</td>
 				              <td width="300" style="border-top:4px solid orange; border-bottom:2px solid orange;">상품이름</td>	
 				              <td width="120" style="border-top:4px solid orange; border-bottom:2px solid orange;">판매가</td>
@@ -159,7 +160,7 @@
 				        		%>
 						        <tr>
 						          <td width="10"  style="border-bottom:4px solid orange;">
-						          		<label><input type="checkbox" value="prodelete1"></label></td> 
+						          		<label><input type="checkbox" name="chk"></label></td> 
 						          <td width="150" style="border-bottom:4px solid orange;">
 							          	<div class="bak_item">
 											<div class="pro_img"></div>
