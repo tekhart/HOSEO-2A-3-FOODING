@@ -1163,3 +1163,36 @@ padding:5px;
 		font-size:14pt;
 }
 /* 포인트관리 페이지 끝 */
+
+/* 회원 탈퇴 페이지 시작 */
+.deleteuser{
+	top:100px;
+	margin:60px auto;
+	width:50%;
+	border: 3px solid #ffbb00;
+	border-radius:10px;
+	padding:100px;
+	font-size: 28px;
+	text-align: center;
+}
+
+.check{
+	background-color:white; 
+		font-size:15px;
+		border-color:#ffbb00;
+		height:40px;
+		border-style:solid;
+		cursor: pointer;
+		width: 80px;
+		border-radius:3px; 
+		margin-left:70%;
+}
+
+.check:hover{
+		background-color:#ffe08c;
+	}
+#checkpw{
+	line-height:24px;
+	font-size: 24px;
+}
+/* 회원 탈퇴 페이지 끝 */

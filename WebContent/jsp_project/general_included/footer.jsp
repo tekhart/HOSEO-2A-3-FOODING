@@ -81,7 +81,7 @@ margin-top:2%;
 </style>
 </head>
 <body>
-<br>
+
 <footer>
 <div id="footer">
 <div id="footnav">
