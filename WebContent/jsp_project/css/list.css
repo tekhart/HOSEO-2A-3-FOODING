@@ -704,9 +704,12 @@ padding: 0;
 }
 
 .list-table {
+	width:1000px;
 	margin-top: 80px;
 	margin-left:280px;
 	position: relative;
+	overflow : hidden;
+	white-space : nowrap; 
 	
 }
 .list-tableth{
@@ -827,7 +830,7 @@ padding:5px;
 
 .container3 {
   width:570px;
-  height:400px;
+  height:550px;
   float:left;
   background-color: #FAE4AD;
   padding: 5px 20px 15px 20px;
@@ -923,6 +926,19 @@ padding:5px;
 	  float:left;
 }
 
+.tdpayinput2{
+	  text-align:left;
+	  width:100px;
+	  height:30px;
+	  margin-right:18px;
+	  font-size:13pt;
+	  background-color:white;
+	  border: 1px solid #ffbb00;"
+	  border-radius: 3px;
+	  float:left;
+}
+
+
 .tabcontent2 {
   width:400px;
   padding: 6px 12px;
@@ -976,7 +992,7 @@ padding:5px;
 	
 }
 
-.btpay{
+.btpay1{
 		width: 120px;
 		height:50px;
 		font-size:18px;
@@ -987,12 +1003,28 @@ padding:5px;
 		border-width:0.5px;
 		border-style:solid;
 		border-radius:5px;
-		margin-top:25px;
-		margin-left:200px; 
+		margin-top:-40px;
+		margin-left:390px; 
 		cursor: pointer;
 		
 }
 
+.btpay2{
+		width: 120px;
+		height:50px;
+		font-size:18px;
+		font-weight:400;
+		color:white;
+		background-color:#ffbb00;
+		border-color:#ffbb00;
+		border-width:0.5px;
+		border-style:solid;
+		border-radius:5px;
+		margin-top:200px;
+		margin-left:400px; 
+		cursor: pointer;
+		
+}
 /* 난이도별 레시피 */
 .3div{
 	width:1200px;
@@ -1026,9 +1058,13 @@ padding:5px;
 	background-color:#ff7373;
 }
 
-.rich
-
+.banktext{
+	width:80px;
+	height:20px;
+	
 }
+
+.tdpayinput2::placeholder { text-align:center; }
 /* 결제페이지 끝 */
 
 
@@ -1038,7 +1074,6 @@ padding:5px;
 .row2 {
   	width:1300px;
   	margin:auto;
-    padding-top:80px;
   }
 
 .forkpoint{
@@ -1074,19 +1109,57 @@ padding:5px;
 }
 
 #forkimage{
-		width:80px;
-		height:60px;
+		width:100px;
+		height:70px;
 		float:left;
 		
 		
 }
 
-.forkspace{
-		width:80px;
-		height:60px;
-		floar:left;
-		margin-top:100px;
-		vertical-align:top;
+
+.pointsearch{
+		background-color:#ffecbb;
+		width:800px;
+		height:80px;
+		font-size:17pt;
+		margin-top:50px;
 	
+}
+
+.pointbutton{
+	background-color:white;
+	width:70px;
+	height:30px;
+	font-size:13pt;
+	border-width:0.5px;
+	border:0.5px solid #A4A4A4; 
+}
+
+
+.calendar{
+	width:150px;
+	height:30px;
+	font-size:12pt;
+	border:0.5px solid #A4A4A4; 
+}
+
+.pointtable{
+		margin-top:20px;
+		background-color:#ffecbb;
+		width:800px;
+		height:400px;
+}
+
+.pointtd{
+		display:text-cell;
+		vertical-align:middle;
+		font-size:16pt;
+}
+
+.pointtdd{
+		height:50px;
+		display:text-cell;
+		vertical-align:middle;
+		font-size:14pt;
 }
 /* 포인트관리 페이지 끝 */
