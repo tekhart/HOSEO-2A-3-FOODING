@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
 function makeGraph() {
 	var line1 = form1.a.value;
 	var line2 = form1.b.value;
 	var line3 = form1.c.value;
 	var line4 = form1.d.value;
 	var line5 = form1.e.value;
-	if(document.all) {
-		grWin = window.open("about:blank","gr","width=300,height=200");
+
+		grWin = window.open("about:blank","gr","width=300,height=200, left=100, top=50");
 		grWin.document.writeln("<html><head><title>그래프</title></head><body>");
 		grWin.document.writeln("<p><b>그래프보기</p>");
 		grWin.document.writeln("<div id=n1 style=\"width:20;height:6px;background-color:white;position:absolute;top:50;left:10\">1</div>");
@@ -28,18 +28,18 @@ function makeGraph() {
 		grWin.document.writeln("<div id=d5 style=\"width:"+line5+";height:6px;background-color:#ff00dd;position:absolute;top:130;left:30\"></div>");
 		grWin.document.writeln("</body></html>");
 		grWin.document.close();
-	}
+	
 }
 </SCRIPT>
 </head>
 <body>
-<FORM name=form1>
-1번값 <INPUT TYPE="text" NAME="a" value=100><br>
-2번값 <INPUT TYPE="text" NAME="b" value=80><br>
-3번값 <INPUT TYPE="text" NAME="c" value=50><br>
-4번값 <INPUT TYPE="text" NAME="d" value=100><br>
-5번값 <INPUT TYPE="text" NAME="e" value=20><br>
+<FORM name="form1">
+1번값 <INPUT TYPE="text" NAME="a" value="100"><br>
+2번값 <INPUT TYPE="text" NAME="b" value="80"><br>
+3번값 <INPUT TYPE="text" NAME="c" value="50"><br>
+4번값 <INPUT TYPE="text" NAME="d" value="100"><br>
+5번값 <INPUT TYPE="text" NAME="e" value="20"><br>
 <p><input type=button onClick="makeGraph()" value="그래프보기">
-</p></FORM>
+</FORM>
 </body>
 </html>
