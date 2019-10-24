@@ -2506,7 +2506,7 @@ public class foodingBean {
 		return x;
 	}
 	
-	public void insertcartArticle(int productId,String ownerid)
+	public void insertcartArticle(int productId,int productcount,String ownerid)
 			throws Exception {
 		con = null;
 		pstmt = null;
@@ -2528,7 +2528,7 @@ public class foodingBean {
 				pstmt = con.prepareStatement(sql);
 
 				pstmt.setString(1,ownerid);
-				pstmt.setInt(2,0);
+				pstmt.setInt(2,productcount);
 				pstmt.setInt(3,productId);
 				pstmt.setString(4,rs.getString("productName"));
 				pstmt.setInt(5,rs.getInt("isTool"));
