@@ -469,26 +469,40 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public void deleteUser(String id, String checkpw) 
-			throws Exception {
-		DBclose();
+	
+	public int deleteUser(String id, String checkpw) throws Exception {
 		con = null;
 		pstmt = null;
 		rs= null;
+		String dbpw="";
+		int x = -1;
 		try {
 			con = getConnection();
-			pstmt=con.prepareStatement(
-					"delete from user where id = ? and passwd = ?");
+						
+			// 해당 아이디의 비밀번호 조회
+			pstmt=con.prepareStatement("Select passwd from user where id=?");
 			pstmt.setString(1, id);
-			pstmt.setString(2, checkpw);
-			pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dbpw=rs.getString("passwd");
+				if(dbpw.equals(checkpw)) {
+					pstmt = con.prepareStatement("delete from user where id = ?");
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+					x = 1;
+				}else {
+					x = 0;
+				}
+			}
+
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
 			DBclose();
-		}
-
+		}return x;
 	}
+	
 	public void insertCommentsArticle(commentDataBean article,int rootin) 
 				throws Exception {
 		DBclose();
@@ -1763,7 +1777,7 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public int deletequestionArticle(int num)
+	public int questionArticle(int num)
 			throws Exception {
 			con = null;
 			pstmt = null;

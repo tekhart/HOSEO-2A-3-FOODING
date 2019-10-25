@@ -13,6 +13,7 @@ public class BoardDataBean {
 	String ingredients;
 	String tools;
 	String writerid;
+	String passwd;
 	Timestamp reg_date;
 	int readcount;
 	String content;
@@ -60,6 +61,12 @@ public class BoardDataBean {
 	}
 	public void setWriterid(String writerid) {
 		this.writerid = writerid;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd=passwd;
 	}
 	public Timestamp getReg_date() {
 		return reg_date;

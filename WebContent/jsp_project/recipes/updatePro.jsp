@@ -7,9 +7,6 @@
 	request.setCharacterEncoding("utf-8");
 %>
 
-<jsp:useBean id="article" scope="page" class="DBBean.BoardDataBean">
-   <jsp:setProperty name="article" property="*"/>
-</jsp:useBean>
 <%
 	String pageNum = request.getParameter("pageNum");
 	foodingBean dbPro = foodingBean.getInstance();

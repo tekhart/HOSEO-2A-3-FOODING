@@ -1187,7 +1187,11 @@ padding:5px;
 		border-radius:3px; 
 		margin-left:70%;
 }
-
+#notice{
+	font-size: 27px;
+	text-align: center;
+	
+}
 .check:hover{
 		background-color:#ffe08c;
 	}
