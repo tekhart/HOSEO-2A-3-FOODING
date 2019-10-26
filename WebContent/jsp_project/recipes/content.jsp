@@ -237,7 +237,7 @@
 							<div align="center" style="margin-bottom:15px;"></div>
 							<div class="img-comp-container">
 								<div class="img-comp-img">
-									<div class="divdiv1"><%=article.getIngredients() %></div>
+									<div class="divdiv1" style="padding: 20px;"><%=article.getIngredients() %></div>
 								</div>
 								<div class="img-comp-img img-comp-overlay">
 									<div class="divdiv2"> <%=article.getTools() %></div>

@@ -103,6 +103,7 @@
 						</div>
 				</div>
 			     
+<iframe src="../img/kakaotalk_1530364134024.mp4">
 					 
 							<table class="pointsearch">
 								<tr><td style="width:120px; text-align:center;">조회기간</td> 

@@ -270,8 +270,9 @@ body {
 							 <h3>결제 예정 금액</h3> 	
 		          		  		<label for="fname" class="labelpay"> ₩ 총 주문금액</label><br><br>
 		          		  			<div class="inputtd2">연동해야함</div><br><br>
-		          		  		<label for="fname" class="labelpay"> 포인트</label><br><br>
-		          		  			<div class="inputtd2">연동해야함</div><br><br>
+		          		  		<label for="fname" class="labelpay"> 포인트 <span style="color:#424242; font-size:18px;">| 포크 n개 (총 n원)</span></label><br><br>
+		          		  	<br>		<div class="inputtd2" style="width:250px; margin-left:-170px;">연동해야함</div>
+		          		  	<input type="submit" value="사용"><br><br>
 		          		  		<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'">
 						</td>
 					</tr>
