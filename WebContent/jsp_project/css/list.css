@@ -632,14 +632,14 @@ padding: 0;
  	
 .sidebar {
   height: 500px;
-  width: 250px;
+  width: 200px;
   position: absolute;
   z-index: 1;
   left: 0;
   background-color: white;
   overflow-x: hidden;
   padding-top: 80px;
-  padding-left:80px;
+  padding-left:0px;
   
 }
 
