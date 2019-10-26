@@ -29,7 +29,7 @@
 	function CheckAllSubChecks(){
 		var main=document.getElementsByClassName("BasketMainCheck");
 		var subs=document.getElementsByClassName("BasketSubCheck");
-		if(main.checked){
+		if(main[0].checked){
 			for (i = 0; i < subs.length; i++) {
 				subs[i].checked=true;
 			}
@@ -48,7 +48,7 @@
 				subs[i].disabled=true;
 			}
 		}
-		
+		document.shopbasketForm.submit();
 		
 	}
 	
@@ -63,9 +63,10 @@
 		List<productDataBean> articleList = null;
 		foodingBean dbPro = foodingBean.getInstance();
 		foodingBean foodingbean = new foodingBean();
-
+		int count=0;
 		try{
 			articleList = dbPro.getcartArticles(idlogin);
+			count=articleList.size();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -74,10 +75,10 @@
 <div id="maindiv">
 	<div class="writetitle1">장바구니</div>
 	<%@include file="sidemenu.jsp"%> 
-	<form method="POST" action="shopDBassisting_jsp/TestInputing.jsp">
+	<form method="POST" action="shopDBassisting_jsp/TestInputing.jsp" name="shopbasketForm">
 		<div><table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
 			<tr>
-				<td align="left" style="text-align:left; font-size:18pt; padding:10px;">일반상품(<%=articleList.size() %>)</td>
+				<td align="left" style="text-align:left; font-size:18pt; padding:10px;">일반상품(<%=count%>)</td>
 			</tr>
 			<tr class="list-tableth" >
 		 		<td width="10px;" style="border-top:3px solid orange; border-bottom:2px solid orange;">
@@ -119,7 +120,7 @@
 					%>
 						<tr>
 							<td width="10"	style="border-bottom:3px solid orange;">
-									<label><input type="checkbox" class="BasketSubCheck" name="CartIdchkbx[]" value="<%=article.getCartId()%>" checked>
+									<label><input type="checkbox" class="BasketSubCheck" name="CartIdchkbx" value="<%=article.getCartId()%>" checked>
 							<td width="150" style="border-bottom:3px solid orange;">
 									<div class="bak_item">
 									<div class="pro_img"></div>
@@ -179,8 +180,8 @@
 			</tbody>
 		</table>
 		<br><br><br>
-		<input type="button" onclick="location.href='../mypages/paypage.jsp'" value="전체상품주문" class="longbt1" style="margin-left:750px;">
-		<input type="submit" onclick="location.href='../mypages/paypage.jsp'" value="선택상품주문" class="longbt2">
+		<input type="button" onclick="AllCheckSubmit()" value="전체상품주문" class="longbt1" style="margin-left:750px;">
+		<input type="submit" value="선택상품주문" class="longbt2">
 		</div>
 	</form>
 </div> 
