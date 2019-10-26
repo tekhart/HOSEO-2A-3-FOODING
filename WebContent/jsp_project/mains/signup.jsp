@@ -30,7 +30,7 @@
 		
 		</style>
 		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+		<script type="text/javascript">
 			var DBnkArray=[];
 			var DBidArray=[];
 			var DBemailArray=[];
@@ -62,19 +62,26 @@
 			var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
 			var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;  
 			var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{1,50}).{8,50}$/;
-			var register=register;
+			var nkname=document.getElementsByName("nkname");
+			var id=document.getElementsByName("id");
+			var passwd=document.getElementsByName("passwd");
+			var repasswd=document.getElementsByName("repasswd");
+			var email=document.getElementsByName("email");
+			var addrnum=document.getElementsByName("addrnum");
+			var address=document.getElementsByName("address");
+			var detailaddr=document.getElementsByName("detailaddr");
 
 			function sendingaddr(addrnum,address){
-				register.addrnum.value=addrnum;
-				register.address.value=address;
-				register.detailaddr.focus();
+				addrnum.value=addrnum;
+				address.value=address;
+				detailaddr.focus();
 			}
-			function AllcheckNotice(){
+			function AllCheckNotice(){
 				Nknamecheck();
 				Idcheck();
 				Emailcheck();
 				Passwdcheck();
-				register.nkname.focus();
+				nkname.focus();
 			}
 
 			function Nknamecheck() {
@@ -82,14 +89,14 @@
 				if (window.event.keyCode == 13) {
 					Signupcross();
 			    }
-				if(register.nkname.value.length<3||register.nkname.value.length>16){
+				if(nkname.value.length<3||nkname.value.length>16){
 					document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
 					document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 				}else{
-					if(nknameexp.test(register.nkname.value)==true){
+					if(nknameexp.test(nkname.value)==true){
 						i=0;
 						while(i<=arraylength){
-							if(DBnkArray[i]==register.nkname.value){
+							if(DBnkArray[i]==nkname.value){
 								checked=1;
 								document.getElementById('nknameimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
 								document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다"
@@ -106,7 +113,7 @@
 					}
 					
 				}
-				if(register.nkname.value=='운영자바보'){
+				if(nkname.value=='운영자바보'){
 					document.getElementById('nknamecheck').innerHTML = "그런건 안대!";
 					document.getElementById('nknameimg').innerHTML = "<img src='../img/angry.png' height='30px' width='30px' align='middle'>";
 				}
@@ -119,14 +126,14 @@
 				if (window.event.keyCode == 13) {
 					Signupcross();
 			    }
-				if(register.id.value.length<8){
+				if(id.value.length<8){
 					document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
 					document.getElementById('idimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 				}else{
-					if(idexp.test(register.id.value)==true){
+					if(idexp.test(id.value)==true){
 						i=0;
 						while(i<=arraylength){
-							if(DBidArray[i]==register.id.value){
+							if(DBidArray[i]==id.value){
 								checked=1;
 								document.getElementById('idcheck').innerHTML="중복된 아이디 입니다"
 									document.getElementById('idimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
@@ -148,16 +155,16 @@
 				if (window.event.keyCode == 13) {
 					Signupcross();
 			    }
-				if(emailexp.test(register.email.value)==""){
+				if(emailexp.test(email.value)==""){
 					document.getElementById('emailcheck').innerHTML = "이메일 형식으로 작성해 주십시오.";
 					document.getElementById('emailimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else if(emailexp.test(register.email.value)==false){
+				}else if(emailexp.test(email.value)==false){
 					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
 					document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
 				}else{
 					i=0;
 					while(i<=arraylength){
-						if(DBemailArray[i]==register.email.value){
+						if(DBemailArray[i]==email.value){
 							checked=1;
 							document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다"
 								document.getElementById('emailimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
@@ -175,7 +182,7 @@
 				if (window.event.keyCode == 13) {
 					Signupcross();
 			    }
-				if(pwexp.test(register.passwd.value)==false){
+				if(pwexp.test(passwd.value)==false){
 					document.getElementById('passwdcheck').innerHTML = "8자 이상, 영문/특수문자/숫자가 하나 이상";
 					document.getElementById('passwdimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 				}else{
@@ -189,10 +196,10 @@
 				if (window.event.keyCode == 13) {
 					Signupcross();
 			    }
-				if(register.repasswd.value==""){
+				if(repasswd.value==""){
 					document.getElementById('repasswdcheck').innerHTML="비밀번호와 같아야 합니다";
 					document.getElementById('repasswdimg').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else if(register.passwd.value==register.repasswd.value){
+				}else if(passwd.value==repasswd.value){
 					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
 					document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 				}else{
@@ -204,83 +211,77 @@
 
 			function ZipPopup() { 
 				window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
-				register.detailaddr.focus();
+				detailaddr.focus();
 			}
 				
 			function Signupcross(){	
 
-					if(register.nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
+					if(nkname.value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
 						alert("닉네임을 확인해주세요");
-						register.nkname.focus();
+						nkname.focus();
 						return;
 					}
-					if(register.id.value==""||document.getElementById('idcheck').innerHTML!="사용 가능한 아이디 입니다"){
+					if(id.value==""||document.getElementById('idcheck').innerHTML!="사용 가능한 아이디 입니다"){
 						alert("아이디를 확인해주세요");
-						register.id.focus();
+						id.focus();
 						return;
 					}
-					if(register.passwd.value==""||document.getElementById('passwdcheck').innerHTML!="사용 가능한 비밀번호 입니다"){
+					if(passwd.value==""||document.getElementById('passwdcheck').innerHTML!="사용 가능한 비밀번호 입니다"){
 						alert("비밀번호를 입력해주세요");
-						register.passwd.focus();
+						passwd.focus();
 						return;
 					}
-					if(register.repasswd.value==""){
+					if(repasswd.value==""){
 						alert("비밀번호확인을 입력해주세요");
-						register.repasswd.focus();
+						repasswd.focus();
 						return;
 					}
-					if(register.passwd.value!=register.repasswd.value){
+					if(passwd.value!=repasswd.value){
 						alert("비밀번호가 다릅니다.");
-						register.repasswd.focus();
+						repasswd.focus();
 						return;
 					}
-					if(register.email.value==""){
+					if(email.value==""){
 						alert("이메일을 입력해주세요.");
-						register.email.focus();
+						email.focus();
 						return;
 					}
-					else if(emailexp.test(register.email.value)==false){
+					else if(emailexp.test(email.value)==false){
 						alert("이메일 형식이 올바르지 않습니다.");
-						register.email.focus();
+						email.focus();
 						return;
 					}
-					if(register.addrnum.value==""){
+					if(addrnum.value==""){
 						alert("우편번호를 입력해주세요");
-						register.addrnum.focus();
+						addrnum.focus();
 						return;
 					}
-					if(register.detailaddr.value==""){
+					if(detailaddr.value==""){
 						alert("상세주소를 입력해주세요");
-						register.detailaddr.focus();
+						detailaddr.focus();
 						return;
 					}
 
-					register.submit();
+					submit();
 				
 				
 			}
 
 			function Signupclear(){
 				
-				register.nkname.value="";
-				register.id.value="";
-				register.passwd.value="";
-				register.repasswd.value="";
-				register.email.value="";
-				register.addrnum.value="";
-				register.address.value="";
-				register.detailaddr.value="";
+				nkname.value="";
+				id.value="";
+				passwd.value="";
+				repasswd.value="";
+				email.value="";
+				addrnum.value="";
+				address.value="";
+				detailaddr.value="";
 			}
 					
 		</script>
-		<script type="text/javascript" src="../js/commonJs.js"></script>
-		
 	</head>
-	
-	
-	
-	
-	<body id="body" onload="AllcheckNotice()">
+	<body id="body" onload="AllCheckNotice()">
 		<%@include file="../general_included/topbar.jsp"%>
 		<hr style="border: solid 2px #ffbb00; align:center;
 		width:1900px;">

@@ -2703,34 +2703,34 @@ public class foodingBean {
 			sql+=")";
 			pstmt = con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			rs.next();
-			do{
-				sql = "insert into buy(owner,productCount,productId,productName";
-				sql+=",isTool,productType,price,discountRate,productThumb";
-				sql+=",account,deliveryName,deliveryTel,deliveryAddrnum";
-				sql+=",deliveryAddress,deliveryDetailAdd,buydate";
-				sql+=") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1,rs.getString("owner"));
-				pstmt.setInt(2,rs.getInt("productCount"));
-				pstmt.setInt(3,rs.getInt("productId"));
-				pstmt.setString(4,rs.getString("productName"));
-				pstmt.setInt(5,rs.getInt("isTool"));
-				pstmt.setInt(6,rs.getInt("productType"));
-				pstmt.setInt(7,rs.getInt("price"));
-				pstmt.setInt(8,rs.getInt("discountRate"));
-				pstmt.setString(9,rs.getString("productThumb"));
-				pstmt.setString(10,"");
-				pstmt.setString(11,"");
-				pstmt.setString(12,"");
-				pstmt.setString(13,"");
-				pstmt.setString(14,"");
-				pstmt.setString(15,"");
-				pstmt.setTimestamp(16,ts);
-				pstmt.executeUpdate();
-			}while(rs.next());
-			
+			if(rs.next()) {
+				do{
+					sql = "insert into buy(owner,productCount,productId,productName";
+					sql+=",isTool,productType,price,discountRate,productThumb";
+					sql+=",account,deliveryName,deliveryTel,deliveryAddrnum";
+					sql+=",deliveryAddress,deliveryDetailAdd,buydate";
+					sql+=") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1,rs.getString("owner"));
+					pstmt.setInt(2,rs.getInt("productCount"));
+					pstmt.setInt(3,rs.getInt("productId"));
+					pstmt.setString(4,rs.getString("productName"));
+					pstmt.setInt(5,rs.getInt("isTool"));
+					pstmt.setInt(6,rs.getInt("productType"));
+					pstmt.setInt(7,rs.getInt("price"));
+					pstmt.setInt(8,rs.getInt("discountRate"));
+					pstmt.setString(9,rs.getString("productThumb"));
+					pstmt.setString(10,"");
+					pstmt.setString(11,"");
+					pstmt.setString(12,"");
+					pstmt.setString(13,"");
+					pstmt.setString(14,"");
+					pstmt.setString(15,"");
+					pstmt.setTimestamp(16,ts);
+					pstmt.executeUpdate();
+				}while(rs.next());
+			}
 			sql = "delete from cart where cartid in("+cartid[0];
 			for(int i=1;i<cartid.length;i++) {
 				sql+=","+cartid[i];

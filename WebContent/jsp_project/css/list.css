@@ -599,13 +599,15 @@ padding: 0;
 
 /* 글목록 끝 */
 #thumbnail{
-	background-image:url('../img/upload/defaultthumb.png');
 	background-position:center center;
-	background-size:300px 200px;
 	height:200px; 
 	width:300px;
 }
-
+.thumbn{
+	background-image:url('../img/thumbn.png');
+	background-repeat:no-repeat;
+	background-size:cover;
+}
 
 /*상품목록*/
 /* Clear floats after rows */
@@ -633,14 +635,14 @@ padding: 0;
  	
 .sidebar {
   height: 500px;
-  width: 250px;
+  width: 200px;
   position: absolute;
   z-index: 1;
   left: 0;
   background-color: white;
   overflow-x: hidden;
   padding-top: 80px;
-  padding-left:80px;
+  padding-left:0px;
   
 }
 
