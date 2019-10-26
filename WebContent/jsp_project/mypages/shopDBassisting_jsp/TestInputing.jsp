@@ -11,17 +11,16 @@ int addproductid=0;
 int addproductcount=0;
 foodingBean dbPro = foodingBean.getInstance();
 try{
-	String selCartIdchkbx = request.getParameter("CartIdchkbx[]");
-	String[] arrCartIdchkbx = selCartIdchkbx.split(",");
-	int[] intarrCartIdchkbx = null;
+	String[] selCartIdchkbx = request.getParameterValues("CartIdchkbx");
+	int intedCartIds[]=new int[selCartIdchkbx.length];
 	
-	for(int i = 0; i<arrCartIdchkbx.length; i++){
-		intarrCartIdchkbx[i] = Integer.parseInt(arrCartIdchkbx[i]);
+	for(int i = 0; i<selCartIdchkbx.length; i++){
+		intedCartIds[i]=Integer.parseInt(selCartIdchkbx[i]);
+		
 	}
-	
-	dbPro.SendCartToBuy(intarrCartIdchkbx);
+	dbPro.SendCartToBuy(intedCartIds);
+	response.sendRedirect("../shopbasket.jsp");
 }catch(Exception e){
 	e.printStackTrace();
 }
-response.sendRedirect("../shopbasket.jsp"); 
 %>
