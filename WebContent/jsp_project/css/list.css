@@ -632,14 +632,14 @@ padding: 0;
  	
 .sidebar {
   height: 500px;
-  width: 310px;
+  width: 250px;
   position: absolute;
   z-index: 1;
   left: 0;
   background-color: white;
   overflow-x: hidden;
   padding-top: 80px;
-  padding-left:120px;
+  padding-left:80px;
   
 }
 
@@ -667,7 +667,7 @@ padding: 0;
 
 
 .sideleft {
-  width:120px;
+  width:80px;
   height:55px; 
   position: absolute;
   z-index: 1;
@@ -704,7 +704,7 @@ padding: 0;
 }
 
 .list-table {
-	width:1000px;
+	width:1300px;
 	margin-top: 80px;
 	margin-left:280px;
 	position: relative;
@@ -726,7 +726,7 @@ padding: 0;
 }
 .bak_item {
 	
-	height: 170px;
+	height: 130px;
 	margin-top: 20px;
 }
 
@@ -879,6 +879,14 @@ padding:5px;
 	float:left;
 }
 
+.inputtd3{
+	width:120px;
+	height:45px;
+	font-size:12pt;
+	background-color:white;
+	border: 1px solid #ffbb00;"
+	border-radius: 3px;
+}
 
 .tab button {
   background-color: inherit;
@@ -1020,11 +1028,66 @@ padding:5px;
 		border-width:0.5px;
 		border-style:solid;
 		border-radius:5px;
-		margin-top:200px;
+		margin-top:187px;
 		margin-left:400px; 
 		cursor: pointer;
 		
 }
+
+.tkdyd{
+		background-color:white; 
+		font-size:12pt;
+		border-color:#ffbb00;
+		height:47px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 60px;
+		margin-left: 2.2px;
+}
+
+.tkdyd2{
+		background-color:#ffbb00;
+		font-size:12pt;
+		border-color:#ffbb00;
+		height:45px;
+		border-width:0.5px;
+		border-style:solid;
+		cursor: pointer;
+		width: 60px;
+		margin-left: 2.2px;
+}
+
+.tkdyd3{
+	display: inline-block;
+    z-index: 0;
+    width: 52px;
+    height: 45px;
+    margin-left: 0px;
+    padding-top: 12px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 0 2px 2px 0;
+    background: #ffbb00;
+    font-size: 14pt;
+    color: #fff;
+    text-align: center;
+    vertical-align: bottom;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+	
+}
+.won{
+	    display: inline-block;
+	    margin: 1px 0 0 -27px;
+	    font-size: 14pt;
+	    color: #888;
+	    vertical-align: middle
+}
+   
+
+/* 결제페이지 끝 */
+
 /* 난이도별 레시피 */
 .3div{
 	width:1200px;
@@ -1073,6 +1136,11 @@ padding:5px;
 
 .row2 {
   	width:1300px;
+  	margin:auto;
+  }
+
+.row3 {
+  	width:1500px;
   	margin:auto;
   }
 
@@ -1187,7 +1255,11 @@ padding:5px;
 		border-radius:3px; 
 		margin-left:70%;
 }
-
+#notice{
+	font-size: 27px;
+	text-align: center;
+	
+}
 .check:hover{
 		background-color:#ffe08c;
 	}
@@ -1196,3 +1268,73 @@ padding:5px;
 	font-size: 24px;
 }
 /* 회원 탈퇴 페이지 끝 */
+
+/* 무통장주문시 시작 */
+.row2 {
+	  	width:800px;
+	  	margin:auto;
+	    margin-top:65px;
+	    margin-left:480px;
+	    text-align:left;
+  }
+  
+  .jumungamsa{
+  		height:80px;
+  		font-size:22pt;
+  }
+  
+  .jugamtable{
+  		width:800px;
+  		height:80px;
+  		font-size:15pt;
+  		border-bottom:2px solid #ffbb00;
+  }
+  
+    
+.bankinfo{
+		width:150px;
+  		height:25px;
+  		font-size:15pt;
+  		text-align:center;
+		
+}
+
+  .bankallprice{
+  		width:150px;
+  		height:50px;
+  		font-size:14pt;
+  		text-align:center;
+  		border:1px solid #c0c0c0;
+  		background-color:#f5f5f5;
+  		
+  		
+  }
+  
+.banking{
+		width:300px;
+	  	height:50px;
+		font-size:14pt;
+		border:1px solid #c0c0c0;
+		padding-left:10px;
+}
+
+.tkdyd4{
+    z-index: 0;
+    width: 70px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 4px 4px 4px 4px;
+    background: #ffbb00;
+    font-size: 12pt;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+	
+}
+/* 무통장주문시 끝 */
+
+
+
+
+
+

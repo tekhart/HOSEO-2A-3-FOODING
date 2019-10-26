@@ -82,7 +82,7 @@
 
 
 </head> 
-
+ 
 		<body id="body">
 		<%@include file="../general_included/topbar.jsp"%>
 		
@@ -92,12 +92,12 @@
 			<%@include file="sidemenu.jsp"%>   
 			
 			<center>  
-				<div class="row2"  style="padding-top:80px;"> 
+				<div class="row3"  style="padding-top:80px;"> 
 						<div class="forkpoint">   
 							<table> 
 								<tr><td style="width:800px; height:50px; vertical-align:top;">
 										<img id="forkimage" src="../img/fork.png" ></td></tr> 
-								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트a</h3></div></td></tr>
+								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트</h3></div></td></tr>
 									<tr><td align="center" style="width:800px; height:180px; vertical-align:top;"><div  class="forkpoint3">0 P</div></td></tr>
 						   </table>
 						</div>

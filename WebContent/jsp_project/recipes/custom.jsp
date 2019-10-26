@@ -95,11 +95,12 @@
 		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()">
 	</td>
 								
-		<td class="addBtn">
+		<!--<td class="addBtn">
 			<div > 
   				<span >추가</span>
 			</div>
-		</td></tr>
+		</td>  -->
+		</tr>
 
 </table>
 
