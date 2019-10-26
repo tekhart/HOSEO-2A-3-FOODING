@@ -75,10 +75,19 @@
 <div id="maindiv">
 	<div class="writetitle1">장바구니</div>
 	<%@include file="sidemenu.jsp"%> 
+<<<<<<< HEAD
 	<form method="POST" action="shopDBassisting_jsp/TestInputing.jsp" name="shopbasketForm">
 		<div><table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
+=======
+	<form method="POST" action="shopDBassisting_jsp/TestInputing.jsp">
+		<div><table class="list-table" style="border-spacing:0px; margin:auto; padding-left:250px;">
+>>>>>>> refs/remotes/origin/master
 			<tr>
+<<<<<<< HEAD
 				<td align="left" style="text-align:left; font-size:18pt; padding:10px;">일반상품(<%=count%>)</td>
+=======
+				<td align="left" style="text-align:left; font-size:18pt; padding:80px 0px 5px 10px;">일반상품(<%=articleList.size() %>)</td>
+>>>>>>> refs/remotes/origin/master
 			</tr>
 			<tr class="list-tableth" >
 		 		<td width="10px;" style="border-top:3px solid orange; border-bottom:2px solid orange;">
