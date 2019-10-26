@@ -23,7 +23,8 @@
 					
 					비밀번호 확인  <input id="checkpw" type="password" name="checkpw" style="width:50%"><br>
 					<br>
-					고객님의 개인정보 보호를 위해 비밀번호를 입력해주세요
+					
+					<p id="notice">고객님의 개인정보 보호를 위해 비밀번호를 입력해주세요</p><!-- 글자 굵기 크기 줄이기, 왼쪽 맞춤  : 교수님 피드백  -->
 					</div>
 					<input type="submit" value="확인"  class ="check">
 				</form>

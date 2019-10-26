@@ -1,6 +1,7 @@
 package DBBean;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class foodingBean {
@@ -10,6 +11,14 @@ public class foodingBean {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String str=null;
+	
+
+	
+	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+	Calendar cal = Calendar.getInstance();
+	String today = formatter.format(cal.getTime());
+	Timestamp ts = Timestamp.valueOf(today);
+	
 	
 	public void connect() {
 		try {
@@ -469,26 +478,40 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public void deleteUser(String id, String checkpw) 
-			throws Exception {
-		DBclose();
+	
+	public int deleteUser(String id, String checkpw) throws Exception {
 		con = null;
 		pstmt = null;
 		rs= null;
+		String dbpw="";
+		int x = -1;
 		try {
 			con = getConnection();
-			pstmt=con.prepareStatement(
-					"delete from user where id = ? and passwd = ?");
+						
+			// 해당 아이디의 비밀번호 조회
+			pstmt=con.prepareStatement("Select passwd from user where id=?");
 			pstmt.setString(1, id);
-			pstmt.setString(2, checkpw);
-			pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dbpw=rs.getString("passwd");
+				if(dbpw.equals(checkpw)) {
+					pstmt = con.prepareStatement("delete from user where id = ?");
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+					x = 1;
+				}else {
+					x = 0;
+				}
+			}
+
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
 			DBclose();
-		}
-
+		}return x;
 	}
+	
 	public void insertCommentsArticle(commentDataBean article,int rootin) 
 				throws Exception {
 		DBclose();
@@ -1763,7 +1786,7 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public int deletequestionArticle(int num)
+	public int questionArticle(int num)
 			throws Exception {
 			con = null;
 			pstmt = null;
@@ -2606,6 +2629,48 @@ public class foodingBean {
 		}
 		return articleList;
 	}
+	public List<productDataBean> getcartArticles(int[] cartid) {
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		List<productDataBean> articleList=null;
+		try {
+			con = getConnection();
+			sql = "select * from cart where cartid in("+cartid[0];
+			for(int i=1;i<cartid.length;i++) {
+				sql+=","+cartid[i];
+			}
+			sql+=")";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				articleList = new ArrayList<productDataBean>();
+				do{
+					productDataBean article= new productDataBean();
+					article.setCartId(rs.getInt("cartId"));
+					article.setOwner(rs.getString("owner"));
+					article.setProductCount(rs.getInt("productCount"));
+					article.setProductId(rs.getInt("productId"));
+					article.setProductName(rs.getString("productName"));
+					article.setIsTool(rs.getInt("isTool"));
+					article.setProductType(rs.getInt("productType"));
+					article.setPrice(rs.getInt("price"));
+					article.setDiscountRate(rs.getInt("DiscountRate"));
+					article.setProductThumb(rs.getString("productThumb"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return articleList;
+	}
 	public void deletecartArticle(int cartid) {
 		con = null;
 		pstmt = null;
@@ -2618,6 +2683,64 @@ public class foodingBean {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,cartid);
 			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
+	public void SendCartToBuy(int[] cartid) {
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		List<productDataBean> articleList=null;
+		try {
+			con = getConnection();
+			sql = "select * from cart where cartid in("+cartid[0];
+			for(int i=1;i<cartid.length;i++) {
+				sql+=","+cartid[i];
+			}
+			sql+=")";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				do{
+					sql = "insert into recipes(owner,productCount,productId,productName";
+					sql+=",isTool,productType,price,discountRate,productThumb";
+					sql+=",account,deliveryName,deliveryTel,deliveryAddrnum";
+					sql+=",deliveryAddress,deliveryDetailAdd,buydate";
+					sql+=") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1,rs.getString("owner"));
+					pstmt.setInt(2,rs.getInt("productCount"));
+					pstmt.setInt(3,rs.getInt("productId"));
+					pstmt.setString(4,rs.getString("productName"));
+					pstmt.setInt(5,rs.getInt("isTool"));
+					pstmt.setInt(6,rs.getInt("productType"));
+					pstmt.setInt(7,rs.getInt("price"));
+					pstmt.setInt(8,rs.getInt("discountRate"));
+					pstmt.setString(9,rs.getString("productThumb"));
+					pstmt.setString(10,"");
+					pstmt.setString(11,"");
+					pstmt.setString(12,"");
+					pstmt.setString(13,"");
+					pstmt.setString(14,"");
+					pstmt.setString(15,"");
+					pstmt.setTimestamp(16,ts);
+				}while(rs.next());
+			
+			
+			sql = "delete from cart where owner ="+rs.getString("owner");
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+			}
+			
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {

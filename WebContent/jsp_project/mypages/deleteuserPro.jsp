@@ -1,23 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "DBBean.BoardDataBean" %>
-<%@ page import = "DBBean.foodingBean" %>
-<%@ page import = "java.sql.Timestamp" %>
+<%@ page import = "DBBean.*" %>
 <%@ page import = "java.util.List" %>
 <%@ page import="java.sql.*"%>
+
 <%request.setCharacterEncoding("UTF-8"); %>
 
 
-<%--
-	String id;
-	id=(String)session.getAttribute("idlogin");
-
-	String checkpw = request.getParameter("checkpw");
-	
-	foodingBean dbPro = foodingBean.getInstance();
-	
-	dbPro.deleteUser(id,checkpw);
---%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,15 +20,32 @@
 		<%@include file="../general_included/topbar.jsp"%>
 		<div id="maindiv">
 			<div style="margin:auto">
-				
+				<%
+		String id = (String)session.getAttribute("idlogin");
+		
+		String checkpw = request.getParameter("checkpw");
+		
+		foodingBean dbPro = foodingBean.getInstance();
+		
+		int check = dbPro.deleteUser(id,checkpw);
+		if(check==1){
+			session.invalidate();
+		%>
 					<div class="deleteuser">
-						탈퇴가 완료되었습니다.
+						탈퇴가 완료되었습니다. 
+						
 					</div>
 					<input type="button" value="메인으로"  class ="check"
 					onclick="javascript:location.href='../mains/main.jsp'">
-			</div>
+			</div>	
+			<%}else{ %>
+			<script type="text/javascript">      
+         alert("비밀번호가 맞지 않습니다");
+         history.go(-1);
+  				 </script>
+
 		</div>
 		<%@include file="../general_included/footer.jsp"%>
-		
+		<%} %>
 	</body>
 </html>
