@@ -71,10 +71,7 @@
 		<br><br><br><br>01 개발자를 찾아보세요!
     </div>
     <div class="flip-card-back">
-<pre>
-
-
-
+<pre style="line-height:1.8em">
 
 푸딩 제작자를 통해
 보다 직접적이고 정확한
@@ -91,9 +88,7 @@
 		<br><br><br><br>02 자주하는 질문을<br>참고해보세요! 
     </div>
     <div class="flip-card-back2">
-<pre>
-
-
+<pre style="line-height:1.8em">
 
 
 
@@ -109,9 +104,7 @@
 		<br><br><br><br>03 문의를 접수해주세요!
     </div>
     <div class="flip-card-back3">
-<pre>
-
-
+<pre style="line-height:1.8em">
 
 어느 방법으로도 문제를
 해결 할 수 없었다면
