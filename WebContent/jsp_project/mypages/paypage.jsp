@@ -165,7 +165,7 @@ body {
 									<span><input type="text" class="tdpayinput2" placeholder="YY"></span>
 								</div>
 								 
-							<p class="tdpayment" style="margin-top:50px; width:380px;">CVC ( 카드뒷면의 7자리 숫자중 뒷 3자리입니다 )</p>
+							<p class="tdpayment" style="margin-top:50px; width:560px;">CVC ( 카드뒷면의 7자리 숫자중 뒷 3자리입니다 )</p>
 								<div style="margin-top:-10px;">
 									<span><input type="text" class="tdpayinput2" placeholder="3자리"></span>
 								</div>
@@ -279,7 +279,7 @@ body {
 		          		  					<a href="" class="tkdyd3">사용</a>
 		          		  			</div><br><br> 
 		          		  			
-		          		  					<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"> 
+		          		  					<div><input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"></div> 
 		          		  					
 						</td>
 					</tr>

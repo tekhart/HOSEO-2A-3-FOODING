@@ -830,7 +830,7 @@ padding:5px;
 
 .container3 {
   width:570px;
-  height:550px;
+  height:650px;
   float:left;
   background-color: #FAE4AD;
   padding: 5px 20px 15px 20px;
@@ -918,7 +918,7 @@ padding:5px;
 }
 
 .tdpayment{
-	width:130px;
+	width:500px;
 	padding:15 0 0 0px;
 	font-size:17pt;
 	font-align:left;
@@ -1014,7 +1014,7 @@ padding:5px;
 		margin-top:-40px;
 		margin-left:390px; 
 		cursor: pointer;
-		
+		position:relative;
 }
 
 .btpay2{
@@ -1028,10 +1028,10 @@ padding:5px;
 		border-width:0.5px;
 		border-style:solid;
 		border-radius:5px;
-		margin-top:187px;
+		margin-top:205px;
 		margin-left:400px; 
 		cursor: pointer;
-		
+		position:relative;
 }
 
 .tkdyd{
