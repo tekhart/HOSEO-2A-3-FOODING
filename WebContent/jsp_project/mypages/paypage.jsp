@@ -87,7 +87,7 @@ body {
 							<label for="state" class="labelpay">비밀번호 확인</label> <input
 								type="text" id="passwdcheck" name="passwdcheck"
 								class="inputtext" placeholder="본인확인을 위해 비밀번호 확인이 필요합니다 ">
-							<input type="submit" value="확인" class="bt"
+							<input type="submit" value="확인" class="tkdyd"
 								style="margin-top: 40px;">
 						</div>
 					</td>
@@ -264,16 +264,22 @@ body {
 								</div>
 						</td>
 			
-								
+								 
 
 						<td class="container3" style="margin-left:1px; float:right;">
 							 <h3>결제 예정 금액</h3> 	
 		          		  		<label for="fname" class="labelpay"> ₩ 총 주문금액</label><br><br>
-		          		  			<div class="inputtd2">연동해야함</div><br><br>
+		          		  			<div class="inputtd2">연동해야함</div><br><br> 
 		          		  		<label for="fname" class="labelpay"> 포인트 <span style="color:#424242; font-size:18px;">| 포크 n개 (총 n원)</span></label><br><br>
-		          		  	<br>		<div class="inputtd2" style="width:250px; margin-left:-170px;">연동해야함</div>
-		          		  	<input type="submit" value="사용"><br><br>
-		          		  		<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'">
+		          		  	<br>	<div style=" width:526px; float:left;">
+		          		  				<input type="text" class="inputtd3"> =
+		          		  				<input type="text" class="inputtd3">
+		          		  				<span class="won">원</span>
+		          		  				<!--  <input type="submit" value="사용" class="tkdyd2">-->
+		          		  					<a href="" class="tkdyd3">사용</a>
+		          		  			</div><br><br> 
+		          		  			
+		          		  		<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"> 
 						</td>
 					</tr>
 			</table> 
