@@ -24,7 +24,10 @@
 <form method="POST" name="delForm" 
    action="deletePro.jsp?pageNum=<%=pageNum%>" 
    onsubmit="return deleteSave()"> 
- <center>삭제된 글은 복구가 불가능합니다. <br> 정말 글을 삭제하시겠습니까?</center>
+ 	<center>
+ 		삭제된 글은 복구가 불가능합니다.
+ 		정말 글을 삭제하시겠습니까?
+ 	</center>
  <input type="hidden" name="num"  value=<%=num %>>
  <input type="hidden" name="pagenum"  value=<%=pageNum %>>
  <table>
