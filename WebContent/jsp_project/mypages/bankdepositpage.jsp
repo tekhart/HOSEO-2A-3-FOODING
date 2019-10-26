@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>포인트 관리</title>
+	<title>접수 완료</title>
 			<link rel="stylesheet" href="../css/common.css">
 			<link rel="stylesheet" href="../css/list.css">
 			
@@ -47,28 +47,36 @@
 		
 		<div id="maindiv">
 		<div class="writetitle1">
-		포인트 관리</div>
+		</div>
 		<%@include file="sidemenu.jsp"%>   
 			
 			<center>  
 				<div class="row2"> 
 					<div class="jumungamsa">주문 감사드립니다(접수 완료)</div>
 					<p> 총 입금하실 금액을 확인하시고, 은행에 입금하여 주세요.</p>
-					<table class="jugamtable" border="1">
+					<table class="jugamtable">
 						<tr><td>주문번호</td>
 							<td>주문일</td>
 					</table>
-					
-					<table border="1" style="border-color:">
-						<tr><td collapse="4">
-						<tr><td>총 입금하실 금액</td><td></td><td>계좌번호</td><td></td>
-						<tr><td>입금은행</td><td></td><td>입금기한</td><td></td>
+			<br><br> 
+					 <p class="bankinfo" >입금하실 은행정보</p>
+					<table style="border:3px solid #c0c0c0; border-width: thin;  border-collapse: collapse;">
+						<tr><td class="bankallprice">총 입금하실 금액</td>
+							<td class="banking"></td>
+						<td class="bankallprice">계좌번호</td>
+							<td class="banking"></td>
+						<tr><td class="bankallprice">입금은행</td>
+							<td class="banking"></td>
+						<td class="bankallprice"> 입금기한</td>
+							<td class="banking">주문일로부터 3일간</td>
 					</table>
-				
+						<div style="text-align:center; margin-top:40px;">
+							<input type="button" value="확인" class="tkdyd4" onclick="location.href='../mypages/jumuncheck.jsp'">
+						</div>
 				</div>
 			
 			
-			
+			</center>
 			
 <%@include file="../general_included/footer.jsp"%>
 	<br><br>

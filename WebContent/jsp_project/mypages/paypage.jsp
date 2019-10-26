@@ -275,11 +275,12 @@ body {
 		          		  				<input type="text" class="inputtd3"> =
 		          		  				<input type="text" class="inputtd3">
 		          		  				<span class="won">원</span>
-		          		  				<!--  <input type="submit" value="사용" class="tkdyd2">-->
+		          		  			
 		          		  					<a href="" class="tkdyd3">사용</a>
 		          		  			</div><br><br> 
 		          		  			
-		          		  		<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"> 
+		          		  					<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"> 
+		          		  					
 						</td>
 					</tr>
 			</table> 
