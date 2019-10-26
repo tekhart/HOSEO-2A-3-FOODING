@@ -15,6 +15,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
 </script>
 		
+
+		
 		</head><body>
 <div id="topdiv" style=text-align:center;>
 	<table width="100%" height="100%">
@@ -29,7 +31,7 @@
 							if(idlogin==null){
 								%>
 								<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
-								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
+								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">&nbsp;
 								<%
 							}else{
 								String nknamelogin=topbarbean.findnkname(idlogin);
@@ -37,6 +39,7 @@
 								<%=nknamelogin %>&nbsp;님&nbsp;
 								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/updatepage.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
+								<img src="../img/cart.png" height="30px" width="30px" onClick="location.href='../mypages/jumuncheck.jsp'" style="vertical-align:middle;"><span class="badge">3</span>
 								<%
 							}
 						}finally{}
