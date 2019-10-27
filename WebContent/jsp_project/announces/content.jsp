@@ -6,7 +6,7 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.*"%>
 <%!int commentpageSize = 10;
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");%>
 <%
 	
 %>
@@ -101,17 +101,17 @@
 					 	<%
 						if (article.getWriterid().equals(idlogin)) {
 					%>
-					<td>
+					<td width="800px">
 					<input type="button" value="글수정"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="글삭제"
 					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					</td>
-					<td>일자 : <%=article.getReg_date()%></td>
+					<td width="800px">일자 : <%=article.getReg_date()%></td>
 					<%
 						}else{%>
-							<td></td>
-							<td>일자 : <%=article.getReg_date()%></td>
+							<td width="800px"></td>
+							<td style="text-align:right;"width="800px">일자 : <%=article.getReg_date()%></td>
 						<%}%>
 				
 				

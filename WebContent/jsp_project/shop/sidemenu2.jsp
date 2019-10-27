@@ -14,7 +14,7 @@ body {
 /* Fixed sidenav, full height */
 .sidenav {
 float:left;
-  height: 1250px;
+  height: 1000px;
   width: 200px;
   position: absolute;
   z-index: 1;
