@@ -15,13 +15,8 @@ body {
 .sidenav {
 float:left;
   height: 1000px;
-  width: 200px;
-  position: absolute;
-  z-index: 1;
-  top: 300px;
-  left: 0;
+  width: 250px;
   background-color: white;
-  overflow-x: hidden;
   padding-top: 20px;
 }
 

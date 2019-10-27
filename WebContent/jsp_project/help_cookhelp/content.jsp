@@ -95,16 +95,16 @@
 	    
 %> 
 
-<table  class="contenttable" style="margin:auto;" >   
+<table  class="contenttable" >   
 	<tr>
 		<td width="500px" rowspan="2" height="100px" align="center" class="orangeline11"
 			style="text-align:center;"><%=article.getTitle()%></td>
 		<td width="100px" class="orangeline111" style="text-align:right;
-			color:#e0e0e0; font-size:20px;"><%= sdf.format(article.getReg_date())%></td>
+			color:#e0e0e0; font-size:20px;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
 	</tr>
 	<tr>
 		<td colspan="2" style="text-align:right;
-			color:#e0e0e0; font-size:20px;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+			color:#e0e0e0; font-size:20px;"><%=article.getReadcount()%>view</td>
 	</tr>
 
 		<tr	class="orangeline">
@@ -126,20 +126,25 @@
 						
 	</tr>
     <tr class="orangeline">
-    	<td style="padding-left:10px;"> 조회수 : <%=article.getReadcount()%> </td>
-		<td align="right" style="text-align:left;">일자
-			<%
-			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
-	        %>
-				<input type="button" value="글수정" 
+		<td align="right" style="text-align:left;">
+			 <input type="button" value="글수정" class="smallbt"
 				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" value="글삭제" class="smallbt"
-                            onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
+				    		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
+		</td>
+			<%
+			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+	        %>
+				
+	        	
+				
 		    <%
-		    	} 
+		    	}
 		    %>
-       	</td>
+		    <td align="right" style="text-align:left;">일자 <%= sdf.format(article.getReg_date())%>
+		   
+       		</td>
     </tr>
     <tr	class="orangeline">
 						<td colspan="2" height="400px">
