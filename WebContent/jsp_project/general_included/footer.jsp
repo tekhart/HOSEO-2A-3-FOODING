@@ -74,7 +74,10 @@ position:left;
 width:100px;
 height: auto;
 }
-
+#footerhr{
+  margin: auto;
+  width:100%;
+}
 #footerlp{
 text-align:left;
 }
@@ -95,7 +98,7 @@ margin-top:80px;
 <div id="footer">
 
 
-<hr>
+<hr id="footerhr">
 
 
 <table width="1000px" style="margin:auto; font-size:20px; padding:10px;"><tr>
