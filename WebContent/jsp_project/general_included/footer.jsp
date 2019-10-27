@@ -76,7 +76,10 @@ height: auto;
 #footerlp{
 text-align:left;
 }
-
+#footerhr {
+  margin: auto;
+  width:100%;
+}
 #rightside{
 position:relative;
 float:right;
@@ -97,7 +100,7 @@ margin-top:2%;
 	<li><a href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></li>
 </ul>
 </div>
-<hr>
+<hr id="footerhr">
 	<div id="leftside">
 		<img src="../img/fooding.png" id="logo"  />
 		<p id="footerp">Create by FOODING<br>JSP Project 2019 2A03</p>

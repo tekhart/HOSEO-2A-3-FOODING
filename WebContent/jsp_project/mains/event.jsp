@@ -275,7 +275,6 @@ hr {
 </div>
 
 
-<%@include file="../general_included/footer.jsp"%>
 
 <script>
 var countDownDate = new Date("dec 7, 2019 23:59:59").getTime();
@@ -442,5 +441,6 @@ var countDownDate = new Date("dec 7, 2019 23:59:59").getTime();
 	
 </script>
 
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>
