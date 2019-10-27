@@ -110,7 +110,7 @@
 					<td>일자 : <%=article.getReg_date()%></td>
 					<%
 						}else{%>
-							<td> 테스트 </td>
+							<td></td>
 							<td>일자 : <%=article.getReg_date()%></td>
 						<%}%>
 				
