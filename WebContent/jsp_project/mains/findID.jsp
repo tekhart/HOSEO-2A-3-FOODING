@@ -68,7 +68,7 @@ function Findid(){
 					</td>
 				</tr>
 			</table>
-			
+			 
 			 <br>
 			<input class="findbutton" type="button" value="찾기" onclick="Findid();"/>
 		</form>
@@ -76,11 +76,8 @@ function Findid(){
 	</center>
 </div>
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
+
+ <%@include file="../general_included/footer.jsp"%>
+
 </body>
 </html>

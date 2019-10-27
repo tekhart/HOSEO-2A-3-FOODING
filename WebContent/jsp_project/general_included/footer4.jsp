@@ -96,24 +96,23 @@ margin-top:2%;
 <div id="footer">
 
 <hr>
-
-
-<table width="1000px" style="margin:auto; font-size:20px; padding:10px;"><tr>
-<td rowspan="2"><img src="../img/fooding.png" id="logo"  /></td>
-<td><a href="../mains/ask.jsp">고객센터</a></td>
-<td><a href="https://github.com/tekhart/HOSEO-2A-3-FOODING" target="_blank">GIT</a></td>
-<td><a href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></td>
-</tr>
-<tr>
-<td colspan="3"><table width="100%" style="padding:10px;"><tr>
-<td>Create by FOODING<br>JSP Project 2019_2A03</td>
-<td>Email<br>fooding2019_2a03@naver.com</td>
-</tr></table></td>
-</tr></table>
-
+<div id="footnav">
+<ul class="horizontal-menu">
+<li><div id="leftside">
+		<img src="../img/fooding.png" id="logo"  />
+		<p id="footerp">Create by FOODING<br>JSP Project 2019_2A03</p>
+	</div></li>
+	<li><a href="../mains/ask.jsp">고객센터</a></li>
+	<li><a href="#">홈페이지 소개</a></li>
+	<li><a href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></li>
+	<li><div id="rightside">
+		<p>Email : fooding2019_2a03@naver.com</p>
+	</div></li>
+</ul>
 </div>
 	
-
+	
+</div>
 </footer>
 </body>
 </html>
