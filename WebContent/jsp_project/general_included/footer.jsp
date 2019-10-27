@@ -76,18 +76,18 @@ height: auto;
 #footerlp{
 text-align:left;
 }
-<<<<<<< HEAD
+
 #footerhr {
   margin: auto;
   width:100%;
 }
-=======
+
 
 #footerp{
 font-size:12px; 
 }
 
->>>>>>> refs/remotes/origin/master
+
 #rightside{
 position:relative;
 float:right;
@@ -102,7 +102,7 @@ margin-top:2%;
 <footer>
 <div id="footer">
 
-<hr>
+<hr id="footerhr">
 <div id="footnav">
 <ul class="horizontal-menu">
 <li><div id="leftside">
