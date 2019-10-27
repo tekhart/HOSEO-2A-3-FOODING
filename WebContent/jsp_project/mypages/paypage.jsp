@@ -144,19 +144,20 @@ body {
 						<% 
 							}else{
 								
-								String productnames="";
+								String minproductnames="";
+								String lagproductnames="";
 								int decidescontinue=0;
 								for (int i = 0 ; i < articleList.size(); i++) {
 									int leftproduct=articleList.size()-i+1;
 									productDataBean article = articleList.get(i);
 									
-									if(productnames.length()<15){
-										if(productnames!=null){
-											productnames+=", ";
-											productnames+=article.getProductName();
+									if(minproductnames.length()<15){
+										if(minproductnames!=null){
+											minproductnames+=", ";
+											minproductnames+=article.getProductName();
 										}
 									}else if(decidescontinue==0){
-										productnames+=" 외 "+leftproduct+"개 물건";
+										minproductnames+=" 외 "+leftproduct+"개 물건";
 									}
 									
 									int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
@@ -195,7 +196,6 @@ body {
 								<td colspan="2" style="border-bottom:2px solid orange;"></td>
 								<td colspan="1" style="border-bottom:2px solid orange; font-size:16pt;">배송비</td>
 								<td colspan="9" style="border-bottom:2px solid orange; font-size:16pt; ">
-									<br>
 									<%		
 										if(totalprice>=50000){bae_song_bee=0;
 											%>

@@ -96,16 +96,14 @@
 
 
 <tr><td colspan="4" class="customsecond">
-<ul id="myUL">
-  
-</ul></td><td class="customsecond"><input type="submit" value="검색" class="bt"  onclick="location.href='content.jsp?num=40&pageNum=6&fame=0'"></td></tr>
+	<ul id="myUL"> </ul></td><td class="customsecond"><input type="submit" value="검색" class="bt"  onclick="notreallysearched()"></td></tr>
 
 
 <tr><td colspan="5" class="customsecond">
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()">
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onkeyup="newElemententerkey()">
 	</td>
 								
 		<!--<td class="addBtn">
@@ -123,6 +121,16 @@
 </table>
 
 <script>
+function newElemententerkey() {
+    if (window.event.keyCode == 13) {
+         newElement();
+    }
+}
+function notreallysearched(){
+	if(document.getElementById("myUL").innerHTML!=" "){
+		location.href='content.jsp?num=40&pageNum=6&fame=0';
+	}
+}
 
 //Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("text");

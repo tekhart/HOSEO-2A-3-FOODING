@@ -230,8 +230,9 @@ function window_onload(){
 
 }
     function go_url(){
-    	  alert("문의가 전송되었습니다")
-    location.href="../mains/main.jsp"
+    	location.href="../mains/main.jsp"
+    	alert("문의가 전송되었습니다")
+    
     }
 </script>
 </body>
