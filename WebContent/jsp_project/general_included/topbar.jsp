@@ -9,10 +9,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../css/common.css">
-
-<script type="text/javascript">	
-</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js" >
 </script>
 		
 		</head><body>
@@ -107,7 +104,7 @@
 					        </td>
 	        				<td><center>
 	        					<div class="dropdown">
-						            <button class="dropbtn" OnClick="window.location='../notices/faq.jsp'">고객센터</button>
+						            <button class="dropbtn" OnClick="window.location='../mains/faq.jsp'">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
 							             	<a href="../mains/faq.jsp">자주하는 질문</a>
