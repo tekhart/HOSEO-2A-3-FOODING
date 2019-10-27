@@ -16,6 +16,8 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<link rel="icon" href="../img/favicon.ico">
 <style>
 	body{	font-family:"Bauhaus ITC";
 		color:black;}
