@@ -205,9 +205,7 @@
 		
 <body id="body">
 	<%@include file="../general_included/topbar.jsp"%>
-	<div id="maindiv2">
-
-		
+	<div id="maindiv2">	
 				<table class="contenttable" > 
 					<tr><td	class="orangeline11"
 								rowspan="2"width="1000px"
