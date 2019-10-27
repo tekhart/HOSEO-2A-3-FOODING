@@ -30,6 +30,7 @@ list-style-type: none;
 a {
 text-decoration: none;
 }
+
 #footer {
 margin: 0;
 padding:150px 0px 0px 0px;
@@ -59,26 +60,30 @@ position:relative;
 width:100%;
 font-size:22px;
 }
-#leftside
-{
-width:60%;
-padding:5px;
-float:left;
-margin-left:20%;
+
+#leftside {
+position:left;
+	padding: 5px;
+	float: left;
+	margin-left: 20%;
 }
+
 #logo{
 width:100px;
 height: auto;
 }
+
 #footerlp{
 text-align:left;
 }
+
 #rightside{
-positon:relative;
+position:relative;
 float:right;
 margin-right:10%;
 margin-top:2%;
 }
+
 </style>
 </head>
 <body>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.net.URLEncoder" %>
 <%@ page import = "DBBean.foodingBean" %>
 <%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "DBBean.commentDataBean" %>
@@ -30,7 +30,7 @@
 	
 	
 	
-	<title>게시판</title>
+	<title>게시판, 레시피 보기</title>
 	<script>
 		function initComparisons() {
 			var x, i;
@@ -108,15 +108,37 @@
 				/*position the slider:*/
 				slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
 			}
-			}
-			function setCookie(cookie_name,cookie_value,days){
-				var exdate= new Date();
-				exdate.setDate(exdate.getDate()+days);
-				
-				var cookie_value = escape(value) + ((days == null) ? '' : ';    expires=' + exdate.toUTCString());
-				document.cookie=cookie_name+'='+cookie.value;
-			}
 		}
+			
+			<%--function setCookie(cookie_name,cookie_value){
+				var date= new Date();
+				date.setDate(date.getTime()+60*60*3*1000);
+				document.cookie=cookie_name+'='+cookie_value+';expires='+date.toUTCString()+';path=/';
+			}
+			function getCookie(cookie_name){
+				var name = cookie_name + "=";
+				var ca = document.cookie.split(';');
+				for(var i=0;i<ca.length;i++){
+					var c = ca[i];
+					while(c.charAt(0)==' '){
+						c=c.substring(1);
+					}if(c.indexOf(name)==0){
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+			function checkCookie() {
+				  var user = getCookie("username");
+				  if (user != "") {
+				    alert("Welcome again " + user);
+				  } else {
+				    user = prompt("Please enter your name:", "");
+				    if (user != "" && user != null) {
+				      setCookie("username", user, 365);
+				    }
+				}
+			}--%>
 	</script>
 	<script type="text/javascript">
 		function AnsUpdDelComment(num,content,ref,re_step,
@@ -167,19 +189,24 @@
 					commentList = dbPro.getCommentsArticles(startRow, commentpageSize,num);
 				}
 				
-		%>
-<body id="body" onload="setCookie(<%=article.getNum() %>,<%=article.getTitle() %> ,3*60*60)"><%--세션 3시간임 --%>
-	<%@include file="../general_included/topbar.jsp"%>
-	<div id="maindiv2">
-		
-			<%
+		%>				
+			<%--
 				String rc=request.getContextPath();
 				String recipe="recipe";
 				int rcnum = article.getNum();
 				String code=String.valueOf(rcnum);
 				String rccode = recipe.concat(code);
 				String rcname=article.getTitle();
-				%>
+				Cookie rec = new Cookie(rccode,URLEncoder.encode(rcname,"utf=8"));
+				rec.setMaxAge(60*60*3);
+				response.addCookie(rec);
+			--%>
+
+		
+<body id="body">
+	<%@include file="../general_included/topbar.jsp"%>
+	<div id="maindiv2">
+
 		
 				<table class="contenttable" > 
 					<tr><td	class="orangeline11"
@@ -356,10 +383,12 @@
 						</table>
 					<%}%>
 				</form>
+						
 			<%}%>
 		<%
 			}catch(Exception e){} 
 		%>
+
 	</div>
 		
 	<form action="../mypages/checkstatus.jsp" method="POST" name="WannaGoOthersProfile">
