@@ -62,29 +62,28 @@ font-size:22px;
 }
 
 #leftside {
+position:left;
 	padding: 5px;
 	float: left;
 	margin-left: 20%;
-#leftside
-{
-width:60%;
-padding:5px;
-float:left;
-margin-left:20%;
 }
+
 #logo{
 width:100px;
 height: auto;
 }
+
 #footerlp{
 text-align:left;
 }
+
 #rightside{
-positon:relative;
+position:relative;
 float:right;
 margin-right:10%;
 margin-top:2%;
 }
+
 </style>
 </head>
 <body>
