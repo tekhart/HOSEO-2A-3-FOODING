@@ -76,36 +76,41 @@
 	<%@include file="sidemenu.jsp"%> 
 	<form method="POST" action="paypage.jsp" name="shopbasketForm">
 
-		<div><table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
-			<tr>
-				<td align="left" style="text-align:left; font-size:18pt; padding:80px 0px 5px 10px;">일반상품(<%=count%>)</td>
-			</tr>
-			<tr class="list-tableth" >
-		 		<td width="10px;" style="border-top:3px solid orange; border-bottom:2px solid orange;">
-		 			<label><input type="checkbox" value="alldelete" class="BasketMainCheck" onclick="CheckAllSubChecks()" checked></label></td>
-				<td width="150" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이미지</td>
-				<td width="300" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이름</td>	
-				<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">판매가</td>
-				<td width="280" style="border-top:3px solid orange; border-bottom:2px solid orange;">수량</td>
-				<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">포인트적립</td>
-				<td width="100" style="border-top:3px solid orange; border-bottom:2px solid orange;">합계</td>
-				<td width="100" style="border-top:3px solid orange; border-bottom:2px solid orange;"></td>
-			 </tr> 
-		
-					
-			<tbody class="list-tabletd">
+		<div>
+			
 				<% 
 					if(articleList==null){
 				%>
-					<tr>
-						<td colspan="9" style="border-bottom:3px solid orange;">
-							<br>
-							장바구니가 비었어요! ^~^
-							<br>
-						</td>
-					</tr>
+					<table width="500px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
+						border-style:solid; font-family:Bauhaus ITC;margin-left:650px" >
+						<tr><td>
+						<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
+						<tr><td>
+						<h4>장바구니가 비어 있습니다.</h4></td></tr>
+							<tr><td></td></tr><br><br><br><br> </table>
 				<% 
 					}else{
+						
+				%>
+					<table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
+						<tr>
+							<td align="left" style="text-align:left; font-size:18pt; padding:80px 0px 5px 10px;">일반상품(<%=count%>)</td>
+						</tr>
+						<tr class="list-tableth" >
+					 		<td width="10px;" style="border-top:3px solid orange; border-bottom:2px solid orange;">
+					 			<label><input type="checkbox" value="alldelete" class="BasketMainCheck" onclick="CheckAllSubChecks()" checked></label></td>
+							<td width="150" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이미지</td>
+							<td width="300" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이름</td>	
+							<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">판매가</td>
+							<td width="280" style="border-top:3px solid orange; border-bottom:2px solid orange;">수량</td>
+							<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">포인트적립</td>
+							<td width="100" style="border-top:3px solid orange; border-bottom:2px solid orange;">합계</td>
+							<td width="100" style="border-top:3px solid orange; border-bottom:2px solid orange;"></td>
+						 </tr> 
+					
+								
+						<tbody class="list-tabletd">
+				<%
 						
 						int totalprice=0;
 						int default_bae_song_bee=2500;
