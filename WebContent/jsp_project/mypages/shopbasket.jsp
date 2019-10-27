@@ -51,8 +51,6 @@
 		document.shopbasketForm.submit();
 		
 	}
-	
-	<!-- 체크박스 전체선택/해제 끝-->
 </script>
 </head>
 
@@ -76,7 +74,7 @@
 	<div class="writetitle1">장바구니</div>
 
 	<%@include file="sidemenu.jsp"%> 
-	<form method="POST" action="shopDBassisting_jsp/TestInputing.jsp" name="shopbasketForm">
+	<form method="POST" action="paypage.jsp" name="shopbasketForm">
 
 		<div><table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
 			<tr>

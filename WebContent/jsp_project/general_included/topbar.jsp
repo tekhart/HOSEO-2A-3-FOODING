@@ -9,10 +9,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../css/common.css">
-
-<script type="text/javascript">	
-</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js" >
 </script>
 		
 		</head><body>

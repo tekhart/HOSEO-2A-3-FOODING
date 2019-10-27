@@ -223,7 +223,7 @@
 	</tr>
 	<tr>
 		<td align="right" colspan="2">
-							<input type="button" value="답글" onclick=
+			<input type="button" value="답글" onclick=
 					"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 					'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 					'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
