@@ -1,3 +1,4 @@
+<%@page import="com.sun.xml.internal.txw2.Document"%>
 <%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -59,7 +60,7 @@
 	
 %>
 <%
-	
+
 %>
 <!DOCTYPE html>
 <html>
@@ -83,7 +84,19 @@
 			document.WannaGoOthersProfile.findId.value=id;
 			document.WannaGoOthersProfile.submit();
 		}
-		
+		function getCookie(cookie_name){
+			var name = cookie_name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i<ca.length;i++){
+				var c = ca[i];
+				while(c.charAt(0)==' '){
+					c=c.substring(1);
+				}if(c.indexOf(name)==0){
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
 	</script>
 </head>
 <body id="body">
@@ -244,14 +257,14 @@
 	</div>
 	
 	<div id="recent">
-	<%
+	<%--
 	String rc=request.getContextPath();
 	Cookie recs [] =request.getCookies();
 	//String [] show = new String [4];
 	String result;
 	if(rc != null){
 		
-		for(int i=0;i<recs.length;i++){	
+		for(int i=0;i<recs.length;i++){
 			if(i>4){
 				recs[i-5].setMaxAge(0);
 				response.addCookie(recs[i-5]);
@@ -260,16 +273,14 @@
 			//response.addCookie(recs[i]);
 			if(recs[i].getName().indexOf("recipe") != -1){
 				result = URLDecoder.decode(recs[i].getValue(),"UTF-8")+"<br>";
-			%>
-				<%=result %>
-			<%
+				out.println(result);
 			}
 			
 		}
 		
 	}
-	%>
-	<button onclick="resetCookie()">기록 초기화</button>
+--%>
+
 	<script>
 		function resetCookie(){
 			document.cookie = 'rec=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
@@ -277,10 +288,10 @@
 		}
 	</script>
 	</div>
+	
 	<form action="../mypages/checkstatus.jsp" method="POST" name="WannaGoOthersProfile">
 		<input type="hidden" name="findId">
 	</form> 
 	<%@include file="../general_included/footer.jsp"%>
-	<br><br>
 </body>
 </html>
