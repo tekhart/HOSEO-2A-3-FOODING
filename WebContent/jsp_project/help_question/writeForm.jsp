@@ -69,24 +69,7 @@
 				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
 				 style="ime-mode:normal;"></td>
 			</tr>
-			<tr>
-				<td align="center" id="writespace">질문&nbsp;&nbsp;종류</td>
-				<td align="left">
-					<select name='quesType'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden >-- 선택 --</option>
-		    			
-		    			<option value='' selected disabled hidden>나라를 고르세요</option>
-									<option value='한식'>한식</option>
-									<option value='양식'>양식</option>
-									<option value='일식'>일식</option>
-									<option value='중식'>중식</option>
-									<option value='퓨전'>퓨전</option>
-									<option value='기타'>기타</option>
-					</select>
-					
-				</td>
-			</tr>
+			
 			<tr>
 				<td align="center" id="writespace">필요한 재료</td>
 				<td align="left">
