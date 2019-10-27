@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <title>이벤트</title>
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<link rel="icon" href="../img/favicon.ico">
+
 <style>
 .eventdiv {
   width:1300px;
@@ -143,7 +146,6 @@ hr {
 </style>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
-
 
 <div class="eventdiv">
 <div class="bgimg">
