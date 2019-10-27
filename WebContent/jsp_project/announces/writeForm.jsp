@@ -9,7 +9,9 @@
 		
 		<link rel="stylesheet" href="../css/common.css">
 		<link rel="stylesheet" href="style.css">
-		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
+		<link rel="stylesheet" type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
+		<link rel="shortcut icon" href="../img/favicon.ico">
+		<link rel="icon" href="../img/favicon.ico">
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -101,12 +103,7 @@
 		</div>
 		
 		
-		<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-		<pre>
-		Create by FOODING
-		고객문의 1544-XXXX
-		JSP Project 2019 2A03</pre>
-		</div>
+		<%@include file="../general_included/footer.jsp"%>
 		
 		<script type="text/javascript">
 		var check_confirm_write=false;
