@@ -82,7 +82,7 @@
 			</tr>
 			<tr class="list-tableth" >
 		 		<td width="10px;" style="border-top:3px solid orange; border-bottom:2px solid orange;">
-		 		 <label><input type="checkbox" value="alldelete" class="BasketMainCheck" onclick="CheckAllSubChecks()" checked></label></td>
+		 			<label><input type="checkbox" value="alldelete" class="BasketMainCheck" onclick="CheckAllSubChecks()" checked></label></td>
 				<td width="150" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이미지</td>
 				<td width="300" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이름</td>	
 				<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">판매가</td>
