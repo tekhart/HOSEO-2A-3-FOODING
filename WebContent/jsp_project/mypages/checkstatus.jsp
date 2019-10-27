@@ -29,13 +29,14 @@
 		<%@include file="../general_included/topbar.jsp"%>
 		<div id="maindiv">
 			<div class="writetitle1">마이페이지</div>	
+				<%@include file="sidemenu.jsp"%>
 			<br>
 			<br>
 			<br> 
 			<br>
 			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
 			<div style="margin:auto">
-				<table border="1">
+				<table border="1" style="margin-left:550px;">
 					<%	
 						request.setCharacterEncoding("UTF-8");
 	

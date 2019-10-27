@@ -226,12 +226,12 @@ body{
 <script>
 function window_onload(){
 
-    setTimeout('go_url()',7000)
+    setTimeout('go_url()',5000)
 
 }
     function go_url(){
-
-    location.href="jumunok.jsp"
+    	  alert("문의가 전송되었습니다")
+    location.href="../mains/main.jsp"
     }
 </script>
 </body>

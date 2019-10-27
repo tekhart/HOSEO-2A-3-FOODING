@@ -19,7 +19,6 @@
 	<div class="sidebar" style="position:absolute;">
 		<a href="../mypages/checkstatus.jsp" > 프로필</a>
 		<a href="../mypages/point.jsp" >포인트 관리</a>
-		<a href="#" >게시글 관리</a>
 		<a href="../mypages/jumuncheck.jsp" > 주문조회</a>
 		<a href="../mypages/shopbasket.jsp" > 장바구니</a>
 	</div>
