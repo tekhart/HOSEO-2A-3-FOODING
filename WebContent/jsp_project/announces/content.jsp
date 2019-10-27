@@ -73,7 +73,7 @@
 					commentList = dbPro.getannounceCommentsArticles(startRow, commentpageSize, num);
 				}
 		%>
-		<table class="contenttable" border="1">
+		<table class="contenttable">
 			<tr>
 				<td class="orangeline11" rowspan="2" width="1000px" height="100px"
 					align="center"><h2><%=article.getTitle()%></h2></td>
