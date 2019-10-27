@@ -104,7 +104,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" style="text-align:right;
-			color:#e0e0e0; font-size:20px;"><%=article.getReadcount()%>view</td>
+			color:#e0e0e0; font-size:20px;" class="orangeline1"><%=article.getReadcount()%>view</td>
 	</tr>
 
 		<tr	class="orangeline">
@@ -125,28 +125,23 @@
 						</td>
 						
 	</tr>
-    <tr class="orangeline">
-		<td align="right" style="text-align:left;">
-			 <input type="button" value="글수정" class="smallbt"
-				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="글삭제" class="smallbt"
-				    		onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">	
-		</td>
-			<%
-			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
-	        %>
-				
-	        	
-				
-		    <%
-		    	}
-		    %>
-		    <td align="right" style="text-align:left;">일자 <%= sdf.format(article.getReg_date())%>
-		   
-       		</td>
-    </tr>
-   
+	<%
+						if (article.getWriterid().equals(idlogin)) {
+					%>
+			<tr>
+	
+					<td colspan="2">
+					<input type="button" value="글수정"
+					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+					<input type="button" value="글삭제"
+					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+					</td> 
+					
+			</tr>
+					<%}else{%>
+						
+						<%}%>
+
 	<tr><td></td><!-- <td colspan="2">목록</td></tr>  -->
 	
 </table>

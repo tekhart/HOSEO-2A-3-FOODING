@@ -63,11 +63,11 @@ font-size:22px;
 
 #leftside {
 position:left;
-	padding: 5px;
-	float: left;
-	margin-left: 20%;
-	width:34%;
-	text-align:right;
+    padding: 5px;
+    float: left;
+    margin-left: 20%;
+    width:34%;
+    text-align:right;
 }
 
 #logo{
@@ -96,6 +96,7 @@ margin-top:80px;
 
 <footer>
 <div id="footer">
+
 
 
 <hr id="footerhr">
