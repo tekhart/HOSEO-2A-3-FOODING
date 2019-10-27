@@ -377,24 +377,26 @@ padding: 0;
 	background-color: #fddedd;
 	width:1100px;
 	height:200px;
-	text-align:center;
+	text-align:left;
 	margin:auto;	
 	border-top:double;
-  border-bottom:double;
-  border-color:#593a0d;
-  border-width:7px;
+    border-bottom:double;
+    border-color:#593a0d;
+    border-width:7px;
+    padding:20px 0px 0px 20px;
 }
 
 .divdiv2{
 	background-color:#e6f2ff;
 	width:1100px;
 	height:200px;
-	text-align:center;
+	text-align:left;
 	margin:auto;	
 	border-top:double;
-  border-bottom:double;
-  border-color:#593a0d;
-  border-width:7px;
+    border-bottom:double;
+    border-color:#593a0d;
+    border-width:7px;
+    padding:20px 0px 0px 20px;
 }
 /* 재료,도구 슬라이드 끝 */
 
@@ -633,14 +635,14 @@ padding: 0;
  	
 .sidebar {
   height: 500px;
-  width: 250px;
+  width: 200px;
   position: absolute;
   z-index: 1;
   left: 0;
   background-color: white;
   overflow-x: hidden;
   padding-top: 80px;
-  padding-left:80px;
+  padding-left:0px;
   
 }
 

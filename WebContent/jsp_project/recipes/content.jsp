@@ -237,7 +237,7 @@
 							<div align="center" style="margin-bottom:15px;"></div>
 							<div class="img-comp-container">
 								<div class="img-comp-img">
-									<div class="divdiv1" style="padding: 20px;"><%=article.getIngredients() %></div>
+									<div class="divdiv1"><%=article.getIngredients() %></div>
 								</div>
 								<div class="img-comp-img img-comp-overlay">
 									<div class="divdiv2"> <%=article.getTools() %></div>
@@ -259,9 +259,11 @@
 						</td>
 					</tr>
 				</table>
+				<p style="text-align:center;">
 				<%if(session.getAttribute("idlogin")==null){ %>
 					로그인을 하셔야 댓글을 쓸수 있습니다.
 				<%}else{ %>
+				</p>
 					<input type="hidden" name="num" value="0">
 					<input type="hidden" name="rootin" value="<%=num %>">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
@@ -286,9 +288,9 @@
 			</form>
 		
 			<% if (count == 0) { %>
-				<table>
-					<tr><td align="center"> 댓글이 없습니다.</td></tr>
-				</table>
+				
+					<p style="text-align:center;"> 댓글이 없습니다.</p>
+				
 			<% } else {%>
 			
 				<form method="post" name="iregularcommentform" 

@@ -61,6 +61,7 @@ font-size:22px;
 }
 #leftside
 {
+width:60%;
 padding:5px;
 float:left;
 margin-left:20%;
