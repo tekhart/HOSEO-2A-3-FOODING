@@ -91,6 +91,9 @@ body {
 	
 		int addproductid=0;
 		int addproductcount=0;
+		int totalprice=0;
+		int default_bae_song_bee=2500;
+		int bae_song_bee=default_bae_song_bee;
 		foodingBean dbPro = foodingBean.getInstance();
 		String[] selCartIdchkbx=null;
 		List<productDataBean> articleList=null;
@@ -109,124 +112,136 @@ body {
 	%>
 
 	<div id="maindiv">
-		<div class="writetitle1">결제페이지</div>
+		<form method="POST" action="jumunok.jsp" name="paypageform">
+			<div class="writetitle1">결제페이지</div>
 
-		<%@include file="sidemenu.jsp"%>
-		<center>
-		<div><table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
-			<tr>
-				<td align="left" style="text-align:left; font-size:18pt; padding:80px 0px 5px 10px;">일반상품(<%=addproductcount%>)</td>
-			</tr>
-			<tr class="list-tableth" >
-		 		<td width="150" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이미지</td>
-				<td width="300" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이름</td>	
-				<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">판매가</td>
-				<td width="280" style="border-top:3px solid orange; border-bottom:2px solid orange;">수량</td>
-				<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">포인트적립</td>
-				<td width="100" style="border-top:3px solid orange; border-bottom:2px solid orange;">합계</td>
-			 </tr> 
-		
-					
-			<tbody class="list-tabletd">
-				<% 
-					if(selCartIdchkbx==null){
-				%>
+			<%@include file="sidemenu.jsp"%>
+			<center>
+			<div>
+				<table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
 					<tr>
-						<td colspan="9" style="border-bottom:3px solid orange;">
-							<br>
-							장바구니가 비었어요! ^~^
-							<br>
-						</td>
+						<td align="left" style="text-align:left; font-size:18pt; padding:80px 0px 5px 10px;">결제상품(<%=addproductcount%>)</td>
 					</tr>
-				<% 
-					}else{
-						int totalprice=0;
-						int default_bae_song_bee=2500;
-						int bae_song_bee=default_bae_song_bee;
-						
-						for (int i = 0 ; i < articleList.size(); i++) {
-							productDataBean article = articleList.get(i);
-							int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
-							int RealxCountPrice=realprice*article.getProductCount();
-							int ExpectedValueOfAddMile=realprice*article.getProductCount()/100;
-							totalprice+=RealxCountPrice;
-					%>
-						<tr>
-							<td width="150" style="border-bottom:3px solid orange;">
-									<div class="bak_item">
-									<div class="pro_img"></div>
-									<div class="pro_nt"></div>
-									<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:120px;"></div>
-									</div>
-							</td>
-							<td width="150" style="border-bottom:3px solid orange; font-size:16pt;"><%=article.getProductName() %></td>
-							<td width="150" style="border-bottom:3px solid orange; font-size:16pt;">
-								<%if(article.getDiscountRate()==0){%>
-									<%=article.getPrice()%>원
-								<%}else{ %>
-									<del><%=article.getPrice()%>원</del><%=article.getDiscountRate()%>% off<br>
-									ㄴ><%=realprice%>원
-								<%} %>
-							</td>
-							<td width="200" style="border-bottom:3px solid orange; font-size:16pt;">	
-									<div>
-										<%=article.getProductCount() %>
-									</div>
-							</td>
-							<td width="150" style="border-bottom:3px solid orange; font-size:16pt;"><img src="../img/fork.png" width="15px" height="15px"><%=ExpectedValueOfAddMile %></td>
-							<td width="150" style="border-bottom:3px solid orange; font-size:16pt;"><%=RealxCountPrice%>원</td>
-						</tr>
-					<%}%>
-					<tr>
-						<td colspan="2" style="border-bottom:2px solid orange;"></td>
-						<td colspan="1" style="border-bottom:2px solid orange; font-size:16pt;">배송비</td>
-						<td colspan="9" style="border-bottom:2px solid orange; font-size:16pt; ">
-							<br>
-							<%		
-								if(totalprice>=50000){bae_song_bee=0;
-									%>
-										<del><%=default_bae_song_bee%> 원</del>=><%=bae_song_bee%> 원
-									<%
-								}else{
-									%>
-										<%=bae_song_bee%> 원
-									<%
-								}	
+					<tr class="list-tableth" >
+				 		<td width="150" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이미지</td>
+						<td width="300" style="border-top:3px solid orange; border-bottom:2px solid orange;">상품이름</td>	
+						<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">판매가</td>
+						<td width="280" style="border-top:3px solid orange; border-bottom:2px solid orange;">수량</td>
+						<td width="120" style="border-top:3px solid orange; border-bottom:2px solid orange;">포인트적립</td>
+						<td width="100" style="border-top:3px solid orange; border-bottom:2px solid orange;">합계</td>
+					</tr>
+					<tbody class="list-tabletd">
+						<% 
+							if(selCartIdchkbx==null){
+						%>
+							<tr>
+								<td colspan="9" style="border-bottom:3px solid orange;">
+									<br>
+									장바구니가 비었어요! ^~^
+									<br>
+								</td>
+							</tr>
+						<% 
+							}else{
+								
+								String productnames="";
+								int decidescontinue=0;
+								for (int i = 0 ; i < articleList.size(); i++) {
+									int leftproduct=articleList.size()-i+1;
+									productDataBean article = articleList.get(i);
+									
+									if(productnames.length()<15){
+										if(productnames!=null){
+											productnames+=", ";
+											productnames+=article.getProductName();
+										}
+									}else if(decidescontinue==0){
+										productnames+=" 외 "+leftproduct+"개 물건";
+									}
+									
+									int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
+									int RealxCountPrice=realprice*article.getProductCount();
+									int ExpectedValueOfAddMile=realprice*article.getProductCount()/100;
+									totalprice+=RealxCountPrice;
 							%>
-							<br>
-						</td>
-					</tr> 
-					<tr>
-						<td colspan="9" height="20px" align="center" style="border-bottom:2px solid orange;">
-							<br><span style="vertical-align:middle; display:table-cell; font-size:16pt;">
-								총 비용=<%=totalprice %>
-								</span>
-							<br>
-						</td>
-					</tr>
-				<%}%>
-			</tbody>
-		</table>
-		</div>
+								<tr>
+									<td width="150" style="border-bottom:3px solid orange;">
+										<input type="hidden" name="sendcartids" value="<%=article.getCartId()%>">
+										<div class="bak_item">
+										<div class="pro_img"></div>
+										<div class="pro_nt"></div>
+										<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:120px;"></div>
+										</div>
+									</td>
+									<td width="150" style="border-bottom:3px solid orange; font-size:16pt;"><%=article.getProductName() %></td>
+									<td width="150" style="border-bottom:3px solid orange; font-size:16pt;">
+										<%if(article.getDiscountRate()==0){%>
+											<%=article.getPrice()%>원
+										<%}else{ %>
+											<del><%=article.getPrice()%>원</del><%=article.getDiscountRate()%>% off<br>
+											ㄴ><%=realprice%>원
+										<%} %>
+									</td>
+									<td width="200" style="border-bottom:3px solid orange; font-size:16pt;">	
+											<div>
+												<%=article.getProductCount() %>
+											</div>
+									</td>
+									<td width="150" style="border-bottom:3px solid orange; font-size:16pt;"><img src="../img/fork.png" width="15px" height="15px"><%=ExpectedValueOfAddMile %></td>
+									<td width="150" style="border-bottom:3px solid orange; font-size:16pt;"><%=RealxCountPrice%>원</td>
+								</tr>
+							<%}%>
+							<tr>
+								<td colspan="2" style="border-bottom:2px solid orange;"></td>
+								<td colspan="1" style="border-bottom:2px solid orange; font-size:16pt;">배송비</td>
+								<td colspan="9" style="border-bottom:2px solid orange; font-size:16pt; ">
+									<br>
+									<%		
+										if(totalprice>=50000){bae_song_bee=0;
+											%>
+												<del><%=default_bae_song_bee%> 원</del>=><%=bae_song_bee%> 원
+											<%
+										}else{
+											%>
+												<%=bae_song_bee%> 원
+											<%
+										}	
+									%>
+									<br>
+								</td>
+							</tr>
+						<%}%>
+					</tbody>
+				</table>
+			</div>
 			<br>
 			<table class="row">
 				<tr>
 					<td colspan="2" align="right" width="580px"
-						style="padding-bottom: 50px; padding-left: 280px;">
+							style="padding-bottom: 50px; padding-left: 280px;">
 						<div class="container">
 							<h3 align="center">주문자 정보</h3>
-							<label for="fname1" class="labelpay"><i
-								class="fa fa-user"></i> 주문하시는분</label><br>
-							<br> <input type="text" id="fname1" name="firstname2"
-								class="inputtext" placeholder="이름"><br>
-							<br> <label for="email" class="labelpay"><i
-								class="fa fa-envelope"></i> Email</label> <input type="text" id="email"
-								name="email" class="inputtext" placeholder="john@example.com">
-							<label for="state" class="labelpay">비밀번호 확인</label> <input
-								type="text" id="passwdcheck" name="passwdcheck"
-								class="inputtext" placeholder="본인확인을 위해 비밀번호 확인이 필요합니다 ">
+							<label for="fname1" class="labelpay">
+								<i class="fa fa-user"></i>
+								주문하시는분
+							</label>
+							<br>
+							<br>
+							<input type="text" id="fname1" name="firstname2"
+									class="inputtext" placeholder="이름">
+							<br>
+							<br>
+							<label for="email" class="labelpay">
+								<i class="fa fa-envelope"></i>
+								Email
+							</label>
+							<input type="text" id="email"
+									name="email" class="inputtext" placeholder="john@example.com">
+							<label for="state" class="labelpay">비밀번호 확인</label>
+							<input type="text" id="passwdcheck" name="passwdcheck"
+									class="inputtext" placeholder="본인확인을 위해 비밀번호 확인이 필요합니다 ">
 							<input type="submit" value="확인" class="tkdyd"
-								style="margin-top: 40px;">
+									style="margin-top: 40px;">
 						</div>
 					</td>
 
@@ -245,22 +260,19 @@ body {
 								class="inputtext" placeholder="주소"><br>
 							<br> <input type="text" id="city3" name="city3"
 								class="inputtext" placeholder="상세주소"><br>
-							<br> <label for="state" class="labelpay">배송메시지</label> <input
-								type="text" id="delimessa" name="delimessa" class="inputtext"
-								placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
+							<br> <label for="state" class="labelpay">배송메시지</label>
+							<input type="text" id="delimessa" name="delimessa" class="inputtext"
+									placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
 						</div>
 					</td>
 				</tr>
 			</table>
-
-
-
 			<table style="margin-left: 282px;" width="1148px;">
 				<tr>
 					<td class="container3" colspan="2" style="margin-left:1px; float:right;">
-						 <h3>결제 예정 금액</h3> 	
+						<h3>결제 예정 금액</h3> 	
           		  		<label for="fname" class="labelpay"> ₩ 총 주문금액</label><br><br>
-          		  			<div class="inputtd2">연동해야함</div><br><br> 
+          		  			<div class="inputtd2"><%=totalprice+bae_song_bee %></div><br><br> 
           		  		<label for="fname" class="labelpay"> 포인트 <span style="color:#424242; font-size:18px;">| 포크 n개 (총 n원)</span></label><br><br>
 	          		  	<br>
 	          		  	<div style=" width:526px; float:left;">
@@ -270,15 +282,16 @@ body {
         		  			<a href="" class="tkdyd3">사용</a>
         		  		</div>
         		  		<br><br>	
-         		  		<div><input type="submit" value="결제하기" class="btpay2" onclick="customer_decided_topay()"></div> 
+         		  		<div><input type="button" value="결제하기" class="btpay2" onclick="customer_decided_topay()"></div> 
 	          		  					
 					</td>
 				</tr>
 			</table>
-  
-</div></table>
-</center>
-<br><br><br>
+			
+		</form>
+		
+		</div>
+		<br><br><br>
 
 
 
