@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="color.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="color.jsp"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="../css/list.css">
-		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="icon" href="../img/favicon.ico">
-		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
-		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel=stylesheet type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
 			function sendingthumb(thumbname){
                 $("#thumbnail").css("background-image","url("+thumbname+")");
                 $("#thumbnail").innerhtml="";
@@ -25,118 +27,115 @@
 				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
 			}
 		</script>
-		
-		
-		
-		
-	</head>
-	<body id="writebody">
-		<%@include file="../general_included/topbar.jsp"%>
-		
-		<div id="maindiv">
+
+
+
+
+</head>
+<body id="writebody">
+	<%@include file="../general_included/topbar.jsp"%>
+
+	<div id="maindiv">
 		<%
 			int num = 0;
-			String strV="";
-			
-			try{
-				if(request.getParameter("num")!=null){
-					num=Integer.parseInt(request.getParameter("num"));
+			String strV = "";
+
+			try {
+				if (request.getParameter("num") != null) {
+					num = Integer.parseInt(request.getParameter("num"));
 				}
-				if(session.getAttribute("idlogin")==null){
+				if (session.getAttribute("idlogin") == null) {
 					response.sendRedirect("../general_included/pls_login_first.jsp");
 				}
-				idlogin=(String)session.getAttribute("idlogin");
+				idlogin = (String) session.getAttribute("idlogin");
 		%>
-		<div class="writetitle1">
-			레시피 작성
-		</div>
-		
+		<div class="writetitle1">레시피 작성</div>
+
 		<div id="space">
 
-		<form method="post" name="writeform" 
-			action="writePro.jsp" onsubmit="return writeSave()">
-		<input type="hidden" name="num" value="<%=num %>">
-		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
-		
-		<center>
-		<table id="writetable" align="center" border-spacing="10px">
-			<tr>
-			<td rowspan="4" width="300px">
-			
-			<div id="thumbnail" onclick="thumbnailupload()"></div>
-			
-			</td>
-			<td width="700px" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
-				 style="ime-mode:normal;" placeholder="제목을 입력하세요"></td>
-			</tr>
-			<tr>
-			<td align="left">
-					<select name='contury'
-						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
-						font-family:Bauhaus ITC;">
-						<option value='' selected disabled hidden >나라를 고르세요</option>
-		    			<option value='한식'>한식</option>
-		    			<option value='양식'>양식</option>
-		    			<option value='일식'>일식</option>
-		    			<option value='중식'>중식</option>
-		    			<option value='퓨전'>퓨전</option>
-		    			<option value='기타'>기타</option>
-					</select>
-					<select name='foodtype'
-						style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
-						font-family:Bauhaus ITC;">
-						<option value='' selected disabled hidden>종류를 고르세요</option>
-		    			<option value='밥류'>밥류</option>
-		    			<option value='빵류'>빵류</option>
-		    			<option value='반찬류'>반찬류</option>
-		    			<option value='면류'>면류</option>
-		    			<option value='국류'>국류</option>
-		    			<option value='디저트'>디저트</option>
-		    			<option value='기타'>기타</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-			<td align="left">
-					<input type="text" size="150" maxlength="150" name="ingredients" class="signupinputblack"
-					style="ime-mode:normal;" placeholder="사용된 재료를 알려주세요"></td>
-			</tr>
-			<tr>
-			<td align="left">
-					<input type="text" size="150" maxlength="150" name="tools" class="signupinputblack"
-					style="ime-mode:normal;" placeholder="사용된 도구를 알려주세요"></td>
-			</tr>
-			<tr><td style="width:1000px;" colspan="2" align="left">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-			</td></tr>
-			
-				<tr><td></td>
-				<td align="left" >
-					<input type="button" id="button123" value="확인" onclick="Editor.save();">
-					<input type="reset" id="button123" value="다시 작성">
-					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
-				</td>
-			</tr>
-			
-			
-		</table>
-			
-		
-		</center>
-		<%
-			}catch(Exception e){}
-		%>
-		</form>
+			<form method="post" name="writeform" action="writePro.jsp"
+				onsubmit="return writeSave()">
+				<input type="hidden" name="num" value="<%=num%>"> <input
+					type="hidden" name="writerid" value="<%=idlogin%>"> <input
+					type="hidden" name="thumbnail" id="inputthumbnail"
+					value="../img/defaultthumb.png">
+
+				<center>
+					<table id="writetable" align="center" border-spacing="10px">
+						<tr>
+							<td rowspan="4" width="300px">
+
+								<div id="thumbnail" onclick="thumbnailupload()"></div>
+
+							</td>
+							<td width="700px" align="left"><input type="text" size="40"
+								maxlength="50" name="title" class="signupinputblack"
+								style="ime-mode: normal;" placeholder="제목을 입력하세요"></td>
+						</tr>
+						<tr>
+							<td align="left"><select name='contury'
+								style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: black; font-size: 12pt; font-family: Bauhaus ITC;">
+									<option value='' selected disabled hidden>나라를 고르세요</option>
+									<option value='한식'>한식</option>
+									<option value='양식'>양식</option>
+									<option value='일식'>일식</option>
+									<option value='중식'>중식</option>
+									<option value='퓨전'>퓨전</option>
+									<option value='기타'>기타</option>
+							</select> <select name='foodtype'
+								style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: black; font-size: 12pt; font-family: Bauhaus ITC;">
+									<option value='' selected disabled hidden>종류를 고르세요</option>
+									<option value='밥류'>밥류</option>
+									<option value='빵류'>빵류</option>
+									<option value='반찬류'>반찬류</option>
+									<option value='면류'>면류</option>
+									<option value='국류'>국류</option>
+									<option value='디저트'>디저트</option>
+									<option value='기타'>기타</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td align="left"><input type="text" size="150"
+								maxlength="150" name="ingredients" class="signupinputblack"
+								style="ime-mode: normal;" placeholder="사용된 재료를 알려주세요"></td>
+						</tr>
+						<tr>
+							<td align="left"><input type="text" size="150"
+								maxlength="150" name="tools" class="signupinputblack"
+								style="ime-mode: normal;" placeholder="사용된 도구를 알려주세요"></td>
+						</tr>
+						<tr>
+							<td style="width: 1000px;" colspan="2" align="left"><jsp:include
+									page="../../daumeditor/editor_frame.jsp"></jsp:include></td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td align="left"><input type="button" id="button123"
+								value="확인" onclick="Editor.save();"> <input type="reset"
+								id="button123" value="다시 작성"> <input type="button"
+								id="button123" value="글목록"
+								OnClick="window.location='../recipes/list.jsp'"></td>
+						</tr>
+
+
+					</table>
+
+
+				</center>
+				<%
+					} catch (Exception e) {
+					}
+				%>
+			</form>
 		</div>
-		</div>
-		
-		
-		<%@include file="../general_included/footer.jsp"%>
-		
-		
-		<script type="text/javascript">
+	</div>
+
+
+	<%@include file="../general_included/footer.jsp"%>
+
+
+	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
 		
@@ -210,5 +209,5 @@
 			}
 
 		</script>
-	</body>
+</body>
 </html>

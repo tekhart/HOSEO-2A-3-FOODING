@@ -134,7 +134,7 @@ for (int i = 0 ; i < articleList.size(); i++) {
 				<td class='line' rowspan='2' width='300px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
 					<img src="<%=recarticle1.getThumbnail() %>" width='300px' class='adad' >
 				</td>
-				<td class='line' height='80px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+				<td class='line' height='100px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
 					<p class='pline'><%=recarticle1.getTitle() %></p>
 				</td>
 				
@@ -144,17 +144,17 @@ for (int i = 0 ; i < articleList.size(); i++) {
 	    		<td class='line' rowspan='2' width='300px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
    					<img src="<%=recarticle2.getThumbnail() %>" width='300px' class='adad'>
    				</td>
-   				<td class='line' height='80px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+   				<td class='line' height='100px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
    					<p class='pline'><%=recarticle2.getTitle() %></p>
    				</td>
 			</tr>
     		<tr>
-    			<td class='line' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+    			<td class='line' height='50px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle1.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
     				<%=recarticle1.getWriterid() %>
     			</td>
    				<td>
     			</td>
-   				<td class='line' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
+   				<td class='line' height='50px' style=" cursor: pointer;"onclick="location.href='../recipes/content.jsp?num=<%=recarticle2.getNum()%>&pageNum=<%=currentPage%>&fame=<%=fame%>'">
     				<%=recarticle2.getWriterid() %>
     			</td>
    			</tr>

@@ -379,11 +379,11 @@
 							
 							
 							<td>
-							<label class="loginradio"><ruby>남자<rt>&nbsp</rt></ruby>
+							<label class="loginradio">남자
 							  <input type="radio"  id="male"  checked="checked" name="gender" value="1" >
 							  <span class="checkmark"></span>
 							</label>
-							<label class="loginradio"><ruby>여자<rt>&nbsp</rt></ruby>
+							<label class="loginradio">여자
 							  <input type="radio" name="gender"  id="female"  value="2" >
 							  <span class="checkmark"></span>
 							</label>
@@ -406,9 +406,7 @@
 
 		
 		
-		<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
  <%@include file="../general_included/footer.jsp"%>
 
-			</div>
 	</body>
 </html>
