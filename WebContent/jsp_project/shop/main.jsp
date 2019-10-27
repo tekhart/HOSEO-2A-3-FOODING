@@ -130,6 +130,7 @@
 		body {
   font-family: "Lato", sans-serif;
 }
+
 	</style>
 	<script>
 		function ShowDetail(pdtid,pdtname,price,dscountrt,pdtthumb) {

@@ -63,9 +63,6 @@
 
 <style>
 
-
-
-
 </style>
 
 <title>도와줘요!, FOODING</title>
@@ -77,17 +74,54 @@
 </head>
 <body id="body">
 <%@include file="../general_included/topbar.jsp"%>
-
-
-
-     
-
+  
+<center>
+			<table class="listtop">
+				<tr>
+					<td>
+						
+	
+					</td>
+					<td>
+						<table class="searchtable">
+							<form method="post" action="list.jsp" class="searh">
+								<tr>
+									<td style="padding-left:280px;">
+										<select name='searchtype' style="ime-mode:inactive; padding: .7em .5em; 
+										border-radius: 5px 5px 5px 5px; border-color:#ffbb00; font-size:14pt;
+										font-family:Bauhaus ITC; height:50px;" >
+											<option value='제목' selected>제목</option>
+											<option value='글쓴이'>글쓴이</option>
+											<option value='재료'>재료</option>
+											<option value='도구'>도구</option>
+										</select>
+									</td>
+									<td class="searchtd">
+										<input type="text" name="search" class="searchbar">	
+									</td>
+									<td class="searchbttd" width="50px">
+											<input type="submit" value="검색" class="searchbotton">
+									</td>
+								</tr>
+							</form>
+						</table>
+					</td>
+					<td style="padding-left:190px;">
+						<table align="right">
+							<tr>
+								<td>
+									<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
+								</td>
+								<td>
+									<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</center>
 <% if (count == 0) { %>
-
-<table align="right"><tr><td>
-  <a href="list.jsp">목록</a></td><td>
-  <a href="writeForm.jsp">글쓰기</a></td></tr></table>
-  <br><br><br>
   
 <table align="center" class="nogul">
 <tr>
@@ -103,24 +137,7 @@
 <div class="writetitle1">
 전체 질문 게시글(<%=count %>)</div>
 
-<table class="listtop"><tr>
-<table class="searchtable">
-	<tr style="padding-top:-5px">
-		<td class="searchtd" border="1" style="padding-left:350px;">
 
-			<form method="post" action="list.jsp" class="searh">
-			<input type="text" name="search" class="searchbar">	
-			
-		</td>
-			<td class="searchbttd" width="50px">
-			<input type="submit" value="검색" class="searchbotton">
-				<td style="padding-left:225px;">
-			<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt"></td>
-			<td>
-			<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt"></td>
-			</form>
-</td></tr></table>
-<td><tr><td>
 <br>
 
 
@@ -203,7 +220,7 @@
 </div>
 
 <br>
-<br><br><br><br>
+<br>
 		<%@include file="../general_included/footer.jsp"%>
 
 

@@ -25,7 +25,7 @@
 
 
 
-<br><br><br>
+<br><br><br><br><br><br>
 <table style="width:1400px; margin:auto;"><tr><td>
 <button class="accordion">대량 구매 관련 문의를 하고 싶습니다.</button>
 <div class="panel">
@@ -59,7 +59,7 @@
 </td></tr></table>
 
 </div>
-
+<br><br><br><br><br><br>
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
