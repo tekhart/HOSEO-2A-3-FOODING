@@ -76,18 +76,7 @@ height: auto;
 #footerlp{
 text-align:left;
 }
-<<<<<<< HEAD
-#footerhr {
-  margin: auto;
-  width:100%;
-}
-=======
 
-#footerp{
-font-size:12px; 
-}
-
->>>>>>> refs/remotes/origin/master
 #rightside{
 position:relative;
 float:right;
@@ -101,24 +90,14 @@ margin-top:2%;
 
 <footer>
 <div id="footer">
-
-<hr>
 <div id="footnav">
 <ul class="horizontal-menu">
-<li><div id="leftside">
-		<img src="../img/fooding.png" id="logo"  />
-		<p id="footerp">Create by FOODING<br>JSP Project 2019_2A03</p>
-	</div></li>
-	<li><a href="../mains/ask.jsp">고객센터</a></li>
+	<li><a href="#">고객센터</a></li>
 	<li><a href="#">홈페이지 소개</a></li>
 	<li><a href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></li>
-	<li><div id="rightside">
-		<p>Email : fooding2019_2a03@naver.com</p>
-	</div></li>
 </ul>
 </div>
-<<<<<<< HEAD
-<hr id="footerhr">
+<hr>
 	<div id="leftside">
 		<img src="../img/fooding.png" id="logo"  />
 		<p id="footerp">Create by FOODING<br>JSP Project 2019 2A03</p>
@@ -126,10 +105,6 @@ margin-top:2%;
 	<div id="rightside">
 		<p>Email : fooding2019_2a03@naver.com</p>
 	</div>
-=======
-	
-	
->>>>>>> refs/remotes/origin/master
 </div>
 </footer>
 </body>
