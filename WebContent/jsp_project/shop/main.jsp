@@ -201,7 +201,7 @@
 		 	<%}%>
 		 	</div>
 		<%}%>
-		<%@include file="../general_included/footer.jsp"%>
+
 				
 		<div id="myModal" class="modal" style="display: none">
 			<div class="modal-content" style="background-color:#eeeeee">
@@ -241,6 +241,6 @@
 			</div>
 		</div>
 	</div>
-	
+			<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>
