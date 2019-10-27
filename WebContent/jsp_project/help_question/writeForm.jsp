@@ -7,8 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<link rel="shortcut icon" href="../img/favicon.ico">
 		<link rel="icon" href="../img/favicon.ico">
@@ -42,7 +42,7 @@
 				idlogin=(String)session.getAttribute("idlogin");
 		%>
 		<div class="writetitle">
-			레시피 작성
+			도와줘요!
 		</div>
 		
 		<div id="space">
@@ -76,9 +76,13 @@
 						style="ime-mode:inactive;">
 						<option value='' selected disabled hidden >-- 선택 --</option>
 		    			
-		    			<option value='질문'>질문</option>
-		    			<option value='일식'>일식</option>
-		    			
+		    			<option value='' selected disabled hidden>나라를 고르세요</option>
+									<option value='한식'>한식</option>
+									<option value='양식'>양식</option>
+									<option value='일식'>일식</option>
+									<option value='중식'>중식</option>
+									<option value='퓨전'>퓨전</option>
+									<option value='기타'>기타</option>
 					</select>
 					
 				</td>
