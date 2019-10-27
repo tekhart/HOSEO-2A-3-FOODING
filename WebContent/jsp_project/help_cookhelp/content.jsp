@@ -21,8 +21,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../css/list.css">
+
 
 <style>
 
@@ -82,15 +82,18 @@
 	        commentList = dbPro.getcookhelpCommentsArticles(startRow, commentpageSize,num);
 	    }
 	    
-%>
+%> 
 
-<table border="1" style="margin:auto;" > 
+<table border="1" class="contenttable" style="margin:auto;" >   
 	<tr>
-		<td width="500px" style="text-align:center;"><%=article.getTitle()%></td>
-		<td width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
+		<td width="500px" rowspan="2" height="100px" align="center" class="orangeline11"
+			style="text-align:center;"><%=article.getTitle()%></td>
+		<td width="100px" class="orangeline111" style="text-align:right;
+			color:#e0e0e0; font-size:20px;"><%= sdf.format(article.getReg_date())%></td>
 	</tr>
 	<tr>
-		<td colspan="2" ><%=foodingbean.findnkname(article.getWriterid()) %></td>
+		<td colspan="2" style="text-align:right;
+			color:#e0e0e0; font-size:20px;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
 	</tr>
 	<tr>
 		<td  colspan="2">사용재료 : <%=article.getIngredients() %></td>
