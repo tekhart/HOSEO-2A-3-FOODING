@@ -74,7 +74,25 @@
 <body id="body">
 	<%@include file="../general_included/topbar.jsp"%>
 
-	<center>
+	
+	<% if (count == 0) { %>
+
+	<table align="center" class="nogul">
+		<tr>
+			<td align="center">게시판에 저장된 글이 없습니다<br> 첫 글을 남겨보세요! <br>
+				<img src="../img/ding.png" height="335px" width="559px">
+			</td>
+	</table>
+	<% } else {%>
+	<div id="maindiv">
+
+		<div class="writetitle1">
+			전체 질문 게시글(<%=count %>)
+		</div>
+
+
+		<br>
+			<center>
 		<table class="listtop">
 			<tr>
 				<td></td>
@@ -110,26 +128,9 @@
 				</td>
 			</tr>
 		</table>
+		
 	</center>
-	<% if (count == 0) { %>
-
-	<table align="center" class="nogul">
-		<tr>
-			<td align="center">게시판에 저장된 글이 없습니다<br> 첫 글을 남겨보세요! <br>
-				<img src="../img/ding.png" height="335px" width="559px">
-			</td>
-	</table>
-	<% } else {%>
-	<div id="maindiv">
-
-		<div class="writetitle1">
-			전체 질문 게시글(<%=count %>)
-		</div>
-
-
 		<br>
-
-
 		<table class="listtable">
 			<tr height="50">
 				<td align="center" width="50" class="listcolor">번호</td>
@@ -139,6 +140,8 @@
 				<td align="center" width="50" class="listcolor">조회</td>
 				<td align="center" width="50" class="listcolor">댓글수</td>
 			</tr>
+			
+			
 			<%  
    for (int i = 0 ; i < articleList.size(); i++) {
 	   QuestionDataBean article = articleList.get(i);
@@ -164,7 +167,7 @@
 		<%}%>
 
 		<center>
-
+			<br>
 			<%
     if (count > 0) {
         int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
