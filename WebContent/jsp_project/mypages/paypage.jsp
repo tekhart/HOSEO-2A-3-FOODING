@@ -89,6 +89,9 @@ body {
 	
 		int addproductid=0;
 		int addproductcount=0;
+		int totalprice=0;
+		int default_bae_song_bee=2500;
+		int bae_song_bee=default_bae_song_bee;
 		foodingBean dbPro = foodingBean.getInstance();
 		String[] selCartIdchkbx=null;
 		List<productDataBean> articleList=null;
@@ -138,9 +141,7 @@ body {
 					</tr>
 				<% 
 					}else{
-						int totalprice=0;
-						int default_bae_song_bee=2500;
-						int bae_song_bee=default_bae_song_bee;
+						
 						
 						for (int i = 0 ; i < articleList.size(); i++) {
 							productDataBean article = articleList.get(i);
@@ -193,14 +194,6 @@ body {
 							%>
 							<br>
 						</td>
-					</tr> 
-					<tr>
-						<td colspan="9" height="20px" align="center" style="border-bottom:2px solid orange;">
-							<br><span style="vertical-align:middle; display:table-cell; font-size:16pt;">
-								총 비용=<%=totalprice %>
-								</span>
-							<br>
-						</td>
 					</tr>
 				<%}%>
 			</tbody>
@@ -250,15 +243,12 @@ body {
 					</td>
 				</tr>
 			</table>
-
-
-
 			<table style="margin-left: 282px;" width="1148px;">
 				<tr>
 					<td class="container3" colspan="2" style="margin-left:1px; float:right;">
 						 <h3>결제 예정 금액</h3> 	
           		  		<label for="fname" class="labelpay"> ₩ 총 주문금액</label><br><br>
-          		  			<div class="inputtd2">연동해야함</div><br><br> 
+          		  			<div class="inputtd2"><%=totalprice+bae_song_bee %></div><br><br> 
           		  		<label for="fname" class="labelpay"> 포인트 <span style="color:#424242; font-size:18px;">| 포크 n개 (총 n원)</span></label><br><br>
 	          		  	<br>
 	          		  	<div style=" width:526px; float:left;">
