@@ -37,6 +37,7 @@
 								<%=nknamelogin %>&nbsp;님&nbsp;
 								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/updatepage.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
+								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;"> <span class="badge">3</span>
 								<%
 							}
 						}finally{}
@@ -96,7 +97,7 @@
 						            <div class="dropdown-content">
 							            <center>
 							            	<a href="../announces/list.jsp">푸딩규칙</a>
-									        <a href="#">이벤트</a>
+									        <a href="../mains/event.jsp">이벤트</a>
 							            </center>
 						        	</div>
 						        </div></center>
