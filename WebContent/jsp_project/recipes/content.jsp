@@ -27,8 +27,9 @@
 	
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/list.css">
-	
-	
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<link rel="icon" href="../img/favicon.ico">
+		
 	
 	<title>게시판, 레시피 보기</title>
 	<script type="text/javascript">
@@ -162,9 +163,7 @@
 		%>
 <body id="body" onload="initComparisons()">
 	<%@include file="../general_included/topbar.jsp"%>
-	<div id="maindiv2">
-
-		
+	<div id="maindiv2">	
 				<table class="contenttable" > 
 					<tr><td	class="orangeline11"
 								rowspan="2"width="1000px"

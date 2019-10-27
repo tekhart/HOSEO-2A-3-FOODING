@@ -7,9 +7,7 @@
 <%@ page import="java.util.*"%>
 <%!int commentpageSize = 10;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");%>
-<%
-	
-%>
+
 
 <!DOCTYPE html>
 <html>
@@ -111,8 +109,7 @@
 					<td width="800px">일자 : <%=article.getReg_date()%></td>
 					<%
 						}else{%>
-							<td width="800px"></td>
-							<td style="text-align:right;"width="800px">일자 : <%=article.getReg_date()%></td>
+							<td style="text-align:right;" colspan="2">일자 : <%=article.getReg_date()%></td>
 						<%}%>
 				
 				
