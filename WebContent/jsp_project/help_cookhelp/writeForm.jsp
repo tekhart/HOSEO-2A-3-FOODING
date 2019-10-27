@@ -8,14 +8,22 @@
 		
 		
 		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
+		<link rel="stylesheet" href="../css/list.css">
 		<link rel="shortcut icon" href="../img/favicon.ico">
 		<link rel="icon" href="../img/favicon.ico">
+		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			
+			function sendingthumb(thumbname){
+                $("#thumbnail").css("background-image","url("+thumbname+")");
+                $("#thumbnail").innerhtml="";
+                $("#inputthumbnail").val(thumbname);
+
+			}
+			function thumbnailupload(){
+				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+			}
 		</script>
 		
 		
@@ -29,87 +37,49 @@
 		<%
 			int num = 0;
 			String strV="";
+			
 			try{
 				if(request.getParameter("num")!=null){
 					num=Integer.parseInt(request.getParameter("num"));
 				}
 				if(session.getAttribute("idlogin")==null){
-					out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
-					response.sendRedirect("../mains/main.jsp");
+					response.sendRedirect("../general_included/pls_login_first.jsp");
 				}
 				idlogin=(String)session.getAttribute("idlogin");
 		%>
-		<div class="writetitle">
-			레시피 작성
+		<div class="writetitle1">
+			요리 강의 작성
 		</div>
 		
 		<div id="space">
-		
-		
-		
+
 		<form method="post" name="writeform" 
 			action="writePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
+		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
+		
 		<center>
 		<table id="writetable" align="center" border-spacing="10px">
 			<tr>
-				<td align="right" colspan="2">
-				
-				</td>
+			<td  width="300px">
+			
+			<div id="thumbnail" onclick="thumbnailupload()"></div>
 			</tr>
 			<tr>
-				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-				<td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
-				 style="ime-mode:normal;"></td>
-			</tr>
-			<tr>
-				<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
-				<td align="left">
-					<select name='contury'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden >-- 선택 --</option>
-		    			<option value='한식'>한식</option>
-		    			<option value='양식'>양식</option>
-		    			<option value='일식'>일식</option>
-		    			<option value='중식'>중식</option>
-		    			<option value='퓨전'>퓨전</option>
-		    			<option value='기타'>기타</option>
-					</select>
-					<select name='foodtype'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden>-- 선택 --</option>
-		    			<option value='밥류'>밥류</option>
-		    			<option value='빵류'>빵류</option>
-		    			<option value='반찬류'>반찬류</option>
-		    			<option value='면류'>면류</option>
-		    			<option value='국류'>국류</option>
-		    			<option value='디저트'>디저트</option>
-		    			<option value='기타'>기타</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td align="center" id="writespace">필요한 재료</td>
-				<td align="left">
-					<input type="text" size="40" maxlength="30" name="ingredients" class="signupinput"
-					style="ime-mode:normal;"></td>
-			</tr>
-			<tr>
-				<td align="center" id="writespace">사용되는 도구</td>
-				<td align="left">
-					<input type="text" size="40" maxlength="30" name="tools" class="signupinput"
-					style="ime-mode:normal;"></td>
-			</tr>
-			<tr>
-				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-				<td align="left">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
+			</td>
+			<td width="1000px" align="left" style="vertical-align:bottom;">
+				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
+				 style="ime-mode:normal;" placeholder="제목을 입력하세요"></td>
 			</tr>
 			
-				<tr><td></td>
-				<td align="left" >
+			
+			<tr><td style="width:1000px;" align="left">
+					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
+			</td></tr>
+			
+				<tr>
+				<td align="center" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
 					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
@@ -129,7 +99,8 @@
 		</div>
 		
 		
-<%@include file="../general_included/footer.jsp"%>
+		<%@include file="../general_included/footer.jsp"%>
+		
 		
 		<script type="text/javascript">
 		var check_confirm_write=false;
