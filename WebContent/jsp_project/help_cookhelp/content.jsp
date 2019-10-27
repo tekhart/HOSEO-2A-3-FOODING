@@ -146,21 +146,7 @@
 		   
        		</td>
     </tr>
-    <tr	class="orangeline">
-						<td colspan="2" height="400px">
-						
-							<div align="center" style="margin-bottom:15px;"></div>
-							<div class="img-comp-container">
-								<div class="img-comp-img">
-									<div class="divdiv1"><%=article.getIngredients() %></div>
-								</div>
-								<div class="img-comp-img img-comp-overlay">
-									<div class="divdiv2"> <%=article.getTools() %></div>
-								</div>
-							</div>
-						#<%=article.getContury()%> #<%=article.getFoodtype()%>
-					</td>
-				</tr>
+   
 	<tr><td></td><!-- <td colspan="2">목록</td></tr>  -->
 	
 </table>
