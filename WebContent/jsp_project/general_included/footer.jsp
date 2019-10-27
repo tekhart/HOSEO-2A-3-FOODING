@@ -17,7 +17,7 @@ right: 0;
     width:100%;
 }
 
-body,ul {
+#footerbody {
 
 margin: 0;
 
@@ -86,7 +86,7 @@ margin-top:2%;
 
 </style>
 </head>
-<body>
+<body id="footerbody">
 
 <footer>
 <div id="footer">
