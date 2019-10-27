@@ -286,9 +286,11 @@
 						</td>
 					</tr>
 				</table>
+				<p style="text-align:center;">
 				<%if(session.getAttribute("idlogin")==null){ %>
 					로그인을 하셔야 댓글을 쓸수 있습니다.
 				<%}else{ %>
+				</p>
 					<input type="hidden" name="num" value="0">
 					<input type="hidden" name="rootin" value="<%=num %>">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
@@ -313,9 +315,9 @@
 			</form>
 		
 			<% if (count == 0) { %>
-				<table>
-					<tr><td align="center"> 댓글이 없습니다.</td></tr>
-				</table>
+				
+					<p style="text-align:center;"> 댓글이 없습니다.</p>
+				
 			<% } else {%>
 			
 				<form method="post" name="iregularcommentform" 

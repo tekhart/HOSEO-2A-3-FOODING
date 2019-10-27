@@ -201,7 +201,7 @@ for (int i = 0 ; i < articleList.size(); i++) {
 
 
 
-<div id="eventdiv" >
+<div id="eventdiv" align="center" >
 
 	<img src="../img/cake-1971556_1920.jpg" width="850px" height="300px">
 	

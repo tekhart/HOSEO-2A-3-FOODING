@@ -165,7 +165,7 @@ body {
 									<span><input type="text" class="tdpayinput2" placeholder="YY"></span>
 								</div>
 								 
-							<p class="tdpayment" style="margin-top:50px; width:380px;">CVC ( 카드뒷면의 7자리 숫자중 뒷 3자리입니다 )</p>
+							<p class="tdpayment" style="margin-top:50px; width:560px;">CVC ( 카드뒷면의 7자리 숫자중 뒷 3자리입니다 )</p>
 								<div style="margin-top:-10px;">
 									<span><input type="text" class="tdpayinput2" placeholder="3자리"></span>
 								</div>
@@ -184,11 +184,11 @@ body {
 
 							<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
 							<select name='bank' class="tdpayinput"
-								style="width: 160px; height: 29px; margin-top: -10px;"><br>
+								style="width: 280px; height: 29px; margin-top: -10px;"><br>
 								<option value='' selected>---입금은행선택---</option>
-								<option value='농협'>농협</option>
-								<option value='국민은행'>국민은행</option>
-								<option value='우리은행'>우리은행</option>
+								<option value='농협'>농협 302-1133-2090-11 이혜진</option>
+								<option value='국민은행'>국민은행 515502-01-461582 김솔빈</option>
+								<option value='우리은행'>우리은행 1002-260-504608 기매미</option>
 								<option value='하나은행'>하나은행</option>
 								<option value='신한은행'>신한은행</option>
 								<option value='외환은행'>외환은행</option>
@@ -275,11 +275,12 @@ body {
 		          		  				<input type="text" class="inputtd3"> =
 		          		  				<input type="text" class="inputtd3">
 		          		  				<span class="won">원</span>
-		          		  				<!--  <input type="submit" value="사용" class="tkdyd2">-->
+		          		  			
 		          		  					<a href="" class="tkdyd3">사용</a>
 		          		  			</div><br><br> 
 		          		  			
-		          		  		<input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"> 
+		          		  					<div><input type="submit" value="결제하기" class="btpay2" onclick="location.href='loading.jsp'"></div> 
+		          		  					
 						</td>
 					</tr>
 			</table> 

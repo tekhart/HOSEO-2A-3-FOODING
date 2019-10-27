@@ -2694,7 +2694,6 @@ public class foodingBean {
 		pstmt = null;
 		rs= null;
 		String sql="";
-		List<productDataBean> articleList=null;
 		try {
 			con = getConnection();
 			sql = "select * from cart where cartid in("+cartid[0];
@@ -2702,19 +2701,16 @@ public class foodingBean {
 				sql+=","+cartid[i];
 			}
 			sql+=")";
-			
 			pstmt = con.prepareStatement(sql);
-			
 			rs=pstmt.executeQuery();
-			
-			if (rs.next()) {
+			if(rs.next()) {
 				do{
-					sql = "insert into recipes(owner,productCount,productId,productName";
+					sql = "insert into buy(owner,productCount,productId,productName";
 					sql+=",isTool,productType,price,discountRate,productThumb";
 					sql+=",account,deliveryName,deliveryTel,deliveryAddrnum";
 					sql+=",deliveryAddress,deliveryDetailAdd,buydate";
 					sql+=") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
+	
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1,rs.getString("owner"));
 					pstmt.setInt(2,rs.getInt("productCount"));
@@ -2732,14 +2728,16 @@ public class foodingBean {
 					pstmt.setString(14,"");
 					pstmt.setString(15,"");
 					pstmt.setTimestamp(16,ts);
+					pstmt.executeUpdate();
 				}while(rs.next());
-			
-			
-			sql = "delete from cart where owner ="+rs.getString("owner");
+			}
+			sql = "delete from cart where cartid in("+cartid[0];
+			for(int i=1;i<cartid.length;i++) {
+				sql+=","+cartid[i];
+			}
+			sql+=")";
 			pstmt = con.prepareStatement(sql);
 			pstmt.executeUpdate();
-			
-			}
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();
