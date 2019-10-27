@@ -19,8 +19,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
+
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <style>
@@ -30,7 +32,7 @@
 
 
 </style>
-<title>게시판</title>
+<title>게시판, 초보용 레시피</title>
 
 <script type="text/javascript">
 	function AnsUpdDelComment(num,content,ref,re_step,
@@ -83,28 +85,28 @@
 	    
 %>
 
-<table border="1" class="contenttable" style="margin:auto;" > 
+<table border="1" style="margin:auto;" > 
 	<tr>
-		<td class="orangeline11" height="100px" width="500px" style="text-align:center;"><%=article.getTitle()%></td>
-		<td class="orangeline11" height="100px" width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
+		<td class="orangeline11" width="1000px" height="100px"style="text-align:center;" colspan="2"><h2><%=article.getTitle()%></h2></td>
+		</tr>
+	<tr>	
+		<td class="orangeline1"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+		<td width="500px" style="text-align:right;" class="orangeline1"><%= sdf.format(article.getReg_date())%></td>
 	</tr>
 	<tr>
-		<td colspan="2" class="orangeline1"><%=foodingbean.findnkname(article.getWriterid()) %></td>
-	</tr>
-	<tr>
-		<td colspan="2" >사용재료 : <%=article.getIngredients() %></td>
+		<td  colspan="2">사용재료 : <%=article.getIngredients() %></td>
     </tr>
     <tr>
-		<td colspan="2" class="orangeline1">사용도구 : <%=article.getTools() %></td>
+		<td class="orangeline1" colspan="2">사용도구 : <%=article.getTools() %></td>
     </tr>
 	<tr>
-		<td colspan="2" class="orangeline1"><pre><%=article.getContent()%></pre></td>
+		<td class="orangeline1" colspan="2" ><pre><%=article.getContent()%></pre></td>
 	</tr>
     <tr>
-    	<td></td>
+    	<td></td>	
 		<td align="right">
 			<%
-			    if(article.getWriterid().equals(idlogin)){
+			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
 	        %>
 				<input type="button" value="글수정" 
 				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
