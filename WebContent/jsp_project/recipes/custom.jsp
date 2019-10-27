@@ -85,14 +85,14 @@
 <tr><td colspan="4" class="customsecond">
 <ul id="myUL">
   
-</ul></td><td class="customsecond"><input type="submit" value="검색" class="bt"></td></tr>
+</ul></td><td class="customsecond"><input type="submit" value="검색" class="bt"  onclick="location.href='content.jsp?num=40&pageNum=6&fame=0'"></td></tr>
 
 
 <tr><td colspan="5" class="customsecond">
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()">
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput">
 	</td>
 								
 		<!--<td class="addBtn">
@@ -260,7 +260,7 @@ function autocomplete(inp, arr) {
 	}
 
 	/*An array containing all the country names in the world:*/
-	var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+	var countries = ["아이스크림","당근","두부","콩","치킨","피자","짜장면","탕수육","밀가루","피망","박력분","오이","참치","양상추","양배추","감자","고구마","귤","곤약","스파게티","블루베리","꿀","파인애플","사과","오렌지","한라봉","멜론","수박","바나나","고기","키위","목살","안심","등심","삼겹살","양파","토마토","대파","쪽파","감","아보카도","토스트","참외","방울토마토","밤","복숭아","살구","자두","앵두","망고","딸기","물","무화과","자몽","피스타치오","연어","시나몬","계피","땅콩","가지","호박","브로콜리","상추","깻잎","대추","배추","시금치","참기름","부추","죽순","옥수수","팝콘","치즈","우엉","마","고구마","연근","무","미나리","미역","김","다시마","멸치","앞다리살","뒷다리살","갈비","오징어","문어","김치","새우","게","갈치","고등어","넙치","대구","농어","미더덕","복어","깨","오이지","후추","소금","케찹","머스타드","설탕","미림","조미료","계란","우유","라면","콩나물","식초","간장","버터","떡","식용유","식빵","초콜릿","고춧가루","베이킹파우더","굴소스","미나리","마요네즈","햄","스팸","마늘","치킨스톡","비엔나소시지"];
 
 	/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 	autocomplete(document.getElementById("myInput"), countries);
