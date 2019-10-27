@@ -66,6 +66,8 @@ position:left;
 	padding: 5px;
 	float: left;
 	margin-left: 20%;
+	width:34%;
+	text-align:right;
 }
 
 #logo{
@@ -77,11 +79,12 @@ height: auto;
 text-align:left;
 }
 
-#rightside{
-position:relative;
-float:right;
-margin-right:10%;
-margin-top:2%;
+#rightside{ 
+float:left;
+height:30%;
+text-align:center;
+width:28%;
+margin-top:80px;
 }
 
 </style>
@@ -102,10 +105,11 @@ margin-top:2%;
 		<img src="../img/fooding.png" id="logo"  />
 		<p id="footerp">Create by FOODING<br>JSP Project 2019 2A03</p>
 	</div>
+
 	<div id="rightside">
-		<p>Email : fooding2019_2a03@naver.com</p>
+		
+		<p style="vertical-align:bottom;">Email : fooding2019_2a03@naver.com</p>
 	</div>
-</div>
 </footer>
 </body>
 </html>
