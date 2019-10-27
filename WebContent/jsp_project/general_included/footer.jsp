@@ -117,19 +117,6 @@ margin-top:2%;
 	</div></li>
 </ul>
 </div>
-<<<<<<< HEAD
-<hr id="footerhr">
-	<div id="leftside">
-		<img src="../img/fooding.png" id="logo"  />
-		<p id="footerp">Create by FOODING<br>JSP Project 2019 2A03</p>
-	</div>
-	<div id="rightside">
-		<p>Email : fooding2019_2a03@naver.com</p>
-	</div>
-=======
-	
-	
->>>>>>> refs/remotes/origin/master
 </div>
 </footer>
 </body>
