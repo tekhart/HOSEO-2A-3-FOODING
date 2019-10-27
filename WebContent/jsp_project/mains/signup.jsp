@@ -192,7 +192,7 @@
 				if(document.getElementById("inputpasswd").value==""){
 					document.getElementById('repasswdcheck').innerHTML="비밀번호와 같아야 합니다";
 					document.getElementById('repasswdimg').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else if(document.getElementById("inputpasswd").value==document.getElementById("inputpasswd").value){
+				}else if(document.getElementById("inputpasswd").value==document.getElementById("inputrepasswd").value){
 					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
 					document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
 				}else{
@@ -255,7 +255,7 @@
 						return;
 					}
 
-					submit();
+					document.getElementById("register").submit();
 				
 				
 			}
@@ -289,7 +289,7 @@
 		<br>
 		<br> 
 		<br>
-		<form method="post" name="register" action="signcross.jsp" >
+		<form method="post" id="register" action="signcross.jsp" >
 			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감  -->
 			<center>
 			<fieldset>
