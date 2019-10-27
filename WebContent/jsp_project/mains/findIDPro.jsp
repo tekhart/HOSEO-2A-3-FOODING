@@ -10,7 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
-
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="list.css">
 <link rel="stylesheet" href="style.css">
@@ -77,12 +78,7 @@
 
 </div>
 <br><br><br>
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
+<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>
