@@ -191,7 +191,7 @@
 							<table>
 								<tr><td	class="titlelong">
 										<% if(article.getReadcount()>=50){%>
-										<img src="../img/fire1.png" width="20px" height="25px" align="middle">
+										<img src="../img/fire1.png" width="20px" height="25px" style="vertical-align:middle;">
 									<%}%>
 									<%=article.getTitle()%>
 								</td></tr>
