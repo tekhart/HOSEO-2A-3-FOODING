@@ -109,8 +109,68 @@
 					slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
 				}
 			}
+			function slideMove(e) {
+				var pos;
+				/*if the slider is no longer clicked, exit this function:*/
+				if (clicked == 0) return false;
+				/*get the cursor's x position:*/
+				pos = getCursorPos(e)
+				/*prevent the slider from being positioned outside the image:*/
+				if (pos < 0) pos = 0;
+				if (pos > w) pos = w;
+				/*execute a function that will resize the overlay image according to the cursor:*/
+				slide(pos);
+			}
+			function getCursorPos(e) {
+				var a, x = 0;
+				e = e || window.event;
+				/*get the x positions of the image:*/
+				a = img.getBoundingClientRect();
+				/*calculate the cursor's x coordinate, relative to the image:*/
+				x = e.pageX - a.left;
+				/*consider any page scrolling:*/
+				x = x - window.pageXOffset;
+				return x;
+			}
+			function slide(x) {
+				/*resize the image:*/
+				img.style.width = x + "px";
+				/*position the slider:*/
+				slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+			}
 		}
-		
+			
+			<%--function setCookie(cookie_name,cookie_value){
+				var date= new Date();
+				date.setDate(date.getTime()+60*60*3*1000);
+				document.cookie=cookie_name+'='+cookie_value+';expires='+date.toUTCString()+';path=/';
+			}
+			function getCookie(cookie_name){
+				var name = cookie_name + "=";
+				var ca = document.cookie.split(';');
+				for(var i=0;i<ca.length;i++){
+					var c = ca[i];
+					while(c.charAt(0)==' '){
+						c=c.substring(1);
+					}if(c.indexOf(name)==0){
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+			function checkCookie() {
+				  var user = getCookie("username");
+				  if (user != "") {
+				    alert("Welcome again " + user);
+				  } else {
+				    user = prompt("Please enter your name:", "");
+				    if (user != "" && user != null) {
+				      setCookie("username", user, 365);
+				    }
+				}
+			}--%>
+	</script>
+	<script type="text/javascript">
 		function AnsUpdDelComment(num,content,ref,re_step,
 				re_level,counter,selected){
 			 var form=document.iregularcommentform;
