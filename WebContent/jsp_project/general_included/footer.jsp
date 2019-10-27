@@ -94,7 +94,7 @@ margin-top:80px;
 <footer>
 <div id="footer">
 
-<<<<<<< HEAD
+
 <hr>
 
 
@@ -111,35 +111,6 @@ margin-top:80px;
 </tr></table></td>
 </tr></table>
 
-=======
-<hr id="footerhr">
-<div id="footnav">
-<ul class="horizontal-menu">
-<li><div id="leftside">
-		<img src="../img/fooding.png" id="logo"  />
-		<p id="footerp">Create by FOODING<br>JSP Project 2019_2A03</p>
-	</div></li>
-	<li><a href="../mains/ask.jsp">고객센터</a></li>
-	<li><a href="#">홈페이지 소개</a></li>
-	<li><a href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></li>
-</ul>
->>>>>>> refs/remotes/origin/master
-</div>
-<<<<<<< HEAD
-	
-
-=======
-<hr>
-	<div id="leftside">
-		<img src="../img/fooding.png" id="logo"  />
-		<p id="footerp">Create by FOODING<br>JSP Project 2019 2A03</p>
-	</div>
-
-	<div id="rightside">
-		
-		<p style="vertical-align:bottom;">Email : fooding2019_2a03@naver.com</p>
-	</div>
->>>>>>> refs/remotes/origin/master
 </footer>
 </body>
 </html>
