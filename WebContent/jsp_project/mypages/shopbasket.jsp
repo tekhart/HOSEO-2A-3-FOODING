@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%request.setCharacterEncoding("UTF-8"); %>
-<%@page import="DBBean.foodingBean" %>
-<%@ page import = "java.util.List" %>
-<%@ page import = "DBBean.productDataBean" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%@page import="DBBean.foodingBean"%>
+<%@ page import="java.util.List"%>
+<%@ page import="DBBean.productDataBean"%>
 <meta charset="UTF-8">
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript"
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -16,56 +19,59 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <style>
-	body{	font-family:"Bauhaus ITC";
-		color:black;}
-		
-#title{
-	text-decoration:none;
-	
+body {
+	font-family: "Bauhaus ITC";
+	color: black;
+}
+
+#title {
+	text-decoration: none;
 }
 </style>
-<script> 
-	function CheckAllSubChecks(){
-		var main=document.getElementsByClassName("BasketMainCheck");
-		var subs=document.getElementsByClassName("BasketSubCheck");
-		if(main[0].checked){
+<script>
+	function CheckAllSubChecks() {
+		var main = document.getElementsByClassName("BasketMainCheck");
+		var subs = document.getElementsByClassName("BasketSubCheck");
+		if (main[0].checked) {
 			for (i = 0; i < subs.length; i++) {
-				subs[i].checked=true;
+				subs[i].checked = true;
 			}
-		}else{
+		} else {
 			for (i = 0; i < subs.length; i++) {
-				subs[i].checked=false;
+				subs[i].checked = false;
 			}
 		}
 	}
-	function AllCheckSubmit(){
-		
+	function AllCheckSubmit() {
+
 		CheckAllSubChecks();
-		var subs=document.getElementsByClassName("BasketSubCheck");
+		var subs = document.getElementsByClassName("BasketSubCheck");
 		for (i = 0; i < subs.length; i++) {
-			if(!subs[i].checked){
-				subs[i].disabled=true;
+			if (!subs[i].checked) {
+				subs[i].disabled = true;
 			}
 		}
 		document.shopbasketForm.submit();
-		
+
 	}
 </script>
 </head>
 
 <body id="body">
-<%@include file="../general_included/topbar.jsp"%>
-     <%
+	<%@include file="../general_included/topbar.jsp"%>
+	<%
 		request.setCharacterEncoding("UTF-8");
 		List<productDataBean> articleList = null;
 		foodingBean dbPro = foodingBean.getInstance();
 		foodingBean foodingbean = new foodingBean();
-		int count=0;
-		try{
+		int count = 0;
+		try {
 			articleList = dbPro.getcartArticles(idlogin);
-			count=articleList.size();
-		}catch(Exception e){
+			count = articleList.size();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	%>

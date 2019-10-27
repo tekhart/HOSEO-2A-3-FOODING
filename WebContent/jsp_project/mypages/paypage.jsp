@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<link rel="icon" href="../img/favicon.ico">
 <style>
 body {
 	font-family: "Bauhaus ITC";
@@ -273,7 +275,7 @@ body {
           		  			<div class="inputtd2"><%=totalprice+bae_song_bee %></div><br><br> 
           		  		<label for="fname" class="labelpay"> 포인트 <span style="color:#424242; font-size:18px;">| 포크 n개 (총 n원)</span></label><br><br>
 	          		  	<br>
-	          		  	<div style=" width:526px; float:left;">
+	          		  	<div style=" width:1148px; float:left;">
         		  			<input type="text" class="inputtd3"> =
         		  			<input type="text" class="inputtd3">
         		  			<span class="won">원</span>

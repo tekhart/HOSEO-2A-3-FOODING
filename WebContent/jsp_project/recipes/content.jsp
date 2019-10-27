@@ -212,7 +212,7 @@
 										onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">	
 							<%}%>
 						</td>
-						<td>일자</td>
+						<td>일자 <%= sdf.format(article.getReg_date())%></td>
 					</tr>
 					<tr	class="orangeline">
 						<td colspan="2" height="400px">

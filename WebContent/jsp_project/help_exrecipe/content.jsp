@@ -219,7 +219,7 @@ function GoOtherProfile(id){
 			<table style="margin:auto;">
 			<tr class="orangeline">
 				<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input
-					type="button" value="글목록"
+					type="button" value="글목록" class="smallbt"
 					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
 				</td>
 			</tr>

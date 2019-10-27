@@ -57,7 +57,7 @@
 			action="writePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
+		<!--  <input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png"> -->
 		
 		<center>
 		<table id="writetable" align="center" border-spacing="10px" >
@@ -83,7 +83,7 @@
 				<td align="center" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
-					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
+					<input type="button" id="button123" value="글목록" OnClick="window.location='list.jsp'">
 				</td>
 			</tr>
 			
