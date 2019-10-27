@@ -261,7 +261,7 @@ body {
           		  			<div class="inputtd2">연동해야함</div><br><br> 
           		  		<label for="fname" class="labelpay"> 포인트 <span style="color:#424242; font-size:18px;">| 포크 n개 (총 n원)</span></label><br><br>
 	          		  	<br>
-	          		  	<div style=" width:526px; float:left;">
+	          		  	<div style=" width:1148px; float:left;">
         		  			<input type="text" class="inputtd3"> =
         		  			<input type="text" class="inputtd3">
         		  			<span class="won">원</span>
