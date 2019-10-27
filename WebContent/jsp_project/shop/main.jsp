@@ -136,8 +136,7 @@
   float:left;   
   height: 1250px;
   width: 240px;
-  position: absolute;
-  z-index: 1;
+ 
   top: 300px;
   left: 0;
   background-color: white;
