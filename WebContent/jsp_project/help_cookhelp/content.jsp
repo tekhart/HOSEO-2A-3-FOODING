@@ -21,9 +21,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="../css/common.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="../css/list.css">
 
 
+=======
+<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+>>>>>>> refs/remotes/origin/master
 <style>
 
 

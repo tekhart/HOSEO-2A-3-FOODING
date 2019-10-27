@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.*"%>
-<%@page import="DBBean.foodingBean" %>
+<%@ page import="DBBean.foodingBean" %>
 <meta charset="UTF-8">
 <%
 
@@ -24,7 +24,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Sign Up</title>
-		
+		<link rel="shortcut icon" href="../img/favicon.ico">
+		<link rel="icon" href="../img/favicon.ico">
 		<link rel="stylesheet" href="../css/common.css">
 		<style>
 		
@@ -402,9 +403,6 @@
 				</center>
 			</form>
 		</div>
-		<br><br><br>
-		<br><br><br>
-		<br><br><br>
 
 		
 		

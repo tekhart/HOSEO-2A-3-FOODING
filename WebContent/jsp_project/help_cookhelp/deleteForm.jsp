@@ -14,6 +14,8 @@
 <head>
 <title>게시판</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <script type="text/javascript">  
 
 </script>

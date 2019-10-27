@@ -83,6 +83,8 @@ a{
 		
 </style>
 <title>닉네임 변경</title>
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<link rel="icon" href="../img/favicon.ico">
 </head>
 <body>
 <div id="topdiv" style=text-align:center;>
@@ -141,11 +143,7 @@ a{
 
 
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-Create by FOODING<br>
-고객문의 1544-XXXX<br>
-JSP Project 2019 2A03
-</div>
+ <%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>
