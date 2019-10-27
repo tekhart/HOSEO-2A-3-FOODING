@@ -12,6 +12,8 @@
 	<head>
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/list.css">
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<link rel="icon" href="../img/favicon.ico">
 		<meta charset="UTF-8">
 			<title>회원탈퇴</title>
 			<script type="text/javascript"></script>
@@ -45,7 +47,8 @@
   				 </script>
 
 		</div>
-		<%@include file="../general_included/footer.jsp"%>
+		
 		<%} %>
+		<%@include file="../general_included/footer.jsp"%>
 	</body>
 </html>

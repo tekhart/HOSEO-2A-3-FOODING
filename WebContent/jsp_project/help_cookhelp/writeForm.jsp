@@ -14,7 +14,7 @@
 		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+		<!--  <script type="text/javascript">
 			function sendingthumb(thumbname){
                 $("#thumbnail").css("background-image","url("+thumbname+")");
                 $("#thumbnail").innerhtml="";
@@ -24,7 +24,7 @@
 			function thumbnailupload(){
 				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
 			}
-		</script>
+		</script> -->
 		
 		
 		
@@ -51,7 +51,7 @@
 			요리 강의 작성
 		</div>
 		
-		<div id="space">
+		<div id="space"  >
 
 		<form method="post" name="writeform" 
 			action="writePro.jsp" onsubmit="return writeSave()">
@@ -60,12 +60,13 @@
 		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
 		
 		<center>
-		<table id="writetable" align="center" border-spacing="10px">
-			<tr>
+		<table id="writetable" align="center" border-spacing="10px" >
+			<!--  <tr>
 			<td  width="300px">
 			
 			<div id="thumbnail" onclick="thumbnailupload()"></div>
-			</tr>
+			</td>
+			</tr>-->
 			<tr>
 			</td>
 			<td width="1000px" align="left" style="vertical-align:bottom;">
