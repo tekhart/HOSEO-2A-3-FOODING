@@ -55,14 +55,14 @@
 			action="writePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<input type="hidden" name="thumbnail" id="inputthumbnail">
+		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
 		
 		<center>
 		<table id="writetable" align="center" border-spacing="10px">
 			<tr>
 			<td rowspan="4" width="300px">
 			
-			<div id="thumbnail" onclick="thumbnailupload()">썸네일</div>
+			<div id="thumbnail" onclick="thumbnailupload()"></div>
 			
 			</td>
 			<td width="700px" align="left">
