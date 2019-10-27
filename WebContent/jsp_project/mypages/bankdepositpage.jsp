@@ -62,13 +62,13 @@
 					 <p class="bankinfo" >입금하실 은행정보</p>
 					<table style="border:3px solid #c0c0c0; border-width: thin;  border-collapse: collapse;">
 						<tr><td class="bankallprice">총 입금하실 금액</td>
-							<td class="banking"></td>
+							<td class="banking">55,000원</td>
 						<td class="bankallprice">계좌번호</td>
-							<td class="banking"></td>
+							<td class="banking">302-1133-2090-11</td>
 						<tr><td class="bankallprice">입금은행</td>
-							<td class="banking"></td>
+							<td class="banking">농협</td>
 						<td class="bankallprice"> 입금기한</td>
-							<td class="banking">주문일로부터 3일간</td>
+							<td class="banking">주문일로부터 3일간</td> 
 					</table>
 						<div style="text-align:center; margin-top:40px;">
 							<input type="button" value="확인" class="tkdyd4" onclick="location.href='../mypages/jumuncheck.jsp'">
