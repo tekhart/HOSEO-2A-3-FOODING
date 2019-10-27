@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<title>이벤트</title>
 <style>
 .eventdiv {
   width:1300px;
