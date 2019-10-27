@@ -146,9 +146,9 @@
 %>
 			<tr class="mouse">
 				<td align="center" class="line"><%=article.getNum()%></td>
-				<td align="left" class="line"><a
-					href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"
-					class="titlelong"> <% if(article.getReadcount()>=20){%> <font
+				<td align="left" class="line" style="padding-left:40px;"><a
+					href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" align="middle"
+					class="titlelong" style="vertical-align:middle; display:table-cell;"> <% if(article.getReadcount()>=20){%> <font
 						color="red">HOT</font> <%}%> <%if(article.getRe_level()>0){%> ㄴ [답글] <%} %>
 						<%=article.getTitle()%></a></td>
 				<td align="center" class="line"><a
