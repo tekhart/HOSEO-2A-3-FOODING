@@ -13,6 +13,8 @@
 <html>
 <head>
 <title>게시판</title>
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">  
 

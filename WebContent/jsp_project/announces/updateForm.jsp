@@ -16,7 +16,8 @@
 </style>
 
 <title>Sign in</title>
-
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <script type="text/javascript">
 </script>
 
@@ -86,12 +87,7 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 </div>
 
 
-<div id="footer" align="right" style="color:#cccccc; font-size:12px;">
-<pre>
-Create by FOODING
-고객문의 1544-XXXX
-JSP Project 2019 2A03</pre>
-</div>
+<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>

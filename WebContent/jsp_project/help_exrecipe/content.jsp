@@ -19,11 +19,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="list.css">
-<link rel="stylesheet" href="style.css">
-
+<link rel="stylesheet" href="../css/list.css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <style>
 
 
@@ -84,28 +83,28 @@
 	    
 %>
 
-<table border="1" style="margin:auto;" > 
+<table border="1" class="contenttable" style="margin:auto;" > 
 	<tr>
-		<td width="500px" style="text-align:center;"><%=article.getTitle()%></td>
-		<td width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
+		<td class="orangeline11" height="100px" width="500px" style="text-align:center;"><%=article.getTitle()%></td>
+		<td class="orangeline11" height="100px" width="500px" style="text-align:right;"><%= sdf.format(article.getReg_date())%></td>
 	</tr>
 	<tr>
-		<td colspan="2" ><%=foodingbean.findnkname(article.getWriterid()) %></td>
+		<td colspan="2" class="orangeline1"><%=foodingbean.findnkname(article.getWriterid()) %></td>
 	</tr>
 	<tr>
-		<td  colspan="2">사용재료 : <%=article.getIngredients() %></td>
+		<td colspan="2" >사용재료 : <%=article.getIngredients() %></td>
     </tr>
     <tr>
-		<td  colspan="2">사용도구 : <%=article.getTools() %></td>
+		<td colspan="2" class="orangeline1">사용도구 : <%=article.getTools() %></td>
     </tr>
 	<tr>
-		<td colspan="2"><pre><%=article.getContent()%></pre></td>
+		<td colspan="2" class="orangeline1"><pre><%=article.getContent()%></pre></td>
 	</tr>
     <tr>
     	<td></td>
 		<td align="right">
 			<%
-			    if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){
+			    if(article.getWriterid().equals(idlogin)){
 	        %>
 				<input type="button" value="글수정" 
 				  		onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">

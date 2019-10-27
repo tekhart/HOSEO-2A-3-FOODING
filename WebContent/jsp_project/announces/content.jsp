@@ -18,7 +18,8 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
-
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <style>
 </style>
 <title>게시판, 글 보기</title>
