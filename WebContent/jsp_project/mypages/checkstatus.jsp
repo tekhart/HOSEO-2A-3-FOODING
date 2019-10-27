@@ -28,68 +28,7 @@
 	<body id="body">
 		<%@include file="../general_included/topbar.jsp"%>
 		<div id="maindiv">
-<<<<<<< HEAD
-			<div class="writetitle1">마이페이지</div>	
-				<%@include file="sidemenu.jsp"%>
-			<br>
-			<br>
-			<br> 
-			<br>
-			<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
-			<div style="margin:auto">
-				<table border="1" style="margin-left:550px;">
-					<%	
-						request.setCharacterEncoding("UTF-8");
-	
-						foodingBean foodingbean=new foodingBean();
-				    	foodingBean dbPro = foodingBean.getInstance();
-				    	
-						String findId="";
-						String nk="";
-						String email="";
-						String addrnum="";
-						String address="";
-						String detailaddr="";
-						String mile="";
-					    List<BoardDataBean> articleList=null;
-					    int WriteRecipecount = 0;
-					    int WriteCommentcount = 0;
-						int[] Writeconturycount = {0,0,0,0,0,0};
-						int[] WriteFoodtypecount = {0,0,0,0,0,0,0};
-					    try{
-							findId=request.getParameter("findId");
-							if(findId==null){
-								findId=idlogin;
-							}
-						}finally{}
-					    
-					    try{
-					    	String sql="select count(*) from recipe_comment where writerid = '"+findId+"';";
-							ResultSet rs = foodingbean.resultQuery(sql);
-							if(rs.next()){
-								WriteCommentcount=rs.getInt(1);
-							}
-					    }catch(Exception e){e.printStackTrace();}
-						
-					    try{
-					    	String sql="select count(*),contury from recipes where writerid = '"+findId+"' group by contury;";
-					    	ResultSet rs = foodingbean.resultQuery(sql);
-							int i=0;
-							while(rs.next()){
-								String thiscontury=rs.getString("contury");
-								if(thiscontury.equals("한식")){
-									Writeconturycount[0]=rs.getInt(1);
-								}else if(thiscontury.equals("양식")){
-									Writeconturycount[1]=rs.getInt(1);
-								}else if(thiscontury.equals("일식")){
-									Writeconturycount[2]=rs.getInt(1);
-								}else if(thiscontury.equals("중식")){
-									Writeconturycount[3]=rs.getInt(1);
-								}else if(thiscontury.equals("퓨전")){
-									Writeconturycount[4]=rs.getInt(1);
-								}else if(thiscontury.equals("기타")){
-									Writeconturycount[5]=rs.getInt(1);
-=======
+
 		<%@include file="sidemenu.jsp"%>
 			<div style="margin-left:550px">
 				<div class="writetitle1">마이페이지</div>	
@@ -122,7 +61,7 @@
 								findId=request.getParameter("findId");
 								if(findId==null){
 									findId=idlogin;
->>>>>>> refs/remotes/origin/master
+
 								}
 							}finally{}
 						    
