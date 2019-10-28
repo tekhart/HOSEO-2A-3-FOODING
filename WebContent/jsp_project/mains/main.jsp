@@ -199,10 +199,10 @@ for (int i = 0 ; i < articleList.size(); i++) {
 
 
 
+<br><br><br>
+<div id="eventdiv" align="center" onclick="location.href='event.jsp'">
 
-<div id="eventdiv" align="center" >
-
-	<img src="../img/cake-1971556_1920.jpg" width="850px" height="300px">
+	<img src="../img/ev.png" width="100%" height="300px">
 	
 </div>
 

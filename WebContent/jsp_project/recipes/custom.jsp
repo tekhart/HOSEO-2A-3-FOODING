@@ -103,7 +103,7 @@
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onkeyup="newElemententerkey()">
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()" onkeyup="newElemententerkey()">
 	</td>
 								
 		<!--<td class="addBtn">

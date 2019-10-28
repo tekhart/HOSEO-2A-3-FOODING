@@ -20,9 +20,9 @@
 난이도별 레시피</div>
 
 
-<div class="rlch"><br><br><br><p class="ppp">기초</p> </div>
-<div class="chqh"><br><br><br><p class="ppp">초보</p> </div>
-<div class="tlaghk"><br><br><br><p class="ppp">심화</p> </div>
+<div class="rlch" onclick="location.href='level1.jsp'"><br><br><br><p class="ppp">기초</p> </div>
+<div class="chqh" onclick="location.href='level2.jsp'"><br><br><br><p class="ppp">초보</p> </div>
+<div class="tlaghk" onclick="location.href='level3.jsp'"><br><br><br><p class="ppp">심화</p> </div>
 
 </body>
 </html>

@@ -26,14 +26,69 @@
 
 
 	<style>
+						
+				
+			
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab4 {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  width:50%;
+  background-color: orange;
+}
+
+.lontb{
+	border-spacing:0px;
+	border-collapse:collapse;
+	width:100%; 
+}
+
+.lontb td{	text-align:center;
+border-bottom:1px solid orange;
+}
+
+.pointtdd{
+		height:50px;
+		display:text-cell;
+		vertical-align:middle;
+		font-size:14pt;
+		width:33%;
 		
-		body{	font-family:"Bauhaus ITC";
-		color:black;}
-		
-		#title{
-		text-decoration:none;
-	
-		}
+}
+
+/* Style the buttons inside the tab */
+.tab4 button {
+  background-color: orange; 
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab4 button:hover {
+  background-color: white;
+}
+
+/* Create an active/current tablink class */
+.tab4 button.active {
+  background-color: white;
+}
+
+/* Style the tab content */
+.tabcontent4 {
+  display: none;
+  padding: 6px 12px;
+
+  width:50%;
+} 
+
+
 	</style>
 	
 	<script>
@@ -103,8 +158,111 @@
 						   </table>
 						</div>
 				</div>
-			     
-					 
+
+
+<br><br><br><br>
+<div class="tab4">
+  <button class="tablinks" onclick="openCity(event, 'London')">1주일</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">1개월</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">전체</button>
+</div>
+
+<div id="London" class="tabcontent4">
+  <table class="lontb"><tr>  
+									<td class="pointtdd">거래일</td>
+									<td class="pointtdd">내역</td> 
+									<td class="pointtdd">포인트</td>  
+								</tr> 
+  <tr><td class="pointtdd">2019.10.10</td>
+									<td class="pointtdd" >질문에 답변</td> 
+									<td class="pointtdd" >+ 5</td>
+								</tr>
+								
+								
+								<tr><td class="pointtdd">2019.10.14</td>
+									<td class="pointtdd">글 작성</td>
+									<td class="pointtdd">+ 10</td>
+								</tr>
+  </table>
+</div>
+
+<div id="Paris" class="tabcontent4">
+<table class="lontb"><tr>  
+									<td class="pointtdd">거래일</td>
+									<td class="pointtdd">내역</td> 
+									<td class="pointtdd">포인트</td>  
+								</tr> 
+		<tr><td class="pointtdd">2019.09.28</td>
+									<td class="pointtdd" >상품 구매</td>
+									<td class="pointtdd" >+ 103</td>
+								</tr>
+<tr><td class="pointtdd">2019.10.10</td>
+									<td class="pointtdd" >질문에 답변</td> 
+									<td class="pointtdd" >+ 5</td>
+								</tr>
+								
+								
+								<tr><td class="pointtdd">2019.10.14</td>
+									<td class="pointtdd">글 작성</td>
+									<td class="pointtdd">+ 10</td>
+								</tr>
+</table>
+</div>
+
+<div id="Tokyo" class="tabcontent4">
+<table class="lontb"><tr>  
+									<td class="pointtdd">거래일</td>
+									<td class="pointtdd">내역</td> 
+									<td class="pointtdd">포인트</td>  
+								</tr> 
+		<tr>
+		<td class="pointtdd" >2019.09.28</td>
+									<td class="pointtdd" >상품 구매</td>
+									<td class="pointtdd" >+ 103</td>
+								</tr>
+<tr><td class="pointtdd" >2019.10.10</td>
+									<td class="pointtdd" >질문에 답변</td> 
+									<td class="pointtdd" >+ 5</td>
+								</tr>
+								
+								
+								<tr><td class="pointtdd">2019.10.14</td>
+									<td class="pointtdd">글 작성</td>
+									<td class="pointtdd">+ 10</td>
+								</tr>
+								<td class="pointtdd" >2019.01.03</td>
+									<td class="pointtdd" >글 작성</td>
+									<td class="pointtdd" >+ 10</td>
+								</tr>
+								
+								
+								<tr><td class="pointtdd" >2019.03.04</td>
+									<td class="pointtdd" >글 작성</td>
+									<td class="pointtdd" >+ 10</td>
+								</tr>
+								
+</table>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent4, tablinks;
+  tabcontent4 = document.getElementsByClassName("tabcontent4");
+  for (i = 0; i < tabcontent4.length; i++) {
+    tabcontent4[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+				
+			     <!-- 					 
 							<table class="pointsearch">
 								<tr><td style="width:120px; text-align:center;">조회기간</td> 
 										<td align="center">
@@ -119,42 +277,16 @@
 							</table>  
 						  
 							<table class="pointtable" style="text-align:center; height:50px; border-bottom:1px solid #525252; border-spacing:0px;">   
-								<tr>  
-									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #525252;">거래일</td>
-									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #525252;">내역</td> 
-									<td class="pointtd" style="text-align:center; height:50px; border-bottom:2px solid #525252;">포인트</td>  
-								</tr> 
-								
-								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
-								</tr>
 								
 								
-								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
-								</tr>
+						
+								
+						
 								
 								
-								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
-								</tr>
-								
-								<tr><td class="pointtdd" style="border-bottom:1px solid #525252;">거래일이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">내역이라네요</td>
-									<td class="pointtdd" style="border-bottom:1px solid #525252;">포인트라네요</td>
-								</tr>
-								
-								
-								<tr><td class="pointtdd">거래일이라네요</td>
-									<td class="pointtdd">내역이라네요</td>
-									<td class="pointtdd">포인트라네요</td>
-								</tr>
 								
 							</table>
-			
+			-->
 			
 			
 			

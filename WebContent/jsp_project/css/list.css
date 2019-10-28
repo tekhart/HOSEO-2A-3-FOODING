@@ -917,7 +917,7 @@ padding:5px;
 
 /* Style the tab content */
 .tabcontent {
-  width:500px;
+  width:700px;
   display: none;
   padding: 6px 12px;
   border-top: none;
@@ -1230,12 +1230,7 @@ padding:5px;
 		font-size:16pt;
 }
 
-.pointtdd{
-		height:50px;
-		display:text-cell;
-		vertical-align:middle;
-		font-size:14pt;
-}
+
 /* 포인트관리 페이지 끝 */
 
 /* 회원 탈퇴 페이지 시작 */
@@ -1342,5 +1337,10 @@ padding:5px;
 
 
 
+		.botl{
+		border-bottom:1px solid #ffbb00;}
+		.botl1{
+		border-bottom:3px solid #ffbb00;}
+	
 
 

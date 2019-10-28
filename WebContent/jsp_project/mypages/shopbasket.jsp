@@ -89,7 +89,7 @@ body {
 				%>
 					<table width="500px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
 						border-style:solid; font-family:Bauhaus ITC;margin-left:650px" >
-						<tr><td>
+						<tr><td><br><br>
 						<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
 						<tr><td>
 						<h4>장바구니가 비어 있습니다.</h4></td></tr>

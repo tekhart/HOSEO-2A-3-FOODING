@@ -32,11 +32,10 @@
 								String nknamelogin=topbarbean.findnkname(idlogin);
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
-								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
-								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
 								
-									<span class="badge">3</span>
+								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
+								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								
 								<%
 							}
@@ -84,7 +83,7 @@
 	            					<div class="dropdown-content">
 	            						<center>
 		            						<a href="../help_cookhelp/list.jsp">요리 강의</a>
-									        <a href="../help_exrecipe/list.jsp">초보용 레시피</a>
+									        <a href="../help_exrecipe/level.jsp">초보용 레시피</a>
 									        <a href="../help_question/list.jsp">도와줘요!</a>
 									        <a href="../shop/main.jsp">재료구매</a>
 	            						</center>

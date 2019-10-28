@@ -16,11 +16,11 @@
 		<title>Sign Up</title>
 
 		<style>
-		
+		 
 		</style>
 		
 		<script type="text/javascript"></script>
-		
+
 	</head>
 	
 
@@ -37,8 +37,8 @@
 				<br> 
 				<br>
 				<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
-				<div style="margin:auto">
-					<table border="1">
+				<div>
+					<table style="margin-left:170px;">
 						<%	
 							request.setCharacterEncoding("UTF-8");
 		
@@ -52,7 +52,7 @@
 							String address="";
 							String detailaddr="";
 							String mile="";
-						    List<BoardDataBean> articleList=null;
+							List<BoardDataBean> articleList = null; 
 						    int WriteRecipecount = 0;
 						    int WriteCommentcount = 0;
 							int[] Writeconturycount = {0,0,0,0,0,0};
@@ -140,28 +140,35 @@
 							}catch(Exception e){e.printStackTrace();}
 						%>	
 						<tr>
-							<td colspan="3" width="500px">
+							<td  class="botl1"width="500px">
 								<h1><%=nk %></h1>
 							</td>
-							<td width="300px">
+							
 						</tr>
 						<tr>
-							<td width="100px"></td>
-							<td colspan="2">
+							
+							<td class="botl">
 								<%=email %>
 							</td>
-							<td></td>
+					
 						</tr>
-						<tr>
-							<td width="100px"></td>
-							<td colspan="2">
-								여태 쓴 레시피 수 : <%=WriteRecipecount%>
+							 <tr>
+						 
+							<td class="botl">
+								총 게시글 수 : <%=WriteRecipecount%>
 							</td>
-							<td></td>
+							
 						</tr>
 						<tr>
-							<td width="100px"></td>
-							<td colspan="2">
+							
+							<td class="botl">
+								총 댓글 수 : <%=WriteCommentcount%>
+							</td>
+							
+						</tr>
+						<tr>
+							
+							<td class="botl">
 								한식 : <%=Writeconturycount[0]%><br>
 								양식 : <%=Writeconturycount[1]%><br>
 								일식 : <%=Writeconturycount[2]%><br>
@@ -169,11 +176,11 @@
 								퓨전 : <%=Writeconturycount[4]%><br>
 								기타 : <%=Writeconturycount[5]%>
 							</td>
-							<td></td>
+							
 						</tr>
 						<tr>
-							<td width="100px"></td>
-							<td colspan="2">
+							
+							<td class="botl">
 								밥류 : <%=WriteFoodtypecount[0]%><br>
 								빵류 : <%=WriteFoodtypecount[1]%><br>
 								반찬 : <%=WriteFoodtypecount[2]%><br>
@@ -182,24 +189,18 @@
 								디저트 : <%=WriteFoodtypecount[5]%><br>
 								기타 : <%=WriteFoodtypecount[6]%>
 							</td>
-							<td></td>
+						
 						</tr>
+					
 						<tr>
-							<td width="100px"></td>
-							<td colspan="2">
-								여태 쓴 댓글 수 : <%=WriteCommentcount%>
-							</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td width="100px"></td>
-							<td colspan="2">
+					
+							<td class="botl">
 								<img src="../img/fork.png" style="width:20px;height:20px"> : <%=mile%>
 							</td>
-							<td></td>
+						
 						</tr>
 						<tr>
-							<td colspan="3">
+							<td class="botl1">
 								<%
 									for (int i = 0 ; i < articleList.size(); i++) {
 										BoardDataBean article = articleList.get(i);
@@ -208,24 +209,21 @@
 									<div>
 										<table>
 											<tr>
-												<td rowspan="2">
+												<td>
 													<div style="background-image:url('<%=article.getThumbnail() %>');
 														background-size:cover;background-position:center;width:250px;height:100px;">
 													</div>
 												</td>
 												<td width="250px"><%=article.getTitle() %></td>
 											</tr>
-											<tr>
-												<td></td>
-											</tr>
+										
 										</table>
 									</div>
 								<%
 									}
 								%>
 							</td>
-							<td>
-							</td>
+						
 						</tr>
 					</table>
 				</div>
