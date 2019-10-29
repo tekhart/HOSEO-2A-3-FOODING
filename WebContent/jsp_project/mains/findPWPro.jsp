@@ -84,10 +84,11 @@ function check(){
 		
 		foodingbean.connect();
 		
-		String sql = "select passwd from user where id='"+id+"' and email='"+email+"';";
+		String sql = "select passwd,isLeft from user where id='"+id+"' and email='"+email+"';";
 		ResultSet rs = foodingbean.resultQuery(sql);
 		try{
 			if(rs.next()) {
+				if(rs.getInt("isLeft")==0){
 				pw = rs.getString("passwd");	
 	%>
 	
@@ -108,14 +109,15 @@ function check(){
 		<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 	</center>
 </div>
-
-		<!--<span>회원님의 비밀번호는 </span><h4><%=pw%></h4>입니다.<br><br>
-			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>-->
-			<!-- 추출한 ID를 보여줌 -->
-
-		
-	
-	<%
+	<%			
+				}else{
+					%>
+						<script type="text/javascript">
+							alert("입력하신 정보를 확인해주세요.");
+							location.href="findPW.jsp";
+						</script>
+					<%
+				}
 			}else{
 				%>
 					<script type="text/javascript">

@@ -395,7 +395,7 @@ body {
 					</tr>
 				</table>
 				
-						<div><input type="button" class="btpay2" value="결제하기"onclick="customer_decided_topay()"></div>
+						<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay()"></div>
 		</form>
 
 	</div>

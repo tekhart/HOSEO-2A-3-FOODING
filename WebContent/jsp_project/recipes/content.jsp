@@ -19,7 +19,32 @@
 		fame=0;
 	}	
 %>
+<%
+	try{
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+		foodingBean dbPro = foodingBean.getInstance();
+	 	BoardDataBean article =	dbPro.getArticle(num);
+		
+		foodingBean foodingbean = new foodingBean();
 
+	 	String commnetpageNum = request.getParameter("commnetpageNum");
+
+		if (commnetpageNum == null) {
+			commnetpageNum = "1";
+		}
+		int currentPage = Integer.parseInt(commnetpageNum);
+		int startRow = (currentPage - 1) * commentpageSize + 1;
+		int endRow = currentPage * commentpageSize;
+		int count = 0;
+		List<commentDataBean> commentList = null;
+		count = dbPro.getCommentArticleCount(num);
+		
+		if (count > 0) {
+			commentList = dbPro.getCommentsArticles(startRow, commentpageSize,num);
+		}
+			
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,34 +158,14 @@
 			document.WannaGoOthersProfile.findId.value=id;
 			document.WannaGoOthersProfile.submit();
 		}
+		function youreally(){
+			if(confirm("정말로 글 삭제할껍니까?")){
+				location.href="deleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+			}
+		}
 	</script>
 </head>
-<%
-			try{
-				int num = Integer.parseInt(request.getParameter("num"));
-				String pageNum = request.getParameter("pageNum");
-				foodingBean dbPro = foodingBean.getInstance();
-			 	BoardDataBean article =	dbPro.getArticle(num);
-				
-				foodingBean foodingbean = new foodingBean();
-		
-			 	String commnetpageNum = request.getParameter("commnetpageNum");
-		
-				if (commnetpageNum == null) {
-					commnetpageNum = "1";
-				}
-				int currentPage = Integer.parseInt(commnetpageNum);
-				int startRow = (currentPage - 1) * commentpageSize + 1;
-				int endRow = currentPage * commentpageSize;
-				int count = 0;
-				List<commentDataBean> commentList = null;
-				count = dbPro.getCommentArticleCount(num);
-				
-				if (count > 0) {
-					commentList = dbPro.getCommentsArticles(startRow, commentpageSize,num);
-				}
-				
-		%>
+
 <body id="body" onload="initComparisons()">
 	<%@include file="../general_included/topbar.jsp"%>
 	<div id="maindiv2">	
@@ -209,13 +214,13 @@
 										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
 										&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" value="글삭제" class="smallbt"
-										onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">	
+										onclick="youreally()">	
 							<%}else if(idlogin.equals("impowerfuladmin")){%>
 								<input type="button" value="글수정" class="smallbt"
 										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
 										&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" value="글삭제" class="smallbt"
-										onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">	
+										onclick="youreally()">	
 							<%} %>
 						</td>
 						<td>일자 <%= sdf.format(article.getReg_date())%></td>

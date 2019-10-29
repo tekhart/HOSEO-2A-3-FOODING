@@ -69,7 +69,7 @@ body {
 		foodingBean foodingbean = new foodingBean();
 		int count = 0;
 		try {
-			articleList = dbPro.getcartArticles(idlogin);
+			articleList = dbPro.getcartArticles((String)session.getAttribute("idlogin"));
 			count = articleList.size();
 		} catch (Exception e) {
 			e.printStackTrace();

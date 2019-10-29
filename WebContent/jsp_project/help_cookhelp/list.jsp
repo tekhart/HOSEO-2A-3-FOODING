@@ -160,7 +160,7 @@
 			<td align="left" style="padding-left:40px;" colspan="2" width="300px">		
 				<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong" style="vertical-align:middle; display:table-cell;">
 					<%if(article.getTools()!=null){ %>
-							[<%=article.getTools()%> 을 이용한 강의]
+						[<%=article.getTools()%> 을 이용한 강의]
 					<%}%>
 						<% if(article.getReadcount()>=20){%>
 						<font color="red">HOT</font>

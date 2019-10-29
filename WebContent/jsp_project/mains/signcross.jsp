@@ -3,28 +3,20 @@
 <meta charset="UTF-8">
 <%@ page import="java.sql.*"%>
 <%@page import="DBBean.foodingBean" %>
+<%@ page import="java.sql.Timestamp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	foodingBean foodingbean=new foodingBean();
-	
-	String nkname = request.getParameter("nkname");
-	String id = request.getParameter("id");
-	String passwd = request.getParameter("passwd");
-	String repasswd = request.getParameter("repasswd");
-	String email = request.getParameter("email");
-	String addrnum = request.getParameter("addrnum");
-	String address = request.getParameter("address");
-	String detailaddr = request.getParameter("detailaddr");
-	String gender=request.getParameter("gender");
-	
-	int mileage = 0;
-
-	foodingbean.connect();
-	
+%>
+<jsp:useBean id="article" scope="page" class="DBBean.userDataBean">
+	<jsp:setProperty name="article" property="*"/>
+</jsp:useBean> 
+<%
 	try{
-		String sql = "insert into user values('"+nkname+"','"+id+"','"+passwd+"','"+email+"','"+addrnum+"','"+address+"','"+detailaddr+"','"+gender+"',"+mileage+")";
-		foodingbean.nonResultQuery(sql);
-		session.setAttribute("idlogin",id);
+		article.setReg_date(new Timestamp(System.currentTimeMillis()));
+		foodingBean dbPro = foodingBean.getInstance();
+		if(dbPro.insertUserArticle(article)==1){
+			session.setAttribute("idlogin",article.getId());
+		}
 		response.sendRedirect("../general_included/thanks_for_register.jsp");
 	}catch(Exception e){
 		response.sendRedirect("../general_included/sorry_errer.jsp");
