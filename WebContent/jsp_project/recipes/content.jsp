@@ -204,13 +204,19 @@
 					</tr>
 					<tr class="orangeline">
 						<td>
-							<%if(article.getWriterid().equals((String)session.getAttribute("idlogin"))){%>
+							<%if(article.getWriterid().equals(idlogin)){%>
 								<input type="button" value="글수정" class="smallbt"
 										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
 										&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" value="글삭제" class="smallbt"
 										onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">	
-							<%}%>
+							<%}else if(idlogin.equals("impowerfuladmin")){%>
+								<input type="button" value="글수정" class="smallbt"
+										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
+										&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="button" value="글삭제" class="smallbt"
+										onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">	
+							<%} %>
 						</td>
 						<td>일자 <%= sdf.format(article.getReg_date())%></td>
 					</tr>
