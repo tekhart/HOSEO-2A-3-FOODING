@@ -56,6 +56,12 @@
 		 .grapht1 td{
 		 border-bottom:1px solid orange;}
 		 
+		 .trborder	{
+		 	border-left:2px solid #ffbb00;
+		 	border-right:2px solid #ffbb00;
+		 	
+		 }
+		 
 		</style>
 		
 		<script type="text/javascript"></script>
@@ -78,7 +84,7 @@
 				<br>
 				<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
 				<div>
-					<table style="width:600px; border-collapse:collapse;">
+					<table style="width:600px; border-collapse:collapse;" class="trborder">
 						<%	
 							request.setCharacterEncoding("UTF-8");
 		
