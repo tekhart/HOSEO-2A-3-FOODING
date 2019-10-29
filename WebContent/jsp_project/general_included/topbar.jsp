@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="DBBean.foodingBean" %>
+<%@page import="DBBean.userDataBean" %>
 <% 
 	String idlogin="none";
 	session.setAttribute("zipcode","");
-	foodingBean topbarbean=new foodingBean();
+	foodingBean topbarbean = foodingBean.getInstance();
+	userDataBean topbarArticle=null;
 %>
 <html>
 <head>
@@ -22,30 +24,28 @@
 					<%
 						try{
 							idlogin=(String)session.getAttribute("idlogin");
-							
+							topbarArticle=topbarbean.getuserArticle(idlogin);
+							int cartcount=topbarbean.getcartArticlecount(idlogin);
 							if(idlogin==null){
 								%>
 								<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
 								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
 								<%
 							}else{
-								String nknamelogin=topbarbean.findnkname(idlogin);
+								String nknamelogin=topbarArticle.getNkname();
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
-								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
 								
 								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								
+								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
+								<%if(cartcount!=0){%>
+									<span class="badge"><%=cartcount%></span>
+								<%} %>
 								<%
 							}
-						}finally{
-							if(topbarbean.isAdmincheck(idlogin)==1){
-								idlogin="impowerfuladmin";
-							}else{
-								idlogin="";
-							}
-						}
+						}finally{}
 					%>
 					&nbsp;
 				</div>

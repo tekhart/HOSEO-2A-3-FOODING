@@ -61,7 +61,7 @@
 						    try{
 								findId=request.getParameter("findId");
 								if(findId==null){
-									findId=(String)session.getAttribute("idlogin");;
+									findId=(String)session.getAttribute("idlogin");
 
 								}
 							}finally{}
