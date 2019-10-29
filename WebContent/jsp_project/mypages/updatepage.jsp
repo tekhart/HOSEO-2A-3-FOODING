@@ -70,26 +70,26 @@
 			<table width="500px">
 				<tr>
 				<td width="120px" height="50px" style="font-size:16pt;">닉네임</td>
-							<td  class="signupinputs" width="350px" style="font-size:16pt"><%=nk %></td>
+							<td  class="signupinputs" style="font-size:16pt;  width:260px;"><%=nk %></td>
 				<!--<td rowspan="2"><img src="../img/carrot2.png" height="100" width="100"></td> -->
 				</tr>
 				<td height="25px;">
 				</td>
 				
 				<tr>
-				<td width="70px" style="font-size:16pt;">비밀번호</td>
-					<td><input name="currentpw" class="signupinputs" type="password" style="font-size:12pt;" placeholder="현재 비밀번호"></td>
+				<td width="50px" style="font-size:16pt;">비밀번호</td>
+					<td><input name="currentpw" class="signupinputs" type="password" style="width:260px; font-size:12pt;" placeholder="현재 비밀번호"></td>
 				<tr>
 				<td style="padding-bottom:80px;">
 				</td>
 				<td>
-					<input name="changepw" class="signupinputs" type="password" style="font-size:12pt" placeholder="변경할 비밀번호"></td>
+					<input name="changepw" class="signupinputs" type="password" style="width:260px; font-size:12pt" placeholder="변경할 비밀번호"></td>
 				</tr>
 				<tr>
 				<td>
 				</td>
 				<td>	
-					<input name="comfirmpw" class="signupinputs" type="password" style="font-size:12pt" placeholder="비밀번호 확인"></td>
+					<input name="comfirmpw" class="signupinputs" type="password" style="width:260px; font-size:12pt" placeholder="비밀번호 확인"></td>
 				</tr>				
 				
 				
@@ -97,39 +97,28 @@
 				</td>
 				
 				<tr> 
-				<td width="70px" style="font-size:16pt">이메일</td><TD class="signupinputs" width="240px" style="font-size:16pt"><%=email %></TD>
+				<td width="70px" style="font-size:16pt">이메일</td><TD class="signupinputs" style="font-size:16pt; width:260px;"><%=email %></TD>
 				<!-- <td class="line"><input type="button" value="사진 변경" class="findbutton2"></td> -->
 				</tr>
 				<td height="25px;">
 				</td>
 				
 				<tr> 
-				<td width="70px" style="font-size:16pt">우편번호</td><TD class="signupinputs" width="240px" style="font-size:16pt"><%=addr %></TD>
+				<td width="70px" style="font-size:16pt">우편번호</td><TD class="signupinputs" width="240px" style="font-size:16pt; width:340px;"><%=addr %></TD>
 				</tr>
 				<td height="25px;">
 				</td>
 				
 				<tr>
-				<td width="70px" style="font-size:16pt">주소</td><TD  width="240px" class="signupinputs" style="font-size:16pt"><%=addre%></TD>
-				<td ><input type="button" value="주소 찾기" class="findbutton2"></td>
+				<td width="70px" style="font-size:16pt">주소</td><TD  width="240px" class="signupinputs" style="font-size:16pt; width:340px;"><%=addre%></TD>
 				</tr>
 				<td height="25px;">
 				</td>
 				
 				<tr height="70px">  
-				<td  width="70px" style="font-size:16pt">상세주소</td><td class="signupinputs" width="240px" colspan="2" style="font-size:16pt"><%=daddr%></TD>
-				<td></td> 
+				<td  width="70px" style="font-size:16pt">상세주소</td><td class="signupinputs" width="240px" colspan="2" style="font-size:16pt; width:340px;"><%=daddr%></TD>
 				</tr>   
 				
-				<tr>
-				<td width="70px" style="font-size:16pt">마일리지</td><TD class="line" width="240px" style="font-size:16pt"><%= mile %> p</TD>
-				<td ><input type="button" value="포인트 관리" class="findbutton2"></td>
-				</TR>
-				
-				<tr>
-				<td width="70px" style="font-size:16pt">내가 쓴 글</td><TD class="line" width="240px" style="font-size:16pt">n개</TD>  
-				<td ><input type="button" value="글 관리" class="findbutton2"></td>
-				</TR>
 				<td height="50px;">
 				</td>
 			<%} %>

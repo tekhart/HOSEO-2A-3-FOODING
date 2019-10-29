@@ -87,9 +87,9 @@ body {
 				<% 
 					if(articleList==null){
 				%>
-					<table width="500px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
-						border-style:solid; font-family:Bauhaus ITC;margin-left:650px" >
-						<tr><td><br><br>
+					<table width="400px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
+						border-style:solid; font-family:Bauhaus ITC; margin-left:710px" >
+						<tr><td><br><br> 
 						<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
 						<tr><td>
 						<h4>장바구니가 비어 있습니다.</h4></td></tr>
@@ -98,7 +98,7 @@ body {
 					}else{
 						
 				%>
-					<table class="list-table" style="border-spacing:0px;margin:auto; padding-left:250px;">
+					<table class="list-table" style="border-spacing:0px;margin:auto; padding-left:100px;">
 						<tr>
 							<td align="left" style="text-align:left; font-size:18pt; padding:80px 0px 5px 10px;">일반상품(<%=count%>)</td>
 						</tr>
@@ -160,15 +160,15 @@ body {
 							</td>
 						</tr>
 					<%}%>
-					<tr>
-						<td colspan="2" style="border-bottom:2px solid orange;"></td>
+					<tr> 
+						<td colspan="2" style="border-bottom:2px solid orange; height:35px;"></td>
 						<td colspan="1" style="border-bottom:2px solid orange; font-size:16pt;">배송비</td>
-						<td colspan="9" style="border-bottom:2px solid orange; font-size:16pt; ">
-							<br>
+						<td colspan="1" style="border-bottom:2px solid orange; font-size:16pt;">+</td>
+						<td colspan="4" style="border-bottom:2px solid orange; font-size:16pt; text-align:left; vertical-align:middle; display:table-cell; padding-left:80px;"> 
 							<%		
 								if(totalprice>=50000){bae_song_bee=0;
 									%>
-										<del><%=default_bae_song_bee%> 원</del>=><%=bae_song_bee%> 원
+										<del><%=default_bae_song_bee%>원</del>=><%=bae_song_bee%> 원
 									<%
 								}else{
 									%>
@@ -180,7 +180,7 @@ body {
 						</td>
 					</tr> 
 					<tr>
-						<td colspan="9" height="20px" align="center" style="border-bottom:2px solid orange;">
+						<td colspan="8" height="20px" align="center" style="border-bottom:2px solid orange;">
 							<br><span style="vertical-align:middle; display:table-cell; font-size:16pt;">
 								총 비용=<%=totalprice %>
 								</span>

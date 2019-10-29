@@ -28,10 +28,11 @@
 	<body id="body">
 		<%@include file="../general_included/topbar.jsp"%>
 		<div id="maindiv">
+		<div class="writetitle1">프로필</div>	
 
 		<%@include file="sidemenu.jsp"%>
 			<div style="margin-left:550px">
-				<div class="writetitle1">마이페이지</div>	
+					
 				<br>
 				<br>
 				<br> 

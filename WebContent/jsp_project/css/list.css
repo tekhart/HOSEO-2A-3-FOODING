@@ -835,8 +835,8 @@ padding:5px;
 }
 
 .container3 {
-	width:100%;
-	height:650px;
+	width:1150px;
+	height:700px;
 	float:left;
 	background-color: #FAE4AD;
 	padding: 5px 20px 15px 20px;
@@ -1024,9 +1024,9 @@ padding:5px;
 }
 
 .btpay2{
-	width: 120px;
-	height:50px;
-	font-size:18px;
+	width: 150px;
+	height:60px;
+	font-size:16pt;
 	font-weight:400;
 	color:white;
 	background-color:#ffbb00;
@@ -1034,8 +1034,8 @@ padding:5px;
 	border-width:0.5px;
 	border-style:solid;
 	border-radius:5px;
-	margin-top:205px;
-	margin-left:400px; 
+	margin-top:60px;
+	margin-left:300px;
 	cursor: pointer;
 	position:relative;
 }
