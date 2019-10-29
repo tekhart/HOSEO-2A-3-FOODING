@@ -17,6 +17,45 @@
 
 		<style>
 		
+		.tooltip1 {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.tooltip1 .tooltiptext1 {
+  visibility: hidden;
+  width: 40px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 50%;
+  margin-left:-20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip1 .tooltiptext1::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip1:hover .tooltiptext1 {
+  visibility: visible;
+  opacity: 1;
+}
+
 		.wwawa{
 		border-bottom:2px dashed #ffbb00;
 		}
@@ -127,8 +166,6 @@
 						    	String sql="select count(*),contury from recipes where writerid = '"+findId+"' group by contury;";
 						    	ResultSet rs = foodingbean.resultQuery(sql);
 								int i=0;
-								
-								
 								while(rs.next()){
 									String thiscontury=rs.getString("contury");
 									if(thiscontury.equals("한식")){
@@ -265,17 +302,33 @@
 							<table class="grapht">
 							<tr class="graphtd">
 								<td style="position:relative;">
-									<div  style="height:<%=Writeconturylength[0]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div class="tooltip1" style="height:<%=Writeconturylength[0]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:15px; ">
+										<span class="tooltiptext1"><%=Writeconturycount[0]%></span>
+									</div>
+									</td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturylength[1]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div class="tooltip1" style="height:<%=Writeconturylength[1]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:15px; ">
+										<span class="tooltiptext1"><%=Writeconturycount[1]%></span>
+									</div>
+								</td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturylength[2]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div class="tooltip1" style="height:<%=Writeconturylength[2]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:15px; ">
+										<span class="tooltiptext1"><%=Writeconturycount[2]%></span>
+									</div>
+									</td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturylength[3]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div class="tooltip1" style="height:<%=Writeconturylength[3]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:15px; ">
+										<span class="tooltiptext1"><%=Writeconturycount[3]%></span>
+									</div>
+									</td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturylength[4]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div class="tooltip1" style="height:<%=Writeconturylength[4]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:15px; ">
+										<span class="tooltiptext1"><%=Writeconturycount[4]%></span>
+									</div></td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturylength[5]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div class="tooltip1" style="height:<%=Writeconturylength[5]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:15px; ">
+										<span class="tooltiptext1"><%=Writeconturycount[5]%></span>
+									</div></td>
 							</tr><tr><td colspan="6" height="5px"></td></tr><tr style="text-align:center;">
 							<td>한식</td>
 							<td>양식</td>
@@ -291,25 +344,39 @@
 								<table class="grapht">
 									<tr class="graphtd">
 										<td style="position:relative;">
-											<div  style="height:<%=WriteFoodtypelength[0]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div  class="tooltip1" style="height:<%=WriteFoodtypelength[0]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:10px; ">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[0]%></span>
+											</div>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypelength[1]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div class="tooltip1"style="height:<%=WriteFoodtypelength[1]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:10px; ">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[1]%></span>
+											</div>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypelength[2]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div class="tooltip1"style="height:<%=WriteFoodtypelength[2]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:10px; ">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[2]%></span>
+											</div>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypelength[3]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div class="tooltip1"style="height:<%=WriteFoodtypelength[3]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:10px; ">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[3]%></span>
+											</div>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypelength[4]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div class="tooltip1"style="height:<%=WriteFoodtypelength[4]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:10px; ">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[4]%></span>
+											</div>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypelength[5]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:20px; "/>
+											<div class="tooltip1"style="height:<%=WriteFoodtypelength[5]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:20px; ">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[5]%></span>
+											</div>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypelength[6]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px;"/>
+											<div class="tooltip1"style="height:<%=WriteFoodtypelength[6]%>px; width:23px; background-color:orange; position:absolute; bottom:0px; left:10px;">
+												<span class="tooltiptext1"><%=WriteFoodtypecount[6]%></span>
+											</div>
 										</td>
 									</tr>
 									<tr><td colspan="7" height="5px"></td></tr>
