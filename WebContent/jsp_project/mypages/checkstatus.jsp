@@ -16,6 +16,45 @@
 		<title>Sign Up</title>
 
 		<style>
+		
+		.wwawa{
+		border-bottom:2px dashed #ffbb00;
+		}
+		
+		.alignleft {
+    float: left;
+    text-align:left;
+    width:33.33333%;
+}
+.aligncenter {
+    float: left;
+    text-align:center;
+    width:33.33333%;
+}
+.alignright {
+    float: left;
+    text-align:right;
+    width:33.33333%;
+}
+		
+		 .graphtd{
+		 	height:100px;
+		 }
+		 
+		 .graphtd td{
+		 	border-bottom:1px solid orange;
+		 }
+		 
+		 .grapht{width:300px;
+		 border-spacing:0px;
+		 border-collapse:collapse;}
+		 
+		  .grapht1{width:100%;
+		 border-spacing:0px;
+		 border-collapse:collapse;}
+		 
+		 .grapht1 td{
+		 border-bottom:1px solid orange;}
 		 
 		</style>
 		
@@ -39,7 +78,7 @@
 				<br>
 				<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
 				<div>
-					<table style="margin-left:170px;">
+					<table style="width:600px; border-collapse:collapse;">
 						<%	
 							request.setCharacterEncoding("UTF-8");
 		
@@ -141,81 +180,121 @@
 							}catch(Exception e){e.printStackTrace();}
 						%>	
 						<tr>
-							<td  class="botl1"width="500px">
-								<h1><%=nk %></h1>
+						<td rowspan="2">
+						<div style="height:100px; width:100px; border-radius:50%; border:3px solid orange; margin:auto;"/>
+						</td>
+							<td> 
+							<h3><%=nk %></h3>
 							</td>
 							
 						</tr>
 						<tr>
-							
-							<td class="botl">
-								<%=email %>
+							 
+							<td>
+								<%=email %> (<img src="../img/fork.png" style="width:20px;height:20px"> : <%=mile%>)
 							</td>
 					
+					
 						</tr>
-							 <tr>
+							
+						<tr>
+							
+							<td colspan="2"  class="wwawa">
+								
+							<table style="border-spacing:20px;"><tr>
+							<td>
+							
+							<table class="grapht">
+							<tr class="graphtd">
+								<td style="position:relative;">
+									<div  style="height:<%=Writeconturycount[0]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+								<td style="position:relative;">
+									<div style="height:<%=Writeconturycount[1] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+								<td style="position:relative;">
+									<div style="height:<%=Writeconturycount[2] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+								<td style="position:relative;">
+									<div style="height:<%=Writeconturycount[3]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+								<td style="position:relative;">
+									<div style="height:<%=Writeconturycount[4] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+								<td style="position:relative;">
+									<div style="height:<%=Writeconturycount[5] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+							</tr><tr><td colspan="6" height="5px"></td></tr><tr style="text-align:center;">
+							<td>한식</td>
+							<td>양식</td>
+							<td>일식</td>
+							<td>중식</td>
+							<td>퓨전</td>
+							<td>기타</td></tr></table>
+							
+							</td>
+							<td>
+							
+							
+								<table class="grapht">
+									<tr class="graphtd">
+										<td style="position:relative;">
+											<div  style="height:<%=WriteFoodtypecount[0]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+										</td>
+										<td style="position:relative;">
+											<div style="height:<%=WriteFoodtypecount[1] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+										</td>
+										<td style="position:relative;">
+											<div style="height:<%=WriteFoodtypecount[2] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+										</td>
+										<td style="position:relative;">
+											<div style="height:<%=WriteFoodtypecount[3]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+										</td>
+										<td style="position:relative;">
+											<div style="height:<%=WriteFoodtypecount[4] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+										</td>
+										<td style="position:relative;">
+											<div style="height:<%=WriteFoodtypecount[5] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:20px; "/>
+										</td>
+										<td style="position:relative;">
+											<div style="height:<%=WriteFoodtypecount[6] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px;"/>
+										</td>
+									</tr>
+									<tr><td colspan="7" height="5px"></td></tr>
+									<tr style="text-align:center;">
+										<td>밥류</td>
+										<td>빵류</td>
+										<td>반찬</td>
+										<td>면류</td>
+										<td>국류</td>
+										<td>디저트</td>
+										<td>기타</td>
+							
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</tr>
+		
+					 <tr>
 						 
-							<td class="botl">
-								총 게시글 수 : <%=WriteRecipecount%>
+							<td colspan="2">
+								<p class="alignleft"></p><p class="aligncenter">내가 쓴 레시피 (<%=WriteRecipecount%>)</p><p class="alignright">댓글 수 (<%=WriteCommentcount%>)</p>
 							</td>
 							
 						</tr>
-						<tr>
-							
-							<td class="botl">
-								총 댓글 수 : <%=WriteCommentcount%>
-							</td>
-							
-						</tr>
-						<tr>
-							
-							<td class="botl">
-								한식 : <%=Writeconturycount[0]%><br>
-								양식 : <%=Writeconturycount[1]%><br>
-								일식 : <%=Writeconturycount[2]%><br>
-								중식 : <%=Writeconturycount[3]%><br>
-								퓨전 : <%=Writeconturycount[4]%><br>
-								기타 : <%=Writeconturycount[5]%>
-							</td>
-							
-						</tr>
-						<tr>
-							
-							<td class="botl">
-								밥류 : <%=WriteFoodtypecount[0]%><br>
-								빵류 : <%=WriteFoodtypecount[1]%><br>
-								반찬 : <%=WriteFoodtypecount[2]%><br>
-								면류 : <%=WriteFoodtypecount[3]%><br>
-								국류 : <%=WriteFoodtypecount[4]%><br>
-								디저트 : <%=WriteFoodtypecount[5]%><br>
-								기타 : <%=WriteFoodtypecount[6]%>
-							</td>
 						
-						</tr>
-					
 						<tr>
-					
-							<td class="botl">
-								<img src="../img/fork.png" style="width:20px;height:20px"> : <%=mile%>
-							</td>
-						
-						</tr>
-						<tr>
-							<td class="botl1">
+							<td colspan="2" >
 								<%
 									for (int i = 0 ; i < articleList.size(); i++) {
 										BoardDataBean article = articleList.get(i);
 										String writerid=article.getWriterid();
 								%>
 									<div>
-										<table>
+										<table class="grapht1"> 
 											<tr>
 												<td>
 													<div style="background-image:url('<%=article.getThumbnail() %>');
 														background-size:cover;background-position:center;width:250px;height:100px;">
 													</div>
 												</td>
-												<td width="250px"><%=article.getTitle() %></td>
+												<td><%=article.getTitle() %></td>
 											</tr>
 										
 										</table>
