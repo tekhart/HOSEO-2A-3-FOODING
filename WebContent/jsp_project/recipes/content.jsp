@@ -159,7 +159,7 @@
 			document.WannaGoOthersProfile.submit();
 		}
 		function youreally(){
-			if(confirm("정말로 글 삭제할껍니까?")){
+			if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
 				location.href="deleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
 			}
 		}
