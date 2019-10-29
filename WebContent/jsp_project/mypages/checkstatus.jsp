@@ -275,6 +275,7 @@
 							}catch(Exception e){e.printStackTrace();}
 						%>	
 						<tr>
+					
 						<td rowspan="2">
 						<div style="height:100px; width:100px; border-radius:50%; border:3px solid orange; margin:auto;"/>
 						</td>
@@ -431,6 +432,10 @@
 						
 						</tr>
 					</table>
+					<br>
+					<div align="center">
+					<input type="button" value="내정보 수정" class="findbutton" style="width:100px;">
+					</div>
 				</div>
 			</div>
 		</div>
