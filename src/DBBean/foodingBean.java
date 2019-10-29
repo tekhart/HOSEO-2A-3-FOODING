@@ -80,6 +80,25 @@ public class foodingBean {
 		}
 		return str;
 	}
+	public int isAdmincheck(String id) {
+		DBclose();
+		int isAdminresult=0;
+		try {
+			con = getConnection();
+			stmt=con.createStatement();
+			rs=stmt.executeQuery("select isAdmin from user where id='"+id+"';");
+			if(rs.next()) {
+				isAdminresult=rs.getInt("isAdmin");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			rs=null;
+			isAdminresult=0;
+		}finally {
+			DBclose();
+		}
+		return isAdminresult;
+	}
 	public void DBclose() {
 		stmtClosing();
 		pstmtClosing();
@@ -1081,18 +1100,16 @@ public class foodingBean {
 			
 			
 			// 荑쇰━瑜� �옉�꽦
-			sql = "insert into cookhelp(title,contury,foodtype,ingredients,tools,writerid,reg_date,content";
-			sql+=") values(?,?,?,?,?,?,?,?)";
+			sql = "insert into cookhelp(title,tools,writerid,reg_date,content,thumbnail";
+			sql+=") values(?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
-			pstmt.setString(2, article.getContury());
-			pstmt.setString(3, article.getFoodtype());
-			pstmt.setString(4, article.getIngredients());
-			pstmt.setString(5, article.getTools());
-			pstmt.setString(6, article.getWriterid());
-			pstmt.setTimestamp(7, article.getReg_date());
-			pstmt.setString(8, article.getContent());
+			pstmt.setString(2, article.getTools());
+			pstmt.setString(3, article.getWriterid());
+			pstmt.setTimestamp(4, article.getReg_date());
+			pstmt.setString(5, article.getContent());
+			pstmt.setString(6, article.getThumbnail());
 			
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
@@ -1112,7 +1129,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			pstmt = con.prepareStatement("select count(*) from cookhelp	where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+			pstmt = con.prepareStatement("select count(*) from cookhelp	where (tools like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -1135,7 +1152,7 @@ public class foodingBean {
 			con = getConnection();
 
 			pstmt = con.prepareStatement(
-				"select * from cookhelp where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+				"select * from cookhelp where (tools like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
@@ -1145,13 +1162,12 @@ public class foodingBean {
 				do{
 				 BoardDataBean article= new BoardDataBean();
 				article.setNum(rs.getInt("num"));
-				article.setContury(rs.getString("contury"));
-				article.setFoodtype(rs.getString("foodtype"));
 				article.setTitle(rs.getString("title"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setContent(rs.getString("content"));
+				article.setThumbnail(rs.getString("thumbnail"));
 
 
 				 articleList.add(article);
@@ -1208,13 +1224,12 @@ public class foodingBean {
 				do{
 				BoardDataBean article= new BoardDataBean();
 				article.setNum(rs.getInt("num"));
-				article.setContury(rs.getString("contury"));
-				article.setFoodtype(rs.getString("foodtype"));
 				article.setTitle(rs.getString("title"));
  				article.setWriterid(rs.getString("writerid"));
  				article.setReg_date(rs.getTimestamp("reg_date"));
  				article.setReadcount(rs.getInt("readcount"));
  				article.setContent(rs.getString("content"));
+				article.setThumbnail(rs.getString("thumbnail"));
 					
 					
 				 articleList.add(article);
@@ -1251,14 +1266,12 @@ public class foodingBean {
 				
 				article.setNum(rs.getInt("num"));
 				article.setTitle(rs.getString("title"));
-				article.setContury(rs.getString("contury"));
-				article.setFoodtype(rs.getString("foodtype"));
-				article.setIngredients(rs.getString("ingredients"));
 				article.setTools(rs.getString("tools"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));	 
 				article.setContent(rs.getString("content"));
+				article.setThumbnail(rs.getString("thumbnail"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -1286,14 +1299,12 @@ public class foodingBean {
 
 					article.setNum(rs.getInt("num"));
 					article.setTitle(rs.getString("title"));
-					article.setContury(rs.getString("contury"));
-					article.setFoodtype(rs.getString("foodtype"));
-					article.setIngredients(rs.getString("ingredients"));
 					article.setTools(rs.getString("tools"));
 					article.setWriterid(rs.getString("writerid"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));	 
 					article.setContent(rs.getString("content"));
+					article.setThumbnail(rs.getString("thumbnail"));
 				}
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -1314,18 +1325,15 @@ public class foodingBean {
 				con = getConnection();
 
 				 
-					sql="update cookhelp set title=?,contury=?,foodtype=?,difficulty=?,ingredients=?";
-					sql+=",tools=? ,content=? where num=?";
+					sql="update cookhelp set title=?";
+					sql+=",tools=? ,content=?,thumbnail=? where num=?";
 					pstmt = con.prepareStatement(sql);
 
 					pstmt.setString(1, article.getTitle());
-					pstmt.setString(2, article.getContury());
-					pstmt.setString(3, article.getFoodtype());
-					pstmt.setString(4, article.getDifficulty());
-					pstmt.setString(5, article.getIngredients());
-					pstmt.setString(6, article.getTools());
-					pstmt.setString(7, article.getContent());
-						pstmt.setInt(8, article.getNum());
+					pstmt.setString(2, article.getTools());
+					pstmt.setString(3, article.getContent());
+					pstmt.setInt(4, article.getNum());
+					pstmt.setString(5, article.getThumbnail());
 					pstmt.executeUpdate();
 					
 						x= 1;
@@ -1361,13 +1369,13 @@ public class foodingBean {
 				throws Exception {
 			con = null;
 			pstmt = null;
-				rs = null;
+			rs = null;
 			
 			int num=article.getNum();
-		int ref=article.getRef();
-		int re_step=article.getRe_step();
-		int re_level=article.getRe_level();
-		int maxNumber=0;
+			int ref=article.getRef();
+			int re_step=article.getRe_step();
+			int re_level=article.getRe_level();
+			int maxNumber=0;
 
 			String sql="";
 
