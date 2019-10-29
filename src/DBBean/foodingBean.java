@@ -2739,13 +2739,9 @@ public class foodingBean {
 					pstmt.executeUpdate();
 				}while(rs.next());
 			}
-			sql = "delete from cart where cartid in("+cartid[0];
 			for(int i=1;i<cartid.length;i++) {
-				sql+=","+cartid[i];
+				deletecartArticle(cartid[i]);
 			}
-			sql+=")";
-			pstmt = con.prepareStatement(sql);
-			pstmt.executeUpdate();
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();
