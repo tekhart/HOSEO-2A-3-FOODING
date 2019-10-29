@@ -11,6 +11,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<script type="text/javascript">
+	function loginsuccesed(){
+		alert("성공적으로 로그인 완료되었습니다.");
+		location.href="../mains/main.jsp";
+	}
+	function loginfailed(){
+		alert("입력하신 정보를 확인해주세요.");
+		location.href="signin.jsp";
+	}
+</script>
 </head>
 <body>
 	<%
@@ -24,17 +34,15 @@
 				if(userArticle.getId().equals(id)&&userArticle.getPasswd().equals(passwd)&&userArticle.getIsLeft()==0){
 					session.setAttribute("idlogin",userArticle.getId());
 					%>
-						<script type="text/javascript">
-							alert("성공적으로 로그인 완료되었습니다.");
-							location.href("../mains/main.jsp");
+						<script>
+							loginsuccesed()
 						</script>
 					<%
 				}
 			}catch (Exception e) {
 				%>
-					<script type="text/javascript">
-						alert("입력하신 정보를 확인해주세요.");
-						location.href("signin.jsp");
+					<script>
+						loginfailed()
 					</script>
 				<%
 			}finally{}

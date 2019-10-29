@@ -101,8 +101,12 @@
 							List<BoardDataBean> articleList = null; 
 						    int WriteRecipecount = 0;
 						    int WriteCommentcount = 0;
-							int[] Writeconturycount = {0,0,0,0,0,0};
+						    int[] Writeconturylength = {0,0,0,0,0,0};
+						    int[] Writeconturycount = {0,0,0,0,0,0};
+							int maxcontury=0;
+							int[] WriteFoodtypelength = {0,0,0,0,0,0,0};
 							int[] WriteFoodtypecount = {0,0,0,0,0,0,0};
+							int maxfoodtype=0;
 						    try{
 								findId=request.getParameter("findId");
 								if(findId==null){
@@ -123,22 +127,46 @@
 						    	String sql="select count(*),contury from recipes where writerid = '"+findId+"' group by contury;";
 						    	ResultSet rs = foodingbean.resultQuery(sql);
 								int i=0;
+								
+								
 								while(rs.next()){
 									String thiscontury=rs.getString("contury");
 									if(thiscontury.equals("한식")){
 										Writeconturycount[0]=rs.getInt(1);
+										if(Writeconturycount[0]>maxcontury){
+											maxcontury=Writeconturycount[0];
+										}
 									}else if(thiscontury.equals("양식")){
 										Writeconturycount[1]=rs.getInt(1);
+										if(Writeconturycount[1]>maxcontury){
+											maxcontury=Writeconturycount[1];
+										}
 									}else if(thiscontury.equals("일식")){
 										Writeconturycount[2]=rs.getInt(1);
+										if(Writeconturycount[2]>maxcontury){
+											maxcontury=Writeconturycount[2];
+										}
 									}else if(thiscontury.equals("중식")){
 										Writeconturycount[3]=rs.getInt(1);
+										if(Writeconturycount[3]>maxcontury){
+											maxcontury=Writeconturycount[3];
+										}
 									}else if(thiscontury.equals("퓨전")){
 										Writeconturycount[4]=rs.getInt(1);
+										if(Writeconturycount[4]>maxcontury){
+											maxcontury=Writeconturycount[4];
+										}
 									}else if(thiscontury.equals("기타")){
 										Writeconturycount[5]=rs.getInt(1);
+										if(Writeconturycount[5]>maxcontury){
+											maxcontury=Writeconturycount[5];
+										}
 									}
 								}
+								for(int j=0;j<Writeconturycount.length;j++){
+									Writeconturylength[j]=Writeconturycount[j]*95/maxcontury+5;
+								}
+								
 						    }catch(Exception e){e.printStackTrace();}
 						    
 						    try{
@@ -149,19 +177,43 @@
 									String thisfoodtype=rs.getString("foodtype");
 									if(thisfoodtype.equals("밥류")){
 										WriteFoodtypecount[0]=rs.getInt(1);
+										if(WriteFoodtypecount[0]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[0];
+										}
 									}else if(thisfoodtype.equals("빵류")){
 										WriteFoodtypecount[1]=rs.getInt(1);
+										if(WriteFoodtypecount[1]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[1];
+										}
 									}else if(thisfoodtype.equals("반찬류")){
 										WriteFoodtypecount[2]=rs.getInt(1);
+										if(WriteFoodtypecount[2]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[2];
+										}
 									}else if(thisfoodtype.equals("면류")){
 										WriteFoodtypecount[3]=rs.getInt(1);
+										if(WriteFoodtypecount[3]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[3];
+										}
 									}else if(thisfoodtype.equals("국류")){
 										WriteFoodtypecount[4]=rs.getInt(1);
+										if(WriteFoodtypecount[4]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[4];
+										}
 									}else if(thisfoodtype.equals("디저트")){
 										WriteFoodtypecount[5]=rs.getInt(1);
+										if(WriteFoodtypecount[5]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[5];
+										}
 									}else if(thisfoodtype.equals("기타")){
 										WriteFoodtypecount[6]=rs.getInt(1);
+										if(WriteFoodtypecount[6]>maxfoodtype){
+											maxfoodtype=WriteFoodtypecount[6];
+										}
 									}
+								}
+								for(int j=0;j<WriteFoodtypecount.length;j++){
+									WriteFoodtypelength[j]=WriteFoodtypecount[j]*95/maxfoodtype+5;
 								}
 						    }catch(Exception e){e.printStackTrace();}
 						    
@@ -213,17 +265,17 @@
 							<table class="grapht">
 							<tr class="graphtd">
 								<td style="position:relative;">
-									<div  style="height:<%=Writeconturycount[0]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div  style="height:<%=Writeconturylength[0]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturycount[1] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div style="height:<%=Writeconturylength[1]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturycount[2] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div style="height:<%=Writeconturylength[2]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturycount[3]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div style="height:<%=Writeconturylength[3]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturycount[4] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div style="height:<%=Writeconturylength[4]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
 								<td style="position:relative;">
-									<div style="height:<%=Writeconturycount[5] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
+									<div style="height:<%=Writeconturylength[5]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:15px; "/></td>
 							</tr><tr><td colspan="6" height="5px"></td></tr><tr style="text-align:center;">
 							<td>한식</td>
 							<td>양식</td>
@@ -239,25 +291,25 @@
 								<table class="grapht">
 									<tr class="graphtd">
 										<td style="position:relative;">
-											<div  style="height:<%=WriteFoodtypecount[0]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div  style="height:<%=WriteFoodtypelength[0]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypecount[1] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div style="height:<%=WriteFoodtypelength[1]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypecount[2] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div style="height:<%=WriteFoodtypelength[2]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypecount[3]*30+5 %>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div style="height:<%=WriteFoodtypelength[3]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypecount[4] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
+											<div style="height:<%=WriteFoodtypelength[4]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px; "/>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypecount[5] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:20px; "/>
+											<div style="height:<%=WriteFoodtypelength[5]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:20px; "/>
 										</td>
 										<td style="position:relative;">
-											<div style="height:<%=WriteFoodtypecount[6] *30+5%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px;"/>
+											<div style="height:<%=WriteFoodtypelength[6]%>px; width:15px; background-color:orange; position:absolute; bottom:0px; left:10px;"/>
 										</td>
 									</tr>
 									<tr><td colspan="7" height="5px"></td></tr>
