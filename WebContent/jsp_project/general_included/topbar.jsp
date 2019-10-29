@@ -39,7 +39,13 @@
 								
 								<%
 							}
-						}finally{}
+						}finally{
+							if(topbarbean.isAdmincheck(idlogin)==1){
+								idlogin="impowerfuladmin";
+							}else{
+								idlogin="";
+							}
+						}
 					%>
 					&nbsp;
 				</div>
