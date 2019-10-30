@@ -13,7 +13,6 @@
 <title>Login</title>
 <script type="text/javascript">
 	function loginsuccesed(){
-		alert("성공적으로 로그인 완료되었습니다.");
 		location.href="../mains/main.jsp";
 	}
 	function loginfailed(){
