@@ -360,12 +360,14 @@ public class foodingBean {
 				 article.setNum(rs.getInt("num"));
 				 article.setContury(rs.getString("contury"));
 				 article.setFoodtype(rs.getString("foodtype"));
-					article.setTitle(rs.getString("title"));
-					article.setWriterid(rs.getString("writerid"));
-					article.setReg_date(rs.getTimestamp("reg_date"));
-					article.setReadcount(rs.getInt("readcount"));
-					article.setContent(rs.getString("content"));
-					article.setThumbnail(rs.getString("thumbnail"));
+				 article.setIngredients(rs.getString("ingredients"));
+				 article.setTools(rs.getString("tools"));
+				 article.setTitle(rs.getString("title"));
+				 article.setWriterid(rs.getString("writerid"));
+				 article.setReg_date(rs.getTimestamp("reg_date"));
+				 article.setReadcount(rs.getInt("readcount"));
+				 article.setContent(rs.getString("content"));
+				 article.setThumbnail(rs.getString("thumbnail"));
 
 
 				 articleList.add(article);
@@ -434,19 +436,19 @@ public class foodingBean {
 			if (rs.next()) {
 				articleList = new ArrayList<BoardDataBean>(end);
 				do{
-				 BoardDataBean article= new BoardDataBean();
-				 article.setNum(rs.getInt("num"));
-				 article.setContury(rs.getString("contury"));
-				 article.setFoodtype(rs.getString("foodtype"));
+					BoardDataBean article= new BoardDataBean();
+					article.setNum(rs.getInt("num"));
+					article.setContury(rs.getString("contury"));
+					article.setFoodtype(rs.getString("foodtype"));
+					article.setIngredients(rs.getString("ingredients"));
+					article.setTools(rs.getString("tools"));
 					article.setTitle(rs.getString("title"));
 					article.setWriterid(rs.getString("writerid"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));
-				 article.setContent(rs.getString("content"));
-				 article.setThumbnail(rs.getString("thumbnail"));
-					
-					
-				 articleList.add(article);
+					article.setContent(rs.getString("content"));
+					article.setThumbnail(rs.getString("thumbnail"));
+					articleList.add(article);
 				}while(rs.next());
 			}
 		} catch(Exception ex) {
@@ -1603,7 +1605,6 @@ public class foodingBean {
 			pstmt.setString(2, article.getWriterid());
 			pstmt.setString(3, article.getQuesType());
 			pstmt.setString(4, article.getContent());
-			
 			pstmt.setTimestamp(5, article.getReg_date());
 			pstmt.setInt(6, ref);
 			pstmt.setInt(7, re_step);

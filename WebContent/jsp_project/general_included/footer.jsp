@@ -98,27 +98,26 @@ margin-top:80px;
 </head>
 <body id="footerbody">
 
-<footer>
 <div id="footer">
-
-
-
-<hr id="footerhr">
-
-
-<table width="1000px" style="margin:auto; font-size:20px; padding:10px;"><tr>
-<td rowspan="2"><img src="../img/fooding.png" id="logo"  /></td>
-<td><a class="footera" href="../mains/ask.jsp">고객센터</a></td>
-<td><a class="footera" href="https://github.com/tekhart/HOSEO-2A-3-FOODING" target="_blank">GIT</a></td>
-<td><a class="footera" href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></td>
-</tr>
-<tr>
-<td colspan="3"><table width="100%" style="padding:10px;"><tr>
-<td>Create by FOODING<br>JSP Project 2019_2A03</td>
-<td>Email<br>fooding2019_2a03@naver.com</td>
-</tr></table></td>
-</tr></table>
-
-</footer>
+	<hr id="footerhr">
+	<table width="1000px" style="margin:auto; font-size:20px; padding:10px;">
+		<tr>
+			<td rowspan="2"><img src="../img/fooding.png" id="logo"  /></td>
+			<td><a class="footera" href="../mains/ask.jsp">고객센터</a></td>
+			<td><a class="footera" href="https://github.com/tekhart/HOSEO-2A-3-FOODING" target="_blank">GIT</a></td>
+			<td><a class="footera" href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table width="100%" style="padding:10px;">
+					<tr>
+						<td>Create by FOODING<br>JSP Project 2019_2A03</td>
+						<td>Email<br>fooding2019_2a03@naver.com</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
 </body>
 </html>
