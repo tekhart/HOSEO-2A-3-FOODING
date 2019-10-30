@@ -164,7 +164,7 @@ border-bottom:1px solid orange;
 <div class="tab4">
   <button class="tablinks" onclick="openCity(event, 'London')">1주일</button>
   <button class="tablinks" onclick="openCity(event, 'Paris')">1개월</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">전체</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')" id="defaultOpen">전체</button>
 </div>
 
 <div id="London" class="tabcontent4">
@@ -257,7 +257,10 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+  
 }
+
+document.getElementById("defaultOpen").click();
 </script>
    
 </body>
