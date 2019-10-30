@@ -227,12 +227,13 @@ public class foodingBean {
 		}
 		return article;
 	}
-	public void userWannaLeft(String userid)
+	public int userWannaLeft(String userid)
 			throws Exception{
 		con = null;
 		pstmt = null;
 		rs = null;
 		String sql="";
+		int sucessed=0;
 		
 		try {
 			sql="update user set passwd='',email='',addrnum='',address='',detailaddr=''";
@@ -241,11 +242,13 @@ public class foodingBean {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,userid);
 			pstmt.executeUpdate();
+			sucessed=1;
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
+		return sucessed;
 	}
 	//recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
 	public void insertArticle(BoardDataBean article) 
@@ -360,12 +363,14 @@ public class foodingBean {
 				 article.setNum(rs.getInt("num"));
 				 article.setContury(rs.getString("contury"));
 				 article.setFoodtype(rs.getString("foodtype"));
-					article.setTitle(rs.getString("title"));
-					article.setWriterid(rs.getString("writerid"));
-					article.setReg_date(rs.getTimestamp("reg_date"));
-					article.setReadcount(rs.getInt("readcount"));
-					article.setContent(rs.getString("content"));
-					article.setThumbnail(rs.getString("thumbnail"));
+				 article.setIngredients(rs.getString("ingredients"));
+				 article.setTools(rs.getString("tools"));
+				 article.setTitle(rs.getString("title"));
+				 article.setWriterid(rs.getString("writerid"));
+				 article.setReg_date(rs.getTimestamp("reg_date"));
+				 article.setReadcount(rs.getInt("readcount"));
+				 article.setContent(rs.getString("content"));
+				 article.setThumbnail(rs.getString("thumbnail"));
 
 
 				 articleList.add(article);
@@ -434,19 +439,19 @@ public class foodingBean {
 			if (rs.next()) {
 				articleList = new ArrayList<BoardDataBean>(end);
 				do{
-				 BoardDataBean article= new BoardDataBean();
-				 article.setNum(rs.getInt("num"));
-				 article.setContury(rs.getString("contury"));
-				 article.setFoodtype(rs.getString("foodtype"));
+					BoardDataBean article= new BoardDataBean();
+					article.setNum(rs.getInt("num"));
+					article.setContury(rs.getString("contury"));
+					article.setFoodtype(rs.getString("foodtype"));
+					article.setIngredients(rs.getString("ingredients"));
+					article.setTools(rs.getString("tools"));
 					article.setTitle(rs.getString("title"));
 					article.setWriterid(rs.getString("writerid"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));
-				 article.setContent(rs.getString("content"));
-				 article.setThumbnail(rs.getString("thumbnail"));
-					
-					
-				 articleList.add(article);
+					article.setContent(rs.getString("content"));
+					article.setThumbnail(rs.getString("thumbnail"));
+					articleList.add(article);
 				}while(rs.next());
 			}
 		} catch(Exception ex) {
@@ -1603,7 +1608,6 @@ public class foodingBean {
 			pstmt.setString(2, article.getWriterid());
 			pstmt.setString(3, article.getQuesType());
 			pstmt.setString(4, article.getContent());
-			
 			pstmt.setTimestamp(5, article.getReg_date());
 			pstmt.setInt(6, ref);
 			pstmt.setInt(7, re_step);

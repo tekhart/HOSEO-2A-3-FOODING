@@ -209,7 +209,7 @@
 					</tr>
 					<tr class="orangeline">
 						<td>
-							<%if(article.getWriterid().equals(idlogin)||topbarArticle.getIsAdmin()==1){%>
+							<%if((article.getWriterid().equals(idlogin))||(isAdmin==1)){%>
 								<input type="button" value="글수정" class="smallbt"
 										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
 										&nbsp;&nbsp;&nbsp;&nbsp;
@@ -231,35 +231,55 @@
 									<div class="divdiv2"> <%=article.getTools() %></div>
 								</div>
 							</div>
-						#<%=article.getContury()%> #<%=article.getFoodtype()%>
-					</td>
-				</tr>
-			</table>
-		
-			<br><br><br>
-			<form	style="margin:auto;" method="post" name="commentform" 
-					action="commentspro.jsp" >
-				<table style="margin:auto;">	
-					<tr>
-						<td>댓글 수 : <%=count%></td>
-						<td class="content1" align="right">
-							<input type="submit"	value="댓글쓰기" class="bt2">
+							#<%=article.getContury()%> #<%=article.getFoodtype()%>
 						</td>
 					</tr>
 				</table>
-				<p style="text-align:center;">
-				<%if(session.getAttribute("idlogin")==null){ %>
-					로그인을 하셔야 댓글을 쓸수 있습니다.
+		
+			<br><br><br>
+			<form style="margin:auto;" method="post" name="commentform" 
+					action="commentspro.jsp" >
+				
+				
+				<%if (idlogin==null){ %>
+					<table style="margin:auto;">	
+						<tr>
+							<td>댓글 수 : <%=count%></td>
+							<td class="content1" align="right">
+							</td>
+						</tr>
+					</table>
+					<table width="1010px" style="margin:auto;">
+						<tr>
+							<td colspan="3" width="0" style="margin:auto;">
+								<div name="content" size="40" rows="5" cols="40" class="signupinput2"
+										style="ime-mode:inactive;text-align:center;">
+									로그인을 하셔야 댓글을 쓸수 있습니다.
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" width="150">
+							</td>
+						</tr>
+					</table>
 				<%}else{ %>
-				</p>
 					<input type="hidden" name="num" value="0">
 					<input type="hidden" name="rootin" value="<%=num %>">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
 					<input type="hidden" name="writerid" value="<%=idlogin %>">
 					<input type="hidden" name="ref"	value="1">
 					<input type="hidden" name="re_step"	value="0">
-					<input type="hidden" name="re_level"	value="0">
+					<input type="hidden" name="re_level" value="0">
 					<input type="hidden" name="selected" value="0">
+					<table style="margin:auto;">	
+						<tr>
+							<td>댓글 수 : <%=count%></td>
+							<td class="content1" align="right">
+								<input type="submit" value="댓글쓰기" class="bt2">
+							</td>
+						</tr>
+					</table>
 					<table width="1010px" style="margin:auto;">
 						<tr>
 							<td colspan="3" width="0" style="margin:auto;">
@@ -346,16 +366,19 @@
 				</form>
 						
 			<%}%>
-		<%
-			}catch(Exception e){} 
-		%>
+		
 
 	</div>
 		
 	<form action="../mypages/checkstatus.jsp" method="POST" name="WannaGoOthersProfile">
 		<input type="hidden" name="findId">
-	</form> 
+	</form>
+	
+	
 	<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>
+<%
+}catch(Exception e){} 
+%>
