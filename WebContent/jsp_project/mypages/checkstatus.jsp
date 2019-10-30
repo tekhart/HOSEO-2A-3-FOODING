@@ -438,9 +438,7 @@
 						</tr>
 					</table>
 					<br>
-					<div align="center">
-					<input type="button" value="내정보 수정" class="findbutton" style="width:100px;">
-					</div>
+				
 				</div>
 			</div>
 		</div>
