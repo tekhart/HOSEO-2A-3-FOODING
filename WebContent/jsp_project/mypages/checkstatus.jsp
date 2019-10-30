@@ -296,7 +296,7 @@
 						<tr>
 							
 							<td colspan="2"  class="wwawa">
-								
+								<br>
 							<table style="border-spacing:20px;"><tr>
 							<td>
 							
