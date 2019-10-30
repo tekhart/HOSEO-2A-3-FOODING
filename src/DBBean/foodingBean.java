@@ -227,12 +227,13 @@ public class foodingBean {
 		}
 		return article;
 	}
-	public void userWannaLeft(String userid)
+	public int userWannaLeft(String userid)
 			throws Exception{
 		con = null;
 		pstmt = null;
 		rs = null;
 		String sql="";
+		int sucessed=0;
 		
 		try {
 			sql="update user set passwd='',email='',addrnum='',address='',detailaddr=''";
@@ -241,11 +242,13 @@ public class foodingBean {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,userid);
 			pstmt.executeUpdate();
+			sucessed=1;
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
+		return sucessed;
 	}
 	//recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
 	public void insertArticle(BoardDataBean article) 

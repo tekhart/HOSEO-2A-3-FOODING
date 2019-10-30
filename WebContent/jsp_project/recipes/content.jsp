@@ -239,22 +239,31 @@
 			<br><br><br>
 			<form style="margin:auto;" method="post" name="commentform" 
 					action="commentspro.jsp" >
-				<table style="margin:auto;">	
-					<tr>
-						<td>댓글 수 : <%=count%></td>
-						<td class="content1" align="right">
-							<input type="submit"	value="댓글쓰기" class="bt2">
-						</td>
-					</tr>
-				</table>
+				
 				
 				<%if (idlogin==null){ %>
-					<p style="text-align:center;">
-						로그인을 하셔야 댓글을 쓸수 있습니다.
-					</p>
-					로그인을 하셔야 댓글을 쓸수 있습니다.
+					<table style="margin:auto;">	
+						<tr>
+							<td>댓글 수 : <%=count%></td>
+							<td class="content1" align="right">
+							</td>
+						</tr>
+					</table>
+					<table width="1010px" style="margin:auto;">
+						<tr>
+							<td colspan="3" width="0" style="margin:auto;">
+								<div name="content" size="40" rows="5" cols="40" class="signupinput2"
+										style="ime-mode:inactive;text-align:center;">
+									로그인을 하셔야 댓글을 쓸수 있습니다.
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" width="150">
+							</td>
+						</tr>
+					</table>
 				<%}else{ %>
-				
 					<input type="hidden" name="num" value="0">
 					<input type="hidden" name="rootin" value="<%=num %>">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
@@ -263,6 +272,14 @@
 					<input type="hidden" name="re_step"	value="0">
 					<input type="hidden" name="re_level" value="0">
 					<input type="hidden" name="selected" value="0">
+					<table style="margin:auto;">	
+						<tr>
+							<td>댓글 수 : <%=count%></td>
+							<td class="content1" align="right">
+								<input type="submit" value="댓글쓰기" class="bt2">
+							</td>
+						</tr>
+					</table>
 					<table width="1010px" style="margin:auto;">
 						<tr>
 							<td colspan="3" width="0" style="margin:auto;">
