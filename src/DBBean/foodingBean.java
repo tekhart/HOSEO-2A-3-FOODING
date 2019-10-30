@@ -1570,7 +1570,7 @@ public class foodingBean {
 			try {
 				con = getConnection();
 
-				pstmt = con.prepareStatement("select max(num) from recipe_comment");
+				pstmt = con.prepareStatement("select max(num) from question");
 				rs = pstmt.executeQuery();
 				
 				if (rs.next())
@@ -1579,7 +1579,7 @@ public class foodingBean {
 					maxNumber=1; 
 				
 				if (num!=0) {	
-					sql="update recipe_comment set re_step=re_step+1 ";
+					sql="update question set re_step=re_step+1 ";
 					sql += "where ref=? and re_step >?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, ref);
