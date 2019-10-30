@@ -408,24 +408,29 @@
 						<tr>
 							<td colspan="2" >
 								<%
-									for (int i = 0 ; i < articleList.size(); i++) {
-										BoardDataBean article = articleList.get(i);
-										String writerid=article.getWriterid();
-								%>
-									<div>
-										<table class="grapht1"> 
-											<tr>
-												<td>
-													<div style="background-image:url('<%=article.getThumbnail() %>');
-														background-size:cover;background-position:center;width:250px;height:100px;">
-													</div>
-												</td>
-												<td><%=article.getTitle() %></td>
-											</tr>
-										
-										</table>
-									</div>
-								<%
+									try{
+										for (int i = 0 ; i < articleList.size(); i++) {
+											BoardDataBean article = articleList.get(i);
+											String writerid=article.getWriterid();
+									%>
+										<div>
+											<table class="grapht1"> 
+												<tr>
+													<td>
+														<div style="background-image:url('<%=article.getThumbnail() %>');
+															background-size:cover;background-position:center;width:250px;height:100px;">
+														</div>
+													</td>
+													<td><%=article.getTitle() %></td>
+												</tr>
+											
+											</table>
+										</div>
+									<%
+										}
+									
+									}catch(Exception e){
+										e.printStackTrace();
 									}
 								%>
 							</td>

@@ -38,6 +38,12 @@
 							loginsuccesed()
 						</script>
 					<%
+				}else{
+					%>
+						<script>
+							loginfailed()
+						</script>
+					<%
 				}
 			}catch (Exception e) {
 				%>

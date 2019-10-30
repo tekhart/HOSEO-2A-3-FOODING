@@ -7,6 +7,7 @@
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean = foodingBean.getInstance();
 	userDataBean topbarArticle=null;
+	int isAdmin=0;
 %>
 <html>
 <head>
@@ -33,6 +34,7 @@
 								<%
 							}else{
 								String nknamelogin=topbarArticle.getNkname();
+								isAdmin=topbarArticle.getIsAdmin();
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
 								

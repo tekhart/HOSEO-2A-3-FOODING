@@ -209,19 +209,13 @@
 					</tr>
 					<tr class="orangeline">
 						<td>
-							<%if(article.getWriterid().equals(idlogin)){%>
+							<%if(article.getWriterid().equals(idlogin)||topbarArticle.getIsAdmin()==1){%>
 								<input type="button" value="글수정" class="smallbt"
 										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
 										&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" value="글삭제" class="smallbt"
 										onclick="youreally()">	
-							<%}else if(idlogin.equals("impowerfuladmin")){%>
-								<input type="button" value="글수정" class="smallbt"
-										onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
-										&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="button" value="글삭제" class="smallbt"
-										onclick="youreally()">	
-							<%} %>
+							<%}%>
 						</td>
 						<td>일자 <%= sdf.format(article.getReg_date())%></td>
 					</tr>
