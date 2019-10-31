@@ -193,8 +193,7 @@
 				<table align="center" class="nogul">
 					<tr>
 						<td align="center">
-							검색결과가 없습니다.<br>
-							 다른 걸 검색해 보세요! <br>
+							상품 준비중입니다!
 									<img src="../img/ding.png" height="335px" width="559px">
 						</td>
 					</tr>

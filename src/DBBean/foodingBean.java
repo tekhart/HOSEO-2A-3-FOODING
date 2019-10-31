@@ -246,6 +246,44 @@ public class foodingBean {
 		}
 		
 	}
+	public List<userDataBean> getuserArticles()
+			throws Exception{
+		con = null;
+		pstmt = null;
+		rs = null;
+		userDataBean article=null;
+		List<userDataBean> articleList=new ArrayList<userDataBean>();
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(
+				"select * from user");
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				do{
+					article = new userDataBean();
+					article.setNkname(rs.getString("nkname"));
+					article.setId(rs.getString("id"));
+					article.setPasswd(rs.getString("passwd"));
+					article.setEmail(rs.getString("email"));
+					article.setAddrnum(rs.getString("addrnum"));
+					article.setAddress(rs.getString("address"));
+					article.setDetailaddr(rs.getString("detailaddr"));
+					article.setGender(rs.getString("gender"));
+					article.setReg_date(rs.getTimestamp("reg_date"));	 
+					article.setMileage(rs.getInt("mileage")); 
+					article.setIsAdmin(rs.getInt("isAdmin"));
+					article.setUserface(rs.getString("userface"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+			} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return articleList;
+	}
 	public int userWannaLeft(String userid)
 			throws Exception{
 		con = null;
