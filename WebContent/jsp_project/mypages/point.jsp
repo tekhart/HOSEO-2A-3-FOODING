@@ -89,6 +89,53 @@ border-bottom:1px solid orange;
 } 
 
 
+
+#menu div {
+    position: relative;
+    display: inline-block;
+}
+
+span { 
+    display: block;
+    width: 80px;
+    padding: 2px 16px;
+    cursor: pointer;
+}
+.arrow_box {
+  display: none; 
+  position: absolute;
+  width: 150px;
+  padding: 8px;
+  margin-top:5px;
+  left: 350px; 
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;  
+  border-radius: 8px;
+  background: white;
+  border:1px solid black;
+  color: black;
+  font-size: 16px;
+}
+
+.arrow_box:after {
+	width: 0px;
+	height: 0px;
+	border-top: 60px solid transparent;
+	border-bottom: 60px solid transparent;
+	border-left: 60px solid black;
+	left:110%;
+	bottom:31%;
+	margin-left: -10px;
+    position: absolute;
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
+}
+
+span:hover + p.arrow_box {
+  display: block;
+}
+
 	</style>
 	
 	<script>
@@ -146,15 +193,18 @@ border-bottom:1px solid orange;
 		<div class="writetitle1">
 		포인트 관리</div>
 			<%@include file="sidemenu.jsp"%>   
-			
+			  
 			<center>  
 				<div class="row3"  style="padding-top:80px;"> 
-						<div class="forkpoint">   
+						<div class="forkpoint" style="border: 3px solid #ffc637; border-radius:50px 50px 50px 50px;">    
 							<table> 
-								<tr><td style="width:800px; height:50px; vertical-align:top;">
-										<img id="forkimage" src="../img/fork.png" ></td></tr> 
+								<tr><td style="width:800px; padding-left:25px; height:50px; vertical-align:top; ">
+										<div id="menu"><span><img id="forkimage" src="../img/forkc.png" ></span> 
+										    <p class="arrow_box">게시글 작성, 재료구매시 포인트 지급해드려요!</p></div>
+										 </td></tr>  
 								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트</h3></div></td></tr>
-									<tr><td align="center" style="width:800px; height:180px; vertical-align:top;"><div  class="forkpoint3">0 P</div></td></tr>
+									<tr><td align="center" style="width:800px; height:140px; vertical-align:top; ">
+									<div  class="forkpoint3" style="border: 3px solid #ffc637; border-radius:30px 30px 30px 30px;">0 P</div></td></tr>
 						   </table>
 						</div>
 				</div>

@@ -160,7 +160,7 @@
 		}
 		function youreally(){
 			if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
-				location.href="deleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+				location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
 			}
 		}
 	</script>

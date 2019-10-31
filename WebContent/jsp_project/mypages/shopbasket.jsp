@@ -176,13 +176,12 @@ body {
 									<%
 								}	
 							%>
-							<br>
 						</td>
 					</tr> 
 					<tr>
 						<td colspan="8" height="20px" align="center" style="border-bottom:2px solid orange;">
 							<br><span style="vertical-align:middle; display:table-cell; font-size:16pt;">
-								총 비용=<%=totalprice %>
+								총 비용=<%=totalprice+bae_song_bee %>
 								</span>
 							<br>
 						</td>

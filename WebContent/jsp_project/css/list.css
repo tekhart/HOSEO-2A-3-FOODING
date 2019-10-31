@@ -101,11 +101,9 @@
 .bt{
 		background-color:white; 
 		font-size:17px;
-		border-color:#ffbb00;
 		height:50px;
 		margin: 5px;
-		border-width:0.5px;
-		border-style:solid;
+		border:0.5px solid #ffbb00;
 		cursor: pointer;
 		width: 70px;
 		border-radius:5px; 
@@ -1151,13 +1149,14 @@ padding:5px;
 .row3 {
   	width:1500px;
   	margin:auto;
+  	
   }
 
 .forkpoint{
 		width: 800px;
 		height:300px;
 		float:center;
-		background-color:#ffbb00;
+		background-color:#ffc637;
 		vertical-align:middle;
 		display:table-cell;
 		margin-top:1000px;
@@ -1182,11 +1181,12 @@ padding:5px;
 		background-color:white;
 		vertical-align:middle;
 		display:table-cell;
+		
 	
 }
 
 #forkimage{
-		width:100px;
+		width:80px;
 		height:70px;
 		float:left;
 		
@@ -1336,7 +1336,7 @@ padding:5px;
 	
 }
 /* 무통장주문시 끝 */
-
+ 
 
 
 
@@ -1345,5 +1345,8 @@ padding:5px;
 		.botl1{
 		border-bottom:3px solid #ffbb00;}
 	
+
+.orline1{border-bottom:2px solid #FCCB70;}
+
 
 
