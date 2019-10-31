@@ -13,7 +13,7 @@
 		<link rel="shortcut icon" href="../img/favicon.ico">
 		<link rel="icon" href="../img/favicon.ico">
 		<meta charset="UTF-8">
-		<title>Sign Up</title>
+		<title>마이페이지</title>
 
 		<style>
 		 
