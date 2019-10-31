@@ -101,11 +101,9 @@
 .bt{
 		background-color:white; 
 		font-size:17px;
-		border-color:#ffbb00;
 		height:50px;
 		margin: 5px;
-		border-width:0.5px;
-		border-style:solid;
+		border:0.5px solid #ffbb00;
 		cursor: pointer;
 		width: 70px;
 		border-radius:5px; 
