@@ -1151,13 +1151,14 @@ padding:5px;
 .row3 {
   	width:1500px;
   	margin:auto;
+  	
   }
 
 .forkpoint{
 		width: 800px;
 		height:300px;
 		float:center;
-		background-color:#ffbb00;
+		background-color:#ffc637;
 		vertical-align:middle;
 		display:table-cell;
 		margin-top:1000px;
@@ -1182,11 +1183,12 @@ padding:5px;
 		background-color:white;
 		vertical-align:middle;
 		display:table-cell;
+		
 	
 }
 
 #forkimage{
-		width:100px;
+		width:80px;
 		height:70px;
 		float:left;
 		
