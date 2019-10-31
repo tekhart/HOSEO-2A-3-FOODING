@@ -1,4 +1,4 @@
-package DBBean;
+package DBBean; 
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
