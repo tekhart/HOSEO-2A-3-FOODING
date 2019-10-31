@@ -62,6 +62,7 @@ body {
 				msg += '상점 거래ID : ' + rsp.merchant_uid;
 				msg += '결제 금액 : ' + rsp.paid_amount;
 				msg += '카드 승인번호 : ' + rsp.apply_num;
+				document.paypageform.submit();
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
@@ -150,31 +151,18 @@ body {
 							</tr>
 							<%
 								} else {
-
-									String minproductnames = "";
-									String lagproductnames = "";
 									int decidescontinue = 0;
 									for (int i = 0; i < articleList.size(); i++) {
 										int leftproduct = articleList.size() - i + 1;
 										productDataBean article = articleList.get(i);
-
-										if (minproductnames.length() < 15) {
-											if (minproductnames != null) {
-												minproductnames += ", ";
-												minproductnames += article.getProductName();
-											}
-										} else if (decidescontinue == 0) {
-											minproductnames += " 외 " + leftproduct + "개 물건";
-										}
-
 										int realprice = article.getPrice() * (100 - article.getDiscountRate()) / 100;
 										int RealxCountPrice = realprice * article.getProductCount();
 										int ExpectedValueOfAddMile = realprice * article.getProductCount() / 100;
 										totalprice += RealxCountPrice;
 							%>
 							<tr>
-								<td width="150" style="border-bottom: 3px solid orange;"><input
-									type="hidden" name="sendcartids"
+								<td width="150" style="border-bottom: 3px solid orange;">
+								<input type="hidden" name="sendcartids"
 									value="<%=article.getCartId()%>">
 									<div class="bak_item">
 										<div class="pro_img"></div>
@@ -189,8 +177,8 @@ body {
 									<%
 										if (article.getDiscountRate() == 0) {
 									%> <%=article.getPrice()%>원 <%
- 	} else {
- %>
+									 	} else {
+									 %>
 									<del><%=article.getPrice()%>원
 									</del><%=article.getDiscountRate()%>% off<br> ㄴ><%=realprice%>원
 									<%
@@ -221,13 +209,14 @@ body {
 									<%
 										if (totalprice >= 50000) {
 												bae_song_bee = 0;
-									%> <del><%=default_bae_song_bee%>
-										원
-									</del>=><%=bae_song_bee%> 원 <%
- 	} else {
- %> <%=bae_song_bee%> 원 <%
- 	}
- %> <br>
+									%> 	<del><%=default_bae_song_bee%>
+											원
+										</del>=><%=bae_song_bee%> 원 
+									<% } else { %>
+									<%=bae_song_bee%> 원 <%
+									}
+								%>
+								<br>
 								</td>
 							</tr>
 							<%
@@ -243,37 +232,63 @@ body {
 							style="padding-bottom: 50px; padding-left: 280px;">
 							<div class="container">
 								<h3 align="center">주문자 정보</h3>
-								<label for="fname1" class="labelpay"> <i
-									class="fa fa-user"></i> 주문하시는분
-								</label> <br> <br> <input type="text" id="fname1"
-									name="firstname2" class="inputtext" placeholder="이름"> <br>
+								<label for="fname1" class="labelpay">
+								<i class="fa fa-user"></i> 주문하시는분
+								</label>
+								
+								<br>
+								<br> 
+									 <%=topbarArticle.getNkname() %>
+								<br>
 								<br> <label for="email" class="labelpay"> <i
 									class="fa fa-envelope"></i> Email
-								</label> <input type="text" id="email" name="email" class="inputtext"
-									placeholder="john@example.com"> <label for="state"
-									class="labelpay">비밀번호 확인</label> <input type="text"
-									id="passwdcheck" name="passwdcheck" class="inputtext"
-									placeholder="본인확인을 위해 비밀번호 확인이 필요합니다 "> <input
-									type="submit" value="확인" class="tkdyd"
-									style="margin-top: 40px;">
+								</label>
+								<br>
+								<br>
+								<%=topbarArticle.getEmail() %>
+								<br>
+								<br><br>
+								<br>
+								<h3 align="center">배송지 정보</h3>
+								<label for="fname" class="labelpay">
+									<i class="fa fa-user"></i>
+									받으시는분
+								</label>
+								<br> <br> 
+								<input type="text" id="fname2" name="deliveryName" class="inputtext"
+									placeholder="이름">
+								<br> <br> 
+								
 							</div>
 						</td>
 
 						<td colspan="2" align="center" style="padding-bottom: 50px;">
 							<div class="container2">
 								<h3 align="center">배송지 정보</h3>
-								<label for="fname" class="labelpay"><i
-									class="fa fa-user"></i> 받으시는분</label><br> <br> <input
-									type="text" id="fname2" name="firstname2" class="inputtext"
-									placeholder="이름"><br> <br> <label for="city"
-									class="labelpay"><i class="fa fa-institution"></i> 주소</label><br>
-								<br> <input type="text" id="city1" name="city1"
-									class="inputtext" placeholder="우편번호"><br> <br>
-								<input type="text" id="city2" name="city2" class="inputtext"
+								<label for="fname" class="labelpay">
+									<i class="fa fa-user"></i>
+									전화번호
+								</label>
+								<br> <br> 
+								<input type="text" id="fname2" name="deliveryTel" class="inputtext"
+									placeholder="전화번호">
+								<br> <br> 
+								<label for="city" class="labelpay">
+									<i class="fa fa-institution"></i>
+									주소
+								</label>
+								<br>
+								<br>
+								<input type="text" id="city1" name="deliveryAddrnum"
+									class="inputtext" placeholder="우편번호">
+								<br> <br>
+								<input type="text" id="city2" name="deliveryAddress" class="inputtext"
 									placeholder="주소"><br> <br> <input type="text"
-									id="city3" name="city3" class="inputtext" placeholder="상세주소"><br>
-								<br> <label for="state" class="labelpay">배송메시지</label> <input
-									type="text" id="delimessa" name="delimessa" class="inputtext"
+									id="city3" name="deliveryDetailAdd" class="inputtext" placeholder="상세주소">
+								<br>
+								<br>
+								<label for="state" class="labelpay">배송메시지</label>
+								<input type="text" id="delimessa" name="deliveryMessage" class="inputtext"
 									placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
 							</div>
 						</td>
@@ -289,11 +304,10 @@ body {
 							<div class="inputtd2"><%=totalprice + bae_song_bee%></div>
 							<br>
 						<br> <label for="fname" class="labelpay"> 포인트 <span
-								style="color: #424242; font-size: 18px;">| 포크 n개 (총 n원)</span></label><br>
+								style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
 						<br> <br>
 							<div style="width: 1148px; float: left;">
-								<input type="text" class="inputtd3"> = <input
-									type="text" class="inputtd3"> <span class="won">원</span>
+								<input type="text" name="pointused" class="inputtd3"> <span class="won">원</span>
 								<a href="" class="tkdyd3">사용</a>
 							</div> <br>
 						<br>
@@ -313,8 +327,12 @@ body {
 											onclick="openCity(event, 'Bank Deposit')">무통장입금
 										</span>
 									</div>
-
-
+									
+									<div id="creditcard" class="tabcontent">
+										<br><br>
+										<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay()"></div>
+									</div>
+									
 									<div id="Bank Deposit" class="tabcontent">
 										<p class="tdpayment">입금자명</p>
 										<input type="text" maxlength="20" class="tdpayinput"
@@ -327,65 +345,9 @@ body {
 											<option value='농협'>농협 302-1133-2090-11 이혜진</option>
 											
 										</select>
-
-										<p class="tdpayment" style="padding-top: 35px;">입금예정일</p>
-										<select name='day1' class="tdpayinput"
-											style="width: 100px; height: 29px; margin-right: 10px; margin-top: -10px;">
-											<option value='' selected>---년도---</option>
-											<option value='2019년'>2019년</option>
-											<option value='2020년'>2020년</option>
-										</select> <select name='day2' class="tdpayinput"
-											style="width: 80px; height: 29px; margin-right: 10px; margin-top: -10px;">
-											<option value='' selected>---월---</option>
-											<option value='1월'>1월</option>
-											<option value='2월'>2월</option>
-											<option value='3월'>3월</option>
-											<option value='4월'>4월</option>
-											<option value='5월'>5월</option>
-											<option value='6월'>6월</option>
-											<option value='7월'>7월</option>
-											<option value='8월'>8월</option>
-											<option value='9월'>9월</option>
-											<option value='10월'>10월</option>
-											<option value='11월'>11월</option>
-											<option value='12월'>12월</option>
-										</select> <select name='day3' class="tdpayinput"
-											style="width: 80px; height: 29px; margin-top: -10px;">
-											<option value='' selected>---일---</option>
-											<option value='1'>1일</option>
-											<option value='2'>2일</option>
-											<option value='3'>3일</option>
-											<option value='4'>4일</option>
-											<option value='5'>5일</option>
-											<option value='6'>6일</option>
-											<option value='7'>7일</option>
-											<option value='8'>8일</option>
-											<option value='9'>9일</option>
-											<option value='10'>10일</option>
-											<option value='11'>11일</option>
-											<option value='12'>12일</option>
-											<option value='13'>13일</option>
-											<option value='14'>14일</option>
-											<option value='15'>15일</option>
-											<option value='16'>16일</option>
-											<option value='17'>17일</option>
-											<option value='18'>18일</option>
-											<option value='19'>19일</option>
-											<option value='20'>20일</option>
-											<option value='21'>21일</option>
-											<option value='22'>22일</option>
-											<option value='23'>23일</option>
-											<option value='24'>24일</option>
-											<option value='25'>25일</option>
-											<option value='26'>26일</option>
-											<option value='27'>27일</option>
-											<option value='28'>28일</option>
-											<option value='29'>29일</option>
-											<option value='30'>30일</option>
-											<option value='31'>31일</option>
-										</select>
-
+										<div><input type="submit" class="0" value="결제하기"></div>
 									</div>
+									
 									
 								</table>
 							</div> 
@@ -394,8 +356,6 @@ body {
 						</td>
 					</tr>
 				</table>
-				
-						<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay()"></div>
 		</form>
 
 	</div>
