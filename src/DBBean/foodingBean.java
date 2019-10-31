@@ -227,6 +227,25 @@ public class foodingBean {
 		}
 		return article;
 	}
+	public void pointupdate(String userid,int updatevalue)
+			throws Exception{
+		con = null;
+		pstmt = null;
+		rs = null;
+		String sql="";
+		
+		try {
+			con = getConnection();
+			sql="update user set mileage=milage"+updatevalue+"where id='"+userid+"'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		
+	}
 	public int userWannaLeft(String userid)
 			throws Exception{
 		con = null;
@@ -236,6 +255,7 @@ public class foodingBean {
 		int sucessed=0;
 		
 		try {
+			con = getConnection();
 			sql="update user set passwd='',email='',addrnum='',address='',detailaddr=''";
 			sql+=",gender='',reg_date=null,mileage=0,isAdmin=0,userface='../img/userface/defaultface.png',isLeft=1";
 			sql+=" where num = ?";
@@ -262,10 +282,11 @@ public class foodingBean {
 
 		try {
 			con = getConnection();
-
+			
+			pointupdate(article.getWriterid(),5);
+			
 			pstmt = con.prepareStatement("select max(num) from recipes");
 			rs = pstmt.executeQuery();
-			
 			
 			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content,thumbnail";
@@ -602,6 +623,10 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 			
+		
+
+		pointupdate(article.getWriterid(),1);
+		
 		int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -733,7 +758,9 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 		String sql="";
-
+		
+		pointupdate(article.getWriterid(),5);
+		
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement("select max(num) from exrecipe");
@@ -1027,7 +1054,8 @@ public class foodingBean {
 			con = null;
 			pstmt = null;
 				rs = null;
-			
+
+				pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -1159,6 +1187,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
+			pointupdate(article.getWriterid(),5);
 			pstmt = con.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
 			
@@ -1434,7 +1463,8 @@ public class foodingBean {
 			con = null;
 			pstmt = null;
 			rs = null;
-			
+
+			pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 			int ref=article.getRef();
 			int re_step=article.getRe_step();
@@ -1564,6 +1594,7 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 
+		pointupdate(article.getWriterid(),5);
 		int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -1883,7 +1914,8 @@ public class foodingBean {
 			con = null;
 			pstmt = null;
 				rs = null;
-			
+
+				pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -2806,8 +2838,11 @@ public class foodingBean {
 		pstmt = null;
 		rs= null;
 		String sql="";
-		int maxnumber=0;
 		String owner="";
+		int pointused=requestArticle.getPointused();
+		int totalprice=0;
+		int maxnumber=0;
+		
 		try {
 			con = getConnection();
 			
@@ -2817,6 +2852,24 @@ public class foodingBean {
 			if(rs.next()) {
 				maxnumber=rs.getInt(1)+1;
 			}
+			
+			sql = "select price,discountRate from cart where cartid in("+cartid[0];
+			for(int i=1;i<cartid.length;i++) {
+				sql+=","+cartid[i];
+			}
+			sql+=")";
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					totalprice+=rs.getInt("price")*(100-rs.getInt("discountRate")/100);
+				}while(rs.next());
+			}
+			
+			if(totalprice<pointused) {
+				pointused=totalprice;
+			}
+			
 			
 			sql = "select * from cart where cartid in("+cartid[0];
 			for(int i=1;i<cartid.length;i++) {
@@ -2837,7 +2890,8 @@ public class foodingBean {
 					
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1,maxnumber);
-					pstmt.setInt(2,requestArticle.getPointused());
+					pstmt.setInt(2,pointused);
+						
 					pstmt.setString(3,rs.getString("owner"));
 						owner=rs.getString("owner");
 					pstmt.setInt(4,rs.getInt("productCount"));
@@ -2862,6 +2916,9 @@ public class foodingBean {
 				}while(rs.next());
 			}
 			deletecartArticle(owner);
+			pointupdate(requestArticle.getOwner(),totalprice/100);
+			pointupdate(requestArticle.getOwner(),-1*pointused);
+			
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -2912,7 +2969,6 @@ public class foodingBean {
 		rs= null;
 		String sql="";
 		List<buyDataBean> articleList=null;
-		int pointused=0;
 		
 		try {
 			con = getConnection();
