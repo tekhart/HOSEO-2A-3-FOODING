@@ -3,7 +3,13 @@
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@page import="DBBean.foodingBean" %>
-
+<%@page import="DBBean.buyDataBean" %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+<%!
+	SimpleDateFormat sdf = 	
+		new SimpleDateFormat("yyyy-MM-dd");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -82,25 +88,97 @@ position:relative;
 
 
 </style>
+
 </head>
 <body  id="body">
 <%@include file="../general_included/topbar.jsp"%>
+<%
 
+	foodingBean dbPro = foodingBean.getInstance();
+	int[] refarray=dbPro.getDistinctBuyRefs(idlogin);
+	
+%>
 <div id="maindiv">
 <div class="writetitle1">
 주문조회</div>
 	<%@include file="sidemenu.jsp"%>
 	
-<table class="jumuntb">
-	<tr class="jumuntr1"><td class="cc">주문번호</td><td>주문일</td>
-	<td class="tooltip">결제금액<img src="../img/what2.png" width="25px" height="25px" style="vertical-align:middle;">
-	<span class="tooltiptext">할인 / 사용 포인트가 적용된 금액입니다</span></td><td class="cc">주문내용</td>
-	<td>주문상태</td><td>상세정보</td></tr>
-	<tr class="jumuntr2"><td>171006-236746782</td><td>2019-10-22</td><td>37,800</td><td>곰곰 소중한 우리 쌀 현미와 백미, 10kg, 1개 외3</td><td>결제확인</td><td>신용카드</td></tr>
-	<tr class="jumuntr2"><td>236806-857855322</td><td>2019-10-11</td><td>45,800</td><td>냄비, 후라이팬 세트</td><td>배송출하</td><td>무통장입금</td></tr>
-	<tr class="jumuntr2"><td>235746-827643478</td><td>2019-10-05</td><td>12,000</td><td>소고기 갈비살</td><td>배송완료</td><td>신용카드</td></tr>
-	<tr class="jumuntr2"><td>176794-237856482</td><td>2019-09-08</td><td>46,000</td><td>후라이팬</td><td>주문보류</td><td>신용카드</td></tr>
-	<tr class="jumuntr2"><td>573596-674929058</td><td>2019-09-01</td><td>1,600</td><td>이쑤시개</td><td>결제확인중</td><td>무통장입금</td></tr>
+<table class="jumuntb" border="1">
+	<tr class="jumuntr1">
+		<td class="cc">주문번호</td>
+		<td>주문제목</td>
+		<td>제품사진</td>
+		<td>제품이름</td>
+		<td>뭐로하지</td>
+		<td class="tooltip">
+			가격
+			<img src="../img/what2.png" width="25px" height="25px" style="vertical-align:middle;">
+			<span class="tooltiptext">
+				할인 / 사용 포인트가 적용된 금액입니다
+			</span>
+		</td>
+		<td>비고</td>
+	</tr>
+	<%for(int refint=0;refint<refarray.length;refint++){
+		List<buyDataBean> DataArticleList =dbPro.getbuyArticles(refarray[refint]);
+		int totalprice=0;
+		buyDataBean article=null;
+		%><%
+		for(int articleint=0;articleint<DataArticleList.size();articleint++){
+			article=DataArticleList.get(articleint);
+			int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
+			totalprice+=realprice;
+			%>
+			<tr>
+				<%
+				if(articleint==0){
+					%>
+					<td rowspan="<%=DataArticleList.size()+1%>">
+						<%=article.getBuyId() %>
+					</td>
+					<td rowspan="<%=DataArticleList.size()%>">
+						<%=article.getProductName()%>
+						<%if(DataArticleList.size()!=1){%>
+							외 <%=DataArticleList.size()-1 %>개의 제품
+						<%} %>
+					</td>
+				<%}%>
+				<td>
+					<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:290px;height:163px;"></div>
+				</td>
+				<td>
+					<%=article.getProductName() %>
+				</td>
+				<td>
+					
+				</td>
+				<td>
+					<%if(article.getDiscountRate()!=0){ %>
+						<%=article.getDiscountRate() %>% <%=article.getPrice() %>원<br>
+					<%} %>
+					<%=realprice %>원
+				</td>
+				<td>
+					<%=article.getSanction() %>
+				</td>
+			</tr>
+		<%}%>
+		<tr>
+			<td>
+				결제 일자 <br>
+				<%=sdf.format(article.getBuydate())%>
+			</td>
+			<td colspan="3">
+				사용포인트 : <%=article.getPointused()%>포크
+			</td>
+			<td>
+				총 가격 : <%=totalprice%>원 
+			</td>
+			<td>
+				<%=totalprice-article.getPointused()%>원
+			</td>
+		</tr>
+	<%}%>
 	
 </table>
 

@@ -2772,12 +2772,10 @@ public class foodingBean {
 		pstmt = null;
 		rs= null;
 		String sql="";
-		List<productDataBean> articleList=null;
 		try {
 			con = getConnection();
-			sql = "delete from cart where cartId=?";
+			sql = "delete from cart where cartid ="+cartid;
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1,cartid);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -2785,13 +2783,41 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-	public void SendCartToBuy(int[] cartid) {
+	public void deletecartArticle(String owner) {
 		con = null;
 		pstmt = null;
 		rs= null;
 		String sql="";
 		try {
 			con = getConnection();
+			sql = "delete from cart where owner=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,owner);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
+	public void SendCartToBuy(int[] cartid,buyDataBean requestArticle) {
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		int maxnumber=0;
+		String owner="";
+		try {
+			con = getConnection();
+			
+			sql = "select max(buyId) from buy";
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				maxnumber=rs.getInt(1)+1;
+			}
+			
 			sql = "select * from cart where cartid in("+cartid[0];
 			for(int i=1;i<cartid.length;i++) {
 				sql+=","+cartid[i];
@@ -2799,37 +2825,43 @@ public class foodingBean {
 			sql+=")";
 			pstmt = con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
+			
+			
 			if(rs.next()) {
 				do{
-					sql = "insert into buy(owner,productCount,productId,productName";
+					sql = "insert into buy(ref,pointused,owner,productCount,productId,productName";
 					sql+=",isTool,productType,price,discountRate,productThumb";
-					sql+=",account,deliveryName,deliveryTel,deliveryAddrnum";
+					sql+=",accountid,deliveryName,deliveryTel,deliveryMessage,deliveryAddrnum";
 					sql+=",deliveryAddress,deliveryDetailAdd,buydate";
-					sql+=") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	
+					sql+=") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1,rs.getString("owner"));
-					pstmt.setInt(2,rs.getInt("productCount"));
-					pstmt.setInt(3,rs.getInt("productId"));
-					pstmt.setString(4,rs.getString("productName"));
-					pstmt.setInt(5,rs.getInt("isTool"));
-					pstmt.setInt(6,rs.getInt("productType"));
-					pstmt.setInt(7,rs.getInt("price"));
-					pstmt.setInt(8,rs.getInt("discountRate"));
-					pstmt.setString(9,rs.getString("productThumb"));
-					pstmt.setString(10,"");
-					pstmt.setString(11,"");
-					pstmt.setString(12,"");
-					pstmt.setString(13,"");
-					pstmt.setString(14,"");
-					pstmt.setString(15,"");
-					pstmt.setTimestamp(16,ts);
+					pstmt.setInt(1,maxnumber);
+					pstmt.setInt(2,requestArticle.getPointused());
+					pstmt.setString(3,rs.getString("owner"));
+						owner=rs.getString("owner");
+					pstmt.setInt(4,rs.getInt("productCount"));
+					pstmt.setInt(5,rs.getInt("productId"));
+					pstmt.setString(6,rs.getString("productName"));
+					pstmt.setInt(7,rs.getInt("isTool"));
+					pstmt.setInt(8,rs.getInt("productType"));
+					pstmt.setInt(9,rs.getInt("price"));
+					pstmt.setInt(10,rs.getInt("discountRate"));
+					pstmt.setString(11,rs.getString("productThumb"));
+					pstmt.setInt(12,requestArticle.getAccountId());
+					pstmt.setString(13,requestArticle.getDeliveryName());
+					pstmt.setString(14,requestArticle.getDeliveryTel());
+					pstmt.setString(15,requestArticle.getDeliveryMessage());
+					pstmt.setString(16,requestArticle.getDeliveryAddrnum());
+					pstmt.setString(17,requestArticle.getDeliveryAddress());
+					pstmt.setString(18,requestArticle.getDeliveryDetailAdd());
+					pstmt.setTimestamp(19,ts);
+					
 					pstmt.executeUpdate();
+					
 				}while(rs.next());
 			}
-			for(int i=1;i<cartid.length;i++) {
-				deletecartArticle(cartid[i]);
-			}
+			deletecartArticle(owner);
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -2837,4 +2869,115 @@ public class foodingBean {
 			DBclose();
 		}
 	}
+	public int[] getDistinctBuyRefs(String userId) {
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		int refcount=0;
+		int refarray[]=null;
+		try {
+			con = getConnection();
+			
+			sql = "select count(distinct ref) from buy where owner='"+userId+"'";
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				refcount=rs.getInt(1);
+				refarray=new int[refcount];
+			}
+			
+			sql = "select distinct ref from buy where owner='"+userId+"'";
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int i=0;
+				do {
+					refarray[i]=rs.getInt(1);
+					i++;
+				}while(rs.next());
+			}
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return refarray;
+	}
+	public List<buyDataBean> getbuyArticles(int refnumber){
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		List<buyDataBean> articleList=null;
+		int pointused=0;
+		
+		try {
+			con = getConnection();
+			sql = "select * from buy where ref="+refnumber;
+			pstmt = con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+
+			if (rs.next()) {
+				articleList = new ArrayList<buyDataBean>();
+				do{
+				buyDataBean article= new buyDataBean();
+				 article.setBuyId(rs.getInt("buyId"));
+				 article.setRef(rs.getInt("ref"));
+				 article.setPointused(rs.getInt("pointused"));
+				 article.setOwner(rs.getString("owner"));
+				 article.setProductCount(rs.getInt("productCount"));
+				 article.setProductId(rs.getInt("productId"));
+				 article.setProductName(rs.getString("productName"));
+				 article.setIsTool(rs.getInt("isTool"));
+				 article.setProductType(rs.getInt("productType"));
+				 article.setPrice(rs.getInt("price"));
+				 article.setDiscountRate(rs.getInt("discountRate"));
+				 article.setAccountId(rs.getInt("accountId"));
+				 article.setDeliveryName(rs.getString("deliveryName"));
+				 article.setDeliveryTel(rs.getString("deliveryTel"));
+				 article.setDeliveryMessage(rs.getString("deliveryMessage"));
+				 article.setDeliveryAddrnum(rs.getString("deliveryAddrnum"));
+				 article.setDeliveryAddress(rs.getString("deliveryAddress"));
+				 article.setDeliveryDetailAdd(rs.getString("deliveryDetailAdd"));
+				 article.setBuydate(rs.getTimestamp("buydate"));
+				 article.setSanction(rs.getString("sanction"));
+				 articleList.add(article);
+				}while(rs.next());
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return articleList;
+	}
+	
+	public int getbuyArticleCount(int refnumber){
+		con = null;
+		pstmt = null;
+		rs= null;
+		String sql="";
+		int articlecount=0;
+		
+		try {
+			con = getConnection();
+			sql = "select count(*) from buy where ref="+refnumber;
+			pstmt = con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			articlecount=rs.getInt(1);
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return articlecount;
+	}
+		
 }
