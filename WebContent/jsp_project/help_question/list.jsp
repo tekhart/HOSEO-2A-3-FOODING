@@ -75,15 +75,7 @@
 	<%@include file="../general_included/topbar.jsp"%>
 
 	
-	<% if (count == 0) { %>
-
-	<table align="center" class="nogul">
-		<tr>
-			<td align="center">게시판에 저장된 글이 없습니다<br> 첫 글을 남겨보세요! <br>
-				<img src="../img/ding.png" height="335px" width="559px">
-			</td>
-	</table>
-	<% } else {%>
+	
 	<div id="maindiv">
 
 		<div class="writetitle1">
@@ -130,6 +122,16 @@
 		</table>
 		
 	</center>
+	
+	<% if (count == 0) { %>
+
+	<table align="center" class="nogul">
+		<tr>
+			<td align="center">게시판에 저장된 글이 없습니다<br> 첫 글을 남겨보세요! <br>
+				<img src="../img/ding.png" height="335px" width="559px">
+			</td>
+	</table>
+	<% } else {%>
 		<br>
 		<table class="listtable">
 			<tr height="50">

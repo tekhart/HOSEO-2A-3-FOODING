@@ -29,7 +29,7 @@
 		
 		foodingBean dbPro = foodingBean.getInstance();
 		
-		int check = dbPro.deleteUser(id,checkpw);
+		int check = dbPro.userWannaLeft(id);
 		if(check==1){
 			session.invalidate();
 		%>

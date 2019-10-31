@@ -20,7 +20,7 @@ foodingBean dbPro = foodingBean.getInstance();
 try{
 	addproductid=Integer.parseInt(request.getParameter("addproductid"));
 	addproductcount=Integer.parseInt(request.getParameter("addproductcount"));
-	dbPro.insertcartArticle(addproductid,addproductcount,idlogin);
+	dbPro.insertcartArticle(addproductid,addproductcount,(String)session.getAttribute("idlogin"));
 }catch(Exception e){
 	e.printStackTrace();
 }

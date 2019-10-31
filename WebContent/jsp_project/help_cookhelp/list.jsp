@@ -77,29 +77,6 @@
 
 </head>
 <body id="body">
-
-
-
- 
-
-<% if (count == 0) { %>
-
-<table align="right"><tr><td>
-	<a href="list.jsp">목록</a></td><td>
-	<a href="writeForm.jsp">글쓰기</a></td></tr></table>
-	<br><br><br>
-	
-<table align="center" class="nogul">
-<tr>
-	<td align="center">
-				게시판에 저장된 글이 없습니다<br>
-				첫 글을 남겨보세요! <br>
-				<img src="../img/ding.png" height="335px" width="559px">
-	</td>
-</table>
-<% } else {%>
-
-
 <%@include file="../general_included/topbar.jsp"%>
 <div id="maindiv">
 
@@ -122,19 +99,37 @@
 							<input type="button" onclick="location.href='list.jsp'" value="목록" class="bt">
 						</td>
 						<td>
-							<%if(idlogin.equals("impowerfuladmin")){ %>
+							<%if(isAdmin==1){ %>
 								<input type="button" onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
 							<%}%>
 						</td>
 					</tr>
 				</form>
 			</table>
-		</td>	
+		</td></tr>	
 	</table>
 </center>
 <br>
 
 
+ 
+
+<% if (count == 0) { %>
+
+<table align="right"><tr><td>
+	<a href="list.jsp">목록</a></td><td>
+	<a href="writeForm.jsp">글쓰기</a></td></tr></table>
+	<br><br><br>
+	
+<table align="center" class="nogul">
+<tr>
+	<td align="center">
+				게시판에 저장된 글이 없습니다<br>
+				첫 글을 남겨보세요! <br>
+				<img src="../img/ding.png" height="335px" width="559px">
+	</td>
+</table>
+<% } else {%>
 
 <table class="listtable"> 
 	<tr height="50"> 
@@ -160,7 +155,7 @@
 			<td align="left" style="padding-left:40px;" colspan="2" width="300px">		
 				<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong" style="vertical-align:middle; display:table-cell;">
 					<%if(article.getTools()!=null){ %>
-							[<%=article.getTools()%> 을 이용한 강의]
+						[<%=article.getTools()%> 을 이용한 강의]
 					<%}%>
 						<% if(article.getReadcount()>=20){%>
 						<font color="red">HOT</font>

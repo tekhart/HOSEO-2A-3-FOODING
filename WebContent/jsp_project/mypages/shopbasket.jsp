@@ -69,7 +69,7 @@ body {
 		foodingBean foodingbean = new foodingBean();
 		int count = 0;
 		try {
-			articleList = dbPro.getcartArticles(idlogin);
+			articleList = dbPro.getcartArticles((String)session.getAttribute("idlogin"));
 			count = articleList.size();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -176,13 +176,12 @@ body {
 									<%
 								}	
 							%>
-							<br>
 						</td>
 					</tr> 
 					<tr>
 						<td colspan="8" height="20px" align="center" style="border-bottom:2px solid orange;">
 							<br><span style="vertical-align:middle; display:table-cell; font-size:16pt;">
-								총 비용=<%=totalprice %>
+								총 비용=<%=totalprice+bae_song_bee %>
 								</span>
 							<br>
 						</td>
