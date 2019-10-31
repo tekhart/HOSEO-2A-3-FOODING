@@ -16,7 +16,6 @@
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
-<link rel="stylesheet" href="style.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 
@@ -49,6 +48,9 @@
 	<%@include file="../general_included/topbar.jsp"%>
 
 	<div id="maindiv2">
+		<br>
+		<br>
+		<br>
 		<%
 			try {
 				int num = Integer.parseInt(request.getParameter("num"));
@@ -81,17 +83,21 @@
 			value="<%=article.getRe_level()%>">
 		<table style="margin: auto;" class="contenttable">
 			<tr>
-				<td width="500px" style="text-align: center;" class="orangeline11" height="100px"><h2><%=article.getTitle()%></h2></td>
-				<td width="500px" style="text-align: right;" class="orangeline11" height="100px"><h2><%=sdf.format(article.getReg_date())%></h2></td>
+				<td colspan="2" width="500px" style="text-align: center;"
+					class="orangeline11" height="100px"><h2><%=article.getTitle()%></h2></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="orangeline1"><h4><%=foodingbean.findnkname(article.getWriterid())%></h4></td>
+				<td class="orline1" style="padding-left: 10px; height: 50px;">등록일
+					: <%=sdf.format(article.getReg_date())%></td>
+				<td class="orline1" style="padding-left: 10px;">작성자 : <%=foodingbean.findnkname(article.getWriterid())%></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="orangeline1"><h4>질문분류: <%=article.getQuesType()%></h4></td>
+				<td class="orline1" style="padding-left: 10px; height: 50px;">질문분류
+					: <%=article.getQuesType()%></td>
+				<td class="orline1" style="padding-left: 10px;">완료여부 : <%=article.getIsComplete()%></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="orangeline1"><h4>완료여부 : <%=article.getIsComplete()%></h4></td>
+
 			</tr>
 			<tr class="orangeline1">
 				<td colspan="2" height="600px"><table width="1000px"
@@ -103,23 +109,27 @@
 					</table></td>
 			</tr>
 			<%
-						if (article.getWriterid().equals(idlogin)) {
-					%>
+				if (article.getWriterid().equals(idlogin)) {
+			%>
 			<tr>
-	
-					<td colspan="2">
-					<input type="button" value="글수정" class="smallbt"
+
+				<td colspan="2"><input type="button" value="글수정"
+					class="smallbt"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="글삭제" class="smallbt"
 					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					</td>
-					
+				</td>
+
 			</tr>
-					<%}else{%>
-						
-						<%}%>
-			<tr height="100px">
-				<td>
+			<%
+				} else {
+			%>
+
+			<%
+				}
+			%>
+			<tr height="60px">
+				<td class="orangeline11">
 					<%
 						if (session.getAttribute("idlogin") != null) {
 					%> <input type="button" value="답글쓰기" class="smallbt"
@@ -128,7 +138,8 @@
 						}
 					%>
 				</td>
-				<td colspan="2"><input type="button" value="글목록" class="smallbt"
+				<td colspan="2" class="orangeline11"><input type="button"
+					value="글목록" class="smallbt" style="float: right; border:1px solid #ffbb00;" 
 					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"></td>
 			</tr>
 		</table>

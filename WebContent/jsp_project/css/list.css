@@ -14,6 +14,10 @@
 	border-spacing:0px;
 }
 
+.logina:visited{
+	color:black;
+}
+
 .writerlong{
 	padding:3px;
 	margin:3px;
@@ -97,11 +101,9 @@
 .bt{
 		background-color:white; 
 		font-size:17px;
-		border-color:#ffbb00;
 		height:50px;
 		margin: 5px;
-		border-width:0.5px;
-		border-style:solid;
+		border:0.5px solid #ffbb00;
 		cursor: pointer;
 		width: 70px;
 		border-radius:5px; 
@@ -243,7 +245,6 @@ padding: 0;
 	
 	.contenttable{
 		margin:auto;
-		width:1200px;
 		 border-collapse:collapse;
 		 border-width:0px;
 		 margin-top:40px;
@@ -835,8 +836,8 @@ padding:5px;
 }
 
 .container3 {
-	width:100%;
-	height:650px;
+	width:1150px;
+	height:700px;
 	float:left;
 	background-color: #FAE4AD;
 	padding: 5px 20px 15px 20px;
@@ -1024,9 +1025,9 @@ padding:5px;
 }
 
 .btpay2{
-	width: 120px;
-	height:50px;
-	font-size:18px;
+	width: 150px;
+	height:60px;
+	font-size:16pt;
 	font-weight:400;
 	color:white;
 	background-color:#ffbb00;
@@ -1034,8 +1035,8 @@ padding:5px;
 	border-width:0.5px;
 	border-style:solid;
 	border-radius:5px;
-	margin-top:205px;
-	margin-left:400px; 
+	margin-top:60px;
+	margin-left:300px;
 	cursor: pointer;
 	position:relative;
 }
@@ -1148,13 +1149,14 @@ padding:5px;
 .row3 {
   	width:1500px;
   	margin:auto;
+  	
   }
 
 .forkpoint{
 		width: 800px;
 		height:300px;
 		float:center;
-		background-color:#ffbb00;
+		background-color:#ffc637;
 		vertical-align:middle;
 		display:table-cell;
 		margin-top:1000px;
@@ -1179,11 +1181,12 @@ padding:5px;
 		background-color:white;
 		vertical-align:middle;
 		display:table-cell;
+		
 	
 }
 
 #forkimage{
-		width:100px;
+		width:80px;
 		height:70px;
 		float:left;
 		
@@ -1333,7 +1336,7 @@ padding:5px;
 	
 }
 /* 무통장주문시 끝 */
-
+ 
 
 
 
@@ -1342,5 +1345,8 @@ padding:5px;
 		.botl1{
 		border-bottom:3px solid #ffbb00;}
 	
+
+.orline1{border-bottom:2px solid #FCCB70;}
+
 
 

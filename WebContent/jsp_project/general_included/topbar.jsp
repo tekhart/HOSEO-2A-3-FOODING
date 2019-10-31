@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="DBBean.foodingBean" %>
+<%@page import="DBBean.userDataBean" %>
 <% 
 	String idlogin="none";
 	session.setAttribute("zipcode","");
-	foodingBean topbarbean=new foodingBean();
+	foodingBean topbarbean = foodingBean.getInstance();
+	userDataBean topbarArticle=null;
+	int isAdmin=0;
 %>
 <html>
 <head>
@@ -22,21 +25,25 @@
 					<%
 						try{
 							idlogin=(String)session.getAttribute("idlogin");
-							
+							topbarArticle=topbarbean.getuserArticle(idlogin);
+							int cartcount=topbarbean.getcartArticlecount(idlogin);
 							if(idlogin==null){
 								%>
 								<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
 								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
 								<%
-							}else{
-								String nknamelogin=topbarbean.findnkname(idlogin);
+							}else{	String nknamelogin=topbarArticle.getNkname();
+									isAdmin=topbarArticle.getIsAdmin();
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
-								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
 								
 								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								
+								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
+								<%if(cartcount!=0){%>
+									<span class="badge"><%=cartcount%></span>
+								<%} %>
 								<%
 							}
 						}finally{}
@@ -60,35 +67,38 @@
 				<center>
 					<table id="menutable">
 						<tr>
-							<td><center>
-								<div class="dropdown">
-			
-	            					<button class="dropbtn" OnClick="window.location='../recipes/list.jsp'">레시피</button>
-	            
-	            					<div class="dropdown-content">
-	            						<center>
-		        							<a href="../recipes/list.jsp">전체 레시피</a>
-							        		<a href="../recipes/list.jsp?fame=1">인기 레시피</a>
-							        		<a href="../recipes/custom.jsp">맞춤 레시피</a>
-							       			<a href="../recipes/writeForm.jsp">레시피 작성</a>
-						       			</center>
-						       		</div>
-	       						</div>
+							<td>
+								<center>
+									<div class="dropdown">
+				
+		            					<button class="dropbtn" OnClick="window.location='../recipes/list.jsp'">레시피</button>
+		            
+		            					<div class="dropdown-content">
+		            						<center>
+			        							<a href="../recipes/list.jsp">전체 레시피</a>
+								        		<a href="../recipes/list.jsp?fame=1">인기 레시피</a>
+								        		<a href="../recipes/custom.jsp">맞춤 레시피</a>
+								       			<a href="../recipes/writeForm.jsp">레시피 작성</a>
+							       			</center>
+							       		</div>
+		       						</div>
 	       						</center>
 	        				</td>
-	        
-	       					<td><center>
-	        					<div class="dropdown">
-	            					<button class="dropbtn">요리도우미</button>
-	            					<div class="dropdown-content">
-	            						<center>
-		            						<a href="../help_cookhelp/list.jsp">요리 강의</a>
-									        <a href="../help_exrecipe/level.jsp">초보용 레시피</a>
-									        <a href="../help_question/list.jsp">도와줘요!</a>
-									        <a href="../shop/main.jsp">재료구매</a>
-	            						</center>
-						        	</div>
-						        </div></center>
+	        				
+	       					<td>
+	       						<center>
+		        					<div class="dropdown">
+		            					<button class="dropbtn">요리도우미</button>
+		            					<div class="dropdown-content">
+		            						<center>
+			            						<a href="../help_cookhelp/list.jsp">요리 강의</a>
+										        <a href="../help_exrecipe/level.jsp">초보용 레시피</a>
+										        <a href="../help_question/list.jsp">도와줘요!</a>
+										        <a href="../shop/main.jsp">재료구매</a>
+		            						</center>
+							        	</div>
+							        </div>
+						        </center>
 	        				</td>	
 	        				<td><center>
 						        <div class="dropdown">

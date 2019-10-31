@@ -71,18 +71,6 @@
 			</tr>
 			
 			<tr>
-				<td align="center" id="writespace">필요한 재료</td>
-				<td align="left">
-					<input type="text" size="40" maxlength="30" name="ingredients" class="signupinput"
-					style="ime-mode:normal;"></td>
-			</tr>
-			<tr>
-				<td align="center" id="writespace">사용되는 도구</td>
-				<td align="left">
-					<input type="text" size="40" maxlength="30" name="tools" class="signupinput"
-					style="ime-mode:normal;"></td>
-			</tr>
-			<tr>
 				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 				<td align="left">
 					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>

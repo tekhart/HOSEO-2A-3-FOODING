@@ -58,7 +58,7 @@ function enterkey() {
 				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd" onkeyup="enterkey();"><br><br>
 			<button class="loginbutton" type="button" onclick="Login();">로그인</button>
 			</div><br><br>
-			<span class="idpasswd"><a href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
+			<span class="idpasswd"><a class="logina" href="findID.jsp">아이디</a> / <a class="logina" href="findPW.jsp">비밀번호 찾기</a></span>
 			
 			</div>
 		</form>

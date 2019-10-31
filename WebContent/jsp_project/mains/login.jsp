@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@page import="DBBean.foodingBean" %>
+<%@page import="DBBean.userDataBean" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -10,51 +11,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<script type="text/javascript">
+	function loginsuccesed(){
+		location.href="../mains/main.jsp";
+	}
+	function loginfailed(){
+		alert("입력하신 정보를 확인해주세요.");
+		location.href="signin.jsp";
+	}
+</script>
 </head>
 <body>
 	<%
 		String id = request.getParameter("id");
-		String pw = request.getParameter("passwd");
+		String passwd = request.getParameter("passwd");
 		//form 태그의 값을 저장
-		foodingBean foodingbean=new foodingBean();
-		
-		foodingbean.connect();
-			String sql1 = "select id,passwd from user where id='"+id+"';";
+		foodingBean dbPro = foodingBean.getInstance();
+		userDataBean userArticle=null;
 			try{
-				ResultSet rs = foodingbean.resultQuery(sql1);
-				if(rs.next()) {
-					String dbid = rs.getString("id");
-					String dbpw = rs.getString("passwd");
-					if (id.equals(dbid) && pw.equals(dbpw)) {
-						session.setAttribute("idlogin",id);
-						response.sendRedirect("../mains/main.jsp");
-						
-					}else{
-						%>
-							<script type="text/javascript">
-								alert("입력하신 정보를 확인해주세요.");
-								location.href="signin.jsp";
-							</script>
-						<%
-						foodingbean.DBclose();
-					}
-				}else{
+				userArticle=dbPro.getuserArticle(id);
+				if(userArticle.getId().equals(id)&&userArticle.getPasswd().equals(passwd)&&userArticle.getIsLeft()==0){
+					session.setAttribute("idlogin",userArticle.getId());
 					%>
-						<script type="text/javascript">
-							alert("입력하신 정보를 확인해주세요.");
-							location.href="signin.jsp";
+						<script>
+							loginsuccesed()
 						</script>
 					<%
-					foodingbean.DBclose();
+				}else{
+					%>
+						<script>
+							loginfailed()
+						</script>
+					<%
 				}
 			}catch (Exception e) {
 				%>
-					<script type="text/javascript">
-						alert("입력하신 정보를 확인해주세요.");
-						location.href("signin.jsp");
+					<script>
+						loginfailed()
 					</script>
-				<%	
-				foodingbean.DBclose();
+				<%
 			}finally{}
 				
 

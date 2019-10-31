@@ -21,13 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="../css/common.css">
-
 <link rel="stylesheet" href="../css/list.css">
-
-
-
-<link rel="stylesheet" href="list.css">
-<link rel="stylesheet" href="style.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 
@@ -95,27 +89,22 @@
 	    
 %> 
 
-<table  class="contenttable" >   
+<table  class="contenttable">   
 	<tr>
-		<td width="500px" rowspan="2" height="100px" align="center" class="orangeline11"
-			style="text-align:center;"><%=article.getTitle()%></td>
+		<td width="500px" rowspan="2" height="100px" align="center" class="orangeline11" 
+			style="text-align:center;"><h2><%=article.getTitle()%></h2></td> 
 		<td width="100px" class="orangeline111" style="text-align:right;
-			color:#e0e0e0; font-size:20px;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+			color:#848484; font-size:24px;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
 	</tr>
-	<tr>
-		<td colspan="2" style="text-align:right;
-			color:#e0e0e0; font-size:20px;" class="orangeline1"><%=article.getReadcount()%>view</td>
+	<tr> 
+		<td colspan="2" style="text-align:right; 
+			color:#848484; font-size:24px;" class="orangeline1"><%=article.getReadcount()%>view</td>
 	</tr>
 
 		<tr	class="orangeline">
 						<td colspan="2"	height="600px" >
-							<table width="1150px"
-									style="margin:auto;
-									margin-top:15px;
-									margin-bottom:15px;
-									table-layout: fixed;
-									word-wrap:break-word;
-									border-collapse:collapse;">
+							<table width="1150px" style="margin:auto; margin-top:15px;
+								   margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
 								<tr>
 									<td style="vertical-align:text-top;">
 										<pre><%=article.getContent()%></pre>
@@ -142,10 +131,12 @@
 						
 						<%}%>
 
-	<tr><td></td><!-- <td colspan="2">목록</td></tr>  -->
-	
+				<tr height="60px">
+					<td colspan="2"  class="orangeline11"><input type="button" value="글목록" class="smallbt" style="float:right; border:1px solid #ffbb00;"
+					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"></td>
+				
 </table>
-
+ 
 	<!--    &nbsp;&nbsp;&nbsp;&nbsp;
 	   &nbsp;&nbsp;&nbsp;&nbsp;
        <input type="button" value="글목록" 
@@ -155,21 +146,9 @@
 
 </table>
 	<br>
-	<form method="post" name="commentform" action="commentspro.jsp">
+<!--  <form method="post" name="commentform" action="commentspro.jsp" align="center">
 	
-		
-			
-		<table>	
-			<tr>
-				<td>
-					
-				</td>
-				<td>
-					
-				</td>
-			
-			</tr>
-		</table>
+
 		<%if(session.getAttribute("idlogin")==null){ %>
 			로그인을 하셔야 댓글을 쓸수 있습니다.
 		<%}else{ %>
@@ -178,7 +157,7 @@
 <%
 			}
 		}catch(Exception e){} 
- %>
+ %>-->	
 </div>
 
 
