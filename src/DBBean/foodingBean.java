@@ -227,7 +227,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-	public void pointupdate(String userid,int updatevalue)
+	public void pointupdate(String userid,int updatevalue,String adjestreason)
 			throws Exception{
 		con = null;
 		pstmt = null;
@@ -236,15 +236,62 @@ public class foodingBean {
 		
 		try {
 			con = getConnection();
-			sql="update user set mileage=milage"+updatevalue+"where id='"+userid+"'";
+			sql="update user set mileage=mileage+"+updatevalue+" where id='"+userid+"'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.executeUpdate();
+			
+			sql="insert into pointhistory(owner,pointadjest,adjestreason,reg_date) values(?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setInt(2, updatevalue);
+			pstmt.setString(3, adjestreason);
+			pstmt.setTimestamp(4, ts);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+	public List<pointDataBean> getPointArticle(String userid,int getlimitBydate)
+			throws Exception{
+		con = null;
+		pstmt = null;
+		rs = null;
+		String sql="";
+		List<pointDataBean> articleList=new ArrayList<pointDataBean>();
+		
+		try {
+			con = getConnection();
+			sql="select * from pointhistory where owner='"+userid+"'";
+			if(getlimitBydate!=0) {
+				sql+=" and reg_date>=(select date_add(now(),INTERVAL ? Day) from dual)";
+			}
+
+			pstmt = con.prepareStatement(sql);
+			
+			if(getlimitBydate!=0) {
+				pstmt.setInt(1,-1*getlimitBydate);
+			}
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				do{
+					pointDataBean article = new pointDataBean();
+					article.setNum(rs.getInt("num"));
+					article.setOwner(rs.getString("owner"));
+					article.setPointadjest(rs.getInt("pointadjest"));
+					article.setAdjestreason(rs.getString("adjestreason")); 
+					article.setReg_date(rs.getTimestamp("reg_date"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+			
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
-		
+		return articleList;
 	}
 	public List<userDataBean> getuserArticles()
 			throws Exception{
@@ -321,7 +368,6 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			
-			pointupdate(article.getWriterid(),5);
 			
 			pstmt = con.prepareStatement("select max(num) from recipes");
 			rs = pstmt.executeQuery();
@@ -342,6 +388,9 @@ public class foodingBean {
 			pstmt.setString(9, article.getThumbnail());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"레시피 작성");
+			
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -663,7 +712,6 @@ public class foodingBean {
 			
 		
 
-		pointupdate(article.getWriterid(),1);
 		
 		int num=article.getNum();
 		int ref=article.getRef();
@@ -714,6 +762,8 @@ public class foodingBean {
 			pstmt.setString(7, article.getContent());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),1,"댓글 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -797,7 +847,6 @@ public class foodingBean {
 		rs = null;
 		String sql="";
 		
-		pointupdate(article.getWriterid(),5);
 		
 		try {
 			con = getConnection();
@@ -821,6 +870,8 @@ public class foodingBean {
 			pstmt.setString(9, article.getDifficulty());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"레시피 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1093,7 +1144,6 @@ public class foodingBean {
 			pstmt = null;
 				rs = null;
 
-				pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -1144,6 +1194,8 @@ public class foodingBean {
 				pstmt.setString(7, article.getContent());
 				
 				pstmt.executeUpdate();
+
+				pointupdate(article.getWriterid(),1,"댓글 작성");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -1225,7 +1277,6 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			pointupdate(article.getWriterid(),5);
 			pstmt = con.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
 			
@@ -1243,6 +1294,8 @@ public class foodingBean {
 			pstmt.setString(6, article.getThumbnail());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"게시글 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1502,7 +1555,6 @@ public class foodingBean {
 			pstmt = null;
 			rs = null;
 
-			pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 			int ref=article.getRef();
 			int re_step=article.getRe_step();
@@ -1553,6 +1605,7 @@ public class foodingBean {
 				pstmt.setString(7, article.getContent());
 				
 				pstmt.executeUpdate();
+				pointupdate(article.getWriterid(),5,"게시글 작성");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -1632,7 +1685,6 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 
-		pointupdate(article.getWriterid(),5);
 		int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -1683,6 +1735,8 @@ public class foodingBean {
 			pstmt.setInt(8, re_level);
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"질문/답변 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1953,7 +2007,6 @@ public class foodingBean {
 			pstmt = null;
 				rs = null;
 
-				pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -2004,6 +2057,8 @@ public class foodingBean {
 				pstmt.setString(7, article.getContent());
 				
 				pstmt.executeUpdate();
+
+				pointupdate(article.getWriterid(),1,"댓글 작성");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -2083,7 +2138,6 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 
-		
 		int periode=Integer.parseInt(article.getPeriode());
 		String sql="";
 
@@ -2695,7 +2749,6 @@ public class foodingBean {
 		con = null;
 		pstmt = null;
 		rs= null;
-		int x=-1;
 		try {
 			con = getConnection();
 			
@@ -2879,7 +2932,10 @@ public class foodingBean {
 		String owner="";
 		int pointused=requestArticle.getPointused();
 		int totalprice=0;
+		int pointadd=0;
 		int maxnumber=0;
+		String productnameforpointhist="";
+		int rslength=0;
 		
 		try {
 			con = getConnection();
@@ -2891,7 +2947,7 @@ public class foodingBean {
 				maxnumber=rs.getInt(1)+1;
 			}
 			
-			sql = "select price,discountRate from cart where cartid in("+cartid[0];
+			sql = "select productCount,price,discountRate from cart where cartid in("+cartid[0];
 			for(int i=1;i<cartid.length;i++) {
 				sql+=","+cartid[i];
 			}
@@ -2900,13 +2956,16 @@ public class foodingBean {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				do {
-					totalprice+=rs.getInt("price")*(100-rs.getInt("discountRate")/100);
+					int count=rs.getInt("productCount");
+					int price=rs.getInt("price")*(100-rs.getInt("discountRate"))/100;
+					totalprice+=count*price;
 				}while(rs.next());
 			}
 			
 			if(totalprice<pointused) {
 				pointused=totalprice;
 			}
+			pointadd=totalprice/100;
 			
 			
 			sql = "select * from cart where cartid in("+cartid[0];
@@ -2919,7 +2978,9 @@ public class foodingBean {
 			
 			
 			if(rs.next()) {
+				productnameforpointhist=rs.getString("productName");
 				do{
+					rslength++;
 					sql = "insert into buy(ref,pointused,owner,productCount,productId,productName";
 					sql+=",isTool,productType,price,discountRate,productThumb";
 					sql+=",accountid,deliveryName,deliveryTel,deliveryMessage,deliveryAddrnum";
@@ -2954,8 +3015,12 @@ public class foodingBean {
 				}while(rs.next());
 			}
 			deletecartArticle(owner);
-			pointupdate(requestArticle.getOwner(),totalprice/100);
-			pointupdate(requestArticle.getOwner(),-1*pointused);
+			if(rslength==1) {
+				pointupdate(owner,pointadd,productnameforpointhist+" 구매");
+			}else {
+				pointupdate(owner,pointadd,productnameforpointhist+" 외"+(rslength-1)+" 개 상품 구매");
+			}
+			pointupdate(owner,-1*pointused,"물품 구매에 사용");
 			
 			
 		} catch(Exception ex) {

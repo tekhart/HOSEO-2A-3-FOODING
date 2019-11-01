@@ -8,6 +8,7 @@
 	foodingBean topbarbean = foodingBean.getInstance();
 	userDataBean topbarArticle=null;
 	int isAdmin=0;
+	int point=0;
 %>
 <html>
 <head>
@@ -34,6 +35,7 @@
 								<%
 							}else{	String nknamelogin=topbarArticle.getNkname();
 									isAdmin=topbarArticle.getIsAdmin();
+									point=topbarArticle.getMileage();
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
 								
