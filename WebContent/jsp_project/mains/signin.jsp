@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
 <style>
 
 
@@ -52,7 +54,7 @@ function enterkey() {
 		width:1900px;">
 <center>
 		<form method="post" name="login" action="login.jsp">
-		<br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br>
 			<div>
 				<input class="logininputs" type="text" placeholder="아이디 " name="id" onkeyup="enterkey();"><br><br>
 				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd" onkeyup="enterkey();"><br><br>
