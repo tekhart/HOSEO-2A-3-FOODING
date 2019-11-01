@@ -13,7 +13,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -73,15 +72,15 @@
 				}
 		%>
 		<table class="contenttable">
-			<tr>
+			<tr> 
 				<td class="orangeline11" rowspan="2" width="1000px" height="100px"
-					align="center"><h2><%=article.getTitle()%></h2></td>
+					align="center"><h2><%=article.getTitle()%></h2></td>  
 				<td class="orangeline111" align="right"
-					style="color: #e0e0e0; font-size: 30px;"><%=foodingbean.findnkname(article.getWriterid())%>
+					style="color: #e0e0e0; font-size: 30px; width:100px;" ><%=foodingbean.findnkname(article.getWriterid())%>
 				</td>
 			</tr>
 			<tr class="orangeline1">
-				<td align="right" style="color: #e0e0e0; font-size: 30px;"><%=article.getReadcount()%>
+				<td align="right" style="color: #e0e0e0; font-size: 30px; width:100px;"><%=article.getReadcount()%>
 					view</td>
 			</tr>
 			<tr class="orangeline">
@@ -95,15 +94,15 @@
 					</table>
 				</td>
 			</tr>
-			<tr class="orangeline"><!-- 여기서 오류가 남 -->
+			<tr class="orangeline"><!-- 여기서 오류가 남 --> 
 	
 					 	<%
 						if (article.getWriterid().equals(idlogin)) {
 					%>
 					<td width="800px">
-					<input type="button" value="글수정"
+					<input type="button" value="글수정" class="bt2"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="글삭제"
+					<input type="button" value="글삭제" class="bt2"
 					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					</td>
 					<td width="800px">일자 : <%=article.getReg_date()%></td>

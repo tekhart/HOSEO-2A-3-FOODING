@@ -74,7 +74,7 @@
 						</tr>
 						<tr>
 							<td align="left"><select name='contury'
-								style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: black; font-size: 12pt; font-family: Bauhaus ITC;">
+								style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: #c0c0c0; font-size: 12pt; color:#6f6f6f; font-family: Bauhaus ITC;">
 									<option value='' selected disabled hidden>나라를 고르세요</option>
 									<option value='한식'>한식</option>
 									<option value='양식'>양식</option>
@@ -83,7 +83,7 @@
 									<option value='퓨전'>퓨전</option>
 									<option value='기타'>기타</option>
 							</select> <select name='foodtype'
-								style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: black; font-size: 12pt; font-family: Bauhaus ITC;">
+								style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: #c0c0c0; font-size: 12pt; color:#6f6f6f; font-family: Bauhaus ITC;">
 									<option value='' selected disabled hidden>종류를 고르세요</option>
 									<option value='밥류'>밥류</option>
 									<option value='빵류'>빵류</option>
