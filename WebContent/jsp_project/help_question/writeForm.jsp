@@ -41,7 +41,7 @@
 				}
 				idlogin=(String)session.getAttribute("idlogin");
 		%>
-		<div class="writetitle">
+		<div class="writetitle1">
 			도와줘요!
 		</div>
 		
@@ -66,7 +66,7 @@
 			<tr>
 				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 				<td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
+				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
 				 style="ime-mode:normal;"></td>
 			</tr>
 			
@@ -77,7 +77,7 @@
 			</tr>
 			
 				<tr><td></td>
-				<td align="left" >
+				<td align="center" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
 					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">

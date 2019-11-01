@@ -70,6 +70,7 @@
 	<link rel="icon" href="../img/favicon.ico">
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/list.css">
+	<link rel="stylesheet" href="bboing.css">
 	
 	<style>
 
@@ -186,7 +187,7 @@
 								</tr>
 							</table>
 							<br>
-							<div style="background-image:url('<%=article.getThumbnail() %>');background-size:cover;background-position:center;width:290px;height:163px;"></div>
+							<div class="bboing" style="background-image:url('<%=article.getThumbnail() %>'); background-size:cover; background-position:center; width:290px; height:163px;"></div>
 							<br><br>
 							<table>
 								<tr><td	class="titlelong">

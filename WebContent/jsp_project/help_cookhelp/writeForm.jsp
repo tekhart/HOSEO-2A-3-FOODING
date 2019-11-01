@@ -54,7 +54,7 @@
 		<div id="space"  >
 
 		<form method="post" name="writeform" 
-			action="writePro.jsp" onsubmit="return writeSave()">
+			action="writePro.jsp" onsubmit="return writeSave()"> 
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
 		<!--  <input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png"> -->
