@@ -37,61 +37,57 @@
 
 
 	<table border="1" class="customtb" >
-	<tr><td class="customfirst">상황별 요리</td>
+	<tr>
+	<td class="customfirst">상황별 요리</td>
 	<td class="customfirst">나라별 요리</td>
 	<td class="customfirst">재료별 요리</td>
 	<td class="customfirst">조리법별 요리</td>
 	<td class="customfirst">도구별 요리</td></tr>
 	<tr><td class="customsecond">
-		<label><input type="checkbox" value="간식">간식<br></label>
-		<label><input type="checkbox" value="야식">야식<br></label>
-		<label><input type="checkbox" value="안주">안주<br></label>
-		<label><input type="checkbox" value="해장">해장<br></label>
-		<label><input type="checkbox" value="접대">접대<br></label>
-		<label><input type="checkbox" value="나들이">나들이<br></label>
-		<label><input type="checkbox" value="파티">파티<br></label>
-		<label><input type="checkbox" value="명절">명절<br></label>
-		<label><input type="checkbox" value="실생활">실생활<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:간식">간식<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:야식">야식<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:안주">안주<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:해장">해장<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:접대">접대<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:나들이">나들이<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:파티">파티<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:명절">명절<br></label>
+		<label><input type="checkbox" name="customsearch" value="상황:실생활">실생활<br></label>
 </td><td class="customsecond">
-		<label><input type="checkbox" value="한식">한식<br></label>
-		<label><input type="checkbox" value="중식">중식<br></label>
-		<label><input type="checkbox" value="일식">일식<br></label>
-		<label><input type="checkbox" value="동남아/인도">동남아/인도<br></label>
-		<label><input type="checkbox" value="멕시칸">멕시칸<br></label>
-		<label><input type="checkbox" value="양식">양식<br></label>
-		<label><input type="checkbox" value="퓨전">퓨전<br></label>
-		<label><input type="checkbox" value="이국적인">이국적인<br></label>
+		<label><input type="checkbox" name="customsearch" value="나라:한식">한식<br></label>
+		<label><input type="checkbox" name="customsearch" value="나라:양식">양식<br></label>
+		<label><input type="checkbox" name="customsearch" value="나라:일식">일식<br></label>
+		<label><input type="checkbox" name="customsearch" value="나라:중식">중식<br></label>
+		<label><input type="checkbox" name="customsearch" value="나라:퓨전">퓨전<br></label>
+		<label><input type="checkbox" name="customsearch" value="나라:기타">이국적인<br></label>
 </td><td class="customsecond">
-		<label><input type="checkbox" value="육류">육류<br></label>
-		<label><input type="checkbox" value="채소류">채소류<br></label>
-		<label><input type="checkbox" value="해산물">해산물<br></label>
-		<label><input type="checkbox" value="콩/두부">콩/두부<br></label>
-		<label><input type="checkbox" value="과일">과일<br></label>
-		<label><input type="checkbox" value="달걀/유제퓸">달걀/유제퓸<br></label>
-		<label><input type="checkbox" value="만두">만두<br></label>
-		<label><input type="checkbox" value="밀가루">밀가루<br></label>
-		<label><input type="checkbox" value="김치">김치<br></label>
-		<label><input type="checkbox" value="가공식품">가공식품<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:고기">육류<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:나물,재료:버섯,재료:파,재료:추">채소류<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:새우,재료:어,재료:게,재료:랍스타,재료:조개">해산물<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:콩,재료:두부">콩/두부<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:사과,재료:배,재료:포도,재료:복숭아">과일<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:달걀,재료:우유,재료:치즈">달걀/유제퓸<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:만두">만두<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:밀가루">밀가루<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:김치">김치<br></label>
+		<label><input type="checkbox" name="customsearch" value="재료:통조림,재료:캔">가공식품<br></label>
 </td><td class="customsecond">
-		<label><input type="checkbox" value="밥">밥<br></label>
-		<label><input type="checkbox" value="면">면<br></label>
-		<label><input type="checkbox" value="국물">국물<br></label>
-		<label><input type="checkbox" value="찜/조리/구이">찜/조리/구이<br></label>
-		<label><input type="checkbox" value="볶음/튀김/부침">볶음/튀김/부침<br></label>
-		<label><input type="checkbox" value="나물/샐러드">나물/샐러드<br></label>
-		<label><input type="checkbox" value="김장/절임">김장/절임<br></label>
-		<label><input type="checkbox" value="베이킹/디저트">베이킹/디저트<br></label>
-		<label><input type="checkbox" value="양념/소스/잼">양념/소스/잼<br></label>
-		<label><input type="checkbox" value="음료/차/커피">음료/차/커피<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:밥류">밥류<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:빵류">빵류<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:반찬류">반찬류<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:면류">면류<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:국류">국류<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:디저트">디저트<br></label>
+		<label><input type="checkbox" name="customsearch" value="종류:기타">이색적인<br></label>
 </td><td class="customsecond">
-		<label><input type="checkbox" value="칼">칼<br></label>
-		<label><input type="checkbox" value="믹서기">믹서기<br></label>
-		<label><input type="checkbox" value="가스레인지">가스레인지<br></label>
-		<label><input type="checkbox" value="냄비">냄비<br></label>
-		<label><input type="checkbox" value="오븐">오븐<br></label>
-		<label><input type="checkbox" value="전자레인지">전자레인지<br></label>
-		<label><input type="checkbox" value="냉장고">냉장고<br></label>
-		<label><input type="checkbox" value="타이머">타이머<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:칼">칼<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:믹서기">믹서기<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:가스레인지">가스레인지<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:냄비">냄비<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:오븐">오븐<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:전자레인지">전자레인지<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:냉장고">냉장고<br></label>
+		<label><input type="checkbox" name="customsearch" value="도구:타이머">타이머<br></label>
 </td></tr>
 
 
@@ -103,7 +99,7 @@
 
 <table style="width:465px; margin:auto;"><tr>
 	<td>  
-		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onclick="newElement()" onkeyup="newElemententerkey()">
+		<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onkeyup="newElemententerkey()">
 	</td>
 								
 		<!--<td class="addBtn">
@@ -125,11 +121,6 @@ function newElemententerkey() {
     if (window.event.keyCode == 13) {
          newElement();
     }
-}
-function notreallysearched(){
-	if(document.getElementById("myUL").innerHTML!=" "){
-		location.href='content.jsp?num=40&pageNum=6&fame=0';
-	}
 }
 
 //Create a "close" button and append it to each list item
@@ -175,6 +166,7 @@ li.appendChild(span);
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
+    div.innerhtml="";
     div.style.display = "none";
   }
 }
