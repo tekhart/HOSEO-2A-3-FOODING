@@ -413,7 +413,7 @@
 											BoardDataBean article = articleList.get(i);
 											String writerid=article.getWriterid();
 									%>
-										<div>
+										<div onclick="location.href='../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=0&fame=0';">
 											<table class="grapht1"> 
 												<tr>
 													<td>
