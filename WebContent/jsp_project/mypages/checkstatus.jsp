@@ -111,20 +111,7 @@
 	
 	<body id="body">
 		<%@include file="../general_included/topbar.jsp"%>
-		<div id="maindiv">
-		<div class="writetitle1">프로필</div>	
-
-		<%@include file="sidemenu.jsp"%>
-			<div style="margin-left:550px">
-					
-				<br>
-				<br>
-				<br> 
-				<br>
-				<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
-				<div>
-					<table style="width:600px; border-collapse:collapse;" class="trborder">
-						<%	
+		<%	
 							request.setCharacterEncoding("UTF-8");
 		
 							foodingBean foodingbean=new foodingBean();
@@ -137,6 +124,7 @@
 							String address="";
 							String detailaddr="";
 							String mile="";
+							String userface="";
 							List<BoardDataBean> articleList = null; 
 						    int WriteRecipecount = 0;
 						    int WriteCommentcount = 0;
@@ -264,6 +252,7 @@
 									address=rs.getString("address");
 									detailaddr=rs.getString("detailaddr");
 									mile=rs.getString("mileage");
+									userface=rs.getString("userface");
 								}
 						    }catch(Exception e){e.printStackTrace();}
 							
@@ -274,10 +263,25 @@
 							    }
 							}catch(Exception e){e.printStackTrace();}
 						%>	
+		<div id="maindiv">
+		<div class="writetitle1">프로필</div>	
+		<% if(idlogin!=null){%>
+			<%@include file="sidemenu.jsp"%>
+		<%}%>
+			<div style="margin-left:550px">
+					
+				<br>
+				<br>
+				<br> 
+				<br>
+				<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
+				<div>
+					<table style="width:600px; border-collapse:collapse;" class="trborder">
+						
 						<tr>
 					
 						<td rowspan="2">
-						<div style="height:100px; width:100px; border-radius:50%; border:3px solid orange; margin:auto;"/>
+						<div style="height:100px; width:100px; border-radius:50%; border:3px solid orange; margin:auto; background-image:url(<%=userface%>); background-size:cover; background-position:center;"/>
 						</td>
 							<td> 
 							<h3><%=nk %></h3>
