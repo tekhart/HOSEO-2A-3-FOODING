@@ -209,7 +209,7 @@
 				%>
 				<div class="card">
 					<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:112px;"></div>
-					<p><%=article.getProductName() %></p>
+					<p class="writerlong"><%=article.getProductName() %></p>
 					<div class="product_price_html">
 						<%if(article.getDiscountRate()==0){ %>
 							
