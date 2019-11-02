@@ -883,7 +883,7 @@ public class foodingBean {
 		DBclose();
 		con = null;
 		pstmt = null;
-		rs = null;
+		rs = null; 
 		String sql="";
 
 		int x=0;
@@ -926,15 +926,15 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			if(type.equals("")) {
-				sql="select * from exrecipes where 1=1";
+				sql="select * from exrecipe where 1=1";
 			}else if(type.equals("제목")) {
-				sql="select * from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+				sql="select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
 			}else if(type.equals("글쓴이")) {
-				sql="select * from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+				sql="select * from exrecipe where writerid in(select id from user where nkname like '%"+search+"%') ";
 			}else if(type.equals("재료")) {
-				sql="select * from exrecipes where ingredients like '%"+search+"%' ";
+				sql="select * from exrecipe where ingredients like '%"+search+"%' ";
 			}else if(type.equals("도구")) {
-				sql="select * from exrecipes where tools like '%"+search+"%' ";
+				sql="select * from exrecipe where tools like '%"+search+"%' ";
 			}
 			if(difficulty!=0) {
 				sql+="and difficulty="+difficulty+" order by num desc";
