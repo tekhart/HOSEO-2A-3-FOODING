@@ -536,8 +536,7 @@ public class foodingBean {
 				 article.setReadcount(rs.getInt("readcount"));
 				 article.setContent(rs.getString("content"));
 				 article.setThumbnail(rs.getString("thumbnail"));
-
-
+				 
 				 articleList.add(article);
 				}while(rs.next());
 			}
