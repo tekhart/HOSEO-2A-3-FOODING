@@ -17,6 +17,9 @@
 	request.setCharacterEncoding("UTF-8");
     String pageNum = request.getParameter("pageNum");
 	String search=request.getParameter("search");
+	String searchtype=request.getParameter("searchtype");
+	String difficulty=request.getParameter("difficulty");
+	int integerdiff=0;
 
     if (pageNum == null) {
         pageNum = "1";
@@ -33,22 +36,21 @@
     foodingBean dbPro = foodingBean.getInstance();
     foodingBean foodingbean = new foodingBean();
     if(search==null){
-    	count = dbPro.getexrecipeArticleCount();
-	}else{
-		count = dbPro.getexrecipeArticleCount(search);
+    	search="";
 	}
-    
-    
-    
-    if (count > 0) {
-    	if(search==null){
-            articleList = dbPro.getexrecipeArticles(startRow, pageSize);
-    	}else{
-            articleList = dbPro.getexrecipeArticles(startRow, pageSize, search);
-    	}
+    if(searchtype==null){
+    	searchtype="";
+	}
+    if(difficulty==null){
+    	integerdiff=0;
+    }else{
+    	integerdiff=Integer.parseInt(difficulty);
     }
+	count = dbPro.getexrecipeArticleCount(searchtype,search,integerdiff);
+	if (count > 0) {
+		articleList = dbPro.getexrecipeArticles(startRow, pageSize,searchtype,search,integerdiff);
+	}
 	
-  
 	number = count-(currentPage-1)*pageSize;
 %>
 

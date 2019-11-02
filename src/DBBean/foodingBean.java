@@ -867,7 +867,7 @@ public class foodingBean {
 			pstmt.setString(6, article.getWriterid());
 			pstmt.setTimestamp(7, article.getReg_date());
 			pstmt.setString(8, article.getContent());
-			pstmt.setString(9, article.getDifficulty());
+			pstmt.setInt(9, article.getDifficulty());
 			
 			pstmt.executeUpdate();
 
@@ -878,21 +878,33 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-	public int getexrecipeArticleCount(String search)
+	public int getexrecipeArticleCount(String type,String search,int difficulty)
 			throws Exception {
 		DBclose();
 		con = null;
 		pstmt = null;
 		rs = null;
+		String sql="";
 
 		int x=0;
 
 		try {
 			con = getConnection();
 
-			pstmt = con.prepareStatement("select count(*) from exrecipe	where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
-			rs = pstmt.executeQuery();
-
+			if(type.equals("")) {
+				sql="select count(*) from exrecipes where 1=1";
+			}else if(type.equals("제목")) {
+				sql="select count(*) from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+			}else if(type.equals("글쓴이")) {
+				sql="select count(*) from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+			}else if(type.equals("재료")) {
+				sql="select count(*) from exrecipes where ingredients like '%"+search+"%' ";
+			}else if(type.equals("도구")) {
+				sql="select count(*) from exrecipes where tools like '%"+search+"%' ";
+			}
+			if(difficulty!=0) {
+				sql+="and difficulty="+difficulty+" order by num desc";
+			}
 			if (rs.next()) {
 				x= rs.getInt(1);
 			}
@@ -903,18 +915,33 @@ public class foodingBean {
 		}
 		return x;
 	}
-	public List<BoardDataBean> getexrecipeArticles(int start, int end,String search)
+	public List<BoardDataBean> getexrecipeArticles(int start, int end,String type,String search,int difficulty)
 			throws Exception {
 		DBclose();
 		con = null;
 		pstmt = null;
 		rs = null;
+		String sql="";
 		List<BoardDataBean> articleList=null;
 		try {
 			con = getConnection();
-
-			pstmt = con.prepareStatement(
-				"select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+			if(type.equals("")) {
+				sql="select * from exrecipes where 1=1";
+			}else if(type.equals("제목")) {
+				sql="select * from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+			}else if(type.equals("글쓴이")) {
+				sql="select * from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+			}else if(type.equals("재료")) {
+				sql="select * from exrecipes where ingredients like '%"+search+"%' ";
+			}else if(type.equals("도구")) {
+				sql="select * from exrecipes where tools like '%"+search+"%' ";
+			}
+			if(difficulty!=0) {
+				sql+="and difficulty="+difficulty+" order by num desc";
+			}else {
+				sql+="order by num desc";
+			}
+			
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
@@ -931,72 +958,7 @@ public class foodingBean {
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));
 					article.setContent(rs.getString("content"));
-					article.setDifficulty(rs.getString("difficulty"));
-				 articleList.add(article);
-				}while(rs.next());
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-		return articleList;
-	}
-	public int getexrecipeArticleCount()
-			 throws Exception {
-		DBclose();
-		con = null;
-		pstmt = null;
-		rs = null;
-
-		int x=0;
-
-		try {
-			con = getConnection();
-			
-			pstmt = con.prepareStatement("select count(*) from exrecipe");
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				x= rs.getInt(1);
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-		return x;
-	}
-	public List<BoardDataBean> getexrecipeArticles(int start, int end)
-			throws Exception {
-		DBclose();
-		con = null;
-		pstmt = null;
-		rs = null;
-		List<BoardDataBean> articleList=null;
-		try {
-			con = getConnection();
-			
-			pstmt = con.prepareStatement(
-				"select * from exrecipe order by num desc limit ?,? ");
-			pstmt.setInt(1, start-1);
-			pstmt.setInt(2, end);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				articleList = new ArrayList<BoardDataBean>(end);
-				do{
-				 BoardDataBean article= new BoardDataBean();
-				 article.setNum(rs.getInt("num"));
-				 article.setContury(rs.getString("contury"));
-				 article.setFoodtype(rs.getString("foodtype"));
-				 article.setTitle(rs.getString("title"));
-				 article.setWriterid(rs.getString("writerid"));
-				 article.setReg_date(rs.getTimestamp("reg_date"));
-				 article.setReadcount(rs.getInt("readcount"));
-				 article.setContent(rs.getString("content"));
-				 article.setDifficulty(rs.getString("difficulty"));
-				 
+					article.setDifficulty(rs.getInt("difficulty"));
 				 articleList.add(article);
 				}while(rs.next());
 			}
@@ -1039,7 +1001,7 @@ public class foodingBean {
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));	 
 				article.setContent(rs.getString("content"));
-				article.setDifficulty(rs.getString("difficulty"));
+				article.setDifficulty(rs.getInt("difficulty"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -1074,7 +1036,7 @@ public class foodingBean {
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));	 
 					article.setContent(rs.getString("content"));	 
-					article.setDifficulty(rs.getString("difficulty"));
+					article.setDifficulty(rs.getInt("difficulty"));
 				}
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -1095,21 +1057,21 @@ public class foodingBean {
 				con = getConnection();
 
 				 
-					sql="update exrecipe set title=?,contury=?,foodtype=?,ingredients=?";
-					sql+=",tools=? ,content=?,difficulty=? where num=?";
-					pstmt = con.prepareStatement(sql);
+				sql="update exrecipe set title=?,contury=?,foodtype=?,ingredients=?";
+				sql+=",tools=? ,content=?,difficulty=? where num=?";
+				pstmt = con.prepareStatement(sql);
 
-					pstmt.setString(1, article.getTitle());
-					pstmt.setString(2, article.getContury());
-					pstmt.setString(3, article.getFoodtype());
-					pstmt.setString(4, article.getIngredients());
-					pstmt.setString(5, article.getTools());
-					pstmt.setString(6, article.getContent());
-					pstmt.setString(7, article.getDifficulty());
-						pstmt.setInt(8, article.getNum());
-
-					pstmt.executeUpdate();
-					x= 1;
+				pstmt.setString(1, article.getTitle());
+				pstmt.setString(2, article.getContury());
+				pstmt.setString(3, article.getFoodtype());
+				pstmt.setString(4, article.getIngredients());
+				pstmt.setString(5, article.getTools());
+				pstmt.setString(6, article.getContent());
+				pstmt.setInt(7, article.getDifficulty());
+				pstmt.setInt(8, article.getNum());
+				
+				pstmt.executeUpdate();
+				x= 1;
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -1480,7 +1442,6 @@ public class foodingBean {
 
 				if (rs.next()) {
 					article = new BoardDataBean();
-
 					article.setNum(rs.getInt("num"));
 					article.setTitle(rs.getString("title"));
 					article.setTools(rs.getString("tools"));
