@@ -49,18 +49,18 @@
 	
 			<%	
 	    		foodingBean dbPro = foodingBean.getInstance();
-				userDataBean articleList = null; 
+				userDataBean article = null; 
 				
-	    		articleList=dbPro.getuserArticle(idlogin);
+	    		article=dbPro.getuserArticle(idlogin);
 	    		
-				String nk=articleList.getNkname();
-				String id=articleList.getId();
-				String pw=articleList.getPasswd();
-				String email=articleList.getEmail();
-				String addr=articleList.getAddrnum();
-				String addre=articleList.getAddress();
-				String daddr=articleList.getDetailaddr();
-				int mile=articleList.getMileage();
+				String nk=article.getNkname();
+				String id=article.getId();
+				String pw=article.getPasswd();
+				String email=article.getEmail();
+				String addr=article.getAddrnum();
+				String addre=article.getAddress();
+				String daddr=article.getDetailaddr();
+				int mile=article.getMileage();
 				
 				   String returnStr="";
 				   for(int i=0; i<pw.length();i++){
@@ -75,19 +75,35 @@
 			<legend>프로필</legend>
 			<table width="80%" height="250px" style="font-size:25px; text-align:center;"><tr>
 			<td colspan="2">다른 사람들에게 보여지는 정보입니다<br>&nbsp</td></tr><tr>			
-			<td width="50%"><div style="width:200px; height:200px; border-radius:50%; border:3px solid orange; background-image:url(../img/userface/default_face.png); background-size:cover; background-position:center;"/></td><td><b>닉네임 </b><%=nk %></td></tr>
+			<td width="50%">
+			<div style="width:200px; height:200px; border-radius:50%; border:3px solid orange; background-image:url(<%=article.getUserface() %>); background-size:cover; background-position:center;"/></td><td><b>닉네임 </b><%=nk %></td></tr>
 			</table>
-			<input type="button" value="수정" class="findbutton">
+			<input type="button" value="수정" class="findbutton" onclick="location.href='FaceAndNknameUpdate.jsp'">
 			</fieldset>
 			
 			<br><br><br>
 			
 			<fieldset>
-			<legend>내 계정</legend>
-			<table width="80%" height="250px" style="font-size:25px; text-align:center;"><tr>
-			<td width="50%"><b>아이디</b></td><td style="text-align:left;"><%=id %></td></tr><tr>
-			<td><b>비밀번호</b></td><td style="text-align:left;"><%=returnStr %></td></tr></table>
-			<input type="button" value="수정" class="findbutton">
+				<legend>내 계정</legend>
+				<table width="80%" height="250px" style="font-size:25px; text-align:center;">
+					<tr>
+						<td width="50%">
+							<b>아이디</b>
+						</td>
+						<td style="text-align:left;">
+							<%=id %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>비밀번호</b>
+						</td>
+						<td style="text-align:left;">
+							<%=returnStr %>
+						</td>
+					</tr>
+				</table>
+				<input type="button" value="수정" class="findbutton" onclick="location.href='PasswdUpdate.jsp'">
 			</fieldset>
 			
 			<br><br><br> 
@@ -96,8 +112,8 @@
 			<legend>주소 및 배송지</legend>
 			<table width="80%"  height="250px" style="font-size:25px; text-align:center;"><tr>
 			<td width="30%"><b>이메일</b></td><td style="text-align:left;"><%=email %></td></tr><tr>
-			<td><b>주소</b></td><td style="text-align:left;"><%=addre %><%=daddr %></td></tr></table>
-			<input type="button" value="수정" class="findbutton">
+			<td><b>주소</b></td><td style="text-align:left;"><%=addre %>(<%=addr %>)<%=daddr %></td></tr></table>
+			<input type="button" value="수정" class="findbutton" onclick="location.href='EmailAndZipUpdate.jsp'">
 			</fieldset>
 		
 		<br><br><br>

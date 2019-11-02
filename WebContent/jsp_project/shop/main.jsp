@@ -187,7 +187,7 @@
 		<div class="writetitle1">
 			재료구매&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="main.jsp?isTool=2">재료</a>|<a href="main.jsp?isTool=1">도구</a>
 		</div>
-		<%@include file="sidemenu2.jsp"%>
+		<%@include file="sidemenu.jsp"%>
 		
 		<% if (count == 0) { %>	
 				<table align="center" class="nogul">
