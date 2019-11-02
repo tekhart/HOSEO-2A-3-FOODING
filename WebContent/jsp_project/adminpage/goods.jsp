@@ -58,7 +58,7 @@
 		
 		
 		<div id="thumbnail" onclick="thumbnailupload()"style="width:400px;height:400px;background-size:contain;background-repeat:no-repeat;">썸네일</div>
-		<input type="submit" value="입력완료">
+		<input type="submit" value="등록하기">
 	</form>
 	
 </body>
