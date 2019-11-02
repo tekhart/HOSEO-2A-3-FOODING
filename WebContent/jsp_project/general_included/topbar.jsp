@@ -3,12 +3,18 @@
 <%@page import="DBBean.foodingBean" %>
 <%@page import="DBBean.userDataBean" %>
 <% 
-	String idlogin="none";
+	String idlogin=null;
 	session.setAttribute("zipcode","");
 	foodingBean topbarbean = foodingBean.getInstance();
 	userDataBean topbarArticle=null;
 	int isAdmin=0;
 	int point=0;
+	try{
+		idlogin=(String)session.getAttribute("idlogin");
+		topbarArticle=topbarbean.getuserArticle(idlogin);
+		isAdmin=topbarArticle.getIsAdmin();
+		point=topbarArticle.getMileage();
+	}catch(Exception e){e.printStackTrace();}
 %>
 <html>
 <head>
@@ -19,23 +25,29 @@
 		</head><body>
 <div id="topdiv" style=text-align:center;>
 	<table width="100%" height="100%">
-     	<tr><td width=0 nowrap></td>
+     	<tr>
+     		<td width=0 nowrap>
+     			<%if(isAdmin==1){%>
+		     	<table>
+					<tr>
+						<td onclick="location.href='../adminpage/userban.jsp'">유저관리</td>
+						<td onclick="location.href='../adminpage/goods.jsp'">물품등록</td>
+						<td onclick="location.href='../adminpage/jumun.jsp'">물품관리</td>
+					</tr>
+				</table>
+				<%} %>
+     		</td>
 	    	<td width=0 nowrap></td>
 	    	<td nowrap align="right">
 				<div>
 					<%
-						try{
-							idlogin=(String)session.getAttribute("idlogin");
-							topbarArticle=topbarbean.getuserArticle(idlogin);
-							int cartcount=topbarbean.getcartArticlecount(idlogin);
 							if(idlogin==null){
 								%>
 								<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
 								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
 								<%
 							}else{	String nknamelogin=topbarArticle.getNkname();
-									isAdmin=topbarArticle.getIsAdmin();
-									point=topbarArticle.getMileage();
+							int cartcount=topbarbean.getcartArticlecount(idlogin);
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
 								
@@ -48,7 +60,6 @@
 								<%} %>
 								<%
 							}
-						}finally{}
 					%>
 					&nbsp;
 				</div>

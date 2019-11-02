@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% 
-	String idlogin="";
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +52,6 @@ input[type=text], input[type=password] {
 
 button {
 	background-color:#FFBB00;
-	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
@@ -85,50 +81,11 @@ a{
 <title>닉네임 변경</title>
 	<link rel="shortcut icon" href="../img/favicon.ico">
 	<link rel="icon" href="../img/favicon.ico">
+	<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
 </head>
 <body>
-<div id="topdiv" style=text-align:center;>
-	<table width=100% height=100%>
-    <tr><td width=200 nowrap>
-		</td><td width=200 nowrap>
-		</td><td width=30 nowrap>
-<%
-		try{
-			idlogin=(String)session.getAttribute("idlogin");
-			
-			if(idlogin==null||idlogin.equals("")){
-				%>
-				<input type="button" class="button11" value="로그인" onClick="location.href='signin.jsp'">
-				<input type="button" class="button11" value="회원가입" onClick="location.href='signup.jsp'">
-				<%
-			}else{
-				%>
-				<%=idlogin %>님 <input type="button" value="로그아웃">
-				<%
-			}
-		}finally{}
-		
-		
-		%>
-		</td></tr>
-  	</table>
-</div>
-
-<div id="menudiv" style=text-align:center;>
-	<table width=100% height=100%>
-    <tr><td width=100 nowrap>
-		<img src="../img/fooding.png" height="60px" width="100px"></td>
-		<td width=150 nowrap><font size="10px">FOODING</font></td><td>
-
-		<input type="button" class="button2" value="레시피">
-		<input type="button" class="button2" value="요리도우미">
-		<input type="button" class="button2" value="공지사항">
-    	<input type="button" class="button2" value="고객센터">
-        
-		</td></tr>
- 	</table>
-</div>
-
+<%@include file="../general_included/topbar.jsp"%>
 <div id="maindiv">
 <center>
 <form method="post" action="NKchanged.jsp">
