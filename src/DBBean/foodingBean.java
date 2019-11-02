@@ -940,7 +940,7 @@ public class foodingBean {
 		DBclose();
 		con = null;
 		pstmt = null;
-		rs = null;
+		rs = null; 
 		String sql="";
 
 		int x=0;
