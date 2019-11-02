@@ -18,7 +18,7 @@ public class BoardDataBean {
 	int readcount;
 	String content;
 	String thumbnail;
-	String difficulty;
+	int difficulty;
 	
 	public int getNum() {
 		return num;
@@ -92,10 +92,10 @@ public class BoardDataBean {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
-	public String getDifficulty() {
+	public int getDifficulty() {
 		return difficulty;
 	}
-	public void setDifficulty(String difficulty) {
+	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
 	

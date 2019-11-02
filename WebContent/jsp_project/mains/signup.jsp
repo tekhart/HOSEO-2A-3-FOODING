@@ -360,14 +360,18 @@
 						<tr>
 							<td></td>
 							<td colspan="2" height="30px">
-											<span id="emailimg"></span><span id="emailcheck"></span>
+								<span id="emailimg"></span><span id="emailcheck"></span>
 							</td>
 						</tr>
 						
 						<tr> 
 							<td>우편번호</td>
-							<td><input class="addrnuminputs" type="text" name="addrnum" id="inputaddrnum" onclick="ZipPopup();" onfocus="ZipPopup()" readonly></td>
-							<td><input class="addressinputs" type="text" name="address" id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()" readonly></td>
+							<td>
+								<input class="addrnuminputs" type="text" name="addrnum" id="inputaddrnum" onclick="ZipPopup();" onfocus="ZipPopup()" readonly>
+							</td>
+							<td>
+								<input class="addressinputs" type="text" name="address" id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()" readonly>
+							</td>
 						</tr>
 						<tr><td></td><td>&nbsp;</td></tr>
 						<tr>

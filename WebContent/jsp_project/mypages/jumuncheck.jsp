@@ -106,10 +106,10 @@ position:relative;
 <table class="jumuntb" border="1">
 	<tr class="jumuntr1">
 		<td class="cc">주문번호</td>
-		<td>주문제목</td>
-		<td>제품사진</td>
-		<td>제품이름</td>
-		<td>뭐로하지</td>
+		<td>주문 제목</td>
+		<td>제품 사진</td>
+		<td>제품 이름</td>
+		<td>주문 개수</td>
 		<td class="tooltip">
 			가격
 			<img src="../img/what2.png" width="25px" height="25px" style="vertical-align:middle;">
@@ -127,7 +127,7 @@ position:relative;
 		for(int articleint=0;articleint<DataArticleList.size();articleint++){
 			article=DataArticleList.get(articleint);
 			int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
-			totalprice+=realprice;
+			totalprice+=realprice*article.getProductCount() ;
 			%>
 			<tr>
 				<%
@@ -150,7 +150,7 @@ position:relative;
 					<%=article.getProductName() %>
 				</td>
 				<td>
-					
+					<%=article.getProductCount() %> 개
 				</td>
 				<td>
 					<%if(article.getDiscountRate()!=0){ %>

@@ -17,16 +17,16 @@
 	src="../../daumeditor/js/editor_loader.js"></script>
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript">
-			function sendingthumb(thumbname){
-                $("#thumbnail").css("background-image","url("+thumbname+")");
-                $("#thumbnail").innerhtml="";
-                $("#inputthumbnail").val(thumbname);
+	function sendingthumb(thumbname){
+              $("#thumbnail").css("background-image","url("+thumbname+")");
+              $("#thumbnail").innerhtml="";
+              $("#inputthumbnail").val(thumbname);
 
-			}
-			function thumbnailupload(){
-				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
-			}
-		</script>
+	}
+	function thumbnailupload(){
+		window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+	}
+</script>
 
 
 
@@ -55,9 +55,9 @@
 
 			<form method="post" name="writeform" action="writePro.jsp"
 				onsubmit="return writeSave()">
-				<input type="hidden" name="num" value="<%=num%>"> <input
-					type="hidden" name="writerid" value="<%=(String)session.getAttribute("idlogin")%>"> <input
-					type="hidden" name="thumbnail" id="inputthumbnail"
+				<input type="hidden" name="num" value="<%=num%>">
+				<input type="hidden" name="writerid" value="<%=(String)session.getAttribute("idlogin")%>"> 
+				<input type="hidden" name="thumbnail" id="inputthumbnail"
 					value="../img/defaultthumb.png">
 
 				<center>

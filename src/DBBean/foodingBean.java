@@ -227,7 +227,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-	public void pointupdate(String userid,int updatevalue)
+	public void pointupdate(String userid,int updatevalue,String adjestreason)
 			throws Exception{
 		con = null;
 		pstmt = null;
@@ -236,15 +236,62 @@ public class foodingBean {
 		
 		try {
 			con = getConnection();
-			sql="update user set mileage=milage"+updatevalue+"where id='"+userid+"'";
+			sql="update user set mileage=mileage+"+updatevalue+" where id='"+userid+"'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.executeUpdate();
+			
+			sql="insert into pointhistory(owner,pointadjest,adjestreason,reg_date) values(?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setInt(2, updatevalue);
+			pstmt.setString(3, adjestreason);
+			pstmt.setTimestamp(4, ts);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+	public List<pointDataBean> getPointArticle(String userid,int getlimitBydate)
+			throws Exception{
+		con = null;
+		pstmt = null;
+		rs = null;
+		String sql="";
+		List<pointDataBean> articleList=new ArrayList<pointDataBean>();
+		
+		try {
+			con = getConnection();
+			sql="select * from pointhistory where owner='"+userid+"'";
+			if(getlimitBydate!=0) {
+				sql+=" and reg_date>=(select date_add(now(),INTERVAL ? Day) from dual)";
+			}
+
+			pstmt = con.prepareStatement(sql);
+			
+			if(getlimitBydate!=0) {
+				pstmt.setInt(1,-1*getlimitBydate);
+			}
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				do{
+					pointDataBean article = new pointDataBean();
+					article.setNum(rs.getInt("num"));
+					article.setOwner(rs.getString("owner"));
+					article.setPointadjest(rs.getInt("pointadjest"));
+					article.setAdjestreason(rs.getString("adjestreason")); 
+					article.setReg_date(rs.getTimestamp("reg_date"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+			
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
-		
+		return articleList;
 	}
 	public List<userDataBean> getuserArticles()
 			throws Exception{
@@ -321,7 +368,6 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			
-			pointupdate(article.getWriterid(),5);
 			
 			pstmt = con.prepareStatement("select max(num) from recipes");
 			rs = pstmt.executeQuery();
@@ -342,6 +388,9 @@ public class foodingBean {
 			pstmt.setString(9, article.getThumbnail());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"레시피 작성");
+			
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -663,7 +712,6 @@ public class foodingBean {
 			
 		
 
-		pointupdate(article.getWriterid(),1);
 		
 		int num=article.getNum();
 		int ref=article.getRef();
@@ -714,6 +762,8 @@ public class foodingBean {
 			pstmt.setString(7, article.getContent());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),1,"댓글 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -797,7 +847,6 @@ public class foodingBean {
 		rs = null;
 		String sql="";
 		
-		pointupdate(article.getWriterid(),5);
 		
 		try {
 			con = getConnection();
@@ -818,30 +867,44 @@ public class foodingBean {
 			pstmt.setString(6, article.getWriterid());
 			pstmt.setTimestamp(7, article.getReg_date());
 			pstmt.setString(8, article.getContent());
-			pstmt.setString(9, article.getDifficulty());
+			pstmt.setInt(9, article.getDifficulty());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"레시피 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
 	}
-	public int getexrecipeArticleCount(String search)
+	public int getexrecipeArticleCount(String type,String search,int difficulty)
 			throws Exception {
 		DBclose();
 		con = null;
 		pstmt = null;
 		rs = null;
+		String sql="";
 
 		int x=0;
 
 		try {
 			con = getConnection();
 
-			pstmt = con.prepareStatement("select count(*) from exrecipe	where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
-			rs = pstmt.executeQuery();
-
+			if(type.equals("")) {
+				sql="select count(*) from exrecipes where 1=1";
+			}else if(type.equals("제목")) {
+				sql="select count(*) from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+			}else if(type.equals("글쓴이")) {
+				sql="select count(*) from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+			}else if(type.equals("재료")) {
+				sql="select count(*) from exrecipes where ingredients like '%"+search+"%' ";
+			}else if(type.equals("도구")) {
+				sql="select count(*) from exrecipes where tools like '%"+search+"%' ";
+			}
+			if(difficulty!=0) {
+				sql+="and difficulty="+difficulty+" order by num desc";
+			}
 			if (rs.next()) {
 				x= rs.getInt(1);
 			}
@@ -852,18 +915,33 @@ public class foodingBean {
 		}
 		return x;
 	}
-	public List<BoardDataBean> getexrecipeArticles(int start, int end,String search)
+	public List<BoardDataBean> getexrecipeArticles(int start, int end,String type,String search,int difficulty)
 			throws Exception {
 		DBclose();
 		con = null;
 		pstmt = null;
 		rs = null;
+		String sql="";
 		List<BoardDataBean> articleList=null;
 		try {
 			con = getConnection();
-
-			pstmt = con.prepareStatement(
-				"select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+			if(type.equals("")) {
+				sql="select * from exrecipes where 1=1";
+			}else if(type.equals("제목")) {
+				sql="select * from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+			}else if(type.equals("글쓴이")) {
+				sql="select * from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+			}else if(type.equals("재료")) {
+				sql="select * from exrecipes where ingredients like '%"+search+"%' ";
+			}else if(type.equals("도구")) {
+				sql="select * from exrecipes where tools like '%"+search+"%' ";
+			}
+			if(difficulty!=0) {
+				sql+="and difficulty="+difficulty+" order by num desc";
+			}else {
+				sql+="order by num desc";
+			}
+			
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
@@ -880,72 +958,7 @@ public class foodingBean {
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));
 					article.setContent(rs.getString("content"));
-					article.setDifficulty(rs.getString("difficulty"));
-				 articleList.add(article);
-				}while(rs.next());
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-		return articleList;
-	}
-	public int getexrecipeArticleCount()
-			 throws Exception {
-		DBclose();
-		con = null;
-		pstmt = null;
-		rs = null;
-
-		int x=0;
-
-		try {
-			con = getConnection();
-			
-			pstmt = con.prepareStatement("select count(*) from exrecipe");
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				x= rs.getInt(1);
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-		return x;
-	}
-	public List<BoardDataBean> getexrecipeArticles(int start, int end)
-			throws Exception {
-		DBclose();
-		con = null;
-		pstmt = null;
-		rs = null;
-		List<BoardDataBean> articleList=null;
-		try {
-			con = getConnection();
-			
-			pstmt = con.prepareStatement(
-				"select * from exrecipe order by num desc limit ?,? ");
-			pstmt.setInt(1, start-1);
-			pstmt.setInt(2, end);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				articleList = new ArrayList<BoardDataBean>(end);
-				do{
-				 BoardDataBean article= new BoardDataBean();
-				 article.setNum(rs.getInt("num"));
-				 article.setContury(rs.getString("contury"));
-				 article.setFoodtype(rs.getString("foodtype"));
-				 article.setTitle(rs.getString("title"));
-				 article.setWriterid(rs.getString("writerid"));
-				 article.setReg_date(rs.getTimestamp("reg_date"));
-				 article.setReadcount(rs.getInt("readcount"));
-				 article.setContent(rs.getString("content"));
-				 article.setDifficulty(rs.getString("difficulty"));
-				 
+					article.setDifficulty(rs.getInt("difficulty"));
 				 articleList.add(article);
 				}while(rs.next());
 			}
@@ -988,7 +1001,7 @@ public class foodingBean {
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));	 
 				article.setContent(rs.getString("content"));
-				article.setDifficulty(rs.getString("difficulty"));
+				article.setDifficulty(rs.getInt("difficulty"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -1023,7 +1036,7 @@ public class foodingBean {
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));	 
 					article.setContent(rs.getString("content"));	 
-					article.setDifficulty(rs.getString("difficulty"));
+					article.setDifficulty(rs.getInt("difficulty"));
 				}
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -1044,21 +1057,21 @@ public class foodingBean {
 				con = getConnection();
 
 				 
-					sql="update exrecipe set title=?,contury=?,foodtype=?,ingredients=?";
-					sql+=",tools=? ,content=?,difficulty=? where num=?";
-					pstmt = con.prepareStatement(sql);
+				sql="update exrecipe set title=?,contury=?,foodtype=?,ingredients=?";
+				sql+=",tools=? ,content=?,difficulty=? where num=?";
+				pstmt = con.prepareStatement(sql);
 
-					pstmt.setString(1, article.getTitle());
-					pstmt.setString(2, article.getContury());
-					pstmt.setString(3, article.getFoodtype());
-					pstmt.setString(4, article.getIngredients());
-					pstmt.setString(5, article.getTools());
-					pstmt.setString(6, article.getContent());
-					pstmt.setString(7, article.getDifficulty());
-						pstmt.setInt(8, article.getNum());
-
-					pstmt.executeUpdate();
-					x= 1;
+				pstmt.setString(1, article.getTitle());
+				pstmt.setString(2, article.getContury());
+				pstmt.setString(3, article.getFoodtype());
+				pstmt.setString(4, article.getIngredients());
+				pstmt.setString(5, article.getTools());
+				pstmt.setString(6, article.getContent());
+				pstmt.setInt(7, article.getDifficulty());
+				pstmt.setInt(8, article.getNum());
+				
+				pstmt.executeUpdate();
+				x= 1;
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -1093,7 +1106,6 @@ public class foodingBean {
 			pstmt = null;
 				rs = null;
 
-				pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -1144,6 +1156,8 @@ public class foodingBean {
 				pstmt.setString(7, article.getContent());
 				
 				pstmt.executeUpdate();
+
+				pointupdate(article.getWriterid(),1,"댓글 작성");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -1225,7 +1239,6 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			pointupdate(article.getWriterid(),5);
 			pstmt = con.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
 			
@@ -1243,6 +1256,8 @@ public class foodingBean {
 			pstmt.setString(6, article.getThumbnail());
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"게시글 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1427,7 +1442,6 @@ public class foodingBean {
 
 				if (rs.next()) {
 					article = new BoardDataBean();
-
 					article.setNum(rs.getInt("num"));
 					article.setTitle(rs.getString("title"));
 					article.setTools(rs.getString("tools"));
@@ -1502,7 +1516,6 @@ public class foodingBean {
 			pstmt = null;
 			rs = null;
 
-			pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 			int ref=article.getRef();
 			int re_step=article.getRe_step();
@@ -1553,6 +1566,7 @@ public class foodingBean {
 				pstmt.setString(7, article.getContent());
 				
 				pstmt.executeUpdate();
+				pointupdate(article.getWriterid(),5,"게시글 작성");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -1632,7 +1646,6 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 
-		pointupdate(article.getWriterid(),5);
 		int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -1683,6 +1696,8 @@ public class foodingBean {
 			pstmt.setInt(8, re_level);
 			
 			pstmt.executeUpdate();
+
+			pointupdate(article.getWriterid(),5,"질문/답변 작성");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1953,7 +1968,6 @@ public class foodingBean {
 			pstmt = null;
 				rs = null;
 
-				pointupdate(article.getWriterid(),1);
 			int num=article.getNum();
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
@@ -2004,6 +2018,8 @@ public class foodingBean {
 				pstmt.setString(7, article.getContent());
 				
 				pstmt.executeUpdate();
+
+				pointupdate(article.getWriterid(),1,"댓글 작성");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -2083,7 +2099,6 @@ public class foodingBean {
 		pstmt = null;
 		rs = null;
 
-		
 		int periode=Integer.parseInt(article.getPeriode());
 		String sql="";
 
@@ -2695,7 +2710,6 @@ public class foodingBean {
 		con = null;
 		pstmt = null;
 		rs= null;
-		int x=-1;
 		try {
 			con = getConnection();
 			
@@ -2879,7 +2893,10 @@ public class foodingBean {
 		String owner="";
 		int pointused=requestArticle.getPointused();
 		int totalprice=0;
+		int pointadd=0;
 		int maxnumber=0;
+		String productnameforpointhist="";
+		int rslength=0;
 		
 		try {
 			con = getConnection();
@@ -2891,7 +2908,7 @@ public class foodingBean {
 				maxnumber=rs.getInt(1)+1;
 			}
 			
-			sql = "select price,discountRate from cart where cartid in("+cartid[0];
+			sql = "select productCount,price,discountRate from cart where cartid in("+cartid[0];
 			for(int i=1;i<cartid.length;i++) {
 				sql+=","+cartid[i];
 			}
@@ -2900,13 +2917,16 @@ public class foodingBean {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				do {
-					totalprice+=rs.getInt("price")*(100-rs.getInt("discountRate")/100);
+					int count=rs.getInt("productCount");
+					int price=rs.getInt("price")*(100-rs.getInt("discountRate"))/100;
+					totalprice+=count*price;
 				}while(rs.next());
 			}
 			
 			if(totalprice<pointused) {
 				pointused=totalprice;
 			}
+			pointadd=totalprice/100;
 			
 			
 			sql = "select * from cart where cartid in("+cartid[0];
@@ -2919,7 +2939,9 @@ public class foodingBean {
 			
 			
 			if(rs.next()) {
+				productnameforpointhist=rs.getString("productName");
 				do{
+					rslength++;
 					sql = "insert into buy(ref,pointused,owner,productCount,productId,productName";
 					sql+=",isTool,productType,price,discountRate,productThumb";
 					sql+=",accountid,deliveryName,deliveryTel,deliveryMessage,deliveryAddrnum";
@@ -2954,8 +2976,12 @@ public class foodingBean {
 				}while(rs.next());
 			}
 			deletecartArticle(owner);
-			pointupdate(requestArticle.getOwner(),totalprice/100);
-			pointupdate(requestArticle.getOwner(),-1*pointused);
+			if(rslength==1) {
+				pointupdate(owner,pointadd,productnameforpointhist+" 구매");
+			}else {
+				pointupdate(owner,pointadd,productnameforpointhist+" 외"+(rslength-1)+" 개 상품 구매");
+			}
+			pointupdate(owner,-1*pointused,"물품 구매에 사용");
 			
 			
 		} catch(Exception ex) {
