@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="DBBean.foodingBean" %>
+<%
+
+	request.setCharacterEncoding("UTF-8");
+	
+	String zipcode="";
+	
+	
+	try{
+		if(zipcode==null){
+			zipcode="";
+		}
+	}finally{}
+
+	foodingBean foodingbean=new foodingBean();
+	foodingBean dbPro = foodingBean.getInstance();
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,6 +31,28 @@
 			href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<script type="text/javascript">
 		var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		var DBemailArray=[];
+		var i=0;
+		<% 
+		
+			ResultSet rs=foodingbean.resultQuery("select email from user");
+			int i=0;
+			try{
+				while(rs.next()){
+						
+					String emailArray = rs.getString("email");	
+					%>
+					DBemailArray[<%=i%>]="<%=emailArray%>";
+					<%
+					i++;
+				}
+
+			}catch(Exception e){
+				
+			}finally{}
+			foodingbean.DBclose();
+		%>
+		var arraylength=<%=i %>
 		function Emailcheck() {
 			var checked=0;
 			if (window.event.keyCode == 13) {
@@ -30,7 +70,7 @@
 					if(DBemailArray[i]==document.getElementById("inputemail").value){
 						checked=1;
 						document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다"
-							document.getElementById('emailimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
+						document.getElementById('emailimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
 					}
 					i++
 				}
@@ -54,7 +94,6 @@
 	<body>
 		<%@include file="../general_included/topbar.jsp"%>
 		<%
-			foodingBean dbPro = foodingBean.getInstance();
 			userDataBean article = null; 
 			
 			article=dbPro.getuserArticle(idlogin);
@@ -66,11 +105,11 @@
 			String addr=article.getAddrnum();
 			String addre=article.getAddress();
 			String daddr=article.getDetailaddr();
-		   String returnStr="";
-		   for(int i=0; i<pw.length();i++){
-		   if(i<3)returnStr=returnStr+pw.substring(i,i+1);
-		   else returnStr=returnStr+"*";
-		   }
+			String returnStr="";
+			for(int j=0; j<pw.length();j++){
+			   	if(j<3)returnStr=returnStr+pw.substring(j,j+1);
+					else returnStr=returnStr+"*";
+			   	}
 		%>
 		<div id="maindiv">
 			<div class="writetitle1">프로필 이메일/주소 변경</div>
@@ -94,12 +133,18 @@
 								
 							</td>
 						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" height="30px">
+								<span id="emailimg"></span><span id="emailcheck"></span>
+							</td>
+						</tr>
 						<tr> 
 							<td>우편번호</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>
+							<td colspan="2">
 								<input class="addrnuminputs" type="text" name="addrnum" id="inputaddrnum" onclick="ZipPopup();" onfocus="ZipPopup()" readonly>
 								<input class="addressinputs" type="text" name="address" id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()" readonly>
 							</td>
@@ -108,8 +153,10 @@
 						<tr>
 							<td>주소</td>
 						</tr>
-						<td>
-							<td colspan="2"><input class="signupinputs" type="text" name="detailaddr" id="inputdetailaddr" size="40"></td>
+						<tr>
+							<td colspan="2">
+								<input class="signupinputs" type="text" name="detailaddr" id="inputdetailaddr" size="40">
+							</td>
 						</tr>
 					</table>
 					<input type="submit" value="수정" class="findbutton">

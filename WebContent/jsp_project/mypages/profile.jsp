@@ -110,9 +110,32 @@
 			
 			<fieldset>
 			<legend>주소 및 배송지</legend>
-			<table width="80%"  height="250px" style="font-size:25px; text-align:center;"><tr>
-			<td width="30%"><b>이메일</b></td><td style="text-align:left;"><%=email %></td></tr><tr>
-			<td><b>주소</b></td><td style="text-align:left;"><%=addre %>(<%=addr %>)<%=daddr %></td></tr></table>
+			<table width="80%"  height="250px" style="font-size:25px; text-align:center;">
+				<tr>
+					<td width="30%">
+						<b>이메일</b>
+					</td>
+					<td style="text-align:left;">
+						<%=email %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>주소</b>
+					</td>
+					<td style="text-align:left;">
+						<%=addre %>(<%=addr %>)
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>상세 주소</b>
+					</td>
+					<td style="text-align:left;">
+						<%=daddr %>
+					</td>
+				</tr>
+			</table>
 			<input type="button" value="수정" class="findbutton" onclick="location.href='EmailAndZipUpdate.jsp'">
 			</fieldset>
 		
