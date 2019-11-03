@@ -441,11 +441,11 @@ public class foodingBean {
 					}else if(searchDetail[0].equals("종류")) {
 						sql+="(foodtype like '%"+searchDetail[1]+"%')";
 					}else if(searchDetail[0].equals("상황")) {
-						sql+="(title like '%"+searchDetail[1]+"%')";
-						sql+="|(content like '%"+searchDetail[1]+"%')";
+						sql+="((title like '%"+searchDetail[1]+"%')";
+						sql+="|(content like '%"+searchDetail[1]+"%'))";
 					}else if(searchDetail[0].equals("사용자지정")) {
-						sql+="(ingredients like '%"+searchDetail[1]+"%')";
-						sql+="|(tools like '%"+searchDetail[1]+"%')";
+						sql+="((ingredients like '%"+searchDetail[1]+"%')";
+						sql+="|(tools like '%"+searchDetail[1]+"%'))";
 					}
 				}
 				sql+=")>="+(searchArray.length*0.25)+1+")as priority from recipes ";
@@ -506,11 +506,11 @@ public class foodingBean {
 					}else if(searchDetail[0].equals("종류")) {
 						sql+="(foodtype like '%"+searchDetail[1]+"%')";
 					}else if(searchDetail[0].equals("상황")) {
-						sql+="(title like '%"+searchDetail[1]+"%')";
-						sql+="|(content like '%"+searchDetail[1]+"%')";
+						sql+="((title like '%"+searchDetail[1]+"%')";
+						sql+="|(content like '%"+searchDetail[1]+"%'))";
 					}else if(searchDetail[0].equals("사용자지정")) {
-						sql+="(ingredients like '%"+searchDetail[1]+"%')";
-						sql+="|(tools like '%"+searchDetail[1]+"%')";
+						sql+="((ingredients like '%"+searchDetail[1]+"%')";
+						sql+="|(tools like '%"+searchDetail[1]+"%'))";
 					}
 				}
 				sql+=")as priority from recipes having priority>="+(searchArray.length*0.25)+1+" order by priority desc,num desc limit ?,?";
@@ -934,6 +934,31 @@ public class foodingBean {
 			DBclose();
 		}
 	}
+	public void deleteCommentArticle(int num)
+			throws Exception {
+		DBclose();
+		con = null;
+		pstmt = null;
+		rs = null;
+		
+		int x=0;
+		
+		try {
+			con = getConnection();
+			
+			pstmt = con.prepareStatement("delete from recipe_comment where num=?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				x= rs.getInt(1);
+ 			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
 	public int getexrecipeArticleCount(String type,String search,int difficulty)
 			throws Exception {
 		DBclose();
@@ -958,9 +983,12 @@ public class foodingBean {
 			}else if(type.equals("도구")) {
 				sql="select count(*) from exrecipe where tools like '%"+search+"%' ";
 			}
+			
 			if(difficulty!=0) {
-				sql+="and difficulty="+difficulty+" order by num desc";
+				sql+="and difficulty="+difficulty;
 			}
+			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
 				x= rs.getInt(1);
 			}
