@@ -31,8 +31,8 @@ body {font-family: Arial;}
 .tab4 {
   overflow: hidden;
   border: 1px solid #ccc;
-  width:500px;
-  margin-left:150px;
+  width:800px;
+  margin-left:0px;
   background-color: orange;
 }
 
@@ -80,8 +80,8 @@ border-bottom:1px solid orange;
 /* Style the tab content */
 .tabcontent4 {
   padding: 6px 12px;
-	margin-left:150px;
-  width:500px;
+  margin-left:0px;
+  width:800px;
 } 
 
 
@@ -167,8 +167,9 @@ points_hovering_span:hover + p.arrow_box {
 		<div class="writetitle1">
 		포인트 관리</div>
 			<%@include file="sidemenu.jsp"%>   
-			  
-				<div class="row3"  style="padding-top:80px;margin-left:450px;"> 
+			  	<center>  
+			  	
+				<div class="row3"  style="padding-top:80px;margin-left:150px;"> 
 						<div class="forkpoint" style="border: 3px solid #ffc637; border-radius:50px 50px 50px 50px;">    
 							<table> 
 								<tr><td style="width:800px; padding-left:25px; height:50px; vertical-align:top; ">
@@ -218,7 +219,7 @@ points_hovering_span:hover + p.arrow_box {
 	%>
   </table>
 </div>
-   
+   </center>
 </body>	
 <%@include file="../general_included/footer.jsp"%>
 	<br><br>

@@ -330,7 +330,7 @@ body {
 									
 									<div id="creditcard" class="tabcontent">
 										<br><br>
-										<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay()"></div>
+										
 									</div>
 									
 									<div id="Bank Deposit" class="tabcontent">
@@ -345,19 +345,20 @@ body {
 											<option value='농협'>농협 302-1133-2090-11 이혜진</option>
 											
 										</select>
-										<div><input type="submit" class="0" value="결제하기"></div>
+										
 									</div>
 									
-									
 								</table>
+								
 							</div> 
 							
 
 						</td>
 					</tr>
 				</table>
+				
 		</form>
-
+<div><input type="submit" class="btpay2" value="결제하기" onclick="customer_decided_topay()></div>
 	</div>
 	<br>
 	<br>
