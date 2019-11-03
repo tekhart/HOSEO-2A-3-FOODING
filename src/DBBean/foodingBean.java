@@ -1900,6 +1900,7 @@ public class foodingBean {
 				 article.setQuesType(rs.getString("quesType"));
 				 article.setContent(rs.getString("content"));
 				 article.setIsComplete(rs.getInt("isComplete"));
+				 article.setReadcount(rs.getInt("readcount"));
 				 article.setReg_date(rs.getTimestamp("reg_date"));
 				 article.setRef(rs.getInt("ref"));
 				 article.setRe_step(rs.getInt("re_step"));
