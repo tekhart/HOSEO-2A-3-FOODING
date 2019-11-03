@@ -422,10 +422,39 @@ public class foodingBean {
 			if(fame==1) {
 				sql+=" and reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual) and readcount>=50 ";
 			}
+			
+			if(type.equals("맞춤")) {
+				String searchArray[]=search.split(",");
+				sql="select sum((";
+				for(int i=0;i<searchArray.length;i++) {
+					if(i!=0) {
+						sql+="+";
+					}
+					String searchDetail[]=searchArray[i].split(":");
+					
+					if(searchDetail[0].equals("재료")) {
+						sql+="(ingredients like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("도구")) {
+						sql+="(tools like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("나라")) {
+						sql+="(contury like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("종류")) {
+						sql+="(foodtype like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("상황")) {
+						sql+="(title like '%"+searchDetail[1]+"%')";
+						sql+="|(content like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("사용자지정")) {
+						sql+="(ingredients like '%"+searchDetail[1]+"%')";
+						sql+="|(tools like '%"+searchDetail[1]+"%')";
+					}
+				}
+				sql+=")>="+(searchArray.length*0.25)+1+")as priority from recipes ";
+			}
+			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				x= rs.getInt("count(*)");
+				x= rs.getInt(1);
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -459,6 +488,34 @@ public class foodingBean {
 			}else {
 				sql+="order by num desc limit ?,?";
 			}
+			
+			if(type.equals("맞춤")) {
+				String searchArray[]=search.split(",");
+				sql="select num,title,contury,foodtype,ingredients,tools,writerid,reg_date,readcount,content,thumbnail,(";
+				for(int i=0;i<searchArray.length;i++) {
+					if(i!=0) {
+						sql+="+";
+					}
+					String searchDetail[]=searchArray[i].split(":");
+					if(searchDetail[0].equals("재료")) {
+						sql+="(ingredients like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("도구")) {
+						sql+="(tools like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("나라")) {
+						sql+="(contury like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("종류")) {
+						sql+="(foodtype like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("상황")) {
+						sql+="(title like '%"+searchDetail[1]+"%')";
+						sql+="|(content like '%"+searchDetail[1]+"%')";
+					}else if(searchDetail[0].equals("사용자지정")) {
+						sql+="(ingredients like '%"+searchDetail[1]+"%')";
+						sql+="|(tools like '%"+searchDetail[1]+"%')";
+					}
+				}
+				sql+=")as priority from recipes having priority>="+(searchArray.length*0.25)+1+" order by priority desc,num desc limit ?,?";
+			}
+			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
@@ -479,8 +536,7 @@ public class foodingBean {
 				 article.setReadcount(rs.getInt("readcount"));
 				 article.setContent(rs.getString("content"));
 				 article.setThumbnail(rs.getString("thumbnail"));
-
-
+				 
 				 articleList.add(article);
 				}while(rs.next());
 			}
@@ -883,7 +939,7 @@ public class foodingBean {
 		DBclose();
 		con = null;
 		pstmt = null;
-		rs = null;
+		rs = null; 
 		String sql="";
 
 		int x=0;
@@ -892,15 +948,15 @@ public class foodingBean {
 			con = getConnection();
 
 			if(type.equals("")) {
-				sql="select count(*) from exrecipes where 1=1";
+				sql="select count(*) from exrecipe where 1=1";
 			}else if(type.equals("제목")) {
-				sql="select count(*) from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+				sql="select count(*) from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
 			}else if(type.equals("글쓴이")) {
-				sql="select count(*) from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+				sql="select count(*) from exrecipe where writerid in(select id from user where nkname like '%"+search+"%') ";
 			}else if(type.equals("재료")) {
-				sql="select count(*) from exrecipes where ingredients like '%"+search+"%' ";
+				sql="select count(*) from exrecipe where ingredients like '%"+search+"%' ";
 			}else if(type.equals("도구")) {
-				sql="select count(*) from exrecipes where tools like '%"+search+"%' ";
+				sql="select count(*) from exrecipe where tools like '%"+search+"%' ";
 			}
 			if(difficulty!=0) {
 				sql+="and difficulty="+difficulty+" order by num desc";
@@ -926,15 +982,15 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			if(type.equals("")) {
-				sql="select * from exrecipes where 1=1";
+				sql="select * from exrecipe where 1=1";
 			}else if(type.equals("제목")) {
-				sql="select * from exrecipes where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+				sql="select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
 			}else if(type.equals("글쓴이")) {
-				sql="select * from exrecipes where writerid in(select id from user where nkname like '%"+search+"%') ";
+				sql="select * from exrecipe where writerid in(select id from user where nkname like '%"+search+"%') ";
 			}else if(type.equals("재료")) {
-				sql="select * from exrecipes where ingredients like '%"+search+"%' ";
+				sql="select * from exrecipe where ingredients like '%"+search+"%' ";
 			}else if(type.equals("도구")) {
-				sql="select * from exrecipes where tools like '%"+search+"%' ";
+				sql="select * from exrecipe where tools like '%"+search+"%' ";
 			}
 			if(difficulty!=0) {
 				sql+="and difficulty="+difficulty+" order by num desc";
@@ -1941,7 +1997,7 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public int questionArticle(int num)
+	public int deletequestionArticle(int num)
 			throws Exception {
 			con = null;
 			pstmt = null;

@@ -59,6 +59,7 @@
 		
 		<div id="thumbnail" onclick="thumbnailupload()"style="width:400px;height:400px;background-size:contain;background-repeat:no-repeat;">썸네일</div>
 		<input type="submit" value="입력완료">
+		<input type="button" value="뒤로가기" onclick="location.href='goods.jsp'">
 	</form>
 	
 </body>

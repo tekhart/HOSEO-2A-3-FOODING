@@ -43,18 +43,23 @@ body {
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp49916893'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 	var msg;
-	function customer_decided_topay() {
+	function customer_decided_topay(totalprice,buyname,email) {
+		var realprice=totalprice-document.getElementById("pointused_input").value;
+		var name=document.paypageform.deliveryName;
+		var tel=document.paypageform.deliveryTel;
+		var addr=document.paypageform.deliveryAddrnum;
+		var postcode=document.paypageform.deliveryAddress;
 		IMP.request_pay({
 			pg : 'html5_inicis',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '주문명:결제테스트',
-			amount : 14000,
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456'
+			name : buyname,
+			amount : realprice,
+			buyer_email : email,
+			buyer_name : name,
+			buyer_tel : tel,
+			buyer_addr : addr,
+			buyer_postcode : postcode
 		}, function(rsp) {
 			if (rsp.success) {
 				var msg = '결제가 완료되었습니다.';
@@ -98,6 +103,8 @@ body {
 		int bae_song_bee = default_bae_song_bee;
 		foodingBean dbPro = foodingBean.getInstance();
 		String[] selCartIdchkbx = null;
+		String buyName="";
+		String email="";
 		List<productDataBean> articleList = null;
 		try {
 			selCartIdchkbx = request.getParameterValues("CartIdchkbx");
@@ -159,6 +166,11 @@ body {
 										int RealxCountPrice = realprice * article.getProductCount();
 										int ExpectedValueOfAddMile = realprice * article.getProductCount() / 100;
 										totalprice += RealxCountPrice;
+										buyName=article.getProductName();
+										email=topbarArticle.getEmail();
+										if(articleList.size()!=1){
+											buyName+=" 외 "+(articleList.size()-1)+"개의 제품";
+										}
 							%>
 							<tr>
 								<td width="150" style="border-bottom: 3px solid orange;">
@@ -307,7 +319,7 @@ body {
 								style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
 						<br> <br>
 							<div style="width: 1148px; float: left;">
-								<input type="text" name="pointused" class="inputtd3"> <span class="won">원</span>
+								<input type="text" name="pointused" id="pointused_input" class="inputtd3"> <span class="won">원</span>
 								<a href="" class="tkdyd3">사용</a>
 							</div> <br>
 						<br>
