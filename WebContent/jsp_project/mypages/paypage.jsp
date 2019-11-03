@@ -228,13 +228,71 @@ body {
 								}
 							%>
 							<br>
+<<<<<<< HEAD
+						<br> <label for="fname" class="labelpay"> 포인트 <span
+								style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
+						<br> <br>
+							<div style="width: 1148px; float: left;">
+								<input type="text" name="pointused" id="pointused_input" class="inputtd3"> <span class="won">원</span>
+								<a href="" class="tkdyd3">사용</a>
+							</div> <br>
+						<br>
+						<br>
+
+							<div>
+								<table>
+									<h3>결제 수단</h3>
+									<div
+										style="padding-bottom: 10px; width: 520px; float: left; border-bottom: 1px solid black;">
+										<span class="tablinks"> <input type="radio"
+											name="chk_info" value="신용카드" class="tablinks"
+											onclick="openCity(event, 'creditcard')">신용카드
+										</span> <span class="tablinks"
+											style="float: left; margin-left: 50px;"> <input
+											type="radio" name="chk_info" value="무통장입금" class="tablinks"
+											onclick="openCity(event, 'Bank Deposit')">무통장입금
+										</span>
+									</div>
+									
+									<div id="creditcard" class="tabcontent">
+										<br><br>
+										
+									</div>
+									
+									<div id="Bank Deposit" class="tabcontent">
+										<p class="tdpayment">입금자명</p>
+										<input type="text" maxlength="20" class="tdpayinput"
+											style="width: 200px; height: 29px; margin-top: -10px;">
+
+										<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
+										<select name='bank' class="tdpayinput"
+											style="width: 250px; height: 29px; margin-top: -10px;"><br>
+											<option value='' selected>---------입금은행선택---------</option>
+											<option value='농협'>농협 302-1133-2090-11 이혜진</option>
+											
+										</select>
+										
+									</div>
+									
+								</table>
+								
+							</div> 
+							
+
+						</td>
+					</tr>
+=======
 							</td>
 						</tr>
 						<%
 							}
 						%>
 					</tbody>
+>>>>>>> refs/remotes/origin/master
 				</table>
+<<<<<<< HEAD
+				
+=======
 			</div>
 			<br>
 			<table class="row">
@@ -375,8 +433,9 @@ body {
 					</td>
 				</tr>
 			</table>
+>>>>>>> refs/remotes/origin/master
 		</form>
-
+<div><input type="submit" class="btpay2" value="결제하기" onclick="customer_decided_topay()></div>
 	</div>
 	<br>
 	<br>
