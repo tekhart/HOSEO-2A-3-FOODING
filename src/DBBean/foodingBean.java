@@ -448,7 +448,7 @@ public class foodingBean {
 						sql+="|(tools like '%"+searchDetail[1]+"%')";
 					}
 				}
-				sql+=")>="+(searchArray.length*0.3)+1+")as priority from recipes ";
+				sql+=")>="+(searchArray.length*0.25)+1+")as priority from recipes ";
 			}
 			
 			pstmt = con.prepareStatement(sql);
@@ -513,7 +513,7 @@ public class foodingBean {
 						sql+="|(tools like '%"+searchDetail[1]+"%')";
 					}
 				}
-				sql+=")as priority from recipes having priority>="+(searchArray.length*0.3)+1+" order by priority desc,num desc limit ?,?";
+				sql+=")as priority from recipes having priority>="+(searchArray.length*0.25)+1+" order by priority desc,num desc limit ?,?";
 			}
 			
 			pstmt = con.prepareStatement(sql);
