@@ -157,7 +157,7 @@
 				var input = document.createElement("input");
 				input.setAttribute('name','customsearch');
 				input.setAttribute('type','hidden');
-				input.value="재료:"+inputValue;
+				input.value="사용자지정:"+inputValue;
 				li.appendChild(input);
 			
 				document.getElementById("myInput").value = "";
