@@ -5,10 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel="stylesheet" href="admincss.css">
+</style>
 </head>
 <body>
-
-<table class="goodstb" border="1">
+<%@include file="../general_included/topbar.jsp"%>
+<br><br><br><br>
+<table class="goodstb2" border="1">
 	<tr>
 		<td>제목</td><td>믿고 거르는 거름망</td>
 	</tr>
@@ -35,10 +40,10 @@
 			<table style="border-collapse:collapse;">
 				<tr>
 					<td>
-					<input type="button" onclick="okdelete()" value="삭제">
+					<input type="button" onclick="okdelete()" value="삭제" class="findbutton" >
 					</td>
 					<td>
-					<input type="button" onclick="location.href='goods.jsp'" value="취소">
+					<input type="button" onclick="location.href='goods.jsp'" value="취소" class="findbutton">
 					</td>
 				</tr>
 			</table>
@@ -51,5 +56,6 @@ function okdelete(){
 	confirm('이 상품을 등록 해제 하시겠습니까?');
 }
 </script>
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

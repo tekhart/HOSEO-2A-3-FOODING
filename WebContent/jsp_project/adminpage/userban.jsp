@@ -16,9 +16,13 @@ try{
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel="stylesheet" href="admincss.css">
 </head>
 <body>
-<table>
+<%@include file="../general_included/topbar.jsp"%>
+<table class="adminstb"border="1">
 	<tr>
 		<td>닉네임</td>
 		<td>ID</td>
@@ -47,5 +51,6 @@ for (int i = 0 ; i < userArticle.size(); i++) {
 
 
 </table>
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

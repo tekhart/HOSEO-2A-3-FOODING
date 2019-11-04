@@ -5,17 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.goodstb{
-border-collapse:collapse;
-}
-.goodstb td:first-child{
-font-weight:bold;
-}
-</style>
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel="stylesheet" href="admincss.css">
 </head>
 <body>
-
+<%@include file="../general_included/topbar.jsp"%>
+<br><br><br><br>
 <table class="goodstb" border="1">
 	<tr>
 		<td>제목</td><td>믿고 거르는 거름망</td><td><input type="text"></td>
@@ -79,16 +75,16 @@ font-weight:bold;
 			<table style="border-collapse:collapse;">
 				<tr>
 					<td>
-					<input type="button" onclick="location.href='#'" value="확인">
+					<input type="button" onclick="location.href='#'" value="확인" class="findbutton" >
 					</td>
 					<td>
-					<input type="button" onclick="location.href='goods.jsp'" value="취소">
+					<input type="button" onclick="location.href='goods.jsp'" value="취소" class="findbutton" >
 					</td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 </table>
-
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

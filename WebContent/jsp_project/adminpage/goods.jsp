@@ -5,10 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel="stylesheet" href="admincss.css">
 </head>
 <body>
-<br>
-<table border="1" width="700px" style="margin:auto">
+<%@include file="../general_included/topbar.jsp"%>
+<br><br><br><br>
+<table class="adminstb3" border="1" >
 	<tr>
 		<td>제목</td>
 		<td>썸네일</td>
@@ -16,9 +20,10 @@
 		<td>할인율</td>
 		<td>분류1</td>
 		<td>분류2</td>
+		<td>상태</td>
 		<td>수정</td>
 		<td>삭제</td>
-		<td>상태</td>
+		
 	</tr>
 	<tr>
 		<td>초코우유2+2</td>
@@ -27,9 +32,10 @@
 		<td>10</td>
 		<td>2</td>
 		<td>9</td>
-		<td><input type="button" onclick="location.href='goodsupdate.jsp'" value="수정"></td>
-		<td><input type="button" onclick="location.href='goodsdelete.jsp'" value="삭제"></td>
 		<td>판매중</td>
+		<td><a href="goodsupdate.jsp">수정</a></td>
+		<td><a href="goodsdelete.jsp">삭제</a></td>
+		
 	</tr>
 	<tr>
 		<td>믿고 거르는 거름망</td>
@@ -38,9 +44,10 @@
 		<td>20</td>
 		<td>1</td>
 		<td>18</td>
-		<td><input type="button" onclick="location.href='goodsupdate.jsp'" value="수정"></td>
-		<td><input type="button" onclick="location.href='goodsdelete.jsp'" value="삭제"></td>
 		<td>품절</td>
+		<td><a href="goodsupdate.jsp">수정</a></td>
+		<td><a href="goodsdelete.jsp">삭제</a></td>
+		
 	</tr>
 	<tr>
 		<td>다 썰어버리는 장미칼</td>
@@ -49,9 +56,10 @@
 		<td>20</td>
 		<td>1</td>
 		<td>13</td>
-		<td><input type="button" onclick="location.href='goodsupdate.jsp'" value="수정"></td>
-		<td><input type="button" onclick="location.href='goodsdelete.jsp'" value="삭제"></td>
 		<td>준비중</td>
+		<td><a href="goodsupdate.jsp">수정</a></td>
+		<td><a href="goodsdelete.jsp">삭제</a></td>
+		
 	</tr>
 	<tr>
 		<td>주걱주걱주걱</td>
@@ -60,13 +68,14 @@
 		<td>5</td>
 		<td>1</td>
 		<td>17</td>
-		<td><input type="button" onclick="location.href='goodsupdate.jsp'" value="수정"></td>
-		<td><input type="button" onclick="location.href='goodsdelete.jsp'" value="삭제"></td>
 		<td>판매중</td>
+		<td><a href="goodsupdate.jsp">수정</a></td>
+		<td><a href="goodsdelete.jsp">삭제</a></td>
+		
 	</tr>
 </table>
 <br>
-<table border="1" width="600px" style="margin:auto;">
+<table class="adminstb2" border="1">
 	<tr>
 		<td colspan="6" align="center">참고 표</td></tr>
 	<tr>
@@ -134,9 +143,10 @@
 		<td colspan="1"> </td>
 	</tr>
 	<tr>
-		<td align="center" colspan="6"><input type="button" value="상품 업로드" onclick="location.href='shopupload.jsp'">
+		<td align="center" colspan="6"><input type="button" class="findbutton2" value="상품 업로드" onclick="location.href='shopupload.jsp'">
 		</td>
 	</tr>
 </table>
+<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>
