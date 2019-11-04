@@ -5,7 +5,6 @@
 <%@ page import = "DBBean.commentDataBean" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
-<%@ include file="color.jsp"%>
 
 <%!
 	int pageSize = 10;

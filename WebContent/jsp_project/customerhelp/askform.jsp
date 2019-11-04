@@ -74,7 +74,7 @@
 </table>
 
 <div style="float:right; margin-right:500px;">
-<input type="button" value="작성완료" class="findbutton">
+<input type="button" value="작성완료" class="findbutton" onclick="location.href='../mypages/loading.jsp'">
 <input type="button" value="취소" class="findbutton">
 </div>
 

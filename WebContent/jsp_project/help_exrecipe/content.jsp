@@ -9,7 +9,32 @@
     int commentpageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
+<%
+   try{
+	   int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+	    foodingBean dbPro = foodingBean.getInstance();
+     	BoardDataBean article =  dbPro.getexrecipeArticle(num);
+		
+		foodingBean foodingbean = new foodingBean();
 
+	 	String commnetpageNum = request.getParameter("commnetpageNum");
+
+	    if (commnetpageNum == null) {
+	    	commnetpageNum = "1";
+	    }
+	    int currentPage = Integer.parseInt(commnetpageNum);
+	    int startRow = (currentPage - 1) * commentpageSize + 1;
+	    int endRow = currentPage * commentpageSize;
+	    int count = 0;
+	    List<commentDataBean> commentList = null;
+	    count = dbPro.getexrecipeCommentArticleCount(num);
+	    
+	    if (count > 0) {
+	        commentList = dbPro.getexrecipeCommentsArticles(startRow, commentpageSize,num);
+	    }
+	    
+%>
 
 <!DOCTYPE html>
 <html>
@@ -125,39 +150,18 @@ function GoOtherProfile(id){
 	document.WannaGoOthersProfile.findId.value=id;
 	document.WannaGoOthersProfile.submit();
 }
-	
+function youreally(){
+	if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
+		location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+	}
+}
 </script>
 </head>
 <body id="body" onload="initComparisons()"> 
 	<%@include file="../general_included/topbar.jsp"%>
 
 	<div id="maindiv2">
-		<%
-   try{
-	   int num = Integer.parseInt(request.getParameter("num"));
-		String pageNum = request.getParameter("pageNum");
-	    foodingBean dbPro = foodingBean.getInstance();
-     	BoardDataBean article =  dbPro.getexrecipeArticle(num);
 		
-		foodingBean foodingbean = new foodingBean();
-
-	 	String commnetpageNum = request.getParameter("commnetpageNum");
-
-	    if (commnetpageNum == null) {
-	    	commnetpageNum = "1";
-	    }
-	    int currentPage = Integer.parseInt(commnetpageNum);
-	    int startRow = (currentPage - 1) * commentpageSize + 1;
-	    int endRow = currentPage * commentpageSize;
-	    int count = 0;
-	    List<commentDataBean> commentList = null;
-	    count = dbPro.getexrecipeCommentArticleCount(num);
-	    
-	    if (count > 0) {
-	        commentList = dbPro.getexrecipeCommentsArticles(startRow, commentpageSize,num);
-	    }
-	    
-%>
 
 		<table style="margin: auto;" class="orangeline1">
 			<tr>
@@ -185,9 +189,9 @@ function GoOtherProfile(id){
 	
 					<td colspan="2">
 					<input type="button" value="글수정"
-					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+						onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="글삭제"
-					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+						onclick="youreally()">
 					</td>
 					
 			</tr>
@@ -326,9 +330,7 @@ function GoOtherProfile(id){
 			<%}%>
 		</form>
 		<%}%>
-		<%
-			}catch(Exception e){} 
-		%>
+		
 	</div>
 
 
@@ -337,3 +339,6 @@ function GoOtherProfile(id){
 
 </body>
 </html>
+<%
+	}catch(Exception e){} 
+%>

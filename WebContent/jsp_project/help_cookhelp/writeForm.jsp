@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="color.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,7 +56,7 @@
 			action="writePro.jsp" onsubmit="return writeSave()"> 
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<!--  <input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png"> -->
+		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
 		
 		<center>
 		<table id="writetable" align="center" border-spacing="10px" >
@@ -68,7 +67,6 @@
 			</td>
 			</tr>-->
 			<tr>
-			</td>
 			<td width="1000px" align="left" style="vertical-align:bottom;">
 				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
 				 style="ime-mode:normal;" placeholder="제목을 입력하세요"></td>
