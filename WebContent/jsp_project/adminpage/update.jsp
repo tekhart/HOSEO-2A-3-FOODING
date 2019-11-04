@@ -1,79 +1,50 @@
-<%@ page import = "DBBean.foodingBean" %>
-<%@ page import = "DBBean.BoardDataBean" %>
-<%@ page import = "DBBean.userDataBean" %>   
-<%@ page import = "java.util.List" %>
-<%@ page import = "java.sql.*" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"  pageEncoding="EUC-KR"%>
-
-<%
-foodingBean dbPro = foodingBean.getInstance();
-try{
-	List<userDataBean> userArticle =dbPro.getuserArticles();	
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+ .usertrtd td{padding:10px;}
+.usertrtd{position:relative; top:130px; left:300px;}
+</style>
+
 </head>
+
 <body>
-
-<%
-
-Connection con=null;
-PreparedStatement pstmt=null;
-ResultSet rs = null;
-
-try{
-	con = dbPro.connect();
-	String sql="select * from members where id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			String passwd = rs.getString("passwd");
-			String nkname = rs.getString("nkname");
-			Timestamp reg_date = rs.getTimestamp("reg_date");
-
-%>
-
-<form name="userupdateform" method="post" action="updateok.jsp">
-<table>
+<table border="1" class="usertrtd">
 	<tr>
-		<td>´Ğ³×ÀÓ</td>
-		<td><%=nkname %><input type="hidden" name="nkname" value="<%=nkname%>"></td>
+		<td><b>í˜„ì¬ ë‹‰ë„¤ì„</b></td>
+		<td>ìƒˆì›ˆ</td>
 	</tr>
 	<tr>
-		<td>¾ÆÀÌµğ</td>
-		<td><%=id %></td>
+		<td><b>ë³€ê²½í•  ë‹‰ë„¤ì„</b></td>
+		<td><input type="text" size="20"></td>
 	</tr>
 	<tr>
-		<td>ºñ¹Ğ¹øÈ£</td>
-		<td><%=passwd %></td>
+		<td><b>ì•„ì´ë””</b></td>
+		<td>qkrtpals1234</td>
 	</tr>
 	<tr>
-		<td>°¡ÀÔÀÏ</td>
-		<td><%=reg_date %></td>
+		<td><b>ê°€ì…ì¼</b></td>
+		<td>2008-12-31 00:00:00.0</td>
 	</tr>
 	<tr>
-		<td><input type="button" value="save" onclick="userupdateform.submit();"></td>
-		<td><input type="button" value="cancel" onclick="location.href='userban';"></td>
+		<td align="center" colspan="2"><input type="button" value="ì‘ì„± ê¸€ ë³´ê¸°"></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+			<table border="1">
+				<tr>
+					<td><input type="button" value="í™•ì¸"></td>
+					<td><input type="button" value="ì·¨ì†Œ" onclick="location.href='userban.jsp'"></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 </table>
-</form>
-
-
-
-<%}catch(Exception e){e.printStackTrace();} %>
-
-<script>
-function update(){
-	document.userupdateform.submit();
-}
-function userban(){
-	location.herf="userban.jsp";
-}
-</script>
 
 </body>
 </html>

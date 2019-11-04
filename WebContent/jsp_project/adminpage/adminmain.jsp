@@ -4,25 +4,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>난이도별 레시피</title>
+<title>FOODING</title>
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
-<style>
 
+<style>
+.admintr td{
+	border:1px solid white;
+}
 </style>
+
 </head>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
-<div id="maindiv">
-<div class="writetitle1">
-난이도별 레시피</div>
 
-
-<div class="rlch" onclick="location.href='level1.jsp'"><br><br><br><p class="ppp">기초</p> </div>
-<div class="chqh" onclick="location.href='level2.jsp'"><br><br><br><p class="ppp">초보</p> </div>
-<div class="tlaghk" onclick="location.href='level3.jsp'"><br><br><br><p class="ppp">심화</p> </div>
+<table>
+	<tr class="admintr">
+		<td>유저관리</td>
+		<td>물품등록</td>
+		<td>물품관리</td>
+	</tr>
+</table>
 
 </body>
 </html>

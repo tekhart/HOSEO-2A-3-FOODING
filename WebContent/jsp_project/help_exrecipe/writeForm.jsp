@@ -91,9 +91,9 @@
 					<select name='difficulty'
 						style="ime-mode:inactive;">
 						<option value='' selected disabled hidden>-- 선택 --</option>
-		    			<option value='초급'>초급</option>
-		    			<option value='중급'>중급</option>
-		    			<option value='상급'>상급</option>
+		    			<option value='1'>초급</option>
+		    			<option value='2'>중급</option>
+		    			<option value='3'>상급</option>
 					</select>
 				</td>
 			</tr>

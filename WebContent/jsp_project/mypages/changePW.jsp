@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- 
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,6 +81,7 @@ span.idpasswd {
 </head>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
+<<<<<<< HEAD
 
 <div id="maindiv">
 <center>
@@ -94,6 +95,22 @@ span.idpasswd {
 </center>
 </div>
 <br><br><br>
+=======
+	<div id="maindiv">
+		<center>
+			<form method="post" action="PWchanged.jsp">
+				<div>
+					<input type="password" placeholder="현재 비밀번호" name="curPW"><br>
+					<input type="password" placeholder="새 비밀번호" name="newPW">
+					<button type="submit">변경</button>
+				</div>
+			</form>
+		</center>
+	</div>
+	<br>
+	<br>
+	<br>
+>>>>>>> refs/remotes/origin/master
 
 
 
