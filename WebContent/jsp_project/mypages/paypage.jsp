@@ -366,6 +366,11 @@ body {
 												style="width: 250px; height: 29px; margin-top: -10px;"><br>
 												<option value='' selected>---------입금은행선택---------</option>
 												<option value='농협'>농협 302-1133-2090-11 이혜진</option>
+												<option value='신한'>신한 302-1133-2090-11 이혜진</option>
+												<option value='국민'>국민 302-1133-2090-11 이혜진</option>
+												<option value='우리'>우리 302-1133-2090-11 이혜진</option>
+												<option value='기업'>기업 302-1133-2090-11 이혜진</option>
+												
 											</select>
 										</div>
 									</td>
