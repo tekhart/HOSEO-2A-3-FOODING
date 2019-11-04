@@ -48,6 +48,20 @@
 	text-overflow:ellipsis;
 }
 
+.titlelong1{
+	margin:3px;
+	padding:3px;
+	width:350px;
+	display:inline-block;
+	height:100px;
+	display: -webkit-box;
+	overflow:hidden;
+	word-break:break-all;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:3;
+	text-overflow:ellipsis;
+}
+
 .contenttable1{
 	width:1000px;
 	margin:auto;
@@ -82,7 +96,7 @@
 		background: white;
 		border-style:solid;
 		border-width: thin; 
-		border-radius: 5px 5px 5px 5px;
+		border-radius: 5px 0px 0px 5px;
 	}
 
 .searchbotton{
