@@ -108,7 +108,7 @@ body {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	%>
+	%> 
  
 	<div id="maindiv">
 		<form method="POST" action="jumunok.jsp" name="paypageform">
