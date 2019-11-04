@@ -987,6 +987,7 @@ public class foodingBean {
 			if(difficulty!=0) {
 				sql+="and difficulty="+difficulty;
 			}
+			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -1069,7 +1070,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement(
 				"select * from exrecipe where num = ?");
 			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery(); 
 
 			if (rs.next()) {
 				article = new BoardDataBean();

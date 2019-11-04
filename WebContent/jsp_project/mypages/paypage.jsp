@@ -30,7 +30,6 @@ body {
 	font-family: "Bauhaus ITC";
 	color: black;
 }
-
 #title {
 	text-decoration: none;
 }
@@ -227,6 +226,7 @@ body {
 								<%=bae_song_bee%> 원 <%
 								}
 							%>
+							
 							<br>
 							</td>
 						</tr>
@@ -376,14 +376,11 @@ body {
 				</tr>
 			</table>
 		</form>
+<div><input type="submit" class="btpay2" value="결제하기" onclick="customer_decided_topay()></div>
 	</div>
 	<br>
 	<br>
 	<br>
-
-
-
 	<%@include file="../general_included/footer.jsp"%>
-
 </body>
 </html>
