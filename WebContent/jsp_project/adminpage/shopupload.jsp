@@ -32,7 +32,7 @@
 					제품명
 				</td>
 				<td>
-					<input type="text" name="productName" class="whiteinput">
+					<input type="text" name="productName" class="whiteinput2">
 				</td>
 			</tr>
 			<tr>
@@ -79,7 +79,7 @@
 						가격
 					</td>
 					<td>
-						<input type="text" name="price" class="whiteinput">
+						<input type="text" name="price" class="whiteinput2">
 					</td>
 				</tr>
 				<tr>
@@ -87,12 +87,12 @@
 						할인률
 					</td>
 					<td>
-						<input type="text" name="discountRate"  class="whiteinput">%
+						<input type="text" name="discountRate"  class="whiteinput22"> %
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<div id="thumbnail" onclick="thumbnailupload()" class="goodsthumb">썸네일</div>
+						<div id="thumbnail" onclick="thumbnailupload()" class="goodsthumb"><p style="position:relative; z-index:-101001;">썸네일</p></div>
 					</td>
 				</tr>
 			</table>

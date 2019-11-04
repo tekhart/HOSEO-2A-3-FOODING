@@ -11,6 +11,10 @@
 	margin:auto; 
 }
 
+.adminstb3 a{
+	color:skyblue;
+}
+
 .adminstb3 td:nth-child(n+3), .adminstb3 tr:first-child {
 	text-align:center;
 }
@@ -38,6 +42,11 @@
 	width:600px;
 	margin:auto;
 }
+
+.goodsuptb td{
+	padding:10px;
+}
+
  .usertrtd td{padding:10px;}
 .usertrtd{width:400px; margin:auto; border-collapse:collapse;}
 .goodstb{
@@ -76,8 +85,15 @@ font-weight:bold;
 	border-collapse:collapse;
 }
 
-.whiteinput{
+.whiteinput2{
 	width:300px;
+	border:1px solid white; 
+	padding:5px;
+}
+
+.whiteinput22{
+	width:30px;
+	padding:5px;
 	border:1px solid white; 
 }
 
