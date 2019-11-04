@@ -276,11 +276,11 @@
 				<br>
 				<!--Register 버튼 누를시 registerInsert.jsp로 넘어감	-->
 				<div>
-					<table style="width:600px; border-collapse:collapse;" class="trborder">
+					<table style="width:600px; border-collapse:collapse; border-top:3px solid orange;" class="trborder">
 						
 						<tr>
 					
-						<td rowspan="2">
+						<td rowspan="2"  style="padding-top:50px;">
 						<div style="height:100px; width:100px; border-radius:50%; border:3px solid orange; margin:auto; background-image:url(<%=userface%>); background-size:cover; background-position:center;"/>
 						</td>
 							<td> 

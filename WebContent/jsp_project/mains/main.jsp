@@ -40,7 +40,7 @@ for (int i = 0 ; i < articleList.size(); i++) {
 	   BoardDataBean article = articleList.get(i);
 	   String writerid=article.getWriterid();%>
 
-
+ 
     <div class="slideshow">
 	<gg href="javascript:;"
 	onClick="javascript:location.href='../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=<%=slideCurrentPage%>&fame=<%=slideFame%>'">

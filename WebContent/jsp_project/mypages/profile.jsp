@@ -39,7 +39,7 @@
 <div id="maindiv">
 <div class="writetitle1">
 개인정보 관리</div>
-
+<center>
 	<%@include file="sidemenu.jsp"%>
 
 	<div style="margin:auto;">
@@ -142,7 +142,7 @@
 	
 </div> 
 <br><br><br>
-
+</center>
 
 
 <%@include file="../general_included/footer.jsp"%>

@@ -313,10 +313,7 @@ function GoOtherProfile(id){
 														"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 														'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-													<input type="button" value="삭제" class="bt2" onclick=
-														"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-														'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
+													<input type="button" value="삭제" class="bt2" onclick="location.href='deletecommentspro.jsp?num=<%=comments.getNum()%>'">
 												<%} %>
 												<div class="commentchangeform" id="testid"></div>
 											</td>
