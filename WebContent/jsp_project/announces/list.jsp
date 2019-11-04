@@ -143,7 +143,7 @@
 <table class="listtable"> 
     <tr height="50"> 
 	  <td align="center"  width="50" class="listcolor" style="padding-left:20px;">번호</td>
-      <td align="center"  width="200" class="listcolor">제목</td> 
+      <td align="center"  width="250" class="listcolor">제목</td> 
       <td align="center"  width="150" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
       <td align="center"  width="80" class="listcolor">조회</td> 
@@ -160,7 +160,7 @@
    <%=article.getNum()%>
    </td>
     <td align="left" class="line" style="padding-left:40px;">       
-      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong" style="vertical-align:middle; display:table-cell;">
+      <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong1" style="vertical-align:middle; display:table-cell;">
       
         	<% if(article.getReadcount()>=20){%>
      		 <font color="red">HOT</font>
