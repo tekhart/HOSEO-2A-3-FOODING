@@ -303,7 +303,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement(
-				"select * from user");
+				"select * from user where isLeft=0");
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -987,6 +987,7 @@ public class foodingBean {
 			if(difficulty!=0) {
 				sql+="and difficulty="+difficulty;
 			}
+			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -1069,7 +1070,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement(
 				"select * from exrecipe where num = ?");
 			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery(); 
 
 			if (rs.next()) {
 				article = new BoardDataBean();
@@ -1326,16 +1327,15 @@ public class foodingBean {
 			
 			
 			// 荑쇰━瑜� �옉�꽦
-			sql = "insert into cookhelp(title,tools,writerid,reg_date,content,thumbnail";
-			sql+=") values(?,?,?,?,?,?)";
+			sql = "insert into cookhelp(title,writerid,reg_date,content,thumbnail";
+			sql+=") values(?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
-			pstmt.setString(2, article.getTools());
-			pstmt.setString(3, article.getWriterid());
-			pstmt.setTimestamp(4, article.getReg_date());
-			pstmt.setString(5, article.getContent());
-			pstmt.setString(6, article.getThumbnail());
+			pstmt.setString(2, article.getWriterid());
+			pstmt.setTimestamp(3, article.getReg_date());
+			pstmt.setString(4, article.getContent());
+			pstmt.setString(5, article.getThumbnail());
 			
 			pstmt.executeUpdate();
 
@@ -1494,7 +1494,6 @@ public class foodingBean {
 				
 				article.setNum(rs.getInt("num"));
 				article.setTitle(rs.getString("title"));
-				article.setTools(rs.getString("tools"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));	 
@@ -1526,7 +1525,6 @@ public class foodingBean {
 					article = new BoardDataBean();
 					article.setNum(rs.getInt("num"));
 					article.setTitle(rs.getString("title"));
-					article.setTools(rs.getString("tools"));
 					article.setWriterid(rs.getString("writerid"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));	 
@@ -1553,14 +1551,13 @@ public class foodingBean {
 
 				 
 					sql="update cookhelp set title=?";
-					sql+=",tools=? ,content=?,thumbnail=? where num=?";
+					sql+=" ,content=?,thumbnail=? where num=?";
 					pstmt = con.prepareStatement(sql);
 
 					pstmt.setString(1, article.getTitle());
-					pstmt.setString(2, article.getTools());
-					pstmt.setString(3, article.getContent());
-					pstmt.setInt(4, article.getNum());
-					pstmt.setString(5, article.getThumbnail());
+					pstmt.setString(2, article.getContent());
+					pstmt.setInt(3, article.getNum());
+					pstmt.setString(4, article.getThumbnail());
 					pstmt.executeUpdate();
 					
 						x= 1;
@@ -2767,12 +2764,11 @@ public class foodingBean {
 		}
 		return x;
 	}
-	public int deleteproductArticle(int productId)
+	public void deleteproductArticle(int productId)
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs= null;
-		int x=-1;
 		try {
 			con = getConnection();
 
@@ -2780,13 +2776,11 @@ public class foodingBean {
 				"delete from product where productId=?");
 			pstmt.setInt(1, productId);
 			pstmt.executeUpdate();
-			x= 1; //湲��궘�젣 �꽦怨�
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
-		return x;
 	}
 	
 	public void insertcartArticle(int productId,int productcount,String ownerid)

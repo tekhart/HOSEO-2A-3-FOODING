@@ -30,7 +30,6 @@ body {
 	font-family: "Bauhaus ITC";
 	color: black;
 }
-
 #title {
 	text-decoration: none;
 }
@@ -77,10 +76,12 @@ body {
 		});
 	}
 	function openCity(evt, cityName) {
-		var i, tabcontent, tablinks;
+		var i, tabcontent, secondtabcontent, tablinks;
 		tabcontent = document.getElementsByClassName("tabcontent");
+		secondtabcontent = document.getElementsByClassName("secondtabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
+			secondtabcontent[i].style.display = "none";
 		}
 		tablinks = document.getElementsByClassName("tablinks");
 		for (i = 0; i < tablinks.length; i++) {
@@ -88,6 +89,7 @@ body {
 					.replace(" active", "");
 		}
 		document.getElementById(cityName).style.display = "block";
+		document.getElementById("second"+cityName).style.display = "block";
 		evt.currentTarget.className += " active";
 	}
 </script>
@@ -227,72 +229,15 @@ body {
 								<%=bae_song_bee%> 원 <%
 								}
 							%>
-							<br>
-<<<<<<< HEAD
-						<br> <label for="fname" class="labelpay"> 포인트 <span
-								style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
-						<br> <br>
-							<div style="width: 1148px; float: left;">
-								<input type="text" name="pointused" id="pointused_input" class="inputtd3"> <span class="won">원</span>
-								<a href="" class="tkdyd3">사용</a>
-							</div> <br>
-						<br>
-						<br>
-
-							<div>
-								<table>
-									<h3>결제 수단</h3>
-									<div
-										style="padding-bottom: 10px; width: 520px; float: left; border-bottom: 1px solid black;">
-										<span class="tablinks"> <input type="radio"
-											name="chk_info" value="신용카드" class="tablinks"
-											onclick="openCity(event, 'creditcard')">신용카드
-										</span> <span class="tablinks"
-											style="float: left; margin-left: 50px;"> <input
-											type="radio" name="chk_info" value="무통장입금" class="tablinks"
-											onclick="openCity(event, 'Bank Deposit')">무통장입금
-										</span>
-									</div>
-									
-									<div id="creditcard" class="tabcontent">
-										<br><br>
-										
-									</div>
-									
-									<div id="Bank Deposit" class="tabcontent">
-										<p class="tdpayment">입금자명</p>
-										<input type="text" maxlength="20" class="tdpayinput"
-											style="width: 200px; height: 29px; margin-top: -10px;">
-
-										<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
-										<select name='bank' class="tdpayinput"
-											style="width: 250px; height: 29px; margin-top: -10px;"><br>
-											<option value='' selected>---------입금은행선택---------</option>
-											<option value='농협'>농협 302-1133-2090-11 이혜진</option>
-											
-										</select>
-										
-									</div>
-									
-								</table>
-								
-							</div> 
 							
-
-						</td>
-					</tr>
-=======
+							<br>
 							</td>
 						</tr>
 						<%
 							}
 						%>
 					</tbody>
->>>>>>> refs/remotes/origin/master
 				</table>
-<<<<<<< HEAD
-				
-=======
 			</div>
 			<br>
 			<table class="row">
@@ -363,7 +308,7 @@ body {
 					</td>
 				</tr>
 			</table>
-			<table style="margin-left: 282px;" width="1148px;">
+			<table style="margin-left: 365px;" width="1148px;">
 				<tr>
 					<td class="container3" colspan="2"
 						style="margin-left: 1px; float: right;">
@@ -404,15 +349,14 @@ body {
 								</tr>
 								<tr>
 									<td>
-										<div id="creditcard" class="tabcontent">
+										<div id="secondcreditcard" class="tabcontent">
 											<br><br>
-											<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')"></div>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div id="Bank Deposit" class="tabcontent">
+										<div id="secondBank Deposit" class="tabcontent">
 											<p class="tdpayment">입금자명</p>
 											<input type="text" maxlength="20" class="tdpayinput"
 												style="width: 200px; height: 29px; margin-top: -10px;">
@@ -422,9 +366,12 @@ body {
 												style="width: 250px; height: 29px; margin-top: -10px;"><br>
 												<option value='' selected>---------입금은행선택---------</option>
 												<option value='농협'>농협 302-1133-2090-11 이혜진</option>
+												<option value='신한'>신한 302-1133-2090-11 이혜진</option>
+												<option value='국민'>국민 302-1133-2090-11 이혜진</option>
+												<option value='우리'>우리 302-1133-2090-11 이혜진</option>
+												<option value='기업'>기업 302-1133-2090-11 이혜진</option>
 												
 											</select>
-											<div><input type="submit" class="0" value="결제하기"></div>
 										</div>
 									</td>
 								</tr>
@@ -433,17 +380,18 @@ body {
 					</td>
 				</tr>
 			</table>
->>>>>>> refs/remotes/origin/master
-		</form>
-<div><input type="submit" class="btpay2" value="결제하기" onclick="customer_decided_topay()></div>
+		
+	<div id="creditcard" class="secondtabcontent" style="display:none;margin-left:550px;">
+		<input type="button" class="btpay2" value="결제하기" onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')">
+	</div>
+	<div id="Bank Deposit" class="secondtabcontent" style="display:none;margin-left:550px;">
+		<input type="submit" class="btpay2" value="결제하기">
+	</div>
+</form>
 	</div>
 	<br>
 	<br>
 	<br>
-
-
-
 	<%@include file="../general_included/footer.jsp"%>
-
 </body>
 </html>

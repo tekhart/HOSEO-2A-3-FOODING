@@ -8,11 +8,9 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
-
 body{
   font-family: 'Raleway', sans-serif;
 }
-
 .shadow{
   width:60px;
   height:4px;
@@ -26,7 +24,6 @@ body{
   right:0;
   
 }
-
 @keyframes shadow{
   0%{
     width:60px;
@@ -59,8 +56,6 @@ body{
     width:60px;
   }
 }
-
-
 .logo{
   position:absolute;
   bottom:0;
@@ -71,7 +66,6 @@ body{
   opacity:0;
   animation: logo 5s ease-in-out infinite;
 }
-
 @keyframes logo{
   0%{
     transform:translateY(0);opacity:0;
@@ -92,7 +86,6 @@ body{
     transform:translateY(0);opacity:1;
   }
 }
-
 .container{
   width:60px;
   height:250px;
@@ -104,7 +97,6 @@ body{
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
 }
-
 .circle{
   width:55px;
   height:55px;
@@ -115,7 +107,6 @@ body{
   bottom:0;
   animation: circle 5s ease-in-out infinite;
 }
-
 @keyframes circle{
   0%{
     transform:translateY(0);
@@ -131,7 +122,6 @@ body{
   }
   100%{opacity:0;}
 }
-
 .square{
   width:55px;
   height:55px;
@@ -142,7 +132,6 @@ body{
   opacity:0;
   animation: square 5s ease-in-out infinite;
 }
-
 @keyframes square{
   0%{
     transform:translateY(0);opacity:0;
@@ -164,7 +153,6 @@ body{
   }
   100%{opacity:0;}
 }
-
 .triangle{
   width:0;
   height:0;
@@ -176,7 +164,6 @@ body{
   animation: triangle 5s ease-in-out infinite;
   opacity:0;
 }
-
 .triangle::after{
   content:"";
   width:0;
@@ -188,8 +175,6 @@ body{
   bottom:-48px;
   left:-26px;
 }
-
-
 @keyframes triangle{
   0%{
     transform:translateY(0);opacity:0;
@@ -225,9 +210,7 @@ body{
 
 <script>
 function window_onload(){
-
     setTimeout('go_url()',5000)
-
 }
     function go_url(){
     	location.href="../mains/main.jsp"

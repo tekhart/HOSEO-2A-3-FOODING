@@ -7,7 +7,31 @@
 <%@ page import="java.util.List"%>
 <%!int commentpageSize = 10;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
+<%
+			try {
+				int num = Integer.parseInt(request.getParameter("num"));
+				String pageNum = request.getParameter("pageNum");
+				foodingBean dbPro = foodingBean.getInstance();
+				QuestionDataBean article = dbPro.getquestionArticle(num);
 
+				foodingBean foodingbean = new foodingBean();
+
+				String commnetpageNum = request.getParameter("commnetpageNum");
+
+				if (commnetpageNum == null) {
+					commnetpageNum = "1";
+				}
+				int currentPage = Integer.parseInt(commnetpageNum);
+				int startRow = (currentPage - 1) * commentpageSize + 1;
+				int endRow = currentPage * commentpageSize;
+				int count = 0;
+				List<commentDataBean> commentList = null;
+				count = dbPro.getquestionCommentArticleCount(num);
+
+				if (count > 0) {
+					commentList = dbPro.getquestionCommentsArticles(startRow, commentpageSize, num);
+				}
+		%>
 
 <!DOCTYPE html>
 <html>
@@ -42,6 +66,11 @@
 		commentchangeform[counter].innerHTML = "<textarea name='content' size='40' rows='5' cols='40' class='signupinput' style='ime-mode:inactive;'></textarea><input type='submit'  value='답글쓰기' class='bt2'>";
 
 	}
+	function youreally(){
+		if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
+			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+		}
+	}
 </script>
 </head>
 <body>
@@ -51,31 +80,7 @@
 		<br>
 		<br>
 		<br>
-		<%
-			try {
-				int num = Integer.parseInt(request.getParameter("num"));
-				String pageNum = request.getParameter("pageNum");
-				foodingBean dbPro = foodingBean.getInstance();
-				QuestionDataBean article = dbPro.getquestionArticle(num);
-
-				foodingBean foodingbean = new foodingBean();
-
-				String commnetpageNum = request.getParameter("commnetpageNum");
-
-				if (commnetpageNum == null) {
-					commnetpageNum = "1";
-				}
-				int currentPage = Integer.parseInt(commnetpageNum);
-				int startRow = (currentPage - 1) * commentpageSize + 1;
-				int endRow = currentPage * commentpageSize;
-				int count = 0;
-				List<commentDataBean> commentList = null;
-				count = dbPro.getquestionCommentArticleCount(num);
-
-				if (count > 0) {
-					commentList = dbPro.getquestionCommentsArticles(startRow, commentpageSize, num);
-				}
-		%>
+		
 		<input type="hidden" name="num" value="<%=article.getNum()%>">
 		<input type="hidden" name="ref" value="<%=article.getRef()%>">
 		<input type="hidden" name="re_step" value="<%=article.getRe_step()%>">
@@ -117,7 +122,7 @@
 					class="smallbt"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="글삭제" class="smallbt"
-					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+					onclick="youreally()">
 				</td>
 
 			</tr>
@@ -152,10 +157,7 @@
 		</table>
 		<br>
 
-		<%
-			} catch (Exception e) {
-			}
-		%>
+		
 	</div>
 
 
@@ -164,3 +166,7 @@
 
 </body>
 </html>
+<%
+			} catch (Exception e) {
+			}
+		%>
