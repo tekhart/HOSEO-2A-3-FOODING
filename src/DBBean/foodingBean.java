@@ -1327,16 +1327,15 @@ public class foodingBean {
 			
 			
 			// 荑쇰━瑜� �옉�꽦
-			sql = "insert into cookhelp(title,tools,writerid,reg_date,content,thumbnail";
-			sql+=") values(?,?,?,?,?,?)";
+			sql = "insert into cookhelp(title,writerid,reg_date,content,thumbnail";
+			sql+=") values(?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
-			pstmt.setString(2, article.getTools());
-			pstmt.setString(3, article.getWriterid());
-			pstmt.setTimestamp(4, article.getReg_date());
-			pstmt.setString(5, article.getContent());
-			pstmt.setString(6, article.getThumbnail());
+			pstmt.setString(2, article.getWriterid());
+			pstmt.setTimestamp(3, article.getReg_date());
+			pstmt.setString(4, article.getContent());
+			pstmt.setString(5, article.getThumbnail());
 			
 			pstmt.executeUpdate();
 
@@ -1495,7 +1494,6 @@ public class foodingBean {
 				
 				article.setNum(rs.getInt("num"));
 				article.setTitle(rs.getString("title"));
-				article.setTools(rs.getString("tools"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));	 
@@ -1527,7 +1525,6 @@ public class foodingBean {
 					article = new BoardDataBean();
 					article.setNum(rs.getInt("num"));
 					article.setTitle(rs.getString("title"));
-					article.setTools(rs.getString("tools"));
 					article.setWriterid(rs.getString("writerid"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));	 
@@ -1554,14 +1551,13 @@ public class foodingBean {
 
 				 
 					sql="update cookhelp set title=?";
-					sql+=",tools=? ,content=?,thumbnail=? where num=?";
+					sql+=" ,content=?,thumbnail=? where num=?";
 					pstmt = con.prepareStatement(sql);
 
 					pstmt.setString(1, article.getTitle());
-					pstmt.setString(2, article.getTools());
-					pstmt.setString(3, article.getContent());
-					pstmt.setInt(4, article.getNum());
-					pstmt.setString(5, article.getThumbnail());
+					pstmt.setString(2, article.getContent());
+					pstmt.setInt(3, article.getNum());
+					pstmt.setString(4, article.getThumbnail());
 					pstmt.executeUpdate();
 					
 						x= 1;

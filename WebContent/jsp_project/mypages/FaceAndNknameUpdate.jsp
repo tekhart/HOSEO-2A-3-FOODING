@@ -32,17 +32,6 @@
 			article=dbPro.getuserArticle(idlogin);
 			
 			String nk=article.getNkname();
-			String id=article.getId();
-			String pw=article.getPasswd();
-			String email=article.getEmail();
-			String addr=article.getAddrnum();
-			String addre=article.getAddress();
-			String daddr=article.getDetailaddr();
-		   String returnStr="";
-		   for(int i=0; i<pw.length();i++){
-		   if(i<3)returnStr=returnStr+pw.substring(i,i+1);
-		   else returnStr=returnStr+"*";
-		   }
 		%>
 		<div id="maindiv">
 			<%@include file="sidemenu.jsp"%>
