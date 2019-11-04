@@ -51,9 +51,9 @@ input[type=text], input[type=password] {
 	box-sizing: border-box;
 }
 
-button {
+#change {
+	color:white;
 	background-color:#FFBB00;
-	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
@@ -88,7 +88,7 @@ span.idpasswd {
 <div>
 <input type="password" placeholder="현재 비밀번호" name="curPW"><br>
 <input type="password" placeholder="새 비밀번호" name="newPW">
-<button type="submit">변경</button>
+<button id="change" type="submit">변경</button>
 </div>
 </form>
 </center>
