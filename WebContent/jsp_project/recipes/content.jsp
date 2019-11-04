@@ -349,10 +349,7 @@
 														"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
 														'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-													<input type="button" value="삭제" class="bt2" onclick=
-														"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-														'<%=comments.getRe_level()%>',<%= i %>,'deleted')">
+													<input type="button" value="삭제" class="bt2" onclick="location.href='deletecommentpro.jsp?num=<%=comments.getNum() %>&pagenum=<%=pageNum%>'">
 												<%} %>
 												<div class="commentchangeform" id="testid"></div>
 											</td>

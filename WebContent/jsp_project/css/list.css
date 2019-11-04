@@ -851,7 +851,7 @@ padding:5px;
 
 .container3 {
 	width:1150px;
-	height:700px;
+	height:600px;
 	float:left;
 	background-color: #FAE4AD;
 	padding: 5px 20px 15px 20px;
@@ -1264,14 +1264,14 @@ padding:5px;
 
 .check{
 	background-color:white; 
-		font-size:15px;
-		border-color:#ffbb00;
-		height:40px;
-		border-style:solid;
-		cursor: pointer;
-		width: 80px;
-		border-radius:3px; 
-		margin-left:70%;
+	font-size:15px;
+	border-color:#ffbb00;
+	height:40px;
+	border-style:solid;
+	cursor: pointer;
+	width: 80px;
+	border-radius:3px; 
+	margin-left:70%;
 }
 #notice{
 	font-size: 27px;
@@ -1354,13 +1354,15 @@ padding:5px;
 
 
 
-		.botl{
-		border-bottom:1px solid #ffbb00;}
-		.botl1{
-		border-bottom:3px solid #ffbb00;}
-	
-
-.orline1{border-bottom:2px solid #FCCB70;}
+.botl{
+	border-bottom:1px solid #ffbb00;
+}
+.botl1{
+	border-bottom:3px solid #ffbb00;
+}
+.orline1{
+	border-bottom:2px solid #FCCB70;
+}
 
 
 

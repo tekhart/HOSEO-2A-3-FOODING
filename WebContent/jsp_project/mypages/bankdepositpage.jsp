@@ -57,8 +57,8 @@
 					<div class="jumungamsa">주문 감사드립니다(접수 완료)</div>
 					<p> 총 입금하실 금액을 확인하시고, 은행에 입금하여 주세요.</p>
 					<table class="jugamtable">
-						<tr><td>주문번호</td>
-							<td>주문일</td>
+						<tr><td>주문번호</td><td>20191031-0000021</td>
+							<td>주문일</td><td>2019.10.31</td>
 					</table>
 			<br><br> 
 					 <p class="bankinfo" >입금하실 은행정보</p>

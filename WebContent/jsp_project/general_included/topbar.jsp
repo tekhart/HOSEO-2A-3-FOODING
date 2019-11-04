@@ -105,7 +105,7 @@
 		            					<div class="dropdown-content">
 		            						<center>
 			            						<a href="../help_cookhelp/list.jsp">요리 강의</a>
-										        <a href="../help_exrecipe/level.jsp">초보용 레시피</a>
+										        <a href="../help_exrecipe/list.jsp">초보용 레시피</a>
 										        <a href="../help_question/list.jsp">도와줘요!</a>
 										        <a href="../shop/main.jsp">재료구매</a>
 		            						</center>

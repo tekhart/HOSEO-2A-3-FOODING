@@ -43,18 +43,23 @@ body {
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp49916893'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 	var msg;
-	function customer_decided_topay() {
+	function customer_decided_topay(totalprice,buyname,email) {
+		var realprice=totalprice-document.getElementById("pointused_input").value;
+		var name=document.paypageform.deliveryName;
+		var tel=document.paypageform.deliveryTel;
+		var addr=document.paypageform.deliveryAddrnum;
+		var postcode=document.paypageform.deliveryAddress;
 		IMP.request_pay({
 			pg : 'html5_inicis',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '주문명:결제테스트',
-			amount : 14000,
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456'
+			name : buyname,
+			amount : realprice,
+			buyer_email : email,
+			buyer_name : name,
+			buyer_tel : tel,
+			buyer_addr : addr,
+			buyer_postcode : postcode
 		}, function(rsp) {
 			if (rsp.success) {
 				var msg = '결제가 완료되었습니다.';
@@ -98,6 +103,8 @@ body {
 		int bae_song_bee = default_bae_song_bee;
 		foodingBean dbPro = foodingBean.getInstance();
 		String[] selCartIdchkbx = null;
+		String buyName="";
+		String email="";
 		List<productDataBean> articleList = null;
 		try {
 			selCartIdchkbx = request.getParameterValues("CartIdchkbx");
@@ -118,196 +125,115 @@ body {
 			<div class="writetitle1">결제페이지</div>
 
 			<%@include file="sidemenu.jsp"%>
-			<center>
-				<div>
-					<table class="list-table"
-						style="border-spacing: 0px; margin: auto; padding-left: 250px;">
-						<tr>
-							<td align="left"
-								style="text-align: left; font-size: 18pt; padding: 80px 0px 5px 10px;">결제상품(<%=addproductcount%>)
-							</td>
-						</tr>
-						<tr class="list-tableth">
-							<td width="150"
-								style="border-top: 3px solid orange; border-bottom: 2px solid orange;">상품이미지</td>
-							<td width="300"
-								style="border-top: 3px solid orange; border-bottom: 2px solid orange;">상품이름</td>
-							<td width="120"
-								style="border-top: 3px solid orange; border-bottom: 2px solid orange;">판매가</td>
-							<td width="280"
-								style="border-top: 3px solid orange; border-bottom: 2px solid orange;">수량</td>
-							<td width="120"
-								style="border-top: 3px solid orange; border-bottom: 2px solid orange;">포인트적립</td>
-							<td width="100"
-								style="border-top: 3px solid orange; border-bottom: 2px solid orange;">합계</td>
-						</tr>
-						<tbody class="list-tabletd">
-							<%
-								if (selCartIdchkbx == null) {
-							%>
-							<tr>
-								<td colspan="9" style="border-bottom: 3px solid orange;"><br>
-									장바구니가 비었어요! ^~^ <br></td>
-							</tr>
-							<%
-								} else {
-									int decidescontinue = 0;
-									for (int i = 0; i < articleList.size(); i++) {
-										int leftproduct = articleList.size() - i + 1;
-										productDataBean article = articleList.get(i);
-										int realprice = article.getPrice() * (100 - article.getDiscountRate()) / 100;
-										int RealxCountPrice = realprice * article.getProductCount();
-										int ExpectedValueOfAddMile = realprice * article.getProductCount() / 100;
-										totalprice += RealxCountPrice;
-							%>
-							<tr>
-								<td width="150" style="border-bottom: 3px solid orange;">
-								<input type="hidden" name="sendcartids"
-									value="<%=article.getCartId()%>">
-									<div class="bak_item">
-										<div class="pro_img"></div>
-										<div class="pro_nt"></div>
-										<div
-											style="background-image:url('<%=article.getProductThumb()%>');background-size:cover;background-position:center;width:200px;height:120px;"></div>
-									</div></td>
-								<td width="150"
-									style="border-bottom: 3px solid orange; font-size: 16pt;"><%=article.getProductName()%></td>
-								<td width="150"
-									style="border-bottom: 3px solid orange; font-size: 16pt;">
-									<%
-										if (article.getDiscountRate() == 0) {
-									%> <%=article.getPrice()%>원 <%
-									 	} else {
-									 %>
-									<del><%=article.getPrice()%>원
-									</del><%=article.getDiscountRate()%>% off<br> ㄴ><%=realprice%>원
-									<%
-										}
-									%>
-								</td>
-								<td width="200"
-									style="border-bottom: 3px solid orange; font-size: 16pt;">
-									<div>
-										<%=article.getProductCount()%>
-									</div>
-								</td>
-								<td width="150"
-									style="border-bottom: 3px solid orange; font-size: 16pt;"><img
-									src="../img/fork.png" width="15px" height="15px"><%=ExpectedValueOfAddMile%></td>
-								<td width="150"
-									style="border-bottom: 3px solid orange; font-size: 16pt;"><%=RealxCountPrice%>원</td>
-							</tr>
-							<%
-								}
-							%>
-							<tr>
-								<td colspan="2" style="border-bottom: 2px solid orange;"></td>
-								<td colspan="1"
-									style="border-bottom: 2px solid orange; font-size: 16pt;">배송비</td>
-								<td colspan="9"
-									style="border-bottom: 2px solid orange; font-size: 16pt;">
-									<%
-										if (totalprice >= 50000) {
-												bae_song_bee = 0;
-									%> 	<del><%=default_bae_song_bee%>
-											원
-										</del>=><%=bae_song_bee%> 원 
-									<% } else { %>
-									<%=bae_song_bee%> 원 <%
-									}
-								%>
-								<br>
-								</td>
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
-					</table>
-				</div>
-				<br>
-				<table class="row">
+			<div>
+				<table class="list-table"
+					style="border-spacing: 0px; margin: auto; padding-left: 250px;">
 					<tr>
-						<td colspan="2" align="right" width="580px"
-							style="padding-bottom: 50px; padding-left: 280px;">
-							<div class="container">
-								<h3 align="center">주문자 정보</h3>
-								<label for="fname1" class="labelpay">
-								<i class="fa fa-user"></i> 주문하시는분
-								</label>
-								
-								<br>
-								<br> 
-									 <%=topbarArticle.getNkname() %>
-								<br>
-								<br> <label for="email" class="labelpay"> <i
-									class="fa fa-envelope"></i> Email
-								</label>
-								<br>
-								<br>
-								<%=topbarArticle.getEmail() %>
-								<br>
-								<br><br>
-								<br>
-								<h3 align="center">배송지 정보</h3>
-								<label for="fname" class="labelpay">
-									<i class="fa fa-user"></i>
-									받으시는분
-								</label>
-								<br> <br> 
-								<input type="text" id="fname2" name="deliveryName" class="inputtext"
-									placeholder="이름">
-								<br> <br> 
-								
-							</div>
-						</td>
-
-						<td colspan="2" align="center" style="padding-bottom: 50px;">
-							<div class="container2">
-								<h3 align="center">배송지 정보</h3>
-								<label for="fname" class="labelpay">
-									<i class="fa fa-user"></i>
-									전화번호
-								</label>
-								<br> <br> 
-								<input type="text" id="fname2" name="deliveryTel" class="inputtext"
-									placeholder="전화번호">
-								<br> <br> 
-								<label for="city" class="labelpay">
-									<i class="fa fa-institution"></i>
-									주소
-								</label>
-								<br>
-								<br>
-								<input type="text" id="city1" name="deliveryAddrnum"
-									class="inputtext" placeholder="우편번호">
-								<br> <br>
-								<input type="text" id="city2" name="deliveryAddress" class="inputtext"
-									placeholder="주소"><br> <br> <input type="text"
-									id="city3" name="deliveryDetailAdd" class="inputtext" placeholder="상세주소">
-								<br>
-								<br>
-								<label for="state" class="labelpay">배송메시지</label>
-								<input type="text" id="delimessa" name="deliveryMessage" class="inputtext"
-									placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
-							</div>
+						<td align="left"
+							style="text-align: left; font-size: 18pt; padding: 80px 0px 5px 10px;">결제상품(<%=addproductcount%>)
 						</td>
 					</tr>
-				</table>
-				<table style="margin-left: 282px;" width="1148px;">
-					<tr>
-						<td class="container3" colspan="2"
-							style="margin-left: 1px; float: right;">
-							<h3>결제 예정 금액</h3> <label for="fname" class="labelpay"> ₩
-								총 주문금액</label><br>
-						<br>
-							<div class="inputtd2"><%=totalprice + bae_song_bee%></div>
+					<tr class="list-tableth">
+						<td width="150"
+							style="border-top: 3px solid orange; border-bottom: 2px solid orange;">상품이미지</td>
+						<td width="300"
+							style="border-top: 3px solid orange; border-bottom: 2px solid orange;">상품이름</td>
+						<td width="120"
+							style="border-top: 3px solid orange; border-bottom: 2px solid orange;">판매가</td>
+						<td width="280"
+							style="border-top: 3px solid orange; border-bottom: 2px solid orange;">수량</td>
+						<td width="120"
+							style="border-top: 3px solid orange; border-bottom: 2px solid orange;">포인트적립</td>
+						<td width="100"
+							style="border-top: 3px solid orange; border-bottom: 2px solid orange;">합계</td>
+					</tr>
+					<tbody class="list-tabletd">
+						<%
+							if (selCartIdchkbx == null) {
+						%>
+						<tr>
+							<td colspan="9" style="border-bottom: 3px solid orange;"><br>
+								장바구니가 비었어요! ^~^ <br></td>
+						</tr>
+						<%
+							} else {
+								int decidescontinue = 0;
+								for (int i = 0; i < articleList.size(); i++) {
+									int leftproduct = articleList.size() - i + 1;
+									productDataBean article = articleList.get(i);
+									int realprice = article.getPrice() * (100 - article.getDiscountRate()) / 100;
+									int RealxCountPrice = realprice * article.getProductCount();
+									int ExpectedValueOfAddMile = realprice * article.getProductCount() / 100;
+									totalprice += RealxCountPrice;
+									buyName=article.getProductName();
+									email=topbarArticle.getEmail();
+									if(articleList.size()!=1){
+										buyName+=" 외 "+(articleList.size()-1)+"개의 제품";
+									}
+						%>
+						<tr>
+							<td width="150" style="border-bottom: 3px solid orange;">
+							<input type="hidden" name="sendcartids"
+								value="<%=article.getCartId()%>">
+								<div class="bak_item">
+									<div class="pro_img"></div>
+									<div class="pro_nt"></div>
+									<div
+										style="background-image:url('<%=article.getProductThumb()%>');background-size:cover;background-position:center;width:200px;height:120px;"></div>
+								</div></td>
+							<td width="150"
+								style="border-bottom: 3px solid orange; font-size: 16pt;"><%=article.getProductName()%></td>
+							<td width="150"
+								style="border-bottom: 3px solid orange; font-size: 16pt;">
+								<%
+									if (article.getDiscountRate() == 0) {
+								%> <%=article.getPrice()%>원 <%
+								 	} else {
+								 %>
+								<del><%=article.getPrice()%>원
+								</del><%=article.getDiscountRate()%>% off<br> ㄴ><%=realprice%>원
+								<%
+									}
+								%>
+							</td>
+							<td width="200"
+								style="border-bottom: 3px solid orange; font-size: 16pt;">
+								<div>
+									<%=article.getProductCount()%>
+								</div>
+							</td>
+							<td width="150"
+								style="border-bottom: 3px solid orange; font-size: 16pt;"><img
+								src="../img/fork.png" width="15px" height="15px"><%=ExpectedValueOfAddMile%></td>
+							<td width="150"
+								style="border-bottom: 3px solid orange; font-size: 16pt;"><%=RealxCountPrice%>원</td>
+						</tr>
+						<%
+							}
+						%>
+						<tr>
+							<td colspan="2" style="border-bottom: 2px solid orange;"></td>
+							<td colspan="1"
+								style="border-bottom: 2px solid orange; font-size: 16pt;">배송비</td>
+							<td colspan="9"
+								style="border-bottom: 2px solid orange; font-size: 16pt;">
+								<%
+									if (totalprice >= 50000) {
+											bae_song_bee = 0;
+								%> 	<del><%=default_bae_song_bee%>
+										원
+									</del>=><%=bae_song_bee%> 원 
+								<% } else { %>
+								<%=bae_song_bee%> 원 <%
+								}
+							%>
 							<br>
+<<<<<<< HEAD
 						<br> <label for="fname" class="labelpay"> 포인트 <span
 								style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
 						<br> <br>
 							<div style="width: 1148px; float: left;">
-								<input type="text" name="pointused" class="inputtd3"> <span class="won">원</span>
+								<input type="text" name="pointused" id="pointused_input" class="inputtd3"> <span class="won">원</span>
 								<a href="" class="tkdyd3">사용</a>
 							</div> <br>
 						<br>
@@ -330,7 +256,7 @@ body {
 									
 									<div id="creditcard" class="tabcontent">
 										<br><br>
-										<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay()"></div>
+										
 									</div>
 									
 									<div id="Bank Deposit" class="tabcontent">
@@ -345,19 +271,171 @@ body {
 											<option value='농협'>농협 302-1133-2090-11 이혜진</option>
 											
 										</select>
-										<div><input type="submit" class="0" value="결제하기"></div>
+										
 									</div>
 									
-									
 								</table>
+								
 							</div> 
 							
 
 						</td>
 					</tr>
+=======
+							</td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+>>>>>>> refs/remotes/origin/master
 				</table>
-		</form>
+<<<<<<< HEAD
+				
+=======
+			</div>
+			<br>
+			<table class="row">
+				<tr>
+					<td colspan="2" align="right" width="580px"
+						style="padding-bottom: 50px; padding-left: 280px;">
+						<div class="container">
+							<h3 align="center">주문자 정보</h3>
+							<label for="fname1" class="labelpay">
+							<i class="fa fa-user"></i> 주문하시는분
+							</label>
+							
+							<br>
+							<br> 
+								 <%=topbarArticle.getNkname() %>
+							<br>
+							<br> <label for="email" class="labelpay"> <i
+								class="fa fa-envelope"></i> Email
+							</label>
+							<br>
+							<br>
+							<%=topbarArticle.getEmail() %>
+							<br>
+							<br><br>
+							<br>
+							<h3 align="center">배송지 정보</h3>
+							<label for="fname" class="labelpay">
+								<i class="fa fa-user"></i>
+								받으시는분
+							</label>
+							<br> <br> 
+							<input type="text" id="fname2" name="deliveryName" class="inputtext"
+								placeholder="이름">
+							<br> <br> 
+							
+						</div>
+					</td>
 
+					<td colspan="2" align="center" style="padding-bottom: 50px;">
+						<div class="container2">
+							<h3 align="center">배송지 정보</h3>
+							<label for="fname" class="labelpay">
+								<i class="fa fa-user"></i>
+								전화번호
+							</label>
+							<br> <br> 
+							<input type="text" id="fname2" name="deliveryTel" class="inputtext"
+								placeholder="전화번호">
+							<br> <br> 
+							<label for="city" class="labelpay">
+								<i class="fa fa-institution"></i>
+								주소
+							</label>
+							<br>
+							<br>
+							<input type="text" id="city1" name="deliveryAddrnum"
+								class="inputtext" placeholder="우편번호">
+							<br> <br>
+							<input type="text" id="city2" name="deliveryAddress" class="inputtext"
+								placeholder="주소"><br> <br> <input type="text"
+								id="city3" name="deliveryDetailAdd" class="inputtext" placeholder="상세주소">
+							<br>
+							<br>
+							<label for="state" class="labelpay">배송메시지</label>
+							<input type="text" id="delimessa" name="deliveryMessage" class="inputtext"
+								placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table style="margin-left: 282px;" width="1148px;">
+				<tr>
+					<td class="container3" colspan="2"
+						style="margin-left: 1px; float: right;">
+						<h3>결제 예정 금액</h3> <label for="fname" class="labelpay"> ₩
+							총 주문금액</label><br>
+					<br>
+						<div class="inputtd2"><%=totalprice + bae_song_bee%></div>
+						<br>
+					<br> <label for="fname" class="labelpay"> 포인트 <span
+							style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
+					<br> <br>
+						<div style="width: 1148px; float: left;">
+							<input type="text" name="pointused" id="pointused_input" class="inputtd3"> <span class="won">원</span>
+							<a href="" class="tkdyd3">사용</a>
+						</div> <br>
+					<br>
+					<br>
+
+						<div>
+							<table>
+								<tr>
+									<td>
+										<h3>결제 수단</h3>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div
+											style="padding-bottom: 10px; width: 520px; float: left; border-bottom: 1px solid black;">
+											<span class="tablinks"> <input type="radio" name="chk_info" value="신용카드" class="tablinks"
+												onclick="openCity(event, 'creditcard')">신용카드
+											</span> <span class="tablinks" style="float: left; margin-left: 50px;"> <input
+												type="radio" name="chk_info" value="무통장입금" class="tablinks"
+												onclick="openCity(event, 'Bank Deposit')">무통장입금
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div id="creditcard" class="tabcontent">
+											<br><br>
+											<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div id="Bank Deposit" class="tabcontent">
+											<p class="tdpayment">입금자명</p>
+											<input type="text" maxlength="20" class="tdpayinput"
+												style="width: 200px; height: 29px; margin-top: -10px;">
+	
+											<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
+											<select name='bank' class="tdpayinput"
+												style="width: 250px; height: 29px; margin-top: -10px;"><br>
+												<option value='' selected>---------입금은행선택---------</option>
+												<option value='농협'>농협 302-1133-2090-11 이혜진</option>
+												
+											</select>
+											<div><input type="submit" class="0" value="결제하기"></div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+>>>>>>> refs/remotes/origin/master
+		</form>
+<div><input type="submit" class="btpay2" value="결제하기" onclick="customer_decided_topay()></div>
 	</div>
 	<br>
 	<br>

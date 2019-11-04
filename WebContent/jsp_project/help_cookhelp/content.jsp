@@ -136,28 +136,13 @@
 					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"></td>
 				
 </table>
- 
-	<!--    &nbsp;&nbsp;&nbsp;&nbsp;
-	   &nbsp;&nbsp;&nbsp;&nbsp;
-       <input type="button" value="글목록" 
-       onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"> --> 
+
     </td>
   </tr>
 
 </table>
 	<br>
-<!--  <form method="post" name="commentform" action="commentspro.jsp" align="center">
-	
-
-		<%if(session.getAttribute("idlogin")==null){ %>
-			로그인을 하셔야 댓글을 쓸수 있습니다.
-		<%}else{ %>
-		
-		
-<%
-			}
-		}catch(Exception e){} 
- %>-->	
+	<%}catch(Exception e){e.printStackTrace();} %>
 </div>
 
 

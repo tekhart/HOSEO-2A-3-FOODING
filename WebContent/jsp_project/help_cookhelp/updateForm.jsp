@@ -28,6 +28,7 @@
   String pageNum = request.getParameter("pageNum");
   int conturyselected=0;
   int foodtypeselected=0;
+  int difficultyselected=0;
 	try{
 		foodingBean dbPro = foodingBean.getInstance(); 
 		BoardDataBean article =  dbPro.updatecookhelpGetArticle(num);
@@ -59,6 +60,14 @@
 			conturyselected=6;
 		}else if(article.getFoodtype().equals("기타")){
 			conturyselected=7;
+		}
+		
+		if(article.getDifficulty()==1){
+			difficultyselected=1;
+		}else if(article.getDifficulty()==2){
+			difficultyselected=2;
+		}else if(article.getDifficulty()==3){
+			difficultyselected=3;
 		}
 %>
 <div class="writetitle">
@@ -144,6 +153,21 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
     			<%if(foodtypeselected==7){
     				%>selected<%}%>
     				>기타</option>
+			</select>
+			<select name='foodtype'
+				style="ime-mode:inactive;">
+    			<option value='1'
+    			<%if(difficultyselected==1){
+    				%>selected<%}%>
+    				>초급</option>
+    			<option value='2'
+    			<%if(difficultyselected==2){
+    				%>selected<%}%>
+    				>중급</option>
+    			<option value='3'
+    			<%if(difficultyselected==3){
+    				%>selected<%}%>
+    				>상급</option>
 			</select>
 		</td>
 	</tr>
