@@ -51,9 +51,9 @@ input[type=text], input[type=password] {
 	box-sizing: border-box;
 }
 
-button {
+#change {
+	color:white;
 	background-color:#FFBB00;
-	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
@@ -81,6 +81,21 @@ span.idpasswd {
 </head>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
+<<<<<<< HEAD
+
+<div id="maindiv">
+<center>
+<form method="post" action="PWchanged.jsp">
+<div>
+<input type="password" placeholder="현재 비밀번호" name="curPW"><br>
+<input type="password" placeholder="새 비밀번호" name="newPW">
+<button id="change" type="submit">변경</button>
+</div>
+</form>
+</center>
+</div>
+<br><br><br>
+=======
 	<div id="maindiv">
 		<center>
 			<form method="post" action="PWchanged.jsp">
@@ -95,6 +110,7 @@ span.idpasswd {
 	<br>
 	<br>
 	<br>
+>>>>>>> refs/remotes/origin/master
 
 
 

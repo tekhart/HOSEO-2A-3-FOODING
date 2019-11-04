@@ -973,7 +973,7 @@ public class foodingBean {
 			con = getConnection();
 
 			if(type.equals("")) {
-				sql="select count(*) from exrecipe where 1=1";
+				sql="select count(*) from exrecipe where 1=1 ";
 			}else if(type.equals("제목")) {
 				sql="select count(*) from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
 			}else if(type.equals("글쓴이")) {
@@ -987,6 +987,7 @@ public class foodingBean {
 			if(difficulty!=0) {
 				sql+="and difficulty="+difficulty;
 			}
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -1010,22 +1011,19 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			if(type.equals("")) {
-				sql="select * from exrecipe where 1=1";
+				sql="select * from exrecipe where 1=1 ";
 			}else if(type.equals("제목")) {
-				sql="select * from exrecipe where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%') ";
+				sql="select * from exrecipe where (title like '%"+search+"%') ";
 			}else if(type.equals("글쓴이")) {
 				sql="select * from exrecipe where writerid in(select id from user where nkname like '%"+search+"%') ";
-			}else if(type.equals("재료")) {
-				sql="select * from exrecipe where ingredients like '%"+search+"%' ";
-			}else if(type.equals("도구")) {
-				sql="select * from exrecipe where tools like '%"+search+"%' ";
 			}
 			if(difficulty!=0) {
-				sql+="and difficulty="+difficulty+" order by num desc";
+				sql+="and difficulty="+difficulty+" order by num desc limit ?,?";
 			}else {
-				sql+="order by num desc";
+				sql+="order by num desc limit ?,?";
 			}
-			
+
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
@@ -1799,7 +1797,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			pstmt = con.prepareStatement("select count(*) from question	where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+			pstmt = con.prepareStatement("select count(*) from question	where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -1822,7 +1820,7 @@ public class foodingBean {
 			con = getConnection();
 
 			pstmt = con.prepareStatement(
-				"select * from question where (contury like '%"+search+"%' or foodtype like '%"+search+"%' or title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by ref desc, re_step asc limit ?,? ");
+				"select * from question where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by ref desc, re_step asc limit ?,? ");
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
@@ -1837,6 +1835,7 @@ public class foodingBean {
 				 article.setQuesType(rs.getString("quesType"));
 				 article.setContent(rs.getString("content"));
 				 article.setIsComplete(rs.getInt("isComplete"));
+				 article.setReadcount(rs.getInt("readcount"));
 				 article.setReg_date(rs.getTimestamp("reg_date"));
 				 article.setRef(rs.getInt("ref"));
 				 article.setRe_step(rs.getInt("re_step"));
@@ -1901,6 +1900,7 @@ public class foodingBean {
 				 article.setQuesType(rs.getString("quesType"));
 				 article.setContent(rs.getString("content"));
 				 article.setIsComplete(rs.getInt("isComplete"));
+				 article.setReadcount(rs.getInt("readcount"));
 				 article.setReg_date(rs.getTimestamp("reg_date"));
 				 article.setRef(rs.getInt("ref"));
 				 article.setRe_step(rs.getInt("re_step"));
