@@ -30,7 +30,7 @@
      			<%if(isAdmin==1){%>
 		     	<table>
 					<tr>
-						<td onclick="location.href='../adminpage/userban.jsp'">유저관리</td>
+						<td onclick="location.href='../adminpage/userlist.jsp'">유저관리</td>
 						<td onclick="location.href='../adminpage/goods.jsp'">물품등록</td>
 						<td onclick="location.href='../adminpage/jumun.jsp'">물품관리</td>
 					</tr>
@@ -119,7 +119,7 @@
 						            <div class="dropdown-content">
 							            <center>
 							            	<a href="../announces/list.jsp">푸딩규칙</a>
-									        <a href="../mains/event.jsp">이벤트</a>
+									        <a href="../announces/event.jsp">이벤트</a>
 							            </center>
 						        	</div>
 						        </div></center>
@@ -129,8 +129,8 @@
 						            <button class="dropbtn" OnClick="window.location='../mains/faq.jsp'">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
-							             	<a href="../mains/faq.jsp">자주하는 질문</a>
-									        <a href="../mains/ask.jsp">문의사항</a>
+							             	<a href="../customerhelp/faq.jsp">자주하는 질문</a>
+									        <a href="../customerhelp/ask.jsp">문의사항</a>
 							            </center>
 						        	</div>
 						        </div></center>
