@@ -109,7 +109,7 @@ body {
 			e.printStackTrace();
 		}
 	%>
-
+ 
 	<div id="maindiv">
 		<form method="POST" action="jumunok.jsp" name="paypageform">
 			<div class="writetitle1">결제페이지</div>
