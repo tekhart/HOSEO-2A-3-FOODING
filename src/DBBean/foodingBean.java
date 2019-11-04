@@ -303,7 +303,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement(
-				"select * from user");
+				"select * from user where isLeft=0");
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -2763,12 +2763,11 @@ public class foodingBean {
 		}
 		return x;
 	}
-	public int deleteproductArticle(int productId)
+	public void deleteproductArticle(int productId)
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs= null;
-		int x=-1;
 		try {
 			con = getConnection();
 
@@ -2776,13 +2775,11 @@ public class foodingBean {
 				"delete from product where productId=?");
 			pstmt.setInt(1, productId);
 			pstmt.executeUpdate();
-			x= 1; //湲��궘�젣 �꽦怨�
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
-		return x;
 	}
 	
 	public void insertcartArticle(int productId,int productcount,String ownerid)

@@ -1,5 +1,4 @@
 <%@ page import = "DBBean.foodingBean" %>
-<%@ page import = "DBBean.BoardDataBean" %>
 <%@ page import = "DBBean.userDataBean" %>   
 <%@ page import = "java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -53,13 +52,13 @@ for (int i = 0 ; i < userArticle.size(); i++) {
 		<td><%=ua.getNkname() %></td>
 		<td><%=ua.getId() %></td>
 		<td><%=ua.getPasswd() %></td>
-		<td><%=ua.getReg_date() %></td>
+		<td><%=ua.getReg_date()%></td>
 		<td><a href="userupdate.jsp?userid=<%=ua.getId()%>">수정</a></td>
 		<td onclick="okdelete('<%=ua.getId()%>')">삭제</td>
 		<td><a onclick="">결제목록</a></td>
-		</tr>
+	</tr>
 		
-		<%} %>
+<%} %>
 
 <%}catch(Exception e){e.printStackTrace();} %>
 

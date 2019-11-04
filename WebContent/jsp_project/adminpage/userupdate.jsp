@@ -25,9 +25,10 @@
 <%@include file="../general_included/topbar.jsp"%>
 	<%
 		foodingBean dbPro = foodingBean.getInstance();
+		String userid=request.getParameter("userid");
 		userDataBean article = null; 
 		
-		article=dbPro.getuserArticle(idlogin);
+		article=dbPro.getuserArticle(userid);
 
 	%>
 <br><br><br><br>
@@ -40,7 +41,7 @@
 				</div>
 			</td>
 			<td>
-				<div onclick="thumbnailupload()" id="thumbnail" style="background-image:url('../img/defaultface.png');width:200px; height:200px;background-size:cover;background-position:center;">
+				<div onclick="thumbnailupload()" id="thumbnail" style="background-image:url('../img/userface/defaultface.png');width:200px; height:200px;background-size:cover;background-position:center;">
 					이후 프로필 사진
 				</div>
 				<input type="hidden" name="userface" value="../img/defaultface.png">

@@ -69,6 +69,6 @@ try{
 %>
 
 <script type="text/javascript">
-       window.opener.sendingthumb('../img/product/<%=filename%>');
+       window.opener.sendingthumb('../img/userface/<%=filename%>');
        window.close();
 </script>

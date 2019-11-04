@@ -5,7 +5,7 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%!
-	int pageSize = 6;
+	int pageSize = 40;
 	SimpleDateFormat sdf = 	
 		new SimpleDateFormat("yyyy-MM-dd");
 %>
@@ -189,41 +189,41 @@
 		</div>
 		<%@include file="sidemenu.jsp"%>
 		
-		<% if (count == 0) { %>	
-				<table align="center" class="nogul">
-					<tr>
-						<td align="center">
-							상품 준비중입니다!
-									<img src="../img/ding.png" height="335px" width="559px">
-						</td>
-					</tr>
-				</table>
-			<%}else {%>
-				<br>
-				<div style="margin-left:200px;maxwidth:950px">
-				
-				<%	
-					for (int i = 0 ; i < articleList.size(); i++) {
-						productDataBean article = articleList.get(i);
-						int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
-				%>
-				<div class="card">
-					<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:112px;"></div>
-					<p class="writerlong"><%=article.getProductName() %></p>
-					<div class="product_price_html">
-						<%if(article.getDiscountRate()==0){ %>
-							
-						<%}else{ %>
-							<%=article.getDiscountRate()%>% <%=article.getPrice()%>
-						<%}%>
-						<br><%=realprice%>원</div>
-					<p><button id="myBtn" 
-						onclick="ShowDetail(<%=article.getProductId()%>,'<%=article.getProductName()%>',<%=article.getPrice()%>,<%=article.getDiscountRate()%>,'<%=article.getProductThumb()%>')">자세히 보기</button></p>
-				</div>
-		 	<%}%>
-		 	</div>
-		<%}%>
-
+		<div style="margin-left:250px;maxwidth:950px">
+			<% if (count == 0) { %>	
+					<table align="center" class="nogul">
+						<tr>
+							<td align="center">
+								상품 준비중입니다!
+										<img src="../img/ding.png" height="335px" width="559px">
+							</td>
+						</tr>
+					</table>
+				<%}else {%>
+					<br>
+					
+					<%	
+						for (int i = 0 ; i < articleList.size(); i++) {
+							productDataBean article = articleList.get(i);
+							int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
+					%>
+					<div class="card">
+						<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:112px;"></div>
+						<p class="writerlong"><%=article.getProductName() %></p>
+						<div class="product_price_html">
+							<%if(article.getDiscountRate()==0){ %>
+								
+							<%}else{ %>
+								<%=article.getDiscountRate()%>% <%=article.getPrice()%>
+							<%}%>
+							<br><%=realprice%>원</div>
+						<p><button id="myBtn" 
+							onclick="ShowDetail(<%=article.getProductId()%>,'<%=article.getProductName()%>',<%=article.getPrice()%>,<%=article.getDiscountRate()%>,'<%=article.getProductThumb()%>')">자세히 보기</button></p>
+					</div>
+				 	<%}%>
+			 	
+			<%}%>
+		</div>
 				
 		<div id="myModal" class="modal" style="display: none">
 			<div class="modal-content" style="background-color:#eeeeee">

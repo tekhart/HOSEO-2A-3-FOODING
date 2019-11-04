@@ -14,5 +14,5 @@
 %>
 <script>
 	alert("변경 완료되었습니다!");
-	history.go(-1);
+	location.href="userlist.jsp";
 </script>
