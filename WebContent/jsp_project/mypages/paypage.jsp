@@ -76,10 +76,12 @@ body {
 		});
 	}
 	function openCity(evt, cityName) {
-		var i, tabcontent, tablinks;
+		var i, tabcontent, secondtabcontent, tablinks;
 		tabcontent = document.getElementsByClassName("tabcontent");
+		secondtabcontent = document.getElementsByClassName("secondtabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
 			tabcontent[i].style.display = "none";
+			secondtabcontent[i].style.display = "none";
 		}
 		tablinks = document.getElementsByClassName("tablinks");
 		for (i = 0; i < tablinks.length; i++) {
@@ -87,6 +89,7 @@ body {
 					.replace(" active", "");
 		}
 		document.getElementById(cityName).style.display = "block";
+		document.getElementById("second"+cityName).style.display = "block";
 		evt.currentTarget.className += " active";
 	}
 </script>
@@ -346,15 +349,14 @@ body {
 								</tr>
 								<tr>
 									<td>
-										<div id="creditcard" class="tabcontent">
+										<div id="secondcreditcard" class="tabcontent">
 											<br><br>
-											<div><input type="button" class="0" value="결제하기"onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')"></div>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div id="Bank Deposit" class="tabcontent">
+										<div id="secondBank Deposit" class="tabcontent">
 											<p class="tdpayment">입금자명</p>
 											<input type="text" maxlength="20" class="tdpayinput"
 												style="width: 200px; height: 29px; margin-top: -10px;">
@@ -364,9 +366,7 @@ body {
 												style="width: 250px; height: 29px; margin-top: -10px;"><br>
 												<option value='' selected>---------입금은행선택---------</option>
 												<option value='농협'>농협 302-1133-2090-11 이혜진</option>
-												
 											</select>
-											<div><input type="submit" class="0" value="결제하기"></div>
 										</div>
 									</td>
 								</tr>
@@ -375,8 +375,14 @@ body {
 					</td>
 				</tr>
 			</table>
-		</form>
-<div><input type="submit" class="btpay2" value="결제하기" onclick="customer_decided_topay()></div>
+		
+	<div id="creditcard" class="secondtabcontent" style="display:none;margin-left:550px;">
+		<input type="button" class="btpay2" value="결제하기" onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')">
+	</div>
+	<div id="Bank Deposit" class="secondtabcontent" style="display:none;margin-left:550px;">
+		<input type="submit" class="btpay2" value="결제하기">
+	</div>
+</form>
 	</div>
 	<br>
 	<br>

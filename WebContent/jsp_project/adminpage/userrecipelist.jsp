@@ -17,7 +17,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String search=request.getParameter("userid");
-	String pageNum=0;
+	String pageNum="";
 	String searchtype="제목";
 
 	int fame=0;
