@@ -15,14 +15,21 @@
 <style>
 /*when hovering an item:*/
 .autocomplete-items div:hover {
-  background-color: #e9e9e9; 
+  background-color: ##ffbb00;
 }
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-  background-color: DodgerBlue !important; 
+  background-color: #ffbb00 !important; 
+  width:400px;
   color: #ffffff; 
 }
+
+
+
+#myUL div{
+float:left;
+margin-left:3px;}
 </style>
 
 </head>
@@ -87,28 +94,31 @@
 						<label><input type="checkbox" name="customsearch" value="도구:타이머">타이머<br></label>
 					</td>
 				</tr>
-				
+				</table>
+				<table width="900px" style="margin:auto;">
 				<tr>
-					<td colspan="4" class="customsecond">
-						<ul id="myUL"> </ul>
+					<td align="center" height="200px;">
+					<div class="newelementsearchbar" align="left" style="width:400px;height:200px; margin-left:300px; margin-top:10px;">
+						<input type="text" name="myCountry" placeholder="검색..." class="searchbar2" id="myInput" onkeyup="newElemententerkey()">
+					</div>
 					</td>
-					<td class="customsecond">
-						<input type="submit" value="검색" class="bt">
-					</td>
-				</tr>
-				
-				<tr>
-					<td colspan="5" class="customsecond">
-						<table style="width:465px; margin:auto;">
-							<tr>
-								<td>  
-									<input type="text" name="myCountry" placeholder="검색..." class="searchbar" id="myInput" onkeyup="newElemententerkey()">
-								</td>
-							</tr>
-						</table>
+					<td>
+						<div style="width:400px;height:200px; ">
+						<input type="submit" value="검색" class="bt" style="position:relative; top:0px;">
+						</div>
 					</td>
 				</tr>
 			</table>
+			<table>
+				<tr>
+					<td>
+						<div>
+						<ul id="myUL" style="margin-left:400px; width:600px;"> </ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
 			<script>
 			function newElemententerkey() {
 			    if (window.event.keyCode == 13) {
@@ -270,7 +280,7 @@
 				}
 			
 				/*An array containing all the country names in the world:*/
-				var countries = ["아이스크림","당근","두부","콩","치킨","피자","짜장면","탕수육","밀가루","피망","박력분","오이","참치","양상추","양배추","감자","고구마","귤","곤약","스파게티","블루베리","꿀","파인애플","사과","오렌지","한라봉","멜론","수박","바나나","고기","키위","목살","안심","등심","삼겹살","양파","토마토","대파","쪽파","감","아보카도","토스트","참외","방울토마토","밤","복숭아","살구","자두","앵두","망고","딸기","물","무화과","자몽","피스타치오","연어","시나몬","계피","땅콩","가지","호박","브로콜리","상추","깻잎","대추","배추","시금치","참기름","부추","죽순","옥수수","팝콘","치즈","우엉","마","고구마","연근","무","미나리","미역","김","다시마","멸치","앞다리살","뒷다리살","갈비","오징어","문어","김치","새우","게","갈치","고등어","넙치","대구","농어","미더덕","복어","깨","오이지","후추","소금","케찹","머스타드","설탕","미림","조미료","계란","우유","라면","콩나물","식초","간장","버터","떡","식용유","식빵","초콜릿","고춧가루","베이킹파우더","굴소스","마요네즈","햄","스팸","마늘","치킨스톡","비엔나소시지"];
+				var countries = ["아이스크림","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","당근","두부","콩","치킨","피자","짜장면","탕수육","밀가루","피망","박력분","오이","참치","양상추","양배추","감자","귤","곤약","스파게티","블루베리","꿀","파인애플","사과","오렌지","한라봉","멜론","수박","바나나","고기","키위","목살","안심","등심","삼겹살","양파","토마토","대파","쪽파","감","아보카도","토스트","참외","방울토마토","밤","복숭아","살구","자두","앵두","망고","딸기","물","무화과","자몽","피스타치오","연어","시나몬","계피","땅콩","가지","호박","브로콜리","상추","깻잎","대추","배추","시금치","참기름","부추","죽순","옥수수","팝콘","치즈","우엉","마","고구마","연근","무","미나리","미역","김","다시마","멸치","앞다리살","뒷다리살","갈비","오징어","문어","김치","새우","게","갈치","고등어","넙치","대구","농어","미더덕","복어","깨","오이지","후추","소금","케찹","머스타드","설탕","미림","조미료","계란","우유","라면","콩나물","식초","간장","버터","떡","식용유","식빵","초콜릿","고춧가루","베이킹파우더","굴소스","마요네즈","햄","스팸","마늘","치킨스톡","비엔나소시지"];
 			
 				/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 				autocomplete(document.getElementById("myInput"), countries);
