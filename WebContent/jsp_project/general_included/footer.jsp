@@ -111,7 +111,7 @@
 	<table width="1000px" style="margin:auto; font-size:20px; padding:10px;">
 		<tr>
 			<td rowspan="2"><img src="../img/fooding.png" id="logo"  /></td>
-			<td><a class="footera" href="../mains/ask.jsp">고객센터</a></td>
+			<td><a class="footera" href="../customerhelp/ask.jsp">고객센터</a></td>
 			<td><a class="footera" href="https://github.com/tekhart/HOSEO-2A-3-FOODING" target="_blank">GIT</a></td>
 			<td><a class="footera" href="https://blog.naver.com/fooding2019_2a03" target="_blank">블로그</a></td>
 		</tr>
