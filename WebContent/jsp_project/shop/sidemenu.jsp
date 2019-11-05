@@ -5,17 +5,18 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="../css/list.css">
 <style>
 body {
-	font-family: "Lato", sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
 }
 
 /* Fixed sidenav, full height */
 .sidenav {
 float:left;
 	height: 1000px;
-	width: 250px;
+	width: 230px;
 	background-color: white;
 	padding-top: 20px;
 }
@@ -28,7 +29,7 @@ float:left;
 	
 	display: block;
 	border: none;
-	background: none;
+	back.ground: none;
 	width: 100%;
 	text-align: left;
 	cursor: pointer;
@@ -58,9 +59,10 @@ float:left;
 	display: none;
 }
 
-
-
-
+.dropdown-btn{font-size:30px;}
+.apsb2 a:not(.wofyehrn){background-color:white;}
+.wofyehrn{background-color:orange; height:50px; line-height:40px;}
+.wofyehrnp{ color:white; font-size:30px;}
 
 /* Optional: Style the caret down icon */
 .fa-caret-down {
@@ -76,20 +78,17 @@ float:left;
 </style>
 </head>
 <body>
+
 <div class="sidenav">
-	
-	<button class="dropdown-btn" id="apsb">메뉴
-		<i class="fa fa-caret-down"></i>
-	</button>
+
+<button class="dropdown-btn" id="apsb">메뉴
+<i class="fa fa-caret-down"></i>
+</button>
 	<div id="apsb2">
 		<a href="main.jsp">상점 메인</a>
-		<a href="#">내 포인트</a>
-		<a href="#">장바구니</a>
-	</div>
- 	<button class="dropdown-btn" id="wofy" >
- 		재료 <i class="fa fa-caret-down"></i>
- 	</button>
-	<div id="wofy2">
+		<a href="../mypages/point.jsp">내 포인트</a>
+		<a href="../mypages/shopbasket.jsp">장바구니</a>
+		<a class="wofyehrn" href="main.jsp?isTool=2"><span class="wofyehrnp">재료</span></a>
 		<a href="main.jsp?productType=1">과일</a> 
 		<a href="main.jsp?productType=2">채소 </a>
 		<a href="main.jsp?productType=3">축산/계란</a> 
@@ -100,23 +99,18 @@ float:left;
 		<a href="main.jsp?productType=8">장/소스/드레싱/식초</a> 
 		<a href="main.jsp?productType=9">유제품/아이스크림</a> 
 		<a href="main.jsp?productType=10">냉장/냉동/간편식</a>
-	</div>
-	<button class="dropdown-btn" id="ehrn">
-		도구<i class="fa fa-caret-down"></i>
-	</button>
-	<div id="ehrn2">
-	<a href="main.jsp?productType=11">주방가전</a> 
-	<a href="main.jsp?productType=12">냄비/프라이팬</a> 
-	<a href="main.jsp?productType=13">칼/도마</a> 
-	<a href="main.jsp?productType=14">테이블웨어</a> 
-	<a href="main.jsp?productType=15">밀폐용기</a> 
-	<a href="main.jsp?productType=16">주방수납/정리</a> 
-	<a href="main.jsp?productType=17">주방조리도구</a> 
-	<a href="main.jsp?productType=18">주방잡화</a> 
-	<a href="main.jsp?productType=19">일회용품</a>
+		<a class="wofyehrn" href="main.jsp?isTool=1"><span class="wofyehrnp">도구</span></a>
+		<a href="main.jsp?productType=11">주방가전</a> 
+		<a href="main.jsp?productType=12">냄비/프라이팬</a> 
+		<a href="main.jsp?productType=13">칼/도마</a> 
+		<a href="main.jsp?productType=14">테이블웨어</a> 
+		<a href="main.jsp?productType=15">밀폐용기</a> 
+		<a href="main.jsp?productType=16">주방수납/정리</a> 
+		<a href="main.jsp?productType=17">주방조리도구</a> 
+		<a href="main.jsp?productType=18">주방잡화</a> 
+		<a href="main.jsp?productType=19">일회용품</a>
 	</div>
 </div>
-
 
 <script>
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */

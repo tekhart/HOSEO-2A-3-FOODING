@@ -185,7 +185,7 @@
 <body>
 	<div id="maindiv">
 		<div class="writetitle1">
-			재료구매&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="main.jsp?isTool=2">재료</a>|<a href="main.jsp?isTool=1">도구</a>
+			재료구매
 		</div>
 		<%@include file="sidemenu.jsp"%>
 		
@@ -214,9 +214,9 @@
 							<%if(article.getDiscountRate()==0){ %>
 								
 							<%}else{ %>
-								<%=article.getDiscountRate()%>% <%=article.getPrice()%>
+								<%=article.getDiscountRate()%>% <span style="text-decoration:line-through; align:right;"> <%=article.getPrice()%></span>
 							<%}%>
-							<br><%=realprice%>원</div>
+							<br> <%=realprice%>원</div>
 						<p><button id="myBtn" 
 							onclick="ShowDetail(<%=article.getProductId()%>,'<%=article.getProductName()%>',<%=article.getPrice()%>,<%=article.getDiscountRate()%>,'<%=article.getProductThumb()%>')">자세히 보기</button></p>
 					</div>
@@ -246,7 +246,7 @@
 						<td>
 							<form name="inputproductcountNumber">
 								<input type="hidden" name="this_is_just_for_save">
-								<input type="number" value="1" name="inputproductCount" size="2" min="1" max="100" class="proquantity">
+								수량 : <input type="number" value="1" name="inputproductCount" size="2" min="1" max="100" class="proquantity">
 							</form>
 						</td>
 					</tr>

@@ -39,9 +39,9 @@
 <div id="maindiv">
 <div class="writetitle1">
 개인정보 관리</div>
-<center>
-	<%@include file="sidemenu.jsp"%>
 
+	<%@include file="sidemenu.jsp"%>
+<center>
 	<div style="margin:auto;">
 			<%	
 	    		foodingBean dbPro = foodingBean.getInstance();
