@@ -61,10 +61,10 @@
 			
 			<fieldset>
 			<legend>프로필</legend>
-			<table width="80%" height="250px" style="font-size:25px; text-align:center;">
+			<table width="80%" height="250px" style="font-size:20px; text-align:center;">
 				<tr>
 					<td colspan="2">
-						다른 사람들에게 보여지는 정보입니다<br>
+						* 다른 사람들에게 보여지는 정보입니다<br>
 						&nbsp;
 					</td>
 				</tr>
@@ -84,7 +84,7 @@
 			
 			<fieldset>
 				<legend>내 계정</legend>
-				<table width="80%" height="250px" style="font-size:25px; text-align:center;">
+				<table width="80%" height="250px" style="font-size:22px; text-align:center;">
 					<tr>
 						<td width="50%">
 							<b>아이디</b>
@@ -109,7 +109,7 @@
 			
 			<fieldset>
 			<legend>주소 및 배송지</legend>
-			<table width="80%"  height="250px" style="font-size:25px; text-align:center;">
+			<table width="80%"  height="250px" style="font-size:22px; text-align:center;">
 				<tr>
 					<td width="30%">
 						<b>이메일</b>

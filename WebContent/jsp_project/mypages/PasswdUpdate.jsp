@@ -74,10 +74,11 @@ function check(){
 
 <div id="maindiv">
 	<%@include file="sidemenu.jsp"%>
-	<br><br><br><br>
+	<br><br><br><br><br>
+	<form action=PasswdUpdatePro.jsp method="post" name="register">
 	<fieldset style="margin:auto;">
-		<form action=PasswdUpdatePro.jsp method="post" name="register">
-				<legend>계정 비밀번호 변경</legend>
+		
+				<legend>비밀번호 변경</legend>
 				<input type="hidden" value="<%=idlogin %>" name="id">
 				<table width="80%" height="250px" style="font-size:25px; text-align:center;">
 					<tr>
@@ -86,6 +87,7 @@ function check(){
 							<input class="signupinputs" type="password" placeholder="새 비밀번호 " name="passwd" onkeyup="Passwdcheck();">
 						</td>
 					</tr>
+				
 					<tr>
 						<td style="text-align:left;">
 							<span id="passwdimg"></span><span id="passwdcheck"></span>
@@ -105,6 +107,13 @@ function check(){
 				</table>
 				<input  type="button" onclick="check();" value="수정" class="findbutton">
 			</form>
+			<fieldset>
+<legend>안전하게 비밀번호를 관리하는 법!</legend>
+1. 이용하시는 사이트들의 아이디/비밀번호를 가급적 다르게 설정해주세요.<br>
+2. ID와 다른 비밀번호를 사용해주세요.<br>
+3. 주기적으로 비밀번호를 변경한다면 해킹의 위험을 줄일 수 있어요.<br>
+4. 친구 또는 주변 사람들과 계정을 함께 사용하면 안돼요.</fieldset>
+			
 		</fieldset>
 
 </div>

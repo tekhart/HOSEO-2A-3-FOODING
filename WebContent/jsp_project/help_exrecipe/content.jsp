@@ -163,14 +163,14 @@ function youreally(){
 	<div id="maindiv2">
 		
 
-		<table style="margin: auto;" class="orangeline1">
+		<table style="margin: auto;" class="contenttable">
 			<tr>
 				<td class="orangeline11" width="1000px" height="100px"
 					style="text-align: center;" colspan="2"><h2><%=article.getTitle()%></h2></td>
 			</tr>
-			<tr>
-				<td class="orangeline1"><%=foodingbean.findnkname(article.getWriterid()) %></td>
-				<td width="500px" style="text-align: right;" class="orangeline1"><%= sdf.format(article.getReg_date())%></td>
+			<tr height="30px" style="color:#585858;">
+				<td class="orline1" style="text-align: right;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+				<td width="200px" style="text-align: right;" class="orline1"><%= sdf.format(article.getReg_date())%></td>
 			</tr>
 			
 			<tr class="orangeline1">

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../css/list.css">
 <style>
 body {
-font-family: 'Nanum Gothic', sans-serif;
+font-family: "Lato", sans-serif;
 }
 
 /* Fixed sidenav, full height */
