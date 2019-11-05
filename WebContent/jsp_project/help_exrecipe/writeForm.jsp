@@ -118,7 +118,7 @@
 			</tr>
 			
 				<tr><td></td>
-				<td align="left" >
+				<td align="center" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
 					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">

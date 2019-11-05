@@ -115,16 +115,18 @@
 			<div class="writetitle1">프로필 이메일/주소 변경</div>
 			<%@include file="sidemenu.jsp"%>
 			<form method="post" action="EmailAndZipUpdatePro.jsp" >
-				<fieldset style="margin:auto;">
+				<fieldset style="margin:auto; width:500px;" > 
 					<legend>프로필</legend>
 					<input type="hidden" name="id" value="<%=idlogin %>">
 					
-					<table width="80%" height="250px" style="font-size:25px; text-align:center;">
+					<table width="80%" height="250px" align="center" style="font-size:20px; text-align:center;">
 						<tr>
-							<td colspan="2">다른 사람들에게 보여지는 정보입니다<br>&nbsp;</td>
-						</tr>
-						<tr>
-							<td>이메일</td>
+							<td colspan="2">* 다른 사람들에게 보여지는 정보입니다<br>&nbsp;</td>
+						</tr>  
+						
+					<br>
+						<tr>  
+							<td style="text-align:left;">이메일</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -140,7 +142,7 @@
 							</td>
 						</tr>
 						<tr> 
-							<td>우편번호</td>
+							<td style="text-align:left;">우편번호</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -151,7 +153,7 @@
 						</tr>
 						<tr><td></td><td>&nbsp;</td></tr>
 						<tr>
-							<td>주소</td>
+							<td style="text-align:left;">주소</td>
 						</tr>
 						<tr>
 							<td colspan="2">
@@ -159,7 +161,10 @@
 							</td>
 						</tr>
 					</table>
-					<input type="submit" value="수정" class="findbutton">
+					<br>
+				<div align="right">
+					<input type="submit" value="수정" class="findbutton" style="border:1px solid #ffbb00;">
+				</div>
 				</fieldset>
 			</form>
 			

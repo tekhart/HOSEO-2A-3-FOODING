@@ -74,36 +74,30 @@ function check(){
 
 <div id="maindiv">
 	<%@include file="sidemenu.jsp"%>
-	<br><br><br><br>
+	<br><br><br><br><br>
 	<fieldset style="margin:auto;">
 		<form action=PasswdUpdatePro.jsp method="post" name="register">
 				<legend>계정 비밀번호 변경</legend>
 				<input type="hidden" value="<%=idlogin %>" name="id">
-				<table width="80%" height="250px" style="font-size:25px; text-align:center;">
-					<tr>
-						<td width="50%">
+				<table width="100%" height="350px" style="font-size:25px; text-align:center; ">
+					<tr width="100%" align="center" >
+						<td style="padding-top:50px;">
 							<b>새 비밀번호</b><br>
 							<input class="signupinputs" type="password" placeholder="새 비밀번호 " name="passwd" onkeyup="Passwdcheck();">
 						</td>
 					</tr>
+				
 					<tr>
-						<td style="text-align:left;">
-							<span id="passwdimg"></span><span id="passwdcheck"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
+						<td style="padding-bottom:50px;">
 							<b>새 비밀번호 확인</b><br>
 							<input class="signupinputs" type="password" placeholder="새 비밀번호 확인" name="repasswd" onkeyup="Repasswdcheck();">
 						</td>
 					</tr>
-					<tr>
-						<td style="text-align:left;">
-							<span id="repasswdimg"></span><span id="repasswdcheck"></span>
-						</td>
-					</tr>
+					
 				</table>
-				<input  type="button" onclick="check();" value="수정" class="findbutton">
+				<div align="right"> 
+					<input  type="button" onclick="check();" value="수정" class="findbutton">
+				</div>
 			</form>
 		</fieldset>
 

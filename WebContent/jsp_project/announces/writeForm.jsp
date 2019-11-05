@@ -7,7 +7,7 @@
 		
 		
 		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../css/list.css">
 		<link rel="stylesheet" type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<link rel="shortcut icon" href="../img/favicon.ico">
 		<link rel="icon" href="../img/favicon.ico">
@@ -38,8 +38,8 @@
 				}
 				idlogin=(String)session.getAttribute("idlogin");
 		%>
-		<div class="writetitle">
-			레시피 작성
+		<div class="writetitle1">
+			요리 강의 작성
 		</div>
 		
 		<div id="space">
@@ -57,24 +57,26 @@
 				
 				</td>
 			</tr>
-			<tr>
-				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-				<td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
-				 style="ime-mode:normal;"></td>
-			</tr>
 			
-			<tr><td align="center">분류</td><td>
-				<select name='isEvent'
-						style="ime-mode:inactive;">
+				
+				<tr><td align="center">분&nbsp;&nbsp;&nbsp;류</td><td>
+					<select name='isEvent'
+						style="ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: #c0c0c0; font-size: 12pt; color:#6f6f6f; font-family: Bauhaus ITC;">
 						<option value='' selected disabled hidden >-- 선택 --</option>
 		    			<option value='1'>공지사항</option>
 		    			<option value='0'>이벤트</option>
 		    			
 					</select>
-				</td></tr><tr>
+				</td></tr>
 				
+			<tr>
+				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+				<td width="330" align="left">
+				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
+				 style="ime-mode:normal;"></td>
 			</tr>
+		
+				
 			<tr>
 				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 				<td align="left">
@@ -82,7 +84,7 @@
 			</tr>
 			
 				<tr><td></td>
-				<td align="left" >
+				<td align="center" >
 					<input type="button" id="button123" value="확인" onclick="Editor.save();">
 					<input type="reset" id="button123" value="다시 작성">
 					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">

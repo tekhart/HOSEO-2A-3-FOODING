@@ -57,7 +57,9 @@
 							</td>
 						</tr>
 					</table>
+				<div style="padding-left:50px;">
 					<input type="submit" value="수정" class="findbutton">
+				</div>
 				</fieldset>
 			</form>
 			
