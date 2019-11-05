@@ -91,34 +91,10 @@ border-bottom:1px solid orange;
     display: inline-block;
 }
 
-<<<<<<< HEAD
-
-
-
 
 .tooltip {
 	position: relative;
-=======
-points_hovering_span { 
-    display: block;
-    width: 80px;
-    padding: 2px 16px;
-    cursor: pointer;
-}
-.arrow_box {
-  display: none; 
-  position: absolute;
-  width: 150px;
-  padding: 8px;
-  margin-top:5px;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;  
-  border-radius: 8px;
-  background: white;
-  border:1px solid black;
-  color: black;
-  font-size: 16px;
->>>>>>> refs/remotes/fooding/master
+
 }
 
 .tooltip .tooltiptext {
@@ -200,25 +176,13 @@ points_hovering_span {
 				<div class="row3"  style="padding-top:80px;margin-left:150px;"> 
 						<div class="forkpoint" style="border: 3px solid #ffc637; border-radius:50px 50px 50px 50px;">    
 							<table> 
-<<<<<<< HEAD
+
 								<tr><td style="width:800px; padding-left:25px; height:50px; vertical-align:top; ">
 										<div class="tooltip"><points_hovering_span id="points_hovering_points_hovering_span"><img id="forkimage" src="../img/forkc.png" ></points_hovering_span> 
 										    
 										    <span class="tooltiptext">게시글 작성, 재료구매시<br>포인트 지급해드려요!</span>
 										 </td></tr>  
-=======
-								<tr>
-									<td style="width:800px; padding-left:25px; height:50px; vertical-align:top; ">
-										<div id="menu">
-											<points_hovering_span id="points_hovering_points_hovering_span">
-												<img id="forkimage" src="../img/forkc.png" >
-											</points_hovering_span> 
-										   	<p class="arrow_box" id="arrow_box">게시글 작성, 재료 구매 시 포인트 지급해드려요!</p>
-										 </div>
-									</td>
-								</tr>  
-								
->>>>>>> refs/remotes/fooding/master
+
 								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트</h3></div></td></tr>
 									<tr><td align="center" style="width:800px; height:140px; vertical-align:top; ">
 									<div  class="forkpoint3" style="border: 3px solid #ffc637; border-radius:30px 30px 30px 30px;"><%=point %> P</div></td></tr>
