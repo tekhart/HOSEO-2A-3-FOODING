@@ -3,12 +3,14 @@
 <!DOCTYPE html>
 <html>
 <style>
-#mydiv {
+#mydiv22{
   top:600px;
-  left:1600px;
-  z-index: 9;
+  left:1500px;
+  z-index: 500;
   background-color: #f1f1f1;
   text-align: center;
+  width:100px;
+  height:180px;
   border: 1px solid #d3d3d3;
   position: fixed;
 }
@@ -46,21 +48,19 @@
 </style>
 <body>
 
-<div id="mydiv">
+<div id="mydiv22">
 <div class="sproutdiv"><img class="sprout" src="../img/sprout.png"></div>
   <div id="mydivheader">간편 메뉴</div>
   
-  <pre>상점 메인</pre>
-  <pre>내 포인트</pre>
-  <pre>장바구니</pre>
-  <pre> </pre>
+  <p><a href="../shop/main.jsp">상점메인</a></p>
+  <p><a href="../mypages/point.jsp">내포인트</a></p>
+  <p><a href="../mypages/shopbasket.jsp">장바구니</a></p>
   
-  <pre id="TopButton" class="triangle-up" style="cursor:pointer;">  맨 위로</pre>
 </div>
 
 <script>
 //Make the DIV element draggagle:
-dragElement(document.getElementById("mydiv"));
+dragElement(document.getElementById("mydiv22"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -103,9 +103,6 @@ function dragElement(elmnt) {
   }
 }
 
-$("#TopButton").click(function() {
-    $('html').animate({scrollTop : 0}, 600);
-});
 </script>
 
 </body>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import = "DBBean.foodingBean" %>
-<%@ page import = "DBBean.BoardDataBean" %>
-<%@ page import = "DBBean.commentDataBean" %>
-<%@ page import = "java.text.SimpleDateFormat" %>
-<%@ page import = "java.util.List" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="DBBean.foodingBean"%>
+<%@ page import="DBBean.BoardDataBean"%>
+<%@ page import="DBBean.commentDataBean"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.List"%>
 <%!
     int commentpageSize = 10;
     SimpleDateFormat sdf = 
@@ -30,13 +30,7 @@
 	    int endRow = currentPage * commentpageSize;
 	    int count = 0;
 	    List<commentDataBean> commentList = null;
-	    count = dbPro.getcookhelpCommentArticleCount(num);
-	    
-	    if (count > 0) {
-	        commentList = dbPro.getcookhelpCommentsArticles(startRow, commentpageSize,num);
-	    }
-	    
-%> 
+%>
 
 <!DOCTYPE html>
 <html>
@@ -49,17 +43,12 @@
 <link rel="icon" href="../img/favicon.ico">
 
 <style>
-
-
-
-
-
 </style>
 <title>게시판, 글 보기</title>
 
 
-	
-	
+
+
 <script type="text/javascript">
 	function AnsUpdDelComment(num,content,ref,re_step,
 			re_level,counter,selected){
@@ -87,68 +76,70 @@
 </script>
 </head>
 <body id="body" onload="initComparisons()">
-<%@include file="../general_included/topbar.jsp"%>
+	<%@include file="../general_included/topbar.jsp"%>
 
-<div id="maindiv2">
+	<div id="maindiv2">
 
-<table  class="contenttable">   
-	<tr>
-		<td width="500px" rowspan="2" height="100px" align="center" class="orangeline11" 
-			style="text-align:center;"><h2><%=article.getTitle()%></h2></td> 
-		<td width="100px" class="orangeline111" style="color:#e0e0e0; font-size:30px; text-align:right;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
-	</tr>
-	<tr> 
-		<td colspan="2" style="color:#e0e0e0; font-size:30px; text-align:right;" class="orangeline1"><%=article.getReadcount()%>view</td>
-	</tr>
+		<table class="contenttable">
+			<tr>
+				<td width="500px" rowspan="2" height="100px" align="center"
+					class="orangeline11" style="text-align: center;"><h2><%=article.getTitle()%></h2></td>
+				<td width="100px" class="orangeline111"
+					style="color: #e0e0e0; font-size: 30px; text-align: right;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+			</tr>
+			<tr>
+				<td colspan="2"
+					style="color: #e0e0e0; font-size: 30px; text-align: right;"
+					class="orangeline1"><%=article.getReadcount()%>view</td>
+			</tr>
 
-		<tr	class="orangeline">
-						<td colspan="2"	height="600px" >
-							<table width="1150px" style="margin:auto; margin-top:15px;
-								   margin-bottom:15px; table-layout: fixed; word-wrap:break-word; border-collapse:collapse;">
-								<tr>
-									<td style="vertical-align:text-top;">
-										<pre><%=article.getContent()%></pre>
-									</td>
-								</tr>
-							</table>
-						</td>
-						
-	</tr>
-	<%
+			<tr class="orangeline">
+				<td colspan="2" height="600px">
+					<table width="1150px"
+						style="margin: auto; margin-top: 15px; margin-bottom: 15px; table-layout: fixed; word-wrap: break-word; border-collapse: collapse;">
+						<tr>
+							<td style="vertical-align: text-top;"><pre><%=article.getContent()%></pre>
+							</td>
+						</tr>
+					</table>
+				</td>
+
+			</tr>
+			<%
 						if (article.getWriterid().equals(idlogin)) {
 					%>
 			<tr>
-	
-					<td colspan="2">
-					<input type="button" value="글수정" class="findbutton"
+
+				<td colspan="2"><input type="button" value="글수정"
+					class="findbutton"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="글삭제" class="findbutton"
-					onclick="youreally()">
-					</td> 
-					
+					onclick="youreally()"></td>
+
 			</tr>
-					<%}else{%>
-						
-						<%}%>
+			<%}else{%>
 
-				<tr height="60px">
-					<td colspan="2"  class="orangeline11"><input type="button" value="글목록" class="smallbt" style="float:right; border:1px solid #ffbb00;"
+			<%}%>
+
+			<tr height="60px">
+				<td colspan="2" class="orangeline11"><input type="button"
+					value="글목록" class="smallbt"
+					style="float: right; border: 1px solid #ffbb00;"
 					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"></td>
-				
-</table>
+		</table>
 
-    </td>
-  </tr>
+		</td>
+		</tr>
 
-</table>
-	<br>
-	
-</div>
+		</table>
+		<br>
 
+	</div>
 
 
-<%@include file="../general_included/footer.jsp"%>
-<script>
+
+	<%@include file="../general_included/footer.jsp"%>
+	<script>
 
 </script>
 </body>

@@ -9,11 +9,7 @@
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
 <style>
-
-
-
-
-
+#text {display:none;color:red}
 </style>
 
 <title>Sign in</title>
@@ -57,7 +53,10 @@ function enterkey() {
 		<br><br><br><br><br><br>
 			<div>
 				<input class="logininputs" type="text" placeholder="아이디 " name="id" onkeyup="enterkey();"><br><br>
-				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd" onkeyup="enterkey();"><br><br>
+				<input class="logininputs" type="password" placeholder="비밀번호" name="passwd" onkeyup="enterkey();"  id="myInput">
+				<br>
+				<p id="text">Caps lock 이 켜져있습니다!</p>
+				<br>
 			<button class="loginbutton" type="button" onclick="Login();">로그인</button>
 			</div><br><br>
 			<span class="idpasswd"><a class="logina" href="findID.jsp">아이디</a> / <a class="logina" href="findPW.jsp">비밀번호 찾기</a></span>
@@ -70,5 +69,17 @@ function enterkey() {
 <br>
 
 <%@include file="../general_included/footer.jsp"%>
+<script>
+var input = document.getElementById("myInput");
+var text = document.getElementById("text");
+input.addEventListener("keyup", function(event) {
+
+if (event.getModifierState("CapsLock")) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none"
+  }
+});
+</script>
 </body>
 </html>

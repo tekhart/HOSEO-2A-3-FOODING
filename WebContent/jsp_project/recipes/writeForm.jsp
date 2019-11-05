@@ -23,7 +23,7 @@
 
 	}
 	function thumbnailupload(){
-		window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+		window.open("../gereral_included/thumbUpload/fileForm.jsp?storeplace=uploaded", "a", "width=400, height=300, left=100, top=50"); 
 	}
 </script>
 
@@ -209,7 +209,16 @@
 				form.createField(textarea);
 				return true; 
 			}
-
+			
+			jQuery(document).ready(function($) {
+			    var checkload = true;
+			    $("#btn_submit").click(function () {
+			        checkload = false;
+			    });
+			    $(window).on("beforeunload", function () {
+			        if (checkload == true) return "정말로 나가시겠습니까?";
+			    });
+			});
 		</script>
 </body>
 </html>

@@ -16,7 +16,7 @@
 
 	}
 	function thumbnailupload(){
-		window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+		window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=userface", "a", "width=400, height=300, left=100, top=50"); 
 	}
 </script>
 </head>

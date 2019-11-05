@@ -1589,135 +1589,9 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public void insertcookhelpCommentsArticle(commentDataBean article,int rootin) 
-				throws Exception {
-			con = null;
-			pstmt = null;
-			rs = null;
-
-			int num=article.getNum();
-			int ref=article.getRef();
-			int re_step=article.getRe_step();
-			int re_level=article.getRe_level();
-			int maxNumber=0;
-
-			String sql="";
-
-			try {
-				con = getConnection();
-
-				pstmt = con.prepareStatement("select max(num) from cookhelp_comment");
-				rs = pstmt.executeQuery();
-				
-				if (rs.next())
-					maxNumber=rs.getInt(1)+1;
-				else
-					maxNumber=1; 
-				
-				if (num!=0) {	
-					sql="update cookhelp_comment set re_step=re_step+1 ";
-					sql += "where ref=? and re_step >? and rootin=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, ref);
-				pstmt.setInt(2, re_step);
-				pstmt.setInt(3, rootin);
-					pstmt.executeUpdate();
-					re_step=re_step+1;
-					re_level=re_level+1;
-				 }else{
-						ref=maxNumber;
-					re_step=0;
-					re_level=0;
-				 }	
-				
-				
-				// 荑쇰━瑜� �옉�꽦
-				sql = "insert into cookhelp_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
-				sql+=") values(?,?,?,?,?,?,?)";
-
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rootin);
-				pstmt.setString(2, article.getWriterid());
-				pstmt.setTimestamp(3, article.getReg_date());
-				pstmt.setInt(4, ref);
-				pstmt.setInt(5, re_step);
-				pstmt.setInt(6, re_level);
-				pstmt.setString(7, article.getContent());
-				
-				pstmt.executeUpdate();
-				pointupdate(article.getWriterid(),5,"게시글 작성");
-			} catch(Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				DBclose();
-			}
-		}
-	public List<commentDataBean> getcookhelpCommentsArticles(int start, int end,int num)
-				throws Exception {
-		 con = null;
-		 pstmt = null;
-		 rs = null;
-		 List<commentDataBean> articleList=null;
-		 try {
-			 con = getConnection();
-			 
-			 pstmt = con.prepareStatement(
-			 	"select * from cookhelp_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
-			 pstmt.setInt(1, num);
-			 pstmt.setInt(2, start-1);
-				 pstmt.setInt(3, end);
-			 rs = pstmt.executeQuery();
-
-			 if (rs.next()) {
-				 articleList = new ArrayList<commentDataBean>(end);
-				 do{
-					 commentDataBean article= new commentDataBean();
-					 article.setNum(rs.getInt("num"));
-					 article.setRootin(rs.getInt("rootin"));
-					 article.setWriterid(rs.getString("writerid"));
-					 article.setReg_date(rs.getTimestamp("reg_date"));
-					 article.setRef(rs.getInt("ref"));
-					 article.setRe_step(rs.getInt("re_step"));
-					 article.setRe_level(rs.getInt("re_level"));
-					 article.setContent(rs.getString("content"));
-					
-						
-						
-					articleList.add(article);
-					}while(rs.next());
-				}
-		 } catch(Exception ex) {
-			 ex.printStackTrace();
-		 } finally {
-				DBclose();
-		 }
-			return articleList;
-	 }
-	public int getcookhelpCommentArticleCount(int num)
-				throws Exception {
-		 con = null;
-		 pstmt = null;
-		 rs = null;
-
-		 int x=0;
-
-		 try {
-			 con = getConnection();
-			 
-			 pstmt = con.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
-			 pstmt.setInt(1, num);
-			 rs = pstmt.executeQuery();
-
-			 if (rs.next()) {
-				x= rs.getInt(1);
- 			}
-		 } catch(Exception ex) {
-			 ex.printStackTrace();
-		 } finally {
-		 	DBclose();
-		 }
- 		return x;
-	 }
+	
+	
+	
 
 	public void insertquestionArticle(QuestionDataBean article) 
 			throws Exception {
@@ -2043,144 +1917,12 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public void insertquestionCommentsArticle(commentDataBean article,int rootin) 
-				throws Exception {
-			con = null;
-			pstmt = null;
-				rs = null;
-
-			int num=article.getNum();
-		int ref=article.getRef();
-		int re_step=article.getRe_step();
-		int re_level=article.getRe_level();
-		int maxNumber=0;
-
-			String sql="";
-
-			try {
-				con = getConnection();
-
-				pstmt = con.prepareStatement("select max(num) from question_comment");
-				rs = pstmt.executeQuery();
-				
-				if (rs.next())
-					maxNumber=rs.getInt(1)+1;
-				else
-					maxNumber=1; 
-				
-				if (num!=0) {	
-					sql="update question_comment set re_step=re_step+1 ";
-					sql += "where ref=? and re_step >? and rootin=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, ref);
-				pstmt.setInt(2, re_step);
-				pstmt.setInt(3, rootin);
-					pstmt.executeUpdate();
-					re_step=re_step+1;
-					re_level=re_level+1;
-				 }else{
-					ref=maxNumber;
-					re_step=0;
-					re_level=0;
-				 }	
-				
-				
-			
-				sql = "insert into question_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
-				sql+=") values(?,?,?,?,?,?,?)";
-
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rootin);
-				pstmt.setString(2, article.getWriterid());
-				pstmt.setTimestamp(3, article.getReg_date());
-				pstmt.setInt(4, ref);
-				pstmt.setInt(5, re_step);
-				pstmt.setInt(6, re_level);
-				pstmt.setString(7, article.getContent());
-				
-				pstmt.executeUpdate();
-
-				pointupdate(article.getWriterid(),1,"댓글 작성");
-			} catch(Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				DBclose();
-			}
-		}
-	public List<commentDataBean> getquestionCommentsArticles(int start, int end,int num)
-				throws Exception {
-		 con = null;
-		 pstmt = null;
-		 rs = null;
-		 List<commentDataBean> articleList=null;
-		 try {
-			 con = getConnection();
-			 
-			 pstmt = con.prepareStatement(
-			 	"select * from question_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
-			 pstmt.setInt(1, num);
-			 pstmt.setInt(2, start-1);
-				 pstmt.setInt(3, end);
-			 rs = pstmt.executeQuery();
-
-			 if (rs.next()) {
-				 articleList = new ArrayList<commentDataBean>(end);
-				 do{
-					 commentDataBean article= new commentDataBean();
-					 article.setNum(rs.getInt("num"));
-					 article.setRootin(rs.getInt("rootin"));
-					 article.setWriterid(rs.getString("writerid"));
-					 article.setReg_date(rs.getTimestamp("reg_date"));
-					 article.setRef(rs.getInt("ref"));
-					 article.setRe_step(rs.getInt("re_step"));
-					 article.setRe_level(rs.getInt("re_level"));
-					 article.setContent(rs.getString("content"));
-					
-						
-						
-					articleList.add(article);
-					}while(rs.next());
-				}
-		 } catch(Exception ex) {
-			 ex.printStackTrace();
-		 } finally {
-				DBclose();
-		 }
-			return articleList;
-	 }
-	public int getquestionCommentArticleCount(int num)
-				throws Exception {
-		 con = null;
-		 pstmt = null;
-		 rs = null;
-
-		 int x=0;
-
-		 try {
-			 con = getConnection();
-			 
-			 pstmt = con.prepareStatement("select count(*) from question_comment where rootin=?");
-			 pstmt.setInt(1, num);
-			 rs = pstmt.executeQuery();
-
-			 if (rs.next()) {
-				x= rs.getInt(1);
- 			}
-		 } catch(Exception ex) {
-			 ex.printStackTrace();
-		 } finally {
-		 	DBclose();
-		 }
- 		return x;
-	 }
 	
 	public void insertannounceArticle(announceDataBean article) 
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs = null;
-
-		int periode=Integer.parseInt(article.getPeriode());
 		String sql="";
 
 		try {
@@ -2189,7 +1931,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("select max(num) from announce");
 			rs = pstmt.executeQuery();
 			
-			sql = "insert into announce(title,writerid,isEvent,reg_date,content,periode";
+			sql = "insert into announce(title,writerid,isEvent,reg_date,content,end_date";
 			sql+=") values(?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
@@ -2198,7 +1940,7 @@ public class foodingBean {
 			pstmt.setString(3, article.getIsEvent());
 			pstmt.setTimestamp(4, article.getReg_date());
 			pstmt.setString(5, article.getContent());
-			pstmt.setString(6, article.getPeriode());
+			pstmt.setTimestamp(6, article.getEnd_date());
 			
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
@@ -2412,14 +2154,14 @@ public class foodingBean {
 				con = getConnection();
 
 				 
-					sql="update announce set title=?,isEvent=?,periode=?,content=? where num=?";
+					sql="update announce set title=?,isEvent=?,end_date=?,content=? where num=?";
 					pstmt = con.prepareStatement(sql);
 
 					pstmt.setString(1, article.getTitle());
 					pstmt.setString(2, article.getIsEvent());
-					pstmt.setString(3, article.getPeriode());
+					pstmt.setTimestamp(3, article.getEnd_date());
 					pstmt.setString(4, article.getContent());
-						pstmt.setInt(5, article.getNum());
+					pstmt.setInt(5, article.getNum());
 					pstmt.executeUpdate();
 					
 						x= 1;
@@ -2479,18 +2221,18 @@ public class foodingBean {
 				if (num!=0) {	
 					sql="update announce_comment set re_step=re_step+1 ";
 					sql += "where ref=? and re_step >? and rootin=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, ref);
-				pstmt.setInt(2, re_step);
-				pstmt.setInt(3, rootin);
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, ref);
+					pstmt.setInt(2, re_step);
+					pstmt.setInt(3, rootin);
 					pstmt.executeUpdate();
 					re_step=re_step+1;
 					re_level=re_level+1;
-				 }else{
+				}else{
 					ref=maxNumber;
 					re_step=0;
 					re_level=0;
-				 }	
+				}	
 				
 				
 				// 荑쇰━瑜� �옉�꽦
@@ -2554,32 +2296,6 @@ public class foodingBean {
 		 }
 			return articleList;
 	 }
-	public int getannounceCommentArticleCount(int num)
-			throws Exception {
-		con = null;
-		pstmt = null;
-		rs = null;
-
-		int x=0;
-
-		try {
-			con = getConnection();
-			
-			pstmt = con.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				x= rs.getInt(1);
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-		return x;
-	}
-
 	public void insertproductArticle(productDataBean article)
 			throws Exception {
 		con = null;
@@ -2732,14 +2448,13 @@ public class foodingBean {
 		return article;
 	}
 	
-	public int updateproductArticle(productDataBean article)
+	public void updateproductArticle(productDataBean article)
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs= null;
 
 		String sql="";
-		int x=-1;
 		try {
 			con = getConnection();
 
@@ -2752,17 +2467,15 @@ public class foodingBean {
 				pstmt.setInt(3,article.getProductType());
 				pstmt.setInt(4,article.getPrice());
 				pstmt.setInt(5,article.getDiscountRate());
-				pstmt.setString(5, article.getProductThumb());
+				pstmt.setString(6, article.getProductThumb());
 				pstmt.setInt(7,article.getProductId());
 				pstmt.executeUpdate();
 				
-					x= 1;
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			DBclose();
 		}
-		return x;
 	}
 	public void deleteproductArticle(int productId)
 			throws Exception {

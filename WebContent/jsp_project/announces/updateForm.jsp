@@ -36,9 +36,6 @@
 		announceDataBean article =  dbPro.updateannounceGetArticle(num);
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    Calendar cal=Calendar.getInstance();
-	    cal.setTime(article.getReg_date());
-	    int periode=Integer.parseInt(article.getPeriode());
-	    cal.add(Calendar.DATE,periode);
 %>
 <div class="writetitle">
 		글수정

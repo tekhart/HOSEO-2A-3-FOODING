@@ -8,30 +8,25 @@
 <%!int commentpageSize = 10;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
 <%
-			try {
-				int num = Integer.parseInt(request.getParameter("num"));
-				String pageNum = request.getParameter("pageNum");
-				foodingBean dbPro = foodingBean.getInstance();
-				QuestionDataBean article = dbPro.getquestionArticle(num);
+	try {
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+		foodingBean dbPro = foodingBean.getInstance();
+		QuestionDataBean article = dbPro.getquestionArticle(num);
 
-				foodingBean foodingbean = new foodingBean();
+		foodingBean foodingbean = new foodingBean();
 
-				String commnetpageNum = request.getParameter("commnetpageNum");
+		String commnetpageNum = request.getParameter("commnetpageNum");
 
-				if (commnetpageNum == null) {
-					commnetpageNum = "1";
-				}
-				int currentPage = Integer.parseInt(commnetpageNum);
-				int startRow = (currentPage - 1) * commentpageSize + 1;
-				int endRow = currentPage * commentpageSize;
-				int count = 0;
-				List<commentDataBean> commentList = null;
-				count = dbPro.getquestionCommentArticleCount(num);
-
-				if (count > 0) {
-					commentList = dbPro.getquestionCommentsArticles(startRow, commentpageSize, num);
-				}
-		%>
+		if (commnetpageNum == null) {
+			commnetpageNum = "1";
+		}
+		int currentPage = Integer.parseInt(commnetpageNum);
+		int startRow = (currentPage - 1) * commentpageSize + 1;
+		int endRow = currentPage * commentpageSize;
+		int count = 0;
+		List<commentDataBean> commentList = null;
+%>
 
 <!DOCTYPE html>
 <html>
@@ -68,7 +63,8 @@
 	}
 	function youreally(){
 		if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
-			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>
+	"
 		}
 	}
 </script>
@@ -77,29 +73,22 @@
 	<%@include file="../general_included/topbar.jsp"%>
 
 	<div id="maindiv2">
-		<br>
-		<br>
-		<br>
-		
-		<input type="hidden" name="num" value="<%=article.getNum()%>">
-		<input type="hidden" name="ref" value="<%=article.getRef()%>">
-		<input type="hidden" name="re_step" value="<%=article.getRe_step()%>">
+		<br> <br> <br> <input type="hidden" name="num"
+			value="<%=article.getNum()%>"> <input type="hidden"
+			name="ref" value="<%=article.getRef()%>"> <input
+			type="hidden" name="re_step" value="<%=article.getRe_step()%>">
 		<input type="hidden" name="re_level"
 			value="<%=article.getRe_level()%>">
 		<table style="margin: auto;" class="contenttable">
 			<tr>
-				<td colspan="2" width="500px" style="text-align: center;"
+				<td rowspan="2" width="500px" style="text-align: center;"
 					class="orangeline11" height="100px"><h2><%=article.getTitle()%></h2></td>
-			</tr>
+				<td class="orangeline111" align="right"
+					style="color: #e0e0e0; font-size: 30px;"><%=sdf.format(article.getReg_date())%></td>
 			<tr>
-				<td class="orline1" style="padding-left: 10px; height: 50px;">등록일
-					: <%=sdf.format(article.getReg_date())%></td>
-				<td class="orline1" style="padding-left: 10px;">작성자 : <%=foodingbean.findnkname(article.getWriterid())%></td>
+				<td class="orangeline1" align="right"
+					style="color: #e0e0e0; font-size: 30px;"><%=foodingbean.findnkname(article.getWriterid())%></td>
 			</tr>
-			<tr>
-				<td class="orline1" style="padding-left: 10px; height: 50px;">질문분류
-					: <%=article.getQuesType()%></td>
-				<td class="orline1" style="padding-left: 10px;">완료여부 : <%=article.getIsComplete()%></td>
 			</tr>
 			<tr>
 
@@ -122,8 +111,7 @@
 					class="smallbt"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="글삭제" class="smallbt"
-					onclick="youreally()">
-				</td>
+					onclick="youreally()"></td>
 
 			</tr>
 			<%
@@ -144,7 +132,8 @@
 					%>
 				</td>
 				<td colspan="2" class="orangeline11"><input type="button"
-					value="글목록" class="smallbt" style="float: right; border:1px solid #ffbb00;" 
+					value="글목록" class="smallbt"
+					style="float: right; border: 1px solid #ffbb00;"
 					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"></td>
 			</tr>
 		</table>
@@ -157,7 +146,7 @@
 		</table>
 		<br>
 
-		
+
 	</div>
 
 
@@ -167,6 +156,6 @@
 </body>
 </html>
 <%
-			} catch (Exception e) {
-			}
-		%>
+	} catch (Exception e) {
+	}
+%>

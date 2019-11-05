@@ -5,16 +5,6 @@
 <%
 
 	request.setCharacterEncoding("UTF-8");
-	
-	String zipcode="";
-	
-	
-	try{
-		if(zipcode==null){
-			zipcode="";
-		}
-	}finally{}
-
 	foodingBean foodingbean=new foodingBean();
 	foodingBean dbPro = foodingBean.getInstance();
 %>
@@ -81,7 +71,7 @@
 			}
 		};
 		function ZipPopup() { 
-			window.open("ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+			window.open("../general_included/ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
 			document.getElementById("inputdetailaddr").focus();
 		}
 		function sendingaddr(addrnum,address){

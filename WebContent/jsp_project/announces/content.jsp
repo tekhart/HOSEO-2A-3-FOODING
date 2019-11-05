@@ -15,22 +15,6 @@
 				announceDataBean article = dbPro.getannounceArticle(num);
 
 				foodingBean foodingbean = new foodingBean();
-
-				String commnetpageNum = request.getParameter("commnetpageNum");
-
-				if (commnetpageNum == null) {
-					commnetpageNum = "1";
-				}
-				int currentPage = Integer.parseInt(commnetpageNum);
-				int startRow = (currentPage - 1) * commentpageSize + 1;
-				int endRow = currentPage * commentpageSize;
-				int count = 0;
-				List<commentDataBean> commentList = null;
-				count = dbPro.getannounceCommentArticleCount(num);
-
-				if (count > 0) {
-					commentList = dbPro.getannounceCommentsArticles(startRow, commentpageSize, num);
-				}
 		%>
 
 <!DOCTYPE html>
