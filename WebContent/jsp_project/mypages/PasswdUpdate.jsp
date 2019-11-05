@@ -74,7 +74,7 @@ function check(){
 
 <div id="maindiv">
 	<%@include file="sidemenu.jsp"%>
-	<br><br><br><br>
+	<br><br><br><br><br>
 	<form action=PasswdUpdatePro.jsp method="post" name="register">
 	<fieldset style="margin:auto;">
 		
@@ -87,6 +87,7 @@ function check(){
 							<input class="signupinputs" type="password" placeholder="새 비밀번호 " name="passwd" onkeyup="Passwdcheck();">
 						</td>
 					</tr>
+				
 					<tr>
 						<td style="text-align:left;">
 							<span id="passwdimg"></span><span id="passwdcheck"></span>
@@ -105,7 +106,6 @@ function check(){
 					</tr>
 				</table>
 				<input  type="button" onclick="check();" value="수정" class="findbutton">
-				<br><br>
 			</form>
 			<fieldset>
 <legend>안전하게 비밀번호를 관리하는 법!</legend>
