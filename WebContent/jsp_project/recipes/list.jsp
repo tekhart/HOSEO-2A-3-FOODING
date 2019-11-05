@@ -112,6 +112,7 @@
 			<%}%>
 			(<%=count %>)
 		</div>
+		<br>
 		<center>
 			<table class="listtop">
 				<tr>

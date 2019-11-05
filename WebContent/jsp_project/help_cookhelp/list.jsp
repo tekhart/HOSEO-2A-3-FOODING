@@ -81,7 +81,7 @@
 
 <div class="writetitle1">
 요리 강의(<%=count %>)</div>
-
+<br>
 <center>
 	<table class="listtop"><tr>
 		<td>
@@ -130,12 +130,15 @@
 </table>
 <% } else {%>
 
+
 <table class="listtable"> 
 	<tr height="50"> 
 		<td align="center" class="listcolor">번호</td>
 		<td align="center" class="listcolor" colspan="3">제목</td> 
+		<td align="center"  class="listcolor">작성자</td>
+        <td align="center"   class="listcolor">등록일</td> 
 		<td align="center" class="listcolor">조회</td> 
-		<td align="center" class="listcolor">댓글수</td> 
+		<td align="center" class="listcolor" width="100px">댓글수</td> 
 	</tr>
 <%	
 	for (int i = 0 ; i < articleList.size(); i++) {
@@ -151,7 +154,7 @@
 				<div style="background-image:url('<%=article.getThumbnail() %>');background-size:cover;background-position:center;width:200px;height:112px;">
 				</div>
 			</td>
-			<td align="left" style="padding-left:40px;" colspan="2" width="300px">		
+			<td align="left" style="padding-left:40px;" colspan="2" width="300px" class="line">		
 				<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>" class="titlelong" style="vertical-align:middle; display:table-cell;">
 					<%if(article.getTools()!=null){ %>
 						[<%=article.getTools()%> 을 이용한 강의]
@@ -162,6 +165,13 @@
 					<%=article.getTitle()%>
 				</a>
 			</td>
+			<td class="line" align="right" width="150px" style="text-align:center;">
+				<%=foodingbean.findnkname(writerid)%>
+			</td>
+			<td width="150px" class="line" align="center">
+				<%= sdf.format(article.getReg_date())%>
+			</td>
+			
 			<td align="center" width="50" class="line" rowspan="2">
 				<%=article.getReadcount()%>
 			</td>
@@ -169,14 +179,9 @@
 				<%=dbPro.getCommentArticleCount(article.getNum())%>
 			</td>
 		</tr>
-		<tr>
-			<td width="150px" class="line">
-				<%= sdf.format(article.getReg_date())%>
-			</td>
-			<td class="line"align="right" width="150px">
-				<%=foodingbean.findnkname(writerid)%>
-			</td>
-		</tr>
+		
+			
+		
 	</tbody>
 		
 <%}%>
