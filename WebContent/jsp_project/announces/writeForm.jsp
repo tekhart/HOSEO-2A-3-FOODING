@@ -11,6 +11,7 @@
 		
 		
 		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="../css/list.css">
 		<link rel="stylesheet" type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
 		<link rel="shortcut icon" href="../img/favicon.ico">
@@ -18,45 +19,22 @@
 		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			
-		</script>
+			function sendingthumb(thumbname){
+		              $("#thumbnail").css("background-image","url("+thumbname+")");
+		              $("#thumbnail").innerhtml="";
+		              $("#inputthumbnail").val(thumbname);
 		
+			}
+			function thumbnailupload(){
+				window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=fooding_thumbs", "a", "width=400, height=300, left=100, top=50"); 
+			}
+		</script>
+
+
 		
 		
 		
 	</head>
-	<body id="writebody">
-		<%@include file="../general_included/topbar.jsp"%>
-		
-		<div id="maindiv">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" type=text/css
-	href="../../daumeditor/css/editor.css" charset=utf-8 />
-<link rel="shortcut icon" href="../img/favicon.ico">
-<link rel="icon" href="../img/favicon.ico">
-<script type=text/javascript charset=utf-8
-	src="../../daumeditor/js/editor_loader.js"></script>
-<script type="text/javascript" src="script.js"></script>
-<script type="text/javascript">
-	function sendingthumb(thumbname){
-              $("#thumbnail").css("background-image","url("+thumbname+")");
-              $("#thumbnail").innerhtml="";
-              $("#inputthumbnail").val(thumbname);
-
-	}
-	function thumbnailupload(){
-		window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=fooding_thumbs", "a", "width=400, height=300, left=100, top=50"); 
-	}
-</script>
-
-
-
-
 </head>
 <body id="writebody">
 	<%@include file="../general_included/topbar.jsp"%>
@@ -73,7 +51,6 @@
 					out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
 					response.sendRedirect("../mains/main.jsp");
 				}
-				idlogin = (String) session.getAttribute("idlogin");
 				Timestamp ts = new Timestamp(System.currentTimeMillis());
 				Date date = new Date();
 				date.setTime(ts.getTime());

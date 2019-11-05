@@ -86,18 +86,19 @@
 			<tr class="orangeline">
 	
 					 	<%
-						if (article.getWriterid().equals(idlogin)) {
-					%>
-					<td width="800px">
-					<input type="button" value="글수정" class="bt2"
-					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="글삭제" class="bt2"
-					onclick="youreally()">
-					</td>
-					<td width="800px">일자 : <%=article.getReg_date()%></td>
-					<%
-						}else{%>
-							<td style="text-align:right;" colspan="2">일자 : <%=article.getReg_date()%></td>
+							if (isAdmin==1) {
+						%>
+							<td width="350px" height="55px">
+								<input type="button" value="글수정" class="bt2"
+								onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+								<input type="button" value="글삭제" class="bt2"
+								onclick="youreally()">
+							</td>
+							<td width="800px">일자 : <%=article.getReg_date()%></td>
+						<%
+							}else{
+						%>
+							<td width="1150px" style="text-align:right;" height="55px" colspan="2">일자 : <%=article.getReg_date()%></td>
 						<%}%>
 				
 				
