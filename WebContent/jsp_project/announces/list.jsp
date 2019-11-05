@@ -147,8 +147,7 @@
       <td align="center"  width="250" class="listcolor">제목</td> 
       <td align="center"  width="150" class="listcolor">작성자</td>
       <td align="center"  width="150" class="listcolor">등록일</td> 
-      <td align="center"  width="80" class="listcolor">조회</td> 
-      <td align="center"  width="60" class="listcolor" style="padding-right:20px;">댓글수</td> 
+      <td align="center"  width="80" class="listcolor">조회</td>
     </tr>
 <%  
    for (int i = 0 ; i < articleList.size(); i++) {
@@ -178,8 +177,6 @@
     </td>
     <td align="center" width="150" class="line"><%= sdf.format(article.getReg_date())%></td>
     <td align="center" width="50" class="line"><%=article.getReadcount()%></td>
-    <td align="center" width="50" class="line" style="padding-right:20px;"><%=dbPro.getannounceCommentArticleCount(article.getNum())%></td>
-	
   </tr>
 <%}%>
 </table>

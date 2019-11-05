@@ -30,12 +30,6 @@
 	    int endRow = currentPage * commentpageSize;
 	    int count = 0;
 	    List<commentDataBean> commentList = null;
-	    count = dbPro.getcookhelpCommentArticleCount(num);
-	    
-	    if (count > 0) {
-	        commentList = dbPro.getcookhelpCommentsArticles(startRow, commentpageSize,num);
-	    }
-	    
 %>
 
 <!DOCTYPE html>

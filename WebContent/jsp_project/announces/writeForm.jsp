@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.*"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +20,16 @@
 	src="../../daumeditor/js/editor_loader.js"></script>
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript">
-			
-		</script>
+	function sendingthumb(thumbname){
+              $("#thumbnail").css("background-image","url("+thumbname+")");
+              $("#thumbnail").innerhtml="";
+              $("#inputthumbnail").val(thumbname);
+
+	}
+	function thumbnailupload(){
+		window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=fooding_thumbs", "a", "width=400, height=300, left=100, top=50"); 
+	}
+</script>
 
 
 
@@ -29,28 +41,37 @@
 	<div id="maindiv">
 		<%
 			int num = 0;
-			String strV="";
-			try{
-				if(request.getParameter("num")!=null){
-					num=Integer.parseInt(request.getParameter("num"));
+			String strV = "";
+			try {
+				if (request.getParameter("num") != null) {
+					num = Integer.parseInt(request.getParameter("num"));
 				}
-				if(session.getAttribute("idlogin")==null){
+				if (session.getAttribute("idlogin") == null) {
 					out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
 					response.sendRedirect("../mains/main.jsp");
 				}
-				idlogin=(String)session.getAttribute("idlogin");
+				idlogin = (String) session.getAttribute("idlogin");
+				Timestamp ts = new Timestamp(System.currentTimeMillis());
+				Date date = new Date();
+				date.setTime(ts.getTime());
+				String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
 		%>
-		<div class="writetitle">레시피 작성</div>
+		<div class="writetitle">공지사항</div>
 
 		<div id="space">
 			<form method="post" name="writeform" action="writePro.jsp"
 				onsubmit="return writeSave()">
-				<input type="hidden" name="num" value="<%=num %>"> <input
-					type="hidden" name="writerid" value="<%=idlogin %>">
+				<input type="hidden" name="num" value="<%=num%>">
+				<input type="hidden" name="writerid" value="<%=idlogin%>">
+				<input type="hidden" id="inputthumbnail" name="thumbnail" value="../img/fooding_thumbs/defaultthumb.png">
 				<center>
 					<table id="writetable" align="center" border-spacing="10px">
 						<tr>
-							<td align="right" colspan="2"></td>
+							<td align="right" colspan="2" onclick="thumbnailupload()">
+								<div id="thumbnail" style="height:280px;width:910px;background-image:url('../img/fooding_thumbs/defaultthumb.png');background-size:cover;background-position:center">
+									썸네일
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
@@ -66,7 +87,8 @@
 									<option value='1'>공지사항</option>
 									<option value='0'>이벤트</option>
 
-							</select> <input type="date" name="end_date"></td>
+							</select> <input type="date" name="string_end_date" value="<%=todayDate%>"
+								min="<%=todayDate%>"></td>
 						</tr>
 						<tr>
 						</tr>
@@ -91,8 +113,9 @@
 
 				</center>
 				<%
-			}catch(Exception e){}
-		%>
+					} catch (Exception e) {
+					}
+				%>
 			</form>
 		</div>
 	</div>

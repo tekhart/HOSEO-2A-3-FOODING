@@ -24,5 +24,5 @@ try{
 }catch(Exception e){
 	e.printStackTrace();
 }
-response.sendRedirect("../shopbasket.jsp"); 
+response.sendRedirect("../../shop/main.jsp"); 
 %>

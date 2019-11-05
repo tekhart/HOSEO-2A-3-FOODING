@@ -138,7 +138,6 @@
 		<td align="center"  class="listcolor">작성자</td>
         <td align="center"   class="listcolor">등록일</td> 
 		<td align="center" class="listcolor">조회</td> 
-		<td align="center" class="listcolor" width="100px">댓글수</td> 
 	</tr>
 <%	
 	for (int i = 0 ; i < articleList.size(); i++) {
@@ -174,9 +173,6 @@
 			
 			<td align="center" width="50" class="line" rowspan="2">
 				<%=article.getReadcount()%>
-			</td>
-			<td align="center" width="50" class="line" rowspan="2">
-				<%=dbPro.getCommentArticleCount(article.getNum())%>
 			</td>
 		</tr>
 		

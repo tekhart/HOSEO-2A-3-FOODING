@@ -2296,32 +2296,6 @@ public class foodingBean {
 		 }
 			return articleList;
 	 }
-	public int getannounceCommentArticleCount(int num)
-			throws Exception {
-		con = null;
-		pstmt = null;
-		rs = null;
-
-		int x=0;
-
-		try {
-			con = getConnection();
-			
-			pstmt = con.prepareStatement("select count(*) from cookhelp_comment where rootin=?");
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				x= rs.getInt(1);
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-		return x;
-	}
-
 	public void insertproductArticle(productDataBean article)
 			throws Exception {
 		con = null;
