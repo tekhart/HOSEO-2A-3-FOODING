@@ -62,6 +62,13 @@ function enterkey() {
 			<span class="idpasswd"><a class="logina" href="findID.jsp">아이디</a> / <a class="logina" href="findPW.jsp">비밀번호 찾기</a></span>
 			
 			</div>
+			 <div module="member_login">
+  <ul class="snsArea">
+  <li class=>
+  <a href="#none" onclick="{$naver_func_login}"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_naver_login.gif" alt="네이버 로그인" /></a>
+  </li>
+  </ul>
+  </div>
 		</form>
 	</center>
 </div>

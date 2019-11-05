@@ -72,9 +72,9 @@
 								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								
-								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
+								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;cursor:pointer;">
 								<%if(cartcount!=0){%>
-									<span class="badge"><%=cartcount%></span>
+									<span class="badge"onClick="location.href='../mypages/shopbasket.jsp'" style="cursor:pointer;"><%=cartcount%></span>
 								<%} %>
 								<%
 							}
@@ -144,7 +144,7 @@
 					        </td>
 	        				<td><center>
 	        					<div class="dropdown">
-						            <button class="dropbtn" OnClick="window.location='../mains/faq.jsp'">고객센터</button>
+						            <button class="dropbtn" OnClick="window.location='../customerhelp/faq.jsp'">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
 							             	<a href="../customerhelp/faq.jsp">자주하는 질문</a>

@@ -171,6 +171,16 @@
 				return true; 
 			}
 
+			jQuery(document).ready(function($) {
+			    var checkload = true;
+			    $("#btn_submit").click(function () {
+			        checkload = false;
+			    });
+			    $(window).on("beforeunload", function () {
+			        if (checkload == true) return "정말로 나가시겠습니까?";
+			    });
+			});
+			
 		</script>
 	</body>
 </html>
