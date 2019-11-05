@@ -42,22 +42,24 @@
 					<input type="hidden" name="id" value="<%=idlogin %>">
 					<input type="hidden" name="userface" value="<%=article.getUserface() %>" id="inputthumbnail">
 					
-					<table width="80%" height="250px" style="font-size:25px; text-align:center;">
+					<table width="80%" height="250px" style="font-size:25px; text-align:center; padding-bottom:30px;">
 						<tr>
-							<td colspan="2">다른 사람들에게 보여지는 정보입니다<br>&nbsp;</td>
+							<td colspan="2" style="padding-left:60px;">* 다른 사람들에게 보여지는 정보입니다<br>&nbsp;</td>
 						</tr>
 						<tr>			
-							<td width="50%">
+							<td width="50%" style="padding-left:30px;"> 
 								<div onclick="thumbnailupload()" id="thumbnail";
 									style="width:200px; height:200px; border-radius:50%; border:3px solid orange; background-image:url(<%=article.getUserface() %>); background-size:cover; background-position:center;"/>
 							</td>
-							<td>
+						<div>
+							<td style="padding-left:80px;">
 								<b>닉네임 </b><br>
 								<input type="text" class="signupinputs" name="nkname" value="<%=nk %>">
 							</td>
+						</div>
 						</tr>
 					</table>
-				<div style="padding-left:50px;">
+				<div style="text-align:right; padding-right:60px;">
 					<input type="submit" value="수정" class="findbutton">
 				</div>
 				</fieldset>

@@ -119,7 +119,7 @@
 	       					<td>
 	       						<center>
 		        					<div class="dropdown">
-		            					<button class="dropbtn">요리도우미</button>
+		            					<button class="dropbtn" OnClick="window.location='help_cookhelp/list.jsp'">요리도우미</button>
 		            					<div class="dropdown-content">
 		            						<center>
 			            						<a href="../help_cookhelp/list.jsp">요리 강의</a>

@@ -8,6 +8,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="DBBean.productDataBean"%>
 <meta charset="UTF-8">
+
 <script type="text/javascript"
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
@@ -101,7 +102,7 @@ body {
 				 
 				<% 
 					}else{
-						
+						 
 				%>
 					<table class="list-table" style="border-spacing:0px;margin:auto; padding-left:100px;">
 						<tr>
@@ -135,9 +136,9 @@ body {
 							totalprice+=RealxCountPrice;
 					%>
 						<tr>
-							<td width="10"	style="border-bottom:3px solid orange;">
+							<td width="5%"	style="border-bottom:3px solid orange;">
 									<label><input type="checkbox" class="BasketSubCheck" name="CartIdchkbx" value="<%=article.getCartId()%>" checked>
-							<td width="150" style="border-bottom:3px solid orange;">
+							<td width="10%" style="border-bottom:3px solid orange;">
 									<div class="bak_item">
 									<div class="pro_img"></div>
 									<div class="pro_nt"></div>

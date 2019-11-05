@@ -105,6 +105,7 @@
 			<div class="writetitle1">프로필 이메일/주소 변경</div>
 			<%@include file="sidemenu.jsp"%>
 			<form method="post" action="EmailAndZipUpdatePro.jsp" >
+			<br>
 				<fieldset style="margin:auto; width:500px;" > 
 					<legend>프로필</legend>
 					<input type="hidden" name="id" value="<%=idlogin %>">
@@ -152,8 +153,8 @@
 						</tr>
 					</table>
 					<br>
-				<div align="right">
-					<input type="submit" value="수정" class="findbutton" style="border:1px solid #ffbb00;">
+				<div align="right" style="padding-top:30px; padding-right:35px;">
+					<input type="submit" value="수정" class="findbutton" >
 				</div>
 				</fieldset>
 			</form>
