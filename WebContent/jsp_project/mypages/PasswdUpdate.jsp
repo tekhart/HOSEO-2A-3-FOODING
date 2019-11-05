@@ -80,16 +80,16 @@ function check(){
 		
 				<legend>비밀번호 변경</legend>
 				<input type="hidden" value="<%=idlogin %>" name="id">
-				<table width="80%" height="250px" style="font-size:25px; text-align:center;">
+				<table width="100%" height="250px" style="font-size:22px; text-align:center;">
 					<tr>
-						<td width="50%">
+						<td width="50%" style="padding-top:30px;">
 							<b>새 비밀번호</b><br>
 							<input class="signupinputs" type="password" placeholder="새 비밀번호 " name="passwd" onkeyup="Passwdcheck();">
 						</td>
 					</tr>
 				
 					<tr>
-						<td style="text-align:left;">
+						<td style="text-align:left; padding-left:210px; height:50px;">
 							<span id="passwdimg"></span><span id="passwdcheck"></span>
 						</td>
 					</tr>
@@ -100,12 +100,15 @@ function check(){
 						</td>
 					</tr>
 					<tr>
-						<td style="text-align:left;">
+						<td style="text-align:left; padding-left:210px;"> 
 							<span id="repasswdimg"></span><span id="repasswdcheck"></span>
 						</td>
 					</tr>
 				</table>
-				<input  type="button" onclick="check();" value="수정" class="findbutton">
+				<div align="right">
+					<input  type="button" onclick="check();" value="수정" class="findbutton">
+				</div>
+				<br>
 			</form>
 			<fieldset>
 <legend>안전하게 비밀번호를 관리하는 법!</legend>
