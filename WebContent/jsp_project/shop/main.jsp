@@ -127,6 +127,8 @@
 			box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
 		}
 		
+
+		
 		body {
   font-family: "Lato", sans-serif;
 }
@@ -161,6 +163,7 @@
 			var pdtid=inputproductcountNumber.this_is_just_for_save.value;
 			var pdtcnt=inputproductcountNumber.inputproductCount.value;
 			location.href="../mypages/shopDBassisting_jsp/addcart_before_showcart.jsp?addproductid="+pdtid+"&addproductcount="+pdtcnt;
+	
 		}
 		
 		
@@ -254,8 +257,9 @@
 						<td colspan="2" height="60px">
 							<%if(idlogin!=null){ %>
 								<input type="button" onclick="toAddCart()" class="button134" value="+ 장바구니에 추가">
+								<div class='testEle'></div>
 							<%}else{ %>
-								<input type="button" class="button134" value="로그인을 하셔야 합니다.">
+								<input type="button" class="button134" value="로그인 후 이용해주세요">
 							<%} %>
 						</td>
 					</tr>

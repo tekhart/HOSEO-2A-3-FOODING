@@ -8,6 +8,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="DBBean.productDataBean"%>
 <meta charset="UTF-8">
+
 <script type="text/javascript"
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
@@ -96,11 +97,12 @@ body {
 						<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
 						<tr><td>
 						<h4>장바구니가 비어 있습니다.</h4></td></tr>
-							<tr><td></td></tr><br><br><br><br> </table>
+							<tr><td><input type="button" value="상점 가기" class="findbutton" onclick="location.href='../shop/main.jsp'"></td></tr><br><br><br><br> </table>
+							
 				 
 				<% 
 					}else{
-						
+						 
 				%>
 					<table class="list-table" style="border-spacing:0px;margin:auto; padding-left:100px;">
 						<tr>
@@ -134,9 +136,9 @@ body {
 							totalprice+=RealxCountPrice;
 					%>
 						<tr>
-							<td width="10"	style="border-bottom:3px solid orange;">
+							<td width="5%"	style="border-bottom:3px solid orange;">
 									<label><input type="checkbox" class="BasketSubCheck" name="CartIdchkbx" value="<%=article.getCartId()%>" checked>
-							<td width="150" style="border-bottom:3px solid orange;">
+							<td width="10%" style="border-bottom:3px solid orange;">
 									<div class="bak_item">
 									<div class="pro_img"></div>
 									<div class="pro_nt"></div>
@@ -190,7 +192,7 @@ body {
 							<br>
 						</td>
 					</tr>
-				<%}%>
+
 			</tbody>
 		</table>
 		<br><br><br>
@@ -198,6 +200,7 @@ body {
 				<input type="button" onclick="AllCheckSubmit()" value="전체상품주문" class="longbt1">
 				<input type="submit" value="선택상품주문" class="longbt2">
 			</div>
+			<%}%>
 		</div>
 	</form>
 </div> 
