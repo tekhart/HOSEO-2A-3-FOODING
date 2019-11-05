@@ -1,30 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
-		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="icon" href="../img/favicon.ico">
-		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
 			
 		</script>
-		
-		
-		
-		
-	</head>
-	<body id="writebody">
-		<%@include file="../general_included/topbar.jsp"%>
-		
-		<div id="maindiv">
+
+
+
+
+</head>
+<body id="writebody">
+	<%@include file="../general_included/topbar.jsp"%>
+
+	<div id="maindiv">
 		<%
 			int num = 0;
 			String strV="";
@@ -38,73 +40,67 @@
 				}
 				idlogin=(String)session.getAttribute("idlogin");
 		%>
-		<div class="writetitle">
-			레시피 작성
-		</div>
-		
+		<div class="writetitle">레시피 작성</div>
+
 		<div id="space">
-		
-		
-		
-		<form method="post" name="writeform" 
-			action="writePro.jsp" onsubmit="return writeSave()">
-		<input type="hidden" name="num" value="<%=num %>">
-		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<center>
-		<table id="writetable" align="center" border-spacing="10px">
-			<tr>
-				<td align="right" colspan="2">
-				
-				</td>
-			</tr>
-			<tr>
-				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-				<td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinput"
-				 style="ime-mode:normal;"></td>
-			</tr>
-			
-			<tr><td align="center">분류</td><td>
-				<select name='isEvent'
-						style="ime-mode:inactive;">
-						<option value='' selected disabled hidden >-- 선택 --</option>
-		    			<option value='1'>공지사항</option>
-		    			<option value='0'>이벤트</option>
-		    			
-					</select>
-				</td></tr><tr>
-				
-			</tr>
-			<tr>
-				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-				<td align="left">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-			</tr>
-			
-				<tr><td></td>
-				<td align="left" >
-					<input type="button" id="button123" value="확인" onclick="Editor.save();">
-					<input type="reset" id="button123" value="다시 작성">
-					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
-				</td>
-			</tr>
-			
-			
-		</table>
-			
-		
-		</center>
-		<%
+			<form method="post" name="writeform" action="writePro.jsp"
+				onsubmit="return writeSave()">
+				<input type="hidden" name="num" value="<%=num %>"> <input
+					type="hidden" name="writerid" value="<%=idlogin %>">
+				<center>
+					<table id="writetable" align="center" border-spacing="10px">
+						<tr>
+							<td align="right" colspan="2"></td>
+						</tr>
+						<tr>
+							<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+							<td width="330" align="left"><input type="text" size="40"
+								maxlength="50" name="title" class="signupinput"
+								style="ime-mode: normal;"></td>
+						</tr>
+
+						<tr>
+							<td align="center">분류</td>
+							<td><select name='isEvent' style="ime-mode: inactive;">
+									<option value='' selected disabled hidden>-- 선택 --</option>
+									<option value='1'>공지사항</option>
+									<option value='0'>이벤트</option>
+
+							</select> <input type="date" name="end_date"></td>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+							<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+							<td align="left"><jsp:include
+									page="../../daumeditor/editor_frame.jsp"></jsp:include>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td align="left"><input type="button" id="button123"
+								value="확인" onclick="Editor.save();"> <input type="reset"
+								id="button123" value="다시 작성"> <input type="button"
+								id="button123" value="글목록"
+								OnClick="window.location='../recipes/list.jsp'"></td>
+						</tr>
+
+
+					</table>
+
+
+				</center>
+				<%
 			}catch(Exception e){}
 		%>
-		</form>
+			</form>
 		</div>
-		</div>
-		
-		
-		<%@include file="../general_included/footer.jsp"%>
-		
-		<script type="text/javascript">
+	</div>
+
+
+	<%@include file="../general_included/footer.jsp"%>
+
+	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
 		
@@ -178,5 +174,5 @@
 			}
 
 		</script>
-	</body>
+</body>
 </html>
