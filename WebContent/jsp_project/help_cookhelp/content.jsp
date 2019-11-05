@@ -95,12 +95,10 @@
 	<tr>
 		<td width="500px" rowspan="2" height="100px" align="center" class="orangeline11" 
 			style="text-align:center;"><h2><%=article.getTitle()%></h2></td> 
-		<td width="100px" class="orangeline111" style="text-align:right;
-			color:#848484; font-size:24px;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+		<td width="100px" class="orangeline111" style="color:#e0e0e0; font-size:30px; text-align:right;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
 	</tr>
 	<tr> 
-		<td colspan="2" style="text-align:right; 
-			color:#848484; font-size:24px;" class="orangeline1"><%=article.getReadcount()%>view</td>
+		<td colspan="2" style="color:#e0e0e0; font-size:30px; text-align:right;" class="orangeline1"><%=article.getReadcount()%>view</td>
 	</tr>
 
 		<tr	class="orangeline">
@@ -122,9 +120,9 @@
 			<tr>
 	
 					<td colspan="2">
-					<input type="button" value="글수정"
+					<input type="button" value="글수정" class="findbutton"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="글삭제"
+					<input type="button" value="글삭제" class="findbutton"
 					onclick="youreally()">
 					</td> 
 					

@@ -232,7 +232,9 @@
 								</div>
 							</div>
 							#<%=article.getContury()%> #<%=article.getFoodtype()%>
+							<input type="button" class="findbutton" value="글 목록">
 						</td>
+						
 					</tr>
 				</table>
 		
