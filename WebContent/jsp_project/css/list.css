@@ -128,7 +128,7 @@
 		font-size:17px;
 		height:50px;
 		margin: 5px;
-		border:0.5px solid #ffbb00;
+		border:1px solid #ffbb00;
 		cursor: pointer;
 		width: 70px;
 		border-radius:5px; 
@@ -726,13 +726,11 @@ padding: 0;
 .longbt2{
 		background-color:white; 
 		font-size:17px;
-		border-color:#ffbb00;
+		width: 150px;
 		height:50px;
 		margin: 5px;
-		border-width:0.5px;
-		border-style:solid;
 		cursor: pointer;
-		width: 150px;
+		border:1px solid #ffbb00;
 		border-radius:5px; 
 }
 
@@ -1173,8 +1171,7 @@ padding:5px;
   }
 
 .row3 {
-  	width:1500px;
-  	margin:auto;
+  	width:80%;
   	
   }
 

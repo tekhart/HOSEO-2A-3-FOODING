@@ -240,7 +240,9 @@ body {
 				</table>
 			</div>
 			<br>
+			<div align="center">
 			<table class="row">
+				
 				<tr>
 					<td colspan="2" align="right" width="580px"
 						style="padding-bottom: 50px; padding-left: 280px;">
@@ -307,8 +309,10 @@ body {
 						</div>
 					</td>
 				</tr>
+				
 			</table>
-			<table style="margin-left: 365px;" width="1148px;">
+			
+			<table style="position:relative; left:140px;" width="1148px;" align="center">
 				<tr>
 					<td class="container3" colspan="2"
 						style="margin-left: 1px; float: right;">
@@ -380,13 +384,15 @@ body {
 					</td>
 				</tr>
 			</table>
-		
-	<div id="creditcard" class="secondtabcontent" style="display:none;margin-left:550px;">
+		</div>
+<div align="center">
+	<div id="creditcard" class="secondtabcontent" style="display:none;">
 		<input type="button" class="btpay2" value="결제하기" onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')">
 	</div>
-	<div id="Bank Deposit" class="secondtabcontent" style="display:none;margin-left:550px;">
+	<div id="Bank Deposit" class="secondtabcontent" style="display:none;">
 		<input type="submit" class="btpay2" value="결제하기">
 	</div>
+</div>
 </form>
 	</div>
 	<br>

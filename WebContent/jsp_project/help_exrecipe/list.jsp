@@ -108,7 +108,7 @@
 
 <div class="writetitle1">
 초보용 레시피(<%=count %>)</div>
-
+<br>
 <center>
 	<table class="listtop"><tr>
 				

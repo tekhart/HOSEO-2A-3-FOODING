@@ -113,6 +113,7 @@
 
 	<div class="writetitle1">
 	공지사항(<%=count %>)</div>
+	<br>
 <center>
 	<table class="listtop"><tr>
 				

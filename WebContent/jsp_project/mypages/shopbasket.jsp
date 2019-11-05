@@ -87,13 +87,15 @@ body {
 				<% 
 					if(articleList==null){
 				%>
+				  
 					<table width="400px" height="280px" style="text-align:center; font-size:20pt; border-color:#ffbb00; border-width:3px;
-						border-style:solid; font-family:Bauhaus ITC; margin-left:710px" >
+						border-style:solid; font-family:Bauhaus ITC;" align="center">
 						<tr><td><br><br> 
 						<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
 						<tr><td>
 						<h4>장바구니가 비어 있습니다.</h4></td></tr>
 							<tr><td></td></tr><br><br><br><br> </table>
+				 
 				<% 
 					}else{
 						
@@ -190,8 +192,10 @@ body {
 			</tbody>
 		</table>
 		<br><br><br>
-		<input type="button" onclick="AllCheckSubmit()" value="전체상품주문" class="longbt1" style="margin-left:750px;">
-		<input type="submit" value="선택상품주문" class="longbt2">
+			<div align="center">
+				<input type="button" onclick="AllCheckSubmit()" value="전체상품주문" class="longbt1">
+				<input type="submit" value="선택상품주문" class="longbt2">
+			</div>
 		</div>
 	</form>
 </div> 

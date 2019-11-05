@@ -29,16 +29,31 @@
 	border-bottom: 10px solid #555;
 	margin-left:13px;
 }
+
+.sprout{
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:-20px;
+	right:1px;
+}
+.sproutdiv{
+	background-color:white;
+	
+}
+
+
 </style>
 <body>
 
 <div id="mydiv">
+<div class="sproutdiv"><img class="sprout" src="../img/sprout.png"></div>
   <div id="mydivheader">간편 메뉴</div>
   
-  <pre>최근 본 상품</pre>
-  <pre>상품1</pre>
-  <pre>상품2</pre>
-  <pre>상품3</pre>
+  <pre>상점 메인</pre>
+  <pre>내 포인트</pre>
+  <pre>장바구니</pre>
+  <pre> </pre>
   
   <pre id="TopButton" class="triangle-up" style="cursor:pointer;">  맨 위로</pre>
 </div>
