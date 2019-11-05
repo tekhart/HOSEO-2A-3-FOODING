@@ -22,6 +22,24 @@
 <script type="text/javascript" src="../js/jquery-1.11.1.min.js" >
 </script>
 		
+		<style>
+		.ScrollButton {
+  position: fixed;   /* 버튼의 위치 고정 */
+  right: 35px;       /* x 위치 입력 */
+  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
+  z-index: 600;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
+  display: none;     /* 스크롤 위치에 상관없이 보이게 하려면 생략 */
+}
+/* 두 태그에 각각 y 위치 입력 */
+#TopButton {
+  bottom: 40px;        
+}
+#BottomButton {
+  bottom: 10px;
+}
+
+		</style>
+		
 		</head><body>
 <div id="topdiv" style=text-align:center;>
 	<table width="100%" height="100%">
@@ -142,5 +160,32 @@
         </tr>
     </table>
 </div>
+<a id="TopButton" class="ScrollButton"><img src="../img/up.png" height="30px" width="25px"></a>
+<a id="BottomButton" class="ScrollButton"><img src="../img/down.png" height="30px" width="25px"></a>
+
+<script>
+$(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 300) {
+            $('.ScrollButton').fadeIn();
+        } else {
+            $('.ScrollButton').fadeOut();
+        }
+    });
+    
+    $(document).ready(function() {
+  	  $('#TopButton').bind('click', function() {
+  	    $('html, body').animate({scrollTop: '0'}, 680);
+  	  });
+        
+
+    $("#BottomButton").click(function() {
+        $('html').animate({scrollTop : ($('#footer').offset().top)},680);
+    });
+});
+
+
+
+</script>
 </body>
 </html>

@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="../css/list.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
+
+	<%@include file="../shop/move.jsp"%>
 <style>
 body {
 	font-family: "Bauhaus ITC";
@@ -147,7 +149,7 @@ body {
 									<%=article.getPrice()%>원
 								<%}else{ %>
 									<del><%=article.getPrice()%>원</del><%=article.getDiscountRate()%>% off<br>
-									ㄴ><%=realprice%>원
+									>> <%=realprice%>원
 								<%} %>
 							</td>
 							<td width="200" style="border-bottom:3px solid orange; font-size:16pt;">	
