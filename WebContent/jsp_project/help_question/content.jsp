@@ -26,11 +26,6 @@
 		int endRow = currentPage * commentpageSize;
 		int count = 0;
 		List<commentDataBean> commentList = null;
-		count = dbPro.getquestionCommentArticleCount(num);
-
-		if (count > 0) {
-			commentList = dbPro.getquestionCommentsArticles(startRow, commentpageSize, num);
-		}
 %>
 
 <!DOCTYPE html>
@@ -90,12 +85,12 @@
 					class="orangeline11" height="100px"><h2><%=article.getTitle()%></h2></td>
 				<td class="orangeline111" align="right"
 					style="color: #e0e0e0; font-size: 30px;"><%=sdf.format(article.getReg_date())%></td>
-
-				<tr>
-			<td class="orangeline1" align="right"
+			<tr>
+				<td class="orangeline1" align="right"
 					style="color: #e0e0e0; font-size: 30px;"><%=foodingbean.findnkname(article.getWriterid())%></td>
 			</tr>
-			</tr><tr>
+			</tr>
+			<tr>
 
 			</tr>
 			<tr class="orangeline1">
