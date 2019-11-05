@@ -99,17 +99,20 @@ border-bottom:1px solid orange;
 
 .tooltip .tooltiptext {
 	visibility: hidden;
-	width: 150px;
-	background-color: #555;
-	color: #fff;
+	border:1px solid black;
+	background-color: white;
+	color: black;
 	text-align: center;
 	border-radius: 6px;
 	padding: 5px 0;
 	position: absolute;
 	z-index: 1;
-	bottom: 200%;
-	left: 12%;
-	margin-left: -127px;
+	width:180px;
+
+  top: 13px;
+  right: 101%;
+
+font-size:20px;
 	opacity: 0;
 	transition: opacity 0.3s;
 }	
@@ -117,12 +120,12 @@ border-bottom:1px solid orange;
 .tooltip .tooltiptext::after {
 	content: "";
 	position: absolute;
-	top: 100%;
-	left: 50%;
-	margin-left: -5px;
-	border-width: 5px;
-	border-style: solid;
-	border-color: #555 transparent transparent transparent;
+	top: 50%;
+	left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
 }
 
 .tooltip:hover .tooltiptext {
