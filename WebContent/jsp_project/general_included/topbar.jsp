@@ -4,7 +4,6 @@
 <%@page import="DBBean.userDataBean" %>
 <% 
 	String idlogin=null;
-	session.setAttribute("zipcode","");
 	foodingBean topbarbean = foodingBean.getInstance();
 	userDataBean topbarArticle=null;
 	int isAdmin=0;
@@ -64,7 +63,7 @@
 								<input type="button" class="button11" value="로그인" onClick="location.href='../mains/signin.jsp'"> &nbsp;
 								<input type="button" class="button11" value="회원가입" onClick="location.href='../mains/signup.jsp'">
 								<%
-							}else{	String nknamelogin=topbarArticle.getNkname();
+							}else{String nknamelogin=topbarArticle.getNkname();
 							int cartcount=topbarbean.getcartArticlecount(idlogin);
 								%>
 								<%=nknamelogin %>&nbsp;님&nbsp;
@@ -136,15 +135,15 @@
 						            <button class="dropbtn" OnClick="window.location='../announces/list.jsp'">공지사항</button>
 						            <div class="dropdown-content">
 							            <center>
-							            	<a href="../announces/list.jsp">푸딩규칙</a>
-									        <a href="../announces/event.jsp">이벤트</a>
+							            	<a href="../announces/list.jsp?isEvent=1">푸딩규칙</a>
+									        <a href="../announces/list.jsp?isEvent=0">이벤트</a>
 							            </center>
 						        	</div>
 						        </div></center>
 					        </td>
 	        				<td><center>
 	        					<div class="dropdown">
-						            <button class="dropbtn" OnClick="window.location='../mains/faq.jsp'">고객센터</button>
+						            <button class="dropbtn" OnClick="window.location='../customerhelp/faq.jsp'">고객센터</button>
 						            <div class="dropdown-content">
 							            <center>
 							             	<a href="../customerhelp/faq.jsp">자주하는 질문</a>

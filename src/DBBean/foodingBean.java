@@ -1950,18 +1950,24 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-	public int getannounceArticleCount(String search)
+	public int getannounceArticleCount(String search,String isEvent)
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs = null;
-
+		String sql="";
+		
 		int x=0;
 
 		try {
 			con = getConnection();
-
-			pstmt = con.prepareStatement("select count(*) from announce	where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%'))");
+			
+			sql="select count(*) from announce where title like '%"+search+"%'";
+			if(isEvent!="2") {
+				sql+=" and isEvent = "+isEvent;
+			}
+			
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -1974,36 +1980,40 @@ public class foodingBean {
 		}
 		return x;
 	}
-	public List<announceDataBean> getannounceArticles(int start, int end,String search)
+	public List<announceDataBean> getannounceArticles(int start, int end,String search,String isEvent)
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs = null;
+		String sql="";
 		List<announceDataBean> articleList=null;
 		try {
 			con = getConnection();
-
-			pstmt = con.prepareStatement(
-				"select * from announce where (title like '%"+search+"%' or writerid in(select id from user where nkname like '%"+search+"%')) order by num desc limit ?,? ");
+			
+			sql="select * from announce where title like '%"+search+"%' ";
+			if(isEvent!="2") {
+				sql+="and isEvent = "+isEvent;
+			}
+			sql+=" order by num desc limit ?,?";
+			
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
 				articleList = new ArrayList<announceDataBean>(end);
 				do{
-				 announceDataBean article= new announceDataBean();
-				article.setNum(rs.getInt("num"));
-				article.setTitle(rs.getString("title"));
-				article.setIsEvent(rs.getString("isEvent"));
-				article.setWriterid(rs.getString("writerid"));
-				article.setReg_date(rs.getTimestamp("reg_date"));
-				article.setReadcount(rs.getInt("readcount"));
-				article.setContent(rs.getString("content"));
-				article.setThumbnail(rs.getString("thumbnail"));
-
-
-				 articleList.add(article);
+					announceDataBean article= new announceDataBean();
+					article.setNum(rs.getInt("num"));
+					article.setTitle(rs.getString("title"));
+					article.setIsEvent(rs.getString("isEvent"));
+					article.setWriterid(rs.getString("writerid"));
+					article.setReg_date(rs.getTimestamp("reg_date"));
+					article.setReadcount(rs.getInt("readcount"));
+					article.setContent(rs.getString("content"));
+					article.setThumbnail(rs.getString("thumbnail"));
+					articleList.add(article);
 				}while(rs.next());
 			}
 		} catch(Exception ex) {
@@ -2013,18 +2023,24 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-	public int getannounceArticleCount()
+	public int getannounceArticleCount(String isEvent)
 			 throws Exception {
 		con = null;
 		pstmt = null;
 		rs = null;
-
+		String sql="";
+		
 		int x=0;
 
 		try {
 			con = getConnection();
 			
-			pstmt = con.prepareStatement("select count(*) from announce");
+			sql="select count(*) from announce";
+			if(isEvent!="2") {
+				sql+=" where isEvent = "+isEvent;
+			}
+			
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -2037,17 +2053,23 @@ public class foodingBean {
 		}
 		return x;
 	}
-	public List<announceDataBean> getannounceArticles(int start, int end)
+	public List<announceDataBean> getannounceArticles(int start, int end,String isEvent)
 			throws Exception {
 		con = null;
 		pstmt = null;
 		rs = null;
+		String sql="";
 		List<announceDataBean> articleList=null;
 		try {
 			con = getConnection();
 			
-			pstmt = con.prepareStatement(
-				"select * from announce order by num desc limit ?,? ");
+			sql="select * from announce";
+			if(isEvent!="2") {
+				sql+= " where isEvent = "+isEvent;
+			}
+			sql+=" order by num desc limit ?,?";
+			
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
