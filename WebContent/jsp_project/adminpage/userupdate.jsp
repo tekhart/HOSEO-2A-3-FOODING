@@ -8,6 +8,7 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="admincss.css">
+
 <script type="text/javascript">
 	function sendingthumb(thumbname){
               $("#thumbnail").css("background-image","url("+thumbname+")");

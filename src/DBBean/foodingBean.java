@@ -1931,8 +1931,8 @@ public class foodingBean {
 			pstmt = con.prepareStatement("select max(num) from announce");
 			rs = pstmt.executeQuery();
 			
-			sql = "insert into announce(title,writerid,isEvent,reg_date,content,end_date";
-			sql+=") values(?,?,?,?,?,?)";
+			sql = "insert into announce(title,writerid,isEvent,reg_date,content,end_date,thumbnail";
+			sql+=") values(?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
@@ -1941,6 +1941,7 @@ public class foodingBean {
 			pstmt.setTimestamp(4, article.getReg_date());
 			pstmt.setString(5, article.getContent());
 			pstmt.setTimestamp(6, article.getEnd_date());
+			pstmt.setString(7, article.getThumbnail());
 			
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
@@ -1999,6 +2000,7 @@ public class foodingBean {
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setContent(rs.getString("content"));
+				article.setThumbnail(rs.getString("thumbnail"));
 
 
 				 articleList.add(article);
@@ -2059,8 +2061,10 @@ public class foodingBean {
 				article.setIsEvent(rs.getString("isEvent"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
+				article.setEnd_date(rs.getTimestamp("end_date"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setContent(rs.getString("content"));
+				article.setThumbnail(rs.getString("thumbnail"));
 					
 					
 				 articleList.add(article);
@@ -2102,6 +2106,7 @@ public class foodingBean {
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setContent(rs.getString("content"));
+				article.setThumbnail(rs.getString("thumbnail"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -2134,6 +2139,7 @@ public class foodingBean {
 					article.setReg_date(rs.getTimestamp("reg_date"));
 					article.setReadcount(rs.getInt("readcount"));
 					article.setContent(rs.getString("content"));
+					article.setThumbnail(rs.getString("thumbnail"));
 				}
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -2154,14 +2160,15 @@ public class foodingBean {
 				con = getConnection();
 
 				 
-					sql="update announce set title=?,isEvent=?,end_date=?,content=? where num=?";
+					sql="update announce set title=?,isEvent=?,end_date=?,content=?,thumbnail=? where num=?";
 					pstmt = con.prepareStatement(sql);
 
 					pstmt.setString(1, article.getTitle());
 					pstmt.setString(2, article.getIsEvent());
 					pstmt.setTimestamp(3, article.getEnd_date());
 					pstmt.setString(4, article.getContent());
-					pstmt.setInt(5, article.getNum());
+					pstmt.setString(5, article.getThumbnail());
+					pstmt.setInt(6, article.getNum());
 					pstmt.executeUpdate();
 					
 						x= 1;
@@ -2193,109 +2200,6 @@ public class foodingBean {
 			}
 			return x;
 		}
-	public void insertannounceCommentsArticle(commentDataBean article,int rootin) 
-				throws Exception {
-			con = null;
-			pstmt = null;
-				rs = null;
-			
-			int num=article.getNum();
-		int ref=article.getRef();
-		int re_step=article.getRe_step();
-		int re_level=article.getRe_level();
-		int maxNumber=0;
-
-			String sql="";
-
-			try {
-				con = getConnection();
-
-				pstmt = con.prepareStatement("select max(num) from announce_comment");
-				rs = pstmt.executeQuery();
-				
-				if (rs.next())
-					maxNumber=rs.getInt(1)+1;
-				else
-					maxNumber=1; 
-				
-				if (num!=0) {	
-					sql="update announce_comment set re_step=re_step+1 ";
-					sql += "where ref=? and re_step >? and rootin=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, ref);
-					pstmt.setInt(2, re_step);
-					pstmt.setInt(3, rootin);
-					pstmt.executeUpdate();
-					re_step=re_step+1;
-					re_level=re_level+1;
-				}else{
-					ref=maxNumber;
-					re_step=0;
-					re_level=0;
-				}	
-				
-				
-				// 荑쇰━瑜� �옉�꽦
-				sql = "insert into announce_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
-				sql+=") values(?,?,?,?,?,?,?)";
-
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rootin);
-				pstmt.setString(2, article.getWriterid());
-				pstmt.setTimestamp(3, article.getReg_date());
-				pstmt.setInt(4, ref);
-				pstmt.setInt(5, re_step);
-				pstmt.setInt(6, re_level);
-				pstmt.setString(7, article.getContent());
-				
-				pstmt.executeUpdate();
-			} catch(Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				DBclose();
-			}
-		}
-	public List<commentDataBean> getannounceCommentsArticles(int start, int end,int num)
-				throws Exception {
-		 con = null;
-		 pstmt = null;
-		 rs = null;
-		 List<commentDataBean> articleList=null;
-		 try {
-			 con = getConnection();
-			 
-			 pstmt = con.prepareStatement(
-			 	"select * from announce_comment where rootin=? order by ref desc, re_step asc limit ?,? ");
-			 pstmt.setInt(1, num);
-			 pstmt.setInt(2, start-1);
-				 pstmt.setInt(3, end);
-			 rs = pstmt.executeQuery();
-
-			 if (rs.next()) {
-				 articleList = new ArrayList<commentDataBean>(end);
-				 do{
-					 commentDataBean article= new commentDataBean();
-					 article.setNum(rs.getInt("num"));
-					 article.setRootin(rs.getInt("rootin"));
-					 article.setWriterid(rs.getString("writerid"));
-					 article.setReg_date(rs.getTimestamp("reg_date"));
-					 article.setRef(rs.getInt("ref"));
-					 article.setRe_step(rs.getInt("re_step"));
-					 article.setRe_level(rs.getInt("re_level"));
-					 article.setContent(rs.getString("content"));
-					
-						
-						
-					articleList.add(article);
-					}while(rs.next());
-				}
-		 } catch(Exception ex) {
-			 ex.printStackTrace();
-		 } finally {
-				DBclose();
-		 }
-			return articleList;
-	 }
 	public void insertproductArticle(productDataBean article)
 			throws Exception {
 		con = null;

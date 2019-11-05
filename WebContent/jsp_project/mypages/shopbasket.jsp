@@ -97,7 +97,8 @@ body {
 						<span><img src="../img/picnic-basket.png" height="60px" width="80px"></span></td></tr>
 						<tr><td>
 						<h4>장바구니가 비어 있습니다.</h4></td></tr>
-							<tr><td></td></tr><br><br><br><br> </table>
+							<tr><td><input type="button" value="상점 가기" class="findbutton" onclick="location.href='../shop/main.jsp'"></td></tr><br><br><br><br> </table>
+							
 				 
 				<% 
 					}else{
@@ -191,7 +192,7 @@ body {
 							<br>
 						</td>
 					</tr>
-				<%}%>
+
 			</tbody>
 		</table>
 		<br><br><br>
@@ -199,6 +200,7 @@ body {
 				<input type="button" onclick="AllCheckSubmit()" value="전체상품주문" class="longbt1">
 				<input type="submit" value="선택상품주문" class="longbt2">
 			</div>
+			<%}%>
 		</div>
 	</form>
 </div> 

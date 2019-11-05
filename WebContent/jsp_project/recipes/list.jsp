@@ -258,29 +258,7 @@
 	</div>
 	
 	<div id="recent">
-	<%--
-	String rc=request.getContextPath();
-	Cookie recs [] =request.getCookies();
-	//String [] show = new String [4];
-	String result;
-	if(rc != null){
-		
-		for(int i=0;i<recs.length;i++){
-			if(i>4){
-				recs[i-5].setMaxAge(0);
-				response.addCookie(recs[i-5]);
-			}
-			//recs[i].setMaxAge(0);
-			//response.addCookie(recs[i]);
-			if(recs[i].getName().indexOf("recipe") != -1){
-				result = URLDecoder.decode(recs[i].getValue(),"UTF-8")+"<br>";
-				out.println(result);
-			}
-			
-		}
-		
-	}
---%>
+
 
 	<script>
 		function resetCookie(){

@@ -72,9 +72,9 @@
 								<input type="button" class="button11" value="마이페이지" onClick="location.href='../mypages/checkstatus.jsp'"> &nbsp;
 								<input type="button" class="button11" value="로그아웃" onClick="location.href='../mains/logout.jsp'">
 								
-								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;">
+								<img src="../img/cart.png" onClick="location.href='../mypages/shopbasket.jsp'" width="25px" height="25px" style="vertical-align:middle;cursor:pointer;">
 								<%if(cartcount!=0){%>
-									<span class="badge"><%=cartcount%></span>
+									<span class="badge"onClick="location.href='../mypages/shopbasket.jsp'" style="cursor:pointer;"><%=cartcount%></span>
 								<%} %>
 								<%
 							}

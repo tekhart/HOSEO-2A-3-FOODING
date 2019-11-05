@@ -11,6 +11,7 @@ public class announceDataBean {
 	Timestamp end_date;
 	int readcount;
 	String content;
+	String thumbnail;
 	
 	public int getNum() {
 		return num;
@@ -59,6 +60,12 @@ public class announceDataBean {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 	
 	
