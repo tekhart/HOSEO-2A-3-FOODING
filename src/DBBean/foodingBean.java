@@ -2010,6 +2010,7 @@ public class foodingBean {
 					article.setIsEvent(rs.getString("isEvent"));
 					article.setWriterid(rs.getString("writerid"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
+					article.setEnd_date(rs.getTimestamp("end_date"));
 					article.setReadcount(rs.getInt("readcount"));
 					article.setContent(rs.getString("content"));
 					article.setThumbnail(rs.getString("thumbnail"));
