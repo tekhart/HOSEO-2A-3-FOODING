@@ -103,7 +103,6 @@ points_hovering_span {
   width: 150px;
   padding: 8px;
   margin-top:5px;
-  left:300px;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;  
   border-radius: 8px;
@@ -133,10 +132,16 @@ points_hovering_span:hover + p.arrow_box {
 }
 
 	</style>
-	
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>	
 	<script>
-	
-</script>
+		$(document).ready(function() {
+			var span = $('#points_hovering_points_hovering_span');
+			var left = span.offset().left - 100;
+			left = left + "px";
+			var arrow_box = document.getElementById('arrow_box');
+			arrow_box.style.left = left;
+		});
+	</script>
 
 
 </head> 
@@ -172,10 +177,17 @@ points_hovering_span:hover + p.arrow_box {
 				<div class="row3"  style="padding-top:80px;margin-left:150px;"> 
 						<div class="forkpoint" style="border: 3px solid #ffc637; border-radius:50px 50px 50px 50px;">    
 							<table> 
-								<tr><td style="width:800px; padding-left:25px; height:50px; vertical-align:top; ">
-										<div id="menu"><points_hovering_span id="points_hovering_points_hovering_span"><img id="forkimage" src="../img/forkc.png" ></points_hovering_span> 
-										    <p class="arrow_box">게시글 작성, 재료구매시 포인트 지급해드려요!</p></div>
-										 </td></tr>  
+								<tr>
+									<td style="width:800px; padding-left:25px; height:50px; vertical-align:top; ">
+										<div id="menu">
+											<points_hovering_span id="points_hovering_points_hovering_span">
+												<img id="forkimage" src="../img/forkc.png" >
+											</points_hovering_span> 
+										   	<p class="arrow_box" id="arrow_box">게시글 작성, 재료 구매 시 포인트 지급해드려요!</p>
+										 </div>
+									</td>
+								</tr>  
+								
 								<tr><td align="center" ><div class="forkpoint2"><h3>포크 포인트</h3></div></td></tr>
 									<tr><td align="center" style="width:800px; height:140px; vertical-align:top; ">
 									<div  class="forkpoint3" style="border: 3px solid #ffc637; border-radius:30px 30px 30px 30px;"><%=point %> P</div></td></tr>

@@ -44,7 +44,7 @@
 					
 					<table width="80%" height="250px" style="font-size:25px; text-align:center; padding-bottom:30px;">
 						<tr>
-							<td colspan="2">* 다른 사람들에게 보여지는 정보입니다<br>&nbsp;</td>
+							<td colspan="2" style="padding-left:60px;">* 다른 사람들에게 보여지는 정보입니다<br>&nbsp;</td>
 						</tr>
 						<tr>			
 							<td width="50%" style="padding-left:30px;"> 

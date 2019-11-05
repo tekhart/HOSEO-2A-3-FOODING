@@ -664,7 +664,7 @@ padding: 0;
  	
  	
 .sidebar {
-  height: 500px;
+  height:70%;
   width: 200px;
   position: absolute;
   z-index: 1;
@@ -735,7 +735,7 @@ padding: 0;
 }
 
 .list-table {
-	width:1300px;
+	width:70%;
 	margin-top: 80px;
 	margin-left:280px;
 	position: relative;
@@ -744,7 +744,7 @@ padding: 0;
 	
 }
 .list-tableth{
-	height:50px;
+	height:20%;
 	border-collapse:0px;
 	font-size: 17pt;
 	text-align:center;
