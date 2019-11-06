@@ -188,9 +188,9 @@ function youreally(){
 			<tr>
 	
 					<td colspan="2">
-					<input type="button" value="글수정"
+					<input type="button" value="글수정" class="smallbt"
 						onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="글삭제"
+					<input type="button" value="글삭제" class="smallbt"
 						onclick="youreally()">
 					</td>
 					

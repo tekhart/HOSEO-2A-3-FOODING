@@ -175,13 +175,13 @@
 					align="center">
 					<h2><%=article.getTitle()%></h2>
 				</td>
-				<td class="orangeline111" align="right"
-					style="color: #e0e0e0; font-size: 30px;"
+				<td class="orangeline111" align="right" 
+					style="color: #9C9C9C; font-size: 25px;"
 					onclick="GoOtherProfile('<%=article.getWriterid()%>')"><%=foodingbean.findnkname(article.getWriterid())%>
 				</td>
 			</tr>
 			<tr class="orangeline1">
-				<td align="right" style="color: #e0e0e0; font-size: 30px;"><%=article.getReadcount()%>
+				<td align="right" style="color: #9C9C9C; font-size: 25px;"><%=article.getReadcount()%>
 					view</td>
 			</tr>
 			<tr class="orangeline">
@@ -269,11 +269,11 @@
 				<tr>
 					<td>댓글 수 : <%=count%></td>
 					<td class="content1" align="right"><input type="submit"
-						value="댓글쓰기" class="bt2"></td>
+						value="댓글쓰기" class="smallbt" style="width:80px; height:40px;"></td> 
 				</tr>
 			</table>
 			<table width="1010px" style="margin: auto;">
-				<tr>
+				<tr> 
 					<td colspan="3" width="0" style="margin: auto;"><textarea
 							name="content" size="40" rows="5" cols="40" class="signupinput2"
 							style="ime-mode: inactive;"></textarea></td>

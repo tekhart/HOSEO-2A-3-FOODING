@@ -65,11 +65,11 @@
 				<td class="orangeline11" rowspan="2" width="1000px" height="100px"
 					align="center"><h2><%=article.getTitle()%></h2></td>  
 				<td class="orangeline111" align="right"
-					style="color: #e0e0e0; font-size: 30px; width:100px;" ><%=foodingbean.findnkname(article.getWriterid())%>
+					style="color: #9C9C9C; font-size: 25px; width:100px;" ><%=foodingbean.findnkname(article.getWriterid())%>
 				</td>
 			</tr>
 			<tr class="orangeline1">
-				<td align="right" style="color: #e0e0e0; font-size: 30px; width:100px;"><%=article.getReadcount()%>
+				<td align="right" style="color: #9C9C9C; font-size: 25px; width:100px;"><%=article.getReadcount()%>
 					view</td>
 			</tr>
 			<tr class="orangeline">

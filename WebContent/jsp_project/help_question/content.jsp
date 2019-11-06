@@ -81,13 +81,13 @@
 			value="<%=article.getRe_level()%>">
 		<table style="margin: auto;" class="contenttable">
 			<tr>
-				<td rowspan="2" width="500px" style="text-align: center;"
+				<td rowspan="2" width="800px" style="text-align: center;"
 					class="orangeline11" height="100px"><h2><%=article.getTitle()%></h2></td>
 				<td class="orangeline111" align="right"
-					style="color: #e0e0e0; font-size: 30px;"><%=sdf.format(article.getReg_date())%></td>
+					style="color: #9C9C9C; font-size: 25px;"><%=sdf.format(article.getReg_date())%></td>
 			<tr>
 				<td class="orangeline1" align="right"
-					style="color: #e0e0e0; font-size: 30px;"><%=foodingbean.findnkname(article.getWriterid())%></td>
+					style="color: #9C9C9C; font-size: 25px;"><%=foodingbean.findnkname(article.getWriterid())%></td>
 			</tr>
 			</tr>
 			<tr>
