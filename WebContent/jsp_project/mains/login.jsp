@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@page import="DBBean.foodingBean" %>
-<%@page import="DBBean.userDataBean" %>
+<%@page import="DBBean.foodingBean"%>
+<%@page import="DBBean.userDataBean"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -33,23 +33,23 @@
 				if(userArticle.getId().equals(id)&&userArticle.getPasswd().equals(passwd)&&userArticle.getIsLeft()==0){
 					session.setAttribute("idlogin",userArticle.getId());
 					%>
-						<script>
+	<script>
 							loginsuccesed()
 						</script>
-					<%
+	<%
 				}else{
 					%>
-						<script>
+	<script>
 							loginfailed()
 						</script>
-					<%
+	<%
 				}
 			}catch (Exception e) {
 				%>
-					<script>
+	<script>
 						loginfailed()
 					</script>
-				<%
+	<%
 			}finally{}
 				
 

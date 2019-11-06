@@ -70,7 +70,7 @@ margin-left:3px;}
 						<label><input type="checkbox" name="customsearch" value="재료:새우,재료:어,재료:게,재료:랍스타,재료:조개">해산물<br></label>
 						<label><input type="checkbox" name="customsearch" value="재료:콩,재료:두부">콩/두부<br></label>
 						<label><input type="checkbox" name="customsearch" value="재료:사과,재료:배,재료:포도,재료:복숭아">과일<br></label>
-						<label><input type="checkbox" name="customsearch" value="재료:달걀,재료:우유,재료:치즈">달걀/유제퓸<br></label>
+						<label><input type="checkbox" name="customsearch" value="재료:달걀,재료:우유,재료:치즈">달걀/유제품<br></label>
 						<label><input type="checkbox" name="customsearch" value="재료:만두">만두<br></label>
 						<label><input type="checkbox" name="customsearch" value="재료:밀가루">밀가루<br></label>
 						<label><input type="checkbox" name="customsearch" value="재료:김치">김치<br></label>

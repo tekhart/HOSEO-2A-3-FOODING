@@ -133,6 +133,43 @@
   font-family: "Lato", sans-serif;
 }
 
+
+.blue-btn a{
+  color: white;
+  text-decoration:none;
+  margin-top: 0em;
+  text-align: center;
+  display:inline-block; /* important */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+.first-link{
+	-webkit-transition: 2s;
+  -moz-transition: 2s;
+  transition: 2s;
+  
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+
+.blue-btn{
+  overflow: hidden;
+}
+
+.first-link{
+  margin-left: 0em;   
+}
+
+.blue-btn:hover .first-link{
+  margin-left: -300px;
+}
+
+
 	</style>
 	<script>
 		function ShowDetail(pdtid,pdtname,price,dscountrt,pdtthumb) {
@@ -212,7 +249,7 @@
 					%>
 					<div class="card">
 						<div style="background-image:url('<%=article.getProductThumb() %>');background-size:cover;background-position:center;width:200px;height:112px;"></div>
-						<p class="writerlong"><%=article.getProductName() %></p>
+						<p class="writerlong blue-btn"><span class="first-link"><%=article.getProductName() %></span></p>
 						<div class="product_price_html">
 							<%if(article.getDiscountRate()==0){ %>
 								
@@ -259,7 +296,7 @@
 								<input type="button" onclick="toAddCart()" class="button134" value="+ 장바구니에 추가">
 								<div class='testEle'></div>
 							<%}else{ %>
-								<input type="button" class="button134" value="로그인 후 이용해주세요">
+								<input type="button" class="button134" value="로그인 후 이용해주세요" onclick="location.href='../mains/signin.jsp'">
 							<%} %>
 						</td>
 					</tr>
