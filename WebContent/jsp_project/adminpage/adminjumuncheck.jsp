@@ -96,10 +96,14 @@
 			return;
 		}
 	}
-	function changebuystatus(buyref,buystatus){
+	function changebuystatus(buyref){
+		var changestatus = document.getElementById("changestatus"+buyref);
+		var buystatus = changestatus.options[changestatus.selectedIndex].value;
+		
 		if(confirm(buyref+"번 주문 상태를 "+buystatus+' 상태로 변경하시겠습니까?')){
 			location.href="changestatus.jsp?buyref="+buyref+"&buystatus="+buystatus+"";
 		}else{
+			changestatus.value="dontchooseme";
 			return;
 		}
 	}
@@ -171,20 +175,17 @@
 				</td>
 				<td>
 					<%=article.getSanction()%>
-					<%
-					 	if (article.getSanction().equals("상품준비중") || article.getSanction().equals("상품배달중")) {
-					 %>
-					 	<select name='searchtype' style="ime-mode:inactive; padding: .7em .5em; 
-								border-radius: 5px 5px 5px 5px; border-color:#ffbb00; font-size:14pt;
-								font-family:Bauhaus ITC; height:50px;" >
-							<option selected>배달단계 조정</option>
-							<option onclick="changebuystatus(<%=article.getRef() %>,'상품준비중')">상품준비중</option>
-							<option onclick="changebuystatus(<%=article.getRef() %>,''배달중')">배달중</option>
-							<option onclick="changebuystatus(<%=article.getRef() %>,'배달 완료')">배달 완료</option>
-						</select>
-					 <%
-					 	}
-					 %>
+					<select style="ime-mode:inactive; 
+							border-radius: 5px 5px 5px 5px; border-color:#ffbb00; font-size:14pt;
+							font-family:Bauhaus ITC; height:25px;"
+							id="changestatus<%=article.getRef()%>"
+							onchange="changebuystatus(<%=article.getRef()%>)">
+						<option hidden="true" value="dontchooseme">배달단계 조정</option>
+						<option value="상품준비중">상품준비중</option>
+						<option value="상품배달중">상품배달중</option>
+						<option value="배달 완료">배달 완료</option>
+					</select>
+					 
 				</td>
 			</tr>
 			<%
