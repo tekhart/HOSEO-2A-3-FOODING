@@ -212,7 +212,6 @@
 				form.createField(textarea);
 				return true; 
 			}
-
 			jQuery(document).ready(function($) {
 			    var checkload = true;
 			    $("#btn_submit").click(function () {

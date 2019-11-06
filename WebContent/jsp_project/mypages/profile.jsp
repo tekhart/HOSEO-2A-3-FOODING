@@ -142,6 +142,9 @@
 	
 </div> 
 <br><br><br>
+<div align="right">
+<input type="button" value="회원탈퇴" onclick="location.href='deleteuserForm.jsp'" class="findbutton">
+</div>
 </center>
 
 
