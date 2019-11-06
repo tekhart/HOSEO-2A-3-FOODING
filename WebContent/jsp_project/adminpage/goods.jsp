@@ -79,7 +79,10 @@
 <br>
 <table class="adminstb2" border="1">
 	<tr>
-		<td colspan="6" align="center">전체 상품 분류</td></tr>
+		<td colspan="6" align="center">아래의 분류를 누르시면 해당 분류만 표시됩니다.</td></tr>
+	<tr>
+	<tr>
+		<td colspan="6" align="center" onclick="location.href='goods.jsp'">전체 상품 분류</td></tr>
 	<tr>
 		<td colspan="3" width="300px" align="center" onclick="location.href='goods.jsp?isTool=2'">재료 : 2</td>
 		<td colspan="3" width="300px" align="center" onclick="location.href='goods.jsp?isTool=1'">도구 : 1</td>

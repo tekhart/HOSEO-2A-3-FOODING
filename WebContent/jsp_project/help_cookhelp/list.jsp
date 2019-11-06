@@ -115,11 +115,6 @@
 
 <% if (count == 0) { %>
 
-<table align="right"><tr><td>
-	<a href="list.jsp">목록</a></td><td>
-	<a href="writeForm.jsp">글쓰기</a></td></tr></table>
-	<br><br><br>
-	
 <table align="center" class="nogul">
 <tr>
 	<td align="center">

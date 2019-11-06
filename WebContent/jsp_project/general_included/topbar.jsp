@@ -48,8 +48,8 @@
 		     	<table>
 					<tr>
 						<td onclick="location.href='../adminpage/userlist.jsp'">유저관리</td>
-						<td onclick="location.href='../adminpage/goods.jsp'">물품등록</td>
-						<td onclick="location.href='../adminpage/adminjumuncheck.jsp'">물품관리</td>
+						<td onclick="location.href='../adminpage/goods.jsp'">물품관리</td>
+						<td onclick="location.href='../adminpage/adminjumuncheck.jsp'">주문관리</td>
 					</tr>
 				</table>
 				<%} %>

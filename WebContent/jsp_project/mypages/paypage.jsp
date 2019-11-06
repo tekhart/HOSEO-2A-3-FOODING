@@ -30,6 +30,7 @@ body {
 	font-family: "Bauhaus ITC";
 	color: black;
 }
+
 #title {
 	text-decoration: none;
 }
@@ -92,6 +93,15 @@ body {
 		document.getElementById("second"+cityName).style.display = "block";
 		evt.currentTarget.className += " active";
 	}
+	function ZipPopup() { 
+		window.open("../general_included/ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+		document.getElementById("city3").focus();
+	}
+	function sendingaddr(addrnum,address){
+		document.getElementById("city1").value=addrnum;
+		document.getElementById("city2").value=address;
+		document.getElementById("city3").focus();
+	}
 </script>
 </head>
 
@@ -105,8 +115,8 @@ body {
 		int bae_song_bee = default_bae_song_bee;
 		foodingBean dbPro = foodingBean.getInstance();
 		String[] selCartIdchkbx = null;
-		String buyName="";
-		String email="";
+		String buyName = "";
+		String email = "";
 		List<productDataBean> articleList = null;
 		try {
 			selCartIdchkbx = request.getParameterValues("CartIdchkbx");
@@ -167,15 +177,15 @@ body {
 									int RealxCountPrice = realprice * article.getProductCount();
 									int ExpectedValueOfAddMile = realprice * article.getProductCount() / 100;
 									totalprice += RealxCountPrice;
-									buyName=article.getProductName();
-									email=topbarArticle.getEmail();
-									if(articleList.size()!=1){
-										buyName+=" 외 "+(articleList.size()-1)+"개의 제품";
+									buyName = article.getProductName();
+									email = topbarArticle.getEmail();
+									if (articleList.size() != 1) {
+										buyName += " 외 " + (articleList.size() - 1) + "개의 제품";
 									}
 						%>
 						<tr>
-							<td width="150" style="border-bottom: 3px solid orange;">
-							<input type="hidden" name="sendcartids"
+							<td width="150" style="border-bottom: 3px solid orange;"><input
+								type="hidden" name="sendcartids"
 								value="<%=article.getCartId()%>">
 								<div class="bak_item">
 									<div class="pro_img"></div>
@@ -190,13 +200,11 @@ body {
 								<%
 									if (article.getDiscountRate() == 0) {
 								%> <%=article.getPrice()%>원 <%
-								 	} else {
-								 %>
-								<del><%=article.getPrice()%>원
-								</del><%=article.getDiscountRate()%>% off<br> ㄴ><%=realprice%>원
-								<%
-									}
-								%>
+ 	} else {
+ %> <del><%=article.getPrice()%>원
+								</del><%=article.getDiscountRate()%>% off<br> ㄴ><%=realprice%>원 <%
+ 	}
+ %>
 							</td>
 							<td width="200"
 								style="border-bottom: 3px solid orange; font-size: 16pt;">
@@ -222,15 +230,13 @@ body {
 								<%
 									if (totalprice >= 50000) {
 											bae_song_bee = 0;
-								%> 	<del><%=default_bae_song_bee%>
-										원
-									</del>=><%=bae_song_bee%> 원 
-								<% } else { %>
-								<%=bae_song_bee%> 원 <%
-								}
-							%>
-							
-							<br>
+								%> <del><%=default_bae_song_bee%>
+									원
+								</del>=><%=bae_song_bee%> 원 <%
+ 	} else {
+ %> <%=bae_song_bee%> 원 <%
+ 	}
+ %> <br>
 							</td>
 						</tr>
 						<%
@@ -241,159 +247,147 @@ body {
 			</div>
 			<br>
 			<div align="center">
-			<table class="row">
-				
-				<tr>
-					<td colspan="2" align="right" width="580px"
-						style="padding-bottom: 50px; padding-left: 280px;">
-						<div class="container">
-							<h3 align="center">주문자 정보</h3>
-							<label for="fname1" class="labelpay">
-							<i class="fa fa-user"></i> 주문하시는분
-							</label>
-							
-							<br>
-							<br> 
-								 <%=topbarArticle.getNkname() %>
-							<br>
-							<br> <label for="email" class="labelpay"> <i
-								class="fa fa-envelope"></i> Email
-							</label>
-							<br>
-							<br>
-							<%=topbarArticle.getEmail() %>
-							<br>
-							<br><br>
-							<br>
-							<h3 align="center">배송지 정보</h3>
-							<label for="fname" class="labelpay">
-								<i class="fa fa-user"></i>
-								받으시는분
-							</label>
-							<br> <br> 
-							<input type="text" id="fname2" name="deliveryName" class="inputtext"
-								placeholder="이름">
-							<br> <br> 
-							
-						</div>
-					</td>
-
-					<td colspan="2" align="center" style="padding-bottom: 50px;">
-						<div class="container2">
-							<h3 align="center">배송지 정보</h3>
-							<label for="fname" class="labelpay">
-								<i class="fa fa-user"></i>
-								전화번호
-							</label>
-							<br> <br> 
-							<input type="text" id="fname2" name="deliveryTel" class="inputtext"
-								placeholder="전화번호">
-							<br> <br> 
-							<label for="city" class="labelpay">
-								<i class="fa fa-institution"></i>
-								주소
-							</label>
-							<br>
-							<br>
-							<input type="text" id="city1" name="deliveryAddrnum"
-								class="inputtext" placeholder="우편번호">
-							<br> <br>
-							<input type="text" id="city2" name="deliveryAddress" class="inputtext"
-								placeholder="주소"><br> <br> <input type="text"
-								id="city3" name="deliveryDetailAdd" class="inputtext" placeholder="상세주소">
-							<br>
-							<br>
-							<label for="state" class="labelpay">배송메시지</label>
-							<input type="text" id="delimessa" name="deliveryMessage" class="inputtext"
-								placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
-						</div>
-					</td>
-				</tr>
-				
-			</table>
-			
-			<table style="position:relative; left:140px;" width="1148px;" align="center">
-				<tr>
-					<td class="container3" colspan="2"
-						style="margin-left: 1px; float: right;">
-						<h3>결제 예정 금액</h3> <label for="fname" class="labelpay"> ₩
-							총 주문금액</label><br>
-					<br>
-						<div class="inputtd2"><%=totalprice + bae_song_bee%></div>
-						<br>
-					<br> <label for="fname" class="labelpay"> 포인트 <span
-							style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage() %>개 (총<%=topbarArticle.getMileage() %>원)</span></label><br>
-					<br> <br>
-						<div style="width: 1148px; float: left;">
-							<input type="text" name="pointused" id="pointused_input" class="inputtd3"> <span class="won">원</span>
-							<a href="" class="tkdyd3">사용</a>
-						</div> <br>
-					<br>
-					<br>
-
-						<div>
-							<table>
-								<tr>
-									<td>
-										<h3>결제 수단</h3>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div
-											style="padding-bottom: 10px; width: 520px; float: left; border-bottom: 1px solid black;">
-											<span class="tablinks"> <input type="radio" name="chk_info" value="신용카드" class="tablinks"
-												onclick="openCity(event, 'creditcard')">신용카드
-											</span> <span class="tablinks" style="float: left; margin-left: 50px;"> <input
-												type="radio" name="chk_info" value="무통장입금" class="tablinks"
-												onclick="openCity(event, 'Bank Deposit')">무통장입금
-											</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div id="secondcreditcard" class="tabcontent">
-											<br><br>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div id="secondBank Deposit" class="tabcontent">
-											<p class="tdpayment">입금자명</p>
-											<input type="text" maxlength="20" class="tdpayinput"
-												style="width: 200px; height: 29px; margin-top: -10px;">
+				<div>
+					<table class="row">
 	
-											<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
-											<select name='bank' class="tdpayinput"
-												style="width: 250px; height: 29px; margin-top: -10px;"><br>
-												<option value='' selected>---------입금은행선택---------</option>
-												<option value='농협'>농협 302-1133-2090-11 이혜진</option>
-												<option value='신한'>신한 302-1133-2090-11 이혜진</option>
-												<option value='국민'>국민 302-1133-2090-11 이혜진</option>
-												<option value='우리'>우리 302-1133-2090-11 이혜진</option>
-												<option value='기업'>기업 302-1133-2090-11 이혜진</option>
-												
-											</select>
-										</div>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-<div align="center">
-	<div id="creditcard" class="secondtabcontent" style="display:none;">
-		<input type="button" class="btpay2" value="결제하기" onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email %>')">
-	</div>
-	<div id="Bank Deposit" class="secondtabcontent" style="display:none;">
-		<input type="submit" class="btpay2" value="결제하기">
-	</div>
-</div>
-</form>
+						<tr>
+							<td colspan="2" align="right" width="580px"
+								style="padding-bottom: 50px; padding-left: 280px;">
+								<div class="container">
+									<h3 align="center">주문자 정보</h3>
+									<label for="fname1" class="labelpay"> <i
+										class="fa fa-user"></i> 주문하시는분
+									</label> <br> <br>
+									<%=topbarArticle.getNkname()%>
+									<br> <br> <label for="email" class="labelpay">
+										<i class="fa fa-envelope"></i> Email
+									</label> <br> <br>
+									<%=topbarArticle.getEmail()%>
+									<br> <br> <br> <br>
+									<h3 align="center">배송지 정보</h3>
+									<label for="fname" class="labelpay"> <i
+										class="fa fa-user"></i> 받으시는분
+									</label> <br> <br> <input type="text" id="fname2"
+										name="deliveryName" class="inputtext" placeholder="이름">
+									<br> <br>
+	
+								</div>
+							</td>
+	
+							<td colspan="2" align="center" style="padding-bottom: 50px;">
+								<div class="container2">
+									<h3 align="center">배송지 정보</h3>
+									<label for="fname" class="labelpay"> <i
+										class="fa fa-user"></i> 전화번호
+									</label> <br> <br> <input type="text" id="fname2"
+										name="deliveryTel" class="inputtext" placeholder="전화번호">
+									<br> <br> <label for="city" class="labelpay">
+										<i class="fa fa-institution"></i> 주소
+									</label> <br> <br> <input type="text" id="city1"
+										name="deliveryAddrnum" class="inputtext" placeholder="우편번호"
+										onclick="ZipPopup();" onfocus="ZipPopup()" readonly> <br>
+									<br> <input type="text" id="city2" name="deliveryAddress"
+										class="inputtext" placeholder="주소" onclick="ZipPopup();"
+										onfocus="ZipPopup()" readonly> <br> <br> <input
+										type="text" id="city3" name="deliveryDetailAdd"
+										class="inputtext" placeholder="상세주소"> <br> <br>
+									<label for="state" class="labelpay">배송메시지</label> <input
+										type="text" id="delimessa" name="deliveryMessage"
+										class="inputtext"
+										placeholder="기사님들이 배송하실 때 확인하는 메세지란입니다. EX)부재시 경비실">
+								</div>
+							</td>
+						</tr>
+	
+					</table>
+	
+					<table style="position: relative; left: 140px;width:1148px;align:center"
+						>
+						<tr>
+							<td class="container3" colspan="2"
+								style="margin-left: 1px; float: right;">
+								<h3>결제 예정 금액</h3> <label for="fname" class="labelpay"> ₩
+									총 주문금액</label><br> <br>
+								<div class="inputtd2"><%=totalprice + bae_song_bee%></div> <br>
+								<br> <label for="fname" class="labelpay"> 포인트 <span
+									style="color: #424242; font-size: 18px;">| 포크 <%=topbarArticle.getMileage()%>개
+										(총<%=topbarArticle.getMileage()%>원)
+								</span></label><br> <br> <br>
+								<div style="width: 1148px; float: left;">
+									 <span class="tkdyd3">사용 : </span>
+									<input type="text" name="pointused" id="pointused_input"
+										class="inputtd3"> <span class="won">원</span>
+								</div> <br> <br> <br>
+	
+								<div>
+									<table>
+										<tr>
+											<td>
+												<h3>결제 수단</h3>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div
+													style="padding-bottom: 10px; width: 520px; float: left; border-bottom: 1px solid black;">
+													<span class="tablinks"> <input type="radio"
+														name="chk_info" value="신용카드" class="tablinks"
+														onclick="openCity(event, 'creditcard')">신용카드
+													</span> <span class="tablinks"
+														style="float: left; margin-left: 50px;"> <input
+														type="radio" name="chk_info" value="무통장입금" class="tablinks"
+														onclick="openCity(event, 'Bank Deposit')">무통장입금
+													</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div id="secondcreditcard" class="tabcontent">
+													<br> <br>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div id="secondBank Deposit" class="tabcontent">
+													<p class="tdpayment">입금자명</p>
+													<input type="text" maxlength="20" class="tdpayinput"
+														name="accountName"
+														style="width: 200px; height: 29px; margin-top: -10px;">
+	
+													<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
+													<select name='accountId' class="tdpayinput"
+														style="width: 250px; height: 29px; margin-top: -10px;">
+														<option hidden=true disabled selected>---------입금은행선택---------</option>
+														<option value='1'>농협 302-1133-2090-11 이혜진</option>
+														<option value='2'>신한 302-1133-2090-11 이혜진</option>
+														<option value='3'>국민 302-1133-2090-11 이혜진</option>
+														<option value='4'>우리 302-1133-2090-11 이혜진</option>
+														<option value='5'>기업 302-1133-2090-11 이혜진</option>
+	
+													</select>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div align="center">
+					<div id="creditcard" class="secondtabcontent" style="display: none;">
+						<input type="button" class="btpay2" value="결제하기"
+							onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email%>')">
+					</div>
+					<div id="Bank Deposit" class="secondtabcontent"
+						style="display: none;">
+						<input type="submit" class="btpay2" value="결제하기">
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 	<br>
 	<br>

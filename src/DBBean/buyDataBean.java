@@ -15,6 +15,7 @@ public class buyDataBean {
 	int price;
 	int discountRate;
 	String productThumb;
+	String accountName;
 	int accountId;
 	String deliveryName;
 	String deliveryTel;
@@ -96,6 +97,12 @@ public class buyDataBean {
 	}
 	public void setProductThumb(String productThumb) {
 		this.productThumb = productThumb;
+	}
+	public String getAccountName() {
+		return accountName;
+	}
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 	public int getAccountId() {
 		return accountId;

@@ -7,7 +7,6 @@ public class QuestionDataBean {
 	private int num; 
 	private String title;
 	private String writerid;
-	private String quesType;
 	private String content;
 	private int isComplete;
     private Timestamp reg_date;
@@ -33,12 +32,6 @@ public class QuestionDataBean {
 	}
 	public void setWriterid(String writerid) {
 		this.writerid = writerid;
-	}
-	public String getQuesType() {
-		return quesType;
-	}
-	public void setQuesType(String quesType) {
-		this.quesType = quesType;
 	}
 	public String getContent() {
 		return content;
