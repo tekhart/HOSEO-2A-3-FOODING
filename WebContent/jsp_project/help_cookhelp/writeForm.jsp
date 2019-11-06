@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="../css/list.css">
-		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="icon" href="../img/favicon.ico">
-		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
-		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<!--  <script type="text/javascript">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel=stylesheet type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
 			function sendingthumb(thumbname){
                 $("#thumbnail").css("background-image","url("+thumbname+")");
                 $("#thumbnail").innerhtml="";
@@ -21,87 +23,88 @@
 
 			}
 			function thumbnailupload(){
-				window.open("thumbUpload/fileForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
+				window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=fooding_thumbs", "a", "width=400, height=300, left=100, top=50"); 
 			}
-		</script> -->
-		
-		
-		
-		
-	</head>
-	<body id="writebody">
-		<%@include file="../general_included/topbar.jsp"%>
-		
-		<div id="maindiv">
+		</script>
+
+
+
+
+</head>
+<body id="writebody">
+	<%@include file="../general_included/topbar.jsp"%>
+
+	<div id="maindiv">
 		<%
 			int num = 0;
-			String strV="";
-			
-			try{
-				if(request.getParameter("num")!=null){
-					num=Integer.parseInt(request.getParameter("num"));
+			String strV = "";
+
+			try {
+				if (request.getParameter("num") != null) {
+					num = Integer.parseInt(request.getParameter("num"));
 				}
-				if(session.getAttribute("idlogin")==null){
+				if (session.getAttribute("idlogin") == null) {
 					response.sendRedirect("../general_included/pls_login_first.jsp");
 				}
-				idlogin=(String)session.getAttribute("idlogin");
+				idlogin = (String) session.getAttribute("idlogin");
 		%>
-		<div class="writetitle1">
-			요리 강의 작성
-		</div>
-		
-		<div id="space"  >
+		<div class="writetitle1">요리 강의 작성</div>
 
-		<form method="post" name="writeform" 
-			action="writePro.jsp" onsubmit="return writeSave()"> 
-		<input type="hidden" name="num" value="<%=num %>">
-		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<input type="hidden" name="thumbnail" id="inputthumbnail" value="../img/defaultthumb.png">
-		
-		<center>
-		<table id="writetable" align="center" border-spacing="10px" >
-			<!--  <tr>
-			<td  width="300px">
-			
-			<div id="thumbnail" onclick="thumbnailupload()"></div>
-			</td>
-			</tr>-->
-			<tr>
-			<td width="1000px" align="left" style="vertical-align:bottom;">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
-				 style="ime-mode:normal;" placeholder="제목을 입력하세요"></td>
-			</tr>
-			
-			
-			<tr><td style="width:1000px;" align="left">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-			</td></tr>
-			
-				<tr>
-				<td align="center" >
-					<input type="button" id="button123" value="확인" onclick="Editor.save();">
-					<input type="reset" id="button123" value="다시 작성">
-					<input type="button" id="button123" value="글목록" OnClick="window.location='list.jsp'">
-				</td>
-			</tr>
-			
-			
-		</table>
-			
-		
-		</center>
-		<%
-			}catch(Exception e){}
-		%>
-		</form>
+		<div id="space">
+
+			<form method="post" name="writeform" action="writePro.jsp"
+				onsubmit="return writeSave()">
+				<input type="hidden" name="num" value="<%=num%>"> <input
+					type="hidden" name="writerid" value="<%=idlogin%>"> <input
+					type="hidden" name="thumbnail" id="inputthumbnail"
+					value="../img/defaultthumb.png">
+
+				<center>
+					<table id="writetable" align="center" border-spacing="10px">
+						<tr>
+							<td width="300px">
+
+								<div id="thumbnail" onclick="thumbnailupload()"></div>
+							</td>
+							<td width="1000px" align="left" style="vertical-align: bottom;">
+								<input type="text" size="40" maxlength="50" name="title"
+								class="signupinputblack2" style="ime-mode: normal;"
+								placeholder="제목을 입력하세요">
+							</td>
+						</tr>
+
+
+						<tr>
+							<td style="width: 1000px;" align="left" colspan="2"><jsp:include
+									page="../../daumeditor/editor_frame.jsp"></jsp:include></td>
+						</tr>
+
+						<tr>
+							<td align="center" colspan="2"><input type="button"
+								id="button123" value="확인" onclick="Editor.save();"> <input
+								type="reset" id="button123" value="다시 작성"> <input
+								type="button" id="button123" value="글목록"
+								OnClick="window.location='list.jsp'"></td>
+						</tr>
+
+
+					</table>
+
+
+				</center>
+				<%
+					} catch (Exception e) {
+					}
+				%>
+			</form>
 		</div>
-		</div>
-		
-		
-		<%@include file="../general_included/footer.jsp"%>
-		
-		
-		<script type="text/javascript">
+	</div>
+
+
+	<%@include file="../general_included/footer.jsp"%>
+
+
+	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
 		
@@ -185,5 +188,5 @@
 			});
 
 		</script>
-	</body>
+</body>
 </html>
