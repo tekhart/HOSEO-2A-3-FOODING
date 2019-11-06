@@ -1613,8 +1613,8 @@ public class foodingBean {
 				re_level = 0;
 			}
 
-			sql = "insert into question(title,writerid,,content,reg_date,ref,re_step,re_level";
-			sql += ") values(?,?,?,?,?,?,?,?)";
+			sql = "insert into question(title,writerid,content,reg_date,ref,re_step,re_level";
+			sql += ") values(?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
