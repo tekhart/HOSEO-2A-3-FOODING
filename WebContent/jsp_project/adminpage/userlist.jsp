@@ -40,7 +40,7 @@ function okdelete(userid){
 		<td>비밀번호</td>
 		<td>가입일</td>
 		<td>수정</td>
-		<td>삭제</td>
+		<td>탈퇴</td>
 		<td>결제</td>
 	</tr>
 
@@ -54,7 +54,7 @@ for (int i = 0 ; i < userArticle.size(); i++) {
 		<td><%=ua.getPasswd() %></td>
 		<td><%=ua.getReg_date()%></td>
 		<td><a href="userupdate.jsp?userid=<%=ua.getId()%>">수정</a></td>
-		<td onclick="okdelete('<%=ua.getId()%>')">삭제</td>
+		<td onclick="okdelete('<%=ua.getId()%>')">탈퇴</td>
 		<td><a onclick="">결제목록</a></td>
 	</tr>
 		

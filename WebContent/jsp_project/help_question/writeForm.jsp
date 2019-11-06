@@ -56,37 +56,34 @@
 		<input type="hidden" name="re_level" value="<%=re_level %>">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
 		<center>
-		<table id="writetable" align="center" border-spacing="10px">
-			<tr>
-				<td align="right" colspan="2">
+			<table id="writetable" align="center" border-spacing="10px">
+				<tr>
+					<td align="right" colspan="2">
+					
+					</td>
+				</tr>
+				<tr>
+					<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+					<td width="330" align="left">
+					<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
+					 style="ime-mode:normal;"></td>
+				</tr>
+				<tr>
+					<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+					<td align="left">
+						<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
+				</tr>
 				
-				</td>
-			</tr>
-			<tr>
-				<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-				<td width="330" align="left">
-				<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
-				 style="ime-mode:normal;"></td>
-			</tr>
-			
-			<tr>
-				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-				<td align="left">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-			</tr>
-			
-				<tr><td></td>
-				<td align="center" >
-					<input type="button" id="button123" value="확인" onclick="Editor.save();">
-					<input type="reset" id="button123" value="다시 작성">
-					<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
-				</td>
-			</tr>
-			
-			
-		</table>
-			
-		
+					<tr><td></td>
+					<td align="center" >
+						<input type="button" id="button123" value="확인" onclick="Editor.save();">
+						<input type="reset" id="button123" value="다시 작성">
+						<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
+					</td>
+				</tr>
+				
+				
+			</table>
 		</center>
 		<%
 			}catch(Exception e){}

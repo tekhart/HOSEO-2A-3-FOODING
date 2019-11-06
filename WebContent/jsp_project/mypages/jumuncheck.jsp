@@ -124,7 +124,6 @@ position:relative;
 		List<buyDataBean> DataArticleList =dbPro.getbuyArticles(refarray[refint]);
 		int totalprice=0;
 		buyDataBean article=null;
-		%><%
 		for(int articleint=0;articleint<DataArticleList.size();articleint++){
 			article=DataArticleList.get(articleint);
 			int realprice=article.getPrice()*(100-article.getDiscountRate())/100;
@@ -159,8 +158,15 @@ position:relative;
 					<%} %>
 					<%=realprice %>원
 				</td>
-				<td>
+				<td
+					<%if(article.getAccountId()>0&&article.getAccountId()<6){ %>
+						onclick="location.href='BankDeposit.jsp?buyref=<%=article.getRef() %>'"
+					<%} %>
+				>
 					<%=article.getSanction() %>
+					<%if(article.getAccountId()>0&&article.getAccountId()<6){ %>
+						클릭하시면 입금계좌 정보와 제한 기일이 나옵니다.
+					<%} %>
 				</td>
 			</tr>
 		<%}%>
