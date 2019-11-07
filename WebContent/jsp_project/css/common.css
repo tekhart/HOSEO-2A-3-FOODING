@@ -131,6 +131,14 @@ fieldset {
 	margin-right: 20px;
 	margin-left: 5px;
 }
+#maineventdiv {
+	background-color: #A6A6A6;
+	height: 300px;
+	width: 100%;
+	margin-right: 20px;
+	margin-left: 5px;
+	float:left;
+}
 
 .dotdot {
 	margin-top: -25px;
