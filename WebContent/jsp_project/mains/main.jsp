@@ -223,9 +223,13 @@
 	<br>
 	<br>
 	<div id="eventdiv" align="center" onclick="location.href='event.jsp'">
-
-		<img src="../img/ev.png" width="100%" height="300px">
-
+<marquee class="eventbanner" scrollamount="11">
+		<div>이벤트 1</div>
+		<div>이벤트 2</div>
+		<div>이벤트 3</div>
+		<div>이벤트 4</div>
+		<div>이벤트 5</div>
+</marquee>
 	</div>
 
 

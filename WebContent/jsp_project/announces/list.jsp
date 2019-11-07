@@ -57,6 +57,7 @@
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
 
+
 <style>
 .eventdiv {
 	width: 1300px;
