@@ -48,8 +48,7 @@
 					<div
 						style="background-image:url('<%=article.getThumbnail()%>');background-size:cover;background-position:center;width:1880px; height:600px;"></div>
 					<div class="slide-text">
-						<br>
-						<br>
+						<br> <br>
 						<%=article.getTitle()%>
 					</div>
 				</div>
@@ -120,8 +119,7 @@
 			<table id="bottable" cellspacing="0px">
 				<tr>
 					<th class="line" colspan="5"><font size="40px"><center>
-								오늘의 레시피<br>
-								<br>
+								오늘의 레시피<br> <br>
 							</center></font></th>
 				</tr>
 				<%

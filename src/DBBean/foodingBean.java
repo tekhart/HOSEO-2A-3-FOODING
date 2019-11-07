@@ -2666,13 +2666,15 @@ public class foodingBean {
 				} while (rs.next());
 			}
 			deletecartArticle(owner);
-			if (requestArticle.getAccountId() != 0) {
+			if (requestArticle.getAccountId() == 0||requestArticle.getAccountId() > 5) {
 				if (rslength == 1) {
 					pointupdate(owner, pointadd, productnameforpointhist + " 구매");
 				} else {
 					pointupdate(owner, pointadd, productnameforpointhist + " 외" + (rslength - 1) + " 개 제품 구매");
 				}
-				pointupdate(owner, -1 * pointused, "물품 구매에 사용");
+				if(pointused>=0) {
+					pointupdate(owner, -1 * pointused, "물품 구매에 사용");
+				}
 			}
 
 		} catch (Exception ex) {
@@ -2858,7 +2860,7 @@ public class foodingBean {
 				owner = rs.getString(1);
 			}
 			pointupdate(owner, buytotalprice / 100, buytitle + " 구매");
-			if (buypointused != 0) {
+			if (buypointused >= 0) {
 				pointupdate(owner, -1 * buypointused, "물품 구매에 사용");
 			}
 		} catch (Exception ex) {
@@ -2867,12 +2869,13 @@ public class foodingBean {
 			DBclose();
 		}
 	}
+
 	public void changebuystatus(int buyref, String buystatus) throws Exception {
 		DBclose();
 		con = null;
 		pstmt = null;
 		rs = null;
-		
+
 		String sql = "";
 		try {
 			con = getConnection();
@@ -2882,7 +2885,7 @@ public class foodingBean {
 			pstmt.setString(1, buystatus);
 			pstmt.setInt(2, buyref);
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

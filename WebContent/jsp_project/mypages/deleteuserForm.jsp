@@ -3,7 +3,9 @@
 <%@ page import="DBBean.BoardDataBean"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.sql.*"%>
-<%request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <%@page import="DBBean.foodingBean"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +24,8 @@
 		<div style="margin: auto">
 			<form action="deleteuserPro.jsp" method="post">
 				<div class="deleteuser">
-					<table style="text-align: left; width: 600px; margin: auto; position:relative; top:-50px;">
+					<table
+						style="text-align: left; width: 600px; margin: auto; position: relative; top: -50px;">
 						<tr>
 							<td colspan="2"><p id="notice"
 									style="font-weight: 100; text-align: left;">고객님의 개인정보 보호를
@@ -36,22 +39,25 @@
 								type="password" name="checkpw" style="width: 50%"></td>
 						</tr>
 						<tr>
-						<td>
-						<br></td></tr>
+							<td><br></td>
+						</tr>
 						<tr>
-							<td style="font-size:22px;">※ 회원 탈퇴 주의사항 ※<br>
-							1. 탈퇴 후에 작성 하셨던 글, 댓글 등 모든 기록들이 삭제되지는 않습니다.<br>
-							2. 사용하시던 아이디로 재가입이 불가능합니다.<br>
-							3. 확인을 누르시면 바로 회원 탈퇴가 됩니다.
+							<td style="font-size: 22px;">※ 회원 탈퇴 주의사항 ※<br> 1. 탈퇴
+								후에 작성 하셨던 글, 댓글 등 모든 기록들이 삭제되지는 않습니다.<br> 2. 사용하시던 아이디로
+								재가입이 불가능합니다.<br> 3. 확인을 누르시면 바로 회원 탈퇴가 됩니다.
 							</td>
 						</tr>
 					</table>
 
 				</div>
-				<br><br><br>
-				<table align="right" style="margin-right:550px;"><tr><td>
-				<input type="button" value="취소" class="check2" onclick="location.href='profile.jsp'"></td><td>
-				<input type="submit" value="확인" class="check"></td></tr></table>
+				<br> <br> <br>
+				<table align="right" style="margin-right: 550px;">
+					<tr>
+						<td><input type="button" value="취소" class="check2"
+							onclick="location.href='profile.jsp'"></td>
+						<td><input type="submit" value="확인" class="check"></td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</div>

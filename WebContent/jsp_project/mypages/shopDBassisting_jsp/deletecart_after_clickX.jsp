@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%request.setCharacterEncoding("UTF-8"); %>
-<%@page import="DBBean.foodingBean" %>
-<%@ page import = "java.util.List" %>
-<%@ page import = "DBBean.productDataBean" %>
+<%@page import="DBBean.foodingBean"%>
+<%@ page import="java.util.List"%>
+<%@ page import="DBBean.productDataBean"%>
 <%
 request.setCharacterEncoding("UTF-8");
 int deletecartid=0;

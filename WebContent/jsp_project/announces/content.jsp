@@ -8,14 +8,14 @@
 <%!int commentpageSize = 10;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");%>
 <%
-			try {
-				int num = Integer.parseInt(request.getParameter("num"));
-				String pageNum = request.getParameter("pageNum");
-				foodingBean dbPro = foodingBean.getInstance();
-				announceDataBean article = dbPro.getannounceArticle(num);
+	try {
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+		foodingBean dbPro = foodingBean.getInstance();
+		announceDataBean article = dbPro.getannounceArticle(num);
 
-				foodingBean foodingbean = new foodingBean();
-		%>
+		foodingBean foodingbean = new foodingBean();
+%>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,8 @@
 	}
 	function youreally(){
 		if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
-			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>
+	"
 		}
 	}
 </script>
@@ -59,17 +60,18 @@
 	<%@include file="../general_included/topbar.jsp"%>
 
 	<div id="maindiv2">
-		
+
 		<table class="contenttable">
-			<tr> 
+			<tr>
 				<td class="orangeline11" rowspan="2" width="1000px" height="100px"
-					align="center"><h2><%=article.getTitle()%></h2></td>  
+					align="center"><h2><%=article.getTitle()%></h2></td>
 				<td class="orangeline111" align="right"
-					style="color: #9C9C9C; font-size: 25px; width:100px;" ><%=foodingbean.findnkname(article.getWriterid())%>
+					style="color: #9C9C9C; font-size: 25px; width: 100px;"><%=foodingbean.findnkname(article.getWriterid())%>
 				</td>
 			</tr>
 			<tr class="orangeline1">
-				<td align="right" style="color: #9C9C9C; font-size: 25px; width:100px;"><%=article.getReadcount()%>
+				<td align="right"
+					style="color: #9C9C9C; font-size: 25px; width: 100px;"><%=article.getReadcount()%>
 					view</td>
 			</tr>
 			<tr class="orangeline">
@@ -84,38 +86,40 @@
 				</td>
 			</tr>
 			<tr class="orangeline">
-	
-					 	<%
-							if (isAdmin==1) {
-						%>
-							<td width="350px" height="55px">
-								<input type="button" value="글수정" class="bt2"
-								onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-								<input type="button" value="글삭제" class="bt2"
-								onclick="youreally()">
-							</td>
-							<td width="800px">일자 : <%=article.getReg_date()%></td>
-						<%
-							}else{
-						%>
-							<td width="1150px" style="text-align:right;" height="55px" colspan="2">일자 : <%=article.getReg_date()%></td>
-						<%}%>
-				
-				
+
+				<%
+					if (isAdmin == 1) {
+				%>
+				<td width="350px" height="55px"><input type="button"
+					value="글수정" class="bt2"
+					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+					<input type="button" value="글삭제" class="bt2" onclick="youreally()">
+				</td>
+				<td width="800px">일자 : <%=article.getReg_date()%></td>
+				<%
+					} else {
+				%>
+				<td width="1150px" style="text-align: right;" height="55px"
+					colspan="2">일자 : <%=article.getReg_date()%></td>
+				<%
+					}
+				%>
+
+
 			</tr>
 
-		
+
 		</table>
 
 
-		
+
 	</div>
 	<%@include file="../general_included/footer.jsp"%>
 
 </body>
 </html>
 <%
-			} catch (Exception e) {
-				
-			}
-		%>
+	} catch (Exception e) {
+
+	}
+%>

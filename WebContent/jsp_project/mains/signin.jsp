@@ -52,24 +52,17 @@
 	<hr style="border: solid 2px #ffbb00; align: center; width: 1900px;">
 	<center>
 		<form method="post" name="login" action="login.jsp">
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br> <br> <br> <br>
 			<div>
 				<input class="logininputs" type="text" placeholder="아이디 " name="id"
-					onkeyup="enterkey();"><br>
-				<br> <input class="logininputs" type="password"
-					placeholder="비밀번호" name="passwd" onkeyup="enterkey();" id="myInput">
-				<br>
+					onkeyup="enterkey();"><br> <br> <input
+					class="logininputs" type="password" placeholder="비밀번호"
+					name="passwd" onkeyup="enterkey();" id="myInput"> <br>
 				<p id="text">Caps lock 이 켜져있습니다!</p>
 				<br>
 				<button class="loginbutton" type="button" onclick="Login();">로그인</button>
 			</div>
-			<br>
-			<br> <span class="idpasswd"><a class="logina"
+			<br> <br> <span class="idpasswd"><a class="logina"
 				href="findID.jsp">아이디</a> / <a class="logina" href="findPW.jsp">비밀번호
 					찾기</a></span>
 

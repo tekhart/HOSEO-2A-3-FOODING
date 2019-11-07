@@ -65,8 +65,7 @@
 
 			<form method="post" name="writeform" action="updatePro.jsp?pageNum=1"
 				onsubmit="return writeSave()">
-				<input type="hidden" name="num" value="<%=num%>">
-				<input
+				<input type="hidden" name="num" value="<%=num%>"> <input
 					type="hidden" id="inputthumbnail" name="thumbnail"
 					value="<%=article.getThumbnail()%>">
 				<table id="writetable" align="center" border-spacing="10px"
@@ -78,19 +77,17 @@
 						<td width="1000px" align="left" style="vertical-align: bottom;">
 							<input type="text" size="40" maxlength="50" name="title"
 							class="signupinputblack2" style="ime-mode: normal;"
-							value="<%=article.getTitle() %>"
-							placeholder="제목을 입력하세요">
+							value="<%=article.getTitle()%>" placeholder="제목을 입력하세요">
 						</td>
 					</tr>
 
 
 					<tr>
 						<td style="width: 1000px;" align="left" colspan="2"><jsp:include
-								page="../../daumeditor/editor_frame.jsp"></jsp:include>
-							<script type="text/javascript">
+								page="../../daumeditor/editor_frame.jsp"></jsp:include> <script
+								type="text/javascript">
 								Editor.modify({'content':'<%=article.getContent()%>'});
-							</script>
-						</td>
+							</script></td>
 					</tr>
 
 					<tr>

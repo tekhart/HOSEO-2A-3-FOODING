@@ -162,31 +162,24 @@
 				<td>
 					<%
 						if (article.getAccountId() > 0 && article.getAccountId() < 6) {
-					%> 무통장입금<br>입금자 : <%=article.getAccountName()%>
-						<input type="button" value="결제 확인"
-						onclick="thanks_to_pay(<%=article.getRef()%>,<%=totalprice%>,<%=article.getPointused()%>,'<%=buytitle%>')">
+					%> 무통장입금<br>입금자 : <%=article.getAccountName()%> <input
+					type="button" value="결제 확인"
+					onclick="thanks_to_pay(<%=article.getRef()%>,<%=totalprice%>,<%=article.getPointused()%>,'<%=buytitle%>')">
 					<%
 						} else {
-					%>
-						<%=article.getAccountName()%>
-					<%
-					 	}
-					%>
+					%> <%=article.getAccountName()%> <%
+ 	}
+ %>
 				</td>
-				<td>
-					<%=article.getSanction()%>
-					<select style="ime-mode:inactive; 
-							border-radius: 5px 5px 5px 5px; border-color:#ffbb00; font-size:14pt;
-							font-family:Bauhaus ITC; height:25px;"
-							id="changestatus<%=article.getRef()%>"
-							onchange="changebuystatus(<%=article.getRef()%>)">
+				<td><%=article.getSanction()%> <select
+					style="ime-mode: inactive; border-radius: 5px 5px 5px 5px; border-color: #ffbb00; font-size: 14pt; font-family: Bauhaus ITC; height: 25px;"
+					id="changestatus<%=article.getRef()%>"
+					onchange="changebuystatus(<%=article.getRef()%>)">
 						<option hidden="true" value="dontchooseme">배달단계 조정</option>
 						<option value="상품준비중">상품준비중</option>
 						<option value="상품배달중">상품배달중</option>
 						<option value="배달 완료">배달 완료</option>
-					</select>
-					 
-				</td>
+				</select></td>
 			</tr>
 			<%
 				}

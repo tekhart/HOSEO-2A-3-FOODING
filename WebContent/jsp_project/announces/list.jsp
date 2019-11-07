@@ -171,8 +171,13 @@ hr {
 				</div>
 			</div>
 			<script type="text/javascript">
-				var countdownfunction<%=article.getNum()%> =
-					setInterval(function() {event_countdown(<%=article.getNum()%>);}, 1000);
+				var countdownfunction
+			<%=article.getNum()%>
+				= setInterval(function() {
+					event_countdown(
+			<%=article.getNum()%>
+				);
+				}, 1000);
 			</script>
 		</div>
 		<%
@@ -229,10 +234,10 @@ hr {
 					8, 2);
 			return new Date(y, m, d);
 		}
-		
+
 		function event_countdown(i) {
-			var event_endtime = document.getElementById("event_endtime"+i);
-			var eventTimer = document.getElementById("eventTimer"+i);
+			var event_endtime = document.getElementById("event_endtime" + i);
+			var eventTimer = document.getElementById("eventTimer" + i);
 			var countDownDate = parse(event_endtime.innerHTML);
 			var now = new Date().getTime();
 			var distance = countDownDate - now;

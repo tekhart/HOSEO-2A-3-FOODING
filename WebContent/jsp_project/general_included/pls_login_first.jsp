@@ -1,8 +1,11 @@
-<%@ page language ="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<% session.invalidate(); %>
+<%
+	session.invalidate();
+%>
 
 <script>
-alert("먼저 로그인 해주세요!");
-location.href="../mains/signin.jsp";
+	alert("먼저 로그인 해주세요!");
+	location.href = "../mains/signin.jsp";
 </script>

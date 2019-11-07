@@ -5,9 +5,8 @@
 <%@ page import="DBBean.foodingBean"%>
 <meta charset="UTF-8">
 <%
-
 	request.setCharacterEncoding("UTF-8");
-	foodingBean foodingbean=new foodingBean();
+	foodingBean foodingbean = new foodingBean();
 %>
 <!DOCTYPE html>
 <html>
@@ -25,243 +24,244 @@
 			var DBidArray=[];
 			var DBemailArray=[];
 			var i=0;
-			<% 
-			
-				ResultSet rs=foodingbean.resultQuery("select nkname,id,email from user");
-				int i=0;
-				try{
-					while(rs.next()){
-						String nknameArray = rs.getString("nkname");	
-						String idArray = rs.getString("id");	
-						String emailArray = rs.getString("email");	
-						%>
+			<%ResultSet rs = foodingbean.resultQuery("select nkname,id,email from user");
+			int i = 0;
+			try {
+				while (rs.next()) {
+					String nknameArray = rs.getString("nkname");
+					String idArray = rs.getString("id");
+					String emailArray = rs.getString("email");%>
 						DBnkArray[<%=i%>]="<%=nknameArray%>";
 						DBidArray[<%=i%>]="<%=idArray%>";
-						DBemailArray[<%=i%>]="<%=emailArray%>";
-						<%
-						i++;
-					}
+						DBemailArray[<%=i%>]="<%=emailArray%>
+	";
+<%i++;
+				}
 
-				}catch(Exception e){
-					
-				}finally{}
-				foodingbean.DBclose();
-			%>
-			var arraylength=<%=i %>
-			var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-			var nknameexp=/^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
-			var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;  
-			var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{1,50}).{8,50}$/;
-			
-			function sendingaddr(addrnum,address){
-				document.getElementById("inputaddrnum").value=addrnum;
-				document.getElementById("inputaddress").value=address;
-				document.getElementById("inputdetailaddr").focus();
+			} catch (Exception e) {
+
+			} finally {
 			}
-			function AllcheckNotice(){
-				Nknamecheck();
-				Idcheck();
-				Emailcheck();
-				Passwdcheck();
-				document.getElementById("inputnkname").focus();
-			}
+			foodingbean.DBclose();%>
+	var arraylength =
+<%=i%>
+	var emailexp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	var nknameexp = /^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
+	var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;
+	var pwexp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{1,50}).{8,50}$/;
 
-			function Nknamecheck() {
-				var checked=0;
-				if (window.event.keyCode == 13) {
-					Signupcross();
-			    }
-				if(document.getElementById("inputnkname").value.length<3||document.getElementById("inputnkname").value.length>16){
-					document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
-					document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else{
-					if(nknameexp.test(document.getElementById("inputnkname").value)==true){
-						i=0;
-						while(i<=arraylength){
-							if(DBnkArray[i]==document.getElementById("inputnkname").value){
-								checked=1;
-								document.getElementById('nknameimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
-								document.getElementById('nknamecheck').innerHTML="중복된 닉네임 입니다"
-							}
-							i++
-						}
-						if(checked==0){
-							document.getElementById('nknameimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-							document.getElementById('nknamecheck').innerHTML="사용 가능한 닉네임 입니다";
-						}
-					}else{
-						document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3자이상";
-						document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+	function sendingaddr(addrnum, address) {
+		document.getElementById("inputaddrnum").value = addrnum;
+		document.getElementById("inputaddress").value = address;
+		document.getElementById("inputdetailaddr").focus();
+	}
+	function AllcheckNotice() {
+		Nknamecheck();
+		Idcheck();
+		Emailcheck();
+		Passwdcheck();
+		document.getElementById("inputnkname").focus();
+	}
+
+	function Nknamecheck() {
+		var checked = 0;
+		if (window.event.keyCode == 13) {
+			Signupcross();
+		}
+		if (document.getElementById("inputnkname").value.length < 3
+				|| document.getElementById("inputnkname").value.length > 16) {
+			document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
+			document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+		} else {
+			if (nknameexp.test(document.getElementById("inputnkname").value) == true) {
+				i = 0;
+				while (i <= arraylength) {
+					if (DBnkArray[i] == document.getElementById("inputnkname").value) {
+						checked = 1;
+						document.getElementById('nknameimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
+						document.getElementById('nknamecheck').innerHTML = "중복된 닉네임 입니다"
 					}
-					
+					i++
 				}
-				if(document.getElementById("inputnkname").value=='운영자바보'){
-					document.getElementById('nknamecheck').innerHTML = "그런건 안대!";
-					document.getElementById('nknameimg').innerHTML = "<img src='../img/angry.png' height='30px' width='30px' align='middle'>";
+				if (checked == 0) {
+					document.getElementById('nknameimg').innerHTML = "<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+					document.getElementById('nknamecheck').innerHTML = "사용 가능한 닉네임 입니다";
 				}
-				
-				
-			};
-
-			function Idcheck() {
-				var checked=0;
-				if (window.event.keyCode == 13) {
-					Signupcross();
-			    }
-				if(document.getElementById("inputid").value.length<8){
-					document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
-					document.getElementById('idimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else{
-					if(idexp.test(document.getElementById("inputid").value)==true){
-						i=0;
-						while(i<=arraylength){
-							if(DBidArray[i]==document.getElementById("inputid").value){
-								checked=1;
-								document.getElementById('idcheck').innerHTML="중복된 아이디 입니다"
-									document.getElementById('idimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
-							}
-							i++
-						}
-						if(checked==0){
-							document.getElementById('idcheck').innerHTML="사용 가능한 아이디 입니다";
-							document.getElementById('idimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-						}
-					}else{
-						document.getElementById('idcheck').innerHTML="문자로 시작하고 공백과 특수문자 없이 8자이상";
-						document.getElementById('idimg').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-					}
-				}
-			};
-			function Emailcheck() {
-				var checked=0;
-				if (window.event.keyCode == 13) {
-					Signupcross();
-			    }
-				if(emailexp.test(document.getElementById("inputemail").value)==""){
-					document.getElementById('emailcheck').innerHTML = "이메일 형식으로 작성해 주십시오.";
-					document.getElementById('emailimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else if(emailexp.test(document.getElementById("inputemail").value)==false){
-					document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
-					document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
-				}else{
-					i=0;
-					while(i<=arraylength){
-						if(DBemailArray[i]==document.getElementById("inputemail").value){
-							checked=1;
-							document.getElementById('emailcheck').innerHTML="중복된 이메일 입니다"
-								document.getElementById('emailimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
-						}
-						i++
-					}
-					if(checked==0){
-						document.getElementById('emailcheck').innerHTML="사용 가능한 이메일 입니다";
-						document.getElementById('emailimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-					}
-				}
-			};
-
-			function Passwdcheck() {
-				if (window.event.keyCode == 13) {
-					Signupcross();
-			    }
-				if(pwexp.test(document.getElementById("inputpasswd").value)==false){
-					document.getElementById('passwdcheck').innerHTML = "8자 이상, 영문/특수문자/숫자가 하나 이상";
-					document.getElementById('passwdimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else{
-					document.getElementById('passwdcheck').innerHTML="사용 가능한 비밀번호 입니다";
-					document.getElementById('passwdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-				}
-				Repasswdcheck();
-			};
-
-			function Repasswdcheck() {
-				if (window.event.keyCode == 13) {
-					Signupcross();
-			    }
-				if(document.getElementById("inputpasswd").value==""){
-					document.getElementById('repasswdcheck').innerHTML="비밀번호와 같아야 합니다";
-					document.getElementById('repasswdimg').innerHTML="<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
-				}else if(document.getElementById("inputpasswd").value==document.getElementById("inputrepasswd").value){
-					document.getElementById('repasswdcheck').innerHTML="비밀번호가 같습니다";
-					document.getElementById('repasswdimg').innerHTML="<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
-				}else{
-					document.getElementById('repasswdcheck').innerHTML="비밀번호가 다릅니다";
-					document.getElementById('repasswdimg').innerHTML="<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
-					
-				}
-			};
-
-			function ZipPopup() { 
-				window.open("../general_included/ZipFinder/ZipinputForm.jsp", "a", "width=400, height=300, left=100, top=50"); 
-				document.getElementById("inputdetailaddr").focus();
-			}
-				
-			function Signupcross(){	
-
-					if(document.getElementById("inputnkname").value==""||document.getElementById('nknamecheck').innerHTML!="사용 가능한 닉네임 입니다"){
-						alert("닉네임을 확인해주세요");
-						document.getElementById("inputnkname").focus();
-						return;
-					}
-					if(document.getElementById("inputid").value==""||document.getElementById('idcheck').innerHTML!="사용 가능한 아이디 입니다"){
-						alert("아이디를 확인해주세요");
-						document.getElementById("inputid").focus();
-						return;
-					}
-					if(document.getElementById("inputpasswd").value==""||document.getElementById('passwdcheck').innerHTML!="사용 가능한 비밀번호 입니다"){
-						alert("비밀번호를 입력해주세요");
-						document.getElementById("inputpasswd").focus();
-						return;
-					}
-					if(document.getElementById("inputpasswd").value==""){
-						alert("비밀번호확인을 입력해주세요");
-						document.getElementById("inputpasswd").focus();
-						return;
-					}
-					if(document.getElementById("inputpasswd").value!=document.getElementById("inputpasswd").value){
-						alert("비밀번호가 다릅니다.");
-						document.getElementById("inputpasswd").focus();
-						return;
-					}
-					if(document.getElementById("inputemail").value==""){
-						alert("이메일을 입력해주세요.");
-						document.getElementById("inputemail").focus();
-						return;
-					}
-					else if(emailexp.test(document.getElementById("inputemail").value)==false){
-						alert("이메일 형식이 올바르지 않습니다.");
-						document.getElementById("inputemail").focus();
-						return;
-					}
-					if(document.getElementById("inputaddrnum").value==""){
-						alert("우편번호를 입력해주세요");
-						document.getElementById("inputaddrnum").focus();
-						return;
-					}
-					if(document.getElementById("inputdetailaddr").value==""){
-						alert("상세주소를 입력해주세요");
-						document.getElementById("inputdetailaddr").focus();
-						return;
-					}
-
-					document.getElementById("register").submit();
-				
-				
+			} else {
+				document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3자이상";
+				document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 			}
 
-			function Signupclear(){
-				
-				document.getElementById("inputnkname").value="";
-				document.getElementById("inputid").value="";
-				document.getElementById("inputpasswd").value="";
-				document.getElementById("inputpasswd").value="";
-				document.getElementById("inputemail").value="";
-				document.getElementById("inputaddrnum").value="";
-				document.getElementById("inputaddress").value="";
-				document.getElementById("inputdetailaddr").value="";
+		}
+		if (document.getElementById("inputnkname").value == '운영자바보') {
+			document.getElementById('nknamecheck').innerHTML = "그런건 안대!";
+			document.getElementById('nknameimg').innerHTML = "<img src='../img/angry.png' height='30px' width='30px' align='middle'>";
+		}
+
+	};
+
+	function Idcheck() {
+		var checked = 0;
+		if (window.event.keyCode == 13) {
+			Signupcross();
+		}
+		if (document.getElementById("inputid").value.length < 8) {
+			document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
+			document.getElementById('idimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+		} else {
+			if (idexp.test(document.getElementById("inputid").value) == true) {
+				i = 0;
+				while (i <= arraylength) {
+					if (DBidArray[i] == document.getElementById("inputid").value) {
+						checked = 1;
+						document.getElementById('idcheck').innerHTML = "중복된 아이디 입니다"
+						document.getElementById('idimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
+					}
+					i++
+				}
+				if (checked == 0) {
+					document.getElementById('idcheck').innerHTML = "사용 가능한 아이디 입니다";
+					document.getElementById('idimg').innerHTML = "<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+				}
+			} else {
+				document.getElementById('idcheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 8자이상";
+				document.getElementById('idimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 			}
-					
-		</script>
+		}
+	};
+	function Emailcheck() {
+		var checked = 0;
+		if (window.event.keyCode == 13) {
+			Signupcross();
+		}
+		if (emailexp.test(document.getElementById("inputemail").value) == "") {
+			document.getElementById('emailcheck').innerHTML = "이메일 형식으로 작성해 주십시오.";
+			document.getElementById('emailimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+		} else if (emailexp.test(document.getElementById("inputemail").value) == false) {
+			document.getElementById('emailcheck').innerHTML = "이메일 형식이 맞지 않습니다";
+			document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
+		} else {
+			i = 0;
+			while (i <= arraylength) {
+				if (DBemailArray[i] == document.getElementById("inputemail").value) {
+					checked = 1;
+					document.getElementById('emailcheck').innerHTML = "중복된 이메일 입니다"
+					document.getElementById('emailimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>"
+				}
+				i++
+			}
+			if (checked == 0) {
+				document.getElementById('emailcheck').innerHTML = "사용 가능한 이메일 입니다";
+				document.getElementById('emailimg').innerHTML = "<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+			}
+		}
+	};
+
+	function Passwdcheck() {
+		if (window.event.keyCode == 13) {
+			Signupcross();
+		}
+		if (pwexp.test(document.getElementById("inputpasswd").value) == false) {
+			document.getElementById('passwdcheck').innerHTML = "8자 이상, 영문/특수문자/숫자가 하나 이상";
+			document.getElementById('passwdimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+		} else {
+			document.getElementById('passwdcheck').innerHTML = "사용 가능한 비밀번호 입니다";
+			document.getElementById('passwdimg').innerHTML = "<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+		}
+		Repasswdcheck();
+	};
+
+	function Repasswdcheck() {
+		if (window.event.keyCode == 13) {
+			Signupcross();
+		}
+		if (document.getElementById("inputpasswd").value == "") {
+			document.getElementById('repasswdcheck').innerHTML = "비밀번호와 같아야 합니다";
+			document.getElementById('repasswdimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
+		} else if (document.getElementById("inputpasswd").value == document
+				.getElementById("inputrepasswd").value) {
+			document.getElementById('repasswdcheck').innerHTML = "비밀번호가 같습니다";
+			document.getElementById('repasswdimg').innerHTML = "<img src='../img/yes2.png' height='30px' width='30px' align='middle'>";
+		} else {
+			document.getElementById('repasswdcheck').innerHTML = "비밀번호가 다릅니다";
+			document.getElementById('repasswdimg').innerHTML = "<img src='../img/no2.png' height='30px' width='30px' align='middle'>";
+
+		}
+	};
+
+	function ZipPopup() {
+		window.open("../general_included/ZipFinder/ZipinputForm.jsp", "a",
+				"width=400, height=300, left=100, top=50");
+		document.getElementById("inputdetailaddr").focus();
+	}
+
+	function Signupcross() {
+
+		if (document.getElementById("inputnkname").value == ""
+				|| document.getElementById('nknamecheck').innerHTML != "사용 가능한 닉네임 입니다") {
+			alert("닉네임을 확인해주세요");
+			document.getElementById("inputnkname").focus();
+			return;
+		}
+		if (document.getElementById("inputid").value == ""
+				|| document.getElementById('idcheck').innerHTML != "사용 가능한 아이디 입니다") {
+			alert("아이디를 확인해주세요");
+			document.getElementById("inputid").focus();
+			return;
+		}
+		if (document.getElementById("inputpasswd").value == ""
+				|| document.getElementById('passwdcheck').innerHTML != "사용 가능한 비밀번호 입니다") {
+			alert("비밀번호를 입력해주세요");
+			document.getElementById("inputpasswd").focus();
+			return;
+		}
+		if (document.getElementById("inputpasswd").value == "") {
+			alert("비밀번호확인을 입력해주세요");
+			document.getElementById("inputpasswd").focus();
+			return;
+		}
+		if (document.getElementById("inputpasswd").value != document
+				.getElementById("inputpasswd").value) {
+			alert("비밀번호가 다릅니다.");
+			document.getElementById("inputpasswd").focus();
+			return;
+		}
+		if (document.getElementById("inputemail").value == "") {
+			alert("이메일을 입력해주세요.");
+			document.getElementById("inputemail").focus();
+			return;
+		} else if (emailexp.test(document.getElementById("inputemail").value) == false) {
+			alert("이메일 형식이 올바르지 않습니다.");
+			document.getElementById("inputemail").focus();
+			return;
+		}
+		if (document.getElementById("inputaddrnum").value == "") {
+			alert("우편번호를 입력해주세요");
+			document.getElementById("inputaddrnum").focus();
+			return;
+		}
+		if (document.getElementById("inputdetailaddr").value == "") {
+			alert("상세주소를 입력해주세요");
+			document.getElementById("inputdetailaddr").focus();
+			return;
+		}
+
+		document.getElementById("register").submit();
+
+	}
+
+	function Signupclear() {
+
+		document.getElementById("inputnkname").value = "";
+		document.getElementById("inputid").value = "";
+		document.getElementById("inputpasswd").value = "";
+		document.getElementById("inputpasswd").value = "";
+		document.getElementById("inputemail").value = "";
+		document.getElementById("inputaddrnum").value = "";
+		document.getElementById("inputaddress").value = "";
+		document.getElementById("inputdetailaddr").value = "";
+	}
+</script>
 
 </head>
 
@@ -379,12 +379,10 @@
 							</tr>
 
 						</table>
-						<br>
-						<br> <input type="button" value="취소" class="findbutton"
-							onclick="Signupclear();"> <input type="button" value="확인"
-							class="findbutton" onclick="Signupcross();"> <br>
-						<br>
-						<br>
+						<br> <br> <input type="button" value="취소"
+							class="findbutton" onclick="Signupclear();"> <input
+							type="button" value="확인" class="findbutton"
+							onclick="Signupcross();"> <br> <br> <br>
 					</center>
 
 				</fieldset>

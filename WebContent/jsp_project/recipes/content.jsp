@@ -6,29 +6,26 @@
 <%@ page import="DBBean.commentDataBean"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.List"%>
-<%!
-	int commentpageSize = 10;
-	SimpleDateFormat sdf = 
-		new SimpleDateFormat("yyyy-MM-dd HH:mm");
-%>
-<%		
-	int fame=0;
-	if(request.getParameter("fame")!=null){
-		fame=Integer.parseInt(request.getParameter("fame"));
-	}else{
-		fame=0;
-	}	
+<%!int commentpageSize = 10;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
+<%
+	int fame = 0;
+	if (request.getParameter("fame") != null) {
+		fame = Integer.parseInt(request.getParameter("fame"));
+	} else {
+		fame = 0;
+	}
 %>
 <%
-	try{
+	try {
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		foodingBean dbPro = foodingBean.getInstance();
-	 	BoardDataBean article =	dbPro.getArticle(num);
-		
+		BoardDataBean article = dbPro.getArticle(num);
+
 		foodingBean foodingbean = new foodingBean();
 
-	 	String commnetpageNum = request.getParameter("commnetpageNum");
+		String commnetpageNum = request.getParameter("commnetpageNum");
 
 		if (commnetpageNum == null) {
 			commnetpageNum = "1";
@@ -39,11 +36,10 @@
 		int count = 0;
 		List<commentDataBean> commentList = null;
 		count = dbPro.getCommentArticleCount(num);
-		
+
 		if (count > 0) {
-			commentList = dbPro.getCommentsArticles(startRow, commentpageSize,num);
+			commentList = dbPro.getCommentsArticles(startRow, commentpageSize, num);
 		}
-			
 %>
 <!DOCTYPE html>
 <html>
@@ -175,7 +171,7 @@
 					align="center">
 					<h2><%=article.getTitle()%></h2>
 				</td>
-				<td class="orangeline111" align="right" 
+				<td class="orangeline111" align="right"
 					style="color: #9C9C9C; font-size: 25px;"
 					onclick="GoOtherProfile('<%=article.getWriterid()%>')"><%=foodingbean.findnkname(article.getWriterid())%>
 				</td>
@@ -197,13 +193,16 @@
 			</tr>
 			<tr class="orangeline">
 				<td>
-					<%if((article.getWriterid().equals(idlogin))||(isAdmin==1)){%> <input
-					type="button" value="글수정" class="smallbt"
+					<%
+						if ((article.getWriterid().equals(idlogin)) || (isAdmin == 1)) {
+					%> <input type="button" value="글수정" class="smallbt"
 					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>&fame=<%=fame%>'">
 					&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="글삭제"
-					class="smallbt" onclick="youreally()"> <%}%>
+					class="smallbt" onclick="youreally()"> <%
+ 	}
+ %>
 				</td>
-				<td>일자 <%= sdf.format(article.getReg_date())%></td>
+				<td>일자 <%=sdf.format(article.getReg_date())%></td>
 			</tr>
 			<tr class="orangeline">
 				<td colspan="2" height="400px">
@@ -211,11 +210,11 @@
 					<div align="center" style="margin-bottom: 15px;"></div>
 					<div class="img-comp-container">
 						<div class="img-comp-img">
-							<div class="divdiv1"><%=article.getIngredients() %></div>
+							<div class="divdiv1"><%=article.getIngredients()%></div>
 						</div>
 						<div class="img-comp-img img-comp-overlay">
 							<div class="divdiv2">
-								<%=article.getTools() %></div>
+								<%=article.getTools()%></div>
 						</div>
 					</div>
 					<p align="left">
@@ -229,14 +228,14 @@
 			</tr>
 		</table>
 
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<form style="margin: auto;" method="post" name="commentform"
 			action="commentspro.jsp">
 
 
-			<%if (idlogin==null){ %>
+			<%
+				if (idlogin == null) {
+			%>
 			<table style="margin: auto;">
 				<tr>
 					<td>댓글 수 : <%=count%></td>
@@ -256,11 +255,13 @@
 					<td colspan="3" width="150"></td>
 				</tr>
 			</table>
-			<%}else{ %>
+			<%
+				} else {
+			%>
 			<input type="hidden" name="num" value="0"> <input
-				type="hidden" name="rootin" value="<%=num %>"> <input
-				type="hidden" name="pageNum" value="<%=pageNum %>"> <input
-				type="hidden" name="writerid" value="<%=idlogin %>"> <input
+				type="hidden" name="rootin" value="<%=num%>"> <input
+				type="hidden" name="pageNum" value="<%=pageNum%>"> <input
+				type="hidden" name="writerid" value="<%=idlogin%>"> <input
 				type="hidden" name="ref" value="1"> <input type="hidden"
 				name="re_step" value="0"> <input type="hidden"
 				name="re_level" value="0"> <input type="hidden"
@@ -269,11 +270,11 @@
 				<tr>
 					<td>댓글 수 : <%=count%></td>
 					<td class="content1" align="right"><input type="submit"
-						value="댓글쓰기" class="smallbt" style="width:80px; height:40px;"></td> 
+						value="댓글쓰기" class="smallbt" style="width: 80px; height: 40px;"></td>
 				</tr>
 			</table>
 			<table width="1010px" style="margin: auto;">
-				<tr> 
+				<tr>
 					<td colspan="3" width="0" style="margin: auto;"><textarea
 							name="content" size="40" rows="5" cols="40" class="signupinput2"
 							style="ime-mode: inactive;"></textarea></td>
@@ -282,46 +283,54 @@
 					<td colspan="3" width="150"></td>
 				</tr>
 			</table>
-			<%}%>
+			<%
+				}
+			%>
 		</form>
 
-		<% if (count == 0) { %>
+		<%
+			if (count == 0) {
+		%>
 
 		<p style="text-align: center;">댓글이 없습니다.</p>
 
-		<% } else {%>
+		<%
+			} else {
+		%>
 
 		<form method="post" name="iregularcommentform"
 			action="commentspro.jsp">
 			<input type="hidden" name="num" value="0"> <input
-				type="hidden" name="rootin" value="<%=num %>"> <input
-				type="hidden" name="pageNum" value="<%=pageNum %>"> <input
-				type="hidden" name="writerid" value="<%=idlogin %>"> <input
+				type="hidden" name="rootin" value="<%=num%>"> <input
+				type="hidden" name="pageNum" value="<%=pageNum%>"> <input
+				type="hidden" name="writerid" value="<%=idlogin%>"> <input
 				type="hidden" name="ref" value="1"> <input type="hidden"
 				name="re_step" value="0"> <input type="hidden"
 				name="re_level" value="0"> <input type="hidden"
 				name="selected" value="0">
 			<%
-						for (int i = 0 ; i < commentList.size() ; i++) {
+				for (int i = 0; i < commentList.size(); i++) {
 							commentDataBean comments = commentList.get(i);
-					
-							int wid=0; 
-							if(comments.getRe_level()>0){
-								wid=30*(comments.getRe_level());
+
+							int wid = 0;
+							if (comments.getRe_level() > 0) {
+								wid = 30 * (comments.getRe_level());
 							}
-					%>
+			%>
 			<table style="margin: auto;" class="commment">
 				<tr>
-					<td width=<%=wid %> align="right">
-						<%if(comments.getRe_level()>0){%> ㄴ<br>
-					<br>
-					<br> <%} %>
+					<td width=<%=wid%> align="right">
+						<%
+							if (comments.getRe_level() > 0) {
+						%> ㄴ<br> <br> <br> <%
+ 	}
+ %>
 					</td>
 					<td>
 						<table class="commentbase">
 							<tr height="30">
 								<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-								<td width="353"><%= sdf.format(comments.getReg_date())%></td>
+								<td width="353"><%=sdf.format(comments.getReg_date())%></td>
 							</tr>
 							<tr height="70">
 								<td colspan="2" width="600">
@@ -333,15 +342,18 @@
 									value="답글" class="bt2"
 									onclick="AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 													'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-													'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
-									<%if(idlogin.equals(comments.getWriterid())){ %> <input
-									type="button" value="변경" class="bt2"
+													'<%=comments.getRe_level()%>',<%=i%>,'tagged')">
+									<%
+										if (idlogin.equals(comments.getWriterid())) {
+									%> <input type="button" value="변경" class="bt2"
 									onclick="AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
 														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-														'<%=comments.getRe_level()%>',<%= i %>,'changed')">
+														'<%=comments.getRe_level()%>',<%=i%>,'changed')">
 									<input type="button" value="삭제" class="bt2"
-									onclick="location.href='deletecommentpro.jsp?num=<%=comments.getNum() %>&pagenum=<%=pageNum%>'">
-									<%} %>
+									onclick="location.href='deletecommentpro.jsp?num=<%=comments.getNum()%>&pagenum=<%=pageNum%>'">
+									<%
+										}
+									%>
 									<div class="commentchangeform" id="testid"></div></td>
 							</tr>
 							<hr width="790" size="8px" color="white">
@@ -349,10 +361,14 @@
 					</td>
 				</tr>
 			</table>
-			<%}%>
+			<%
+				}
+			%>
 		</form>
 
-		<%}%>
+		<%
+			}
+		%>
 
 
 	</div>
@@ -368,5 +384,6 @@
 </body>
 </html>
 <%
-}catch(Exception e){} 
+	} catch (Exception e) {
+	}
 %>

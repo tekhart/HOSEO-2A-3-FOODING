@@ -204,10 +204,7 @@ body {
 				</div>
 
 
-				<br>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br> <br>
 				<div class="tab4">
 					<button class="tablinks"
 						onclick="location.href='point.jsp?getlimitBydate=7'">1주일</button>
@@ -242,8 +239,8 @@ body {
 							<td colspan="3" class="pointtdd">내역이 없네요!</td>
 						</tr>
 						<%
-		}
-	%>
+							}
+						%>
 					</table>
 				</div>
 		</center>

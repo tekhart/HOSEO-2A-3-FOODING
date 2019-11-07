@@ -43,11 +43,9 @@
 						id = rs.getString("id");
 		%>
 
-		<br>
-		<br>
+		<br> <br>
 		<center>
-			<br>
-			<br>
+			<br> <br>
 			<div style="font-size: 18pt; background-color:">가입된 ID는 다음과
 				같습니다.</div>
 			<table width="500px" height="280px"
@@ -69,11 +67,8 @@
 				<br>
 			</table>
 
-			<br>
-			<br>
-			<br>
-			<br> <span class="idpasswd"><a href="findID.jsp">아이디</a>
-				/ <a href="findPW.jsp">비밀번호 찾기</a></span>
+			<br> <br> <br> <br> <span class="idpasswd"><a
+				href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 		</center>
 
 		<%

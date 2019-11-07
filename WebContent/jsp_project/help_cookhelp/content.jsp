@@ -5,31 +5,28 @@
 <%@ page import="DBBean.commentDataBean"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.List"%>
-<%!
-    int commentpageSize = 10;
-    SimpleDateFormat sdf = 
-        new SimpleDateFormat("yyyy-MM-dd HH:mm");
-%>
+<%!int commentpageSize = 10;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
 <%
-   try{
-	   int num = Integer.parseInt(request.getParameter("num"));
+	try {
+		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
-	    foodingBean dbPro = foodingBean.getInstance();
-	    
-     	BoardDataBean article =  dbPro.getcookhelpArticle(num);
-		
+		foodingBean dbPro = foodingBean.getInstance();
+
+		BoardDataBean article = dbPro.getcookhelpArticle(num);
+
 		foodingBean foodingbean = new foodingBean();
 
-	 	String commnetpageNum = request.getParameter("commnetpageNum");
+		String commnetpageNum = request.getParameter("commnetpageNum");
 
-	    if (commnetpageNum == null) {
-	    	commnetpageNum = "1";
-	    }
-	    int currentPage = Integer.parseInt(commnetpageNum);
-	    int startRow = (currentPage - 1) * commentpageSize + 1;
-	    int endRow = currentPage * commentpageSize;
-	    int count = 0;
-	    List<commentDataBean> commentList = null;
+		if (commnetpageNum == null) {
+			commnetpageNum = "1";
+		}
+		int currentPage = Integer.parseInt(commnetpageNum);
+		int startRow = (currentPage - 1) * commentpageSize + 1;
+		int endRow = currentPage * commentpageSize;
+		int count = 0;
+		List<commentDataBean> commentList = null;
 %>
 
 <!DOCTYPE html>
@@ -69,10 +66,10 @@
 	}
 	function youreally(){
 		if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
-			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>"
+			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>
+	"
 		}
 	}
-
 </script>
 </head>
 <body id="body" onload="initComparisons()">
@@ -85,7 +82,7 @@
 				<td width="500px" rowspan="2" height="100px" align="center"
 					class="orangeline11" style="text-align: center;"><h2><%=article.getTitle()%></h2></td>
 				<td width="100px" class="orangeline111"
-					style="color: #9C9C9C; font-size: 25px; text-align: right;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
+					style="color: #9C9C9C; font-size: 25px; text-align: right;"><%=foodingbean.findnkname(article.getWriterid())%></td>
 			</tr>
 			<tr>
 				<td colspan="2"
@@ -106,8 +103,8 @@
 
 			</tr>
 			<%
-						if (article.getWriterid().equals(idlogin)) {
-					%>
+				if (article.getWriterid().equals(idlogin)) {
+			%>
 			<tr>
 
 				<td colspan="2"><input type="button" value="글수정"
@@ -117,9 +114,13 @@
 					onclick="youreally()"></td>
 
 			</tr>
-			<%}else{%>
+			<%
+				} else {
+			%>
 
-			<%}%>
+			<%
+				}
+			%>
 
 			<tr height="60px">
 				<td colspan="2" class="orangeline11"><input type="button"
@@ -140,8 +141,12 @@
 
 	<%@include file="../general_included/footer.jsp"%>
 	<script>
-
-</script>
+		
+	</script>
 </body>
 </html>
-<%}catch(Exception e){e.printStackTrace();} %>
+<%
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+%>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="DBBean.foodingBean" %>
-    <%@ page import="DBBean.BoardDataBean" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="DBBean.foodingBean"%>
+<%@ page import="DBBean.BoardDataBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,93 +22,93 @@
 
 </head>
 <body>
-<%@include file="../general_included/topbar.jsp"%>
+	<%@include file="../general_included/topbar.jsp"%>
 
-<div id="maindiv">
-<%
-  int num = Integer.parseInt(request.getParameter("num"));
-  String pageNum = request.getParameter("pageNum");
-  int conturyselected=0;
-  int foodtypeselected=0;
-	try{
-		foodingBean dbPro = foodingBean.getInstance(); 
-		BoardDataBean article =  dbPro.updateexrecipeGetArticle(num);
-		if(article.getContury().equals("한식")){
-			conturyselected=1;
-		}else if(article.getContury().equals("양식")){
-			conturyselected=2;
-		}else if(article.getContury().equals("일식")){
-			conturyselected=3;
-		}else if(article.getContury().equals("중식")){
-			conturyselected=4;
-		}else if(article.getContury().equals("퓨전")){
-			conturyselected=5;
-		}else if(article.getContury().equals("기타")){
-			conturyselected=6;
-		}
-		
-		if(article.getFoodtype().equals("밥류")){
-			conturyselected=1;
-		}else if(article.getFoodtype().equals("빵류")){
-			conturyselected=2;
-		}else if(article.getFoodtype().equals("반찬류")){
-			conturyselected=3;
-		}else if(article.getFoodtype().equals("면류")){
-			conturyselected=4;
-		}else if(article.getFoodtype().equals("국류")){
-			conturyselected=5;
-		}else if(article.getFoodtype().equals("디저트")){
-			conturyselected=6;
-		}else if(article.getFoodtype().equals("기타")){
-			conturyselected=7;
-		}
-%>
-<div class="writetitle">
-		글수정
-</div>
+	<div id="maindiv">
+		<%
+			int num = Integer.parseInt(request.getParameter("num"));
+			String pageNum = request.getParameter("pageNum");
+			int conturyselected = 0;
+			int foodtypeselected = 0;
+			try {
+				foodingBean dbPro = foodingBean.getInstance();
+				BoardDataBean article = dbPro.updateexrecipeGetArticle(num);
+				if (article.getContury().equals("한식")) {
+					conturyselected = 1;
+				} else if (article.getContury().equals("양식")) {
+					conturyselected = 2;
+				} else if (article.getContury().equals("일식")) {
+					conturyselected = 3;
+				} else if (article.getContury().equals("중식")) {
+					conturyselected = 4;
+				} else if (article.getContury().equals("퓨전")) {
+					conturyselected = 5;
+				} else if (article.getContury().equals("기타")) {
+					conturyselected = 6;
+				}
 
-<div id="space">
+				if (article.getFoodtype().equals("밥류")) {
+					conturyselected = 1;
+				} else if (article.getFoodtype().equals("빵류")) {
+					conturyselected = 2;
+				} else if (article.getFoodtype().equals("반찬류")) {
+					conturyselected = 3;
+				} else if (article.getFoodtype().equals("면류")) {
+					conturyselected = 4;
+				} else if (article.getFoodtype().equals("국류")) {
+					conturyselected = 5;
+				} else if (article.getFoodtype().equals("디저트")) {
+					conturyselected = 6;
+				} else if (article.getFoodtype().equals("기타")) {
+					conturyselected = 7;
+				}
+		%>
+		<div class="writetitle">글수정</div>
+
+		<div id="space">
 
 
-<form method="post" name="writeform" 
-action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
-<input type="hidden" name="num" value="<%= num%>">
+			<form method="post" name="writeform"
+				action="updatePro.jsp?pageNum=<%=pageNum%>"
+				onsubmit="return writeSave()">
+				<input type="hidden" name="num" value="<%=num%>">
 
-<table id="writetable" align="center" border-spacing="10px">
-	<tr>
-		<td align="right" colspan="2" >
-		
-		</td>
-	</tr>
-	<tr>
-		<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-		<td width="330" align="left">
-		<input type="text" size="40" maxlength="50" name="title" class="signupinput"
-		 style="ime-mode:active;" value=" <%= article.getTitle()%>"></td>
-	</tr>
-	<tr>
-				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-				<td align="left">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-	</tr>
-	<tr><td></td>
-   <td align="left">  
-     <input type="submit" value="확인" id="button123">  
-     <input type="reset" value="다시작성" id="button123">
-     <input type="button" value="글목록" id="button123"
-       onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
-   </td>
- </tr>
- </table>
+				<table id="writetable" align="center" border-spacing="10px">
+					<tr>
+						<td align="right" colspan="2"></td>
+					</tr>
+					<tr>
+						<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+						<td width="330" align="left"><input type="text" size="40"
+							maxlength="50" name="title" class="signupinput"
+							style="ime-mode: active;" value=" <%=article.getTitle()%>"></td>
+					</tr>
+					<tr>
+						<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+						<td align="left"><jsp:include
+								page="../../daumeditor/editor_frame.jsp"></jsp:include>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="left"><input type="submit" value="확인"
+							id="button123"> <input type="reset" value="다시작성"
+							id="button123"> <input type="button" value="글목록"
+							id="button123"
+							onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
+						</td>
+					</tr>
+				</table>
 
-<%
-}catch(Exception e){}%>      
-      </form>
-</div>
-</div>
+				<%
+					} catch (Exception e) {
+					}
+				%>
+			</form>
+		</div>
+	</div>
 
 
-<%@include file="../general_included/footer.jsp"%>
+	<%@include file="../general_included/footer.jsp"%>
 	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;

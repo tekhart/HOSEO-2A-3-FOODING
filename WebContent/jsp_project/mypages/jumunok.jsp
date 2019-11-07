@@ -8,6 +8,14 @@
 <link rel="stylesheet" href="../jsp_project/css/common.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
+<script>
+		function window_onload() {
+			setTimeout('go_url()', 5000)
+		}
+		function go_url() {
+			location.href = "../shop/main.jsp"
+		}
+	</script>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -23,11 +31,11 @@
 		String chk_info = request.getParameter("chk_info");
 		String accountName = request.getParameter("accountName");
 		int accountId = Integer.parseInt(request.getParameter("accountId"));
-		if(chk_info.equals("신용카드")){
+		if (chk_info.equals("신용카드")) {
 			article.setAccountName("신용카드");
 			article.setAccountId(0);
 		}
-		
+
 		int intedCartIds[] = new int[selCartIdchkbx.length];
 
 		for (int i = 0; i < selCartIdchkbx.length; i++) {

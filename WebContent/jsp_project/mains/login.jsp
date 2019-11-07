@@ -12,12 +12,12 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <script type="text/javascript">
-	function loginsuccesed(){
-		location.href="../mains/main.jsp";
+	function loginsuccesed() {
+		location.href = "../mains/main.jsp";
 	}
-	function loginfailed(){
+	function loginfailed() {
 		alert("입력하신 정보를 확인해주세요.");
-		location.href="signin.jsp";
+		location.href = "signin.jsp";
 	}
 </script>
 </head>
@@ -27,33 +27,32 @@
 		String passwd = request.getParameter("passwd");
 		//form 태그의 값을 저장
 		foodingBean dbPro = foodingBean.getInstance();
-		userDataBean userArticle=null;
-			try{
-				userArticle=dbPro.getuserArticle(id);
-				if(userArticle.getId().equals(id)&&userArticle.getPasswd().equals(passwd)&&userArticle.getIsLeft()==0){
-					session.setAttribute("idlogin",userArticle.getId());
-					%>
+		userDataBean userArticle = null;
+		try {
+			userArticle = dbPro.getuserArticle(id);
+			if (userArticle.getId().equals(id) && userArticle.getPasswd().equals(passwd)
+					&& userArticle.getIsLeft() == 0) {
+				session.setAttribute("idlogin", userArticle.getId());
+	%>
 	<script>
-							loginsuccesed()
-						</script>
+		loginsuccesed()
+	</script>
 	<%
-				}else{
-					%>
+		} else {
+	%>
 	<script>
-							loginfailed()
-						</script>
+		loginfailed()
+	</script>
 	<%
-				}
-			}catch (Exception e) {
-				%>
+		}
+		} catch (Exception e) {
+	%>
 	<script>
-						loginfailed()
-					</script>
+		loginfailed()
+	</script>
 	<%
-			}finally{}
-				
-
-
+		} finally {
+		}
 	%>
 
 </body>

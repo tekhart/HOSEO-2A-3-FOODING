@@ -198,8 +198,18 @@
 		</center>
 
 	</div>
-	<br><br><br><br><br><br>
-	<br><br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

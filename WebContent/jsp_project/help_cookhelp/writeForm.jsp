@@ -43,7 +43,7 @@
 				if (request.getParameter("num") != null) {
 					num = Integer.parseInt(request.getParameter("num"));
 				}
-				if (idlogin== null) {
+				if (idlogin == null) {
 					response.sendRedirect("../general_included/pls_login_first.jsp");
 				}
 		%>
@@ -57,36 +57,37 @@
 					type="hidden" name="writerid" value="<%=idlogin%>"> <input
 					type="hidden" name="thumbnail" id="inputthumbnail"
 					value="../img/defaultthumb.png">
-					
-					<table id="writetable" align="center" border-spacing="10px" style="margin:auto">
-						<tr>
-							<td width="300px">
 
-								<div id="thumbnail" onclick="thumbnailupload()"></div>
-							</td>
-							<td width="1000px" align="left" style="vertical-align: bottom;">
-								<input type="text" size="40" maxlength="50" name="title"
-								class="signupinputblack2" style="ime-mode: normal;"
-								placeholder="제목을 입력하세요">
-							</td>
-						</tr>
+				<table id="writetable" align="center" border-spacing="10px"
+					style="margin: auto">
+					<tr>
+						<td width="300px">
 
-
-						<tr>
-							<td style="width: 1000px;" align="left" colspan="2"><jsp:include
-									page="../../daumeditor/editor_frame.jsp"></jsp:include></td>
-						</tr>
-
-						<tr>
-							<td align="center" colspan="2"><input type="button"
-								id="button123" value="확인" onclick="Editor.save();"> <input
-								type="reset" id="button123" value="다시 작성"> <input
-								type="button" id="button123" value="글목록"
-								OnClick="window.location='list.jsp'"></td>
-						</tr>
+							<div id="thumbnail" onclick="thumbnailupload()"></div>
+						</td>
+						<td width="1000px" align="left" style="vertical-align: bottom;">
+							<input type="text" size="40" maxlength="50" name="title"
+							class="signupinputblack2" style="ime-mode: normal;"
+							placeholder="제목을 입력하세요">
+						</td>
+					</tr>
 
 
-					</table>
+					<tr>
+						<td style="width: 1000px;" align="left" colspan="2"><jsp:include
+								page="../../daumeditor/editor_frame.jsp"></jsp:include></td>
+					</tr>
+
+					<tr>
+						<td align="center" colspan="2"><input type="button"
+							id="button123" value="확인" onclick="Editor.save();"> <input
+							type="reset" id="button123" value="다시 작성"> <input
+							type="button" id="button123" value="글목록"
+							OnClick="window.location='list.jsp'"></td>
+					</tr>
+
+
+				</table>
 				<%
 					} catch (Exception e) {
 					}
