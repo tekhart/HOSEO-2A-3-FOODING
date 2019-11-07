@@ -57,23 +57,7 @@
 					type="hidden" name="writerid" value="<%=idlogin%>"> <input
 					type="hidden" name="thumbnail" id="inputthumbnail"
 					value="../img/defaultthumb.png">
-<<<<<<< HEAD
 
-				<table id="writetable" align="center" border-spacing="10px"
-					style="margin: auto">
-					<tr>
-						<td width="300px">
-
-							<div id="thumbnail" onclick="thumbnailupload()"></div>
-						</td>
-						<td width="1000px" align="left" style="vertical-align: bottom;">
-							<input type="text" size="40" maxlength="50" name="title"
-							class="signupinputblack2" style="ime-mode: normal;"
-							placeholder="제목을 입력하세요">
-						</td>
-					</tr>
-=======
-					
 					<table id="writetable" align="center" border-spacing="10px" style="margin:auto">
 						<tr>
 							<td width="300px">
@@ -87,9 +71,6 @@
 								placeholder="제목을 입력하세요">
 							</td>
 						</tr>
->>>>>>> refs/remotes/origin/master
-
-
 					<tr>
 						<td style="width: 1000px;" align="left" colspan="2"><jsp:include
 								page="../../daumeditor/editor_frame.jsp"></jsp:include></td>
