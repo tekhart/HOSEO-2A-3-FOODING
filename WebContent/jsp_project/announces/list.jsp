@@ -95,10 +95,6 @@ hr {
 
 <title>공지사항, FOODING</title>
 
-<script type="text/javascript">
-	
-</script>
-
 </head>
 <body id="body">
 
@@ -124,10 +120,12 @@ hr {
 									onclick="location.href='list.jsp'" value="목록" class="bt">
 								</td>
 								<td>
-									<%if(isAdmin==1){ %>
-										<input type="button"
-											onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
-									<%} %>
+									<%
+										if (isAdmin == 1) {
+									%> <input type="button" onclick="location.href='writeForm.jsp'"
+									value="글쓰기" class="bt"> <%
+ 	}
+ %>
 								</td>
 							</tr>
 						</table>
@@ -163,15 +161,19 @@ hr {
 				<div class="middle">
 					<h1><%=article.getTitle()%></h1>
 					<hr>
-					<p id="eventTimer" style="font-size: 30px"></p>
+					<p id="eventTimer<%=article.getNum()%>" style="font-size: 30px"></p>
 				</div>
 				<div class="bottomleft">
 					<p style="float: left"><%=sdf.format(article.getReg_date())%>
 						~&nbsp;
 					</p>
-					<p style="float: left" id="event_endtime"><%=sdf.format(article.getEnd_date())%></p>
+					<p style="float: left" id="event_endtime<%=article.getNum()%>"><%=sdf.format(article.getEnd_date())%></p>
 				</div>
 			</div>
+			<script type="text/javascript">
+				var countdownfunction<%=article.getNum()%> =
+					setInterval(function() {event_countdown(<%=article.getNum()%>);}, 1000);
+			</script>
 		</div>
 		<%
 			}
@@ -227,23 +229,15 @@ hr {
 					8, 2);
 			return new Date(y, m, d);
 		}
-		$(".eventdiv").ready = function event_initiate() {
-			var eventTimer = document.getElementsByClassName("eventTimer");
-			for (var i = 0; i < eventTimer.length; i++) {
-				countdownfunction[0] = setInterval(function() {
-					event_countdown(0);
-				}, 1000);
-			}
-		}
+		
 		function event_countdown(i) {
-			var event_endtime = document
-					.getElementsByClassName("event_endtime");
-			var eventTimer = document.getElementsByClassName("eventTimer");
-			var countDownDate = parse(event_endtime[i].innerText);
+			var event_endtime = document.getElementById("event_endtime"+i);
+			var eventTimer = document.getElementById("eventTimer"+i);
+			var countDownDate = parse(event_endtime.innerHTML);
 			var now = new Date().getTime();
 			var distance = countDownDate - now;
 			if (distance < 0) {
-				eventTimer[i].innerHTML = "종료된 이벤트";
+				eventTimer.innerHTML = "종료된 이벤트";
 			} else {
 				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 				var hours = Math.floor((distance % (1000 * 60 * 60 * 24))
@@ -251,7 +245,7 @@ hr {
 				var minutes = Math.floor((distance % (1000 * 60 * 60))
 						/ (1000 * 60));
 				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-				eventTimer[i].innerHTML = days + "d " + hours + "h " + minutes
+				eventTimer.innerHTML = days + "d " + hours + "h " + minutes
 						+ "m " + seconds + "s ";
 			}
 		}

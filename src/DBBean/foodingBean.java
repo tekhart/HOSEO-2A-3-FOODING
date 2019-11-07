@@ -1540,8 +1540,8 @@ public class foodingBean {
 
 			pstmt.setString(1, article.getTitle());
 			pstmt.setString(2, article.getContent());
-			pstmt.setInt(3, article.getNum());
-			pstmt.setString(4, article.getThumbnail());
+			pstmt.setString(3, article.getThumbnail());
+			pstmt.setInt(4, article.getNum());
 			pstmt.executeUpdate();
 
 			x = 1;
@@ -1613,8 +1613,8 @@ public class foodingBean {
 				re_level = 0;
 			}
 
-			sql = "insert into question(title,writerid,,content,reg_date,ref,re_step,re_level";
-			sql += ") values(?,?,?,?,?,?,?,?)";
+			sql = "insert into question(title,writerid,content,reg_date,ref,re_step,re_level";
+			sql += ") values(?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
@@ -2123,6 +2123,7 @@ public class foodingBean {
 				article.setIsEvent(rs.getString("isEvent"));
 				article.setWriterid(rs.getString("writerid"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
+				article.setEnd_date(rs.getTimestamp("end_date"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setContent(rs.getString("content"));
 				article.setThumbnail(rs.getString("thumbnail"));

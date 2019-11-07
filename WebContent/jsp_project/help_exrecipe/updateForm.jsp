@@ -4,23 +4,25 @@
     <%@ page import="DBBean.BoardDataBean" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="style.css">
-<link rel="shortcut icon" href="../img/favicon.ico">
-<link rel="icon" href="../img/favicon.ico">
-
-<style>
-</style>
-
-<title>Sign in</title>
-
-<script type="text/javascript">
-</script>
-
-</head>
+<link rel="stylesheet" href="../css/list.css">
+		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
+		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<link rel="shortcut icon" href="../img/favicon.ico">
+		<link rel="icon" href="../img/favicon.ico">
+		<script type="text/javascript">
+			
+		</script>
+		
+		
+		
+		
+	</head>
 <body>
 <%@include file="../general_included/topbar.jsp"%>
 
@@ -90,7 +92,8 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 		<td align="center" id="writespace">요리&nbsp;&nbsp;분류</td>
 		<td align="left">
 			<select name='contury'
-				style="ime-mode:inactive;">
+				style="ime-mode:inactive; ime-mode: inactive; padding: .8em .5em; border-radius: 3px; 
+				border-color: #c0c0c0; font-size: 12pt; color:#6f6f6f; font-family: Bauhaus ITC;">
     			<option value='한식'
     			<%if(conturyselected==1){
     				%>selected<%}%>
@@ -117,7 +120,8 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
     				>기타</option>
 			</select>
 			<select name='foodtype'
-				style="ime-mode:inactive;">
+				style="ime-mode:inactive; ime-mode: inactive; padding: .8em .5em; border-radius: 3px; 
+				border-color: #c0c0c0; font-size: 12pt; color:#6f6f6f; font-family: Bauhaus ITC;">
     			<option value='밥류'
     			<%if(foodtypeselected==1){
     				%>selected<%}%>
@@ -147,6 +151,14 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
     				%>selected<%}%>
     				>기타</option>
 			</select>
+			<select name='difficulty'
+				style="ime-mode:inactive; ime-mode: inactive; padding: .8em .5em; border-radius: 3px; 
+				border-color: #c0c0c0; font-size: 12pt; color:#6f6f6f; font-family: Bauhaus ITC;">
+				<option value='' selected disabled hidden>-- 선택 --</option>
+    			<option value='1'<%if(article.getDifficulty()==1){ %>selected<%} %>>초급</option>
+    			<option value='2'<%if(article.getDifficulty()==2){ %>selected<%} %>>중급</option>
+    			<option value='3'<%if(article.getDifficulty()==3){ %>selected<%} %>>상급</option>
+			</select>
 		</td>
 	</tr>
 	<tr>
@@ -165,6 +177,9 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 				<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 				<td align="left">
 					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
+					<script type="text/javascript">
+						Editor.modify({'content':'<%=article.getContent()%>'});
+					</script>
 	</tr>
 	<tr><td></td>
    <td align="left">  

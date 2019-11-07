@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <%@ page import="java.sql.*"%>
-<%@page import="DBBean.foodingBean" %>
-<%@ page import="java.sql.Timestamp" %>
+<%@page import="DBBean.foodingBean"%>
+<%@ page import="java.sql.Timestamp"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
 <jsp:useBean id="article" scope="page" class="DBBean.userDataBean">
-	<jsp:setProperty name="article" property="*"/>
-</jsp:useBean> 
+	<jsp:setProperty name="article" property="*" />
+</jsp:useBean>
 <%
 	try{
 		article.setReg_date(new Timestamp(System.currentTimeMillis()));

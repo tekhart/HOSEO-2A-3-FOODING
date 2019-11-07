@@ -6,19 +6,21 @@
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="../css/list.css">
-		<link rel="stylesheet" type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
-		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="icon" href="../img/favicon.ico">
-		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../css/list.css">
+<link rel="stylesheet" type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
 			function sendingthumb(thumbname){
 		              $("#thumbnail").css("background-image","url("+thumbname+")");
 		              $("#thumbnail").innerhtml="";
@@ -31,10 +33,9 @@
 		</script>
 
 
-		
-		
-		
-	</head>
+
+
+
 </head>
 <body id="writebody">
 	<%@include file="../general_included/topbar.jsp"%>
@@ -42,12 +43,12 @@
 	<div id="maindiv">
 		<%
 			int num = 0;
-			String strV="";
-			try{
-				if(request.getParameter("num")!=null){
-					num=Integer.parseInt(request.getParameter("num"));
+			String strV = "";
+			try {
+				if (request.getParameter("num") != null) {
+					num = Integer.parseInt(request.getParameter("num"));
 				}
-				if(session.getAttribute("idlogin")==null){
+				if (session.getAttribute("idlogin") == null) {
 					out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
 					response.sendRedirect("../mains/main.jsp");
 				}
@@ -56,24 +57,23 @@
 				date.setTime(ts.getTime());
 				String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
 		%>
-		<div class="writetitle1">
-			요리 강의 작성
-		</div>
-		
+		<div class="writetitle1">요리 강의 작성</div>
+
 		<div id="space">
-	
+
 			<form method="post" name="writeform" action="writePro.jsp"
 				onsubmit="return writeSave()">
-				<input type="hidden" name="num" value="<%=num%>">
-				<input type="hidden" name="writerid" value="<%=idlogin%>">
-				<input type="hidden" id="inputthumbnail" name="thumbnail" value="../img/fooding_thumbs/defaultthumb.png">
+				<input type="hidden" name="num" value="<%=num%>"> <input
+					type="hidden" name="writerid" value="<%=idlogin%>"> <input
+					type="hidden" id="inputthumbnail" name="thumbnail"
+					value="../img/fooding_thumbs/defaultthumb.png">
 				<center>
 					<table id="writetable" align="center" border-spacing="10px">
 						<tr>
 							<td align="right" colspan="2" onclick="thumbnailupload()">
-								<div id="thumbnail" style="height:280px;width:910px;background-image:url('../img/fooding_thumbs/defaultthumb.png');background-size:cover;background-position:center">
-									썸네일
-								</div>
+								<div id="thumbnail"
+									style="height: 280px; width: 910px; background-image: url('../img/fooding_thumbs/defaultthumb.png'); background-size: cover; background-position: center">
+									썸네일</div>
 							</td>
 						</tr>
 						<tr>
@@ -121,12 +121,12 @@
 				%>
 			</form>
 		</div>
-		</div>
-		
-		
-		<%@include file="../general_included/footer.jsp"%>
-		
-		<script type="text/javascript">
+	</div>
+
+
+	<%@include file="../general_included/footer.jsp"%>
+
+	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
 		
@@ -210,5 +210,5 @@
 			});
 			
 		</script>
-	</body>
+</body>
 </html>

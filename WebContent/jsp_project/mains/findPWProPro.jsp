@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <%@ page import="java.sql.*"%>
-<%@page import="DBBean.foodingBean" %>
+<%@page import="DBBean.foodingBean"%>
 <%
 	foodingBean foodingbean=new foodingBean();
 	String id=request.getParameter("id");
