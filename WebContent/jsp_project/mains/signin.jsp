@@ -15,7 +15,7 @@
 }
 </style>
 
-<title>Sign in</title>
+<title>로그인</title>
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <script type="text/javascript">
