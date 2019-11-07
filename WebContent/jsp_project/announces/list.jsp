@@ -69,8 +69,8 @@
 }
 
 .bgimg {
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url('../img/tomato.jpg');
+background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/tomato.jpg');
+
 	height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -158,7 +158,7 @@ hr {
 		<div class="eventdiv"
 			onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 			<div class="bgimg"
-				style="background-image:url(<%=article.getThumbnail()%>);">
+				style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%=article.getThumbnail()%>);">
 				<div class="middle">
 					<h1><%=article.getTitle()%></h1>
 					<hr>
