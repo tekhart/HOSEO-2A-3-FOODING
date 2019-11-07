@@ -61,9 +61,10 @@
 					<table id="writetable" align="center" border-spacing="10px" style="margin:auto">
 						<tr>
 							<td width="300px">
-
 								<div id="thumbnail" onclick="thumbnailupload()"></div>
 							</td>
+						</tr>
+						<tr>
 							<td width="1000px" align="left" style="vertical-align: bottom;">
 								<input type="text" size="40" maxlength="50" name="title"
 								class="signupinputblack2" style="ime-mode: normal;"
