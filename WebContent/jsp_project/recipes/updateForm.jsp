@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="DBBean.foodingBean" %>
-    <%@ page import="DBBean.BoardDataBean" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="DBBean.foodingBean"%>
+<%@ page import="DBBean.BoardDataBean"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" href="../css/list.css">
-		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="icon" href="../img/favicon.ico">
-		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
-		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/list.css">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<link rel=stylesheet type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
 			function sendingthumb(thumbname){
 	            $("#thumbnail").css("background-image","url("+thumbname+")");
 	            $("#thumbnail").innerhtml="";
@@ -32,176 +34,149 @@
 </script>
 </head>
 <body id="body">
-<%@include file="../general_included/topbar.jsp"%>
+	<%@include file="../general_included/topbar.jsp"%>
 
-<div id="maindiv">
-<%
-  int num = Integer.parseInt(request.getParameter("num"));
-  String pageNum = request.getParameter("pageNum");
-  int conturyselected=0;
-  int foodtypeselected=0;
-	try{
-		foodingBean dbPro = foodingBean.getInstance(); 
-		BoardDataBean article =  dbPro.updateGetArticle(num);
-		if(article.getContury().equals("한식")){
-			conturyselected=1;
-		}else if(article.getContury().equals("양식")){
-			conturyselected=2;
-		}else if(article.getContury().equals("일식")){
-			conturyselected=3;
-		}else if(article.getContury().equals("중식")){
-			conturyselected=4;
-		}else if(article.getContury().equals("퓨전")){
-			conturyselected=5;
-		}else if(article.getContury().equals("기타")){
-			conturyselected=6;
-		}
-		
-		if(article.getFoodtype().equals("밥류")){
-			foodtypeselected=1;
-		}else if(article.getFoodtype().equals("빵류")){
-			foodtypeselected=2;
-		}else if(article.getFoodtype().equals("반찬류")){
-			foodtypeselected=3;
-		}else if(article.getFoodtype().equals("면류")){
-			foodtypeselected=4;
-		}else if(article.getFoodtype().equals("국류")){
-			foodtypeselected=5;
-		}else if(article.getFoodtype().equals("디저트")){
-			foodtypeselected=6;
-		}else if(article.getFoodtype().equals("기타")){
-			foodtypeselected=7;
-		}
-%>
-<div class="writetitle1">
-		글수정
-</div>
+	<div id="maindiv">
+		<%
+			int num = Integer.parseInt(request.getParameter("num"));
+			String pageNum = request.getParameter("pageNum");
+			int conturyselected = 0;
+			int foodtypeselected = 0;
+			try {
+				foodingBean dbPro = foodingBean.getInstance();
+				BoardDataBean article = dbPro.updateGetArticle(num);
+				if (article.getContury().equals("한식")) {
+					conturyselected = 1;
+				} else if (article.getContury().equals("양식")) {
+					conturyselected = 2;
+				} else if (article.getContury().equals("일식")) {
+					conturyselected = 3;
+				} else if (article.getContury().equals("중식")) {
+					conturyselected = 4;
+				} else if (article.getContury().equals("퓨전")) {
+					conturyselected = 5;
+				} else if (article.getContury().equals("기타")) {
+					conturyselected = 6;
+				}
 
-<div id="space">
+				if (article.getFoodtype().equals("밥류")) {
+					foodtypeselected = 1;
+				} else if (article.getFoodtype().equals("빵류")) {
+					foodtypeselected = 2;
+				} else if (article.getFoodtype().equals("반찬류")) {
+					foodtypeselected = 3;
+				} else if (article.getFoodtype().equals("면류")) {
+					foodtypeselected = 4;
+				} else if (article.getFoodtype().equals("국류")) {
+					foodtypeselected = 5;
+				} else if (article.getFoodtype().equals("디저트")) {
+					foodtypeselected = 6;
+				} else if (article.getFoodtype().equals("기타")) {
+					foodtypeselected = 7;
+				}
+		%>
+		<div class="writetitle1">글수정</div>
+
+		<div id="space">
 
 
-<form method="post" name="writeform" 
-action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
-<input type="hidden" name="num" value="<%= num%>">
-<input type="hidden" id="inputthumbnail" name="thumbnail" value="<%= article.getThumbnail()%>">
+			<form method="post" name="writeform"
+				action="updatePro.jsp?pageNum=<%=pageNum%>"
+				onsubmit="return writeSave()">
+				<input type="hidden" name="num" value="<%=num%>"> <input
+					type="hidden" id="inputthumbnail" name="thumbnail"
+					value="<%=article.getThumbnail()%>">
 
-<table id="writetable" align="center" border-spacing="10px">
-	<tr>
-		<td align="right" colspan="2" >
-		
-		</td>
-	</tr>
-	<tr>
-		<td rowspan="4" width="300px">
-			
-			<div id="thumbnail" style="background-image:url('<%=article.getThumbnail()%>');" onclick="thumbnailupload()">썸네일</div>
-			
-			</td>
-			
-		<td width="330" align="left">
-		<input type="text" size="40" maxlength="50" name="title" class="signupinputblack"
-		 style="ime-mode:active;" placeholder="제목을 입력하세요" value=" <%= article.getTitle()%>"></td>
-	</tr>
-	<tr>
-		
-		<td align="left">
-			<select name='contury'
-				style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
-						font-family:Bauhaus ITC;">
-    			<option value='한식'
-    			<%if(conturyselected==1){
-    				%>selected<%}%>
-    				>한식</option>
-    			<option value='양식'
-    			<%if(conturyselected==2){
-    				%>selected<%}%>
-    				>양식</option>
-    			<option value='일식'
-    			<%if(conturyselected==3){
-    				%>selected<%}%>
-    				>일식</option>
-    			<option value='중식'
-    			<%if(conturyselected==4){
-    				%>selected<%}%>
-    				>중식</option>
-    			<option value='퓨전'
-    			<%if(conturyselected==5){
-    				%>selected<%}%>
-    				>퓨전</option>
-    			<option value='기타'
-    			<%if(conturyselected==6){
-    				%>selected<%}%>
-    				>기타</option>
-			</select>
-			<select name='foodtype'
-				style="ime-mode:inactive; padding: .8em .5em; border-radius: 3px; border-color:black; font-size:12pt;
-						font-family:Bauhaus ITC;">
-    			<option value='밥류'
-    			<%if(foodtypeselected==1){
-    				%>selected<%}%>
-    				>밥류</option>
-    			<option value='빵류'
-    			<%if(foodtypeselected==2){
-    				%>selected<%}%>
-    				>빵류</option>
-    			<option value='반찬류'
-    			<%if(foodtypeselected==3){
-    				%>selected<%}%>
-    				>반찬류</option>
-    			<option value='면류'
-    			<%if(foodtypeselected==4){
-    				%>selected<%}%>
-    				>면류</option>
-    			<option value='국류'
-    			<%if(foodtypeselected==5){
-    				%>selected<%}%>
-    				>국류</option>
-    			<option value='디저트'
-    			<%if(foodtypeselected==6){
-    				%>selected<%}%>
-    				>디저트</option>
-    			<option value='기타'
-    			<%if(foodtypeselected==7){
-    				%>selected<%}%>
-    				>기타</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		
-		<td align="left">
-			<input type="text" size="40" maxlength="30" name="ingredients" class="signupinputblack"
-			style="ime-mode:inactive;"  placeholder="사용된 재료를 알려주세요" value=" <%= article.getIngredients()%>"></td>
-	</tr>
-	<tr>
-		
-		<td align="left">
-			<input type="text" size="40" maxlength="30" name="tools" class="signupinputblack"
-			style="ime-mode:inactive;"  placeholder="사용된 도구를 알려주세요" value=" <%= article.getTools()%>"></td>
-	</tr>
-	<tr>
-				
-				<td align="left"  colspan="2">
-					<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-				<script type="text/javascript">
+				<table id="writetable" align="center" border-spacing="10px">
+					<tr>
+						<td align="right" colspan="2"></td>
+					</tr>
+					<tr>
+						<td rowspan="4" width="300px">
+
+							<div id="thumbnail"
+								style="background-image:url('<%=article.getThumbnail()%>');"
+								onclick="thumbnailupload()">썸네일</div>
+
+						</td>
+
+						<td width="330" align="left"><input type="text" size="40"
+							maxlength="50" name="title" class="signupinputblack"
+							style="ime-mode: active;" placeholder="제목을 입력하세요"
+							value=" <%=article.getTitle()%>"></td>
+					</tr>
+					<tr>
+
+						<td align="left"><select name='contury'
+							style="ime-mode: inactive; ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: #c0c0c0; font-size: 12pt; color: #6f6f6f; font-family: Bauhaus ITC;">
+								<option value='한식' <%if (conturyselected == 1) {%> selected
+									<%}%>>한식</option>
+								<option value='양식' <%if (conturyselected == 2) {%> selected
+									<%}%>>양식</option>
+								<option value='일식' <%if (conturyselected == 3) {%> selected
+									<%}%>>일식</option>
+								<option value='중식' <%if (conturyselected == 4) {%> selected
+									<%}%>>중식</option>
+								<option value='퓨전' <%if (conturyselected == 5) {%> selected
+									<%}%>>퓨전</option>
+								<option value='기타' <%if (conturyselected == 6) {%> selected
+									<%}%>>기타</option>
+						</select> <select name='foodtype'
+							style="ime-mode: inactive; ime-mode: inactive; padding: .8em .5em; border-radius: 3px; border-color: #c0c0c0; font-size: 12pt; color: #6f6f6f; font-family: Bauhaus ITC;">
+								<option value='밥류' <%if (foodtypeselected == 1) {%> selected
+									<%}%>>밥류</option>
+								<option value='빵류' <%if (foodtypeselected == 2) {%> selected
+									<%}%>>빵류</option>
+								<option value='반찬류' <%if (foodtypeselected == 3) {%> selected
+									<%}%>>반찬류</option>
+								<option value='면류' <%if (foodtypeselected == 4) {%> selected
+									<%}%>>면류</option>
+								<option value='국류' <%if (foodtypeselected == 5) {%> selected
+									<%}%>>국류</option>
+								<option value='디저트' <%if (foodtypeselected == 6) {%> selected
+									<%}%>>디저트</option>
+								<option value='기타' <%if (foodtypeselected == 7) {%> selected
+									<%}%>>기타</option>
+						</select></td>
+					</tr>
+					<tr>
+
+						<td align="left"><input type="text" size="40" maxlength="30"
+							name="ingredients" class="signupinputblack"
+							style="ime-mode: inactive;" placeholder="사용된 재료를 알려주세요"
+							value=" <%=article.getIngredients()%>"></td>
+					</tr>
+					<tr>
+
+						<td align="left"><input type="text" size="40" maxlength="30"
+							name="tools" class="signupinputblack" style="ime-mode: inactive;"
+							placeholder="사용된 도구를 알려주세요" value=" <%=article.getTools()%>"></td>
+					</tr>
+					<tr>
+
+						<td align="left" colspan="2"><jsp:include
+								page="../../daumeditor/editor_frame.jsp"></jsp:include> <script
+								type="text/javascript">
 					Editor.modify({'content':'<%=article.getContent()%>'});
-				</script>
-				</td>
-	</tr>
-	<tr><td></td>
-   <td align="left">  
-     		<input type="button" id="button123" value="수정" onclick="Editor.save();">
-			<input type="reset" id="button123" value="다시 작성">
-			<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
-   </td>
- </tr>
- </table>
+				</script></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="left"><input type="button" id="button123"
+							value="수정" onclick="Editor.save();"> <input type="reset"
+							id="button123" value="다시 작성"> <input type="button"
+							id="button123" value="글목록"
+							OnClick="window.location='../recipes/list.jsp'"></td>
+					</tr>
+				</table>
 
-<%
-}catch(Exception e){}%>      
-      </form>
-</div>
-</div>
+				<%
+					} catch (Exception e) {
+					}
+				%>
+			</form>
+		</div>
+	</div>
 
 	<script type="text/javascript">
 		var check_confirm_write=false;
@@ -277,6 +252,6 @@ action="updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 			}
 
 		</script>
-		<%@include file="../general_included/footer.jsp"%>
+	<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

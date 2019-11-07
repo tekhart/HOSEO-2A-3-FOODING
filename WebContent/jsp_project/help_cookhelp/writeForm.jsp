@@ -43,10 +43,9 @@
 				if (request.getParameter("num") != null) {
 					num = Integer.parseInt(request.getParameter("num"));
 				}
-				if (session.getAttribute("idlogin") == null) {
+				if (idlogin== null) {
 					response.sendRedirect("../general_included/pls_login_first.jsp");
 				}
-				idlogin = (String) session.getAttribute("idlogin");
 		%>
 		<div class="writetitle1">요리 강의 작성</div>
 
@@ -58,9 +57,8 @@
 					type="hidden" name="writerid" value="<%=idlogin%>"> <input
 					type="hidden" name="thumbnail" id="inputthumbnail"
 					value="../img/defaultthumb.png">
-
-				<center>
-					<table id="writetable" align="center" border-spacing="10px">
+					
+					<table id="writetable" align="center" border-spacing="10px" style="margin:auto">
 						<tr>
 							<td width="300px">
 
@@ -89,9 +87,6 @@
 
 
 					</table>
-
-
-				</center>
 				<%
 					} catch (Exception e) {
 					}

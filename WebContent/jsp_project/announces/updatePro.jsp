@@ -11,16 +11,13 @@
    <jsp:setProperty name="article" property="*"/>
 </jsp:useBean>
 <%
-	String pageNum = request.getParameter("pageNum");
+
+	article.setReg_date(new Timestamp(System.currentTimeMillis()));
+	Timestamp timestamp = java.sql.Timestamp.valueOf((String)request.getParameter("string_end_date")+" 00:00:00");
+	
+	article.setEnd_date(timestamp);
+	
 	foodingBean dbPro = foodingBean.getInstance();
     int check = dbPro.updateannounceArticle(article); 
-    if(check==1){
-%>
-	  <meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>" >
-<% }else{%>
-      <script type="text/javascript">      
-      
-     </script>
-<%
-  }
+	response.sendRedirect("list.jsp");
 %> 
