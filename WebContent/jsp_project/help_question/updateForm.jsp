@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="DBBean.foodingBean"%>
-<%@ page import="DBBean.BoardDataBean"%>
+<%@ page import="DBBean.QuestionDataBean"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../css/list.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
+<link rel=stylesheet type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
 
 <style>
 </style>
@@ -32,36 +36,8 @@
 			int foodtypeselected = 0;
 			try {
 				foodingBean dbPro = foodingBean.getInstance();
-				BoardDataBean article = dbPro.updateexrecipeGetArticle(num);
-				if (article.getContury().equals("한식")) {
-					conturyselected = 1;
-				} else if (article.getContury().equals("양식")) {
-					conturyselected = 2;
-				} else if (article.getContury().equals("일식")) {
-					conturyselected = 3;
-				} else if (article.getContury().equals("중식")) {
-					conturyselected = 4;
-				} else if (article.getContury().equals("퓨전")) {
-					conturyselected = 5;
-				} else if (article.getContury().equals("기타")) {
-					conturyselected = 6;
-				}
-
-				if (article.getFoodtype().equals("밥류")) {
-					conturyselected = 1;
-				} else if (article.getFoodtype().equals("빵류")) {
-					conturyselected = 2;
-				} else if (article.getFoodtype().equals("반찬류")) {
-					conturyselected = 3;
-				} else if (article.getFoodtype().equals("면류")) {
-					conturyselected = 4;
-				} else if (article.getFoodtype().equals("국류")) {
-					conturyselected = 5;
-				} else if (article.getFoodtype().equals("디저트")) {
-					conturyselected = 6;
-				} else if (article.getFoodtype().equals("기타")) {
-					conturyselected = 7;
-				}
+				QuestionDataBean article = dbPro.updatequestionGetArticle(num);
+				
 		%>
 		<div class="writetitle">글수정</div>
 
@@ -85,16 +61,22 @@
 					</tr>
 					<tr>
 						<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-						<td align="left"><jsp:include
-								page="../../daumeditor/editor_frame.jsp"></jsp:include>
+						<td align="left">
+							<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
+							<script type="text/javascript">
+								Editor.modify({'content':'<%=article.getContent()%>'});
+							</script>
 					</tr>
 					<tr>
 						<td></td>
-						<td align="left"><input type="submit" value="확인"
-							id="button123"> <input type="reset" value="다시작성"
-							id="button123"> <input type="button" value="글목록"
-							id="button123"
-							onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
+						<td align="left">
+							<input type="button" id="button123"
+								value="수정" onclick="Editor.save();">
+							<input type="reset"
+								id="button123" value="다시 작성">
+							<input type="button"
+								id="button123" value="글목록"
+								OnClick="window.location='../recipes/list.jsp'">
 						</td>
 					</tr>
 				</table>
@@ -170,7 +152,6 @@
 					alert('내용을 입력하세요'); return false; 
 				} return true; 
 			}
-			
 			function setForm(editor) { 
 				var i, input; 
 				var form = editor.getForm(); 
@@ -181,7 +162,6 @@
 				form.createField(textarea);
 				return true; 
 			}
-
 		</script>
 </body>
 </html>

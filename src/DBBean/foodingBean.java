@@ -1842,19 +1842,14 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			sql = "update question set title=?,contury=?,foodtype=?,ingredients=?";
-			sql += ",tools=? ,content=? where num=?";
+			sql = "update question set title=?,content=?,isComplete=?";
+			sql += " where num=?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, article.getTitle());
-			pstmt.setString(2, article.getWriterid());
-			pstmt.setString(4, article.getContent());
-			pstmt.setInt(5, article.getIsComplete());
-			pstmt.setTimestamp(6, article.getReg_date());
-			pstmt.setInt(7, article.getRef());
-			pstmt.setInt(8, article.getRe_step());
-			pstmt.setInt(9, article.getRe_level());
-			pstmt.setInt(7, article.getNum());
+			pstmt.setString(2, article.getContent());
+			pstmt.setInt(3, article.getIsComplete());
+			pstmt.setInt(4, article.getNum());
 			pstmt.executeUpdate();
 			x = 1;
 		} catch (Exception ex) {

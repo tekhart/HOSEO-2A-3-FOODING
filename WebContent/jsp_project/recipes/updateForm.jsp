@@ -141,14 +141,14 @@
 					</tr>
 					<tr>
 
-						<td align="left"><input type="text" size="40" maxlength="30"
+						<td align="left"><input type="text" size="100" maxlength="100"
 							name="ingredients" class="signupinputblack"
 							style="ime-mode: inactive;" placeholder="사용된 재료를 알려주세요"
 							value=" <%=article.getIngredients()%>"></td>
 					</tr>
 					<tr>
 
-						<td align="left"><input type="text" size="40" maxlength="30"
+						<td align="left"><input type="text" size="100" maxlength="100"
 							name="tools" class="signupinputblack" style="ime-mode: inactive;"
 							placeholder="사용된 도구를 알려주세요" value=" <%=article.getTools()%>"></td>
 					</tr>
@@ -166,7 +166,7 @@
 							value="수정" onclick="Editor.save();"> <input type="reset"
 							id="button123" value="다시 작성"> <input type="button"
 							id="button123" value="글목록"
-							OnClick="window.location='../recipes/list.jsp'"></td>
+							OnClick="window.location='list.jsp'"></td>
 					</tr>
 				</table>
 

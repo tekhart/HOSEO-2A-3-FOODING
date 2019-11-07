@@ -92,13 +92,13 @@
 						</tr>
 						<tr>
 							<td align="center" id="writespace">필요한 재료</td>
-							<td align="left"><input type="text" size="40" maxlength="30"
+							<td align="left"><input type="text" size="100" maxlength="100"
 								name="ingredients" class="signupinputblack"
 								style="ime-mode: normal;"></td>
 						</tr>
 						<tr>
 							<td align="center" id="writespace">사용되는 도구</td>
-							<td align="left"><input type="text" size="40" maxlength="30"
+							<td align="left"><input type="text" size="100" maxlength="100"
 								name="tools" class="signupinputblack" style="ime-mode: normal;"></td>
 						</tr>
 						<tr>

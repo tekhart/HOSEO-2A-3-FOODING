@@ -92,8 +92,11 @@
 									<td style="padding-left: 225px;"><input type="button"
 										onclick="location.href='list.jsp'" value="목록" class="bt">
 									</td>
-									<td><input type="button"
-										onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+									<td>
+										<%if(isAdmin==1){ %>
+											<input type="button"
+												onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+										<%} %>
 									</td>
 								</tr>
 							</form>

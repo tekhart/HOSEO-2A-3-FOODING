@@ -71,7 +71,6 @@
 %>
 
 <script type="text/javascript">
-       window.opener.sendingthumb('../img/<%=storeplace%>/<%=filename%>
-	');
+	window.opener.sendingthumb('../img/<%=storeplace%>/<%=filename%>');
 	window.close();
 </script>

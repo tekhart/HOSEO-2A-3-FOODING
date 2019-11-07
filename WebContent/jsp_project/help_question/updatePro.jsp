@@ -7,13 +7,13 @@
 	request.setCharacterEncoding("utf-8");
 %>
 
-<jsp:useBean id="article" scope="page" class="DBBean.BoardDataBean">
+<jsp:useBean id="article" scope="page" class="DBBean.QuestionDataBean">
 	<jsp:setProperty name="article" property="*" />
 </jsp:useBean>
 <%
 	String pageNum = request.getParameter("pageNum");
 	foodingBean dbPro = foodingBean.getInstance();
-	int check = dbPro.updateexrecipeArticle(article);
+	int check = dbPro.updatequestionArticle(article);
 	if (check == 1) {
 %>
 <meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>">

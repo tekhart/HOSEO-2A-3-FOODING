@@ -132,14 +132,14 @@
 					</tr>
 					<tr>
 						<td align="center" id="writespace">필요한 재료</td>
-						<td align="left"><input type="text" size="40" maxlength="30"
+						<td align="left"><input type="text" size="100" maxlength="100"
 							name="ingredients" class="signupinput"
 							style="ime-mode: inactive;"
 							value=" <%=article.getIngredients()%>"></td>
 					</tr>
 					<tr>
 						<td align="center" id="writespace">사용되는 도구</td>
-						<td align="left"><input type="text" size="40" maxlength="30"
+						<td align="left"><input type="text" size="100" maxlength="100"
 							name="tools" class="signupinput" style="ime-mode: inactive;"
 							value=" <%=article.getTools()%>"></td>
 					</tr>
@@ -153,12 +153,11 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td align="left"><input type="submit" value="확인"
-							id="button123"> <input type="reset" value="다시작성"
-							id="button123"> <input type="button" value="글목록"
-							id="button123"
-							onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
-						</td>
+						<td align="left"><input type="button" id="button123"
+							value="수정" onclick="Editor.save();"> <input type="reset"
+							id="button123" value="다시 작성"> <input type="button"
+							id="button123" value="글목록"
+							OnClick="window.location='list.jsp'"></td>
 					</tr>
 				</table>
 
