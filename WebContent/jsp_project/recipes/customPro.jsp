@@ -14,6 +14,5 @@
 	}
 %>
 <script>
-	location.href="list.jsp?search=<%=customString%>
-	&searchtype=맞춤";
+	location.href="list.jsp?search=<%=customString%>&searchtype=맞춤"; 
 </script>
