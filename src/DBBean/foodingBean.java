@@ -16,7 +16,8 @@ public class foodingBean {
 	Calendar cal = Calendar.getInstance();
 	String today = formatter.format(cal.getTime());
 	Timestamp ts = Timestamp.valueOf(today);
-
+	
+	//메소드 선언되어있지 않은 sql문을 실행하기 위한 dbconnection 메소드
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -34,7 +35,7 @@ public class foodingBean {
 			e.printStackTrace();
 		}
 	}
-
+	//sql문 실행결과를 result set 객체로 받아오는 메소드
 	public ResultSet resultQuery(String sql) {
 		DBclose();
 		try {
@@ -47,7 +48,7 @@ public class foodingBean {
 		}
 		return rs;
 	}
-
+	//실행 결과가 없는 sql문을 실행하는 메소드
 	public void nonResultQuery(String sql) {
 		DBclose();
 		try {
@@ -61,7 +62,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//id를 이용하여 해당유저의 닉네임을 반환하는 메소드
 	public String findnkname(String id) {
 		DBclose();
 		try {
@@ -80,7 +81,7 @@ public class foodingBean {
 		}
 		return str;
 	}
-
+	//아이디를 이용해 해당 유저의 어드민 권한여부 값을 받아오는 메소드
 	public int isAdmincheck(String id) {
 		DBclose();
 		int isAdminresult = 0;
@@ -100,14 +101,14 @@ public class foodingBean {
 		}
 		return isAdminresult;
 	}
-
+	//db관련 객체를 전부 닫는 메소드
 	public void DBclose() {
 		stmtClosing();
 		pstmtClosing();
 		resultclosing();
-		DBClosing();
+		ConClosing();
 	}
-
+	//statement 객체를 닫는 메소드
 	public void stmtClosing() {
 		if (stmt != null) {
 			try {
@@ -116,7 +117,7 @@ public class foodingBean {
 			}
 		}
 	}
-
+	//prepared statement 객체를 닫는 메소드
 	public void pstmtClosing() {
 		if (pstmt != null) {
 			try {
@@ -125,7 +126,7 @@ public class foodingBean {
 			}
 		}
 	}
-
+	//resultset 객체를 닫는 메소드
 	public void resultclosing() {
 		if (rs != null) {
 			try {
@@ -134,8 +135,8 @@ public class foodingBean {
 			}
 		}
 	}
-
-	public void DBClosing() {
+	//connection 객체를 닫는 메소드
+	public void ConClosing() {
 		if (con != null) {
 			try {
 				con.close();
@@ -146,12 +147,12 @@ public class foodingBean {
 
 	private static foodingBean instance = new foodingBean();
 
-	// .jsp�럹�씠吏��뿉�꽌 DB�뿰�룞鍮덉씤 recipesDBBean�겢�옒�뒪�쓽 硫붿냼�뱶�뿉 �젒洹쇱떆 �븘�슂
+	// DAO 인스턴스를 반환받기위한 메소드
 	public static foodingBean getInstance() {
 		return instance;
 	}
 
-	// 而ㅻ꽖�뀡��濡쒕��꽣 Connection媛앹껜瑜� �뼸�뼱�깂
+	// db연결이 된 connection 객체를 반환하는 메소드 
 	private Connection getConnection() throws Exception {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -164,7 +165,7 @@ public class foodingBean {
 
 		return DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 	}
-
+	//회원가입이 완료된 유저의 정보를 DB에 입력하는 메소드
 	public int insertUserArticle(userDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -175,7 +176,6 @@ public class foodingBean {
 
 		try {
 			con = getConnection();
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into user(nkname,id,passwd,email,addrnum,address,detailaddr,gender,reg_date,userface";
 			sql += ") values(?,?,?,?,?,?,?,?,?,?)";
 
@@ -201,7 +201,7 @@ public class foodingBean {
 		}
 		return sucessed;
 	}
-
+	//입력받은 아이디를 가진 유저의 정보를 가져오는 메소드
 	public userDataBean getuserArticle(String userid) throws Exception {
 		con = null;
 		pstmt = null;
@@ -235,7 +235,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//유저의 포인트 변화를 반영하고 이유와 함께 정보를 포인트 내역 db에 입력하는 메소드
 	public void pointupdate(String userid, int updatevalue, String adjestreason) throws Exception {
 		con = null;
 		pstmt = null;
@@ -260,7 +260,7 @@ public class foodingBean {
 		}
 
 	}
-
+	//지정된 유저의 지정된 일수 내의 포인트 등락 내역을 반환하는 메소드
 	public List<pointDataBean> getPointArticle(String userid, int getlimitBydate) throws Exception {
 		con = null;
 		pstmt = null;
@@ -301,7 +301,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//유저 전체의 정보를 목록으로 반환하는 메소드
 	public List<userDataBean> getuserArticles() throws Exception {
 		con = null;
 		pstmt = null;
@@ -338,7 +338,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//유저 회원탈퇴를 진행하는 메소드
 	public int userWannaLeft(String userid) throws Exception {
 		con = null;
 		pstmt = null;
@@ -363,7 +363,7 @@ public class foodingBean {
 		return sucessed;
 	}
 
-	// recipes�뀒�씠釉붿뿉 湲��쓣 異붽�(insert臾�)<=writePro.jsp�럹�씠吏��뿉�꽌 �궗�슜
+	// 레시피 작성에서 입력받은 값을 db에 저장하는 메소드
 	public void insertArticle(BoardDataBean article) throws Exception {
 		DBclose();
 		con = null;
@@ -377,8 +377,6 @@ public class foodingBean {
 
 			pstmt = con.prepareStatement("select max(num) from recipes");
 			rs = pstmt.executeQuery();
-
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into recipes(title,contury,foodtype,ingredients,tools,writerid,reg_date,content,thumbnail";
 			sql += ") values(?,?,?,?,?,?,?,?,?)";
 
@@ -403,7 +401,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//검색,인기 여부를 만족하는 레시피의 총 수를 반환하는 메소드
 	public int getArticleCount(String type, String search, int fame) throws Exception {
 		DBclose();
 		con = null;
@@ -430,7 +428,7 @@ public class foodingBean {
 			if (fame == 1) {
 				sql += " and reg_date>=(select date_add(now(),INTERVAL -1 MONTH) from dual) and readcount>=50 ";
 			}
-
+			//맞춤레시피 검색의 경우 그에 필요한 sql문을 작성하기 위한 부분
 			if (type.equals("맞춤")) {
 				String searchArray[] = search.split(",");
 				sql = "select sum((";
@@ -471,7 +469,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,검색,인기 여부를 만족하는 레시피 들의 정보를 받아오는 메소드
 	public List<BoardDataBean> getArticles(int start, int end, String type, String search, int fame) throws Exception {
 		DBclose();
 		con = null;
@@ -498,7 +496,7 @@ public class foodingBean {
 			} else {
 				sql += "order by num desc limit ?,?";
 			}
-
+			//맞춤 레시피에서 검색한 경우, 그를위한 sql문을 작성하기 위한 부분,
 			if (type.equals("맞춤")) {
 				String searchArray[] = search.split(",");
 				sql = "select num,title,contury,foodtype,ingredients,tools,writerid,reg_date,readcount,content,thumbnail,(";
@@ -558,7 +556,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//인기 여부를 만족하는 레시피의 총 수를 받아오는 메소드
 	public int getArticleCount(int fame) throws Exception {
 		DBclose();
 		con = null;
@@ -590,7 +588,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,인기 여부를 만족하는 레시피를 받아오는 메소드
 	public List<BoardDataBean> getArticles(int start, int end, int fame) throws Exception {
 		DBclose();
 		con = null;
@@ -637,7 +635,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 레시피의 조회수를 1 더하고 정보를 받아오는 메소드
 	public BoardDataBean getArticle(int num) throws Exception {
 		DBclose();
 		con = null;
@@ -676,7 +674,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//대상 레시피를 업데이트하기위해 정보를 받아오는 메소드
 	public BoardDataBean updateGetArticle(int num) throws Exception {
 		DBclose();
 		con = null;
@@ -711,7 +709,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//정보를 받아와 대상 레시피를 업데이트 하는 메소드
 	public int updateArticle(BoardDataBean article) throws Exception {
 		DBclose();
 		con = null;
@@ -744,7 +742,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 레시피 삭제 메소드
 	public int deleteArticle(int num) throws Exception {
 		DBclose();
 		con = null;
@@ -757,7 +755,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from recipes where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -765,7 +763,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 레시피의 댓글,답글 입력 메소드
 	public void insertCommentsArticle(commentDataBean article, int rootin) throws Exception {
 		DBclose();
 		con = null;
@@ -828,7 +826,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//대상 레시피의 댓글 목록을 반환하는 메소드
 	public List<commentDataBean> getCommentsArticles(int start, int end, int num) throws Exception {
 		DBclose();
 		con = null;
@@ -868,7 +866,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 레시피의 댓글 수를 반환하는 메소드
 	public int getCommentArticleCount(int num) throws Exception {
 		DBclose();
 		con = null;
@@ -894,7 +892,27 @@ public class foodingBean {
 		}
 		return x;
 	}
+	//대상 레시피댓글 삭제 메소드
+	public void deleteCommentArticle(int num) throws Exception {
+		DBclose();
+		con = null;
+		pstmt = null;
+		rs = null;
 
+		try {
+			con = getConnection();
+
+			pstmt = con.prepareStatement("delete from recipe_comment where num=?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
+	//초보용 레시피 작성에서 입력받은 값을 db에 저장하는 메소드 <><>
 	public void insertexrecipeArticle(BoardDataBean article) throws Exception {
 		DBclose();
 		con = null;
@@ -906,8 +924,6 @@ public class foodingBean {
 			con = getConnection();
 			pstmt = con.prepareStatement("select max(num) from exrecipe");
 			rs = pstmt.executeQuery();
-
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into exrecipe(title,contury,foodtype,ingredients,tools,writerid,reg_date,content,difficulty";
 			sql += ") values(?,?,?,?,?,?,?,?,?)";
 
@@ -931,27 +947,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
-	public void deleteCommentArticle(int num) throws Exception {
-		DBclose();
-		con = null;
-		pstmt = null;
-		rs = null;
-
-		try {
-			con = getConnection();
-
-			pstmt = con.prepareStatement("delete from recipe_comment where num=?");
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			DBclose();
-		}
-	}
-
+	//검색,난이도 여부를 만족하는 초보용 레시피의 총 수를 반환하는 메소드
 	public int getexrecipeArticleCount(String type, String search, int difficulty) throws Exception {
 		DBclose();
 		con = null;
@@ -995,7 +991,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,검색,난이도 여부를 만족하는 초보용 레시피 들의 정보를 받아오는 메소드
 	public List<BoardDataBean> getexrecipeArticles(int start, int end, String type, String search, int difficulty)
 			throws Exception {
 		DBclose();
@@ -1048,7 +1044,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 초보용 레시피의 조회수를 1 더하고 정보를 받아오는 메소드
 	public BoardDataBean getexrecipeArticle(int num) throws Exception {
 		DBclose();
 		con = null;
@@ -1087,7 +1083,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//대상 초보용 레시피를 업데이트하기위해 정보를 받아오는 메소드
 	public BoardDataBean updateexrecipeGetArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1121,7 +1117,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//정보를 받아와 대상 초보용 레시피를 업데이트 하는 메소드
 	public int updateexrecipeArticle(BoardDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1154,7 +1150,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 초보용 레시피 삭제 메소드
 	public int deleteexrecipeArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1166,7 +1162,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from exrecipe where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1174,7 +1170,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 초보용 레시피의 댓글,답글 입력 메소드
 	public void insertexrecipeCommentsArticle(commentDataBean article, int rootin) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1214,8 +1210,6 @@ public class foodingBean {
 				re_step = 0;
 				re_level = 0;
 			}
-
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into exrecipe_comment(rootin,writerid,reg_date,ref,re_step,re_level,content";
 			sql += ") values(?,?,?,?,?,?,?)";
 
@@ -1237,7 +1231,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//대상 초보용 레시피의 댓글 목록을 반환하는 메소드
 	public List<commentDataBean> getexrecipeCommentsArticles(int start, int end, int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1276,7 +1270,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 초보용 레시피의 댓글 수를 반환하는 메소드
 	public int getexrecipeCommentArticleCount(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1301,7 +1295,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//요리강의 작성에서 입력받은 값을 db에 저장하는 메소드
 	public void insertcookhelpArticle(BoardDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1313,8 +1307,6 @@ public class foodingBean {
 
 			pstmt = con.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
-
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into cookhelp(title,writerid,reg_date,content,thumbnail";
 			sql += ") values(?,?,?,?,?)";
 
@@ -1334,7 +1326,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//검색 여부를 만족하는 요리강의의 총 수를 반환하는 메소드
 	public int getcookhelpArticleCount(String search) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1360,7 +1352,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,검색 여부를 만족하는 요리강의 들의 정보를 받아오는 메소드
 	public List<BoardDataBean> getcookhelpArticles(int start, int end, String search) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1398,7 +1390,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 요리강의의 조회수를 1 더하고 정보를 받아오는 메소드
 	public int getcookhelpArticleCount() throws Exception {
 		con = null;
 		pstmt = null;
@@ -1422,7 +1414,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝 을 만족하는 요리강의 목록을 반환하는 메소드
 	public List<BoardDataBean> getcookhelpArticles(int start, int end) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1458,7 +1450,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//요리강의 조회수를 1 늘리고 정보를 반환하는 메소드
 	public BoardDataBean getcookhelpArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1493,7 +1485,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//대상 요리강의를 업데이트하기위해 정보를 받아오는 메소드
 	public BoardDataBean updatecookhelpGetArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1523,7 +1515,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//정보를 받아와 대상 요리강의를 업데이트 하는 메소드
 	public int updatecookhelpArticle(BoardDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1552,7 +1544,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 요리강의 삭제 메소드 <><>
 	public int deletecookhelpArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1564,7 +1556,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from cookhelp where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1572,7 +1564,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//질답게시판 작성에서 입력받은 값을 db에 저장하는 메소드
 	public void insertquestionArticle(QuestionDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1634,7 +1626,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//검색 여부를 만족하는 질답게시글의 총 수를 반환하는 메소드
 	public int getquestionArticleCount(String search) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1659,7 +1651,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,검색 여부를 만족하는 질답게시글 들의 정보를 받아오는 메소드
 	public List<QuestionDataBean> getquestionArticles(int start, int end, String search) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1700,7 +1692,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//조건 없이 질답게시글의 총 수를 반환하는 메소드
 	public int getquestionArticleCount() throws Exception {
 		con = null;
 		pstmt = null;
@@ -1724,7 +1716,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝 여부를 만족하는 질답게시판 들의 정보를 받아오는 메소드
 	public List<QuestionDataBean> getquestionArticles(int start, int end) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1763,7 +1755,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 질답게시판의 조회수를 1 더하고 정보를 받아오는 메소드
 	public QuestionDataBean getquestionArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1799,7 +1791,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//대상 질답게시판를 업데이트하기위해 정보를 받아오는 메소드
 	public QuestionDataBean updatequestionGetArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1831,7 +1823,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//정보를 받아와 대상 질답게시판를 업데이트 하는 메소드
 	public int updatequestionArticle(QuestionDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1859,7 +1851,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 질답게시판 삭제 메소드
 	public int deletequestionArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1879,7 +1871,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//공지사항 작성에서 입력받은 값을 db에 저장하는 메소드
 	public void insertannounceArticle(announceDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1911,7 +1903,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//검색,이벤트 여부를 만족하는 공지사항의 총 수를 반환하는 메소드
 	public int getannounceArticleCount(String search, String isEvent) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1941,7 +1933,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,검색,이벤트 여부를 만족하는 공지사항 들의 정보를 받아오는 메소드
 	public List<announceDataBean> getannounceArticles(int start, int end, String search, String isEvent)
 			throws Exception {
 		con = null;
@@ -1986,7 +1978,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//이벤트 여부를 만족하는 공지사항의 총 수를 반환하는 메소드
 	public int getannounceArticleCount(String isEvent) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2016,7 +2008,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,이벤트 여부를 만족하는 공지사항 들의 정보를 받아오는 메소드
 	public List<announceDataBean> getannounceArticles(int start, int end, String isEvent) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2061,7 +2053,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 공지사항의 조회수를 1 더하고 정보를 받아오는 메소드
 	public announceDataBean getannounceArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2097,7 +2089,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//대상 공지사항을 업데이트하기위해 정보를 받아오는 메소드
 	public announceDataBean updateannounceGetArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2130,7 +2122,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//정보를 받아와 대상 공지사항을 업데이트 하는 메소드
 	public int updateannounceArticle(announceDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2160,7 +2152,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//대상 공지사항 삭제 메소드
 	public int deleteannounceArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2172,7 +2164,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from announce where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -2180,7 +2172,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//제품 작성에서 입력받은 값을 db에 저장하는 메소드
 	public void insertproductArticle(productDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2212,7 +2204,7 @@ public class foodingBean {
 		}
 
 	}
-
+	//검색,인기 여부를 만족하는 제품의 총 수를 반환하는 메소드
 	public int getproductArticleCount(int isTool, int type, String search) throws Exception {
 		DBclose();
 		con = null;
@@ -2249,7 +2241,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-
+	//시작,끝,도구,타입 여부를 만족하는 제품 들의 정보를 받아오는 메소드
 	public List<productDataBean> getproductArticles(int start, int end, int isTool, int type, String search)
 			throws Exception {
 		DBclose();
@@ -2302,7 +2294,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 제품의 정보를 받아오는 메소드
 	public productDataBean getproductArticle(int productId) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2332,7 +2324,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//정보를 받아와 대상 제품을 업데이트 하는 메소드
 	public void updateproductArticle(productDataBean article) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2360,7 +2352,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//대상 제품 삭제 메소드
 	public void deleteproductArticle(int productId) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2377,7 +2369,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//장바구니 에 추가된 제품의 정보를 유저 id와 갯수를 함께 db에 저장하는 메소드
 	public void insertcartArticle(int productId, int productcount, String ownerid) throws Exception {
 		con = null;
 		pstmt = null;
@@ -2415,7 +2407,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//대상 유저의 장바구니의 총 수를 반환하는 메소드
 	public int getcartArticlecount(String ownerid) {
 		con = null;
 		pstmt = null;
@@ -2441,7 +2433,7 @@ public class foodingBean {
 		}
 		return count;
 	}
-
+	//대상 유저의 장바구니 들의 정보를 받아오는 메소드
 	public List<productDataBean> getcartArticles(String ownerid) {
 		con = null;
 		pstmt = null;
@@ -2482,7 +2474,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 장바구니 번호의 장바구니 정보를 받아오는 메소드
 	public List<productDataBean> getcartArticles(int[] cartid) {
 		con = null;
 		pstmt = null;
@@ -2525,7 +2517,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//대상 장바구니 삭제 메소드
 	public void deletecartArticle(int cartid) {
 		con = null;
 		pstmt = null;
@@ -2542,7 +2534,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//대상 유저의 장바구니 삭제 메소드
 	public void deletecartArticle(String owner) {
 		con = null;
 		pstmt = null;
@@ -2561,7 +2553,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//결제 메소드, 결제 내역 작성, 장바구니 비우기, 포인트 등락 내역 저장을 하는 메소드
 	public void SendCartToBuy(int[] cartid, buyDataBean requestArticle) {
 		con = null;
 		pstmt = null;
@@ -2678,7 +2670,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//대상 유저의 결제내역을 묶음 단위 값들만 반환하는 메소드
 	public int[] getDistinctBuyRefs(String userId) {
 		con = null;
 		pstmt = null;
@@ -2723,7 +2715,7 @@ public class foodingBean {
 		}
 		return refarray;
 	}
-
+	//묶음 단위를 통해 구매한 제품의 세부정보를 가져오는 메소드
 	public List<buyDataBean> getbuyArticles(int refnumber) {
 		con = null;
 		pstmt = null;
@@ -2773,7 +2765,7 @@ public class foodingBean {
 		}
 		return articleList;
 	}
-
+	//묶음 단위의 제품 갯수를 반환하는 메소드
 	public int getbuyArticleCount(int refnumber) {
 		con = null;
 		pstmt = null;
@@ -2797,7 +2789,7 @@ public class foodingBean {
 		}
 		return articlecount;
 	}
-
+	//은행 계정id를 통해 은행 계정의 정보를 받아오는 메소드
 	public bankDataBean getbankArticle(int accountid) {
 		con = null;
 		pstmt = null;
@@ -2825,7 +2817,7 @@ public class foodingBean {
 		}
 		return article;
 	}
-
+	//무통장 이체의 입금 확인시, 결제 상태변경, 포인트 등락 적용
 	public void confirmPay(int buyref, int buytotalprice, int buypointused, String buytitle) throws Exception {
 		DBclose();
 		con = null;
@@ -2864,7 +2856,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-
+	//결제 상태를 변경하는 메소드
 	public void changebuystatus(int buyref, String buystatus) throws Exception {
 		DBclose();
 		con = null;
