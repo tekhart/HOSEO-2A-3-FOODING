@@ -222,10 +222,10 @@
 	<br>
 	<br>
 	<br>
-	<div id="eventdiv" align="center" onclick="location.href='event.jsp'">
+	<div id="eventdiv" align="center" onclick="location.href='../announces/list.jsp?isEvent=0'">
 
-		<img src="../img/ev.png" width="100%" height="300px">
-
+		<marquee  behavior=alternate ><img src="../img/ev2.jpg" width="150%" height="300px">
+</marquee>
 	</div>
 
 
