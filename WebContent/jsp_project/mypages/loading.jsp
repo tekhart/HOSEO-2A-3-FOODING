@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,23 +200,23 @@ body{
 
 </head>
 <body onload="javascript:window_onload()">
-<div class="container">
-  <div class="circle"></div>
-  <div class="square"></div>
-  <div class="triangle"></div>
-  <div class="logo">FOODING</div>
-<div class="shadow"></div>
-</div>
+	<div class="container">
+		<div class="circle"></div>
+		<div class="square"></div>
+		<div class="triangle"></div>
+		<div class="logo">FOODING</div>
+		<div class="shadow"></div>
+	</div>
 
-<script>
-function window_onload(){
-    setTimeout('go_url()',5000)
-}
-    function go_url(){
-    	location.href="../mains/main.jsp"
-    	alert("문의가 전송되었습니다")
-    
-    }
-</script>
+	<script>
+		function window_onload() {
+			setTimeout('go_url()', 5000)
+		}
+		function go_url() {
+			location.href = "../mains/main.jsp"
+			alert("문의가 전송되었습니다")
+
+		}
+	</script>
 </body>
 </html>

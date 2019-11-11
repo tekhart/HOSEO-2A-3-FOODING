@@ -1,57 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript"
+	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-			function sendingthumb(thumbname){
-                $("#thumbnail").css("background-image","url("+thumbname+")");
-                $("#thumbnail").innerhtml="";
-                $("#inputthumbnail").val(thumbname);
+	function sendingthumb(thumbname) {
+		$("#thumbnail").css("background-image", "url(" + thumbname + ")");
+		$("#thumbnail").innerhtml = "";
+		$("#inputthumbnail").val(thumbname);
 
-			}
-			function thumbnailupload(){
-				window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=product", "a", "width=400, height=300, left=100, top=50"); 
-			}
-		</script>
-		<link rel="shortcut icon" href="../img/favicon.ico">
+	}
+	function thumbnailupload() {
+		window
+				.open(
+						"../general_included/thumbUpload/fileForm.jsp?storeplace=product",
+						"a", "width=400, height=300, left=100, top=50");
+	}
+</script>
+<link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="admincss.css">
 </head>
 <body>
 	<%@include file="../general_included/topbar.jsp"%>
-	<br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<form method="post" action="goodsuploadpro.jsp">
 		<input type="hidden" id="inputthumbnail" name="productThumb">
 		<table class="goodsuptb">
 			<tr>
-				<td>
-					제품명
-				</td>
-				<td>
-					<input type="text" name="productName" class="whiteinput2">
+				<td>제품명</td>
+				<td><input type="text" name="productName" class="whiteinput2">
 				</td>
 			</tr>
 			<tr>
-				<td>
-					도구/재료
-				</td>
-				<td>
-					<select name="isTool">
+				<td>도구/재료</td>
+				<td><select name="isTool">
 						<option value='1'>도구1</option>
 						<option value='2'>재료2</option>
-					</select>
-				</td>
+				</select></td>
 			</tr>
 			<tr>
-				<td>
-					타입
-				</td>
-				<td>
-					<select name="productType">
+				<td>타입</td>
+				<td><select name="productType">
 						<option value='1'>과일</option>
 						<option value='2'>채소</option>
 						<option value='3'>정육/계란</option>
@@ -71,43 +68,36 @@
 						<option value='17'>주방조리도구</option>
 						<option value='18'>주방잡화</option>
 						<option value='19'>일회용품</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						가격
-					</td>
-					<td>
-						<input type="text" name="price" class="whiteinput2">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						할인률
-					</td>
-					<td>
-						<input type="text" name="discountRate"  class="whiteinput22"> %
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<div id="thumbnail" onclick="thumbnailupload()" class="goodsthumb"><p style="position:relative; z-index:-101001;">썸네일</p></div>
-					</td>
-				</tr>
-			</table>
-				
-				<table style="width:200px; margin:auto;">
-				<tr>
-					<td>
-						<input type="submit" value="입력완료" class="findbutton">
-					</td>
-					<td>
-						<input type="button" value="뒤로가기" onclick="location.href='goods.jsp'" class="findbutton">
-					</td>
-					</tr>
-				</table>
-				
+				</select></td>
+			</tr>
+			<tr>
+				<td>가격</td>
+				<td><input type="text" name="price" class="whiteinput2">
+				</td>
+			</tr>
+			<tr>
+				<td>할인률</td>
+				<td><input type="text" name="discountRate" class="whiteinput22">
+					%</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<div id="thumbnail" onclick="thumbnailupload()" class="goodsthumb">
+						<p style="position: relative; z-index: -101001;">썸네일</p>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table style="width: 200px; margin: auto;">
+			<tr>
+				<td><input type="submit" value="입력완료" class="findbutton">
+				</td>
+				<td><input type="button" value="뒤로가기"
+					onclick="location.href='goods.jsp'" class="findbutton"></td>
+			</tr>
+		</table>
+
 	</form>
 	<%@include file="../general_included/footer.jsp"%>
 </body>

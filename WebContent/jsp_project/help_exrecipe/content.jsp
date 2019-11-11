@@ -5,35 +5,32 @@
 <%@ page import="DBBean.commentDataBean"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.List"%>
-<%!
-    int commentpageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-%>
+<%!int commentpageSize = 10;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
 <%
-   try{
-	   int num = Integer.parseInt(request.getParameter("num"));
+	try {
+		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
-	    foodingBean dbPro = foodingBean.getInstance();
-     	BoardDataBean article =  dbPro.getexrecipeArticle(num);
-		
+		foodingBean dbPro = foodingBean.getInstance();
+		BoardDataBean article = dbPro.getexrecipeArticle(num);
+
 		foodingBean foodingbean = new foodingBean();
 
-	 	String commnetpageNum = request.getParameter("commnetpageNum");
+		String commnetpageNum = request.getParameter("commnetpageNum");
 
-	    if (commnetpageNum == null) {
-	    	commnetpageNum = "1";
-	    }
-	    int currentPage = Integer.parseInt(commnetpageNum);
-	    int startRow = (currentPage - 1) * commentpageSize + 1;
-	    int endRow = currentPage * commentpageSize;
-	    int count = 0;
-	    List<commentDataBean> commentList = null;
-	    count = dbPro.getexrecipeCommentArticleCount(num);
-	    
-	    if (count > 0) {
-	        commentList = dbPro.getexrecipeCommentsArticles(startRow, commentpageSize,num);
-	    }
-	    
+		if (commnetpageNum == null) {
+			commnetpageNum = "1";
+		}
+		int currentPage = Integer.parseInt(commnetpageNum);
+		int startRow = (currentPage - 1) * commentpageSize + 1;
+		int endRow = currentPage * commentpageSize;
+		int count = 0;
+		List<commentDataBean> commentList = null;
+		count = dbPro.getexrecipeCommentArticleCount(num);
+
+		if (count > 0) {
+			commentList = dbPro.getexrecipeCommentsArticles(startRow, commentpageSize, num);
+		}
 %>
 
 <!DOCTYPE html>
@@ -157,22 +154,22 @@ function youreally(){
 }
 </script>
 </head>
-<body id="body" onload="initComparisons()"> 
+<body id="body" onload="initComparisons()">
 	<%@include file="../general_included/topbar.jsp"%>
 
 	<div id="maindiv2">
-		
+
 
 		<table style="margin: auto;" class="contenttable">
 			<tr>
 				<td class="orangeline11" width="1000px" height="100px"
 					style="text-align: center;" colspan="2"><h2><%=article.getTitle()%></h2></td>
 			</tr>
-			<tr height="30px" style="color:#585858;">
-				<td class="orline1" style="text-align: right;"><%=foodingbean.findnkname(article.getWriterid()) %></td>
-				<td width="200px" style="text-align: right;" class="orline1"><%= sdf.format(article.getReg_date())%></td>
+			<tr height="30px" style="color: #585858;">
+				<td class="orline1" style="text-align: right;"><%=foodingbean.findnkname(article.getWriterid())%></td>
+				<td width="200px" style="text-align: right;" class="orline1"><%=sdf.format(article.getReg_date())%></td>
 			</tr>
-			
+
 			<tr class="orangeline1">
 				<td colspan="2" height="600px"><table width="1150px"
 						style="margin: auto; margin-top: 15px; margin-bottom: 15px; table-layout: fixed; word-wrap: break-word; border-collapse: collapse;">
@@ -183,154 +180,175 @@ function youreally(){
 					</table></td>
 			</tr>
 			<%
-						if (article.getWriterid().equals(idlogin)) {
-					%>
+				if (article.getWriterid().equals(idlogin)) {
+			%>
 			<tr>
-	
-					<td colspan="2">
-					<input type="button" value="글수정" class="smallbt"
-						onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="글삭제" class="smallbt"
-						onclick="youreally()">
-					</td>
-					
-			</tr>
-					<%}else{%>
-						
-						<%}%>
-			
-			<tr	class="orangeline">
-						<td colspan="2" height="400px">
-						
-							<div align="center" style="margin-bottom:15px;"></div>
-							<div class="img-comp-container">
-								<div class="img-comp-img">
-									<div class="divdiv1"><%=article.getIngredients() %></div>
-								</div>
-								<div class="img-comp-img img-comp-overlay">
-									<div class="divdiv2"> <%=article.getTools() %></div>
-								</div>
-							</div>
-						#<%=article.getContury()%> #<%=article.getFoodtype()%>
-					</td>
-				</tr>
-				
-		</table>
-			
-		<br>
-		<form style="margin:auto;" method="post" name="commentform" action="commentspro.jsp">
 
-			<table style="margin:auto;">
+				<td colspan="2"><input type="button" value="글수정"
+					class="smallbt"
+					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+					<input type="button" value="글삭제" class="smallbt"
+					onclick="youreally()"></td>
+
+			</tr>
+			<%
+				} else {
+			%>
+
+			<%
+				}
+			%>
+
 			<tr class="orangeline">
-				<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input
-					type="button" value="글목록" class="smallbt"
-					onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
+				<td colspan="2" height="400px">
+
+					<div align="center" style="margin-bottom: 15px;"></div>
+					<div class="img-comp-container">
+						<div class="img-comp-img">
+							<div class="divdiv1"><%=article.getIngredients()%></div>
+						</div>
+						<div class="img-comp-img img-comp-overlay">
+							<div class="divdiv2">
+								<%=article.getTools()%></div>
+						</div>
+					</div> #<%=article.getContury()%> #<%=article.getFoodtype()%>
 				</td>
 			</tr>
+
+		</table>
+
+		<br>
+		<form style="margin: auto;" method="post" name="commentform"
+			action="commentspro.jsp">
+
+			<table style="margin: auto;">
+				<tr class="orangeline">
+					<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="글목록"
+						class="smallbt"
+						onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
+					</td>
+				</tr>
 				<tr>
 					<td>댓글 수 : <%=count%></td>
 					<td>조회수 : <%=article.getReadcount()%></td>
-					<td class="content1" align="right">
-						<input type="submit" value="댓글쓰기" class="bt2">
-					</td>
+					<td class="content1" align="right"><input type="submit"
+						value="댓글쓰기" class="bt2"></td>
 				</tr>
 			</table>
-			<p style="text-align:center;">
-			<%if(session.getAttribute("idlogin")==null){ %>
-			로그인을 하셔야 댓글을 쓸수 있습니다.
-			<%}else{ %>
+			<p style="text-align: center;">
+				<%
+					if (session.getAttribute("idlogin") == null) {
+				%>
+				로그인을 하셔야 댓글을 쓸수 있습니다.
+				<%
+					} else {
+				%>
 			</p>
-			<table width="1010px" style="margin: auto;" >
+			<table width="1010px" style="margin: auto;">
 				<input type="hidden" name="num" value="0">
-				<input type="hidden" name="rootin" value="<%=num %>">
-				<input type="hidden" name="pageNum" value="<%=pageNum %>">
-				<input type="hidden" name="writerid" value="<%=idlogin %>">
+				<input type="hidden" name="rootin" value="<%=num%>">
+				<input type="hidden" name="pageNum" value="<%=pageNum%>">
+				<input type="hidden" name="writerid" value="<%=idlogin%>">
 				<input type="hidden" name="ref" value="1">
 				<input type="hidden" name="re_step" value="0">
 				<input type="hidden" name="re_level" value="0">
 				<input type="hidden" name="selected" value="0">
-					<tr>
-						<td colspan="3" width="0" style="margin:auto;">
-							<textarea name="content" size="40" rows="5" cols="40" class="signupinput2"
-							style="ime-mode: inactive;"></textarea>
-						</td>
-					</tr>
+				<tr>
+					<td colspan="3" width="0" style="margin: auto;"><textarea
+							name="content" size="40" rows="5" cols="40" class="signupinput2"
+							style="ime-mode: inactive;"></textarea></td>
+				</tr>
 			</table>
 
-			<%} %>
+			<%
+				}
+			%>
 		</form>
 
 
-		<% if (count == 0) { %>
+		<%
+			if (count == 0) {
+		%>
 
-		<p style="text-align:center;"> 댓글이 없습니다.</p>
+		<p style="text-align: center;">댓글이 없습니다.</p>
 
-		<% } else {%>
+		<%
+			} else {
+		%>
 		<form method="post" name="iregularcommentform"
 			action="commentspro.jsp">
 			<input type="hidden" name="num" value="0"> <input
-				type="hidden" name="rootin" value="<%=num %>"> <input
-				type="hidden" name="pageNum" value="<%=pageNum %>"> <input
-				type="hidden" name="writerid" value="<%=idlogin %>"> <input
+				type="hidden" name="rootin" value="<%=num%>"> <input
+				type="hidden" name="pageNum" value="<%=pageNum%>"> <input
+				type="hidden" name="writerid" value="<%=idlogin%>"> <input
 				type="hidden" name="ref" value="1"> <input type="hidden"
 				name="re_step" value="0"> <input type="hidden"
 				name="re_level" value="0"> <input type="hidden"
 				name="selected" value="0">
-			<%  
-	for (int i = 0 ; i < commentList.size() ; i++) {
-		commentDataBean comments = commentList.get(i);
+			<%
+				for (int i = 0; i < commentList.size(); i++) {
+							commentDataBean comments = commentList.get(i);
 
-	int wid=0; 
-	if(comments.getRe_level()>0){
-	   wid=15*(comments.getRe_level());
-	}
+							int wid = 0;
+							if (comments.getRe_level() > 0) {
+								wid = 15 * (comments.getRe_level());
+							}
+			%>
 
-%>
 
-
-			<table style="margin:auto;" class="commment">
-							<tr>
-								<td width=<%=wid %> align="right">
-									<%if(comments.getRe_level()>0){%>
-										ㄴ<br><br><br>
-									<%} %>
-								</td>
-								<td>
-									<table class="commentbase">
-										<tr height="30">
-											<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
-											<td width="353"><%= sdf.format(comments.getReg_date())%></td>
-										</tr>
-										<tr height="70">
-											<td colspan="2" width="600" >
-												<p style="width:900px; word-break:break-all"><%=comments.getContent()%></p>
-											</td>
-										</tr>
-										<tr>
-											<td align="right" colspan="2">
-												<input type="button" value="답글" class="bt2" onclick=
-													"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-													'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-													'<%=comments.getRe_level()%>',<%= i %>,'tagged')">
-												<%if(idlogin.equals(comments.getWriterid())){ %>
-													<input type="button" value="변경" class="bt2" onclick=
-														"AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
-														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
-														'<%=comments.getRe_level()%>',<%= i %>,'changed')">
-													<input type="button" value="삭제" class="bt2" onclick="location.href='deletecommentspro.jsp?num=<%=comments.getNum()%>'">
-												<%} %>
-												<div class="commentchangeform" id="testid"></div>
-											</td>
-										</tr>
-										<hr width="790" size="8px" color="white">
-									</table>
+			<table style="margin: auto;" class="commment">
+				<tr>
+					<td width=<%=wid%> align="right">
+						<%
+							if (comments.getRe_level() > 0) {
+						%> ㄴ<br> <br> <br> <%
+ 	}
+ %>
+					</td>
+					<td>
+						<table class="commentbase">
+							<tr height="30">
+								<td width="353"><%=foodingbean.findnkname(comments.getWriterid())%></td>
+								<td width="353"><%=sdf.format(comments.getReg_date())%></td>
+							</tr>
+							<tr height="70">
+								<td colspan="2" width="600">
+									<p style="width: 900px; word-break: break-all"><%=comments.getContent()%></p>
 								</td>
 							</tr>
+							<tr>
+								<td align="right" colspan="2"><input type="button"
+									value="답글" class="bt2"
+									onclick="AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+													'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+													'<%=comments.getRe_level()%>',<%=i%>,'tagged')">
+									<%
+										if (idlogin.equals(comments.getWriterid())) {
+									%> <input type="button" value="변경" class="bt2"
+									onclick="AnsUpdDelComment('<%=comments.getNum()%>','<%=comments.getContent()%>',
+														'<%=comments.getRef()%>','<%=comments.getRe_step()%>',
+														'<%=comments.getRe_level()%>',<%=i%>,'changed')">
+									<input type="button" value="삭제" class="bt2"
+									onclick="location.href='deletecommentspro.jsp?num=<%=comments.getNum()%>'">
+									<%
+										}
+									%>
+									<div class="commentchangeform" id="testid"></div></td>
+							</tr>
+							<hr width="790" size="8px" color="white">
 						</table>
-			<%}%>
+					</td>
+				</tr>
+			</table>
+			<%
+				}
+			%>
 		</form>
-		<%}%>
-		
+		<%
+			}
+		%>
+
 	</div>
 
 
@@ -340,5 +358,6 @@ function youreally(){
 </body>
 </html>
 <%
-	}catch(Exception e){} 
+	} catch (Exception e) {
+	}
 %>

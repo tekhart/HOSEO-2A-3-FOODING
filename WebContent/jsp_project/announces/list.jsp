@@ -57,6 +57,7 @@
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
 
+
 <style>
 .eventdiv {
 	width: 1300px;
@@ -68,8 +69,8 @@
 }
 
 .bgimg {
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url('../img/tomato.jpg');
+background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/tomato.jpg');
+
 	height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -157,7 +158,7 @@ hr {
 		<div class="eventdiv"
 			onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 			<div class="bgimg"
-				style="background-image:url(<%=article.getThumbnail()%>);">
+				style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%=article.getThumbnail()%>);">
 				<div class="middle">
 					<h1><%=article.getTitle()%></h1>
 					<hr>
@@ -171,8 +172,13 @@ hr {
 				</div>
 			</div>
 			<script type="text/javascript">
-				var countdownfunction<%=article.getNum()%> =
-					setInterval(function() {event_countdown(<%=article.getNum()%>);}, 1000);
+				var countdownfunction
+			<%=article.getNum()%>
+				= setInterval(function() {
+					event_countdown(
+			<%=article.getNum()%>
+				);
+				}, 1000);
 			</script>
 		</div>
 		<%
@@ -229,10 +235,10 @@ hr {
 					8, 2);
 			return new Date(y, m, d);
 		}
-		
+
 		function event_countdown(i) {
-			var event_endtime = document.getElementById("event_endtime"+i);
-			var eventTimer = document.getElementById("eventTimer"+i);
+			var event_endtime = document.getElementById("event_endtime" + i);
+			var eventTimer = document.getElementById("eventTimer" + i);
 			var countDownDate = parse(event_endtime.innerHTML);
 			var now = new Date().getTime();
 			var distance = countDownDate - now;

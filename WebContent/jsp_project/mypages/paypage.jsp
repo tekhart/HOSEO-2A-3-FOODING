@@ -249,7 +249,7 @@ body {
 			<div align="center">
 				<div>
 					<table class="row">
-	
+
 						<tr>
 							<td colspan="2" align="right" width="580px"
 								style="padding-bottom: 50px; padding-left: 280px;">
@@ -270,10 +270,10 @@ body {
 									</label> <br> <br> <input type="text" id="fname2"
 										name="deliveryName" class="inputtext" placeholder="이름">
 									<br> <br>
-	
+
 								</div>
 							</td>
-	
+
 							<td colspan="2" align="center" style="padding-bottom: 50px;">
 								<div class="container2">
 									<h3 align="center">배송지 정보</h3>
@@ -298,11 +298,11 @@ body {
 								</div>
 							</td>
 						</tr>
-	
+
 					</table>
-	
-					<table style="position: relative; left: 140px;width:1148px;align:center"
-						>
+
+					<table
+						style="position: relative; left: 140px; width: 1148px; align: center">
 						<tr>
 							<td class="container3" colspan="2"
 								style="margin-left: 1px; float: right;">
@@ -314,11 +314,11 @@ body {
 										(총<%=topbarArticle.getMileage()%>원)
 								</span></label><br> <br> <br>
 								<div style="width: 1148px; float: left;">
-									 <span class="tkdyd3">사용 : </span>
-									<input type="text" name="pointused" id="pointused_input"
-										class="inputtd3"> <span class="won">원</span>
+									<span class="tkdyd3">사용 : </span> <input type="text"
+										name="pointused" id="pointused_input" class="inputtd3">
+									<span class="won">원</span>
 								</div> <br> <br> <br>
-	
+
 								<div>
 									<table>
 										<tr>
@@ -335,8 +335,8 @@ body {
 														onclick="openCity(event, 'creditcard')">신용카드
 													</span> <span class="tablinks"
 														style="float: left; margin-left: 50px;"> <input
-														type="radio" name="chk_info" value="무통장입금" class="tablinks"
-														onclick="openCity(event, 'Bank Deposit')">무통장입금
+														type="radio" name="chk_info" value="무통장입금"
+														class="tablinks" onclick="openCity(event, 'Bank Deposit')">무통장입금
 													</span>
 												</div>
 											</td>
@@ -355,7 +355,7 @@ body {
 													<input type="text" maxlength="20" class="tdpayinput"
 														name="accountName"
 														style="width: 200px; height: 29px; margin-top: -10px;">
-	
+
 													<p class="tdpayment" style="padding-top: 35px;">입금은행</p>
 													<select name='accountId' class="tdpayinput"
 														style="width: 250px; height: 29px; margin-top: -10px;">
@@ -365,7 +365,7 @@ body {
 														<option value='3'>국민 302-1133-2090-11 이혜진</option>
 														<option value='4'>우리 302-1133-2090-11 이혜진</option>
 														<option value='5'>기업 302-1133-2090-11 이혜진</option>
-	
+
 													</select>
 												</div>
 											</td>
@@ -377,7 +377,8 @@ body {
 					</table>
 				</div>
 				<div align="center">
-					<div id="creditcard" class="secondtabcontent" style="display: none;">
+					<div id="creditcard" class="secondtabcontent"
+						style="display: none;">
 						<input type="button" class="btpay2" value="결제하기"
 							onclick="customer_decided_topay(<%=totalprice + bae_song_bee%>,'<%=buyName%>','<%=email%>')">
 					</div>

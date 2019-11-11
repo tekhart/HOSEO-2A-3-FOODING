@@ -1842,19 +1842,14 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			sql = "update question set title=?,contury=?,foodtype=?,ingredients=?";
-			sql += ",tools=? ,content=? where num=?";
+			sql = "update question set title=?,content=?,isComplete=?";
+			sql += " where num=?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, article.getTitle());
-			pstmt.setString(2, article.getWriterid());
-			pstmt.setString(4, article.getContent());
-			pstmt.setInt(5, article.getIsComplete());
-			pstmt.setTimestamp(6, article.getReg_date());
-			pstmt.setInt(7, article.getRef());
-			pstmt.setInt(8, article.getRe_step());
-			pstmt.setInt(9, article.getRe_level());
-			pstmt.setInt(7, article.getNum());
+			pstmt.setString(2, article.getContent());
+			pstmt.setInt(3, article.getIsComplete());
+			pstmt.setInt(4, article.getNum());
 			pstmt.executeUpdate();
 			x = 1;
 		} catch (Exception ex) {
@@ -2666,13 +2661,15 @@ public class foodingBean {
 				} while (rs.next());
 			}
 			deletecartArticle(owner);
-			if (requestArticle.getAccountId() != 0) {
+			if (requestArticle.getAccountId() == 0||requestArticle.getAccountId() > 5) {
 				if (rslength == 1) {
 					pointupdate(owner, pointadd, productnameforpointhist + " 구매");
 				} else {
 					pointupdate(owner, pointadd, productnameforpointhist + " 외" + (rslength - 1) + " 개 제품 구매");
 				}
-				pointupdate(owner, -1 * pointused, "물품 구매에 사용");
+				if(pointused>=0) {
+					pointupdate(owner, -1 * pointused, "물품 구매에 사용");
+				}
 			}
 
 		} catch (Exception ex) {
@@ -2858,7 +2855,7 @@ public class foodingBean {
 				owner = rs.getString(1);
 			}
 			pointupdate(owner, buytotalprice / 100, buytitle + " 구매");
-			if (buypointused != 0) {
+			if (buypointused >= 0) {
 				pointupdate(owner, -1 * buypointused, "물품 구매에 사용");
 			}
 		} catch (Exception ex) {
@@ -2867,12 +2864,13 @@ public class foodingBean {
 			DBclose();
 		}
 	}
+
 	public void changebuystatus(int buyref, String buystatus) throws Exception {
 		DBclose();
 		con = null;
 		pstmt = null;
 		rs = null;
-		
+
 		String sql = "";
 		try {
 			con = getConnection();
@@ -2882,7 +2880,7 @@ public class foodingBean {
 			pstmt.setString(1, buystatus);
 			pstmt.setInt(2, buyref);
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

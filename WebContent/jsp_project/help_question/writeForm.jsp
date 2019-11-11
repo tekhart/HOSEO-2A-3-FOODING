@@ -1,101 +1,102 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
-		<link rel=stylesheet type=text/css href="../../daumeditor/css/editor.css" charset=utf-8 />
-		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="icon" href="../img/favicon.ico">
-		<script type=text/javascript charset=utf-8 src="../../daumeditor/js/editor_loader.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+<link rel=stylesheet type=text/css
+	href="../../daumeditor/css/editor.css" charset=utf-8 />
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="icon" href="../img/favicon.ico">
+<script type=text/javascript charset=utf-8
+	src="../../daumeditor/js/editor_loader.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
 		</script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
 		</script>
-		
-		
-	</head>
-	<body id="writebody">
-		<%@include file="../general_included/topbar.jsp"%>
-		
-		<div id="maindiv">
+
+
+</head>
+<body id="writebody">
+	<%@include file="../general_included/topbar.jsp"%>
+
+	<div id="maindiv">
 		<%
-			int num = 0,ref = 1, re_step = 0, re_level = 0;
-			String strV="";
-			try{
-				if(request.getParameter("num")!=null){
-					num=Integer.parseInt(request.getParameter("num"));
-					ref=Integer.parseInt(request.getParameter("ref"));
-					re_step=Integer.parseInt(request.getParameter("re_step"));
-					re_level=Integer.parseInt(request.getParameter("re_level"));
+			int num = 0, ref = 1, re_step = 0, re_level = 0;
+			String strV = "";
+			try {
+				if (request.getParameter("num") != null) {
+					num = Integer.parseInt(request.getParameter("num"));
+					ref = Integer.parseInt(request.getParameter("ref"));
+					re_step = Integer.parseInt(request.getParameter("re_step"));
+					re_level = Integer.parseInt(request.getParameter("re_level"));
 				}
-				if(session.getAttribute("idlogin")==null){
+				if (session.getAttribute("idlogin") == null) {
 					out.println("<script>alert('로그인을 먼저 하셔야합니다.');</script>");
 					response.sendRedirect("../mains/main.jsp");
 				}
-				idlogin=(String)session.getAttribute("idlogin");
+				idlogin = (String) session.getAttribute("idlogin");
 		%>
-		<div class="writetitle1">
-			도와줘요!
-		</div>
-		
+		<div class="writetitle1">도와줘요!</div>
+
 		<div id="space">
-		
-		
-		
-		<form method="post" name="writeform" 
-			action="writePro.jsp" onsubmit="return writeSave()">
-		<input type="hidden" name="num" value="<%=num %>">
-		<input type="hidden" name="ref" value="<%=ref %>">
-		<input type="hidden" name="re_step" value="<%=re_step %>">
-		<input type="hidden" name="re_level" value="<%=re_level %>">
-		<input type="hidden" name="writerid" value="<%=idlogin %>">
-		<center>
-			<table id="writetable" align="center" border-spacing="10px">
-				<tr>
-					<td align="right" colspan="2">
-					
-					</td>
-				</tr>
-				<tr>
-					<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-					<td width="330" align="left">
-					<input type="text" size="40" maxlength="50" name="title" class="signupinputblack2"
-					 style="ime-mode:normal;"></td>
-				</tr>
-				<tr>
-					<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-					<td align="left">
-						<jsp:include page="../../daumeditor/editor_frame.jsp"></jsp:include>
-				</tr>
-				
-					<tr><td></td>
-					<td align="center" >
-						<input type="button" id="button123" value="확인" onclick="Editor.save();">
-						<input type="reset" id="button123" value="다시 작성">
-						<input type="button" id="button123" value="글목록" OnClick="window.location='../recipes/list.jsp'">
-					</td>
-				</tr>
-				
-				
-			</table>
-		</center>
-		<%
-			}catch(Exception e){}
-		%>
-		</form>
+
+
+
+			<form method="post" name="writeform" action="writePro.jsp"
+				onsubmit="return writeSave()">
+				<input type="hidden" name="num" value="<%=num%>"> <input
+					type="hidden" name="ref" value="<%=ref%>"> <input
+					type="hidden" name="re_step" value="<%=re_step%>"> <input
+					type="hidden" name="re_level" value="<%=re_level%>"> <input
+					type="hidden" name="writerid" value="<%=idlogin%>">
+				<center>
+					<table id="writetable" align="center" border-spacing="10px">
+						<tr>
+							<td align="right" colspan="2"></td>
+						</tr>
+						<tr>
+							<td width="180" align="center" id="writespace">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+							<td width="330" align="left"><input type="text" size="40"
+								maxlength="50" name="title" class="signupinputblack2"
+								style="ime-mode: normal;"></td>
+						</tr>
+						<tr>
+							<td align="center" id="writespace">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+							<td align="left"><jsp:include
+									page="../../daumeditor/editor_frame.jsp"></jsp:include>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td align="center"><input type="button" id="button123"
+								value="확인" onclick="Editor.save();"> <input type="reset"
+								id="button123" value="다시 작성"> <input type="button"
+								id="button123" value="글목록"
+								OnClick="window.location='../recipes/list.jsp'"></td>
+						</tr>
+
+
+					</table>
+				</center>
+				<%
+					} catch (Exception e) {
+					}
+				%>
+			</form>
 		</div>
-		</div>
-		
-		
-<%@include file="../general_included/footer.jsp"%>
-		
-		<script type="text/javascript">
+	</div>
+
+
+	<%@include file="../general_included/footer.jsp"%>
+
+	<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
 		
@@ -179,5 +180,5 @@
 			});
 			
 		</script>
-	</body>
+</body>
 </html>

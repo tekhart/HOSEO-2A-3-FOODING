@@ -11,14 +11,14 @@
 	<jsp:setProperty name="article" property="*" />
 </jsp:useBean>
 <%
-	try{
+	try {
 		article.setReg_date(new Timestamp(System.currentTimeMillis()));
 		foodingBean dbPro = foodingBean.getInstance();
-		if(dbPro.insertUserArticle(article)==1){
-			session.setAttribute("idlogin",article.getId());
+		if (dbPro.insertUserArticle(article) == 1) {
+			session.setAttribute("idlogin", article.getId());
 		}
 		response.sendRedirect("../general_included/thanks_for_register.jsp");
-	}catch(Exception e){
+	} catch (Exception e) {
 		response.sendRedirect("../general_included/sorry_errer.jsp");
 	}
 %>

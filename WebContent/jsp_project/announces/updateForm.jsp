@@ -53,12 +53,12 @@
 				announceDataBean article = dbPro.updateannounceGetArticle(num);
 
 				Date date = new Date();
-				
+
 				Timestamp ts = article.getReg_date();
 				date.setTime(ts.getTime());
 				String regDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-				
-				ts=article.getEnd_date();
+
+				ts = article.getEnd_date();
 				date.setTime(ts.getTime());
 				String endDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
 		%>
@@ -94,11 +94,12 @@
 					<tr>
 						<td align="center">분류</td>
 						<td><select name='isEvent' style="ime-mode: inactive;">
-								<option value='1'<%if(article.getIsEvent().equals("1")){%> selected<%} %>>공지사항</option>
-								<option value='0'<%if(article.getIsEvent().equals("0")){%> selected<%} %>>이벤트</option>
+								<option value='1' <%if (article.getIsEvent().equals("1")) {%>
+									selected <%}%>>공지사항</option>
+								<option value='0' <%if (article.getIsEvent().equals("0")) {%>
+									selected <%}%>>이벤트</option>
 
-						</select> <input type="date" name="string_end_date"
-							value="<%=endDate%>"
+						</select> <input type="date" name="string_end_date" value="<%=endDate%>"
 							min="<%=regDate%>"></td>
 					</tr>
 					<tr>
@@ -119,19 +120,18 @@
 							id="button123" value="글목록"
 							OnClick="window.location='../recipes/list.jsp'"></td>
 					</tr>
-				</table>
-				<%
-					} catch (Exception e) {
-					}
-				%>
-			</form>
-		</div>
-	</div>
+					<%
+						} catch (Exception e) {
+						}
+					%>
+					</form>
+					</div>
+					</div>
 
 
-	<%@include file="../general_included/footer.jsp"%>
+					<%@include file="../general_included/footer.jsp"%>
 
-	<script type="text/javascript">
+					<script type="text/javascript">
 		var check_confirm_write=false;
 		var checkUnload=true;
 		

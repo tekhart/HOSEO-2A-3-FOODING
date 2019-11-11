@@ -97,13 +97,6 @@ body{
 <div class="shadow"></div>
 </div>
 
-<script>
-function window_onload(){
-    setTimeout('go_url()',5000)
-}
-    function go_url(){
-    	location.href="../shop/main.jsp"    
-    }
-</script>
+
 </body>
 </html>

@@ -40,17 +40,14 @@
 	<div id="maindiv">
 
 		<center>
-			<br> <br>
-			<br>
-			<br>
-			<br> <input type="button" value="ID찾기" id="currentbtn">
+			<br> <br> <br> <br> <br> <input
+				type="button" value="ID찾기" id="currentbtn">
 			<%-- 현 페이지 이므로 기능없음. --%>
 			<input type="button" value="PW찾기"
 				onClick="location.href='findPW.jsp'" id="notcurrentbtn">
 
 			<form method="post" name="findid" action="findIDPro.jsp">
-				<br>
-				<br>
+				<br> <br>
 				<P class="idpwp">회원정보에 등록한 닉네임과 이메일을 입력해주세요</P>
 				<br>
 				<table>

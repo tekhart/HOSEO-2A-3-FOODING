@@ -1,5 +1,5 @@
-<%@page import="java.sql.*" contentType="text/html; charset=utf-8" %>
-<%@page import="DBBean.foodingBean" %>
+<%@page import="java.sql.*" contentType="text/html; charset=utf-8"%>
+<%@page import="DBBean.foodingBean"%>
 
 <Script>
 	function AutoInput(zip,address){
@@ -17,22 +17,22 @@
 		zipcode.submit();
 	}
 	</Script>
-	<link rel="stylesheet" href="../../css/common.css">
-	<head><title>검색결과</title></head>
-	<form method="post" name="zipcode" action="ZipsearchPro.jsp">
-		<input type="hidden" name="reqaddrnum">
-		<input type="hidden" name="reqaddress">
-		
-		<table align=center border=0>
-			<tr>
-				<th bgcolor="#ffbb00" width=100 height=25>
-					<font size=2><center>우편번호</center></font>
-				</th>
-				<th bgcolor="#ffbb00" width=350 height=25>
-					<font size=2><center>주소</center></font>
-				</th>
-			</tr>
-			<%
+<link rel="stylesheet" href="../../css/common.css">
+<head>
+<title>검색결과</title>
+</head>
+<form method="post" name="zipcode" action="ZipsearchPro.jsp">
+	<input type="hidden" name="reqaddrnum"> <input type="hidden"
+		name="reqaddress">
+
+	<table align=center border=0>
+		<tr>
+			<th bgcolor="#ffbb00" width=100 height=25><font size=2><center>우편번호</center></font>
+			</th>
+			<th bgcolor="#ffbb00" width=350 height=25><font size=2><center>주소</center></font>
+			</th>
+		</tr>
+		<%
 			String zipcode="";
 			foodingBean usedb=new foodingBean();		//dbbean 클래스의 오브젝트화
 			request.setCharacterEncoding("utf-8");
@@ -56,42 +56,49 @@
 						zipcode=zip;
 						String address=sido+""+gugun+""+dong+""+ri+""+bunji;
 						%>
-								
-					<tr>
-						<td bgcolor="#eeeeee">
-							<center><font size=2>
-								<input class="zipbutton" type="button" value="<%=zip %>" onclick="Zipsubmit('<%=zip %>','<%=address %>');">
-							</font></center>
-						</td>
-						<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;
-							<font size=2><a><%=address%></a></font>
-						</td>
-					</tr>
-						<%
+
+		<tr>
+			<td bgcolor="#eeeeee">
+				<center>
+					<font size=2> <input class="zipbutton" type="button"
+						value="<%=zip %>"
+						onclick="Zipsubmit('<%=zip %>','<%=address %>');">
+					</font>
+				</center>
+			</td>
+			<td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp; <font size=2><a><%=address%></a></font>
+			</td>
+		</tr>
+		<%
 					}while(rs.next());
 					%>
-				</table>
-			</form>
-			<%
+	</table>
+</form>
+<%
 				}
 				else
 				{
 					%>
-					<script>
+<script>
 						alert("존재하지 않는 주소입니다.");
 						location.href="ZipinputForm.jsp";
 					</script>
-					<%	
+<%	
 				}
 			}catch (Exception e) {
 				%>
-				<script>
+<script>
 					alert("존재하지 않는 주소입니다.");
 					location.href="ZipinputForm.jsp";
 				</script>
-				<%	
+<%	
 		}finally{}
 				
 %>
-<br><br><br>
-<center><input type="button" value="돌아가기" class="findbutton" onclick="location.href='../signup.jsp'"></center>
+<br>
+<br>
+<br>
+<center>
+	<input type="button" value="돌아가기" class="findbutton"
+		onclick="location.href='../signup.jsp'">
+</center>

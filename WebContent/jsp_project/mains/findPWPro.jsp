@@ -92,13 +92,7 @@
 		%>
 
 		<center>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br> <br> <br> <br> <br>
 
 			<form action=findPWProPro.jsp method="post" name="register">
 				<div>
@@ -112,9 +106,8 @@
 					<button class="loginbutton" type="button" onclick="check();">확인</button>
 				</div>
 			</form>
-			<br>
-			<br> <span class="idpasswd"><a href="findID.jsp">아이디</a>
-				/ <a href="findPW.jsp">비밀번호 찾기</a></span>
+			<br> <br> <span class="idpasswd"><a
+				href="findID.jsp">아이디</a> / <a href="findPW.jsp">비밀번호 찾기</a></span>
 		</center>
 	</div>
 	<%

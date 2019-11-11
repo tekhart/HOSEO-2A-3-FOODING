@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="DBBean.foodingBean" %>
-<%@ page import="java.sql.Timestamp" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="DBBean.foodingBean"%>
+<%@ page import="java.sql.Timestamp"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <% request.setCharacterEncoding("utf-8"); %>
-    
+
 <jsp:useBean id="article" scope="page" class="DBBean.announceDataBean">
-	<jsp:setProperty name="article" property="*"/>
+	<jsp:setProperty name="article" property="*" />
 </jsp:useBean>
 <%
 	article.setReg_date(new Timestamp(System.currentTimeMillis()));
