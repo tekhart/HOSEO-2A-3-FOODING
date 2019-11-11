@@ -176,7 +176,6 @@ public class foodingBean {
 
 		try {
 			con = getConnection();
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into user(nkname,id,passwd,email,addrnum,address,detailaddr,gender,reg_date,userface";
 			sql += ") values(?,?,?,?,?,?,?,?,?,?)";
 
@@ -756,7 +755,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from recipes where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -913,7 +912,7 @@ public class foodingBean {
 			DBclose();
 		}
 	}
-	//초보용 레시피 작성에서 입력받은 값을 db에 저장하는 메소드
+	//초보용 레시피 작성에서 입력받은 값을 db에 저장하는 메소드 <><>
 	public void insertexrecipeArticle(BoardDataBean article) throws Exception {
 		DBclose();
 		con = null;
@@ -1163,7 +1162,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from exrecipe where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -1308,8 +1307,6 @@ public class foodingBean {
 
 			pstmt = con.prepareStatement("select max(num) from cookhelp");
 			rs = pstmt.executeQuery();
-
-			// 荑쇰━瑜� �옉�꽦
 			sql = "insert into cookhelp(title,writerid,reg_date,content,thumbnail";
 			sql += ") values(?,?,?,?,?)";
 
@@ -1547,7 +1544,7 @@ public class foodingBean {
 		}
 		return x;
 	}
-	//대상 요리강의 삭제 메소드
+	//대상 요리강의 삭제 메소드 <><>
 	public int deletecookhelpArticle(int num) throws Exception {
 		con = null;
 		pstmt = null;
@@ -1559,7 +1556,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from cookhelp where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -2167,7 +2164,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("delete from announce where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			x = 1; // 湲��궘�젣 �꽦怨�
+			x = 1;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
