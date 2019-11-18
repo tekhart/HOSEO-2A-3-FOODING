@@ -1934,7 +1934,7 @@ public class foodingBean {
 		return x;
 	}
 	//시작,끝,검색,이벤트 여부를 만족하는 공지사항 들의 정보를 받아오는 메소드
-	public List<announceDataBean> getannounceArticles(int start, int end, String search, String isEvent)
+	public List<announceDataBean> getannounceArticles(int start, int end, String search, String isEvent,int isAvailable)
 			throws Exception {
 		con = null;
 		pstmt = null;
@@ -1947,6 +1947,9 @@ public class foodingBean {
 			sql = "select * from announce where title like '%" + search + "%' ";
 			if (isEvent != "2") {
 				sql += "and isEvent = " + isEvent;
+			}
+			if(isAvailable==1) {
+				sql += " and end_date>=(select date_add(now(),INTERVAL 0 MONTH) from dual)";
 			}
 			sql += " order by num desc limit ?,?";
 
@@ -2009,7 +2012,7 @@ public class foodingBean {
 		return x;
 	}
 	//시작,끝,이벤트 여부를 만족하는 공지사항 들의 정보를 받아오는 메소드
-	public List<announceDataBean> getannounceArticles(int start, int end, String isEvent) throws Exception {
+	public List<announceDataBean> getannounceArticles(int start, int end, String isEvent,int isAvailable) throws Exception {
 		con = null;
 		pstmt = null;
 		rs = null;
@@ -2021,6 +2024,9 @@ public class foodingBean {
 			sql = "select * from announce";
 			if (isEvent != "2") {
 				sql += " where isEvent = " + isEvent;
+			}
+			if(isAvailable==1) {
+				sql += " and end_date>=(select date_add(now(),INTERVAL 0 MONTH) from dual)";
 			}
 			sql += " order by num desc limit ?,?";
 

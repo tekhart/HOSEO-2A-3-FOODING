@@ -63,7 +63,7 @@
 				foodingBean dbPro = foodingBean.getInstance();
 
 				articleList = dbPro.getArticles(slideStartRow, slidePageSize, slideFame);
-				List<announceDataBean> announcearticleList = dbPro.getannounceArticles(1, 5, "0");
+				List<announceDataBean> announcearticleList = dbPro.getannounceArticles(1, 3, "0",1);
 				for (int i = 0; i < articleList.size(); i++) {
 					BoardDataBean article = articleList.get(i);
 					String writerid = article.getWriterid();
@@ -217,7 +217,7 @@
 	<br>
 	<div id="eventdiv" align="center">
 		<%
-		for (int i = 0; i < articleList.size(); i++) {
+		for (int i = 0; i < announcearticleList.size(); i++) {
 				announceDataBean announcearticle = announcearticleList.get(i);
 				String writerid = announcearticle.getWriterid();
 		%>
@@ -227,7 +227,7 @@
 			<div class="bgimg"
 				style="background-image:url(<%=announcearticle.getThumbnail()%>);">
 				<div class="middle">
-					<h1><%=announcearticle.getTitle()%></h1>
+					<h2><%=announcearticle.getTitle()%></h2>
 					<hr>
 					<p id="eventTimer<%=announcearticle.getNum()%>" style="font-size: 30px"></p>
 				</div>
@@ -239,12 +239,8 @@
 				</div>
 			</div>
 			<script type="text/javascript">
-				var countdownfunction
-			<%=announcearticle.getNum()%>
-				= setInterval(function() {
-					event_countdown(
-			<%=announcearticle.getNum()%>
-				);
+				var countdownfunction<%=announcearticle.getNum()%>=
+					setInterval(function() {event_countdown(<%=announcearticle.getNum()%>);
 				}, 1000);
 			</script>
 		</div>
@@ -269,14 +265,21 @@
 			if (distance < 0) {
 				eventTimer.innerHTML = "종료된 이벤트";
 			} else {
-				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+				var years= Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+				var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365))
+						/ (1000 * 60 * 60 * 24));
 				var hours = Math.floor((distance % (1000 * 60 * 60 * 24))
 						/ (1000 * 60 * 60));
 				var minutes = Math.floor((distance % (1000 * 60 * 60))
 						/ (1000 * 60));
 				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-				eventTimer.innerHTML = days + "d " + hours + "h " + minutes
-						+ "m " + seconds + "s ";
+				if(years>0){
+					eventTimer.innerHTML = years + "y " + days + "d " + hours + "h " + minutes
+							+ "m " + seconds + "s ";
+				}else{
+					eventTimer.innerHTML = days + "d " + hours + "h " + minutes
+					+ "m " + seconds + "s ";
+				}
 			}
 		}
 	</script>
