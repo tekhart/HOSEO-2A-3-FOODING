@@ -270,17 +270,6 @@
 		</div>
 	</div>
 
-	<div id="recent">
-
-
-		<script>
-			function resetCookie() {
-				document.cookie = 'rec=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-				location.reload(true);
-			}
-		</script>
-	</div>
-
 	<form action="../mypages/checkstatus.jsp" method="POST"
 		name="WannaGoOthersProfile">
 		<input type="hidden" name="findId">
