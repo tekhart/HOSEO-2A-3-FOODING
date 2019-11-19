@@ -49,8 +49,6 @@
 
 	<%@include file="../general_included/topbar.jsp"%>
 	<center>
-
-
 		<div id="slidediv">
 			<%
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

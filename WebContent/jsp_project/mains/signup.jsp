@@ -30,21 +30,18 @@
 				while (rs.next()) {
 					String nknameArray = rs.getString("nkname");
 					String idArray = rs.getString("id");
-					String emailArray = rs.getString("email");%>
+					String emailArray = rs.getString("email");
+					%>
 						DBnkArray[<%=i%>]="<%=nknameArray%>";
 						DBidArray[<%=i%>]="<%=idArray%>";
-						DBemailArray[<%=i%>]="<%=emailArray%>
-	";
-<%i++;
+						DBemailArray[<%=i%>]="<%=emailArray%>";
+					<%
+					i++;
 				}
-
-			} catch (Exception e) {
-
-			} finally {
-			}
-			foodingbean.DBclose();%>
-	var arraylength =
-<%=i%>
+			} catch (Exception e) {} finally {}
+			foodingbean.DBclose();
+			%>
+	var arraylength =<%=i%>;
 	var emailexp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	var nknameexp = /^[가-힣a-zA-Z][가-힣a-zA-Z0-9]+$/;
 	var idexp = /^[a-zA-Z][a-zA-Z0-9]+$/;
@@ -68,8 +65,7 @@
 		if (window.event.keyCode == 13) {
 			Signupcross();
 		}
-		if (document.getElementById("inputnkname").value.length < 3
-				|| document.getElementById("inputnkname").value.length > 16) {
+		if (document.getElementById("inputnkname").value.length < 3|| document.getElementById("inputnkname").value.length > 16) {
 			document.getElementById('nknamecheck').innerHTML = "문자로 시작하고 공백과 특수문자 없이 3-16자";
 			document.getElementById('nknameimg').innerHTML = "<img src='../img/tip2.png' height='30px' width='30px' align='middle'>";
 		} else {
@@ -245,11 +241,9 @@
 			document.getElementById("inputdetailaddr").focus();
 			return;
 		}
-
 		document.getElementById("register").submit();
 
 	}
-
 	function Signupclear() {
 
 		document.getElementById("inputnkname").value = "";
@@ -289,12 +283,15 @@
 								<td width="90px">닉네임</td>
 								<td colspan="2"><input class="signupinputs" type="text"
 									id="inputnkname" name="nkname" size="40"
-									onkeyup="Nknamecheck();"></td>
+									onkeyup="Nknamecheck();">
+								</td>
 							</tr>
 							<tr>
 								<td></td>
-								<td colspan="2" height="30px"><span id="nknameimg"></span><span
-									id="nknamecheck"></span></td>
+								<td colspan="2" height="30px">
+									<span id="nknameimg"></span>
+									<span id="nknamecheck"></span>
+								</td>
 							</tr>
 
 							<tr>
