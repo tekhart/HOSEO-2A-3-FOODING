@@ -36,7 +36,7 @@
 	<%@include file="../general_included/topbar.jsp"%>
 	<div id="maindiv">
 		<div class="writetitle1">맞춤 레시피</div>
-		<br> <br> <br>
+		<br>
 		<form method="POST" action="customPro.jsp" name="customsearchForm">
 			<table border="1" class="customtb">
 				<tr>
@@ -115,7 +115,7 @@
 			</table>
 			<table width="900px" style="margin: auto;">
 				<tr>
-					<td align="center" height="200px;">
+					<td align="center" height="100px;">
 						<div class="newelementsearchbar" align="left"
 							style="width: 400px; height: 200px; margin-left: 300px; margin-top: 10px;">
 							<input type="text" name="myCountry" placeholder="검색..."

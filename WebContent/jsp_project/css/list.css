@@ -208,7 +208,20 @@ padding: 0;
 	width:70px;
 	border: 1px solid #ffbb00;
 	border-radius:2px;
+	cursor:pointer;
+		background-color:white;
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
+
+.difficultbutton:hover:nth-child(n+2){
+	background-color:#ffbb00;
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
 @CHARSET "UTF-8";
 
 	#body{
@@ -586,7 +599,7 @@ padding: 0;
 	border-collapse:collapse;
 	border-spacing:0px;
 	width:1000px;
-	height:500px;
+	height:400px;
 	margin:auto;
 }
 
