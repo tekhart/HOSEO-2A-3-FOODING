@@ -63,8 +63,7 @@
 	}
 	function youreally(){
 		if(confirm("한번 삭제된 글은 복구가 불가능 합니다.\n정말 삭제하시겠습니까?")){
-			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>
-	"
+			location.href="deletePro.jsp?num=<%=num%>&pageNum=<%=pageNum%>";
 		}
 	}
 </script>
@@ -107,11 +106,12 @@
 			%>
 			<tr>
 
-				<td colspan="2"><input type="button" value="글수정"
-					class="smallbt"
-					onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="글삭제" class="smallbt"
-					onclick="youreally()"></td>
+				<td colspan="2">
+					<input type="button" value="글수정"
+						class="smallbt"
+						onclick="document.location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+					<input type="button" value="글삭제" class="smallbt" onclick="youreally()">
+				</td>
 
 			</tr>
 			<%

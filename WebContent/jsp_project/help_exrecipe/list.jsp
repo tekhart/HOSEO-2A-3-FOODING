@@ -88,7 +88,7 @@
 		<center>
 			<table class="listtop">
 				<tr>
-					<td colspan="3">
+					<td colspan="2">
 						<div class="difficultbutton">
 							난이도 : 
 						</div>
@@ -132,6 +132,17 @@
 									</td>
 								</tr>
 							</form>
+						</table>
+					</td>
+					<td style="padding-left: 190px;">
+						<table align="right">
+							<tr>
+								<td><input type="button" onclick="location.href='list.jsp'"
+									value="목록" class="bt"></td>
+								<td><input type="button"
+									onclick="location.href='writeForm.jsp'" value="글쓰기" class="bt">
+								</td>
+							</tr>
 						</table>
 					</td>
 				</tr>
