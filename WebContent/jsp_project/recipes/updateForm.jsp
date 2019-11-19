@@ -24,7 +24,7 @@
 	
 			}
 			function thumbnailupload(){
-				window.open("../gereral_included/thumbUpload/fileForm.jsp?storeplace=uploaded", "a", "width=400, height=300, left=100, top=50"); 
+				window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=uploaded", "a", "width=400, height=300, left=100, top=50"); 
 			}
 		</script>
 

@@ -223,7 +223,6 @@ hr {
 
 	</div>
 	<script>
-		var countdownfunction = [];
 		function parse(str) {
 			var y = str.substr(0, 4), m = str.substr(5, 2) - 1, d = str.substr(
 					8, 2);
