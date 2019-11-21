@@ -24,10 +24,7 @@
 
 	}
 	function thumbnailupload() {
-		window
-				.open(
-						"../general_included/thumbUpload/fileForm.jsp?storeplace=fooding_thumbs",
-						"a", "width=400, height=300, left=100, top=50");
+		window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=fooding_thumbs","a", "width=400, height=300, left=100, top=50");
 	}
 </script>
 <style>
@@ -91,11 +88,11 @@
 					</tr>
 
 					<tr>
-						<td align="center" colspan="2"><input type="button"
-							id="button123" value="확인" onclick="Editor.save();"> <input
-							type="reset" id="button123" value="다시 작성"> <input
-							type="button" id="button123" value="글목록"
-							OnClick="window.location='list.jsp'"></td>
+						<td align="center" colspan="2">
+							<input type="button" id="button123" value="확인" onclick="writeEnd()">	
+							<input type="reset" id="button123" value="다시 작성">
+							<input type="button" id="button123" value="글목록" OnClick="window.location='list.jsp'">
+						</td>
 					</tr>
 				</table>
 
@@ -180,8 +177,8 @@
 				return true; 
 			}
 			
+			var checkload = true;
 			jQuery(document).ready(function($) {
-			    var checkload = true;
 			    $("#btn_submit").click(function () {
 			        checkload = false;
 			    });
@@ -189,6 +186,10 @@
 			        if (checkload == true) return "정말로 나가시겠습니까?";
 			    });
 			});
+			function writeEnd(){
+				checkload=false;
+				Editor.save();
+			}
 
 		</script>
 </body>

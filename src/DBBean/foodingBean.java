@@ -2885,4 +2885,135 @@ public class foodingBean {
 			DBclose();
 		}
 	}
+	public void insertaskArticle(askDataBean article) {
+		con = null;
+		pstmt = null;
+		rs = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("select max(id) from ask");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				int maxidnum=rs.getInt(1);
+	
+				String sql = "insert into ask(id,title,asktype,content,atteched,ref_date";
+				sql += ") values(?,?,?,?,?,?)";
+	
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, maxidnum);
+				pstmt.setString(2, article.getTitle());
+				pstmt.setString(3, article.getAsktype());
+				pstmt.setString(4, article.getContent());
+				pstmt.setString(5, article.getAtteched());
+				pstmt.setTimestamp(6,ts);
+				pstmt.executeUpdate();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
+	public askDataBean getaskArticle(int id) {
+		con = null;
+		pstmt = null;
+		rs = null;
+		askDataBean article=new askDataBean();
+		try {
+			con = getConnection();
+			String sql="select * from ask where id="+id;
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				article.setId(id);
+				article.setTitle(rs.getString("title"));
+				article.setWriterid(rs.getString("writerid"));
+				article.setAsktype(rs.getString("asktype"));
+				article.setContent(rs.getString("content"));
+				article.setAtteched(rs.getString("atteched"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return article;
+	}
+	public int getaskArticlecount(String search,String searchtype) {
+		con = null;
+		pstmt = null;
+		rs = null;
+		int idcount=0;
+		try {
+			con = getConnection();
+			String sql="select count(id) from ask where 1+1 ";
+			if(searchtype.equals("제목")) {
+				sql+="and (title like '%"+search+"%' or asktype like '%"+search+"%') ";
+			}else if(searchtype.equals("작성자")) {
+				sql+="and writerid in(select id from user where nkname like '%"+search+"%')";
+			}
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				idcount=rs.getInt(1);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return idcount;
+	}
+	public List<askDataBean> getaskArticles(String search,String searchtype) {
+		con = null;
+		pstmt = null;
+		rs = null;
+		List<askDataBean> articleList = new ArrayList<askDataBean>();
+		try {
+			con = getConnection();
+			String sql="select * from ask where 1+1";
+			
+			if(searchtype.equals("제목")) {
+				sql+="and (title like '%"+search+"%' or asktype like '%"+search+"%') ";
+			}else if(searchtype.equals("작성자")) {
+				sql+="and writerid in(select id from user where nkname like '%"+search+"%')";
+			}
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					askDataBean article=new askDataBean();
+					article.setId(rs.getInt("id"));
+					article.setTitle(rs.getString("title"));
+					article.setWriterid(rs.getString("writerid"));
+					article.setAsktype(rs.getString("asktype"));
+					article.setContent(rs.getString("content"));
+					article.setAtteched(rs.getString("atteched"));
+					article.setReg_date(rs.getTimestamp("reg_date"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+		return articleList;
+	}
+	public void deleteaskArticle(int id) {
+		con = null;
+		pstmt = null;
+		rs = null;
+		try {
+			con = getConnection();
+			String sql="delete from ask where id="+id;
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			DBclose();
+		}
+	}
 }
