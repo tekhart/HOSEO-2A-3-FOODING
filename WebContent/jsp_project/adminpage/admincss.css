@@ -19,6 +19,32 @@
 	text-align:center;
 }
 
+.adminstb4{
+	border-collapse:collapse;
+	
+	margin:auto; 
+}
+
+.adminstb4 tr:first-child, .adminstb4 td:nth-child(n+4), .adminstb4 td:first-child{
+	text-align:center;
+}
+
+.adminstb4 tr:not(:first-child){
+	font-weight:bold;
+}
+
+.adminstb4 tr:active:not(:first-child){
+	color:#bdbdbd;
+	font-weight:100;
+}
+
+.adminstb4 td:nth-child(3){
+	width:30px;
+	white-space:nowrap;
+	overflow:hidden;
+     text-overflow:ellipsis;
+}
+
 .adminstb tr:hover:not(:first-child){
 	background-color:#eee;
 }
