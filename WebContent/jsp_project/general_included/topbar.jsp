@@ -55,6 +55,7 @@
 							<td onclick="location.href='../adminpage/userlist.jsp'">유저관리</td>
 							<td onclick="location.href='../adminpage/goods.jsp'">물품관리</td>
 							<td onclick="location.href='../adminpage/adminjumuncheck.jsp'">주문관리</td>
+							<td onclick="location.href='../adminpage/asklist.jsp'">문의확인</td>
 						</tr>
 					</table> <%
  	}
@@ -155,8 +156,8 @@
 												OnClick="window.location='../announces/list.jsp'">공지사항</button>
 											<div class="dropdown-content">
 												<center>
-													<a href="../announces/list.jsp?isEvent=1">푸딩규칙</a> <a
-														href="../announces/list.jsp?isEvent=0">이벤트</a>
+													<a href="../announces/list.jsp?isEvent=1">푸딩규칙</a>
+													<a href="../announces/list.jsp?isEvent=0">이벤트</a>
 												</center>
 											</div>
 										</div>
@@ -167,8 +168,8 @@
 												OnClick="window.location='../customerhelp/faq.jsp'">고객센터</button>
 											<div class="dropdown-content">
 												<center>
-													<a href="../customerhelp/faq.jsp">자주하는 질문</a> <a
-														href="../customerhelp/ask.jsp">문의사항</a>
+													<a href="../customerhelp/faq.jsp">자주하는 질문</a>
+													<a href="../customerhelp/ask.jsp">문의사항</a>
 												</center>
 											</div>
 										</div>
@@ -180,10 +181,12 @@
 			</tr>
 		</table>
 	</div>
-	<a id="TopButton" class="ScrollButton"><img src="../img/up.png"
-		height="30px" width="25px"></a>
-	<a id="BottomButton" class="ScrollButton"><img
-		src="../img/down.png" height="30px" width="25px"></a>
+	<a id="TopButton" class="ScrollButton">
+		<img src="../img/up.png" height="30px" width="25px">
+	</a>
+	<a id="BottomButton" class="ScrollButton">
+		<img src="../img/down.png" height="30px" width="25px">
+	</a>
 
 	<script>
 $(function() {
