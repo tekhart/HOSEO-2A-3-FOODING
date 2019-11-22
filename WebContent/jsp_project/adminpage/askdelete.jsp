@@ -17,23 +17,15 @@
 	<div id="maindiv">
 		<div style="margin: auto">
 			<%
-				String id = request.getParameter("userid");
+				int id = Integer.parseInt(request.getParameter("id"));
 				
 				foodingBean dbPro = foodingBean.getInstance();
-				int check = dbPro.userWannaLeft(id);
-				if(check==1){
+				dbPro.deleteaskArticle(id);
 			%>
 				<div class="deleteuser">사용자 탈퇴가 완료되었습니다.</div>
 				<input type="button" value="메인으로" class="check"
 					onclick="javascript:location.href='../mains/main.jsp'">
 			</div>
-		<%}else{ %>
-			<script type="text/javascript">      
-	        	alert("사용자 탈퇴 처리에 실패했습니다");
-	        	history.go(-1);
-	  		</script>
-		</div>
-	<%} %>
 	<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>
