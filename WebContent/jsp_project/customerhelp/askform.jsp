@@ -40,7 +40,8 @@
 </head>
 <body>
 	<%@include file="../general_included/topbar.jsp"%>
-	<form>
+	<form method="post" action="askPro.jsp" name="askform">
+		<input type="hidden" name="writerid" value="<%=idlogin %>">
 		<table style="border-spacing: 0px; margin: auto;" width="1000px">
 			<tr class="askf2">
 				<td></td>
@@ -112,7 +113,7 @@
 		});
 		function writeEnd(){
 			checkload=false;
-			
+			document.askform.submit();
 		}
 	</script>
 </body>
