@@ -134,56 +134,61 @@
 				<td>현 상태</td>
 			</tr>
 			<%
-				for (int refint = 0; refint < refarray.length; refint++) {
-					List<buyDataBean> DataArticleList = dbPro.getbuyArticles(refarray[refint]);
-					int totalprice = 0;
-					buyDataBean article = null;
-					String buytitle = "";
-					for (int articleint = 0; articleint < DataArticleList.size(); articleint++) {
-						article = DataArticleList.get(articleint);
-						int realprice = article.getPrice() * (100 - article.getDiscountRate()) / 100;
-						totalprice += realprice * article.getProductCount();
-						if (articleint == 0) {
-							buytitle = article.getProductName();
-							if (DataArticleList.size() != 1) {
-								buytitle += "외 " + (DataArticleList.size() - 1) + " 개의 제품";
+				if(refarray.length>0){
+					for (int refint = 0; refint < refarray.length; refint++) {
+						List<buyDataBean> DataArticleList = dbPro.getbuyArticles(refarray[refint]);
+						int totalprice = 0;
+						buyDataBean article = null;
+						String buytitle = "";
+						for (int articleint = 0; articleint < DataArticleList.size(); articleint++) {
+							article = DataArticleList.get(articleint);
+							int realprice = article.getPrice() * (100 - article.getDiscountRate()) / 100;
+							totalprice += realprice * article.getProductCount();
+							if (articleint == 0) {
+								buytitle = article.getProductName();
+								if (DataArticleList.size() != 1) {
+									buytitle += "외 " + (DataArticleList.size() - 1) + " 개의 제품";
+								}
 							}
 						}
+				%>
+				<tr>
+					<td><%=article.getOwner()%></td>
+					<td><%=article.getRef()%></td>
+					<td><%=buytitle%></td>
+					<td><%=sdf.format(article.getBuydate())%></td>
+					<td><%=article.getPointused()%>원</td>
+					<td><%=totalprice%>원</td>
+					<td><%=totalprice - article.getPointused()%>원</td>
+					<td>
+						<%
+							if (article.getAccountId() > 0 && article.getAccountId() < 6) {
+						%> 무통장입금<br>입금자 : <%=article.getAccountName()%>
+					<input type="button" value="결제 확인" onclick="thanks_to_pay(<%=article.getRef()%>,<%=totalprice%>,<%=article.getPointused()%>,'<%=buytitle%>')">
+						<%
+							} else {
+						%> <%=article.getAccountName()%> <%
+	 	}
+	 %>
+					</td>
+					<td><%=article.getSanction()%> <select
+						style="ime-mode: inactive; border-radius: 5px 5px 5px 5px; border-color: #ffbb00; font-size: 14pt; font-family: Bauhaus ITC; height: 25px;"
+						id="changestatus<%=article.getRef()%>"
+						onchange="changebuystatus(<%=article.getRef()%>)">
+							<option hidden="true" value="dontchooseme">배달단계 조정</option>
+							<option value="상품준비중">상품준비중</option>
+							<option value="상품배달중">상품배달중</option>
+							<option value="배달 완료">배달 완료</option>
+					</select></td>
+				</tr>
+				<%
 					}
+				}else{
 			%>
-			<tr>
-				<td><%=article.getOwner()%></td>
-				<td><%=article.getRef()%></td>
-				<td><%=buytitle%></td>
-				<td><%=sdf.format(article.getBuydate())%></td>
-				<td><%=article.getPointused()%>원</td>
-				<td><%=totalprice%>원</td>
-				<td><%=totalprice - article.getPointused()%>원</td>
-				<td>
-					<%
-						if (article.getAccountId() > 0 && article.getAccountId() < 6) {
-					%> 무통장입금<br>입금자 : <%=article.getAccountName()%> <input
-					type="button" value="결제 확인"
-					onclick="thanks_to_pay(<%=article.getRef()%>,<%=totalprice%>,<%=article.getPointused()%>,'<%=buytitle%>')">
-					<%
-						} else {
-					%> <%=article.getAccountName()%> <%
- 	}
- %>
-				</td>
-				<td><%=article.getSanction()%> <select
-					style="ime-mode: inactive; border-radius: 5px 5px 5px 5px; border-color: #ffbb00; font-size: 14pt; font-family: Bauhaus ITC; height: 25px;"
-					id="changestatus<%=article.getRef()%>"
-					onchange="changebuystatus(<%=article.getRef()%>)">
-						<option hidden="true" value="dontchooseme">배달단계 조정</option>
-						<option value="상품준비중">상품준비중</option>
-						<option value="상품배달중">상품배달중</option>
-						<option value="배달 완료">배달 완료</option>
-				</select></td>
-			</tr>
-			<%
-				}
-			%>
+				<tr>
+					<td colspan="9">주문 내역이 없습니다.</td>
+				</tr>
+			<%} %>
 
 		</table>
 

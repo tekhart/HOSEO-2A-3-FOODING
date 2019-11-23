@@ -37,6 +37,43 @@
 	"
 }
 </style>
+<script>
+function thumbnailupload(){
+	window.open("../general_included/thumbUpload/fileForm.jsp?storeplace=uploaded", "a", "width=400, height=300, left=100, top=50"); 
+}
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+	close[i].onclick = function() {
+		var div = this.parentElement;
+		div.remove();
+	}
+}
+
+//Create a new list item when clicking on the "Add" button
+function sendingthumb(thumbname) {
+	var li = document.createElement("div");
+	document.getElementById("attached").appendChild(li);
+	
+	var attacheimg = document.createElement("img");
+	attacheimg.src=thumbname;
+	attacheimg.style.cssText="width:175px";
+	li.appendChild(attacheimg);
+	var span = document.createElement("SPAN");
+	var txt = document.createTextNode("\u00D7");
+	span.className = "close";
+	span.appendChild(txt);
+	li.appendChild(span);
+	
+	for (i = 0; i < close.length; i++) {
+		close[i].onclick = function() {
+			var div = this.parentElement;
+			div.remove();
+		}
+	}
+}
+</script>
 </head>
 <body>
 	<%@include file="../general_included/topbar.jsp"%>
@@ -72,7 +109,10 @@
 			</tr>
 			<tr class="askf2">
 				<td class="askf5">&nbsp;파일첨부</td>
-				<td><input type="button" value="파일 찾기" class="findbutton"></td>
+				<td>
+					<div id="attached"></div>
+					<input type="button" value="파일 찾기" class="findbutton" onclick="thumbnailupload()">
+				</td>
 			</tr>
 			<tr>
 				<td class="askf2"></td>
@@ -113,7 +153,9 @@
 		    });
 		});
 		function writeEnd(){
+			if()
 			checkload=false;
+			document.askform.atteched.value=document.getElementById("attached").innerHTML;
 			document.askform.submit();
 		}
 	</script>
