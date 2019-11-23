@@ -34,10 +34,10 @@
 <td>
 첨부파일이 없습니다.<br>
 or<br>
-
+<a target="_blank" href="../img/coffee.jpg">
 <div style="width:200px; height:200px; background-image:url(../img/coffee.jpg); background-size:cover; background-position:center;">
 </div>
-
+</a>
 </td>
 </tr>
 </table>

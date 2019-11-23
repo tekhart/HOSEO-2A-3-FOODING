@@ -36,10 +36,6 @@
 	background-color:#eee;
 }
 
-.adminstb4 td:hover:nth-child(3):not(:first-child){
-	background-color:#d1d1d1;
-}
-
 .adminstb4 a:link{
 	color:black;
 	font-weight:400;
@@ -48,6 +44,10 @@
 .adminstb4 a:visited{
 	color:#bdbdbd;
 	font-weight:200;
+}
+
+.adminstb4 td:last-child{
+	text-decoration:underline;
 }
 
 .adminstb4 td:nth-child(4){
