@@ -93,9 +93,14 @@ a {
 	margin-top: 80px;
 }
 
+.footera{
+	color: black;
+}
+
 .footera:visited {
 	color: black;
 }
+
 </style>
 </head>
 

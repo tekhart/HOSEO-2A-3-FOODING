@@ -21,28 +21,62 @@
 
 .adminstb4{
 	border-collapse:collapse;
-	
-	margin:auto; 
+	margin:auto;
 }
 
-.adminstb4 tr:first-child, .adminstb4 td:nth-child(n+4), .adminstb4 td:first-child{
+.adminstb4 td{
+	padding:10px;
+}
+
+.adminstb4 tr:first-child, .adminstb4 td:nth-child(n+5), .adminstb4 td:first-child{
 	text-align:center;
 }
 
-.adminstb4 tr:not(:first-child){
-	font-weight:bold;
+.adminstb4 tr:hover:not(:first-child){
+	background-color:#eee;
 }
 
-.adminstb4 tr:visited:not(:first-child){
+.adminstb4 td:hover:nth-child(3):not(:first-child){
+	background-color:#d1d1d1;
+}
+
+.adminstb4 a:link{
+	color:black;
+	font-weight:400;
+}
+
+.adminstb4 a:visited{
 	color:#bdbdbd;
-	font-weight:100;
+	font-weight:200;
 }
 
-.adminstb4 td:nth-child(3){
+.adminstb4 td:nth-child(4){
 	width:30px;
 	white-space:nowrap;
 	overflow:hidden;
      text-overflow:ellipsis;
+}
+
+.asktb0 td{
+	padding:10px;
+}
+
+.asktb0 td:nth-child(2n+1){
+	font-weight:bold;
+	text-align:center;
+}
+
+.asktb1{
+	border-collapse:collapse;
+}
+
+.asktb1 td{
+	padding:10px;
+}
+
+.asktb1 td:nth-child(1){
+	font-weight:bold;
+	text-align:center;
 }
 
 .adminstb tr:hover:not(:first-child){
