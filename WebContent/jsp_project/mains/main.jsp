@@ -215,36 +215,40 @@
 	<br>
 	<div id="eventdiv" align="center">
 		<%
-		for (int i = 0; i < announcearticleList.size(); i++) {
-				announceDataBean announcearticle = announcearticleList.get(i);
-				String writerid = announcearticle.getWriterid();
-		%>
-
-		<div class="maineventdiv"
-			onclick="location.href='../announces/content.jsp?num=<%=announcearticle.getNum()%>&pageNum=1'">
-			<div class="bgimg"
-				style="background-image:url(<%=announcearticle.getThumbnail()%>);">
-				<div class="middle">
-					<h2><%=announcearticle.getTitle()%></h2>
-					<hr>
-					<p id="eventTimer<%=announcearticle.getNum()%>" style="font-size: 30px"></p>
+		if(announcearticleList!=null){
+			for (int i = 0; i < announcearticleList.size(); i++) {
+					announceDataBean announcearticle = announcearticleList.get(i);
+					String writerid = announcearticle.getWriterid();
+			%>
+	
+			<div class="maineventdiv"
+				onclick="location.href='../announces/content.jsp?num=<%=announcearticle.getNum()%>&pageNum=1'">
+				<div class="bgimg"
+					style="background-image:url(<%=announcearticle.getThumbnail()%>);">
+					<div class="middle">
+						<h2><%=announcearticle.getTitle()%></h2>
+						<hr>
+						<p id="eventTimer<%=announcearticle.getNum()%>" style="font-size: 30px"></p>
+					</div>
+					<div class="bottomleft">
+						<p style="float: left"><%=sdf.format(announcearticle.getReg_date())%>
+							~&nbsp;
+						</p>
+						<p style="float: left" id="event_endtime<%=announcearticle.getNum()%>"><%=sdf.format(announcearticle.getEnd_date())%></p>
+					</div>
 				</div>
-				<div class="bottomleft">
-					<p style="float: left"><%=sdf.format(announcearticle.getReg_date())%>
-						~&nbsp;
-					</p>
-					<p style="float: left" id="event_endtime<%=announcearticle.getNum()%>"><%=sdf.format(announcearticle.getEnd_date())%></p>
-				</div>
+				<script type="text/javascript">
+					var countdownfunction<%=announcearticle.getNum()%>=
+						setInterval(function() {event_countdown(<%=announcearticle.getNum()%>);
+					}, 1000);
+				</script>
 			</div>
-			<script type="text/javascript">
-				var countdownfunction<%=announcearticle.getNum()%>=
-					setInterval(function() {event_countdown(<%=announcearticle.getNum()%>);
-				}, 1000);
-			</script>
-		</div>
-		<%
+			<%
 			}
+		}else{
 		%>
+		현재 진행중인 이벤트가 존재하지 않습니다...
+		<%} %>
 	</div>
 	<script>
 		var countdownfunction = [];
