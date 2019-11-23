@@ -153,6 +153,7 @@ function sendingthumb(thumbname) {
 		    });
 		});
 		function writeEnd(){
+			if()
 			checkload=false;
 			document.askform.atteched.value=document.getElementById("attached").innerHTML;
 			document.askform.submit();
