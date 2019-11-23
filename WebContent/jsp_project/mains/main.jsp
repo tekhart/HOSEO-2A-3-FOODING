@@ -25,8 +25,6 @@
 }
 
 .bgimg {
-background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/tomato.jpg');
-
 	height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -51,8 +49,6 @@ background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../i
 
 	<%@include file="../general_included/topbar.jsp"%>
 	<center>
-
-
 		<div id="slidediv">
 			<%
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -65,7 +61,7 @@ background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../i
 				foodingBean dbPro = foodingBean.getInstance();
 
 				articleList = dbPro.getArticles(slideStartRow, slidePageSize, slideFame);
-				List<announceDataBean> announcearticleList = dbPro.getannounceArticles(1, 5, "0");
+				List<announceDataBean> announcearticleList = dbPro.getannounceArticles(1, 3, "0",1);
 				for (int i = 0; i < articleList.size(); i++) {
 					BoardDataBean article = articleList.get(i);
 					String writerid = article.getWriterid();
@@ -218,50 +214,73 @@ background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../i
 	<br>
 	<br>
 	<div id="eventdiv" align="center">
-		<marquee class="eventbanner" scrollamount="11">
-		
-			<%
-			for (int i = 0; i < articleList.size(); i++) {
-					announceDataBean announcearticle = announcearticleList.get(i);
-					String writerid = announcearticle.getWriterid();
-			%>
-	
-			<div class="maineventdiv"
-				onclick="location.href='../announces/content.jsp?num=<%=announcearticle.getNum()%>&pageNum=1'">
-				<div class="bgimg"
-					style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%=announcearticle.getThumbnail()%>);">
-					<div class="middle">
-						<h1><%=announcearticle.getTitle()%></h1>
-						<hr>
-					</div>
-					<div class="bottomleft">
-						<p style="float: left"><%=sdf.format(announcearticle.getReg_date())%>
-							~&nbsp;
-						</p>
-						<p style="float: left" id="event_endtime<%=announcearticle.getNum()%>"><%=sdf.format(announcearticle.getEnd_date())%></p>
-					</div>
+		<%
+		for (int i = 0; i < announcearticleList.size(); i++) {
+				announceDataBean announcearticle = announcearticleList.get(i);
+				String writerid = announcearticle.getWriterid();
+		%>
+
+		<div class="maineventdiv"
+			onclick="location.href='../announces/content.jsp?num=<%=announcearticle.getNum()%>&pageNum=1'">
+			<div class="bgimg"
+				style="background-image:url(<%=announcearticle.getThumbnail()%>);">
+				<div class="middle">
+					<h2><%=announcearticle.getTitle()%></h2>
+					<hr>
+					<p id="eventTimer<%=announcearticle.getNum()%>" style="font-size: 30px"></p>
 				</div>
-				<script type="text/javascript">
-					var countdownfunction
-				<%=announcearticle.getNum()%>
-					= setInterval(function() {
-						event_countdown(
-				<%=announcearticle.getNum()%>
-					);
-					}, 1000);
-				</script>
+				<div class="bottomleft">
+					<p style="float: left"><%=sdf.format(announcearticle.getReg_date())%>
+						~&nbsp;
+					</p>
+					<p style="float: left" id="event_endtime<%=announcearticle.getNum()%>"><%=sdf.format(announcearticle.getEnd_date())%></p>
+				</div>
 			</div>
-			<%
-				}
-			%>
-			
-		</marquee>
+			<script type="text/javascript">
+				var countdownfunction<%=announcearticle.getNum()%>=
+					setInterval(function() {event_countdown(<%=announcearticle.getNum()%>);
+				}, 1000);
+			</script>
+		</div>
+		<%
+			}
+		%>
 	</div>
+	<script>
+		var countdownfunction = [];
+		function parse(str) {
+			var y = str.substr(0, 4), m = str.substr(5, 2) - 1, d = str.substr(
+					8, 2);
+			return new Date(y, m, d);
+		}
 
-
-
-
-
+		function event_countdown(i) {
+			var event_endtime = document.getElementById("event_endtime" + i);
+			var eventTimer = document.getElementById("eventTimer" + i);
+			var countDownDate = parse(event_endtime.innerHTML);
+			var now = new Date().getTime();
+			var distance = countDownDate - now;
+			if (distance < 0) {
+				eventTimer.innerHTML = "종료된 이벤트";
+			} else {
+				var years= Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+				var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365))
+						/ (1000 * 60 * 60 * 24));
+				var hours = Math.floor((distance % (1000 * 60 * 60 * 24))
+						/ (1000 * 60 * 60));
+				var minutes = Math.floor((distance % (1000 * 60 * 60))
+						/ (1000 * 60));
+				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+				if(years>0){
+					eventTimer.innerHTML = years + "y " + days + "d " + hours + "h " + minutes
+							+ "m " + seconds + "s ";
+				}else{
+					eventTimer.innerHTML = days + "d " + hours + "h " + minutes
+					+ "m " + seconds + "s ";
+				}
+			}
+		}
+	</script>
 	<%@include file="../general_included/footer.jsp"%>
 </body>
 </html>

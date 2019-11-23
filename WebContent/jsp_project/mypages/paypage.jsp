@@ -330,14 +330,14 @@ body {
 											<td>
 												<div
 													style="padding-bottom: 10px; width: 520px; float: left; border-bottom: 1px solid black;">
-													<span class="tablinks"> <input type="radio"
+													<label><span class="tablinks"> <input type="radio"
 														name="chk_info" value="신용카드" class="tablinks"
 														onclick="openCity(event, 'creditcard')">신용카드
-													</span> <span class="tablinks"
+													</span></label><label> <span class="tablinks"
 														style="float: left; margin-left: 50px;"> <input
 														type="radio" name="chk_info" value="무통장입금"
 														class="tablinks" onclick="openCity(event, 'Bank Deposit')">무통장입금
-													</span>
+													</span></label>
 												</div>
 											</td>
 										</tr>

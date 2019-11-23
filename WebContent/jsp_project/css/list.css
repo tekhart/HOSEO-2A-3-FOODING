@@ -195,9 +195,36 @@ padding: 0;
 
 }
 
+.difficultbutton{
+	float:left;
+	width:75px;
+	margin-right:4px;
+	text-align:center;
+	padding:5px;
+}
+
+.difficultbutton:nth-child(n+2){
+	float:left;
+	width:70px;
+	border: 1px solid #ffbb00;
+	border-radius:2px;
+	cursor:pointer;
+		background-color:white;
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+.difficultbutton:hover:nth-child(n+2){
+	background-color:#ffbb00;
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
 @CHARSET "UTF-8";
 
-		#body{
+	#body{
 		font-family: 'Nanum Gothic', sans-serif;
 		color:black;
 	}
@@ -572,7 +599,7 @@ padding: 0;
 	border-collapse:collapse;
 	border-spacing:0px;
 	width:1000px;
-	height:500px;
+	height:400px;
 	margin:auto;
 }
 
@@ -1400,14 +1427,8 @@ padding:5px;
 
 
 
-.eventbanner div:nth-child(2n){
-		width: 1300px;
-	height: 400px;
-	float:left;
-}
-
-.eventbanner div:nth-child(2n+1){
-		width: 1300px;
-	height: 400px;
+.maineventdiv{
+	width: 621px;
+	height: 380px;
 	float:left;
 }

@@ -39,9 +39,9 @@
 
 	if (count > 0) {
 		if (search == null) {
-			articleList = dbPro.getannounceArticles(startRow, pageSize, isevent);
+			articleList = dbPro.getannounceArticles(startRow, pageSize, isevent,0);
 		} else {
-			articleList = dbPro.getannounceArticles(startRow, pageSize, search, isevent);
+			articleList = dbPro.getannounceArticles(startRow, pageSize, search, isevent,0);
 		}
 	}
 
@@ -69,8 +69,6 @@
 }
 
 .bgimg {
-background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/tomato.jpg');
-
 	height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -158,7 +156,7 @@ hr {
 		<div class="eventdiv"
 			onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 			<div class="bgimg"
-				style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%=article.getThumbnail()%>);">
+				style="background-image:url(<%=article.getThumbnail()%>);">
 				<div class="middle">
 					<h1><%=article.getTitle()%></h1>
 					<hr>
@@ -172,12 +170,8 @@ hr {
 				</div>
 			</div>
 			<script type="text/javascript">
-				var countdownfunction
-			<%=article.getNum()%>
-				= setInterval(function() {
-					event_countdown(
-			<%=article.getNum()%>
-				);
+				var countdownfunction<%=article.getNum()%>
+				= setInterval(function(){event_countdown(<%=article.getNum()%>);
 				}, 1000);
 			</script>
 		</div>
@@ -229,7 +223,6 @@ hr {
 
 	</div>
 	<script>
-		var countdownfunction = [];
 		function parse(str) {
 			var y = str.substr(0, 4), m = str.substr(5, 2) - 1, d = str.substr(
 					8, 2);

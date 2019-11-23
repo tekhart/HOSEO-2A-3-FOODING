@@ -10,7 +10,7 @@
 <link rel="icon" href="../img/favicon.ico">
 <script>
 		function window_onload() {
-			setTimeout('go_url()', 5000)
+			setTimeout('go_url()', 11000)
 		}
 		function go_url() {
 			location.href = "../shop/main.jsp"
@@ -45,7 +45,7 @@
 
 		dbPro.SendCartToBuy(intedCartIds, article);
 %>
-<body>
+<body onload="window_onload()">
 	<%@include file="../general_included/topbar.jsp"%>
 	<br>
 	<br>
@@ -66,9 +66,41 @@
 			<td>
 				<%
 					if (chk_info.equals("신용카드")) {
-				%> 수송 준비중입니다! <%
+				%> 수송 준비중입니다!<br><br>
+				   <span id="demo">10</span>초 후에 상점메인으로 돌아갑니다.<br>
+   					<input type="button" onclick="location.href='../shop/main.jsp'" value="지금 이동" class="findbutton">
+				
+				  <script>
+				   var count = 9;
+				   var countdown = setInterval(function(){myTimer()},1000);
+				   
+				   function myTimer(){
+				    document.getElementById("demo").innerHTML=count;
+				    count--;
+				    if (count == -1) {
+				     clearInterval(countdown);    
+				    }
+				   }
+				  </script> <%
 					} else {
-				%> 입금이 확인되면 바로 출발합니다! <%
+				%> 입금이 확인되면 바로 출발합니다!
+				<br><br>
+				   <span id="demo">10</span>초 후에 상점메인으로 돌아갑니다.<br>
+   					<input type="button" onclick="location.href='../shop/main.jsp'" value="지금 이동" class="findbutton">
+				
+				  <script>
+				   var count = 9;
+				   var countdown = setInterval(function(){myTimer()},1000);
+				   
+				   function myTimer(){
+				    document.getElementById("demo").innerHTML=count;
+				    count--;
+				    if (count == -1) {
+				     clearInterval(countdown);    
+				    }
+				   }
+				  </script>
+				 <%
 					}
 				%>
 			</td>
