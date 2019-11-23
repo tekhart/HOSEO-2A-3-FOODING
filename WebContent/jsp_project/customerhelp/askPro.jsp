@@ -13,6 +13,6 @@
 	article.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
 	foodingBean dbPro = foodingBean.getInstance();
-	dbPro.insertArticle(article);
-	response.sendRedirect("list.jsp");
+	dbPro.insertaskArticle(article);
 %>
+

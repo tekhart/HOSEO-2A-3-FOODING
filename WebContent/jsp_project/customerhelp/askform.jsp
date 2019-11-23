@@ -42,6 +42,7 @@
 	<%@include file="../general_included/topbar.jsp"%>
 	<form method="post" action="askPro.jsp" name="askform">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
+		<input type="hidden" name="atteched" value="<%=idlogin %>">
 		<table style="border-spacing: 0px; margin: auto;" width="1000px">
 			<tr class="askf2">
 				<td></td>
