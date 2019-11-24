@@ -254,7 +254,7 @@
 							<%if(article.getDiscountRate()==0){ %>
 								
 							<%}else{ %>
-								<%=article.getDiscountRate()%>% <span style="text-decoration:line-through; align:right;"> <%=article.getPrice()%></span>
+								<span style="text-decoration:line-through; align:left;"> <%=article.getPrice()%>원</span><span style="color:red;"><%=article.getDiscountRate()%></span><span style="font-size:16px;">%</span><span style="font-size:13px;">off</span>
 							<%}%>
 							<br> <%=realprice%>원</div>
 						<p><button id="myBtn" 

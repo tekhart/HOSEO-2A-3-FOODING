@@ -17,6 +17,9 @@
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="../css/common.css">
 <style>
+body{
+	margin: 0;
+	padding: 0;}
 </style>
 
 <script type="text/javascript">

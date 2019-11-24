@@ -90,6 +90,15 @@ hr {
 	margin: auto;
 	width: 70%;
 }
+
+.banblack{
+	width:1280px;
+	height:380px;
+	position:absolute;
+	background-color: rgba(0,0,0,0.5);
+
+}
+
 </style>
 
 <title>공지사항, FOODING</title>
@@ -153,22 +162,26 @@ hr {
 					String writerid = article.getWriterid();
 		%>
 
-		<div class="eventdiv"
-			onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-			<div class="bgimg"
-				style="background-image:url(<%=article.getThumbnail()%>);">
+		<div class="eventdiv" onclick="location.href='content.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+			<div class="bgimg" style="background-image:url(<%=article.getThumbnail()%>);">
+				
+				<div class="banblack">
+				
 				<div class="middle">
 					<h1><%=article.getTitle()%></h1>
 					<hr>
 					<p id="eventTimer<%=article.getNum()%>" style="font-size: 30px"></p>
 				</div>
 				<div class="bottomleft">
-					<p style="float: left"><%=sdf.format(article.getReg_date())%>
+					<p style="float: left">&nbsp&nbsp<%=sdf.format(article.getReg_date())%>
 						~&nbsp;
 					</p>
 					<p style="float: left" id="event_endtime<%=article.getNum()%>"><%=sdf.format(article.getEnd_date())%></p>
 				</div>
 			</div>
+			</div>
+			
+			
 			<script type="text/javascript">
 				var countdownfunction<%=article.getNum()%>
 				= setInterval(function(){event_countdown(<%=article.getNum()%>);

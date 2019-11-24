@@ -19,13 +19,13 @@
 	cursor: pointer;
 	width: 100px;
 	border-radius:3px;
-	top:150px;
+	top:230px;
 	left:60px;
 }
 
 .fufudiv{
 	position:fixed;
-	top:80px;
+	top:120px;
 	right:40px;
 }
 
@@ -38,7 +38,7 @@ vertical-align:middle;
 overflow:hidden;
 width:100px;
 height:30px;
-background:#777;
+background:#FFBB00;
 color:#fff;
 text-align:center;
 line-height:30px;
@@ -49,18 +49,18 @@ position:absolute;
 width:0;
 height:0;
 overflow:hidden;
-}
+} 
 
 .file_input input[type=text]{
 vertical-align:middle;
 display:inline-block;
-width:400px;
+width:260px;
 height:28px;
 line-height:28px;
 font-size:11px;
 padding:0;
 border:0;
-border:1px solid #777;
+border:1px solid orange;
 }
 
 </style>
@@ -73,7 +73,7 @@ border:1px solid #777;
 		<input type="text" readonly="readonly" id="file_route">
 		<label>
 		파일 찾기
-		<input type="file" onchange="javascript:document.getElementById('file_route').value=this.value">
+		<input type="file" name="uploadFile" onchange="javascript:document.getElementById('file_route').value=this.value">
 		</label>
 		</div>
 		

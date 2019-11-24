@@ -39,10 +39,7 @@
 	top:-20px;
 	right:1px;
 }
-.sproutdiv{
-	background-color:white;
-	
-}
+
 
 </style>
 <body>

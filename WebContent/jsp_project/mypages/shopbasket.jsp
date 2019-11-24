@@ -179,12 +179,13 @@ body {
 										<%
 											if (article.getDiscountRate() == 0) {
 										%> <%=article.getPrice()%>원 <%
- 	} else {
- %> <del><%=article.getPrice()%>원
-										</del><%=article.getDiscountRate()%>% off<br> >> <%=realprice%>원
+										 	} else {
+										 %> <del><%=article.getPrice()%>원</del>
+										 <span style="color:red;"><%=article.getDiscountRate()%></span><span style="font-size:16px;">%</span><span style="font-size:13px;">off</span>
+										 <br><%=realprice%>원
 										<%
- 	}
- %>
+										 	}
+										 %>
 								</td>
 									<td width="200"
 									style="border-bottom: 3px solid orange; font-size: 16pt;">
