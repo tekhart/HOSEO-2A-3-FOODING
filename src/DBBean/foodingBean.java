@@ -2892,18 +2892,19 @@ public class foodingBean {
 			pstmt = con.prepareStatement("select max(id) from ask");
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				int maxidnum=rs.getInt(1);
+				int maxidnum=rs.getInt(1)+1;
 	
-				String sql = "insert into ask(id,title,asktype,content,atteched,reg_date";
-				sql += ") values(?,?,?,?,?,?)";
+				String sql = "insert into ask(id,title,writerid,asktype,content,atteched,reg_date";
+				sql += ") values(?,?,?,?,?,?,?)";
 	
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, maxidnum);
 				pstmt.setString(2, article.getTitle());
-				pstmt.setString(3, article.getAsktype());
-				pstmt.setString(4, article.getContent());
-				pstmt.setString(5, article.getAtteched());
-				pstmt.setTimestamp(6,ts);
+				pstmt.setString(3, article.getWriterid());
+				pstmt.setString(4, article.getAsktype());
+				pstmt.setString(5, article.getContent());
+				pstmt.setString(6, article.getAtteched());
+				pstmt.setTimestamp(7,ts);
 				pstmt.executeUpdate();
 			}
 		} catch (Exception ex) {
