@@ -168,6 +168,9 @@ function sendingthumb(thumbname) {
 				alert("내용을 입력해 주세요");
 				document.askform.content.focus();
 			}else{
+				for (i = 0; i < close.length; i++) {
+					close[i].remove();
+				}
 				checkload=false;
 				document.askform.atteched.value=document.getElementById("attached").innerHTML;
 				document.askform.submit();
