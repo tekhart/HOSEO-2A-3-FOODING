@@ -2892,7 +2892,7 @@ public class foodingBean {
 			pstmt = con.prepareStatement("select max(id) from ask");
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				int maxidnum=rs.getInt(1);
+				int maxidnum=rs.getInt(1)+1;
 	
 				String sql = "insert into ask(id,title,asktype,content,atteched,reg_date";
 				sql += ") values(?,?,?,?,?,?)";

@@ -70,15 +70,15 @@
 
 			<div class="slideshow">
 				<gg href="javascript:;"
-					onClick="javascript:location.href='../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=<%=slideCurrentPage%>&fame=<%=slideFame%>'">
-				<div class="mySlides fade" style="cursor: pointer;">
-					<div
-						style="background-image:url('<%=article.getThumbnail()%>');background-size:cover;background-position:center;width:1880px; height:600px;"></div>
-					<div class="slide-text">
-						<br> <br>
-						<%=article.getTitle()%>
+						onClick="javascript:location.href='../recipes/content.jsp?num=<%=article.getNum()%>&pageNum=<%=slideCurrentPage%>&fame=<%=slideFame%>'">
+					<div class="mySlides fade" style="cursor: pointer;">
+						<div
+							style="background-image:url('<%=article.getThumbnail()%>');background-size:cover;background-position:center;width:1880px; height:600px;"></div>
+						<div class="slide-text">
+							<br> <br>
+							<%=article.getTitle()%>
+						</div>
 					</div>
-				</div>
 				</gg>
 			</div>
 			<%

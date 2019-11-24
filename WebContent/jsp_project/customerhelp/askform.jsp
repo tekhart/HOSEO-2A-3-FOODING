@@ -56,10 +56,15 @@ function sendingthumb(thumbname) {
 	var li = document.createElement("div");
 	document.getElementById("attached").appendChild(li);
 	
+	var image_detail = document.createElement("a");
+	image_detail.setAttribute("target","_blank");
+	image_detail.setAttribute("href",thumbname);
+	li.appendChild(image_detail);
+	
 	var attacheimg = document.createElement("img");
 	attacheimg.src=thumbname;
 	attacheimg.style.cssText="width:175px";
-	li.appendChild(attacheimg);
+	image_detail.appendChild(attacheimg);
 	var span = document.createElement("SPAN");
 	var txt = document.createTextNode("\u00D7");
 	span.className = "close";
@@ -153,10 +158,20 @@ function sendingthumb(thumbname) {
 		    });
 		});
 		function writeEnd(){
-			if()
-			checkload=false;
-			document.askform.atteched.value=document.getElementById("attached").innerHTML;
-			document.askform.submit();
+			if(document.askform.title.value==""){
+				alert("제목을 입력해 주세요");
+				document.askform.title.focus();
+			}else if(document.askform.asktype.value=="유형"){
+				alert("문의 유형을 선택해 주세요");
+				document.askform.asktype.focus();
+			}else if(document.askform.content.value==""){
+				alert("내용을 입력해 주세요");
+				document.askform.content.focus();
+			}else{
+				checkload=false;
+				document.askform.atteched.value=document.getElementById("attached").innerHTML;
+				document.askform.submit();
+			}
 		}
 	</script>
 </body>
