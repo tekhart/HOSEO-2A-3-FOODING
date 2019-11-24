@@ -1337,9 +1337,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			pstmt = con.prepareStatement(
-					"select count(*) from cookhelp	where (tools like '%" + search + "%' or title like '%" + search
-							+ "%' or writerid in(select id from user where nkname like '%" + search + "%'))");
+			pstmt = con.prepareStatement( "select count(*) from cookhelp	where (title like '%" + search + "%' or writerid in(select id from user where nkname like '%" + search + "%'))");
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -1361,7 +1359,7 @@ public class foodingBean {
 		try {
 			con = getConnection();
 
-			pstmt = con.prepareStatement("select * from cookhelp where (tools like '%" + search + "%' or title like '%"
+			pstmt = con.prepareStatement("select * from cookhelp where (title like '%"
 					+ search + "%' or writerid in(select id from user where nkname like '%" + search
 					+ "%')) order by num desc limit ?,? ");
 			pstmt.setInt(1, start - 1);
@@ -2896,7 +2894,7 @@ public class foodingBean {
 			if(rs.next()) {
 				int maxidnum=rs.getInt(1);
 	
-				String sql = "insert into ask(id,title,asktype,content,atteched,ref_date";
+				String sql = "insert into ask(id,title,asktype,content,atteched,reg_date";
 				sql += ") values(?,?,?,?,?,?)";
 	
 				pstmt = con.prepareStatement(sql);
