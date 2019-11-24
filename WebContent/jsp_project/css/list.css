@@ -34,10 +34,26 @@
 	font-size:25px;
 }
 
+.titlelong0{
+	margin:3px;
+	padding:3px;
+	width:280px;
+	text-align:center;
+	display:inline-block;
+	height:100px;
+	display: -webkit-box;
+	overflow:hidden;
+	word-break:keep-all;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:3;
+	text-overflow:ellipsis;
+}
+
 .titlelong{
 	margin:3px;
 	padding:3px;
 	width:500px;
+	text-align:left;
 	display:inline-block;
 	height:100px;
 	display: -webkit-box;
