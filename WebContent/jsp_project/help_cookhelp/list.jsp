@@ -147,8 +147,8 @@
 						</div>
 					</td>
 					<td align="left" style="padding-left: 40px;" colspan="2"
-						width="300px" class="line"><a
-						href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"
+						width="300px" class="line">
+						<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"
 						class="titlelong"
 						style="vertical-align: middle; display: table-cell;"> <%
  	if (article.getTools() != null) {
