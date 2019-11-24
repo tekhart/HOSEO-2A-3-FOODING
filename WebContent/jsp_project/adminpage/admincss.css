@@ -51,10 +51,14 @@
 }
 
 .adminstb4 td:nth-child(4){
-	width:30px;
-	white-space:nowrap;
+	width:280px;
+	text-align:left;
+	display:inline-block;
+	display: -webkit-box;
 	overflow:hidden;
-     text-overflow:ellipsis;
+	word-break:break-all;
+	-webkit-box-orient:vertical;
+	text-overflow:ellipsis;
 }
 
 .asktb0 td{
