@@ -192,7 +192,7 @@
 					<br> <br>
 					<table>
 						<tr>
-							<td class="titlelong">
+							<td class="titlelong0">
 								<%
 									if (article.getReadcount() >= 50) {
 								%> <img src="../img/fire1.png" width="20px" height="25px"
