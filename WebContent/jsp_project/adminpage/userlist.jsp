@@ -21,8 +21,7 @@
 <script type="text/javascript">
 	function okdelete(userid) {
 		if (confirm('정말 해당 유저를 탈퇴처리 하시겠습니까?')) {
-			if (prompt('관리자 비밀번호를 입력하세요') == "hh") {
-				alert('미국간 계정+1');
+			if (prompt('관리자 비밀번호를 입력하세요') == "fooding") {
 				location.href = "userban.jsp?userid=" + userid + "";
 			}
 		} else {
@@ -41,7 +40,6 @@
 			<td>가입일</td>
 			<td>수정</td>
 			<td>탈퇴</td>
-			<td>결제</td>
 		</tr>
 
 		<%
@@ -55,7 +53,6 @@
 			<td><%=ua.getReg_date()%></td>
 			<td><a href="userupdate.jsp?userid=<%=ua.getId()%>">수정</a></td>
 			<td onclick="okdelete('<%=ua.getId()%>')">탈퇴</td>
-			<td><a onclick="">결제목록</a></td>
 		</tr>
 
 		<%

@@ -23,10 +23,10 @@
 				int check = dbPro.userWannaLeft(id);
 				if(check==1){
 			%>
-				<div class="deleteuser">사용자 탈퇴가 완료되었습니다.</div>
-				<input type="button" value="메인으로" class="check"
-					onclick="javascript:location.href='../mains/main.jsp'">
-			</div>
+				<script>
+					alert("사용자 탈퇴가 완료되었습니다.");
+					location.href = "userlist.jsp";
+				</script>
 		<%}else{ %>
 			<script type="text/javascript">      
 	        	alert("사용자 탈퇴 처리에 실패했습니다");
