@@ -21,8 +21,7 @@
 <script type="text/javascript">
 	function okdelete(userid) {
 		if (confirm('정말 해당 유저를 탈퇴처리 하시겠습니까?')) {
-			if (prompt('관리자 비밀번호를 입력하세요') == "hh") {
-				alert('미국간 계정+1');
+			if (prompt('관리자 비밀번호를 입력하세요') == "fooding") {
 				location.href = "userban.jsp?userid=" + userid + "";
 			}
 		} else {

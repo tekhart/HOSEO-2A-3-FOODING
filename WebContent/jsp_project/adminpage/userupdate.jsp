@@ -41,14 +41,15 @@
 			<tr>
 				<td>
 					<div onclick="thumbnailupload()"
-						style="background-image:url(<%=article.getUserface()%>);width:200px; height:200px;background-size:cover;background-position:center;">
+						style="background-image:url('<%=article.getUserface()%>');width:200px; height:200px;background-size:cover;background-position:center;">
 						현 프로필 사진</div>
 				</td>
 				<td>
 					<div onclick="thumbnailupload()" id="thumbnail"
 						style="background-image: url('../img/userface/defaultface.png'); width: 200px; height: 200px; background-size: cover; background-position: center;">
-						이후 프로필 사진</div> <input type="hidden" name="userface"
-					value="../img/defaultface.png">
+						이후 프로필 사진
+					</div>
+					<input type="hidden" name="userface" value="../img/userface/defaultface.png">
 				</td>
 			</tr>
 			<tr>
@@ -67,10 +68,6 @@
 			<tr>
 				<td><b>가입일</b></td>
 				<td><%=article.getReg_date() %></td>
-			</tr>
-			<tr>
-				<td align="center" colspan="2"><input type="button"
-					value="작성 글 보기" class="findbutton2"></td>
 			</tr>
 			<tr>
 				<td align="center" colspan="2">

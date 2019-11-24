@@ -350,7 +350,7 @@ public class foodingBean {
 			con = getConnection();
 			sql = "update user set passwd='',email='',addrnum='',address='',detailaddr=''";
 			sql += ",gender='',reg_date=null,mileage=0,isAdmin=0,userface='../img/userface/defaultface.png',isLeft=1";
-			sql += " where num = ?";
+			sql += " where id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userid);
 			pstmt.executeUpdate();
