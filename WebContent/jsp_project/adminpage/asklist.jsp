@@ -15,7 +15,6 @@
 <br><br>
 <table class="adminstb4" border="1">
 <tr>
-<th>선택</th>
 <th>유형</th>
 <th>제목</th>
 <th>내용 미리보기</th>
@@ -25,7 +24,6 @@
 </tr>
 
 <tr>
-<td><input type="checkbox"></td>
 <td>일반문의</td>
 <td><a href="askdetail.jsp">포인트가 없는데 포인트가 써져요</a></td>
 <td>죄송해요 구라예요 제가 쓴글 인기글 보내주세요 ㅋㅋㅋㅋㅋㅋㅋ</td>
@@ -35,7 +33,6 @@
 </tr>
 
 <tr>
-<td><input type="checkbox"></td>
 <td>게시판</td>
 <td><a href="askdetail.jsp">dhsjd가 쓴 글이 이상합니다.</a></td>
 <td>파리바게트에서 케이크 사다가 자기가 만들었다고 우기네요</td>
@@ -45,7 +42,6 @@
 </tr>
 
 <tr>
-<td><input type="checkbox"></td>
 <td>게시판</td>
 <td><a href="askdetail.jsp">지금 서버 터진건가요?</a></td>
 <td>글 작성누르면 계속 팅기는데 ..</td>
@@ -55,7 +51,6 @@
 </tr>
 
 <tr>
-<td><input type="checkbox"></td>
 <td>일반문의</td>
 <td><a href="askdetail.jsp">포인트 문의예요</a></td>
 <td>제가 20000짜리 컵을 샀는데 2포인트밖에 안 쌓였습니다.</td>

@@ -28,7 +28,7 @@
 	padding:10px;
 }
 
-.adminstb4 tr:first-child, .adminstb4 td:nth-child(n+5), .adminstb4 td:first-child{
+.adminstb4 tr:first-child, .adminstb4 td:nth-child(n+4), .adminstb4 td:first-child{
 	text-align:center;
 }
 
@@ -50,15 +50,14 @@
 	text-decoration:underline;
 }
 
-.adminstb4 td:nth-child(4){
-	width:280px;
-	text-align:left;
-	display:inline-block;
-	display: -webkit-box;
-	overflow:hidden;
-	word-break:break-all;
-	-webkit-box-orient:vertical;
-	text-overflow:ellipsis;
+.adminstb4 td:nth-child(3){
+display:inline-block;
+width:300px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+border:hidden;
+border-top:1px solid;
 }
 
 .asktb0 td{
