@@ -98,7 +98,7 @@ function sendingthumb(thumbname) {
 				<td><p style="text-align: right;">* 표시가 있는 항목은 필수입력 사항입니다.</p></td>
 			</tr>
 			<tr class="askf">
-				<td class="askf5">&nbsp;제목</td>
+				<td class="askf5">*제목</td>
 				<td><input type="text" name="title" class="whiteinput"></td>
 			</tr>
 			<tr class="askf">
@@ -142,7 +142,8 @@ function sendingthumb(thumbname) {
 							</td>
 							<td>문의 접수 후 3개월간 보관</td>
 						</tr>
-					</table> <br> <br> <input type="checkbox" id="agreement">위 내용에 동의합니다.</td>
+					</table> <br> <br> 
+					<label><input type="checkbox" id="agreement">위 내용에 동의합니다.</label></td>
 			</tr>
 	
 		</table>

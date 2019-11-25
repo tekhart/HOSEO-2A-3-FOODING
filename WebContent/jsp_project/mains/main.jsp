@@ -21,7 +21,7 @@
 	margin: auto;
 	border: 10px solid white;
 	box-shadow: 5px 5px 5px 5px gray;
-	margin-top: 40px;
+	
 }
 
 .bgimg {
@@ -36,11 +36,45 @@
 
 .middle {
 	position: absolute;
+	
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
 }
+
+.banblack2{
+	position:relative;
+	width:1883px;
+	height:400px;
+	top:453px;
+	left:10px;
+	z-index:1;
+	background-color:rgba(0,0,0,30%);
+}
+
+.datestart, .dateend{
+	position:relative;
+	z-index:2;
+}
+
+.middle{
+	position:absolute;
+	z-index:2;
+		margin-top:33px;
+
+	width:400px;
+	text-align:center;
+	display:inline-block;
+	
+	display: -webkit-box;
+	overflow:hidden;
+	word-break:keep-all;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:3;
+	text-overflow:ellipsis;
+} 
+
 </style>
 
 </head>
@@ -138,6 +172,7 @@
 		</div>
 	</center>
 
+<br><br><br><br>
 
 	<div id="bottomdiv">
 		<table id="bottable" cellspacing="0px" style="margin: auto">
@@ -208,7 +243,8 @@
 		</table>
 	</div>
 
-
+	<div class="banblack2">
+	</div>
 
 	<br>
 	<br>
@@ -230,11 +266,11 @@
 						<hr>
 						<p id="eventTimer<%=announcearticle.getNum()%>" style="font-size: 30px"></p>
 					</div>
-					<div class="bottomleft">
-						<p style="float: left"><%=sdf.format(announcearticle.getReg_date())%>
+					<div class="bottomleft datestart">
+						<p style="float: left">&nbsp&nbsp<%=sdf.format(announcearticle.getReg_date())%>
 							~&nbsp;
 						</p>
-						<p style="float: left" id="event_endtime<%=announcearticle.getNum()%>"><%=sdf.format(announcearticle.getEnd_date())%></p>
+						<p style="float: left" class="dateend" id="event_endtime<%=announcearticle.getNum()%>"><%=sdf.format(announcearticle.getEnd_date())%></p>
 					</div>
 				</div>
 				<script type="text/javascript">

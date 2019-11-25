@@ -70,11 +70,11 @@
 <%
 	if (fame == 1) {
 %>
-<title>인기 레시피, FOODING</title>
+<title>인기 레시피</title>
 <%
 	} else {
 %>
-<title>전체 레시피, FOODING</title>
+<title>전체 레시피</title>
 <%
 	}
 %>

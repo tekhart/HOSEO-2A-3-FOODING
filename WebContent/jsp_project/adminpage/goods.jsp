@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 관리</title>
+<title>물품 관리</title>
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
 <link rel="stylesheet" href="admincss.css">

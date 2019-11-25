@@ -57,7 +57,7 @@
 <style>
 </style>
 
-<title>도와줘요!, FOODING</title>
+<title>도와줘요!</title>
 
 <script type="text/javascript">
 	

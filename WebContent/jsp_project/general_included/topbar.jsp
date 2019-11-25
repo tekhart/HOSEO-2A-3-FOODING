@@ -38,7 +38,13 @@
 
 #BottomButton {
 	bottom: 10px;
+	}
+	
+.adminmenu td{
+	cursor:pointer;
 }
+	
+
 </style>
 
 </head>
@@ -50,7 +56,7 @@
 					<%
 						if (isAdmin == 1) {
 					%>
-					<table>
+					<table class="adminmenu">
 						<tr>
 							<td onclick="location.href='../adminpage/userlist.jsp'">유저관리</td>
 							<td onclick="location.href='../adminpage/goods.jsp'">물품관리</td>

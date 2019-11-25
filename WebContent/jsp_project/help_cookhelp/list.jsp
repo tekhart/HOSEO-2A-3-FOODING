@@ -57,7 +57,7 @@
 <style>
 </style>
 
-<title>전체 레시피, FOODING</title>
+<title>요리 강의</title>
 
 <script type="text/javascript">
 	

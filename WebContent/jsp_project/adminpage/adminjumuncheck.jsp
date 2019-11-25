@@ -14,7 +14,7 @@
 <html>
 <head>
 
-<title>주문 조회</title>
+<title>주문 관리</title>
 <link rel="stylesheet" href="../jsp_project/css/common.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">

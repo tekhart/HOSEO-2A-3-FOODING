@@ -70,7 +70,7 @@
 <style>
 </style>
 
-<title>전체 레시피, FOODING</title>
+<title>초보용 레시피</title>
 
 <script type="text/javascript">
 	

@@ -101,7 +101,7 @@ hr {
 
 </style>
 
-<title>공지사항, FOODING</title>
+<title>공지사항</title>
 
 </head>
 <body id="body">
