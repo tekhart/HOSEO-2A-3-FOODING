@@ -39,15 +39,10 @@
 				</tr>
 			</table>
 
-			<table align=center cellpadding=15 cellspacing=0 width=450 border=0>
-				<tr>
-					<td height=10></td>
-				</tr>
-				<tr>
-					<td bgcolor=#fffee1>검색할 지역의 동이나 읍/면의 이름을 빈칸없이 입력하세요</td>
-				</tr>
-			</table>
-		</div>
+			<div class="zipdiv">
+					검색할 지역의 동/읍/면의 이름을<br>빈칸없이 입력하세요
+			</div>
+			
 	</form>
 
 </body>

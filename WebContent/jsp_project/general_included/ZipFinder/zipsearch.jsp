@@ -99,6 +99,6 @@
 <br>
 <br>
 <center>
-	<input type="button" value="돌아가기" class="findbutton"
-		onclick="location.href='../signup.jsp'">
+	<input type="button" value="뒤로가기" class="findbutton"
+		onclick="location.href='ZipinputForm.jsp'">
 </center>
