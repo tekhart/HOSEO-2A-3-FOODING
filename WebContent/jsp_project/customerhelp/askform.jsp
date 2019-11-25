@@ -82,6 +82,13 @@ function sendingthumb(thumbname) {
 </head>
 <body>
 	<%@include file="../general_included/topbar.jsp"%>
+	<%
+		int num = 0;
+		String strV = "";
+		if (session.getAttribute("idlogin") == null) {
+			response.sendRedirect("../general_included/pls_login_first.jsp");
+		}
+	%>
 	<form method="post" action="askPro.jsp" name="askform">
 		<input type="hidden" name="writerid" value="<%=idlogin %>">
 		<input type="hidden" name="atteched" value="<%=idlogin %>">
