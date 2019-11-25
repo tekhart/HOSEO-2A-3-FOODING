@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 완료</title>
 <link rel="stylesheet" href="../jsp_project/css/common.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
 <link rel="icon" href="../img/favicon.ico">
+
+
+
 <script>
 		function window_onload() {
 			setTimeout('go_url()', 11000)
@@ -106,6 +109,8 @@
 			</td>
 		</tr>
 	</table>
+	
+	<%@include file="../general_included/footer.jsp"%>
 </body>
 <%
 	} catch (Exception e) {
