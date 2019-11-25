@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>프로필 사진/닉네임 변경</title>
+<title>이메일/주소 변경</title>
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/list.css">
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -19,27 +19,29 @@
 <link rel=stylesheet type=text/css
 	href="../../daumeditor/css/editor.css" charset=utf-8 />
 <script type="text/javascript">
-		var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-		var DBemailArray=[];
-		var i=0;
-		<%ResultSet rs = foodingbean.resultQuery("select email from user");
-			int i = 0;
-			try {
-				while (rs.next()) {
+	var emailexp=/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	var DBemailArray=[];
+	var i=0;
+	<%
+		ResultSet rs = foodingbean.resultQuery("select email from user");
+		int i = 0;
+		try {
+			while (rs.next()) {
 
-					String emailArray = rs.getString("email");%>
-					DBemailArray[<%=i%>]="<%=emailArray%>
-	";
-<%i++;
-				}
-
-			} catch (Exception e) {
-
-			} finally {
+				String emailArray = rs.getString("email");
+				%>
+					DBemailArray[<%=i%>]="<%=emailArray%>";
+				<%
+				i++;
 			}
-			foodingbean.DBclose();%>
-	var arraylength =
-<%=i%>
+
+		} catch (Exception e) {
+
+		} finally {
+		}
+		foodingbean.DBclose();
+	%>
+	var arraylength = <%=i%>;
 	function Emailcheck() {
 		var checked = 0;
 		if (window.event.keyCode == 13) {
@@ -123,38 +125,39 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input class="signupinputs" type="text"
-							name="email" id="inputemail" size="40" onkeyup="Emailcheck();"><br>
+						<td colspan="2">
+							<input class="signupinputs" type="text" name="email" value="<%=email %>" id="inputemail" size="40" onkeyup="Emailcheck();"><br>
 
 						</td>
 					</tr>
 					<tr>
 						<td></td>
-						<td colspan="2" height="30px"><span id="emailimg"></span><span
-							id="emailcheck"></span></td>
+						<td colspan="2" height="30px">
+							<span id="emailimg"></span>
+							<span id="emailcheck"></span>
+						</td>
 					</tr>
 					<tr>
 						<td style="text-align: left;">우편번호</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input class="addrnuminputs" type="text"
-							name="addrnum" id="inputaddrnum" onclick="ZipPopup();"
-							onfocus="ZipPopup()" readonly> <input
-							class="addressinputs" type="text" name="address"
-							id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()"
-							readonly></td>
+						<td colspan="2">
+							<input class="addrnuminputs" type="text" name="addrnum" id="inputaddrnum" onclick="ZipPopup();" onfocus="ZipPopup()" value="<%=addr %>" readonly>
+							<input class="addressinputs" type="text" name="address" id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()" value="<%=addre %>" readonly>
+						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>&nbsp;</td>
 					</tr>
 					<tr>
-						<td style="text-align: left;">주소</td>
+						<td style="text-align: left;">상세주소</td>
 					</tr>
 					<tr>
-						<td colspan="2"><input class="signupinputs" type="text"
-							name="detailaddr" id="inputdetailaddr" size="40"></td>
+						<td colspan="2">
+							<input class="signupinputs" type="text" name="detailaddr" id="inputdetailaddr" size="40" value="<%=daddr %>">
+						</td>
 					</tr>
 				</table>
 				<br>

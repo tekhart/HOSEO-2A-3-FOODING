@@ -135,7 +135,7 @@ function sendingthumb(thumbname) {
 							</td>
 							<td>문의 접수 후 3개월간 보관</td>
 						</tr>
-					</table> <br> <br> <input type="checkbox">위 내용에 동의합니다.</td>
+					</table> <br> <br> <input type="checkbox" id="agreement">위 내용에 동의합니다.</td>
 			</tr>
 	
 		</table>
@@ -167,6 +167,9 @@ function sendingthumb(thumbname) {
 			}else if(document.askform.content.value==""){
 				alert("내용을 입력해 주세요");
 				document.askform.content.focus();
+			}else if(document.getElementById("agreement").checked!=true){
+				alert("정보 제공 정책에 동의해 주세요");
+				document.getElementById("agreement").focus();
 			}else{
 				for (i = 0; i < close.length; i++) {
 					close[i].remove();
