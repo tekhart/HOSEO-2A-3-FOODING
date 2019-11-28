@@ -11,7 +11,16 @@
 <meta charset="UTF-8">
 
 <title>맞춤 레시피</title>
-
+<script type="text/javascript" src="../js//jquery-1.11.1.min.js"></script>
+ <script>
+ function CheckAllSubChecks() {
+		var main = document.getElementById("checkall");
+		var subs = document.getElementsByClassName("checkbox");
+			for (i = 0; i < subs.length; i++) {
+				subs[i].checked = false;
+			}
+	}
+ </script>
 <style>
 /*when hovering an item:*/
 .autocomplete-items div:hover {
@@ -29,6 +38,90 @@
 	float: left;
 	margin-left: 3px;
 }
+
+			#cb1 + .cbcb {
+				display: inline-block;
+				width:9px;
+				height: 15px;
+				margin-right:7px;
+				border:solid #eee;
+				border-width: 0 4px 4px 0;
+				cursor: pointer;
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				transform: rotate(45deg);
+				
+			}
+			#cb1:checked + .cbcb {
+				border:solid green;
+				border-width: 0 4px 4px 0;
+				-webkit-animation: animation 1000ms linear both;
+  				animation: animation 1000ms linear both;
+			}
+			#cb1{
+				display: none;
+			}
+			
+.checkall1{
+	border: 1px solid #ffbb00;
+	border-radius:2px;
+	cursor:pointer;
+		background-color:white;
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+			.checkall1:hover{
+				background-color:#ffbb00;
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+
+@-webkit-keyframes animation { 
+  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  3.2% { -webkit-transform: matrix3d(1.206, 0.383, 0, 0, -0.383, 1.206, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.206, 0.383, 0, 0, -0.383, 1.206, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  4.3% { -webkit-transform: matrix3d(1.2, 0.513, 0, 0, -0.513, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2, 0.513, 0, 0, -0.513, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  6.41% { -webkit-transform: matrix3d(1.125, 0.71, 0, 0, -0.71, 1.125, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.125, 0.71, 0, 0, -0.71, 1.125, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.61% { -webkit-transform: matrix3d(1.01, 0.834, 0, 0, -0.834, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.01, 0.834, 0, 0, -0.834, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  12.71% { -webkit-transform: matrix3d(0.825, 0.889, 0, 0, -0.889, 0.825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.825, 0.889, 0, 0, -0.889, 0.825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  12.91% { -webkit-transform: matrix3d(0.818, 0.888, 0, 0, -0.888, 0.818, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.818, 0.888, 0, 0, -0.888, 0.818, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  17.22% { -webkit-transform: matrix3d(0.72, 0.834, 0, 0, -0.834, 0.72, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.72, 0.834, 0, 0, -0.834, 0.72, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  18.92% { -webkit-transform: matrix3d(0.701, 0.807, 0, 0, -0.807, 0.701, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.701, 0.807, 0, 0, -0.807, 0.701, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25.23% { -webkit-transform: matrix3d(0.682, 0.729, 0, 0, -0.729, 0.682, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.682, 0.729, 0, 0, -0.729, 0.682, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  28.33% { -webkit-transform: matrix3d(0.687, 0.709, 0, 0, -0.709, 0.687, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.687, 0.709, 0, 0, -0.709, 0.687, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  31.43% { -webkit-transform: matrix3d(0.693, 0.699, 0, 0, -0.699, 0.693, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.693, 0.699, 0, 0, -0.699, 0.693, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.44% { -webkit-transform: matrix3d(0.705, 0.698, 0, 0, -0.698, 0.705, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.705, 0.698, 0, 0, -0.698, 0.705, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  56.46% { -webkit-transform: matrix3d(0.708, 0.708, 0, 0, -0.708, 0.708, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.708, 0.708, 0, 0, -0.708, 0.708, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  61.66% { -webkit-transform: matrix3d(0.707, 0.708, 0, 0, -0.708, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.708, 0, 0, -0.708, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  81.48% { -webkit-transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  83.98% { -webkit-transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { -webkit-transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+}
+
+@keyframes animation {
+  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  3.2% { -webkit-transform: matrix3d(1.206, 0.383, 0, 0, -0.383, 1.206, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.206, 0.383, 0, 0, -0.383, 1.206, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  4.3% { -webkit-transform: matrix3d(1.2, 0.513, 0, 0, -0.513, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2, 0.513, 0, 0, -0.513, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  6.41% { -webkit-transform: matrix3d(1.125, 0.71, 0, 0, -0.71, 1.125, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.125, 0.71, 0, 0, -0.71, 1.125, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.61% { -webkit-transform: matrix3d(1.01, 0.834, 0, 0, -0.834, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.01, 0.834, 0, 0, -0.834, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  12.71% { -webkit-transform: matrix3d(0.825, 0.889, 0, 0, -0.889, 0.825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.825, 0.889, 0, 0, -0.889, 0.825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  12.91% { -webkit-transform: matrix3d(0.818, 0.888, 0, 0, -0.888, 0.818, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.818, 0.888, 0, 0, -0.888, 0.818, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  17.22% { -webkit-transform: matrix3d(0.72, 0.834, 0, 0, -0.834, 0.72, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.72, 0.834, 0, 0, -0.834, 0.72, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  18.92% { -webkit-transform: matrix3d(0.701, 0.807, 0, 0, -0.807, 0.701, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.701, 0.807, 0, 0, -0.807, 0.701, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25.23% { -webkit-transform: matrix3d(0.682, 0.729, 0, 0, -0.729, 0.682, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.682, 0.729, 0, 0, -0.729, 0.682, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  28.33% { -webkit-transform: matrix3d(0.687, 0.709, 0, 0, -0.709, 0.687, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.687, 0.709, 0, 0, -0.709, 0.687, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  31.43% { -webkit-transform: matrix3d(0.693, 0.699, 0, 0, -0.699, 0.693, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.693, 0.699, 0, 0, -0.699, 0.693, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.44% { -webkit-transform: matrix3d(0.705, 0.698, 0, 0, -0.698, 0.705, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.705, 0.698, 0, 0, -0.698, 0.705, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  56.46% { -webkit-transform: matrix3d(0.708, 0.708, 0, 0, -0.708, 0.708, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.708, 0.708, 0, 0, -0.708, 0.708, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  61.66% { -webkit-transform: matrix3d(0.707, 0.708, 0, 0, -0.708, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.708, 0, 0, -0.708, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  81.48% { -webkit-transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  83.98% { -webkit-transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { -webkit-transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.707, 0.707, 0, 0, -0.707, 0.707, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+}
+
 </style>
 
 </head>
@@ -38,6 +131,9 @@
 		<div class="writetitle1">맞춤 레시피</div>
 		<br>
 		<form method="POST" action="customPro.jsp" name="customsearchForm">
+		
+		<input type="button" id="checkall" onclick="CheckAllSubChecks()" value="모두 취소" style="position:absolute; right:452px; top:240px;" class="checkall1">
+		
 			<table border="1" class="customtb">
 				<tr>
 					<td class="customfirst">상황별 요리</td>
@@ -47,69 +143,55 @@
 					<td class="customfirst">도구별 요리</td>
 				</tr>
 				<tr>
-					<td class="customsecond"><label><input type="checkbox"
-							name="customsearch" value="상황:간식">간식<br></label> <label><input
-							type="checkbox" name="customsearch" value="상황:야식">야식<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="상황:안주">안주<br></label> <label><input
-							type="checkbox" name="customsearch" value="상황:해장">해장<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="상황:접대">접대<br></label> <label><input
-							type="checkbox" name="customsearch" value="상황:나들이">나들이<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="상황:파티">파티<br></label> <label><input
-							type="checkbox" name="customsearch" value="상황:명절">명절<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="상황:실생활">실생활<br></label></td>
-					<td class="customsecond"><label><input type="checkbox"
-							name="customsearch" value="나라:한식">한식<br></label> <label><input
-							type="checkbox" name="customsearch" value="나라:양식">양식<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="나라:일식">일식<br></label> <label><input
-							type="checkbox" name="customsearch" value="나라:중식">중식<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="나라:퓨전">퓨전<br></label> <label><input
-							type="checkbox" name="customsearch" value="나라:기타">이국적인<br></label>
+					<td class="customsecond">
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:간식"><span class="cbcb"></span>간식<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:야식"><span class="cbcb"></span>야식<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:안주"><span class="cbcb"></span>안주<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:해장"><span class="cbcb"></span>해장<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:접대"><span class="cbcb"></span>접대<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:나들이"><span class="cbcb"></span>나들이<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:파티"><span class="cbcb"></span>파티<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:명절"><span class="cbcb"></span>명절<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="상황:실생활"><span class="cbcb"></span>실생활<br></label>
 					</td>
-					<td class="customsecond"><label><input type="checkbox"
-							name="customsearch" value="재료:고기">육류<br></label> <label><input
-							type="checkbox" name="customsearch" value="재료:나물,재료:버섯,재료:파,재료:추">채소류<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="재료:새우,재료:어,재료:게,재료:랍스타,재료:조개">해산물<br></label> <label><input
-							type="checkbox" name="customsearch" value="재료:콩,재료:두부">콩/두부<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="재료:사과,재료:배,재료:포도,재료:복숭아">과일<br></label> <label><input
-							type="checkbox" name="customsearch" value="재료:달걀,재료:우유,재료:치즈">달걀/유제품<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="재료:만두">만두<br></label> <label><input
-							type="checkbox" name="customsearch" value="재료:밀가루">밀가루<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="재료:김치">김치<br></label> <label><input
-							type="checkbox" name="customsearch" value="재료:통조림,재료:캔">가공식품<br></label>
+					<td class="customsecond">
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="나라:한식"><span class="cbcb"></span>한식<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="나라:양식"><span class="cbcb"></span>양식<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="나라:일식"><span class="cbcb"></span>일식<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="나라:중식"><span class="cbcb"></span>중식<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="나라:퓨전"><span class="cbcb"></span>퓨전<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="나라:기타"><span class="cbcb"></span>이국적인<br></label>
 					</td>
-					<td class="customsecond"><label><input type="checkbox"
-							name="customsearch" value="종류:밥류">밥류<br></label> <label><input
-							type="checkbox" name="customsearch" value="종류:빵류">빵류<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="종류:반찬류">반찬류<br></label> <label><input
-							type="checkbox" name="customsearch" value="종류:면류">면류<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="종류:국류">국류<br></label> <label><input
-							type="checkbox" name="customsearch" value="종류:디저트">디저트<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="종류:기타">이색적인<br></label></td>
-					<td class="customsecond"><label><input type="checkbox"
-							name="customsearch" value="도구:칼">칼<br></label> <label><input
-							type="checkbox" name="customsearch" value="도구:믹서기">믹서기<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="도구:가스레인지">가스레인지<br></label> <label><input
-							type="checkbox" name="customsearch" value="도구:냄비">냄비<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="도구:오븐">오븐<br></label> <label><input
-							type="checkbox" name="customsearch" value="도구:전자레인지">전자레인지<br></label>
-						<label><input type="checkbox" name="customsearch"
-							value="도구:냉장고">냉장고<br></label> <label><input
-							type="checkbox" name="customsearch" value="도구:타이머">타이머<br></label>
+					<td class="customsecond">
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:고기"><span class="cbcb"></span>육류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:나물,재료:버섯,재료:파,재료:추"><span class="cbcb"></span>채소류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:새우,재료:어,재료:게,재료:랍스타,재료:조개"><span class="cbcb"></span>해산물<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:콩,재료:두부"><span class="cbcb"></span>콩/두부<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:사과,재료:배,재료:포도,재료:복숭아"><span class="cbcb"></span>과일<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:달걀,재료:우유,재료:치즈"><span class="cbcb"></span>달걀/유제품<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:만두"><span class="cbcb"></span>만두<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:밀가루"><span class="cbcb"></span>밀가루<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:김치"><span class="cbcb"></span>김치<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="재료:통조림,재료:캔"><span class="cbcb"></span>가공식품<br></label>
+					</td>
+					<td class="customsecond">
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:밥류"><span class="cbcb"></span>밥류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:빵류"><span class="cbcb"></span>빵류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:반찬류"><span class="cbcb"></span>반찬류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:면류"><span class="cbcb"></span>면류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:국류"><span class="cbcb"></span>국류<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:디저트"><span class="cbcb"></span>디저트<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="종류:기타"><span class="cbcb"></span>이색적인<br></label>
+					</td>
+					<td class="customsecond">
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:칼"><span class="cbcb"></span>칼<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:믹서기"><span class="cbcb"></span>믹서기<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:가스레인지"><span class="cbcb"></span>가스레인지<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:냄비"><span class="cbcb"></span>냄비<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:오븐"><span class="cbcb"></span>오븐<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:전자레인지"><span class="cbcb"></span>전자레인지<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:냉장고"><span class="cbcb"></span>냉장고<br></label>
+					<label><input type="checkbox" id="cb1" class="checkbox" name="customsearch" value="도구:타이머"><span class="cbcb"></span>타이머<br></label>
 					</td>
 				</tr>
 			</table>
