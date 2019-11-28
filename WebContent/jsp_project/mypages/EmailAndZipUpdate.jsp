@@ -109,24 +109,19 @@
 		<form method="post" action="EmailAndZipUpdatePro.jsp">
 			<br>
 			<fieldset style="margin: auto; width: 500px;">
-				<legend>프로필</legend>
+				<legend>주소 및 배송지</legend>
 				<input type="hidden" name="id" value="<%=idlogin%>">
 
 				<table width="80%" height="250px" align="center"
 					style="font-size: 20px; text-align: center;">
-					<tr>
-						<td colspan="2">* 다른 사람들에게 보여지는 정보입니다<br>&nbsp;
-						</td>
-					</tr>
-
-					<br>
-					<tr>
+						<br>
+						<tr>
 						<td style="text-align: left;">이메일</td>
 						<td></td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input class="signupinputs" type="text" name="email" value="<%=email %>" id="inputemail" size="40" onkeyup="Emailcheck();"><br>
+							<input class="signupinputs" type="text" name="email" placeholder="<%=email %>" id="inputemail" size="40" onkeyup="Emailcheck();"><br>
 
 						</td>
 					</tr>
@@ -143,8 +138,8 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input class="addrnuminputs" type="text" name="addrnum" id="inputaddrnum" onclick="ZipPopup();" onfocus="ZipPopup()" value="<%=addr %>" readonly>
-							<input class="addressinputs" type="text" name="address" id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()" value="<%=addre %>" readonly>
+							<input class="addrnuminputs" type="text" name="addrnum" id="inputaddrnum" onclick="ZipPopup();" onfocus="ZipPopup()" placeholder="<%=addr %>" readonly>
+							<input class="addressinputs" type="text" name="address" id="inputaddress" onclick="ZipPopup();" onfocus="ZipPopup()" placeholder="<%=addre %>" readonly>
 						</td>
 					</tr>
 					<tr>
@@ -156,7 +151,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input class="signupinputs" type="text" name="detailaddr" id="inputdetailaddr" size="40" value="<%=daddr %>">
+							<input class="signupinputs" type="text" name="detailaddr" id="inputdetailaddr" size="40" placeholder="<%=daddr %>">
 						</td>
 					</tr>
 				</table>
