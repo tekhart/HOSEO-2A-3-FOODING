@@ -20,7 +20,6 @@
 	dbPro.insertCommentsArticle(comment, rootin);
 %>
 <script>
-	location.href='content.jsp?num=<%=rootin%>&pageNum=<%=pageNum%>
-	';
+	location.href='content.jsp?num=<%=rootin%>&pageNum=<%=pageNum%>';
 </script>
 
