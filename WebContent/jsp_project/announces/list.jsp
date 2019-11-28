@@ -100,9 +100,15 @@ hr {
 }
 
 </style>
-
-<title>공지사항</title>
-
+	<title>
+		<%if(isevent.equals("0")){ %>
+			이벤트
+		<%}else if(isevent.equals("1")){ %>
+			공지사항
+		<%}else{ %>
+			공지사항&이벤트
+		<%} %>
+	</title>
 </head>
 <body id="body">
 
@@ -110,7 +116,14 @@ hr {
 	<div id="maindiv">
 
 		<div class="writetitle1">
-			공지사항(<%=count%>)
+			<%if(isevent.equals("0")){ %>
+			이벤트
+			<%}else if(isevent.equals("1")){ %>
+			공지사항
+			<%}else{ %>
+			공지사항&이벤트
+			<%} %>
+			(<%=count%>)
 		</div>
 		<br>
 		<form method="post" action="list.jsp" class="searh">
