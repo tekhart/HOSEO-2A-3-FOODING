@@ -11,6 +11,7 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
+
 	String pageNum = request.getParameter("pageNum");
 	String search = request.getParameter("search");
 	String searchtype = request.getParameter("searchtype");
